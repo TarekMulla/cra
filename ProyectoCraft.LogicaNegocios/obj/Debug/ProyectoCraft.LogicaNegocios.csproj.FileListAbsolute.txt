@@ -1,0 +1,5 @@
+D:\pbeltran\trunk\DLLs\ProyectoCraft.LogicaNegocios.dll
+D:\pbeltran\trunk\DLLs\ProyectoCraft.LogicaNegocios.pdb
+D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb

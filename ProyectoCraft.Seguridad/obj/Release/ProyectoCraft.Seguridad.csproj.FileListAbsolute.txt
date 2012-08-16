@@ -1,0 +1,5 @@
+D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.Seguridad.dll
+D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.Seguridad.pdb
+D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ResolveAssemblyReference.cache
+D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.dll
+D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.pdb

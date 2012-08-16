@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.AccesoDatos", "ProyectoCraft.AccesoDatos\ProyectoCraft.AccesoDatos.csproj", "{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.LogicaNegocios", "ProyectoCraft.LogicaNegocios\ProyectoCraft.LogicaNegocios.csproj", "{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Form", "Form", "{68ACFE59-0C89-420B-8FD8-51D01A220186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.Entidades", "ProyectoCraft.Entidades\ProyectoCraft.Entidades.csproj", "{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{11DC051E-9255-4068-98B9-91D66FC2FA89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.Base", "ProyectoCraft.Base\ProyectoCraft.Base.csproj", "{37053216-ACFD-4932-94EF-49F874307A2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.Seguridad", "ProyectoCraft.Seguridad\ProyectoCraft.Seguridad.csproj", "{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.WinForm", "ProyectoCraft.WinForm\ProyectoCraft.WinForm.csproj", "{0357193D-671E-4E4F-BCE9-259E83F72977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37053216-ACFD-4932-94EF-49F874307A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37053216-ACFD-4932-94EF-49F874307A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37053216-ACFD-4932-94EF-49F874307A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37053216-ACFD-4932-94EF-49F874307A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0357193D-671E-4E4F-BCE9-259E83F72977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0357193D-671E-4E4F-BCE9-259E83F72977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0357193D-671E-4E4F-BCE9-259E83F72977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0357193D-671E-4E4F-BCE9-259E83F72977}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0357193D-671E-4E4F-BCE9-259E83F72977} = {68ACFE59-0C89-420B-8FD8-51D01A220186}
+		{37053216-ACFD-4932-94EF-49F874307A2C} = {11DC051E-9255-4068-98B9-91D66FC2FA89}
+		{591E25AD-3235-4B37-9F1B-2B04D0DF82A2} = {11DC051E-9255-4068-98B9-91D66FC2FA89}
+	EndGlobalSection
+EndGlobal

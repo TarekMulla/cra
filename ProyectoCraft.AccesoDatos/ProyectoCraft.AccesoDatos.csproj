@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoCraft.AccesoDatos</RootNamespace>
+    <AssemblyName>ProyectoCraft.AccesoDatos</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLLs\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\DLLsRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
+      <HintPath>..\DLLsRelease\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.1418.18525, Culture=neutral">
+      <HintPath>..\DLLsRelease\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\DLLsRelease\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\DLLsRelease\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calendarios\clsCalendarioADO.cs" />
+    <Compile Include="Clientes\clsClienteMasterADO.cs" />
+    <Compile Include="Clientes\clsCondicionComercialDAO.cs" />
+    <Compile Include="Clientes\clsContactoADO.cs" />
+    <Compile Include="Clientes\clsCuentaADO.cs" />
+    <Compile Include="Clientes\clsDireccionADO.cs" />
+    <Compile Include="Clientes\clsEmpresaCompetenciaDAO.cs" />
+    <Compile Include="Clientes\clsOrigenCargoADO.cs" />
+    <Compile Include="Clientes\clsTargetAccountADO.cs" />
+    <Compile Include="Clientes\clsTargetDAO.cs" />
+    <Compile Include="Direccion\Administracion\clsControlCreditoAdo.cs" />
+    <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
+    <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />
+    <Compile Include="Emails\EmailsADO.cs" />
+    <Compile Include="LogActividades\clsLogActividadUsuariosADO.cs" />
+    <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
+    <Compile Include="Paperless\clsPaperlessADO.cs" />
+    <Compile Include="Parametros\clsParametrosClientesDAO.cs" />
+    <Compile Include="Parametros\clsParametrosDAO.cs" />
+    <Compile Include="Parametros\clsTipoOrigenDestinoCargaDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\UsuarioDAO.cs" />
+    <Compile Include="Usuarios\clsUsuarioADO.cs" />
+    <Compile Include="Ventas\Actividades\clsAsuntosTipoActividadAdo.cs" />
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\clsLlamadaTelefonicaAdo.cs" />
+    <Compile Include="Ventas\clsTipoProductosADO.cs" />
+    <Compile Include="Ventas\Oportunidades\clsOportunidadAdo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">
+      <Project>{37053216-ACFD-4932-94EF-49F874307A2C}</Project>
+      <Name>ProyectoCraft.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoCraft.Entidades\ProyectoCraft.Entidades.csproj">
+      <Project>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</Project>
+      <Name>ProyectoCraft.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

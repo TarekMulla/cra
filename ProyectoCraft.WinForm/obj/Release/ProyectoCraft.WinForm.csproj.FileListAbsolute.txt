@@ -1,0 +1,84 @@
+D:\pbeltran\trunk\DLLsRelease\SCCMultimodal1.0.exe
+D:\pbeltran\trunk\DLLsRelease\mailSalesLead\templateAsignacion.html
+D:\pbeltran\trunk\DLLsRelease\mailSalesLead\logo.png
+D:\pbeltran\trunk\DLLsRelease\mailSalesLead\template.html
+D:\pbeltran\trunk\DLLsRelease\Panel de control\baseControl\graficoBarra.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\baseControl\Semaforo.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\baseControl\termometro_horizontal.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\baseControl\termometro_vertical.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\control1.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\control1_0.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\GraficoPapperlessCargaUsuario1.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\SemaforosProceso1Vencidos.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\SemaforosVencidos.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\Semaforo1dias.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\Semaforo2dias.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Controles\Semaforo5dias.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Panel de control\panel1.xml
+D:\pbeltran\trunk\DLLsRelease\Panel de control\Panel de control\PanelPaperLessindicadoresFase1.xml
+D:\pbeltran\trunk\DLLsRelease\SCCMultimodal1.0.exe.config
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ResolveAssemblyReference.cache
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\Interop.Microsoft.Office.Interop.Outlook.dll
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.csproj.ResolveComReference.cache
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.CalendarioCompartido.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmCalendario.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmCalendarioCompartido.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmComentarioVisita.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmConsultarVisitas.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmInformeVisita.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmListarComentarios.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Contacto.frmContacto.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Contacto.frmListarContacto.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmSLeadFollowUP.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmtargetFollowUP.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Cuenta.frmCuenta.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Cuenta.frmListarCuenta.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmClienteFollowUp.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.TargetAccount.frmTargetAccount.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmDescalificar.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmListarTarget.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmTarget.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.MiCalendario.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Controles.EstadoPaperless.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmConsultarDEuda.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmDefinirAgente.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmDefinirLineaCredito.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmLineaCreditoClientes.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmDefinirMeta.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmDefinirSLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmEditarSLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmGestionarMetas.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmGestionarSLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmUsuarioProspecto.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Escritorios.FoldersOutlook.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Form1.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Panel_de_control.formDetailPanelDeControl.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.formPanelDeControl.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.MDICraft.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Asignacion.frmListaAsignaciones.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Asignacion.frmPaperlessAsignacion.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Gestion.frmGestionPaperless.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmListarUsuario1.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmPaperlessUser1.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmRechazarAsignacion.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario2.frmListarUsuario2.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario2.frmPaperlessUser2.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Properties.Resources.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.EMail.FrmNuevoMail.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.EMail.FrmNuevoMailOtros.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas.FrmListarLlamadas.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas.FrmLlamadaTelefonica.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Visitas.frmVisita.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.FrmNuevaVisita.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCancelarSalesLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCerrarSLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmRevisarAsigSalesLead.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCancelarTarget.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCerrarTarget.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmRevisarAsigMetas.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Oportunidades.FrmOportunidad.resources
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.csproj.GenerateResource.Cache
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe.licenses
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe
+D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.pdb
+D:\pbeltran\trunk\DLLsRelease\SCCMultimodal1.0.pdb

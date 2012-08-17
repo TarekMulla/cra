@@ -82,3 +82,87 @@ D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe.license
 D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe
 D:\pbeltran\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.pdb
 D:\pbeltran\trunk\DLLsRelease\SCCMultimodal1.0.pdb
+C:\develop\google code\trunk\DLLsRelease\SCCMultimodal1.0.exe.config
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\Interop.Microsoft.Office.Interop.Outlook.dll
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.csproj.ResolveComReference.cache
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.pdb
+C:\develop\google code\trunk\DLLsRelease\mailSalesLead\templateAsignacion.html
+C:\develop\google code\trunk\DLLsRelease\mailSalesLead\logo.png
+C:\develop\google code\trunk\DLLsRelease\mailSalesLead\template.html
+C:\develop\google code\trunk\DLLsRelease\Panel de control\baseControl\graficoBarra.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\baseControl\Semaforo.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\baseControl\termometro_horizontal.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\baseControl\termometro_vertical.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\control1.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\control1_0.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\GraficoPapperlessCargaUsuario1.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\SemaforosProceso1Vencidos.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\SemaforosVencidos.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\Semaforo1dias.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\Semaforo2dias.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Controles\Semaforo5dias.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Panel de control\panel1.xml
+C:\develop\google code\trunk\DLLsRelease\Panel de control\Panel de control\PanelPaperLessindicadoresFase1.xml
+C:\develop\google code\trunk\DLLsRelease\SCCMultimodal1.0.exe
+C:\develop\google code\trunk\DLLsRelease\SCCMultimodal1.0.pdb
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ResolveAssemblyReference.cache
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.CalendarioCompartido.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmCalendario.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmCalendarioCompartido.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmComentarioVisita.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmConsultarVisitas.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmInformeVisita.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.frmListarComentarios.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Contacto.frmContacto.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Contacto.frmListarContacto.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmSLeadFollowUP.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmtargetFollowUP.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Cuenta.frmCuenta.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Cuenta.frmListarCuenta.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.frmClienteFollowUp.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.TargetAccount.frmTargetAccount.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmDescalificar.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmListarTarget.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Clientes.Target.frmTarget.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.MiCalendario.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Controles.EstadoPaperless.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmConsultarDEuda.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmDefinirAgente.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmDefinirLineaCredito.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Administracion.frmLineaCreditoClientes.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmDefinirMeta.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmDefinirSLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmEditarSLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmGestionarMetas.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmGestionarSLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Direccion.Metas.frmUsuarioProspecto.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Escritorios.FoldersOutlook.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Form1.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Panel_de_control.formDetailPanelDeControl.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.formPanelDeControl.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.MDICraft.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Asignacion.frmListaAsignaciones.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Asignacion.frmPaperlessAsignacion.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Gestion.frmGestionPaperless.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmListarUsuario1.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmPaperlessUser1.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario1.frmRechazarAsignacion.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario2.frmListarUsuario2.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Paperless.Usuario2.frmPaperlessUser2.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal.Properties.Resources.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.EMail.FrmNuevoMail.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.EMail.FrmNuevoMailOtros.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas.FrmListarLlamadas.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas.FrmLlamadaTelefonica.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Actividades.Visitas.frmVisita.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Calendarios.FrmNuevaVisita.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCancelarSalesLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCerrarSLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmRevisarAsigSalesLead.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCancelarTarget.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmCerrarTarget.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Metas.frmRevisarAsigMetas.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.Ventas.Oportunidades.FrmOportunidad.resources
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\ProyectoCraft.WinForm.csproj.GenerateResource.Cache
+C:\develop\google code\trunk\ProyectoCraft.WinForm\obj\Release\SCCMultimodal1.0.exe.licenses

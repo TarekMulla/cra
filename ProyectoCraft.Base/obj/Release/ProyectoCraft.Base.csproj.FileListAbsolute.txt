@@ -1,5 +1,0 @@
-D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.Base.dll
-D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.Base.pdb
-D:\pbeltran\trunk\ProyectoCraft.Base\obj\Release\ResolveAssemblyReference.cache
-D:\pbeltran\trunk\ProyectoCraft.Base\obj\Release\ProyectoCraft.Base.dll
-D:\pbeltran\trunk\ProyectoCraft.Base\obj\Release\ProyectoCraft.Base.pdb

@@ -3,8 +3,3 @@ D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.LogicaNegocios.pdb
 D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ResolveAssemblyReference.cache
 D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ProyectoCraft.LogicaNegocios.dll
 D:\pbeltran\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ProyectoCraft.LogicaNegocios.pdb
-C:\develop\google code\trunk\DLLsRelease\ProyectoCraft.LogicaNegocios.dll
-C:\develop\google code\trunk\DLLsRelease\ProyectoCraft.LogicaNegocios.pdb
-C:\develop\google code\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ResolveAssemblyReference.cache
-C:\develop\google code\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ProyectoCraft.LogicaNegocios.dll
-C:\develop\google code\trunk\ProyectoCraft.LogicaNegocios\obj\Release\ProyectoCraft.LogicaNegocios.pdb

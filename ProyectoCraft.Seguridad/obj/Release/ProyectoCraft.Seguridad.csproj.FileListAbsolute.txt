@@ -3,8 +3,3 @@ D:\pbeltran\trunk\DLLsRelease\ProyectoCraft.Seguridad.pdb
 D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ResolveAssemblyReference.cache
 D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.dll
 D:\pbeltran\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.pdb
-C:\develop\google code\trunk\DLLsRelease\ProyectoCraft.Seguridad.dll
-C:\develop\google code\trunk\DLLsRelease\ProyectoCraft.Seguridad.pdb
-C:\develop\google code\trunk\ProyectoCraft.Seguridad\obj\Release\ResolveAssemblyReference.cache
-C:\develop\google code\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.dll
-C:\develop\google code\trunk\ProyectoCraft.Seguridad\obj\Release\ProyectoCraft.Seguridad.pdb

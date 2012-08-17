@@ -8,7 +8,7 @@
               SELECT CASE
             WHEN COUNT(a.id) =0 THEN ''
             WHEN COUNT(a.id) >0 THEN 'red'
-        END,
+        END as color,
         COUNT(a.id) as 'cantidad'
         FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO1_PASOS_ESTADO B
              ON A.id=B.idAsignacion

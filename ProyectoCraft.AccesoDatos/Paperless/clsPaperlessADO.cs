@@ -3017,7 +3017,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
                 while (dreader.Read())
                 {
-                    string num = dreader["HouseBL"].ToString();
+                    string num = dreader["NumConsolidado"].ToString();
                     if (!string.IsNullOrEmpty(num))
                         return true;
                 }

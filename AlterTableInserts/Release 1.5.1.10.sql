@@ -170,7 +170,7 @@ PHBL.Observacion,
 cc.PaperlessTipoRecibo
 FROM PAPERLESS_USUARIO1_HOUSESBL PHBL LEFT OUTER JOIN CLIENTES_MASTER_TIPO_CLIENTE TC ON PHBL.IdTipoCliente = TC.Id
 LEFT OUTER JOIN PAPERLESS_USUARIO1_EXCEPCIONES PE ON PHBL.Id = PE.IdHouseBL
-inner join CLIENTES_CUENTA cc on cc.IdMaster=IdCliente
+LEFT join CLIENTES_CUENTA cc on cc.IdMaster=IdCliente
 WHERE PHBL.IdAsignacion = @IdAsignacion 
 ORDER BY IndexHouse
 
@@ -256,4 +256,63 @@ AS
    
 select NumConsolidado  from  PAPERLESS_USUARIO1_HOUSESBL_INFO where NumConsolidado = @numConsolidado 
 
+go
+
+
+
+update clientes_cuenta set paperlesstiporecibo =1 where id =1
+update clientes_cuenta set paperlesstiporecibo =1 where id =2
+update clientes_cuenta set paperlesstiporecibo =1 where id =3
+update clientes_cuenta set paperlesstiporecibo =1 where id =4
+update clientes_cuenta set paperlesstiporecibo =1 where id =5
+update clientes_cuenta set paperlesstiporecibo =1 where id =6
+update clientes_cuenta set paperlesstiporecibo =1 where id =7
+update clientes_cuenta set paperlesstiporecibo =1 where id =8
+update clientes_cuenta set paperlesstiporecibo =1 where id =10
+update clientes_cuenta set paperlesstiporecibo =1 where id =11
+update clientes_cuenta set paperlesstiporecibo =1 where id =12
+update clientes_cuenta set paperlesstiporecibo =1 where id =13
+update clientes_cuenta set paperlesstiporecibo =1 where id =14
+update clientes_cuenta set paperlesstiporecibo =1 where id =15
+update clientes_cuenta set paperlesstiporecibo =1 where id =16
+update clientes_cuenta set paperlesstiporecibo =1 where id =17
+update clientes_cuenta set paperlesstiporecibo =1 where id =18
+update clientes_cuenta set paperlesstiporecibo =1 where id =19
+update clientes_cuenta set paperlesstiporecibo =1 where id =21
+update clientes_cuenta set paperlesstiporecibo =1 where id =22
+update clientes_cuenta set paperlesstiporecibo =1 where id =23
+update clientes_cuenta set paperlesstiporecibo =1 where id =24
+update clientes_cuenta set paperlesstiporecibo =1 where id =25
+update clientes_cuenta set paperlesstiporecibo =1 where id =26
+update clientes_cuenta set paperlesstiporecibo =1 where id =27
+update clientes_cuenta set paperlesstiporecibo =1 where id =28
+update clientes_cuenta set paperlesstiporecibo =1 where id =29
+update clientes_cuenta set paperlesstiporecibo =1 where id =30
+update clientes_cuenta set paperlesstiporecibo =1 where id =31
+update clientes_cuenta set paperlesstiporecibo =1 where id =32
+update clientes_cuenta set paperlesstiporecibo =1 where id =33
+update clientes_cuenta set paperlesstiporecibo =1 where id =34
+update clientes_cuenta set paperlesstiporecibo =1 where id =35
+update clientes_cuenta set paperlesstiporecibo =1 where id =36
+update clientes_cuenta set paperlesstiporecibo =1 where id =37
+update clientes_cuenta set paperlesstiporecibo =1 where id =38
+update clientes_cuenta set paperlesstiporecibo =1 where id =39
+update clientes_cuenta set paperlesstiporecibo =1 where id =40
+update clientes_cuenta set paperlesstiporecibo =1 where id =41
+update clientes_cuenta set paperlesstiporecibo =1 where id =42
+update clientes_cuenta set paperlesstiporecibo =1 where id =43
+update clientes_cuenta set paperlesstiporecibo =1 where id =44
+update clientes_cuenta set paperlesstiporecibo =1 where id =45
+update clientes_cuenta set paperlesstiporecibo =1 where id =46
+update clientes_cuenta set paperlesstiporecibo =1 where id =47
+update clientes_cuenta set paperlesstiporecibo =1 where id =52
+update clientes_cuenta set paperlesstiporecibo =1 where id =60
+update clientes_cuenta set paperlesstiporecibo =2 where id =89
+update clientes_cuenta set paperlesstiporecibo =1 where id =151
+update clientes_cuenta set paperlesstiporecibo =1 where id =217
+update clientes_cuenta set paperlesstiporecibo =1 where id =288
+update clientes_cuenta set paperlesstiporecibo =1 where id =329
+
+go
+update CLIENTES_CUENTA  set PaperlessTipoRecibo =2  where PaperlessTipoRecibo is null
 go

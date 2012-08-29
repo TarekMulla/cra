@@ -5,12 +5,9 @@ using System.Text;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace ProyectoCraft.Entidades.Enums
-{
-    public class Enums
-    {
-        public enum TipoPersona
-        {
+namespace ProyectoCraft.Entidades.Enums {
+    public class Enums {
+        public enum TipoPersona {
             Todos = -1,
             Target = 1,
             Cuenta = 2,
@@ -18,29 +15,25 @@ namespace ProyectoCraft.Entidades.Enums
             Comercial = 4
         }
 
-        public enum EstadoTarget
-        {
+        public enum EstadoTarget {
             Habilitado = 1,
             Calificado = 2,
             Descalificado = 0,
         }
 
-        public enum Estado
-        {
+        public enum Estado {
             Todos = -1,
             Habilitado = 1,
             Deshabilitado = 0,
         }
-        
-        public enum Sexo
-        {
+
+        public enum Sexo {
             Masculino = 1,
             Femenino = 2
 
         }
 
-        public enum Dias
-        {
+        public enum Dias {
             Lunes = 1,
             Martes = 2,
             Miercoles = 3,
@@ -50,32 +43,30 @@ namespace ProyectoCraft.Entidades.Enums
             Domingo = 7,
         }
 
-        public enum Jornadas
-        {
+        public enum Jornadas {
             Mañana = 1,
             Tarde = 2,
             Noche = 3,
         }
 
-        public enum TipoParametro
-        {
+        public enum TipoParametro {
             TipoSaludo = 1,
-            SectorEconomico = 2,            
-            TipoRelacion = 3,            
+            SectorEconomico = 2,
+            TipoRelacion = 3,
             MotivoInteres = 4,
             OrigenClientePotencial = 5,
             FormasContacto = 6,
-            EstadosClientes	= 7,
+            EstadosClientes = 7,
             TipoDireccion = 8,
             DestinoDireccion = 9,
             ZonaVentas = 10,
-            CategoriaCliente = 11,            
+            CategoriaCliente = 11,
             TiposRol = 12,
             EstadoCivil = 13,
             Sexo = 14,
             Dias = 15,
             Jornada = 16,
-            NivelInteres = 17,   
+            NivelInteres = 17,
             SectorDireccion = 18,
             UnidadMedidaVolumen = 19,
             TipoMotivoDescalificacion = 20,
@@ -90,26 +81,23 @@ namespace ProyectoCraft.Entidades.Enums
             Prioridad = 28,
             PaperlessImportanciaUsuario1 = 29,
             Incoterms = 30,
-            TipoCompentencia= 31,
+            TipoCompentencia = 31,
             Any = 99
         }
 
-        public enum EstadoTransaccion
-        {
+        public enum EstadoTransaccion {
             Aceptada = 1,
             Rechazada = 2
         }
 
-        public enum AccionTransaccion
-        {
+        public enum AccionTransaccion {
             Insertar = 1,
             Actualizar = 2,
             Eliminar = 3,
             Consultar = 4
         }
 
-        public enum TipoAccionFormulario
-        {
+        public enum TipoAccionFormulario {
             Nuevo = 1,
             Editar = 2,
             Eliminar = 3,
@@ -117,8 +105,7 @@ namespace ProyectoCraft.Entidades.Enums
             CambiarEstado = 5
         }
 
-        public enum TipoActividadUsuario
-        {
+        public enum TipoActividadUsuario {
             Creo = 1,
             Edito = 2,
             Elimino = 3,
@@ -126,8 +113,7 @@ namespace ProyectoCraft.Entidades.Enums
             Desasigno = 5
         }
 
-        public enum CargosUsuarios
-        {
+        public enum CargosUsuarios {
             Todos = -1,
             Vendedor = 1,
             CustomerService = 2,
@@ -148,25 +134,22 @@ namespace ProyectoCraft.Entidades.Enums
             EncargadoDocumental2daEtapa = 17,
             SupervisorDeProcesos = 18,
             EncargadoDeProceso = 19,
-            UsuarioSalesLead= 20,
+            UsuarioSalesLead = 20,
         }
 
-        public enum TipoCondicionComercial
-        {
+        public enum TipoCondicionComercial {
             Flete = 1,
             GastosLocales = 2
         }
 
-        public enum EstadoCondicionComercial
-        {
+        public enum EstadoCondicionComercial {
             Guardado = 1,
             EnviadoAutorizar = 2,
             Autorizado = 3,
             Rechazado = 4
         }
 
-        public enum VisitaNivelImportancia
-        {
+        public enum VisitaNivelImportancia {
             Baja = 1,
             Media = 2,
             Alta = 3,
@@ -182,15 +165,14 @@ namespace ProyectoCraft.Entidades.Enums
         //    NoRealizada = 4,
         //    PendienteRegistro = 5,
         //    CreadaIncompleta = 6,
-            
+
         //}
 
-        public enum VisitaEstado
-        {
+        public enum VisitaEstado {
             Todas = -1,
             Incompleta = 1,
             Planificada_Por_confirmar = 2,
-            Confirmada = 3 ,
+            Confirmada = 3,
             Realizada_Informe_Pendiente = 4,
             Realizada_Con_Informe = 5,
             Cancelada = 6,
@@ -200,8 +182,7 @@ namespace ProyectoCraft.Entidades.Enums
 
 
 
-        public enum VisitaEstadoVista
-        {
+        public enum VisitaEstadoVista {
             Pendiente = 3,
             Realizada = 2,
             Cancelada = 11,
@@ -210,21 +191,18 @@ namespace ProyectoCraft.Entidades.Enums
             CreadaIncompleta = 10,
         }
 
-        public enum VisitaEstadoAsistente
-        {
+        public enum VisitaEstadoAsistente {
             Pendiente = 1,
             ConfirmoAsistencia = 2,
             ConfirmoNoAsistencia = 3
         }
 
-        public enum VisitaTipoAsistente
-        {
+        public enum VisitaTipoAsistente {
             Usuario = 1,
             Contacto = 2,
         }
 
-        public enum VisitaTipoEmail
-        {
+        public enum VisitaTipoEmail {
             Planificacion = 1,
             ConfirmacionSinPlanificacion = 2,
             ConfirmacionAsistentesCraft = 3,
@@ -240,8 +218,7 @@ namespace ProyectoCraft.Entidades.Enums
             ComentarioAInformeVisita = 13
         }
 
-        public enum EmailTipoPlantilla
-        {
+        public enum EmailTipoPlantilla {
             VisitaPlanificada = 1,
             VisitaPlanificadaModificada = 2,
             VisitaConfirmada = 3,
@@ -250,8 +227,7 @@ namespace ProyectoCraft.Entidades.Enums
             InformeVisita = 6,
         }
 
-        public enum TipoCalendario
-        {
+        public enum TipoCalendario {
             MiCalendario = 1,
             CalendarioCompartido = 2,
         }
@@ -265,8 +241,7 @@ namespace ProyectoCraft.Entidades.Enums
         //    Visitado = 3,
         //}
 
-        public enum EstadosMetas
-        {
+        public enum EstadosMetas {
             Propuesta = 1,
             Revision = 2,
             Asignado = 3,
@@ -280,11 +255,10 @@ namespace ProyectoCraft.Entidades.Enums
 
         //public enum EstadoPaperlessAsignacion
         //{
-           
+
         //}
 
-        public enum EstadoPaperless
-        {
+        public enum EstadoPaperless {
             Nuevo = 1,
             //InformacionGeneral = 2,
             //FechasPlazos = 3,
@@ -299,19 +273,17 @@ namespace ProyectoCraft.Entidades.Enums
             RechazadaUsuario1 = 9
         }
 
-        public enum PaperlessTipoReciboAperturaEmbarcador
-        {
+        public enum PaperlessTipoReciboAperturaEmbarcador {
             NoDefinido = 0,
             Mail = 1,
             Papel = 2,
             NoRecibida = 3,
         }
-
-        public enum UsuariosCargo
-        {
+        
+        public enum UsuariosCargo {
             Vendedor = 1,
-            Customer_Service=2,
-            Supervisor=3,
+            Customer_Service = 2,
+            Supervisor = 3,
             Gerente_Administración_y_Finanzas = 4,
             Gerente_General = 5,
             Supervisor_de_Administración = 6,
@@ -330,8 +302,7 @@ namespace ProyectoCraft.Entidades.Enums
             Encargado_Procesos = 19,
             Usuario_Sales_Lead = 20,
         }
-        public enum EstadosSLead
-        {
+        public enum EstadosSLead {
             Asignado = 1,
             Seguimiento = 2,
             Cancelada = 3,

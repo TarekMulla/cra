@@ -19,26 +19,27 @@ using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.WinForm.Controles;
 using System.Data;
 using ProyectoCraft.WinForm.Paperless.Usuario2;
+using SCCMultimodal.Paperless.Usuario1;
 using SCCMultimodal.Utils;
 using log4net;
 
 namespace ProyectoCraft.WinForm.Paperless.Usuario1
 {
-    public partial class frmPaperlessUser1 : Form
+    public partial class FrmPaperlessUser1 : Form, IFrmPaperlessUser1
     {
         private static readonly ILog Log = LogManager.GetLogger("Paperless");
-        public frmPaperlessUser1()
+        public FrmPaperlessUser1()
         {
             InitializeComponent();
         }
 
-        private static frmPaperlessUser1 _instancia;
-        public static frmPaperlessUser1 Instancia
+        private static FrmPaperlessUser1 _instancia;
+        public static FrmPaperlessUser1 Instancia
         {
             get
             {
                 if (_instancia == null)
-                    _instancia = new frmPaperlessUser1();
+                    _instancia = new FrmPaperlessUser1();
 
                 return _instancia;
             }
@@ -450,7 +451,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
 
             Entidades.GlobalObject.ResultadoTransaccion resultado =
-                LogicaNegocios.Paperless.Paperless.PreparaPasosUsuario1(PaperlessAsignacionActual, inicio);
+                LogicaNegocios.Paperless.Paperless.PreparaPasosUsuario1V2(PaperlessAsignacionActual, inicio);
 
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {
@@ -464,6 +465,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         public void CargarInformacionAsignacionInicial()
         {
             txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
+        }
+
+        public void MyShowDialog() {
+            this.ShowDialog();
         }
 
         private void simpleButton17_Click(object sender, EventArgs e)

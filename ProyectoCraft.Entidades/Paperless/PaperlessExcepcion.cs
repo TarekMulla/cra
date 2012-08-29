@@ -32,5 +32,8 @@ namespace ProyectoCraft.Entidades.Paperless
         public bool AvisoNoEnviado { get; set; }
         public bool AvisoNoEnviadoResuelto { get; set; }
 
+        public bool TieneExcepcion { get; set; }
+        public PaperlessTipoExcepcion TipoExcepcion { set; get; }
+        public PaperlessTipoResponsabilidad Responsabilidad { get; set; }
     }
 }

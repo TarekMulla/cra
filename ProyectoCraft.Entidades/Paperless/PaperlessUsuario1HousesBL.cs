@@ -22,5 +22,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public DateTime? FechaReciboAperturaEmbarcador { get; set; }
         public Enums.Enums.PaperlessTipoReciboAperturaEmbarcador TipoReciboAperturaEmbarcador { get; set; }
         public String Observacion { set; get; }
+        public PaperlessTipoTransito TransbordoTransito { set; get; }
     }
 }

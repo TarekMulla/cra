@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Paperless;
-using ProyectoCraft.WinForm.Controles;
-using ProyectoCraft.WinForm.Paperless.Usuario1;
 using SCCMultimodal.Utils;
 using log4net;
 

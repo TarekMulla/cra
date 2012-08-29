@@ -101,11 +101,14 @@
     <Compile Include="Paperless\PaperlessProcesoRegistroTiempo.cs" />
     <Compile Include="Paperless\PaperlessTipoCarga.cs" />
     <Compile Include="Paperless\PaperlessTipoCliente.cs" />
+    <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
+    <Compile Include="Paperless\PaperlessTipoResponsabilidad.cs" />
     <Compile Include="Paperless\PaperlessTipoServicio.cs" />
     <Compile Include="Paperless\PaperlessUsuario1.cs" />
     <Compile Include="Paperless\PaperlessUsuario1HouseBLInfo.cs" />
     <Compile Include="Paperless\PaperlessUsuario1HousesBL.cs" />
     <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />
+    <Compile Include="Paperless\PaperlessTipoTransito.cs" />
     <Compile Include="Parametros\clsCiudad.cs" />
     <Compile Include="Parametros\clsComuna.cs" />
     <Compile Include="Parametros\clsIncoTerm.cs" />

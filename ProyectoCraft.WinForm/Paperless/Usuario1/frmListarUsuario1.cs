@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Entidades.Enums;
+using SCCMultimodal.Paperless.Usuario1;
 
 namespace ProyectoCraft.WinForm.Paperless.Usuario1
 {
@@ -166,6 +167,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             IList<Entidades.Paperless.PaperlessFlujo> asignaciones =
                 LogicaNegocios.Paperless.Paperless.ObtenerAsignaciones(desde, hasta, usuario1, usuario2, estados, numconsolidado, nave
                 , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster);
+
             gridAsignaciones.DataSource = asignaciones;
             //asignaciones[0].Asignacion.Usuario1.NombreCompleto
 
@@ -224,10 +226,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         {
             Cursor.Current = Cursors.WaitCursor;
             Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
-            Paperless.Usuario1.frmPaperlessUser1 form = frmPaperlessUser1.Instancia;
+
+            IFrmPaperlessUser1 form = null;
+
+            //Paperless.Usuario1.frmPaperlessUser1 form = frmPaperlessUser1.Instancia;
 
             if (asignacion != null)
             {
+                if (asignacion.Asignacion.VersionUsuario1 == 1)
+                    form = FrmPaperlessUser1.Instancia;
+                if (asignacion.Asignacion.VersionUsuario1 == 2)
+                    form = frmPaperlessUser1v2.Instancia;
+
                 form.PaperlessAsignacionActual = asignacion.Asignacion;
 
                 if (asignacion.EstadoFlujo == Enums.EstadoPaperless.AceptadoUsuario1)
@@ -252,7 +262,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 //form.CargarFormulario();
                 //form.Accion = Enums.TipoAccionFormulario.Editar;
                 Cursor.Current = Cursors.Default;
-                form.ShowDialog();
+                form.MyShowDialog();
 
             }
             else

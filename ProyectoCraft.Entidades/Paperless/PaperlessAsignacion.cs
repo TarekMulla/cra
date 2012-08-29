@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using ProyectoCraft.Entidades.Usuarios;
 
 namespace ProyectoCraft.Entidades.Paperless
@@ -14,7 +11,8 @@ namespace ProyectoCraft.Entidades.Paperless
             Usuario1 = new clsUsuario();
             Usuario2 = new clsUsuario();
             DataUsuario1 = new PaperlessUsuario1();
-            TiemposUsuarios = new PaperlessProcesoRegistroTiempo();            
+            TiemposUsuarios = new PaperlessProcesoRegistroTiempo();
+            VersionUsuario1 = 1;
         }
 
         public string NumMaster { get; set; }
@@ -31,17 +29,17 @@ namespace ProyectoCraft.Entidades.Paperless
         public DateTime? AperturaNavieras { get; set; }
         public DateTime? PlazoEmbarcadores { get; set; }
 
-        public Usuarios.clsUsuario Usuario1 { get; set; }
+        public clsUsuario Usuario1 { get; set; }
         public string ObservacionUsuario1 { get; set; }
         public Parametros.clsItemParametro ImportanciaUsuario1 { get; set; }
-        public Usuarios.clsUsuario Usuario2 { get; set; }
+        public clsUsuario Usuario2 { get; set; }
         public string ObservacionUsuario2 { get; set; }
 
         public Enums.Enums.EstadoPaperless Estado { get; set; }
         public string EstadoDescripcion { get; set; }
 
 
-        public Usuarios.clsUsuario UsuarioCreacion { get; set; }
+        public clsUsuario UsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaPaso1 { get; set; }
         public DateTime? FechaPaso2 { get; set; }
@@ -53,5 +51,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public PaperlessProcesoRegistroTiempo TiemposUsuarios { get; set; }
 
         public PaperlessNave NaveTransbordo { get; set; }
+
+        public Int16 VersionUsuario1 { get; set; }
     }
 }

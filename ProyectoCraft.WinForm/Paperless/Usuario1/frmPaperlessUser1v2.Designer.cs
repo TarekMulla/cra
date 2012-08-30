@@ -1019,10 +1019,10 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.pnlExcepciones);
-            this.Controls.Add(this.pnlPaso1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

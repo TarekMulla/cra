@@ -377,6 +377,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         private bool ValidarHousesBLInfo() {
             bool valida = true;
 
+            dxErrorProvider1.ClearErrors();
             if (txtP1CantHouses.Text.Length.Equals(0)) {
                 dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses", ErrorType.Critical);
                 valida = false;
@@ -385,6 +386,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             if (txtP1NumConsolidado.Text.Length.Equals(0)) {
                 dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar numero de consolidado", ErrorType.Critical);
                 valida = false;
+            } else {
+                if (LogicaNegocios.Paperless.Paperless.ValidaNumConsolidado(txtP1NumConsolidado.Text).Equals(true)) {
+                    dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el numero de consolidado", ErrorType.Critical);
+                    return false;
+                }
+                dxErrorProvider1.ClearErrors();
             }
 
             IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;

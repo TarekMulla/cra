@@ -664,7 +664,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     objParams[9].Value = -1;
 
 
-                objParams[10].Value = AsignacionPaso1.NaveTransbordo.Id32;
+                if (AsignacionPaso1.NaveTransbordo != null) objParams[10].Value = AsignacionPaso1.NaveTransbordo.Id32;
                 if (!string.IsNullOrEmpty(AsignacionPaso1.MotivoModificacion))
                     objParams[11].Value = AsignacionPaso1.MotivoModificacion;
                 //else

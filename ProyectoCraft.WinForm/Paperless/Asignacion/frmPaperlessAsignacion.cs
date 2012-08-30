@@ -144,7 +144,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
                 txtObservacionU2.Text = Asignacion.ObservacionUsuario2;
 
-                if (Asignacion.TipoServicio.Nombre.Equals("Transbordo")){
+                //if (Asignacion.TipoServicio.Nombre.Equals("Transbordo"))
+                if (Asignacion.TipoServicio != null && (Asignacion.TipoServicio.Nombre != null && Asignacion.TipoServicio.Nombre.Equals("Transbordo")))
+                {
                     lblNaveTransbordo.Visible = true;
                     txtNaveTransbordo.Visible = true;
                     txtNaveTransbordo.Text = Asignacion.NaveTransbordo.Nombre;

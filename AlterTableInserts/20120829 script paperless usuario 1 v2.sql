@@ -481,3 +481,32 @@ LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.TieneExcepciones = b.id
 LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id
 where A.id=@IdExcepcion
 GO
+
+
+ALTER PROCEDURE "dbo"."SP_C_PAPERLESS_USUARIO1_EXCEPCIONES" 
+@IdAsignacion bigint
+
+AS
+
+SELECT 
+PE.Id,
+PE.IdAsignacion,
+IdHouseBL,
+RecargoCollect,
+RecargoCollectResuelto,
+SobrevalorPendiente,
+SobrevalorPendienteResuelto,
+AvisoNoEnviado,
+AvisoNoEnviadoResuelto,
+PH.IdCliente,
+PH.IdTipoCliente , TC.Descripcion TipoCliente,
+PH.Freehand,
+PH.HouseBL,
+PH.IndexHouse
+FROM PAPERLESS_USUARIO1_EXCEPCIONES PE
+INNER JOIN PAPERLESS_USUARIO1_HOUSESBL PH
+ON PH.Id = PE.IdHouseBL
+INNER JOIN CLIENTES_MASTER_TIPO_CLIENTE TC
+ON PH.IdTipoCliente = TC.Id
+WHERE PE.IdAsignacion = @IdAsignacion
+ORDER BY IdHouseBL

@@ -591,7 +591,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private bool ValidarHousesBLInfo()
         {
             bool valida = true;
-
+            dxErrorProvider1.ClearErrors();
             if (txtP1CantHouses.Text.Length.Equals(0))
             {
                 dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses", ErrorType.Critical);

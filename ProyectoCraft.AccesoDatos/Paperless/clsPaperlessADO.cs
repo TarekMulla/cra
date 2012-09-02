@@ -1744,7 +1744,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                                                 };
                     excepcion.HouseBL.Freehand = Convert.ToBoolean(dreader["Freehand"]);
                     excepcion.HouseBL.HouseBL = dreader["HouseBL"].ToString();
-
+                    excepcion.HouseBL.Index = Convert.ToInt32(dreader["IndexHouse"].ToString());
 
                     excepciones.Add(excepcion);
                 }

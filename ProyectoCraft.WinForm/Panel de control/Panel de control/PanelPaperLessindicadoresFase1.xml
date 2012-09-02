@@ -11,6 +11,7 @@
   </panel>
   <panel title="PaperLess indicadores Fase 1" x="210" y="340" width="620" heigth="355">
     <control x="-50" y="10" width="200" heigth="280">SemaforosProceso1Vencidos.xml</control>
+    <control x="100" y="10" width="200" heigth="280">SemaforosAceptados.xml</control>
     <!--<control x="200" y="24" width="400" heigth="280">GraficoPapperlessCargaUsuario1.xml</control>-->
   </panel>
 </panel>

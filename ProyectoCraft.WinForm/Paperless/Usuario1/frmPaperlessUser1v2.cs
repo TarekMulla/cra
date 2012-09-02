@@ -62,7 +62,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             TiposTransitoTransbordo = (List<PaperlessTipoTransito>)LogicaNegocios.Paperless.Paperless.ListarTiposTransitoTransbordo();
             TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones();
             TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
-
         }
         private void frmPaperlessUser1_Load(object sender, EventArgs e) {
             EstadoPaperless control = new EstadoPaperless();
@@ -182,30 +181,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             if (e.RowHandle == 0) {
                 pnlPaso1.Visible = true;
-                if (foo[0].Estado) {
+                /*if (foo[0].Estado) {
                     btnP1GuardarHousesBL.Enabled = false;
                     gridView5.OptionsBehavior.Editable = false;
-                }
+                }*/
             }
 
             if (e.RowHandle == 1) {
-                if (foo[1].Estado) {
+                /*if (foo[1].Estado) {
                     btnP2GuardarHousesRuteados.Enabled = false;
                     gridView3.OptionsBehavior.Editable = false;
-                }
+                }*/
                 if (foo[0].Estado) {
                     CargarPaso2TransitoTransbordo();
                     pnlPaso3.Visible = true;
                 }
             }
             if (e.RowHandle == 5) {
-                if (foo[5].Estado) {
+                /*if (foo[5].Estado) {
                     btnP11Excepciones.Enabled = false;
                     gridView1.OptionsBehavior.Editable = false;
                 } else {
                     gridView1.OptionsBehavior.Editable = true;
                     btnP11Excepciones.Enabled = true;
-                }
+                }*/
+
                 if (foo[4].Estado) {
                     CargarPaso6Excepciones();
                     pnlExcepciones.Visible = true;
@@ -229,27 +229,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
             grdExcepciones.DataSource = excepcionesActualizadas;
             grdP3HousesRuteados.RefreshDataSource();
-        }
-
-        private void PrepararPaso11Excepciones() {
-            IList<PaperlessExcepcion> excepciones = new List<PaperlessExcepcion>();
-
-            foreach (var house in PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL) {
-                var excepcion = new PaperlessExcepcion();
-                excepcion.IdAsignacion = PaperlessAsignacionActual.Id;
-                excepcion.HouseBL.Id = house.Id;
-                excepcion.HouseBL.Cliente = house.Cliente;
-                excepcion.HouseBL.TipoCliente = house.TipoCliente;
-                excepcion.RecargoCollect = false;
-                excepcion.RecargoCollectResuelto = false;
-                excepcion.SobreValorPendiente = false;
-                excepcion.SobreValorPendienteResuelto = false;
-                excepcion.AvisoNoEnviado = false;
-                excepcion.AvisoNoEnviadoResuelto = false;
-                excepciones.Add(excepcion);
-            }
-
-            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepciones;
         }
 
         private void CargarPasos() {
@@ -348,7 +327,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             PaperlessUsuario1HouseBLInfo info =
                 LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
             if (info != null) {
-                txtP1CantHouses.Text = info.CantHouses.ToString();
+                txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
                 txtP1NumConsolidado.Text = info.NumConsolidado;
             }
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
@@ -661,6 +640,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         }
 
         private void btnP13EnviarAviso_Click(object sender, EventArgs e) {
+            if (!validarCicloCompleto())
+                return;
             var mail = new EnvioMailObject();
             Cursor.Current = Cursors.WaitCursor;
 
@@ -708,6 +689,30 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 CargarPasos();
             }
             Cursor.Current = Cursors.Default;
+        }
+
+        private bool validarCicloCompleto() {
+            var numHouses = PaperlessAsignacionActual.NumHousesBL;
+            if (LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id).Count != numHouses) {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'ingreso de datos'");
+                return false;
+            }
+
+            var houses = LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo((List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
+            if (houses.Any(house => house.TransbordoTransito == null || house.TransbordoTransito.Id == 0)) {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Manifiesto'");
+                return false;
+            }
+
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+            if (!validarPasoExcepciones((List<PaperlessExcepcion>) excepcionesActualizadas) ) {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Manifiesto'");
+                return false;
+            }
+
+
+            return true;
         }
 
         private void frmPaperlessUser1_FormClosed(object sender, FormClosedEventArgs e) {

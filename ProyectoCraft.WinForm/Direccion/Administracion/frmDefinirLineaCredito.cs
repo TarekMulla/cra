@@ -129,6 +129,7 @@ namespace ProyectoCraft.WinForm.Direccion.Administracion
                 textoAutocompletar.Add(list.ToString());
             }
             cboCuenta.MaskBox.AutoCompleteCustomSource = textoAutocompletar;
+            cboCuenta.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
         }
         private void frmDefinirLineaCredito_Load(object sender, EventArgs e)
         {

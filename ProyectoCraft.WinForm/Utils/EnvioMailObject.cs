@@ -1973,11 +1973,11 @@ namespace SCCMultimodal.Utils
                 sb2.Replace("[OBSERVACION]", Observacion);
                 if (Target.GlosaClienteTarget != "")
                 {
-                    sb.Replace("[TARGET]", Target.GlosaClienteTarget);
+                    sb2.Replace("[TARGET]", Target.GlosaClienteTarget);
                 }
                 else
                 {
-                    sb.Replace("[TARGET]", Target.ObjClienteMaster.NombreFantasia);
+                    sb2.Replace("[TARGET]", Target.ObjClienteMaster.NombreFantasia);
                 }
                 sb2 = sb2.Replace("[SALTO]", "\n");
                 EmailBody = sb2.ToString();

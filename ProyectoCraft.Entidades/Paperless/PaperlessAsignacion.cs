@@ -53,5 +53,8 @@ namespace ProyectoCraft.Entidades.Paperless
         public PaperlessNave NaveTransbordo { get; set; }
 
         public Int16 VersionUsuario1 { get; set; }
+
+        public int IdResultado { get; set; }
+        public string GlosaResultado { get; set; }
     }
 }

@@ -466,6 +466,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 ValidarEstados();
                 PaperlessAsignacionActual.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 tabAsignacion.SelectedTabPage = tabFechas;
+                if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                    MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
                 MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -529,6 +531,63 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             }
 
             return valida;
+        }
+        private void VistaADominioPaso1Update()
+        {
+            PaperlessAsignacionActual.NumMaster = txtNumMaster.Text;
+            PaperlessAsignacionActual.FechaMaster = Convert.ToDateTime(txtFechaMaster.Text);
+            PaperlessAsignacionActual.Naviera = (PaperlessNaviera)ddlNaviera.SelectedItem;
+            if (txtNave.Text.Trim() == "")
+            {
+                PaperlessAsignacionActual.Nave = null;
+            }
+            else
+            {
+                for (int i = 0; i < ddlNave.Properties.Items.Count; i++)
+                {
+                    if (ddlNave.Properties.Items[i].ToString() == txtNave.Text)
+                        ddlNave.SelectedIndex = i;
+                }
+
+                if (ddlNave.SelectedIndex == 0)
+                {
+                    PaperlessAsignacionActual.Nave = new PaperlessNave() { Nombre = txtNave.Text, Id = 0, Activo = true };
+                }
+                else
+                    PaperlessAsignacionActual.Nave = (PaperlessNave)this.ddlNave.SelectedItem;
+            }
+
+            if (txtNaveTransbordo.Text.Trim() == "")
+            {
+                PaperlessAsignacionActual.NaveTransbordo = null;
+            }
+            else
+            {
+                for (int i = 0; i < ddlNaveTransbordo.Properties.Items.Count; i++)
+                {
+                    if (ddlNaveTransbordo.Properties.Items[i].ToString() == txtNaveTransbordo.Text)
+                        ddlNaveTransbordo.SelectedIndex = i;
+                }
+
+                if (ddlNaveTransbordo.SelectedIndex == 0)
+                {
+                    PaperlessAsignacionActual.NaveTransbordo = new PaperlessNave() { Nombre = txtNaveTransbordo.Text, Id = 0, Activo = true };
+                }
+                else
+                    PaperlessAsignacionActual.NaveTransbordo = (PaperlessNave)this.ddlNaveTransbordo.SelectedItem;
+            }
+
+
+
+            PaperlessAsignacionActual.Viaje = txtViaje.Text;
+            PaperlessAsignacionActual.NumHousesBL = Convert.ToInt16(txtNumHousesBL.Text);
+            PaperlessAsignacionActual.TipoCarga = (PaperlessTipoCarga)ddlTipoCarga.SelectedItem;
+
+            if (ddlTipoServicio.SelectedIndex <= 0)
+                PaperlessAsignacionActual.TipoServicio = null;
+            else
+                PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
+
         }
 
         private void VistaADominioPaso1() {
@@ -659,6 +718,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             } else {
                 MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
@@ -677,6 +738,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             } else {
                 MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private PaperlessLogAperturaNavieras PrepararLogAperturaNavieras() {
@@ -801,6 +864,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             } else {
                 MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool ValidarPaso3() {
@@ -899,10 +964,12 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 txtNumHousesBL.Enabled = false;
                 lvlMotivo.Visible = false;
                 txtMotivo.Visible = false;
-                VistaADominioPaso1();
+                VistaADominioPaso1Update();
                 PaperlessAsignacionActual.MotivoModificacion = txtMotivo.Text;
                 ResultadoTransaccion resultado = new ResultadoTransaccion();
                 resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso1(PaperlessAsignacionActual);
+                if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                    MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void BloqueaTabFechas() {
@@ -935,6 +1002,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             } else {
                 MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private bool ValidarPaso2BtnEditar() {
             bool valida = true;
@@ -977,6 +1046,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso1(PaperlessAsignacionActual);
             if (resultado.Estado.ToString().Equals("Aceptada"))	
                 MessageBox.Show("Nave Transbordo Modificada exitosamente", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

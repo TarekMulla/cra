@@ -458,6 +458,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.EnProcesoUsuario1;
                 resultado = LogicaNegocios.Paperless.Paperless.CambiaEstadoAsignacion(PaperlessAsignacionActual);
             }
+            if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             return resultado;
         }
@@ -1040,6 +1042,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 };
 
                 Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1CambiarEstadoPaso_CambiarEstadoAsignacion(pasoSeleccionado, PaperlessAsignacionActual, tiempotermino, iniciousuario2);
+
+                if (PaperlessAsignacionActual.IdResultado.Equals(1))
+                    MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 {
                     Cursor.Current = Cursors.Default;

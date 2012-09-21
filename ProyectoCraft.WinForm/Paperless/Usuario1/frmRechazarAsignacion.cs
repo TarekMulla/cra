@@ -101,6 +101,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             {
                 Asignacion.Estado = Enums.EstadoPaperless.RechazadaUsuario1;
                 resultado = LogicaNegocios.Paperless.Paperless.CambiaEstadoAsignacion(Asignacion);
+
+                if (Asignacion.IdResultado.Equals(1))
+                    MessageBox.Show(Asignacion.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 if(resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 {                    
                     MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK,

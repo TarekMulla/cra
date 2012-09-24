@@ -357,6 +357,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\frmNavieras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmNavieras.Designer.cs">
+      <DependentUpon>frmNavieras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panel de control\formDetailPanelDeControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -552,6 +558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
+      <DependentUpon>frmNavieras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
       <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>

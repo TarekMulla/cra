@@ -51,6 +51,7 @@
     <Compile Include="Clientes\clsContactos.cs" />
     <Compile Include="Clientes\clsCuentas.cs" />
     <Compile Include="Clientes\clsDirecciones.cs" />
+    <Compile Include="Clientes\ClsNavieras.cs" />
     <Compile Include="Clientes\clsTarget.cs" />
     <Compile Include="Clientes\clsTargetAccount.cs" />
     <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
@@ -78,6 +79,9 @@
       <Project>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</Project>
       <Name>ProyectoCraft.Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mantenedores\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

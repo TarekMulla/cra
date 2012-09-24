@@ -114,6 +114,7 @@
     <Compile Include="Parametros\clsIncoTerm.cs" />
     <Compile Include="Parametros\clsItemParametro.cs" />
     <Compile Include="Clientes\Target\clsOrigenCarga.cs" />
+    <Compile Include="Parametros\clsNaviera.cs" />
     <Compile Include="Parametros\clsPais.cs" />
     <Compile Include="Parametros\clsParametrosInfo.cs" />
     <Compile Include="Parametros\clsTipoDestinoCarga.cs" />

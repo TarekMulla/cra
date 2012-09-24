@@ -446,6 +446,14 @@ namespace ProyectoCraft.WinForm {
             form.IdTargetSource = 15;
             form.Show();
         }
+        private void MantenedorNavieras_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
+            //Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
+            form.MdiParent = this;
+            //form.IdTargetSource = 15;
+            form.Show();
+        }
 
         private void MenuDefinirTarget_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
             Direccion.Metas.frmDefinirMeta form = Direccion.Metas.frmDefinirMeta.Instancia;

@@ -156,5 +156,11 @@ namespace ProyectoCraft.WinForm.Clientes
                 ListarNavieras();
             }
         }
+
+        private void MenuSalir_Click(object sender, EventArgs e)
+        {
+            Instancia = null;
+            this.Close();
+        }
     }
 }

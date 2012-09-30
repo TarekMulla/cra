@@ -1,0 +1,273 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
+using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.Parametros;
+using ProyectoCraft.LogicaNegocios.Clientes;
+using ProyectoCraft.LogicaNegocios.Mantenedores;
+using ProyectoCraft.LogicaNegocios.Parametros;
+
+//namespace SCCMultimodal.Mantenedores
+namespace ProyectoCraft.WinForm.Clientes
+{
+    public partial class frmComunas : Form
+    {
+        private static frmComunas _instancia = null;
+        public static frmComunas Instancia
+        {
+            get
+            {
+                if (_instancia == null)
+                    _instancia = new frmComunas();
+
+                return _instancia;
+            }
+            set
+            {
+                _instancia = value;
+            }
+        }
+        //public string Nombre { get; set; }
+        //public Int64 Id { get; set; }
+        //public bool Activo { get; set; }
+        //public DateTime FechaCreacion { get; set; }
+        private IList<clsCiudad> ciudades;
+        private clsComuna _actual;
+        public clsComuna Actual
+        {
+            get
+            {
+                if (_actual == null)
+                    _actual = new clsComuna();
+
+                return _actual;
+            }
+            set { _actual = value; }
+        }
+        private Enums.TipoAccionFormulario _accion;
+        public Enums.TipoAccionFormulario Accion
+        {
+            get { return _accion; }
+            set { _accion = value; }
+        }
+
+        public frmComunas()
+        {
+            InitializeComponent();
+            FormLoad();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Listar();
+        }
+        public void Listar()
+        {
+            //IList<ClsNaviera> listNavieras = ClsNavieras.ListarNavieras(true);
+            //grdComunas.DataSource = listNavieras;
+            //grdComunas.RefreshDataSource();
+        }
+        public void FormLoad()
+        {
+            CargarPaises();
+        }
+
+        private void MenuVerDatos_Click(object sender, EventArgs e)
+        {
+            clsComuna comuna = ObtenerRegistro();
+            frmComunas form = frmComunas.Instancia;
+
+            if (comuna != null)
+            {
+                form.Actual = comuna;
+                txtNombre.Text = comuna.Nombre;
+                txtId.Text = comuna.Id.ToString();
+                txtPais.Text = comuna.Ciudad.Pais.Nombre;
+            }
+            else
+                MessageBox.Show("Debe seleccionar una Comuna", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        private clsComuna ObtenerRegistro()
+        {
+            var filaSelected = grdComunas.DefaultView.GetRow(gridView1.FocusedRowHandle);
+
+            if (filaSelected == null)
+            {
+                return null;
+            }
+
+            clsComuna com = (clsComuna)filaSelected;
+
+            return com;
+        }
+        private Int64 BuscaIdComunaPorNombre(string nombreComuna)
+        {
+            Int64 idciudad = 0;
+            foreach (var ciu in ciudades)
+            {
+                if (ciu.ToString().Equals(nombreComuna))
+                    idciudad = ciu.Id;
+            }
+            return idciudad;
+        }
+
+        private void MenuGuardar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
+            {
+                var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
+                var res = clsParametros.ActualizarComuna(Convert.ToInt64(txtId.Text), idciudad, txtNombre.Text);//(Convert.ToInt64(txtId.Text), txtNombre.Text.Trim(), txtPais.Text);
+                MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarComunas(idciudad);
+                LimpiarDatos();
+            }
+            else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
+            {
+                if (cboCiudad.SelectedItem.ToString().Equals("Seleccione..."))
+                {
+                    MessageBox.Show("Seleccione una Region", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
+                    if (idciudad != 0)
+                    {
+                        var res = clsParametros.CrearComuna(Convert.ToInt64(idciudad), txtNombre.Text.Trim(), cboPais.SelectedItem.ToString());
+                        MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarDatos();
+                    }
+                    //colocar log por error                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro para Editar", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void LimpiarDatos()
+        {
+            txtNombre.Text = "";
+            txtId.Text = "";
+            txtPais.Text = "";
+        }
+
+        private void Menu_Nuevo_Click(object sender, EventArgs e)
+        {
+            LimpiarDatos();
+        }
+
+        private void MenuEliminar_Click(object sender, EventArgs e)
+        {
+            //clsComuna comuna = ObtenerRegistro();
+            //frmComunas form = frmComunas.Instancia;
+            //if (comuna != null)
+            //{
+            //    form.Actual = comuna;
+            //    txtNombre.Text = comuna.Nombre;
+            //    txtId.Text = comuna.Id.ToString();
+            //}
+
+            //if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
+            //{
+            //    var res = ClsNavieras.EliminaNaviera(Convert.ToInt64(txtId.Text));
+            //    MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    LimpiarDatos();
+            //    Listar();
+            //}
+        }
+
+        private void MenuSalir_Click(object sender, EventArgs e)
+        {
+            Instancia = null;
+            this.Close();
+        }
+        private void CargarPaises()
+        {
+            IList<clsPais> paises = clsParametros.ListarPaises();
+            ComboBoxItemCollection coll = cboPais.Properties.Items;
+            coll.Add(Utils.Utils.ObtenerPrimerItem());
+            foreach (var list in paises)
+            {
+                coll.Add(list);
+            }
+            cboPais.SelectedIndex = 0;
+
+        }
+
+        private void CargarCiudades(Int64 idPais)
+        {
+            ciudades = clsParametros.ListarCiudades(idPais);
+
+            ComboBoxItemCollection coll = cboCiudad.Properties.Items;
+            coll.Clear();
+            coll.Add(Utils.Utils.ObtenerPrimerItem());
+            foreach (var list in ciudades)
+            {
+                coll.Add(list);
+            }
+            cboCiudad.SelectedIndex = 0;
+
+        }
+
+        private void cargarComunas(Int64 idCiudad)
+        {
+            IList<clsComuna> comunas = clsParametros.ListarComunas(idCiudad);
+
+            //ComboBoxItemCollection coll = cboComuna.Properties.Items;
+            //coll.Clear();
+            //coll.Add(Utils.Utils.ObtenerPrimerItem());
+            //foreach (var list in comunas)
+            //{
+            //coll.Add(list);
+            //}
+            //cboComuna.SelectedIndex = 0;
+
+            grdComunas.DataSource = comunas;
+            grdComunas.RefreshDataSource();
+        }
+
+        private void cboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPais.SelectedIndex > 0)
+            {
+                if ((clsPais)cboPais.SelectedItem != null)
+                    CargarCiudades(((clsPais)cboPais.SelectedItem).Id);
+            }
+            else
+                CargarCiudades(-9);
+        }
+
+        private void cboCiudad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPais.SelectedIndex > 0 && cboCiudad.SelectedIndex > 0)
+            {
+                if ((clsCiudad)cboCiudad.SelectedItem != null)
+                    cargarComunas(((clsCiudad)cboCiudad.SelectedItem).Id);
+            }
+            else
+                cargarComunas(-9);
+        }
+
+        private void grdComunas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*private void cboPais_Click(object sender, EventArgs e)
+        {
+            cboPais.SelectAll();
+        }
+
+        private void cboCiudad_Click(object sender, EventArgs e)
+        {
+            cboCiudad.SelectAll();
+        }
+
+        private void cboComuna_Click(object sender, EventArgs e)
+        {
+            cboComuna.SelectAll();
+        }*/
+    }
+}

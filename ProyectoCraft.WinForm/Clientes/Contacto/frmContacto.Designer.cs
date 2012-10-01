@@ -286,7 +286,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(774, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(774, 38);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -295,7 +295,7 @@
             this.MenuGuardar.Image = ((System.Drawing.Image)(resources.GetObject("MenuGuardar.Image")));
             this.MenuGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuGuardar.Name = "MenuGuardar";
-            this.MenuGuardar.Size = new System.Drawing.Size(50, 33);
+            this.MenuGuardar.Size = new System.Drawing.Size(53, 35);
             this.MenuGuardar.Text = "Guardar";
             this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click);
@@ -305,7 +305,7 @@
             this.MenuEliminar.Image = ((System.Drawing.Image)(resources.GetObject("MenuEliminar.Image")));
             this.MenuEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEliminar.Name = "MenuEliminar";
-            this.MenuEliminar.Size = new System.Drawing.Size(47, 33);
+            this.MenuEliminar.Size = new System.Drawing.Size(54, 35);
             this.MenuEliminar.Text = "Eliminar";
             this.MenuEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click);
@@ -315,7 +315,7 @@
             this.MenuDesactivar.Image = ((System.Drawing.Image)(resources.GetObject("MenuDesactivar.Image")));
             this.MenuDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuDesactivar.Name = "MenuDesactivar";
-            this.MenuDesactivar.Size = new System.Drawing.Size(62, 33);
+            this.MenuDesactivar.Size = new System.Drawing.Size(65, 35);
             this.MenuDesactivar.Text = "Desactivar";
             this.MenuDesactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuDesactivar.Click += new System.EventHandler(this.MenuDesactivar_Click);
@@ -323,7 +323,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuImprimir
             // 
@@ -331,14 +331,14 @@
             this.MenuImprimir.Image = ((System.Drawing.Image)(resources.GetObject("MenuImprimir.Image")));
             this.MenuImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuImprimir.Name = "MenuImprimir";
-            this.MenuImprimir.Size = new System.Drawing.Size(77, 33);
+            this.MenuImprimir.Size = new System.Drawing.Size(88, 35);
             this.MenuImprimir.Text = "Imprimir Ficha";
             this.MenuImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuEnviarMail
             // 
@@ -346,7 +346,7 @@
             this.MenuEnviarMail.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarMail.Image")));
             this.MenuEnviarMail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarMail.Name = "MenuEnviarMail";
-            this.MenuEnviarMail.Size = new System.Drawing.Size(68, 33);
+            this.MenuEnviarMail.Size = new System.Drawing.Size(75, 35);
             this.MenuEnviarMail.Text = "Enviar Email";
             this.MenuEnviarMail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -356,7 +356,7 @@
             this.MenuAgendarActividad.Image = ((System.Drawing.Image)(resources.GetObject("MenuAgendarActividad.Image")));
             this.MenuAgendarActividad.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuAgendarActividad.Name = "MenuAgendarActividad";
-            this.MenuAgendarActividad.Size = new System.Drawing.Size(99, 33);
+            this.MenuAgendarActividad.Size = new System.Drawing.Size(109, 35);
             this.MenuAgendarActividad.Text = "Agendar Actividad";
             this.MenuAgendarActividad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -366,21 +366,21 @@
             this.MenuEnviarCotizacion.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarCotizacion.Image")));
             this.MenuEnviarCotizacion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarCotizacion.Name = "MenuEnviarCotizacion";
-            this.MenuEnviarCotizacion.Size = new System.Drawing.Size(93, 33);
+            this.MenuEnviarCotizacion.Size = new System.Drawing.Size(102, 35);
             this.MenuEnviarCotizacion.Text = "Enviar Cotización";
             this.MenuEnviarCotizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);

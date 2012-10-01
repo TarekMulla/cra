@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
+using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Tarifado;
 using Microsoft.ApplicationBlocks.Data;
@@ -17,7 +18,14 @@ using ProyectoCraft.Entidades.Ventas.Productos;
 namespace ProyectoCraft.AccesoDatos.Parametros
 {
     public static class clsParametrosDAO
-    {                        
+    {
+
+        private static SqlParameter[] objParams = null;
+        private static SqlConnection conn = null;
+        private static SqlTransaction transaction = null;
+        private static SqlDataReader dreader = null;
+        private static ResultadoTransaccion resTransaccion = null;
+
         public static clsParametrosInfo ListarParametrosPorTipo(Enums.TipoParametro Parametro)
         {
             clsParametrosInfo paramInfo = new clsParametrosInfo();
@@ -324,6 +332,107 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             return lista;
         }
 
+        public static ResultadoTransaccion CrearComuna(Int64 idCiudad, string comuna, string pais)
+        {
+            try
+            {
+                resTransaccion = new ResultadoTransaccion();
+                //Abrir Conexion
+                conn = BaseDatos.Conexion();
+
+                //Crear Transaccion
+                transaction = conn.BeginTransaction();
+
+                //Actualizar
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PARAM_COMUNA");
+                objParams[0].Value = idCiudad;
+                objParams[1].Value = comuna;
+
+                SqlCommand command = new SqlCommand("SP_N_PARAM_COMUNA", conn, transaction);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                resTransaccion.ObjetoTransaccion = Convert.ToInt64(command.ExecuteScalar());
+                //command.ExecuteNonQuery();
+
+                transaction.Commit();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
+                               
+                resTransaccion.Descripcion = "Se Creo Comuna con Id " + (Int64)resTransaccion.ObjetoTransaccion;
+
+                //Registrar Actividad
+                //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
+                //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Log.EscribirLog(ex.Message);
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+
+            return resTransaccion;
+        }
+
+        public static ResultadoTransaccion Actualizarcomuna(Int64 IdCiudad,Int64 IdRegion, string Descripcion)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.Conexion();
+
+                //Crear Transaccion
+                transaction = conn.BeginTransaction();
+
+                //Actualizar               
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PARAM_COMUNA");
+                objParams[0].Value = IdCiudad;//comuna
+                objParams[1].Value = IdRegion;
+                objParams[2].Value = Descripcion;
+
+                SqlCommand command = new SqlCommand("SP_U_PARAM_COMUNA", conn, transaction);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                resTransaccion.Accion = Enums.AccionTransaccion.Actualizar;
+                resTransaccion.ObjetoTransaccion = IdCiudad;
+                resTransaccion.Descripcion = "Se actualizo la Comuna con Id " + IdCiudad.ToString();
+
+                //Registrar Actividad
+                //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
+                //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Log.EscribirLog(ex.Message);
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+
+            return resTransaccion;
+        }
 
         #endregion
 

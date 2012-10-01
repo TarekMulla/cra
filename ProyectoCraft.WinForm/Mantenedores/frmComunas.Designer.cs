@@ -299,7 +299,6 @@
             this.btnBuscar.Size = new System.Drawing.Size(91, 22);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // labelControl32
@@ -346,6 +345,7 @@
             this.Controls.Add(this.grdComunas);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmComunas";
+            this.Text = "Mantenedor de Comunas";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).EndInit();

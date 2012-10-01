@@ -64,9 +64,13 @@ namespace ProyectoCraft.WinForm.Clientes
         }
         public void Listar()
         {
-            //IList<ClsNaviera> listNavieras = ClsNavieras.ListarNavieras(true);
-            //grdComunas.DataSource = listNavieras;
-            //grdComunas.RefreshDataSource();
+            if (cboPais.SelectedIndex > 0 && cboCiudad.SelectedIndex > 0)
+            {
+                if (cboCiudad.SelectedItem != null)
+                    cargarComunas(((clsCiudad)cboCiudad.SelectedItem).Id);
+            }
+            else
+                cargarComunas(-9);         
         }
         public void FormLoad()
         {
@@ -241,13 +245,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void cboCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboPais.SelectedIndex > 0 && cboCiudad.SelectedIndex > 0)
-            {
-                if ((clsCiudad)cboCiudad.SelectedItem != null)
-                    cargarComunas(((clsCiudad)cboCiudad.SelectedItem).Id);
-            }
-            else
-                cargarComunas(-9);
+            
         }
 
         private void grdComunas_Click(object sender, EventArgs e)

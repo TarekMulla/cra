@@ -75,7 +75,7 @@
     <Compile Include="LogActividades\clsLogActividadUsuariosADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
     <Compile Include="Paperless\clsPaperlessADO.cs" />
-    <Compile Include="Parametros\ClsNavierasADO.cs" />
+    <Compile Include="Parametros\ClsNavierasDAO.cs" />
     <Compile Include="Parametros\clsParametrosClientesDAO.cs" />
     <Compile Include="Parametros\clsParametrosDAO.cs" />
     <Compile Include="Parametros\clsTipoOrigenDestinoCargaDAO.cs" />

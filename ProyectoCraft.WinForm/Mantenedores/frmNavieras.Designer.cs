@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNavieras));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Nuevo = new System.Windows.Forms.ToolStripButton();
             this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
@@ -70,7 +70,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1043, 54);
+            this.toolStrip1.Size = new System.Drawing.Size(951, 54);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -143,13 +143,13 @@
             this.grdNavieras.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdNavieras.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.grdNavieras.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.grdNavieras.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.grdNavieras.Location = new System.Drawing.Point(0, 210);
             this.grdNavieras.MainView = this.gridView1;
             this.grdNavieras.Name = "grdNavieras";
-            this.grdNavieras.Size = new System.Drawing.Size(999, 236);
+            this.grdNavieras.Size = new System.Drawing.Size(907, 260);
             this.grdNavieras.TabIndex = 4;
             this.grdNavieras.UseEmbeddedNavigator = true;
             this.grdNavieras.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -286,12 +286,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 458);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(951, 482);
+            this.ControlBox = false;
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdNavieras);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmNavieras";
-            this.Text = "frmNavieras";
+            this.Text = "Mantenedor Navieras";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdNavieras)).EndInit();

@@ -17,7 +17,7 @@ using ProyectoCraft.LogicaNegocios.Mantenedores;
 
 namespace ProyectoCraft.AccesoDatos.Parametros
 {
-    public static class ClsNavierasADO
+    public static class ClsNavierasDAO
     {
         private static SqlParameter[] objParams = null;
         private static SqlConnection conn = null;

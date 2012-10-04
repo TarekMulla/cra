@@ -301,6 +301,7 @@ namespace ProyectoCraft.Entidades.Enums {
             Supervisor_Procesos = 18,
             Encargado_Procesos = 19,
             Usuario_Sales_Lead = 20,
+            AdministradorDatosMaestros=21,
         }
         public enum EstadosSLead {
             Asignado = 1,

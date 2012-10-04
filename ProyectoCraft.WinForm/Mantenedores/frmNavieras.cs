@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using ProyectoCraft.Base.Log;
 using System.Windows.Forms;
-using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Enums;
-using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.LogicaNegocios.Clientes;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
 
@@ -78,19 +72,6 @@ namespace ProyectoCraft.WinForm.Clientes
         private void MenuVerDatos_Click(object sender, EventArgs e)
         {
 
-            ClsNaviera naviera = ObtenerNaviera();
-            frmNavieras form = frmNavieras.Instancia;
-
-
-            if (naviera != null)
-            {
-                form.NavieraActual = naviera;
-                txtNombre.Text = naviera.Nombre;
-                txtId.Text = naviera.Id.ToString();
-
-            }
-            else
-                MessageBox.Show("Debe seleccionar una Naviera", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private ClsNaviera ObtenerNaviera()
         {
@@ -108,22 +89,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
-            {
-                var res = ClsNavieras.ActualizarNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text);
-                MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarDatos();
-            }
-            else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
-            {
-                var res = ClsNavieras.NuevaNaviera(txtNombre.Text.Trim());
-                MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarDatos();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un registro para Editar", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void LimpiarDatos()
@@ -134,10 +100,31 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
         {
-            LimpiarDatos();
+            
         }
 
         private void MenuEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MenuSalir_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmNavieras_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuSalir_Click_1(object sender, EventArgs e)
+        {
+            Instancia = null;
+            this.Close();
+        }
+
+        private void MenuEliminar_Click_1(object sender, EventArgs e)
         {
             ClsNaviera naviera = ObtenerNaviera();
             frmNavieras form = frmNavieras.Instancia;
@@ -157,10 +144,76 @@ namespace ProyectoCraft.WinForm.Clientes
             }
         }
 
-        private void MenuSalir_Click(object sender, EventArgs e)
+        private void MenuVerDatos_Click_1(object sender, EventArgs e)
         {
-            Instancia = null;
-            this.Close();
+
+            ClsNaviera naviera = ObtenerNaviera();
+            frmNavieras form = frmNavieras.Instancia;
+
+
+            if (naviera != null)
+            {
+                form.NavieraActual = naviera;
+                txtNombre.Text = naviera.Nombre;
+                txtId.Text = naviera.Id.ToString();
+
+            }
+            else
+                MessageBox.Show("Debe seleccionar una Naviera", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void MenuGuardar_Click_1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
+            {
+                var res = ClsNavieras.ActualizarNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text);
+                MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarDatos();
+            }
+            else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
+            {
+                var res = ClsNavieras.NuevaNaviera(txtNombre.Text.Trim());
+                MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarDatos();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro para Editar", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Menu_Nuevo_Click_1(object sender, EventArgs e)
+        {
+            LimpiarDatos();
+        }
+
+        private void MenuExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog GrabarArchivo = new SaveFileDialog();
+                GrabarArchivo.Filter = "Excel(xls)|*.xls";
+                GrabarArchivo.Title = "Exportar Excel";
+                GrabarArchivo.DefaultExt = "xls";
+                GrabarArchivo.FileName = "";
+                GrabarArchivo.OverwritePrompt = true;
+                GrabarArchivo.ShowDialog();
+
+                if (GrabarArchivo.FileName != "")
+                {
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs =
+                       (System.IO.FileStream)GrabarArchivo.OpenFile();
+                    this.grdNavieras.ExportToXls(fs, true);
+
+                    fs.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+                MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -28,14 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComunas));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Menu_Nuevo = new System.Windows.Forms.ToolStripButton();
-            this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
-            this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuSalir = new System.Windows.Forms.ToolStripButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComunas));
             this.grdComunas = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,7 +48,15 @@
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.toolStrip1.SuspendLayout();
+            this.toolStripBarraListarLlamada = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
+            this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
+            this.MenuEliminar = new System.Windows.Forms.ToolStripButton();
+            this.MenuImprimirListado = new System.Windows.Forms.ToolStripButton();
+            this.MenuExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -64,67 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPais.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
+            this.toolStripBarraListarLlamada.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Nuevo,
-            this.MenuGuardar,
-            this.MenuVerDatos,
-            this.toolStripSeparator1,
-            this.MenuSalir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1043, 54);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // Menu_Nuevo
-            // 
-            this.Menu_Nuevo.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Nuevo.Image")));
-            this.Menu_Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Menu_Nuevo.Name = "Menu_Nuevo";
-            this.Menu_Nuevo.Size = new System.Drawing.Size(46, 51);
-            this.Menu_Nuevo.Text = "Nuevo";
-            this.Menu_Nuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.Menu_Nuevo.Click += new System.EventHandler(this.Menu_Nuevo_Click);
-            // 
-            // MenuGuardar
-            // 
-            this.MenuGuardar.Image = ((System.Drawing.Image)(resources.GetObject("MenuGuardar.Image")));
-            this.MenuGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuGuardar.Name = "MenuGuardar";
-            this.MenuGuardar.Size = new System.Drawing.Size(53, 51);
-            this.MenuGuardar.Text = "Guardar";
-            this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click);
-            // 
-            // MenuVerDatos
-            // 
-            this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
-            this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuVerDatos.Name = "MenuVerDatos";
-            this.MenuVerDatos.Size = new System.Drawing.Size(36, 51);
-            this.MenuVerDatos.Text = "Ver";
-            this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuVerDatos.Click += new System.EventHandler(this.MenuVerDatos_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
-            // 
-            // MenuSalir
-            // 
-            this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
-            this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(36, 51);
-            this.MenuSalir.Text = "Salir";
-            this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
             // 
             // grdComunas
             // 
@@ -143,10 +86,10 @@
             gridLevelNode1.RelationName = "Level1";
             this.grdComunas.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.grdComunas.Location = new System.Drawing.Point(0, 210);
+            this.grdComunas.Location = new System.Drawing.Point(0, 178);
             this.grdComunas.MainView = this.gridView1;
             this.grdComunas.Name = "grdComunas";
-            this.grdComunas.Size = new System.Drawing.Size(999, 236);
+            this.grdComunas.Size = new System.Drawing.Size(623, 297);
             this.grdComunas.TabIndex = 4;
             this.grdComunas.UseEmbeddedNavigator = true;
             this.grdComunas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -182,7 +125,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
-            this.gridColumn5.Width = 431;
+            this.gridColumn5.Width = 371;
             // 
             // gridColumn7
             // 
@@ -191,7 +134,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 1;
-            this.gridColumn7.Width = 288;
+            this.gridColumn7.Width = 123;
             // 
             // gridColumn2
             // 
@@ -200,7 +143,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 210;
+            this.gridColumn2.Width = 108;
             // 
             // groupControl1
             // 
@@ -223,22 +166,22 @@
             this.groupControl1.Controls.Add(this.txtNombre);
             this.groupControl1.Controls.Add(this.labelControl31);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Location = new System.Drawing.Point(0, 67);
+            this.groupControl1.Location = new System.Drawing.Point(0, 41);
             this.groupControl1.LookAndFeel.SkinName = "Glass Oceans";
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(776, 131);
+            this.groupControl1.Size = new System.Drawing.Size(623, 131);
             this.groupControl1.TabIndex = 8;
             this.groupControl1.Text = "Busqueda";
             // 
             // txtPais
             // 
             this.txtPais.Enabled = false;
-            this.txtPais.Location = new System.Drawing.Point(135, 30);
+            this.txtPais.Location = new System.Drawing.Point(75, 30);
             this.txtPais.Name = "txtPais";
             this.txtPais.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPais.Properties.Appearance.Options.UseFont = true;
-            this.txtPais.Size = new System.Drawing.Size(357, 20);
+            this.txtPais.Size = new System.Drawing.Size(231, 20);
             this.txtPais.TabIndex = 36;
             // 
             // labelControl3
@@ -251,11 +194,11 @@
             // 
             // cboCiudad
             // 
-            this.cboCiudad.Location = new System.Drawing.Point(611, 56);
+            this.cboCiudad.Location = new System.Drawing.Point(367, 56);
             this.cboCiudad.Name = "cboCiudad";
             this.cboCiudad.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCiudad.Size = new System.Drawing.Size(158, 20);
+            this.cboCiudad.Size = new System.Drawing.Size(99, 20);
             this.cboCiudad.TabIndex = 36;
             this.cboCiudad.SelectedIndexChanged += new System.EventHandler(this.cboCiudad_SelectedIndexChanged);
             // 
@@ -270,20 +213,20 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(135, 56);
+            this.txtId.Location = new System.Drawing.Point(75, 55);
             this.txtId.Name = "txtId";
             this.txtId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Properties.Appearance.Options.UseFont = true;
-            this.txtId.Size = new System.Drawing.Size(357, 20);
+            this.txtId.Size = new System.Drawing.Size(231, 20);
             this.txtId.TabIndex = 5;
             // 
             // cboPais
             // 
-            this.cboPais.Location = new System.Drawing.Point(611, 30);
+            this.cboPais.Location = new System.Drawing.Point(367, 30);
             this.cboPais.Name = "cboPais";
             this.cboPais.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboPais.Size = new System.Drawing.Size(158, 20);
+            this.cboPais.Size = new System.Drawing.Size(99, 20);
             this.cboPais.TabIndex = 35;
             this.cboPais.SelectedIndexChanged += new System.EventHandler(this.cboPais_SelectedIndexChanged);
             // 
@@ -294,7 +237,7 @@
             this.btnBuscar.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.btnBuscar.Appearance.Options.UseFont = true;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(508, 104);
+            this.btnBuscar.Location = new System.Drawing.Point(367, 85);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(91, 22);
             this.btnBuscar.TabIndex = 3;
@@ -303,7 +246,7 @@
             // 
             // labelControl32
             // 
-            this.labelControl32.Location = new System.Drawing.Point(508, 33);
+            this.labelControl32.Location = new System.Drawing.Point(324, 33);
             this.labelControl32.Name = "labelControl32";
             this.labelControl32.Size = new System.Drawing.Size(19, 13);
             this.labelControl32.TabIndex = 34;
@@ -311,16 +254,16 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(135, 82);
+            this.txtNombre.Location = new System.Drawing.Point(75, 82);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
-            this.txtNombre.Size = new System.Drawing.Size(357, 20);
+            this.txtNombre.Size = new System.Drawing.Size(231, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // labelControl31
             // 
-            this.labelControl31.Location = new System.Drawing.Point(508, 59);
+            this.labelControl31.Location = new System.Drawing.Point(324, 58);
             this.labelControl31.Name = "labelControl31";
             this.labelControl31.Size = new System.Drawing.Size(33, 13);
             this.labelControl31.TabIndex = 33;
@@ -336,18 +279,118 @@
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Pais";
             // 
+            // toolStripBarraListarLlamada
+            // 
+            this.toolStripBarraListarLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2,
+            this.MenuGuardar,
+            this.MenuVerDatos,
+            this.MenuEliminar,
+            this.MenuImprimirListado,
+            this.MenuExcel,
+            this.toolStripSeparator2,
+            this.toolStripButton1});
+            this.toolStripBarraListarLlamada.Location = new System.Drawing.Point(0, 0);
+            this.toolStripBarraListarLlamada.Name = "toolStripBarraListarLlamada";
+            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(683, 38);
+            this.toolStripBarraListarLlamada.TabIndex = 9;
+            this.toolStripBarraListarLlamada.Text = "toolStrip1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(46, 35);
+            this.toolStripButton2.Text = "Nuevo";
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // MenuGuardar
+            // 
+            this.MenuGuardar.Image = ((System.Drawing.Image)(resources.GetObject("MenuGuardar.Image")));
+            this.MenuGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuGuardar.Name = "MenuGuardar";
+            this.MenuGuardar.Size = new System.Drawing.Size(53, 35);
+            this.MenuGuardar.Text = "Guardar";
+            this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click_1);
+            // 
+            // MenuVerDatos
+            // 
+            this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
+            this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuVerDatos.Name = "MenuVerDatos";
+            this.MenuVerDatos.Size = new System.Drawing.Size(41, 35);
+            this.MenuVerDatos.Text = "Editar";
+            this.MenuVerDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuVerDatos.ToolTipText = "Editar";
+            this.MenuVerDatos.Click += new System.EventHandler(this.MenuVerDatos_Click_1);
+            // 
+            // MenuEliminar
+            // 
+            this.MenuEliminar.Enabled = false;
+            this.MenuEliminar.Image = ((System.Drawing.Image)(resources.GetObject("MenuEliminar.Image")));
+            this.MenuEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuEliminar.Name = "MenuEliminar";
+            this.MenuEliminar.Size = new System.Drawing.Size(54, 35);
+            this.MenuEliminar.Text = "Eliminar";
+            this.MenuEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuEliminar.ToolTipText = "Eliminar";
+            this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click);
+            // 
+            // MenuImprimirListado
+            // 
+            this.MenuImprimirListado.Enabled = false;
+            this.MenuImprimirListado.Image = ((System.Drawing.Image)(resources.GetObject("MenuImprimirListado.Image")));
+            this.MenuImprimirListado.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.MenuImprimirListado.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuImprimirListado.Name = "MenuImprimirListado";
+            this.MenuImprimirListado.Size = new System.Drawing.Size(98, 35);
+            this.MenuImprimirListado.Text = "Imprimir Listado";
+            this.MenuImprimirListado.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuImprimirListado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // MenuExcel
+            // 
+            this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
+            this.MenuExcel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuExcel.Name = "MenuExcel";
+            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
+            this.MenuExcel.Text = "Excel";
+            this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuExcel.ToolTipText = "Exportar Excel";
+            this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(33, 35);
+            this.toolStripButton1.Text = "Salir";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // frmComunas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 458);
+            this.ClientSize = new System.Drawing.Size(683, 476);
+            this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdComunas);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "frmComunas";
             this.Text = "Mantenedor de Comunas";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.frmComunas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -358,6 +401,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPais.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
+            this.toolStripBarraListarLlamada.ResumeLayout(false);
+            this.toolStripBarraListarLlamada.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,10 +410,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton MenuVerDatos;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.XtraGrid.GridControl grdComunas;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -379,9 +420,7 @@
         private DevExpress.XtraEditors.SimpleButton btnBuscar;
         private DevExpress.XtraEditors.TextEdit txtNombre;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private System.Windows.Forms.ToolStripButton Menu_Nuevo;
         private DevExpress.XtraEditors.TextEdit txtId;
-        private System.Windows.Forms.ToolStripButton MenuGuardar;
         private DevExpress.XtraEditors.ComboBoxEdit cboCiudad;
         private DevExpress.XtraEditors.ComboBoxEdit cboPais;
         private DevExpress.XtraEditors.LabelControl labelControl32;
@@ -389,6 +428,15 @@
         private DevExpress.XtraEditors.TextEdit txtPais;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.ToolStrip toolStripBarraListarLlamada;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton MenuVerDatos;
+        private System.Windows.Forms.ToolStripButton MenuEliminar;
+        private System.Windows.Forms.ToolStripButton MenuImprimirListado;
+        private System.Windows.Forms.ToolStripButton MenuExcel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton MenuGuardar;
 
     }
 }

@@ -90,6 +90,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.btnMantNaviera = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // tabInfGeneral
             // 
+            this.tabInfGeneral.Controls.Add(this.btnMantNaviera);
             this.tabInfGeneral.Controls.Add(this.btnGrabarTransbordo);
             this.tabInfGeneral.Controls.Add(this.btnEditarTransbordo);
             this.tabInfGeneral.Controls.Add(this.ddlNaveTransbordo);
@@ -170,6 +172,7 @@
             this.tabInfGeneral.Name = "tabInfGeneral";
             this.tabInfGeneral.Size = new System.Drawing.Size(786, 284);
             this.tabInfGeneral.Text = "Informacion General";
+            this.tabInfGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.tabInfGeneral_Paint);
             // 
             // btnGrabarTransbordo
             // 
@@ -707,6 +710,16 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // btnMantNaviera
+            // 
+            this.btnMantNaviera.Location = new System.Drawing.Point(451, 82);
+            this.btnMantNaviera.Name = "btnMantNaviera";
+            this.btnMantNaviera.Size = new System.Drawing.Size(116, 23);
+            this.btnMantNaviera.TabIndex = 111;
+            this.btnMantNaviera.Text = "Mantenedor Naviera";
+            this.btnMantNaviera.Visible = false;
+            this.btnMantNaviera.Click += new System.EventHandler(this.btnMantNaviera_Click);
+            // 
             // frmPaperlessAsignacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,6 +837,7 @@
         private System.Windows.Forms.TextBox txtNaveTransbordo;
         private DevExpress.XtraEditors.SimpleButton btnGrabarTransbordo;
         private DevExpress.XtraEditors.SimpleButton btnEditarTransbordo;
+        private DevExpress.XtraEditors.SimpleButton btnMantNaviera;
 
     }
 }

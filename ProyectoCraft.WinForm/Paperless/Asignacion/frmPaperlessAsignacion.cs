@@ -50,7 +50,11 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
         private void frmPaperless_Load(object sender, EventArgs e) {
 
-
+            foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles)
+            {
+                if (clsPerfil.Id == (int) Enums.UsuariosCargo.AdministradorDatosMaestros)
+                btnMantNaviera.Visible = true;
+            }
             //dejamos invisible los controles nave transbordo
             //lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = false;
 
@@ -1041,7 +1045,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
         private void btnGrabarTransbordo_Click(object sender, EventArgs e)
         {
-            VistaADominioPaso1();            
+            VistaADominioPaso1Update();            
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso1(PaperlessAsignacionActual);
             if (resultado.Estado.ToString().Equals("Aceptada"))	
@@ -1049,6 +1053,20 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
             if (PaperlessAsignacionActual.IdResultado.Equals(1))
                 MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void tabInfGeneral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMantNaviera_Click(object sender, EventArgs e)
+        {
+            Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
+            //Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
+            //form.MdiParent = this;
+            //form.IdTargetSource = 15;
+            form.Show();
         }
     }
 }

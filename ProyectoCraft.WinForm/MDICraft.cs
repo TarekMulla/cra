@@ -222,6 +222,8 @@ namespace ProyectoCraft.WinForm {
             MenuPaperlessUsuario1.Visible = false;
             MenuPaperlessUsuario2.Visible = false;
             MenuPaperlessGestion.Visible = false;
+            MantComunas.Visible = false;
+            MantNavieras.Visible = false;
         }
 
         private void HabilitarFuncionalidades() {
@@ -263,6 +265,12 @@ namespace ProyectoCraft.WinForm {
                 if (clsPerfil.Id != (int)Enums.UsuariosCargo.Customer_Service && clsPerfil.Id != (int)Enums.UsuariosCargo.Vendedor) {
                     MenuPaperlessGestion.Visible = true;
                 }
+                if (clsPerfil.Id == (int)Enums.UsuariosCargo.AdministradorDatosMaestros)
+                {
+                    MantComunas.Visible = true;
+                    MantNavieras.Visible = true;                    
+                }
+
             }
 
             /*foreach (var cargo in Base.Usuario.UsuarioConectado.Usuario.Cargos) {
@@ -562,6 +570,13 @@ namespace ProyectoCraft.WinForm {
         private void toolStripSplitButton2_ButtonClick(object sender, EventArgs e) {
             DestruirPanelDeControl();
             GenerarPanelDeControl();
+        }
+
+        private void MantenedorComunas_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            Clientes.frmComunas form = Clientes.frmComunas.Instancia;            
+            form.MdiParent = this;            
+            form.Show();
         }
     }
 }

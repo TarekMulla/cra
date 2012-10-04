@@ -4,8 +4,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Parametros;
-using ProyectoCraft.LogicaNegocios.Clientes;
-using ProyectoCraft.LogicaNegocios.Mantenedores;
+using ProyectoCraft.Base.Log;
 using ProyectoCraft.LogicaNegocios.Parametros;
 
 //namespace SCCMultimodal.Mantenedores
@@ -79,18 +78,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuVerDatos_Click(object sender, EventArgs e)
         {
-            clsComuna comuna = ObtenerRegistro();
-            frmComunas form = frmComunas.Instancia;
-
-            if (comuna != null)
-            {
-                form.Actual = comuna;
-                txtNombre.Text = comuna.Nombre;
-                txtId.Text = comuna.Id.ToString();
-                txtPais.Text = comuna.Ciudad.Pais.Nombre;
-            }
-            else
-                MessageBox.Show("Debe seleccionar una Comuna", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
         }
         private clsComuna ObtenerRegistro()
         {
@@ -118,36 +106,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
-            {
-                var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
-                var res = clsParametros.ActualizarComuna(Convert.ToInt64(txtId.Text), idciudad, txtNombre.Text);//(Convert.ToInt64(txtId.Text), txtNombre.Text.Trim(), txtPais.Text);
-                MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargarComunas(idciudad);
-                LimpiarDatos();
-            }
-            else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
-            {
-                if (cboCiudad.SelectedItem.ToString().Equals("Seleccione..."))
-                {
-                    MessageBox.Show("Seleccione una Region", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
-                    if (idciudad != 0)
-                    {
-                        var res = clsParametros.CrearComuna(Convert.ToInt64(idciudad), txtNombre.Text.Trim(), cboPais.SelectedItem.ToString());
-                        MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LimpiarDatos();
-                    }
-                    //colocar log por error                    
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un registro para Editar", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
         private void LimpiarDatos()
@@ -159,33 +118,12 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
         {
-            LimpiarDatos();
-        }
-
-        private void MenuEliminar_Click(object sender, EventArgs e)
-        {
-            //clsComuna comuna = ObtenerRegistro();
-            //frmComunas form = frmComunas.Instancia;
-            //if (comuna != null)
-            //{
-            //    form.Actual = comuna;
-            //    txtNombre.Text = comuna.Nombre;
-            //    txtId.Text = comuna.Id.ToString();
-            //}
-
-            //if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
-            //{
-            //    var res = ClsNavieras.EliminaNaviera(Convert.ToInt64(txtId.Text));
-            //    MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    LimpiarDatos();
-            //    Listar();
-            //}
+            
         }
 
         private void MenuSalir_Click(object sender, EventArgs e)
         {
-            Instancia = null;
-            this.Close();
+         
         }
         private void CargarPaises()
         {
@@ -253,19 +191,104 @@ namespace ProyectoCraft.WinForm.Clientes
 
         }
 
-        /*private void cboPais_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            cboPais.SelectAll();
+            Instancia = null;
+            this.Close();
         }
 
-        private void cboCiudad_Click(object sender, EventArgs e)
+        private void frmComunas_Load(object sender, EventArgs e)
         {
-            cboCiudad.SelectAll();
+
         }
 
-        private void cboComuna_Click(object sender, EventArgs e)
+        private void MenuGuardar_Click_1(object sender, EventArgs e)
         {
-            cboComuna.SelectAll();
-        }*/
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
+            {
+                var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
+                var res = clsParametros.ActualizarComuna(Convert.ToInt64(txtId.Text), idciudad, txtNombre.Text);//(Convert.ToInt64(txtId.Text), txtNombre.Text.Trim(), txtPais.Text);
+                MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargarComunas(idciudad);
+                LimpiarDatos();
+            }
+            else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
+            {
+                if (cboCiudad.SelectedItem.ToString().Equals("Seleccione..."))
+                {
+                    MessageBox.Show("Seleccione una Region", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var idciudad = BuscaIdComunaPorNombre(cboCiudad.SelectedItem.ToString());
+                    if (idciudad != 0)
+                    {
+                        var res = clsParametros.CrearComuna(Convert.ToInt64(idciudad), txtNombre.Text.Trim(), cboPais.SelectedItem.ToString());
+                        MessageBox.Show(res.Descripcion, "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarDatos();
+                    }
+                    //colocar log por error                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro para Editar", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MenuVerDatos_Click_1(object sender, EventArgs e)
+        {
+            clsComuna comuna = ObtenerRegistro();
+            frmComunas form = frmComunas.Instancia;
+
+            if (comuna != null)
+            {
+                form.Actual = comuna;
+                txtNombre.Text = comuna.Nombre;
+                txtId.Text = comuna.Id.ToString();
+                txtPais.Text = comuna.Ciudad.Pais.Nombre;
+            }
+            else
+                MessageBox.Show("Debe seleccionar una Comuna", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            LimpiarDatos();
+        }
+
+        private void MenuEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog GrabarArchivo = new SaveFileDialog();
+                GrabarArchivo.Filter = "Excel(xls)|*.xls";
+                GrabarArchivo.Title = "Exportar Excel";
+                GrabarArchivo.DefaultExt = "xls";
+                GrabarArchivo.FileName = "";
+                GrabarArchivo.OverwritePrompt = true;
+                GrabarArchivo.ShowDialog();
+
+                if (GrabarArchivo.FileName != "")
+                {
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs =
+                       (System.IO.FileStream)GrabarArchivo.OpenFile();
+                    this.grdComunas.ExportToXls(fs, true);
+
+                    fs.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+                MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }       
     }
 }

@@ -11,6 +11,8 @@ using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Usuarios;
+using SCCMultimodal.Paperless.Usuario1;
+using SCCMultimodal.Paperless.Usuario2;
 
 namespace ProyectoCraft.WinForm.Paperless.Gestion {
     public partial class frmGestionPaperless : Form {
@@ -247,29 +249,22 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
             Cursor.Current = Cursors.WaitCursor;
             Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
 
-
+            IFrmPaperlessUser1 form = null;
 
             if (asignacion != null) {
-                if (asignacion.Asignacion.VersionUsuario1 == 1) {
-                    Usuario1.FrmPaperlessUser1 form = Usuario1.FrmPaperlessUser1.Instancia;
-                    form.PaperlessAsignacionActual = asignacion.Asignacion;
+                if (asignacion.Asignacion.VersionUsuario1 == 1)
+                    form = Usuario1.FrmPaperlessUser1.Instancia;
+                if (asignacion.Asignacion.VersionUsuario1 == 2)
+                    form = Usuario1.frmPaperlessUser1v2.Instancia;
 
-                    form.LimpiarFormulario();
-                    form.CargarInformacionAsignacionInicial();
-                    form.Accion = Enums.TipoAccionFormulario.Consultar;
-                    Cursor.Current = Cursors.Default;
-                    form.ShowDialog();
-                }
-                if (asignacion.Asignacion.VersionUsuario1 == 2) {
-                    Usuario1.frmPaperlessUser1v2 form = Usuario1.frmPaperlessUser1v2.Instancia;
-                    form.PaperlessAsignacionActual = asignacion.Asignacion;
 
-                    form.LimpiarFormulario();
-                    form.CargarInformacionAsignacionInicial();
-                    form.Accion = Enums.TipoAccionFormulario.Consultar;
-                    Cursor.Current = Cursors.Default;
-                    form.ShowDialog();
-                }
+                form.PaperlessAsignacionActual = asignacion.Asignacion;
+                form.LimpiarFormulario();
+                form.CargarInformacionAsignacionInicial();
+                form.Accion = Enums.TipoAccionFormulario.Consultar;
+                Cursor.Current = Cursors.Default;
+                form.MyShowDialog();
+
             } else {
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -278,12 +273,17 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
 
         private void Menu2daEtapa_Click(object sender, EventArgs e) {
             Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
-            Usuario2.frmPaperlessUser2 form = Usuario2.frmPaperlessUser2.Instancia;
+            IFrmPaperlessUser2 form = null;
+
+            if (asignacion.Asignacion.VersionUsuario1 == 1)
+                form = Usuario2.frmPaperlessUser2.Instancia;
+            if (asignacion.Asignacion.VersionUsuario1 == 2)
+                form = Usuario2.frmPaperlessUser2v2.Instancia;
 
             if (asignacion != null) {
                 form.PaperlessAsignacionActual = asignacion.Asignacion;
                 form.Accion = Enums.TipoAccionFormulario.Consultar;
-                form.ShowDialog();
+                form.MyShowDialog();
             }
         }
 

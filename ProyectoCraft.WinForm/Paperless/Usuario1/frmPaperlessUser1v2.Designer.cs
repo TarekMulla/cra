@@ -103,8 +103,62 @@
             this.repositoryItemCheckEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemCheckedComboBoxEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblP11ErrorExcepcion = new DevExpress.XtraEditors.LabelControl();
+            this.panelDisputas = new System.Windows.Forms.Panel();
+            this.LabelErrorDisputa = new DevExpress.XtraEditors.LabelControl();
+            this.sButtonAgregarDisputa = new DevExpress.XtraEditors.SimpleButton();
+            this.sButtonEliminarDisputa = new DevExpress.XtraEditors.SimpleButton();
+            this.GridDisputas = new DevExpress.XtraGrid.GridControl();
+            this.gridViewDisputas = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox7 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit16 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit17 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit19 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit15 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit20 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit21 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckedComboBoxEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.repositoryItemCheckEdit18 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckedComboBoxEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.repositoryItemComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn57 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn58 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn60 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn61 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn62 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnGuardarDisputas = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.grdPasos = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -159,6 +213,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
+            this.panelDisputas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisputas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDisputas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPasos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepositoryCheckPasos)).BeginInit();
@@ -644,7 +720,8 @@
             this.grdExcepciones.Size = new System.Drawing.Size(842, 328);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridView1,
+            this.gridView7});
             this.grdExcepciones.Click += new System.EventHandler(this.grdExcepciones_Click);
             // 
             // gridView1
@@ -848,6 +925,130 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCheckedComboBoxEdit2.Name = "repositoryItemCheckedComboBoxEdit2";
             // 
+            // gridView7
+            // 
+            this.gridView7.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn27,
+            this.gridColumn28,
+            this.gridColumn29,
+            this.gridColumn30,
+            this.gridColumn31,
+            this.gridColumn32,
+            this.gridColumn33,
+            this.gridColumn34,
+            this.gridColumn35,
+            this.gridColumn36,
+            this.gridColumn37,
+            this.gridColumn38});
+            this.gridView7.GridControl = this.grdExcepciones;
+            this.gridView7.Name = "gridView7";
+            this.gridView7.OptionsCustomization.AllowGroup = false;
+            this.gridView7.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "N°";
+            this.gridColumn27.FieldName = "HouseBL.Index";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 0;
+            this.gridColumn27.Width = 51;
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.Caption = "House BL";
+            this.gridColumn28.FieldName = "HouseBL.HouseBL";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.OptionsColumn.AllowEdit = false;
+            this.gridColumn28.OptionsColumn.AllowFocus = false;
+            this.gridColumn28.OptionsColumn.ReadOnly = true;
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 1;
+            this.gridColumn28.Width = 139;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "Cliente";
+            this.gridColumn29.FieldName = "HouseBL.Cliente.NombreCompañia";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Width = 120;
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "Tipo ";
+            this.gridColumn30.FieldName = "HouseBL.TipoCliente.Nombre";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.Width = 80;
+            // 
+            // gridColumn31
+            // 
+            this.gridColumn31.Caption = "Freehand";
+            this.gridColumn31.ColumnEdit = this.repositoryItemCheckEdit4;
+            this.gridColumn31.FieldName = "HouseBL.Freehand";
+            this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.Width = 60;
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "Rec. Collect";
+            this.gridColumn32.ColumnEdit = this.repositoryItemCheckEdit5;
+            this.gridColumn32.FieldName = "RecargoCollect";
+            this.gridColumn32.Name = "gridColumn32";
+            // 
+            // gridColumn33
+            // 
+            this.gridColumn33.Caption = "Resuelto";
+            this.gridColumn33.ColumnEdit = this.repositoryItemCheckEdit9;
+            this.gridColumn33.FieldName = "RecargoCollectResuelto";
+            this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.Width = 55;
+            // 
+            // gridColumn34
+            // 
+            this.gridColumn34.Caption = "Sob. Pendiente";
+            this.gridColumn34.ColumnEdit = this.repositoryItemCheckEdit6;
+            this.gridColumn34.FieldName = "SobreValorPendiente";
+            this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.Width = 90;
+            // 
+            // gridColumn35
+            // 
+            this.gridColumn35.Caption = "Aviso no enviado";
+            this.gridColumn35.ColumnEdit = this.repositoryItemCheckEdit7;
+            this.gridColumn35.FieldName = "AvisoNoEnviado";
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.Width = 83;
+            // 
+            // gridColumn36
+            // 
+            this.gridColumn36.Caption = "¿Tiene Excepcion?";
+            this.gridColumn36.ColumnEdit = this.repositoryItemCheckEdit12;
+            this.gridColumn36.FieldName = "TieneExcepcion";
+            this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.Visible = true;
+            this.gridColumn36.VisibleIndex = 2;
+            this.gridColumn36.Width = 208;
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.Caption = "Excepcion";
+            this.gridColumn37.ColumnEdit = this.repositoryItemComboBox2;
+            this.gridColumn37.FieldName = "TipoExcepcion";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.VisibleIndex = 3;
+            this.gridColumn37.Width = 208;
+            // 
+            // gridColumn38
+            // 
+            this.gridColumn38.Caption = "Responsabilidad";
+            this.gridColumn38.ColumnEdit = this.repositoryItemComboBox3;
+            this.gridColumn38.FieldName = "Responsabilidad";
+            this.gridColumn38.Name = "gridColumn38";
+            this.gridColumn38.Visible = true;
+            this.gridColumn38.VisibleIndex = 4;
+            this.gridColumn38.Width = 215;
+            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -868,6 +1069,372 @@
             this.lblP11ErrorExcepcion.TabIndex = 3;
             this.lblP11ErrorExcepcion.Text = "Debe ingresar toda la informacion.";
             this.lblP11ErrorExcepcion.Visible = false;
+            // 
+            // panelDisputas
+            // 
+            this.panelDisputas.Controls.Add(this.LabelErrorDisputa);
+            this.panelDisputas.Controls.Add(this.sButtonAgregarDisputa);
+            this.panelDisputas.Controls.Add(this.sButtonEliminarDisputa);
+            this.panelDisputas.Controls.Add(this.GridDisputas);
+            this.panelDisputas.Controls.Add(this.btnGuardarDisputas);
+            this.panelDisputas.Controls.Add(this.labelControl5);
+            this.panelDisputas.Location = new System.Drawing.Point(312, 157);
+            this.panelDisputas.Name = "panelDisputas";
+            this.panelDisputas.Size = new System.Drawing.Size(848, 377);
+            this.panelDisputas.TabIndex = 8;
+            // 
+            // LabelErrorDisputa
+            // 
+            this.LabelErrorDisputa.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.LabelErrorDisputa.Appearance.Options.UseForeColor = true;
+            this.LabelErrorDisputa.Location = new System.Drawing.Point(136, 12);
+            this.LabelErrorDisputa.Name = "LabelErrorDisputa";
+            this.LabelErrorDisputa.Size = new System.Drawing.Size(165, 13);
+            this.LabelErrorDisputa.TabIndex = 80;
+            this.LabelErrorDisputa.Text = "Debe ingresar toda la informacion.";
+            this.LabelErrorDisputa.Visible = false;
+            // 
+            // sButtonAgregarDisputa
+            // 
+            this.sButtonAgregarDisputa.Image = ((System.Drawing.Image)(resources.GetObject("sButtonAgregarDisputa.Image")));
+            this.sButtonAgregarDisputa.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.sButtonAgregarDisputa.Location = new System.Drawing.Point(17, 78);
+            this.sButtonAgregarDisputa.Name = "sButtonAgregarDisputa";
+            this.sButtonAgregarDisputa.Size = new System.Drawing.Size(32, 24);
+            this.sButtonAgregarDisputa.TabIndex = 79;
+            this.sButtonAgregarDisputa.Click += new System.EventHandler(this.sButtonAgregarDisputa_Click);
+            // 
+            // sButtonEliminarDisputa
+            // 
+            this.sButtonEliminarDisputa.AutoSizeInLayoutControl = true;
+            this.sButtonEliminarDisputa.Image = ((System.Drawing.Image)(resources.GetObject("sButtonEliminarDisputa.Image")));
+            this.sButtonEliminarDisputa.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.sButtonEliminarDisputa.Location = new System.Drawing.Point(17, 48);
+            this.sButtonEliminarDisputa.Name = "sButtonEliminarDisputa";
+            this.sButtonEliminarDisputa.Size = new System.Drawing.Size(32, 24);
+            this.sButtonEliminarDisputa.TabIndex = 78;
+            this.sButtonEliminarDisputa.Click += new System.EventHandler(this.sButtonEliminarDisputa_Click);
+            // 
+            // GridDisputas
+            // 
+            this.GridDisputas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridDisputas.Location = new System.Drawing.Point(63, 47);
+            this.GridDisputas.MainView = this.gridViewDisputas;
+            this.GridDisputas.Name = "GridDisputas";
+            this.GridDisputas.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit13,
+            this.repositoryItemCheckEdit14,
+            this.repositoryItemCheckEdit16,
+            this.repositoryItemCheckEdit17,
+            this.repositoryItemCheckEdit19,
+            this.repositoryItemCheckEdit15,
+            this.repositoryItemCheckEdit20,
+            this.repositoryItemCheckEdit21,
+            this.repositoryItemCheckedComboBoxEdit3,
+            this.repositoryItemCheckEdit18,
+            this.repositoryItemCheckedComboBoxEdit4,
+            this.repositoryItemComboBox4,
+            this.repositoryItemComboBox5,
+            this.repositoryItemComboBox6,
+            this.repositoryItemComboBox7,
+            this.repositoryItemMemoExEdit1,
+            this.repositoryItemTextEdit3});
+            this.GridDisputas.Size = new System.Drawing.Size(764, 329);
+            this.GridDisputas.TabIndex = 4;
+            this.GridDisputas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDisputas,
+            this.gridView9});
+            // 
+            // gridViewDisputas
+            // 
+            this.gridViewDisputas.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn41,
+            this.gridColumn40,
+            this.gridColumn39});
+            this.gridViewDisputas.GridControl = this.GridDisputas;
+            this.gridViewDisputas.Name = "gridViewDisputas";
+            this.gridViewDisputas.OptionsCustomization.AllowGroup = false;
+            this.gridViewDisputas.OptionsView.ShowGroupPanel = false;
+            this.gridViewDisputas.ShownEditor += new System.EventHandler(this.gridViewDisputas_ShownEditor);
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "N°";
+            this.gridColumn41.ColumnEdit = this.repositoryItemTextEdit3;
+            this.gridColumn41.FieldName = "Numero";
+            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.Visible = true;
+            this.gridColumn41.VisibleIndex = 0;
+            this.gridColumn41.Width = 76;
+            // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "Tipo";
+            this.gridColumn40.ColumnEdit = this.repositoryItemComboBox7;
+            this.gridColumn40.FieldName = "TipoDisputa";
+            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.Visible = true;
+            this.gridColumn40.VisibleIndex = 1;
+            this.gridColumn40.Width = 122;
+            // 
+            // repositoryItemComboBox7
+            // 
+            this.repositoryItemComboBox7.AutoHeight = false;
+            this.repositoryItemComboBox7.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox7.Name = "repositoryItemComboBox7";
+            // 
+            // gridColumn39
+            // 
+            this.gridColumn39.Caption = "Observacion";
+            this.gridColumn39.ColumnEdit = this.repositoryItemMemoExEdit1;
+            this.gridColumn39.FieldName = "Descripcion";
+            this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.Visible = true;
+            this.gridColumn39.VisibleIndex = 2;
+            this.gridColumn39.Width = 495;
+            // 
+            // repositoryItemMemoExEdit1
+            // 
+            this.repositoryItemMemoExEdit1.AutoHeight = false;
+            this.repositoryItemMemoExEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemMemoExEdit1.Name = "repositoryItemMemoExEdit1";
+            this.repositoryItemMemoExEdit1.ShowIcon = false;
+            // 
+            // repositoryItemCheckEdit13
+            // 
+            this.repositoryItemCheckEdit13.AutoHeight = false;
+            this.repositoryItemCheckEdit13.Name = "repositoryItemCheckEdit13";
+            // 
+            // repositoryItemCheckEdit14
+            // 
+            this.repositoryItemCheckEdit14.AutoHeight = false;
+            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
+            // 
+            // repositoryItemCheckEdit16
+            // 
+            this.repositoryItemCheckEdit16.AutoHeight = false;
+            this.repositoryItemCheckEdit16.Name = "repositoryItemCheckEdit16";
+            // 
+            // repositoryItemCheckEdit17
+            // 
+            this.repositoryItemCheckEdit17.AutoHeight = false;
+            this.repositoryItemCheckEdit17.Name = "repositoryItemCheckEdit17";
+            // 
+            // repositoryItemCheckEdit19
+            // 
+            this.repositoryItemCheckEdit19.AutoHeight = false;
+            this.repositoryItemCheckEdit19.Name = "repositoryItemCheckEdit19";
+            // 
+            // repositoryItemCheckEdit15
+            // 
+            this.repositoryItemCheckEdit15.AutoHeight = false;
+            this.repositoryItemCheckEdit15.Name = "repositoryItemCheckEdit15";
+            // 
+            // repositoryItemCheckEdit20
+            // 
+            this.repositoryItemCheckEdit20.AutoHeight = false;
+            this.repositoryItemCheckEdit20.Name = "repositoryItemCheckEdit20";
+            // 
+            // repositoryItemCheckEdit21
+            // 
+            this.repositoryItemCheckEdit21.AutoHeight = false;
+            this.repositoryItemCheckEdit21.Name = "repositoryItemCheckEdit21";
+            // 
+            // repositoryItemCheckedComboBoxEdit3
+            // 
+            this.repositoryItemCheckedComboBoxEdit3.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit3.Name = "repositoryItemCheckedComboBoxEdit3";
+            // 
+            // repositoryItemCheckEdit18
+            // 
+            this.repositoryItemCheckEdit18.AutoHeight = false;
+            this.repositoryItemCheckEdit18.Name = "repositoryItemCheckEdit18";
+            // 
+            // repositoryItemCheckedComboBoxEdit4
+            // 
+            this.repositoryItemCheckedComboBoxEdit4.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit4.Name = "repositoryItemCheckedComboBoxEdit4";
+            // 
+            // repositoryItemComboBox4
+            // 
+            this.repositoryItemComboBox4.AutoHeight = false;
+            this.repositoryItemComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox4.Name = "repositoryItemComboBox4";
+            this.repositoryItemComboBox4.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // repositoryItemComboBox5
+            // 
+            this.repositoryItemComboBox5.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemComboBox5.AutoHeight = false;
+            this.repositoryItemComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
+            this.repositoryItemComboBox5.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // repositoryItemComboBox6
+            // 
+            this.repositoryItemComboBox6.AutoHeight = false;
+            this.repositoryItemComboBox6.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox6.Name = "repositoryItemComboBox6";
+            // 
+            // gridView9
+            // 
+            this.gridView9.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn51,
+            this.gridColumn52,
+            this.gridColumn53,
+            this.gridColumn54,
+            this.gridColumn55,
+            this.gridColumn56,
+            this.gridColumn57,
+            this.gridColumn58,
+            this.gridColumn59,
+            this.gridColumn60,
+            this.gridColumn61,
+            this.gridColumn62});
+            this.gridView9.GridControl = this.GridDisputas;
+            this.gridView9.Name = "gridView9";
+            this.gridView9.OptionsCustomization.AllowGroup = false;
+            this.gridView9.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn51
+            // 
+            this.gridColumn51.Caption = "N°";
+            this.gridColumn51.FieldName = "HouseBL.Index";
+            this.gridColumn51.Name = "gridColumn51";
+            this.gridColumn51.Visible = true;
+            this.gridColumn51.VisibleIndex = 0;
+            this.gridColumn51.Width = 51;
+            // 
+            // gridColumn52
+            // 
+            this.gridColumn52.Caption = "House BL";
+            this.gridColumn52.FieldName = "HouseBL.HouseBL";
+            this.gridColumn52.Name = "gridColumn52";
+            this.gridColumn52.OptionsColumn.AllowEdit = false;
+            this.gridColumn52.OptionsColumn.AllowFocus = false;
+            this.gridColumn52.OptionsColumn.ReadOnly = true;
+            this.gridColumn52.Visible = true;
+            this.gridColumn52.VisibleIndex = 1;
+            this.gridColumn52.Width = 139;
+            // 
+            // gridColumn53
+            // 
+            this.gridColumn53.Caption = "Cliente";
+            this.gridColumn53.FieldName = "HouseBL.Cliente.NombreCompañia";
+            this.gridColumn53.Name = "gridColumn53";
+            this.gridColumn53.Width = 120;
+            // 
+            // gridColumn54
+            // 
+            this.gridColumn54.Caption = "Tipo ";
+            this.gridColumn54.FieldName = "HouseBL.TipoCliente.Nombre";
+            this.gridColumn54.Name = "gridColumn54";
+            this.gridColumn54.Width = 80;
+            // 
+            // gridColumn55
+            // 
+            this.gridColumn55.Caption = "Freehand";
+            this.gridColumn55.ColumnEdit = this.repositoryItemCheckEdit13;
+            this.gridColumn55.FieldName = "HouseBL.Freehand";
+            this.gridColumn55.Name = "gridColumn55";
+            this.gridColumn55.Width = 60;
+            // 
+            // gridColumn56
+            // 
+            this.gridColumn56.Caption = "Rec. Collect";
+            this.gridColumn56.ColumnEdit = this.repositoryItemCheckEdit14;
+            this.gridColumn56.FieldName = "RecargoCollect";
+            this.gridColumn56.Name = "gridColumn56";
+            // 
+            // gridColumn57
+            // 
+            this.gridColumn57.Caption = "Resuelto";
+            this.gridColumn57.ColumnEdit = this.repositoryItemCheckEdit15;
+            this.gridColumn57.FieldName = "RecargoCollectResuelto";
+            this.gridColumn57.Name = "gridColumn57";
+            this.gridColumn57.Width = 55;
+            // 
+            // gridColumn58
+            // 
+            this.gridColumn58.Caption = "Sob. Pendiente";
+            this.gridColumn58.ColumnEdit = this.repositoryItemCheckEdit16;
+            this.gridColumn58.FieldName = "SobreValorPendiente";
+            this.gridColumn58.Name = "gridColumn58";
+            this.gridColumn58.Width = 90;
+            // 
+            // gridColumn59
+            // 
+            this.gridColumn59.Caption = "Aviso no enviado";
+            this.gridColumn59.ColumnEdit = this.repositoryItemCheckEdit17;
+            this.gridColumn59.FieldName = "AvisoNoEnviado";
+            this.gridColumn59.Name = "gridColumn59";
+            this.gridColumn59.Width = 83;
+            // 
+            // gridColumn60
+            // 
+            this.gridColumn60.Caption = "¿Tiene Excepcion?";
+            this.gridColumn60.ColumnEdit = this.repositoryItemCheckEdit18;
+            this.gridColumn60.FieldName = "TieneExcepcion";
+            this.gridColumn60.Name = "gridColumn60";
+            this.gridColumn60.Visible = true;
+            this.gridColumn60.VisibleIndex = 2;
+            this.gridColumn60.Width = 208;
+            // 
+            // gridColumn61
+            // 
+            this.gridColumn61.Caption = "Excepcion";
+            this.gridColumn61.ColumnEdit = this.repositoryItemComboBox4;
+            this.gridColumn61.FieldName = "TipoExcepcion";
+            this.gridColumn61.Name = "gridColumn61";
+            this.gridColumn61.Visible = true;
+            this.gridColumn61.VisibleIndex = 3;
+            this.gridColumn61.Width = 208;
+            // 
+            // gridColumn62
+            // 
+            this.gridColumn62.Caption = "Responsabilidad";
+            this.gridColumn62.ColumnEdit = this.repositoryItemComboBox5;
+            this.gridColumn62.FieldName = "Responsabilidad";
+            this.gridColumn62.Name = "gridColumn62";
+            this.gridColumn62.Visible = true;
+            this.gridColumn62.VisibleIndex = 4;
+            this.gridColumn62.Width = 215;
+            // 
+            // btnGuardarDisputas
+            // 
+            this.btnGuardarDisputas.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarDisputas.Image")));
+            this.btnGuardarDisputas.Location = new System.Drawing.Point(671, 12);
+            this.btnGuardarDisputas.Name = "btnGuardarDisputas";
+            this.btnGuardarDisputas.Size = new System.Drawing.Size(156, 29);
+            this.btnGuardarDisputas.TabIndex = 3;
+            this.btnGuardarDisputas.Text = "Guardar Disputas";
+            this.btnGuardarDisputas.Click += new System.EventHandler(this.btnGuardarDisputas_Click);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(16, 12);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(92, 13);
+            this.labelControl5.TabIndex = 1;
+            this.labelControl5.Text = "Envío de disputa";
             // 
             // grdPasos
             // 
@@ -906,6 +1473,8 @@
             this.gridColumn4.Caption = "N°";
             this.gridColumn4.FieldName = "Paso.NumPaso";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 0;
             this.gridColumn4.Width = 47;
@@ -915,6 +1484,8 @@
             this.gridColumn5.Caption = "Paso";
             this.gridColumn5.FieldName = "Paso.Nombre";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 177;
@@ -1033,10 +1604,11 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlPaso3);
+            this.Controls.Add(this.panelDisputas);
             this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
-            this.Controls.Add(this.pnlPaso3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1086,6 +1658,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
+            this.panelDisputas.ResumeLayout(false);
+            this.panelDisputas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisputas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDisputas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPasos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepositoryCheckPasos)).EndInit();
@@ -1193,5 +1788,59 @@
         private DevExpress.XtraEditors.LabelControl lblErrorPaso2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
+        private System.Windows.Forms.Panel panelDisputas;
+        private DevExpress.XtraEditors.SimpleButton btnGuardarDisputas;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
+        private DevExpress.XtraGrid.GridControl GridDisputas;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDisputas;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit14;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit15;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit16;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit17;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit18;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit19;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit20;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit21;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn52;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn53;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn54;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn55;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn56;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn57;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn58;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn59;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn60;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn61;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn62;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox6;
+        private DevExpress.XtraEditors.SimpleButton sButtonAgregarDisputa;
+        private DevExpress.XtraEditors.SimpleButton sButtonEliminarDisputa;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit1;
+        private DevExpress.XtraEditors.LabelControl LabelErrorDisputa;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
     }
 }

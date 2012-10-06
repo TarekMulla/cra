@@ -510,3 +510,76 @@ INNER JOIN CLIENTES_MASTER_TIPO_CLIENTE TC
 ON PH.IdTipoCliente = TC.Id
 WHERE PE.IdAsignacion = @IdAsignacion
 ORDER BY IdHouseBL
+
+/* DE AQUI SEGUNDA PARTE **/
+
+
+CREATE TABLE PAPERLESS_TIPO_DISPUTAS    (
+        Id INT NOT NULL IDENTITY,
+        Descripcion NVARCHAR(100) COLLATE SQL_Latin1_General_CP1_CI_AS,
+        Activo BIT,
+        CONSTRAINT PK_PAPERLESS_TIPO_DISPUTAS PRIMARY KEY (Id)
+    )
+GO
+
+
+insert PAPERLESS_TIPO_DISPUTAS (Descripcion,activo) values ('Formal',1)
+insert PAPERLESS_TIPO_DISPUTAS (Descripcion,activo) values ('Informal',1)
+GO
+
+CREATE PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_DISPUTAS]
+AS
+select id,Descripcion
+from PAPERLESS_TIPO_DISPUTAS
+where activo = 1 
+GO
+
+
+CREATE TABLE PAPERLESS_USUARIO1_DISPUTAS    (
+        Id INT NOT NULL IDENTITY,
+        IdAsignacion bigint,
+        numero bigint,
+        TipoDisputa bigint,
+        Descripcion varchar(600),
+        CONSTRAINT PK_PAPERLESS_USUARIO1_DISPUTAS PRIMARY KEY (Id)
+    )
+GO
+
+
+
+CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_DISPUTAS]
+    @IdAsignacion bigint,
+    @numero bigint,
+    @TipoDisputa bigint,
+    @Descripcion varchar(600)
+
+AS 
+
+insert into PAPERLESS_USUARIO1_DISPUTAS (IdAsignacion,Numero,TipoDisputa,Descripcion)
+    values
+    (@IdAsignacion,@numero,@TipoDisputa,@Descripcion);
+GO
+
+CREATE PROCEDURE [dbo].[SP_D_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION]
+    @IdAsignacion bigint
+AS 
+
+delete from PAPERLESS_USUARIO1_DISPUTAS  where IdAsignacion = @IdAsignacion;
+GO
+
+CREATE PROCEDURE [dbo].[SP_L_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION]
+    @IdAsignacion bigint
+AS
+    select a.id,a.numero,a.descripcion,b.id as tipoId,b.descripcion as tipoDescripcion
+    from PAPERLESS_USUARIO1_DISPUTAS as a,dbo.PAPERLESS_TIPO_DISPUTAs as b
+    where a.tipoDisputa = b.id
+    and IdAsignacion = @idAsignacion 
+GO
+
+Truncate Table PAPERLESS_TIPO_TRANSITO_TRANSBORDO
+GO
+insert PAPERLESS_TIPO_TRANSITO_TRANSBORDO (Descripcion,activo) values ('',1)
+insert PAPERLESS_TIPO_TRANSITO_TRANSBORDO (Descripcion,activo) values ('Transbordo y transito',1)
+insert PAPERLESS_TIPO_TRANSITO_TRANSBORDO (Descripcion,activo) values ('Solo Transbordo',1)
+insert PAPERLESS_TIPO_TRANSITO_TRANSBORDO (Descripcion,activo) values ('Solo IMO',1)
+GO

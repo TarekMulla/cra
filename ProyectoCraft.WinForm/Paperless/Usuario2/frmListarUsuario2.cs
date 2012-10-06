@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Entidades.Enums;
+using SCCMultimodal.Paperless.Usuario2;
 
 namespace ProyectoCraft.WinForm.Paperless.Usuario2
 {
@@ -252,8 +253,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         private void MenuComenzar_Click(object sender, EventArgs e)
         {
+            IFrmPaperlessUser2 form = null;
             Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
-            frmPaperlessUser2 form = frmPaperlessUser2.Instancia;
+            if (asignacion.Asignacion.VersionUsuario1 == 1)
+                form = frmPaperlessUser2.Instancia;
+            if (asignacion.Asignacion.VersionUsuario1 == 2)
+                form = frmPaperlessUser2v2.Instancia;
 
             if(asignacion != null)
             {
@@ -276,8 +281,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 form.Accion = Enums.TipoAccionFormulario.Nuevo;
 
             this.ObtenerAsignaciones();
-
-            form.ShowDialog();
+            form.MyShowDialog();
+            
         }
 
         private void chkPlazoEmbarcador_CheckedChanged(object sender, EventArgs e)

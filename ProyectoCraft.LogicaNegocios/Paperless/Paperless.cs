@@ -174,6 +174,11 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones() {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposExcepciones();
         }
+
+        public static IList<PaperlessTipoDisputa>  ListarTiposDisputa() {
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposDisputas();
+        }
+
         public static IList<PaperlessUsuario1HousesBL> RefrescarTiposTransitoTransbordo(List<PaperlessUsuario1HousesBL> houses) {
             return AccesoDatos.Paperless.clsPaperlessADO.RefrescarTiposTransitoTransbordo(houses);
         }
@@ -301,6 +306,14 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
 
         public static IList<PaperlessExcepcion> RefrescarExcepciones(List<PaperlessExcepcion> excepciones) {
             return AccesoDatos.Paperless.clsPaperlessADO.RefrescarExcepciones(excepciones);
+        }
+
+        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado) {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaDisputas(disputas,info,pasoSeleccionado);
+        }
+
+        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion) {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtieneDisputas(paperlessAsignacion);
         }
     }
 }

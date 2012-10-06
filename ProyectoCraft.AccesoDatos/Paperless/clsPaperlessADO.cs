@@ -1557,7 +1557,10 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             resTransaccion = new ResultadoTransaccion();
             try {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_TRANSBORDOTRANSITO");
-                objParams[0].Value = house.TransbordoTransito.Id;
+                if (house.TransbordoTransito != null)
+                    objParams[0].Value = house.TransbordoTransito.Id;
+                else
+                    objParams[0].Value = 1;
                 objParams[1].Value = house.Id;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_TRANSBORDOTRANSITO", connparam);
@@ -2777,6 +2780,31 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return tipos;
         }
 
+        public static IList<PaperlessTipoDisputa> ListarTiposDisputas() {
+            var tipos = new List<PaperlessTipoDisputa>();
+            try {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_TIPO_DISPUTAS", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read()) {
+                    var tipo = new PaperlessTipoDisputa();
+                    tipo.Id = Convert.ToInt64(dreader["Id"]);
+                    tipo.Nombre = dreader["Descripcion"].ToString();
+                    tipos.Add(tipo);
+                }
+            } catch (Exception ex) {
+                Log.EscribirLog(ex.Message);
+            } finally {
+                conn.Close();
+            }
+
+            return tipos;
+        }
+
         public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad() {
             var tipos = new List<PaperlessTipoResponsabilidad>();
             try {
@@ -2909,6 +2937,104 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             }
 
             return excepciones;
+        }
+
+        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado) {
+            resTransaccion = new ResultadoTransaccion();
+            conn = BaseDatos.NuevaConexion();
+            var trans = conn.BeginTransaction();
+            Int64 IdHouseInfo = 0;
+            try {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_D_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION");
+                objParams[0].Value = info.Id;
+
+                SqlCommand command = new SqlCommand("SP_D_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION", conn);
+                command.Parameters.AddRange(objParams);
+                command.Transaction = trans;
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                var error = false;
+                foreach (var paperlessUsuario1Disputase in disputas) {
+                    var res = GuardarDisputra(paperlessUsuario1Disputase, conn, trans, info);
+                    if (res.Estado == Enums.EstadoTransaccion.Rechazada)
+                        error = true;
+                }
+
+                if (error) {
+                    resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                    trans.Rollback();
+                } else {
+                    resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                    trans.Commit();
+                }
+
+
+            } catch (Exception ex) {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+
+        }
+
+        private static ResultadoTransaccion GuardarDisputra(PaperlessUsuario1Disputas disputa, SqlConnection connparam, SqlTransaction tranparam, PaperlessAsignacion asignacion) {
+            resTransaccion = new ResultadoTransaccion();
+            try {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_USUARIO1_DISPUTAS");
+                objParams[0].Value = asignacion.Id;
+                objParams[1].Value = disputa.Numero;
+                objParams[2].Value = disputa.TipoDisputa.Id;
+                objParams[3].Value = disputa.Descripcion;
+
+
+
+                SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_DISPUTAS", conn);
+                command.Parameters.AddRange(objParams);
+                command.Transaction = tranparam;
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            } catch (Exception ex) {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion) {
+            var listDisputas = new List<PaperlessUsuario1Disputas>();
+            try {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION");
+                objParams[0].Value = paperlessAsignacion.Id;
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read()) {
+                    var disputa = new PaperlessUsuario1Disputas();
+                    disputa.Id = Convert.ToInt64(dreader["Id"]);
+                    if (!string.IsNullOrEmpty(dreader["Numero"].ToString()))
+                        disputa.Numero = Convert.ToInt64(dreader["Numero"]);
+                    disputa.Descripcion = dreader["Descripcion"].ToString();
+                    //naviera.Activo = (Entidades.Enums.Enums.Estado)(Convert.ToInt16(dreader["Activo"]));
+                    disputa.TipoDisputa = new PaperlessTipoDisputa();
+                    disputa.TipoDisputa.Id = Convert.ToInt64(dreader["tipoId"]);
+                    disputa.TipoDisputa.Nombre = dreader["tipoDescripcion"].ToString();
+                    listDisputas.Add(disputa);
+                }
+            } catch (Exception ex) {
+                Base.Log.Log.EscribirLog(ex.Message);
+            } finally {
+                conn.Close();
+            }
+
+            return listDisputas;
         }
     }
 }

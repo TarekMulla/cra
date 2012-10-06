@@ -87,6 +87,7 @@
     <Compile Include="GlobalObject\ItemCollection.cs" />
     <Compile Include="GlobalObject\NamedObject.cs" />
     <Compile Include="Clientes\Target\clsEmpresaCompetencia.cs" />
+    <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
     <Compile Include="Paperless\PaperlessAgente.cs" />
     <Compile Include="Paperless\PaperlessAsignacion.cs" />
     <Compile Include="Paperless\PaperlessEstado.cs" />
@@ -101,10 +102,11 @@
     <Compile Include="Paperless\PaperlessProcesoRegistroTiempo.cs" />
     <Compile Include="Paperless\PaperlessTipoCarga.cs" />
     <Compile Include="Paperless\PaperlessTipoCliente.cs" />
-    <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
+    <Compile Include="Paperless\PaperlessTipoDisputa.cs" />
     <Compile Include="Paperless\PaperlessTipoResponsabilidad.cs" />
     <Compile Include="Paperless\PaperlessTipoServicio.cs" />
     <Compile Include="Paperless\PaperlessUsuario1.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1Disputas.cs" />
     <Compile Include="Paperless\PaperlessUsuario1HouseBLInfo.cs" />
     <Compile Include="Paperless\PaperlessUsuario1HousesBL.cs" />
     <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />

@@ -26,6 +26,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         private List<PaperlessTipoTransito> TiposTransitoTransbordo = null;
         private List<PaperlessTipoExcepcion> TiposDeExcepciones;
         private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
+        private List<PaperlessTipoDisputa> TiposDisputas;
 
         private static frmPaperlessUser1v2 _instancia;
         public static frmPaperlessUser1v2 Instancia {
@@ -62,7 +63,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             TiposTransitoTransbordo = (List<PaperlessTipoTransito>)LogicaNegocios.Paperless.Paperless.ListarTiposTransitoTransbordo();
             TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones();
             TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
+            TiposDisputas = (List<PaperlessTipoDisputa>)LogicaNegocios.Paperless.Paperless.ListarTiposDisputa();
         }
+
         private void frmPaperlessUser1_Load(object sender, EventArgs e) {
             EstadoPaperless control = new EstadoPaperless();
             panel1.Controls.Add(control);
@@ -94,6 +97,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 btnP2GuardarHousesRuteados.Visible = false;
                 btnP11Excepciones.Visible = false;
                 btnP13EnviarAviso.Visible = false;
+                btnGuardarDisputas.Visible = false;
+
             }
         }
 
@@ -158,6 +163,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             pnlPaso3.Visible = false;
             pnlEnviarAviso.Visible = false;
             pnlExcepciones.Visible = false;
+            panelDisputas.Visible = false;
 
         }
 
@@ -176,6 +182,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             pnlPaso3.Visible = false;
             pnlExcepciones.Visible = false;
             pnlEnviarAviso.Visible = false;
+            panelDisputas.Visible = false;
             var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
 
 
@@ -212,10 +219,22 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 }
             }
 
+            if (e.RowHandle == 9)
+                if (foo[8].Estado) {
+                    CargarPasoDisputa();
+                }
+
             if (e.RowHandle == 10)
                 if (foo[9].Estado) {
                     pnlEnviarAviso.Visible = true;
                 }
+        }
+
+        private void CargarPasoDisputa() {
+            panelDisputas.Visible = true;
+            var disputas = LogicaNegocios.Paperless.Paperless.ObtieneDisputas(PaperlessAsignacionActual);
+            GridDisputas.DataSource = disputas;
+            GridDisputas.RefreshDataSource();   
         }
 
         private void CargarPaso2TransitoTransbordo() {
@@ -437,10 +456,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
                 return;
 
-            if (listhouses.Any(house => house.TransbordoTransito == null || house.TransbordoTransito.Id == 0)) {
+            //Validacion para que se ingresen todos los tipo de transbordos
+            /*if (listhouses.Any(house => house.TransbordoTransito == null || house.TransbordoTransito.Id == 0)) {
                 lblErrorPaso2.Show();
                 return;
-            }
+            }*/
 
             pasoSeleccionado.Estado = true;
 
@@ -586,9 +606,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         }
 
 
-        private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones ) {
-            foreach (PaperlessExcepcion excepcion in excepciones) 
-                if (excepcion.TieneExcepcion && ( excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null)) 
+        private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones) {
+            foreach (PaperlessExcepcion excepcion in excepciones)
+                if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))
                     return false;
             return true;
         }
@@ -600,14 +620,14 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
                 return;
-            
+
             pasoSeleccionado.Estado = true;
 
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            if (!validarPasoExcepciones((List<PaperlessExcepcion>) excepciones)) {
+            if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones)) {
                 lblP11ErrorExcepcion.Visible = true;
                 return;
-            }else {
+            } else {
                 lblP11ErrorExcepcion.Visible = false;
             }
 
@@ -706,7 +726,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
-            if (!validarPasoExcepciones((List<PaperlessExcepcion>) excepcionesActualizadas) ) {
+            if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas)) {
                 MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Manifiesto'");
                 return false;
             }
@@ -796,5 +816,86 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 }
             }
         }
+
+        private void sButtonAgregarDisputa_Click(object sender, EventArgs e) {
+            var disputas = new List<PaperlessUsuario1Disputas>();
+            if (GridDisputas.DataSource != null)
+                disputas = GridDisputas.DataSource as List<PaperlessUsuario1Disputas>;
+
+            disputas.Add(new PaperlessUsuario1Disputas());
+            GridDisputas.DataSource = null;
+            GridDisputas.DataSource = disputas;
+            GridDisputas.RefreshDataSource();
+
+
+        }
+
+        private void sButtonEliminarDisputa_Click(object sender, EventArgs e) {
+            //clsMetaObservaciones ObjObservacion = new clsMetaObservaciones();
+            PaperlessUsuario1Disputas disputa;
+            int fila_sel = 0;
+            if (this.gridViewDisputas.DataSource != null) {
+                if (MessageBox.Show("¿Está seguro que desea ELIMINAR la disputa?", "Sistema Comercial Craft", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    fila_sel = this.gridViewDisputas.GetSelectedRows()[0];
+                    disputa = (PaperlessUsuario1Disputas)this.gridViewDisputas.GetRow(fila_sel);
+                    var disputas = GridDisputas.DataSource as List<PaperlessUsuario1Disputas>;
+                    disputas.Remove(disputa);
+                    GridDisputas.DataSource = disputas;
+                    GridDisputas.RefreshDataSource();
+                }
+            }
+        }
+
+        private void gridViewDisputas_ShownEditor(object sender, EventArgs e) {
+            var foo = sender as GridView;
+            if (foo.FocusedColumn.FieldName.Equals("TipoDisputa")) {
+                DevExpress.XtraEditors.ComboBoxEdit cbo = (sender as DevExpress.XtraGrid.Views.Base.BaseView).ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                ComboBoxItemCollection coll = cbo.Properties.Items;
+                foreach (var tipo in TiposDisputas)
+                    coll.Add(tipo);
+            }
+        }
+
+        private Boolean ValidateDisputas() {
+            var disputas = new List<PaperlessUsuario1Disputas>();
+            if (gridViewDisputas.DataSource != null)
+                disputas = (List<PaperlessUsuario1Disputas>)gridViewDisputas.DataSource;
+
+            foreach (var disputa in disputas) {
+                if (String.IsNullOrEmpty(disputa.Descripcion) || disputa.Numero == null || disputa.TipoDisputa == null)
+                    return false;
+            }
+            return true;
+        }
+
+        private void btnGuardarDisputas_Click(object sender, EventArgs e) {
+            LabelErrorDisputa.Visible = false;
+            var val = ValidateDisputas();
+            if (!val) {
+                LabelErrorDisputa.Visible = true;
+            }else {
+                //Guardar las disputas
+                Cursor.Current = Cursors.WaitCursor;
+                IList<PaperlessUsuario1Disputas> disputas = (IList<PaperlessUsuario1Disputas>)GridDisputas.DataSource;
+                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(11);
+                pasoSeleccionado.Estado = true;
+                var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaDisputas(disputas, PaperlessAsignacionActual, pasoSeleccionado);
+                
+                
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else {
+                    CargarPasos();
+                    Cursor.Current = Cursors.Default;
+                    lblP1errorHouses.Visible = false;
+                    MessageBox.Show("Las Disputas han sido guardadss", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnP1GuardarHousesBL.Enabled = false;
+
+                }
+
+            }
+        }
+
     }
 }

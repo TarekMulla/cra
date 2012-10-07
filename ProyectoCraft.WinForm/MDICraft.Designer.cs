@@ -458,7 +458,7 @@
             // 
             // Administracion
             // 
-            this.Administracion.Caption = "Administración";
+            this.Administracion.Caption = "Administración de Datos";
             this.Administracion.Expanded = true;
             this.Administracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),

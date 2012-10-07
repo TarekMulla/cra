@@ -442,7 +442,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 Cursor.Current = Cursors.Default;
                 lblP1errorHouses.Visible = false;
                 MessageBox.Show("Houses han sido guardados", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnP1GuardarHousesBL.Enabled = false;
+                //btnP1GuardarHousesBL.Enabled = false;
 
             }
         }
@@ -477,7 +477,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 CargarPasos();
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Transbordos y transistos han sido guardados", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnP2GuardarHousesRuteados.Enabled = false;
+                //btnP2GuardarHousesRuteados.Enabled = false;
             }
 
         }
@@ -646,7 +646,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 CargarPasos();
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Excepciones han sido guardadas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnP11Excepciones.Enabled = false;
+                //btnP11Excepciones.Enabled = false;
             }
         }
 
@@ -718,16 +718,16 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 return false;
             }
 
-            var houses = LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo((List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
+            /*var houses = LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo((List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
             if (houses.Any(house => house.TransbordoTransito == null || house.TransbordoTransito.Id == 0)) {
                 MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Manifiesto'");
                 return false;
-            }
+            }*/
 
             var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
             if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas)) {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Manifiesto'");
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Excepciones'");
                 return false;
             }
 
@@ -890,8 +890,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     Cursor.Current = Cursors.Default;
                     lblP1errorHouses.Visible = false;
                     MessageBox.Show("Las Disputas han sido guardadss", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnP1GuardarHousesBL.Enabled = false;
-
+                    //btnP1GuardarHousesBL.Enabled = false;
                 }
 
             }

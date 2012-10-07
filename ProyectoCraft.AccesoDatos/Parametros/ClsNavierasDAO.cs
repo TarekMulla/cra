@@ -61,6 +61,43 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
             return lista;
         }
+        public static IList<ClsNaviera> ListarNavieras()
+        {
+            IList<ClsNaviera> lista = new List<ClsNaviera>();
+            ClsNaviera naviera;
+
+            SqlDataReader objReader = null;
+            SqlParameter[] objParams;
+
+            try
+            {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL");
+                
+
+                objReader = SqlHelper.ExecuteReader(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL", objParams);
+                while (objReader.Read())
+                {
+
+                    naviera = new ClsNaviera();
+                    naviera.Id = Convert.ToInt64(objReader["Id"]);
+                    naviera.Nombre = objReader["Descripcion"].ToString();
+                    naviera.Activo = Convert.ToBoolean(objReader["Activo"]);
+                    naviera.FechaCreacion = Convert.ToDateTime(objReader["FechaCreacion"]);
+                    lista.Add(naviera);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+                return null;
+
+            }
+            finally
+            {
+                if (objReader != null) objReader.Close();
+            }
+            return lista;
+        }
         public static ResultadoTransaccion NuevaNaviera(string nombre)
         {
             resTransaccion = new ResultadoTransaccion();

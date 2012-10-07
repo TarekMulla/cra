@@ -1259,6 +1259,13 @@ namespace ProyectoCraft.WinForm.Clientes.Target
             cboJornadaPreferida.SelectAll();
         }
 
+        private void btnComunas_Click(object sender, EventArgs e)
+        {
+            frmComunas form = new frmComunas();
+            //form.InstanciaContacto = Instancia;
+            form.Show();
+        }
+
       
 
         

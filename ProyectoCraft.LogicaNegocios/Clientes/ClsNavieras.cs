@@ -13,6 +13,10 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
         {
             return AccesoDatos.Parametros.ClsNavierasDAO.ListarNavieras(Activo);                     
         }
+        public static IList<ClsNaviera> ListarNavieras()
+        {
+            return AccesoDatos.Parametros.ClsNavierasDAO.ListarNavieras();
+        }
 
         public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre)
         {

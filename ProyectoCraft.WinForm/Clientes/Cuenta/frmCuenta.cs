@@ -1312,6 +1312,13 @@ namespace ProyectoCraft.WinForm.Clientes.Cuenta
             {
                 this.CuentaActual.TipoReciboAperturaEmbarcador = (Enums.PaperlessTipoReciboAperturaEmbarcador)cboTipoRecibo.SelectedItem;
             }
+
+            private void btnComunas_Click(object sender, EventArgs e)
+            {
+                frmComunas form = new frmComunas();
+                //form.InstanciaContacto = Instancia;
+                form.Show();
+            }
                                                                               
     }
 }

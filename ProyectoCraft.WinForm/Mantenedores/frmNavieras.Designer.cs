@@ -320,10 +320,10 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(612, 506);
-            this.ControlBox = false;
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdNavieras);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNavieras";
             this.Text = "Mantenedor Navieras";
             this.Load += new System.EventHandler(this.frmNavieras_Load);

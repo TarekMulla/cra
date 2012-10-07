@@ -1916,6 +1916,13 @@ namespace ProyectoCraft.WinForm.Clientes.TargetAccount
                     if (e.PageIndex == 4) CargarResumen();
                 }
 
+                private void btnComunas_Click(object sender, EventArgs e)
+                {
+                    frmComunas form = new frmComunas();
+                    //form.InstanciaContacto = Instancia;
+                    form.Show();
+                }
+
               
         
 

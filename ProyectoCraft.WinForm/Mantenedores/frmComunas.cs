@@ -6,6 +6,7 @@ using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.LogicaNegocios.Parametros;
+using ProyectoCraft.WinForm.Clientes.Contacto;
 
 //namespace SCCMultimodal.Mantenedores
 namespace ProyectoCraft.WinForm.Clientes
@@ -27,6 +28,9 @@ namespace ProyectoCraft.WinForm.Clientes
                 _instancia = value;
             }
         }
+
+        public frmContacto InstanciaContacto { get; set; }
+        
         //public string Nombre { get; set; }
         //public Int64 Id { get; set; }
         //public bool Activo { get; set; }
@@ -69,7 +73,7 @@ namespace ProyectoCraft.WinForm.Clientes
                     cargarComunas(((clsCiudad)cboCiudad.SelectedItem).Id);
             }
             else
-                cargarComunas(-9);         
+                cargarComunas(-9);
         }
         public void FormLoad()
         {
@@ -78,7 +82,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuVerDatos_Click(object sender, EventArgs e)
         {
-            
+
         }
         private clsComuna ObtenerRegistro()
         {
@@ -106,7 +110,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuGuardar_Click(object sender, EventArgs e)
         {
-            
+
 
         }
         private void LimpiarDatos()
@@ -118,12 +122,12 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void MenuSalir_Click(object sender, EventArgs e)
         {
-         
+
         }
         private void CargarPaises()
         {
@@ -135,6 +139,8 @@ namespace ProyectoCraft.WinForm.Clientes
                 coll.Add(list);
             }
             cboPais.SelectedIndex = 0;
+            if (paises.Count < 2)
+                cboPais.SelectedIndex = 1;
 
         }
 
@@ -183,7 +189,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void cboCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void grdComunas_Click(object sender, EventArgs e)
@@ -289,6 +295,6 @@ namespace ProyectoCraft.WinForm.Clientes
                 Log.EscribirLog(ex.Message);
                 MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }       
+        }
     }
 }

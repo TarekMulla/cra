@@ -232,6 +232,7 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.btnComunas = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -2248,6 +2249,7 @@
             this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripButton8,
+            this.btnComunas,
             this.toolStripSeparator3,
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -2259,6 +2261,16 @@
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // btnComunas
+            // 
+            this.btnComunas.Image = ((System.Drawing.Image)(resources.GetObject("btnComunas.Image")));
+            this.btnComunas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnComunas.Name = "btnComunas";
+            this.btnComunas.Size = new System.Drawing.Size(62, 35);
+            this.btnComunas.Text = "Comunas";
+            this.btnComunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnComunas.Click += new System.EventHandler(this.btnComunas_Click);
             // 
             // frmCuenta
             // 
@@ -2599,5 +2611,6 @@
         private System.Windows.Forms.TextBox txtIdProductoCust;
         private DevExpress.XtraEditors.ComboBoxEdit cboTipoRecibo;
         private DevExpress.XtraEditors.LabelControl labelControl43;
+        private System.Windows.Forms.ToolStripButton btnComunas;
     }
 }

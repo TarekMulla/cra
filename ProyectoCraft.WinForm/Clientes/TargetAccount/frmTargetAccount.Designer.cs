@@ -325,6 +325,7 @@
             this.MenuLlamada = new System.Windows.Forms.ToolStripButton();
             this.MenuVisita = new System.Windows.Forms.ToolStripButton();
             this.MenuCotizacion = new System.Windows.Forms.ToolStripButton();
+            this.btnComunas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
@@ -3067,6 +3068,7 @@
             this.MenuLlamada,
             this.MenuVisita,
             this.MenuCotizacion,
+            this.btnComunas,
             this.toolStripSeparator3,
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -3142,6 +3144,16 @@
             this.MenuCotizacion.Text = "Enviar Cotización";
             this.MenuCotizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuCotizacion.Visible = false;
+            // 
+            // btnComunas
+            // 
+            this.btnComunas.Image = ((System.Drawing.Image)(resources.GetObject("btnComunas.Image")));
+            this.btnComunas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnComunas.Name = "btnComunas";
+            this.btnComunas.Size = new System.Drawing.Size(62, 35);
+            this.btnComunas.Text = "Comunas";
+            this.btnComunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnComunas.Click += new System.EventHandler(this.btnComunas_Click);
             // 
             // toolStripSeparator3
             // 
@@ -3639,5 +3651,6 @@
         private DevExpress.XtraEditors.DateEdit txtProximaOrgen;
         private DevExpress.XtraEditors.LabelControl labelControl82;
         private DevExpress.XtraEditors.MemoEdit txtComoComunicara;
+        private System.Windows.Forms.ToolStripButton btnComunas;
     }
 }

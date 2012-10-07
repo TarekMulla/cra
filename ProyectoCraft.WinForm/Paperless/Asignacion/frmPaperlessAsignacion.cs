@@ -1063,12 +1063,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
         }
 
         private void btnMantNaviera_Click(object sender, EventArgs e)
-        {
-            
-            Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
-            //Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
-            //form.MdiParent = this;
-            //form.IdTargetSource = 15;
+        {            
+            Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;            
             form.fromPaperless = true;
             form.InstanciaPaperless = Instancia;   
             form.Show();

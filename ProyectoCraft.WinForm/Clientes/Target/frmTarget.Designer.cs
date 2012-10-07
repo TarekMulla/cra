@@ -232,6 +232,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.btnComunas = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -2125,11 +2126,12 @@
             this.MenuEnviarMail,
             this.MenuAgendarActividad,
             this.MenuEnviarCotizacion,
+            this.btnComunas,
             this.toolStripSeparator6,
             this.toolStripButton11});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(725, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(725, 38);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -2138,7 +2140,7 @@
             this.MenuGuardar.Image = ((System.Drawing.Image)(resources.GetObject("MenuGuardar.Image")));
             this.MenuGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuGuardar.Name = "MenuGuardar";
-            this.MenuGuardar.Size = new System.Drawing.Size(50, 33);
+            this.MenuGuardar.Size = new System.Drawing.Size(53, 35);
             this.MenuGuardar.Text = "Guardar";
             this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click);
@@ -2148,7 +2150,7 @@
             this.MenuEliminar.Image = ((System.Drawing.Image)(resources.GetObject("MenuEliminar.Image")));
             this.MenuEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEliminar.Name = "MenuEliminar";
-            this.MenuEliminar.Size = new System.Drawing.Size(47, 33);
+            this.MenuEliminar.Size = new System.Drawing.Size(54, 35);
             this.MenuEliminar.Text = "Eliminar";
             this.MenuEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click);
@@ -2158,7 +2160,7 @@
             this.MenuCalificar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCalificar.Image")));
             this.MenuCalificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuCalificar.Name = "MenuCalificar";
-            this.MenuCalificar.Size = new System.Drawing.Size(65, 33);
+            this.MenuCalificar.Size = new System.Drawing.Size(71, 35);
             this.MenuCalificar.Text = "Descalificar";
             this.MenuCalificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuCalificar.Click += new System.EventHandler(this.MenuCalificar_Click);
@@ -2166,7 +2168,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuImprimir
             // 
@@ -2174,14 +2176,14 @@
             this.MenuImprimir.Image = ((System.Drawing.Image)(resources.GetObject("MenuImprimir.Image")));
             this.MenuImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuImprimir.Name = "MenuImprimir";
-            this.MenuImprimir.Size = new System.Drawing.Size(77, 33);
+            this.MenuImprimir.Size = new System.Drawing.Size(88, 35);
             this.MenuImprimir.Text = "Imprimir Ficha";
             this.MenuImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuEnviarMail
             // 
@@ -2189,7 +2191,7 @@
             this.MenuEnviarMail.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarMail.Image")));
             this.MenuEnviarMail.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarMail.Name = "MenuEnviarMail";
-            this.MenuEnviarMail.Size = new System.Drawing.Size(68, 33);
+            this.MenuEnviarMail.Size = new System.Drawing.Size(75, 35);
             this.MenuEnviarMail.Text = "Enviar Email";
             this.MenuEnviarMail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -2199,7 +2201,7 @@
             this.MenuAgendarActividad.Image = ((System.Drawing.Image)(resources.GetObject("MenuAgendarActividad.Image")));
             this.MenuAgendarActividad.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuAgendarActividad.Name = "MenuAgendarActividad";
-            this.MenuAgendarActividad.Size = new System.Drawing.Size(99, 33);
+            this.MenuAgendarActividad.Size = new System.Drawing.Size(109, 35);
             this.MenuAgendarActividad.Text = "Agendar Actividad";
             this.MenuAgendarActividad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -2209,21 +2211,21 @@
             this.MenuEnviarCotizacion.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarCotizacion.Image")));
             this.MenuEnviarCotizacion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarCotizacion.Name = "MenuEnviarCotizacion";
-            this.MenuEnviarCotizacion.Size = new System.Drawing.Size(93, 33);
+            this.MenuEnviarCotizacion.Size = new System.Drawing.Size(102, 35);
             this.MenuEnviarCotizacion.Text = "Enviar Cotizacion";
             this.MenuEnviarCotizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 38);
             // 
             // toolStripButton11
             // 
             this.toolStripButton11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton11.Image")));
             this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(31, 33);
+            this.toolStripButton11.Size = new System.Drawing.Size(33, 35);
             this.toolStripButton11.Text = "Salir";
             this.toolStripButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
@@ -2231,6 +2233,16 @@
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // btnComunas
+            // 
+            this.btnComunas.Image = ((System.Drawing.Image)(resources.GetObject("btnComunas.Image")));
+            this.btnComunas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnComunas.Name = "btnComunas";
+            this.btnComunas.Size = new System.Drawing.Size(62, 35);
+            this.btnComunas.Text = "Comunas";
+            this.btnComunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnComunas.Click += new System.EventHandler(this.btnComunas_Click);
             // 
             // frmTarget
             // 
@@ -2564,5 +2576,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.ComboBoxEdit cboRUTs;
         private DevExpress.XtraEditors.ComboBoxEdit cboNombresCompanias;
+        private System.Windows.Forms.ToolStripButton btnComunas;
     }
 }

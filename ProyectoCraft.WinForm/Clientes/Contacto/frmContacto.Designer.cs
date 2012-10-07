@@ -42,6 +42,7 @@
             this.MenuEnviarCotizacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
+            this.btnComunas = new System.Windows.Forms.ToolStripButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl11 = new DevExpress.XtraEditors.GroupControl();
@@ -188,6 +189,7 @@
             this.cboFormaContactoPref = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -282,6 +284,7 @@
             this.MenuEnviarMail,
             this.MenuAgendarActividad,
             this.MenuEnviarCotizacion,
+            this.btnComunas,
             this.toolStripSeparator3,
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -384,6 +387,16 @@
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
+            // 
+            // btnComunas
+            // 
+            this.btnComunas.Image = ((System.Drawing.Image)(resources.GetObject("btnComunas.Image")));
+            this.btnComunas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnComunas.Name = "btnComunas";
+            this.btnComunas.Size = new System.Drawing.Size(62, 35);
+            this.btnComunas.Text = "Comunas";
+            this.btnComunas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnComunas.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // xtraTabControl1
             // 
@@ -1778,6 +1791,16 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(62, 35);
+            this.toolStripButton1.Text = "Comunas";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.ToolTipText = "Crear Comunas";
+            // 
             // frmContacto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2041,5 +2064,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnComunas;
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComunas));
             this.grdComunas = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -83,13 +83,13 @@
             this.grdComunas.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdComunas.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.grdComunas.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.grdComunas.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.grdComunas.Location = new System.Drawing.Point(0, 178);
             this.grdComunas.MainView = this.gridView1;
             this.grdComunas.Name = "grdComunas";
-            this.grdComunas.Size = new System.Drawing.Size(623, 297);
+            this.grdComunas.Size = new System.Drawing.Size(476, 297);
             this.grdComunas.TabIndex = 4;
             this.grdComunas.UseEmbeddedNavigator = true;
             this.grdComunas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -170,7 +170,7 @@
             this.groupControl1.LookAndFeel.SkinName = "Glass Oceans";
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(623, 131);
+            this.groupControl1.Size = new System.Drawing.Size(476, 131);
             this.groupControl1.TabIndex = 8;
             this.groupControl1.Text = "Busqueda";
             // 
@@ -237,7 +237,7 @@
             this.btnBuscar.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.btnBuscar.Appearance.Options.UseFont = true;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(367, 85);
+            this.btnBuscar.Location = new System.Drawing.Point(375, 85);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(91, 22);
             this.btnBuscar.TabIndex = 3;
@@ -292,7 +292,7 @@
             this.toolStripButton1});
             this.toolStripBarraListarLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraListarLlamada.Name = "toolStripBarraListarLlamada";
-            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(683, 38);
+            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(481, 38);
             this.toolStripBarraListarLlamada.TabIndex = 9;
             this.toolStripBarraListarLlamada.Text = "toolStrip1";
             // 
@@ -384,10 +384,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 476);
+            this.ClientSize = new System.Drawing.Size(481, 476);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.grdComunas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmComunas";
             this.Text = "Mantenedor de Comunas";
             this.Load += new System.EventHandler(this.frmComunas_Load);

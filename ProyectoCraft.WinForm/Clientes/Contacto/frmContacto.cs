@@ -1167,10 +1167,14 @@ namespace ProyectoCraft.WinForm.Clientes.Contacto
                 txtObservacion.Focus();
         }
 
-       
-        
-                                     
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            frmComunas form = new frmComunas();
+            //form.InstanciaContacto = Instancia;
+            form.Show();
+        }
 
+       
     }
 
     //public class ClientesParaContacto

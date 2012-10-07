@@ -63,7 +63,7 @@ namespace ProyectoCraft.WinForm.Clientes
         }
         public void ListarNavieras()
         {
-            IList<ClsNaviera> listNavieras = ClsNavieras.ListarNavieras(true);
+            IList<ClsNaviera> listNavieras = ClsNavieras.ListarNavieras();
             grdNavieras.DataSource = listNavieras;
             grdNavieras.RefreshDataSource();
         }

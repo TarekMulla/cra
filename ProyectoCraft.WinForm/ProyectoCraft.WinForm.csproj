@@ -868,6 +868,9 @@
     <Content Include="Panel de control\Controles\Semaforo5dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Panel de control\Panel de control\PanelUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Panel de control\Panel de control\panel1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

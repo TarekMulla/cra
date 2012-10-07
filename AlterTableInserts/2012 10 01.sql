@@ -123,3 +123,10 @@ END
 
 -- insert into PERFILES values ('Administrador de Datos Maestros',GETDATE(),null)
 --insert into USUARIOS_PERFILES values (43,21,0)
+
+ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_NAVIERAALL]  
+
+  
+AS  
+  
+SELECT Id, Descripcion, Activo ,FechaCreacion FROM PAPERLESS_NAVIERA    

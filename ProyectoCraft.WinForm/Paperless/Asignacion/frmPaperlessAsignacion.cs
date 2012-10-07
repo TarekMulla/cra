@@ -52,7 +52,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
             foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles)
             {
-                if (clsPerfil.Id == (int) Enums.UsuariosCargo.AdministradorDatosMaestros)
+                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
                 btnMantNaviera.Visible = true;
             }
             //dejamos invisible los controles nave transbordo
@@ -290,7 +290,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
         }
 
 
-        private void CargarNavierasExistentes() {
+        public  void CargarNavierasExistentes() 
+        {
+            ddlNaviera.Properties.Items.Clear();
             ComboBoxItemCollection coll = ddlNaviera.Properties.Items;
             IList<Entidades.Paperless.PaperlessNaviera> listNavieras = new List<Entidades.Paperless.PaperlessNaviera>();
 
@@ -1062,10 +1064,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
         private void btnMantNaviera_Click(object sender, EventArgs e)
         {
+            
             Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
             //Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
             //form.MdiParent = this;
             //form.IdTargetSource = 15;
+            form.fromPaperless = true;
+            form.InstanciaPaperless = Instancia;   
             form.Show();
         }
     }

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.LogicaNegocios.Clientes;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
+using ProyectoCraft.WinForm.Paperless.Asignacion;
 
 //namespace SCCMultimodal.Mantenedores
 namespace ProyectoCraft.WinForm.Clientes
@@ -30,7 +31,8 @@ namespace ProyectoCraft.WinForm.Clientes
         //public Int64 Id { get; set; }
         //public bool Activo { get; set; }
         //public DateTime FechaCreacion { get; set; }
-
+        public bool fromPaperless { get; set; }
+        public frmPaperlessAsignacion InstanciaPaperless { get; set; }
         private ClsNaviera _navieraactual;
         public ClsNaviera NavieraActual
         {
@@ -169,12 +171,21 @@ namespace ProyectoCraft.WinForm.Clientes
                 var res = ClsNavieras.ActualizarNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text);
                 MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
+                if (fromPaperless.Equals(true))
+                {
+                    InstanciaPaperless.CargarNavierasExistentes();                    
+                }
             }
             else if (!string.IsNullOrEmpty(txtNombre.Text) && string.IsNullOrEmpty(txtId.Text))
             {
                 var res = ClsNavieras.NuevaNaviera(txtNombre.Text.Trim());
                 MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
+                if (fromPaperless.Equals(true))
+                {
+                    InstanciaPaperless.CargarNavierasExistentes();
+                }
+                
             }
             else
             {

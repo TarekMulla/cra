@@ -118,3 +118,8 @@ VALUES (@NombreCompania,@Nombres,@ApPaterno,@ApMaterno, @RUT,@CodTipo,GetDate(),
 
 SELECT  SCOPE_IDENTITY()
 END
+
+
+
+-- insert into PERFILES values ('Administrador de Datos Maestros',GETDATE(),null)
+--insert into USUARIOS_PERFILES values (43,21,0)

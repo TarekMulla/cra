@@ -450,7 +450,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
                 CargarComboTodosClientes(IdUsuario, "");
                 CargarComboContactos(-1, "-1", -1, -1);
                 this.DtFechaHora.DateTime = ObjLlamadaTelefonica.FechaHora;
-                if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id))
+                if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) || ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id))
                 {
                     TxtDescription.Enabled = true;
                     TxtDescription.Text = ObjLlamadaTelefonica.Descripcion;

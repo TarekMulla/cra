@@ -130,3 +130,11 @@ go
 insert into PERFILES values ('AdministradorDatosMaestros',GETDATE(),null)
 insert into USUARIOS_PERFILES values (44,22,0)-- asignacion de datos maestros pbeltran
 go
+
+
+create PROCEDURE [dbo].[SP_E_PAPERLESS_NAVIERA]  
+@Id bigint  
+AS 
+ update PAPERLESS_NAVIERA set Activo='false' where Id  = @Id --delete from PAPERLESS_NAVIERA where Id  = @Id
+ 
+go

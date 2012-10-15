@@ -359,7 +359,15 @@ namespace ProyectoCraft.AccesoDatos.Ventas.Actividades.Llamadas_Telefonicas
                         ObjLlamadaTelefonica.ObjTipoProducto.Nombre = dreader[17].ToString();
                     }
 
-                    ListaLlamadas.Add(ObjLlamadaTelefonica);
+                    if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) || ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id))
+                    {
+                        ListaLlamadas.Add(ObjLlamadaTelefonica);
+                    }
+                    else
+                    {
+                        ObjLlamadaTelefonica.Descripcion = "";
+                        ListaLlamadas.Add(ObjLlamadaTelefonica);
+                    }                     
                 }
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = ListaLlamadas;

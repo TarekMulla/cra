@@ -128,7 +128,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
             Entidades.GlobalObject.ResultadoTransaccion res = 
                 LogicaNegocios.Ventas.Actividades.Llamadas_Telefonicas.ClsLlamataTelefonica.ListarLlamadasTelefonicas(FechaInicio, FechaTermino, IdContacto, IdClienteMaster,IdUsuario, TipoSelect);
             
-            IList<ClsLlamadaTelefonica> ListaLlamadas = (IList<ClsLlamadaTelefonica>)res.ObjetoTransaccion;
+            IList<ClsLlamadaTelefonica> ListaLlamadas = (IList<ClsLlamadaTelefonica>)res.ObjetoTransaccion;            
 
             this.gridLlamadas.DataSource = null;
             this.gridLlamadas.DataSource = ListaLlamadas;

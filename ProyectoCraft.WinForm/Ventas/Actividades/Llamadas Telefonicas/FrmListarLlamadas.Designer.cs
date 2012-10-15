@@ -57,13 +57,13 @@
             this.gridCliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridTema = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.gridVendedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridUsuarioCrea = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridEntradaSalida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridImportancia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridTipoProducto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.toolStripBarraListarLlamada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpBusquedasPredeterminadas)).BeginInit();
             this.grpBusquedasPredeterminadas.SuspendLayout();
@@ -449,6 +449,14 @@
             this.gridDescripcion.VisibleIndex = 3;
             this.gridDescripcion.Width = 120;
             // 
+            // repositoryItemMemoExEdit1
+            // 
+            this.repositoryItemMemoExEdit1.AutoHeight = false;
+            this.repositoryItemMemoExEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemMemoExEdit1.Name = "repositoryItemMemoExEdit1";
+            this.repositoryItemMemoExEdit1.ShowIcon = false;
+            // 
             // gridVendedor
             // 
             this.gridVendedor.Caption = "Vendedor";
@@ -513,14 +521,6 @@
             this.gridTipoProducto.Visible = true;
             this.gridTipoProducto.VisibleIndex = 1;
             this.gridTipoProducto.Width = 98;
-            // 
-            // repositoryItemMemoExEdit1
-            // 
-            this.repositoryItemMemoExEdit1.AutoHeight = false;
-            this.repositoryItemMemoExEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemMemoExEdit1.Name = "repositoryItemMemoExEdit1";
-            this.repositoryItemMemoExEdit1.ShowIcon = false;
             // 
             // FrmListarLlamadas
             // 

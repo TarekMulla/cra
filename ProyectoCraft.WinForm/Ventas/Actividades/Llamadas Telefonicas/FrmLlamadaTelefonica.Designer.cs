@@ -41,7 +41,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.TxtDescription = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.lblllamada = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -248,13 +248,13 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
             this.labelControl5.TabIndex = 15;
             this.labelControl5.Text = "Cliente/Target:";
             // 
-            // labelControl2
+            // lblllamada
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 322);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(43, 13);
-            this.labelControl2.TabIndex = 14;
-            this.labelControl2.Text = "Llamada:";
+            this.lblllamada.Location = new System.Drawing.Point(12, 322);
+            this.lblllamada.Name = "lblllamada";
+            this.lblllamada.Size = new System.Drawing.Size(43, 13);
+            this.lblllamada.TabIndex = 14;
+            this.lblllamada.Text = "Llamada:";
             // 
             // labelControl1
             // 
@@ -953,7 +953,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.TxtDescription);
             this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.lblllamada);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.toolStripBarraLlamada);
             this.Controls.Add(this.groupBox2);
@@ -1025,7 +1025,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
         private System.Windows.Forms.ToolStripButton MenuCrearOportunidad;
         private DevExpress.XtraEditors.MemoEdit TxtDescription;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblllamada;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;

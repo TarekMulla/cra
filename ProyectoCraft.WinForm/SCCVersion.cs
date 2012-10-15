@@ -7,6 +7,6 @@ namespace SCCMultimodal
 {
     public static class SCCVersion
     {
-        public const String CurrentVersion = "1.5.1.10";
+        public const String CurrentVersion = "1.5.1.11";
     }
 }

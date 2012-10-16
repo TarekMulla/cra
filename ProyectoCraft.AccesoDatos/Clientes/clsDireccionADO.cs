@@ -165,7 +165,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes
                 objParams[6].Value = direccion.Comuna.Id;
                 objParams[7].Value = direccion.Ciudad.Id;
                 objParams[8].Value = direccion.Pais.Id;
-                if(direccion.Pais == null)
+                if (direccion.Sector == null)
                     objParams[9].Value = -1;
                 else
                     objParams[9].Value = direccion.Sector.Id;

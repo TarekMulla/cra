@@ -172,16 +172,16 @@
   <data name="MenuBitacora.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIiSURBVDhPpdLPbxJBFAdwTPXiwfSi1kNNjBebaGLjatTa
-        2hRJkdj6I5S0iK3GYoINpVHBulFfDE1oVVCgwKZbFLAIWXG1sDdvPffAoendm/+Bt2+cGQRbSI2JJJ8s
-        y877vjfDmszLP9bHaAUOymGYMhikNPpJxVlS0D2bxLHpOI64ozjkiqD9xmvstS1gjzmEtj6CSSqtm3gx
-        kQGZ8TFuZowZYgYYSTbQ5TPQeddAu8PAbltNm0XHrjMs5BHlQTEDFGbmmSDDCltVWJMKHlJZmCEd3U4W
-        QCygXK78E03TUVcofIKH/iMgv6LVAz5s657+oiK2GhGKXwuNZ1u78+/ZbAH3ahP8CUisRkFFGXLeLdAC
-        iYXNo/PfuMlawPtGF9IJs9kJyKpLcL7qBaWmQMszDR66hehSaueAqXdXcTN+Dq7EZXjCV8SVm1AtcC5a
-        4Iifxn1lBF5lFNdjfa0TuJOXYEmdEosow7o3eZ67CPpMCDJ8TcsWeIA9eV5sIaDaW3iXJFBhmgXfRi8F
-        mgJKJIr5yDyIj8vv+bVuJNIFHsK31+8Xh6iKQ+QnTUUS4w+GTqJn7uiO+PMAPYDdxwLM85vVSWWzOv5m
-        o3pNX/zueTsOUgmU/i1HCH0MIlJ8Cf43K6UEhtaGfx63PdnoGMhUTVs/j9fSrjs0yt55fwO9eAaaY2Fc
-        qEbynwhbrdZ924r5jfZNO3zwwn5vR8+Bp38jSVJnvfgXZ3JieesvP/QAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVDhPpdLfT1JhGAdwmnXTRfOmsgvbWje51Zbr1CrT
+        nMQklvZjyJRIa0kbOcRVkLHqabgRlUwgfuQJE5JgoJhwLrvz2gsunPfd9R90913P+xKkMFtbbJ8dDud9
+        vs/zvhydPvljY4SWYKE0BmkR/ZREL6k4Twl0TsdwYjKCY/YQjtiCaL31DvtNAezT+9HSQ9ApKxs6UUyk
+        wctczM5G2ADrY4pXQ4dLQ/t9Da0WDXtNVS2GIvac45AnlAGFNdAse818jAublblJGY+pJE1REZ1WDiAO
+        KJXK/ySfL6Immy3AQf8RkFnK1wI+7+ieXFURXgtKua/Z+rPt3cX3VCqLB9UJ/gRE10KgnBfejF2iAMmF
+        jaOL34TxasCnehcqEqZTY/CqNsn6thsUnwB9nKpz0B2E5uO7B0wsXMftyAXYolfhmL0mr8KYaoD1vQGW
+        yFk8TAzBmRjGzXBP8wT22BUY4mfkIlrk7g1epi+DVgg+JtY0bUEEmGMX5RY8qrmJc14BZSc5+C66ydMQ
+        sEyyWIwsgsS44l5ca4aCHRAhYnu9bnmIqjxEcdKUIzl+v/80umaO70o899AjmF0coA9sVcY/bFVG5zYr
+        N1aj3x1zoyCVQMnf0gT/Fx+CuTcQf3NiOYqB9cGfJ03PNtv6UhXd9s/T9QXbPRrmd95dR69egGY4TPBX
+        Ke5TQaPReGBHsbgpfCscPXzpoLOt69Dzv1EUpb1W/AsmYWEZHfC/cAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="MenuSalir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

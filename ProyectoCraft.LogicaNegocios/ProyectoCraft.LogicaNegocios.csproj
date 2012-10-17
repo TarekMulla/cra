@@ -58,6 +58,7 @@
     <Compile Include="Direccion\Metas\clsMeta.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadNegocio.cs" />
     <Compile Include="Emails\clsEmails.cs" />
+    <Compile Include="Log\ClsLogPerformance.cs" />
     <Compile Include="PanelDeControl\clsPanelDeControl.cs" />
     <Compile Include="Paperless\Paperless.cs" />
     <Compile Include="Parametros\clsParametros.cs" />

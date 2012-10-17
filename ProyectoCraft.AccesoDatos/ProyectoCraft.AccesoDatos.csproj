@@ -72,7 +72,8 @@
     <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />
     <Compile Include="Emails\EmailsADO.cs" />
-    <Compile Include="LogActividades\clsLogActividadUsuariosADO.cs" />
+    <Compile Include="Log\clsLogActividadUsuariosADO.cs" />
+    <Compile Include="Log\ClsLogPerformanceADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
     <Compile Include="Paperless\clsPaperlessADO.cs" />
     <Compile Include="Parametros\ClsNavierasDAO.cs" />

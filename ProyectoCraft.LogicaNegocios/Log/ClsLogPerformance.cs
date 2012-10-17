@@ -1,4 +1,4 @@
-﻿using ProyectoCraft.AccesoDatos.Log;
+﻿using ProyectoCraft.AccesoDatos.LogPerfomance;
 using ProyectoCraft.Entidades.Log;
 
 namespace ProyectoCraft.LogicaNegocios.Log {

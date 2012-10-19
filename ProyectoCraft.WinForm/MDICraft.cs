@@ -6,8 +6,10 @@ using System.Security.Principal;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
 using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Perfiles;
 using ProyectoCraft.Entidades.Usuarios;
+using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Usuarios;
 using ProyectoCraft.WinForm.Direccion.Administracion;
 using ProyectoCraft.WinForm.Paperless.Asignacion;
@@ -141,28 +143,28 @@ namespace ProyectoCraft.WinForm {
             toolStripSplitButton1.Alignment = ToolStripItemAlignment.Right;
             toolStripDropDownButton1.Alignment = ToolStripItemAlignment.Right;
 
-            if (panelDecontrols.Count==0) {
+            if (panelDecontrols.Count == 0) {
                 toolStripSplitButton2.Visible =
                     toolStripSplitButton1.Visible =
                     toolStripDropDownButton1.Visible = false;
                 timer2.Stop();
             }
 
-            if (panelDecontrols.Count == 1) 
-                    toolStripDropDownButton1.Visible = false;
+            if (panelDecontrols.Count == 1)
+                toolStripDropDownButton1.Visible = false;
 
             if (panelDecontrols.Count > 0) {
                 try {
                     panelDeControlSeleccionado = panelDecontrols[0];
                     GenerarPanelDeControl();
-                }catch(Exception ex) {
+                } catch (Exception ex) {
                     Console.Write(ex);
                 }
             }
 
-       /*     var form = Form1.Instancia;
-            form.MdiParent = this;
-            form.Show();*/
+            /*     var form = Form1.Instancia;
+                 form.MdiParent = this;
+                 form.Show();*/
         }
 
         public void ChangePanelDeControl(object sender, EventArgs e) {
@@ -265,10 +267,9 @@ namespace ProyectoCraft.WinForm {
                 if (clsPerfil.Id != (int)Enums.UsuariosCargo.Customer_Service && clsPerfil.Id != (int)Enums.UsuariosCargo.Vendedor) {
                     MenuPaperlessGestion.Visible = true;
                 }
-                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
-                {
+                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString())) {
                     MantComunas.Visible = true;
-                    MantNavieras.Visible = true;                    
+                    MantNavieras.Visible = true;
                 }
 
             }
@@ -343,22 +344,26 @@ namespace ProyectoCraft.WinForm {
                         Base.Usuario.UsuarioConectado.Usuario.Perfiles = perfiles;
                     }
 
-                    UsuarioConectadoBar.Text = usuarioConectado;                    
+                    UsuarioConectadoBar.Text = usuarioConectado;
                     UsuarioConectadoBar.Alignment = ToolStripItemAlignment.Right;
                 }
             }
         }
 
         private void MenuTarget_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.Target.frmListarTarget form = Clientes.Target.frmListarTarget.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void MenuMiCalendario_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+        private void MenuCalendario_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Calendarios.frmCalendario form = Calendarios.frmCalendario.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
 
@@ -380,44 +385,56 @@ namespace ProyectoCraft.WinForm {
                 this.statusMensaje.Text = "Registro fue cambiado de estado exitosamente";
         }
 
-        private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+        private void MenuCalendarioCompartido_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             //Calendarios.CalendarioCompartido form = Calendarios.CalendarioCompartido.Instancia;
             Calendarios.frmCalendarioCompartido form = Calendarios.frmCalendarioCompartido.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem2_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+        private void MenuCambiarCuenta_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.Cuenta.frmListarCuenta form = Clientes.Cuenta.frmListarCuenta.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+        private void MenuListarContacto_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.Contacto.frmListarContacto form = Clientes.Contacto.frmListarContacto.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuEnviareMailCliente_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Ventas.Actividades.EMail.FrmNuevoMail form = Ventas.Actividades.EMail.FrmNuevoMail.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuRegistrarLlamada_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             //Ventas.Actividades.Llamadas_Telefonicas.FrmLlamadaTelefonica form = Ventas.Actividades.Llamadas_Telefonicas.FrmLlamadaTelefonica.Instancia;
             //form.MdiParent = this;
             //form.Show();
             Ventas.Actividades.Llamadas_Telefonicas.FrmListarLlamadas form = Ventas.Actividades.Llamadas_Telefonicas.FrmListarLlamadas.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuConsultarDueda_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Direccion.Administracion.frmConsultarDEuda form = Direccion.Administracion.frmConsultarDEuda.Instancia;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmConsultarDEuda form = Direccion.Administracion.frmConsultarDEuda.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
 
@@ -431,113 +448,142 @@ namespace ProyectoCraft.WinForm {
         }
 
         private void MenuDefinirLineaCredito_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Direccion.Administracion.frmDefinirLineaCredito form = Direccion.Administracion.frmDefinirLineaCredito.Instancia;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmDefinirLineaCredito form = Direccion.Administracion.frmDefinirLineaCredito.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuConsultarLineaCredito_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Direccion.Administracion.frmLineaCreditoClientes form = Direccion.Administracion.frmLineaCreditoClientes.Instancia;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmLineaCreditoClientes form = Direccion.Administracion.frmLineaCreditoClientes.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuConsultarVisitas_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Calendarios.frmConsultarVisitas form = Calendarios.frmConsultarVisitas.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+        private void MenuTargetAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
             form.MdiParent = this;
             form.IdTargetSource = 15;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
-        private void MantenedorNavieras_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
+        private void MantenedorNavieras_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
             //Clientes.TargetAccount.frmTargetAccount form = Clientes.TargetAccount.frmTargetAccount.Instancia;
             form.MdiParent = this;
             //form.IdTargetSource = 15;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuDefinirTarget_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Direccion.Metas.frmDefinirMeta form = Direccion.Metas.frmDefinirMeta.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuTargets_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Ventas.Metas.frmRevisarAsigMetas form = Ventas.Metas.frmRevisarAsigMetas.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuGestionTarger_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Direccion.Metas.frmGestionarMetas form = Direccion.Metas.frmGestionarMetas.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem5_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Paperless.Asignacion.frmListaAsignaciones form = new frmListaAsignaciones();
+        private void MenuListarAsignaciones_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            var form = new frmListaAsignaciones();
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem6_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            //Paperless.Usuario1.frmPaperlessUser1 form = new frmPaperlessUser1();
-            //form.MdiParent = this;
-            //form.Show();
-
-            Paperless.Usuario1.frmListarUsuario1 form = frmListarUsuario1.Instancia;
+        private void MenuListarUsuario1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmListarUsuario1 form = frmListarUsuario1.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void navBarItem7_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Paperless.Usuario2.frmListarUsuario2 form = new frmListarUsuario2();
+        private void MenuListarUsuario2_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmListarUsuario2 form = new frmListarUsuario2();
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuPaperlessAsignar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
-            Paperless.Asignacion.frmPaperlessAsignacion form = Paperless.Asignacion.frmPaperlessAsignacion.Instancia;
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            frmPaperlessAsignacion form = Paperless.Asignacion.frmPaperlessAsignacion.Instancia;
             form.Accion = Enums.TipoAccionFormulario.Nuevo;
             form.ShowDialog();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuPaperlessGestion_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Paperless.Gestion.frmGestionPaperless form = Paperless.Gestion.frmGestionPaperless.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
 
         private void MenuDefinirSLead_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Direccion.Metas.frmDefinirSLead form = Direccion.Metas.frmDefinirSLead.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MenuGestionSLead_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Direccion.Metas.frmGestionarSLead form = Direccion.Metas.frmGestionarSLead.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void MenuSalesLead_LinkClicked(object sender, NavBarLinkEventArgs e) {
+        private void MenuAsignacionSLead_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Ventas.Metas.frmRevisarAsigSalesLead form = Ventas.Metas.frmRevisarAsigSalesLead.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void MenuAgentes_click(object sender, NavBarLinkEventArgs e) {
+        private void MenuDefinirAgentes_click(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             var form = frmDefinirAgente.Instancia;
             form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void timer2_tick(object sender, EventArgs e) {
@@ -572,11 +618,12 @@ namespace ProyectoCraft.WinForm {
             GenerarPanelDeControl();
         }
 
-        private void MantenedorComunas_LinkClicked(object sender, NavBarLinkEventArgs e)
-        {
-            Clientes.frmComunas form = Clientes.frmComunas.Instancia;            
-            form.MdiParent = this;            
+        private void MantenedorComunas_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            Clientes.frmComunas form = Clientes.frmComunas.Instancia;
+            form.MdiParent = this;
             form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
     }
 }

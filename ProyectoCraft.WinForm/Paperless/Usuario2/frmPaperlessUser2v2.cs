@@ -258,80 +258,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
             PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
             grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
             grdExcepciones.RefreshDataSource();
-
         }
 
-        //private void RecibirAperturaEmbarcador()
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt.Columns.Add(new DataColumn("Embarcador"));
-        //    dt.Columns.Add(new DataColumn("Recibido"));
 
-        //    DataRow dr = dt.NewRow();
-        //    dr["Embarcador"] = "Embarcador A";
-        //    dr["Recibido"] = "true";
-        //    dt.Rows.Add(dr);
-
-        //    dr = dt.NewRow();
-        //    dr["Embarcador"] = "Embarcador B";
-        //    dr["Recibido"] = "false";
-        //    dt.Rows.Add(dr);
-
-        //    grdRecibirAperturaEmb.DataSource = dt;
-        //}
-
-        private void Contactarembarcador() {
-            DataTable dt = new DataTable();
-            dt.Columns.Add(new DataColumn("Embarcador"));
-            dt.Columns.Add(new DataColumn("Contactado"));
-
-            DataRow dr = dt.NewRow();
-            dr["Embarcador"] = "Embarcador A";
-            dr["Contactado"] = "true";
-            dt.Rows.Add(dr);
-
-            dr = dt.NewRow();
-            dr["Embarcador"] = "Embarcador B";
-            dr["Contactado"] = "false";
-            dt.Rows.Add(dr);
-
-            grdContactarembarcador.DataSource = dt;
-        }
-
-        private void RegistrarExcepciones() {
-            DataTable dt = new DataTable();
-            dt.Columns.Add(new DataColumn("HBL"));
-            dt.Columns.Add(new DataColumn("Cliente"));
-            dt.Columns.Add(new DataColumn("TipoCliente"));
-            dt.Columns.Add(new DataColumn("Freehand"));
-            dt.Columns.Add(new DataColumn("RecargoCollect"));
-            dt.Columns.Add(new DataColumn("Sobrevalor"));
-            dt.Columns.Add(new DataColumn("Aviso"));
-
-            DataRow dr = dt.NewRow();
-            dr["HBL"] = "11111";
-            dr["Cliente"] = "Cliente A";
-            dr["TipoCliente"] = "Embarcador";
-            dr["Freehand"] = "false";
-            dr["RecargoCollect"] = "false";
-            dr["Sobrevalor"] = "false";
-            dr["Aviso"] = "false";
-            dt.Rows.Add(dr);
-
-            dr = dt.NewRow();
-            dr["HBL"] = "2222";
-            dr["Cliente"] = "Cliente B";
-            dr["TipoCliente"] = "Directo";
-            dr["Freehand"] = "false";
-            dr["RecargoCollect"] = "false";
-            dr["Sobrevalor"] = "false";
-            dr["Aviso"] = "false";
-            dt.Rows.Add(dr);
-
-
-
-            grdExcepciones.DataSource = dt;
-        }
 
         protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e) {
             pnlExcepciones.Visible = false;
@@ -376,8 +305,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
-                    ResultadoTransaccion resultado =
-                        LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
+                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxionesV2(excepciones, pasoSeleccionado);
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
                         Log.Info(" btnP1GuardarExcepciones_Click Rechazada");
@@ -552,7 +480,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                     }
                 }
             }
-
         }
 
         private void btnReenviarCorreoTermino_Click(object sender, EventArgs e) {
@@ -603,6 +530,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                         hoses.TipoReciboAperturaEmbarcador = hoses.Cliente.Cuenta.TipoReciboAperturaEmbarcador;
                     }
                 }
+            }
+        }
+
+        private void gridView1_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e) {
+            var foo = sender as GridView;
+            DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
+            var lista = foo.DataSource as IList<PaperlessExcepcion>;
+            var itemSelecccionado = lista[foo.FocusedRowHandle];
+            if (foo.FocusedColumn.FieldName.Equals("Comentario")) {
+                if (!itemSelecccionado.TipoExcepcion.Id.Equals(6)) {
+                    e.Cancel = true;
+                }                
             }
         }
 

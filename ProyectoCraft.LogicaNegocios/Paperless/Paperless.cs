@@ -249,6 +249,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxiones(excepciones, paso);
         }
 
+        public static ResultadoTransaccion Usuario2IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso) {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxionesV2(excepciones, paso);
+        }
         public static IList<PaperlessUsuario1HousesBL> ObtenerEmbarcadores(IList<PaperlessUsuario1HousesBL> listparaembarcadores )
         {
             List<PaperlessUsuario1HousesBL> housesembarcadoressource = new List<PaperlessUsuario1HousesBL>(listparaembarcadores);

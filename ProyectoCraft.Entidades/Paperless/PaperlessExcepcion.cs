@@ -32,5 +32,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public bool TieneExcepcion { get; set; }
         public PaperlessTipoExcepcion TipoExcepcion { set; get; }
         public PaperlessTipoResponsabilidad Responsabilidad { get; set; }
+
+        public String Comentario { get; set; }
     }
 }

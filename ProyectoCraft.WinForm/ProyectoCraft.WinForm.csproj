@@ -847,6 +847,9 @@
     <Content Include="Panel de control\Controles\control1_0.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Panel de control\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Panel de control\Controles\SemaforosAceptados.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

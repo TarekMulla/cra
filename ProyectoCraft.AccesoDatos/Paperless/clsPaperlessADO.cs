@@ -1873,35 +1873,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion Usuario2ActualizaExcepcionV2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam) {
-            resTransaccion = new ResultadoTransaccion();
-            try {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO2_EXCEPCIONES_V2");
-                objParams[0].Value = excepcion.RecargoCollect;
-                objParams[1].Value = excepcion.RecargoCollectResuelto;
-                objParams[2].Value = excepcion.SobreValorPendiente;
-                objParams[3].Value = excepcion.SobreValorPendienteResuelto;
-                objParams[4].Value = excepcion.AvisoNoEnviado;
-                objParams[5].Value = excepcion.AvisoNoEnviadoResuelto;
-                objParams[6].Value = excepcion.Id;
-                objParams[7].Value = excepcion.Comentario;
-
-
-                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO2_EXCEPCIONES_V2", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                command.ExecuteNonQuery();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-
         public static IList<PaperlessTipoCarga> ListarTipoCarga(Enums.Estado activo) {
             PaperlessTipoCarga tipo = null;
             IList<PaperlessTipoCarga> tipos = new List<PaperlessTipoCarga>();
@@ -2161,39 +2132,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 //Registrar excepciones
                 foreach (var excepcion in excepciones) {
                     resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-                //cambiar estado paso
-                resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-        public static ResultadoTransaccion Usuario2IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-
-            try {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-                    resultado = Usuario2ActualizaExcepcionV2(excepcion, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
                 }
@@ -2942,6 +2880,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 else
                     objParams[2].Value = -1;
                 objParams[3].Value = excepcion.Id;
+
+                objParams[4].Value = excepcion.Comentario;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
                 command.Parameters.AddRange(objParams);

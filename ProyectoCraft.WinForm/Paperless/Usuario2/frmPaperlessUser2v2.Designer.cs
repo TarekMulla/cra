@@ -344,7 +344,7 @@
             this.gridColumn10.FieldName = "SobreValorPendienteResuelto";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 4;
+            this.gridColumn10.VisibleIndex = 5;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -399,8 +399,9 @@
             this.gridColumn23.ColumnEdit = this.repositoryItemMemoExEdit1;
             this.gridColumn23.FieldName = "Comentario";
             this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 5;
+            this.gridColumn23.VisibleIndex = 4;
             // 
             // repositoryItemMemoExEdit1
             // 

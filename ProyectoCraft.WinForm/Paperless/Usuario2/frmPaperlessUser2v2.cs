@@ -305,7 +305,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
-                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxionesV2(excepciones, pasoSeleccionado);
+                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
                         Log.Info(" btnP1GuardarExcepciones_Click Rechazada");

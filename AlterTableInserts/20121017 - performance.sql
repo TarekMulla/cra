@@ -92,3 +92,23 @@ LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.tipoExcepcion= b.id
 LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id
 where A.id=@IdExcepcion  
 GO
+
+
+
+
+
+/*NUEVOS SCRIPT*/
+ALTER  PROCEDURE [dbo].[SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2]
+@TieneExcepciones bit,
+@TipoExcepcion bigint,
+@TipoResponsabilidad bigint,
+@IdExcepcion bigint,
+@comentario varchar(300)
+AS                                    
+UPDATE PAPERLESS_USUARIO1_EXCEPCIONES
+SET TieneExcepciones = @TieneExcepciones,TipoExcepcion=@TipoExcepcion, TipoResponsabilidad=@TipoResponsabilidad, comentario=@comentario
+WHERE Id = @IdExcepcion   
+
+
+drop procedure SP_U_PAPERLESS_USUARIO2_EXCEPCIONES_V2
+GO

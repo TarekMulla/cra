@@ -234,7 +234,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             panelDisputas.Visible = true;
             var disputas = LogicaNegocios.Paperless.Paperless.ObtieneDisputas(PaperlessAsignacionActual);
             GridDisputas.DataSource = disputas;
-            GridDisputas.RefreshDataSource();   
+            GridDisputas.RefreshDataSource();
         }
 
         private void CargarPaso2TransitoTransbordo() {
@@ -785,6 +785,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             if (!itemSelecccionado.TieneExcepcion) {
                 itemSelecccionado.TipoExcepcion = null;
                 itemSelecccionado.Responsabilidad = null;
+                itemSelecccionado.Comentario = String.Empty;
             }
 
             if (foo.FocusedColumn.FieldName.Equals("TipoExcepcion")) {
@@ -815,6 +816,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
                 }
             }
+            
         }
 
         private void sButtonAgregarDisputa_Click(object sender, EventArgs e) {
@@ -873,15 +875,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             var val = ValidateDisputas();
             if (!val) {
                 LabelErrorDisputa.Visible = true;
-            }else {
+            } else {
                 //Guardar las disputas
                 Cursor.Current = Cursors.WaitCursor;
                 IList<PaperlessUsuario1Disputas> disputas = (IList<PaperlessUsuario1Disputas>)GridDisputas.DataSource;
                 PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(11);
                 pasoSeleccionado.Estado = true;
                 var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaDisputas(disputas, PaperlessAsignacionActual, pasoSeleccionado);
-                
-                
+
+
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
                     Cursor.Current = Cursors.Default;
                     MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -893,6 +895,25 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     //btnP1GuardarHousesBL.Enabled = false;
                 }
 
+            }
+        }
+
+        private void gridView1_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e) {
+            var foo = sender as GridView;
+            DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
+            var lista = foo.DataSource as IList<PaperlessExcepcion>;
+            var itemSelecccionado = lista[foo.FocusedRowHandle];
+
+            if (foo.FocusedColumn.FieldName.Equals("Comentario")) {
+                if (itemSelecccionado.TieneExcepcion) {
+                    if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Id.Equals(6)) {
+                        e.Cancel = false;
+                    } else {
+                        e.Cancel = true;
+                    }
+                } else {
+                    e.Cancel = true;
+                }
             }
         }
 

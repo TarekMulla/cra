@@ -108,7 +108,7 @@ AS
 UPDATE PAPERLESS_USUARIO1_EXCEPCIONES
 SET TieneExcepciones = @TieneExcepciones,TipoExcepcion=@TipoExcepcion, TipoResponsabilidad=@TipoResponsabilidad, comentario=@comentario
 WHERE Id = @IdExcepcion   
-
+GO
 
 drop procedure SP_U_PAPERLESS_USUARIO2_EXCEPCIONES_V2
 GO

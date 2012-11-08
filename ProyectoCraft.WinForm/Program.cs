@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using ProyectoCraft.Base.Log;
 
 
 namespace ProyectoCraft.WinForm
@@ -19,6 +20,7 @@ namespace ProyectoCraft.WinForm
             //try
             //{          
                 log4net.Config.XmlConfigurator.Configure();
+                Log.EscribirLog("Iniciando la Aplicacion....");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                               

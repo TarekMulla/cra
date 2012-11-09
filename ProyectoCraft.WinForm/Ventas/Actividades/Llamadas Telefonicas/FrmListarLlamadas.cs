@@ -178,8 +178,10 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
         private void FrmListarLlamadas_Load(object sender, EventArgs e)
         {
             IdUsuario = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id;
-            CargarComboClientesTodos(IdUsuario, "");
-            CargarComboContactos(-1,"-1",-1,-1);
+            /*SOLO PARA TEST
+             * 
+             * CargarComboClientesTodos(IdUsuario, "");
+            CargarComboContactos(-1,"-1",-1,-1);*/
             this.dateInicio.DateTime = System.DateTime.Now; 
             this.dateHasta.DateTime = System.DateTime.Now;
         }

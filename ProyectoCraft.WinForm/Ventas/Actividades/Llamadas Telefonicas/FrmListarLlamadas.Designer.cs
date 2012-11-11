@@ -1,4 +1,8 @@
-﻿namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
+﻿using System.Diagnostics;
+using ProyectoCraft.Entidades.Log;
+using ProyectoCraft.LogicaNegocios.Log;
+
+namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
 {
     partial class FrmListarLlamadas
     {
@@ -26,8 +30,10 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        [DebuggerStepThrough]
         private void InitializeComponent()
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListarLlamadas));
             this.toolStripBarraListarLlamada = new System.Windows.Forms.ToolStrip();
             this.MenuCrearLlamada = new System.Windows.Forms.ToolStripButton();
@@ -557,7 +563,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         #endregion

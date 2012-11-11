@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using ProyectoCraft.AccesoDatos.LogPerfomance;
 using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Entidades.Clientes.Contacto;
 using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Entidades.Ventas.Actividades;
 using ProyectoCraft.Entidades.Ventas.Productos;
@@ -158,9 +160,11 @@ namespace ProyectoCraft.AccesoDatos.Clientes
         {
             clsClienteMaster master = null;
             IList<clsClienteMaster> listMaster = new List<clsClienteMaster>();
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             try
             {
                 //Abrir Conexion
+                
                 conn = BaseDatos.NuevaConexion();
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_CLIENTE_MASTER");
@@ -172,7 +176,8 @@ namespace ProyectoCraft.AccesoDatos.Clientes
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
-
+                ClsLogPerformanceADO.SaveFromADO(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds, "Consultando SP_C_CLIENTE_MASTER"));
+                timer = System.Diagnostics.Stopwatch.StartNew();
                 while (dreader.Read())
                 {
                     master = new clsClienteMaster(mostrarNombreFantasia);
@@ -200,6 +205,8 @@ namespace ProyectoCraft.AccesoDatos.Clientes
                     listMaster.Add(master);
                 }
 
+                
+
             }
             catch (Exception ex)
             {
@@ -212,6 +219,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes
                 conn.Close();
             }
 
+            ClsLogPerformanceADO.SaveFromADO(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds, "llenando objetos del resultado de SP_C_CLIENTE_MASTER"));
             return listMaster;
         }
         

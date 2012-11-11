@@ -10,6 +10,11 @@ namespace ProyectoCraft.Entidades.Log {
             Usuario = usuario;
             Tiempo = tiempo;
         }
+        public LogPerformance(Usuarios.clsUsuario usuario, Double tiempo,String accion) {
+            Usuario = usuario;
+            Tiempo = tiempo;
+            Accion = accion;
+        }
 
         public Usuarios.clsUsuario Usuario { set; get; }
         public String Modulo{ set; get; }

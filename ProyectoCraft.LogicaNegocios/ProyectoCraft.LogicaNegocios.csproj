@@ -76,6 +76,10 @@
       <Project>{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}</Project>
       <Name>ProyectoCraft.AccesoDatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">
+      <Project>{37053216-ACFD-4932-94EF-49F874307A2C}</Project>
+      <Name>ProyectoCraft.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProyectoCraft.Entidades\ProyectoCraft.Entidades.csproj">
       <Project>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</Project>
       <Name>ProyectoCraft.Entidades</Name>

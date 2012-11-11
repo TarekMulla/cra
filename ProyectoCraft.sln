@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.AccesoDatos", "ProyectoCraft.AccesoDatos\ProyectoCraft.AccesoDatos.csproj", "{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCraft.LogicaNegocios", "ProyectoCraft.LogicaNegocios\ProyectoCraft.LogicaNegocios.csproj", "{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{37053216-ACFD-4932-94EF-49F874307A2C} = {37053216-ACFD-4932-94EF-49F874307A2C}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Form", "Form", "{68ACFE59-0C89-420B-8FD8-51D01A220186}"
 EndProject

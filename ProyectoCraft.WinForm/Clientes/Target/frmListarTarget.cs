@@ -26,10 +26,11 @@ namespace ProyectoCraft.WinForm.Clientes.Target
         {
             get
             {
-                if (_form == null)
+                if (_form == null) {
+                    
                     _form = new frmListarTarget();
-                
-                 return _form;
+                }
+                return _form;
             }
             set
             {

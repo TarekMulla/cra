@@ -541,8 +541,8 @@ namespace ProyectoCraft.WinForm {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             frmPaperlessAsignacion form = Paperless.Asignacion.frmPaperlessAsignacion.Instancia;
             form.Accion = Enums.TipoAccionFormulario.Nuevo;
-            form.ShowDialog();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+            form.ShowDialog();
         }
 
         private void MenuPaperlessGestion_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {

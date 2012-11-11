@@ -12,6 +12,15 @@ namespace ProyectoCraft.AccesoDatos.LogPerfomance {
     public class ClsLogPerformanceADO {
         private static SqlParameter[] objParams = null;
 
+        public static void SaveFromADO(LogPerformance logPerformance) {
+            var st = new System.Diagnostics.StackTrace();
+            if (String.IsNullOrEmpty(logPerformance.Accion))
+                logPerformance.Accion = st.GetFrame(1).GetMethod().Name;
+            if (String.IsNullOrEmpty(logPerformance.Modulo))
+                logPerformance.Modulo = st.GetFrame(1).GetMethod().ReflectedType.FullName;
+            Save(logPerformance);
+        }
+
         public static void Save(LogPerformance logPerformance) {
             var res = new ResultadoTransaccion();
             var conn = BaseDatos.NuevaConexion();

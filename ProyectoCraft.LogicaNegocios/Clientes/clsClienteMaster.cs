@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using ProyectoCraft.Entidades.Clientes;
 using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Ventas.Productos;
 using ProyectoCraft.AccesoDatos.Clientes;
+using ProyectoCraft.LogicaNegocios.Log;
 
 namespace ProyectoCraft.LogicaNegocios.Clientes
 {
@@ -18,8 +20,12 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
 
         public static IList<clsClienteMaster> ListarClienteMaster(string busqueda, Enums.TipoPersona tipo, Enums.Estado estado, bool MostrarNombreFantasia)
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             if (busqueda == "") busqueda = "-1";
-            return clsClienteMasterADO.ListarClienteMaster(busqueda, tipo, estado,MostrarNombreFantasia);
+            var retorno = clsClienteMasterADO.ListarClienteMaster(busqueda, tipo, estado,MostrarNombreFantasia);
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+            return retorno;
+
         }
 
         //public static IList<clsClienteMaster> ListarClientesMasterCF(string busqueda, Enums.TipoPersona tipo, Enums.Estado estado)

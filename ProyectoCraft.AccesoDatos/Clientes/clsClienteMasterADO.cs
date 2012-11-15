@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using ProyectoCraft.AccesoDatos.LogPerfomance;
 using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Entidades.Clientes.Contacto;
 using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Log;
-using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Entidades.Ventas.Actividades;
-using ProyectoCraft.Entidades.Ventas.Productos;
 using ProyectoCraft.Entidades.Clientes;
 using ProyectoCraft.Base.BaseDatos;
 using System.Data;
 using Microsoft.ApplicationBlocks.Data;
-using ProyectoCraft.Base;
 using System.Reflection;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Enums;
@@ -163,9 +158,8 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                 timer = System.Diagnostics.Stopwatch.StartNew();
                 while (dreader.Read()) {
                     var idMaster = Convert.ToInt64(dreader[0]);
-                    /*var masterEncontrado = listMaster.Find(
-                        foo => foo.Id.Equals(idMaster));*/
-                    clsClienteMaster masterEncontrado = null;
+                    var masterEncontrado = listMaster.Find(
+                        foo => foo.Id.Equals(idMaster));
                     if (masterEncontrado == null) {
                         var master = new clsClienteMaster(mostrarNombreFantasia);
                         master.Id = idMaster;

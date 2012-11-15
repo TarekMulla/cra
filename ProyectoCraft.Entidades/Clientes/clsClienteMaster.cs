@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using ProyectoCraft.Entidades.Clientes.Contacto;
-using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Clientes.Direcciones;
-using ProyectoCraft.Entidades.Clientes.Target;
 using ProyectoCraft.Entidades.Parametros;
-using ProyectoCraft.Entidades.Ventas.Productos;
 using ProyectoCraft.Entidades.GlobalObject;
 
 namespace ProyectoCraft.Entidades.Clientes

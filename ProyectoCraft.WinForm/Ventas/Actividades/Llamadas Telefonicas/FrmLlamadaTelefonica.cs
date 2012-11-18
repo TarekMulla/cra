@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
 using ProyectoCraft.Entidades.Ventas.Actividades.Llamadas_Telefonicas;
@@ -434,6 +435,14 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
 
         private void FrmLlamadaTelefonica_Load(object sender, EventArgs e)
         {
+            string[] l = null;
+            if (System.Configuration.ConfigurationSettings.AppSettings.Get("Administrador") != null)
+                l = System.Configuration.ConfigurationSettings.AppSettings.Get("Administrador").Split(',');
+            if (l != null)
+            {
+                var super = l.Select(s => Convert.ToInt64(s)).ToList();
+            //Base.Usuario.UsuarioConectado.Usuario.Cargos.Contains((new  clsUsuarioCargo(23,"Administrador"))))                                      
+
             IdUsuario = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id;
 
             repositoryItemComboBox1.Items.Clear();
@@ -450,7 +459,9 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
                 CargarComboTodosClientes(IdUsuario, "");
                 CargarComboContactos(-1, "-1", -1, -1);
                 this.DtFechaHora.DateTime = ObjLlamadaTelefonica.FechaHora;
-                if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) || ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id))
+                if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) || 
+                    ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id)||
+                    super.Contains(Base.Usuario.UsuarioConectado.Usuario.Id))                    
                 {
                     TxtDescription.Enabled = true;
                     TxtDescription.Text = ObjLlamadaTelefonica.Descripcion;
@@ -517,6 +528,7 @@ namespace ProyectoCraft.WinForm.Ventas.Actividades.Llamadas_Telefonicas
                 CargarComboTiposProductos("", "S");
             }
             LimpiaFormFollowUp();
+            }
         }
 
         private void MenuSalir_Click(object sender, EventArgs e)

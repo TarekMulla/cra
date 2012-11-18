@@ -279,6 +279,10 @@ namespace ProyectoCraft.AccesoDatos.Ventas.Actividades.Llamadas_Telefonicas
 
         public static ResultadoTransaccion ListarLlamadas(DateTime FechaInicio, DateTime FechaTermino, long IdContacto, long IdClienteMaster, long IdUsuario, int TipoSelect)
         {
+            string[] l = null;
+            if (System.Configuration.ConfigurationSettings.AppSettings.Get("Administrador") != null)
+                l = System.Configuration.ConfigurationSettings.AppSettings.Get("Administrador").Split(',');
+            
             ResultadoTransaccion res = new ResultadoTransaccion();
             IList<ClsLlamadaTelefonica> ListaLlamadas = new List<ClsLlamadaTelefonica>();
             try
@@ -358,8 +362,14 @@ namespace ProyectoCraft.AccesoDatos.Ventas.Actividades.Llamadas_Telefonicas
                         ObjLlamadaTelefonica.ObjTipoProducto.Id = Convert.ToInt32(dreader[16]);
                         ObjLlamadaTelefonica.ObjTipoProducto.Nombre = dreader[17].ToString();
                     }
-
-                    if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) || ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id))
+            
+            if (l != null)
+            {
+                var super = l.Select(s => Convert.ToInt64(s)).ToList();
+            
+                    if (ObjLlamadaTelefonica.ObjUsuario.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id) 
+                        || ObjLlamadaTelefonica.ObjVendedor.Id.Equals(Base.Usuario.UsuarioConectado.Usuario.Id)
+                        || super.Contains(Base.Usuario.UsuarioConectado.Usuario.Id))
                     {
                         ListaLlamadas.Add(ObjLlamadaTelefonica);
                     }
@@ -371,6 +381,7 @@ namespace ProyectoCraft.AccesoDatos.Ventas.Actividades.Llamadas_Telefonicas
                 }
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = ListaLlamadas;
+                }
             }
             catch (Exception ex)
             {

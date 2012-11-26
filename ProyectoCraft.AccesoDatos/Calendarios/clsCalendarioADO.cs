@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using Microsoft.ApplicationBlocks.Data;
+using ProyectoCraft.AccesoDatos.LogPerfomance;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Clientes;
@@ -108,6 +109,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
 
         public static IList<clsVisita> ListarVisitas(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idUsuario, Int16 idCategoria)
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             SqlDataReader dreader = null;
             clsVisita visita = null;
             IList<clsVisita> listvisitas = new List<clsVisita>();
@@ -159,7 +161,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
             {
                 BaseDatos.CerrarConexion();
             }
-
+            ClsLogPerformanceADO.SaveFromADO(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
             return listvisitas;
         }
 

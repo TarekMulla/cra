@@ -13,8 +13,10 @@ using Microsoft.Office.Interop.Outlook;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.LogicaNegocios.Calendarios;
 using System.Collections;
+using ProyectoCraft.LogicaNegocios.Log;
 using SCCMultimodal.Utils;
 
 namespace ProyectoCraft.WinForm.Calendarios
@@ -112,6 +114,7 @@ namespace ProyectoCraft.WinForm.Calendarios
 
         public void FormLoad()
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             this.Dock = DockStyle.Fill;
             this.schedulerControl1.Start = DateTime.Now;
 
@@ -145,7 +148,7 @@ namespace ProyectoCraft.WinForm.Calendarios
                 list.CheckState = CheckState.Unchecked;
             }
 
-            
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         public void CargarScheduler()
@@ -217,6 +220,7 @@ namespace ProyectoCraft.WinForm.Calendarios
 
         private void CargarAsistentes()
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             IList<Entidades.Usuarios.clsUsuario> usuarios = null;
             Entidades.GlobalObject.ResultadoTransaccion res =             
                 LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Entidades.Enums.Enums.Estado.Habilitado,
@@ -232,10 +236,12 @@ namespace ProyectoCraft.WinForm.Calendarios
             {
                 collection.Add(new Resource(usuario.Id, usuario.NombreCompleto));                
             }
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
         private void MapearAsistentesVisita(bool formload)
         {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
             Int64 IdVisita = 0;
 
@@ -280,9 +286,9 @@ namespace ProyectoCraft.WinForm.Calendarios
                     }
                 }
             }
-                
-          
 
+
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
             
         }
 

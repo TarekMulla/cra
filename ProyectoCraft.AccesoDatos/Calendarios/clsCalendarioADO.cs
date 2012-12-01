@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.AccesoDatos.LogPerfomance;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Clientes;
-using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Base.BaseDatos;
@@ -97,7 +94,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
             }
             catch (Exception ex)
             {
-                Base.Log.Log.EscribirLog(ex.Message);
+                Log.EscribirLog(ex.Message);
             }
             finally
             {
@@ -147,7 +144,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
                                         Convert.ToInt64(dreader["IdCliente"]));
 
                     visita.UsuarioOrganizador =
-                        AccesoDatos.Usuarios.clsUsuarioADO.ObtenerUsuarioPorId(Convert.ToInt16(dreader["IdUsuario"]));
+                        Usuarios.clsUsuarioADO.ObtenerUsuarioPorId(Convert.ToInt16(dreader["IdUsuario"]));
 
                     listvisitas.Add(visita);
                 }
@@ -155,7 +152,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
             }
             catch (Exception ex)
             {
-                Base.Log.Log.EscribirLog(ex.Message);
+                Log.EscribirLog(ex.Message);
             }
             finally
             {
@@ -202,7 +199,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
             }
             catch (Exception ex)
             {
-                Base.Log.Log.EscribirLog(ex.Message);
+                Log.EscribirLog(ex.Message);
             }
             finally
             {

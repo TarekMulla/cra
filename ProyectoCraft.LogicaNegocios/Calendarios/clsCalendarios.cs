@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Clientes;
@@ -32,8 +33,14 @@ namespace ProyectoCraft.LogicaNegocios.Calendarios
 
         public static IList<clsVisita> ListarVisitas(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idusuario, Int16 idCategoria)
         {
-            return AccesoDatos.Calendarios.clsCalendarioADO.ListarVisitas(fechadesde, fechahasta, estado,idusuario,idCategoria);
+            return ListarVisitas(fechadesde, fechahasta, estado,idusuario,idCategoria,null);
         }
+
+        public static IList<clsVisita> ListarVisitas(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idusuario, Int16 idCategoria,Hashtable htUsuarios)
+        {
+            return AccesoDatos.Calendarios.clsCalendarioADO.ListarVisitas(fechadesde, fechahasta, estado,idusuario,idCategoria,htUsuarios);
+        }
+        
 
         public static IList<clsVisita> ListarVisitasTarget(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idUsuario)
         {

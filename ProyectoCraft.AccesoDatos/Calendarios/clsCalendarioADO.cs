@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -104,7 +105,7 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
             return listMaster;
         }
 
-        public static IList<clsVisita> ListarVisitas(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idUsuario, Int16 idCategoria)
+        public static IList<clsVisita> ListarVisitas(DateTime fechadesde, DateTime fechahasta, Int16 estado, Int64 idUsuario, Int16 idCategoria,Hashtable htUsuarios)
         {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             SqlDataReader dreader = null;
@@ -140,11 +141,13 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
                     if (dreader["IdCliente"] is DBNull)
                         visita.Cliente = null;
                     else 
-                        visita.Cliente = AccesoDatos.Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(
+                        visita.Cliente = Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(
                                         Convert.ToInt64(dreader["IdCliente"]));
 
-                    visita.UsuarioOrganizador =
-                        Usuarios.clsUsuarioADO.ObtenerUsuarioPorId(Convert.ToInt16(dreader["IdUsuario"]));
+                    if (htUsuarios != null)
+                        visita.UsuarioOrganizador = (clsUsuario) htUsuarios[dreader["IdUsuario"].ToString()];
+                    else
+                        visita.UsuarioOrganizador = Usuarios.clsUsuarioADO.ObtenerUsuarioPorId(Convert.ToInt16(dreader["IdUsuario"]));
 
                     listvisitas.Add(visita);
                 }

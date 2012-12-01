@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
@@ -7,6 +8,7 @@ using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Log;
+using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.LogicaNegocios.Calendarios;
 using ProyectoCraft.LogicaNegocios.Log;
 using SCCMultimodal.Utils;
@@ -29,6 +31,11 @@ namespace ProyectoCraft.WinForm.Calendarios {
                 _form = value;
             }
         }
+
+        private List<clsUsuario> Usuarios { set; get; }
+        private Hashtable HtUsuarios { set; get; }
+
+
 
         public IList<Int64> ListResourcesSelected {
             get {
@@ -73,6 +80,7 @@ namespace ProyectoCraft.WinForm.Calendarios {
         }
 
         public void FormLoad() {
+            //vhspiceros
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Dock = DockStyle.Fill;
             schedulerControl1.Start = DateTime.Now;
@@ -84,8 +92,14 @@ namespace ProyectoCraft.WinForm.Calendarios {
 
             desde = schedulerControl1.Start;
 
+            Usuarios = ObtenerUsuarios();
+            HtUsuarios = GenerateHashtableUsuarios(Usuarios);
+
             IList<clsVisita> visitas = clsCalendarios.ListarVisitas(desde, hasta, Convert.ToInt16(Enums.VisitaEstado.Todas),
-                                                                    -1, -1);
+                                                                    -1, -1, HtUsuarios);
+
+
+
             //visitas[0].Cliente.ToString()
             schedulerStorage1.Appointments.Clear();
             schedulerStorage1.Resources.Clear();
@@ -155,19 +169,32 @@ namespace ProyectoCraft.WinForm.Calendarios {
 
         }
 
-        private void CargarAsistentes() {
-            var timer = System.Diagnostics.Stopwatch.StartNew();
-            IList<Entidades.Usuarios.clsUsuario> usuarios = null;
+
+        private static List<clsUsuario> ObtenerUsuarios() {
+            List<clsUsuario> usuarios = null;
             ResultadoTransaccion res =
                 LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado,
                                                                    Enums.CargosUsuarios.Todos);
             if (res.Estado == Enums.EstadoTransaccion.Aceptada) {
-                usuarios = (IList<Entidades.Usuarios.clsUsuario>)res.ObjetoTransaccion;
+                usuarios = (List<clsUsuario>)res.ObjetoTransaccion;
             }
+            return usuarios;
+        }
+
+        private Hashtable GenerateHashtableUsuarios(IEnumerable<clsUsuario> usuarios) {
+            var ht = new Hashtable();
+            foreach (var u in usuarios) {
+                ht.Add(u.Id.ToString(), u);
+            }
+            return ht;
+        }
+
+        private void CargarAsistentes() {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
 
             ResourceCollection collection = schedulerStorage1.Resources.Items;
 
-            foreach (var usuario in usuarios) {
+            foreach (var usuario in Usuarios) {
                 collection.Add(new Resource(usuario.Id, usuario.NombreCompleto));
             }
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

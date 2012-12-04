@@ -138,11 +138,17 @@ namespace ProyectoCraft.AccesoDatos.Calendarios
                     visita.EstadoBD = (Enums.VisitaEstado)Convert.ToInt16(dreader["IdEstado"]);
                     visita.EstadoVista = Convert.ToInt16(dreader["EstadoCalendario"]); //(Enums.VisitaEstadoVista)
                     visita.Asistentes = ObtenerAsistentesDeVisita(visita.Id);
-                    if (dreader["IdCliente"] is DBNull)
+                    if (dreader["IdCliente"] is DBNull) {
+                        visita.Cliente = null;
+                    }else {
+                        visita.IdCliente = Convert.ToInt64(dreader["idCliente"]);
+                    }
+
+                    /*   if (dreader["IdCliente"] is DBNull)
                         visita.Cliente = null;
                     else 
                         visita.Cliente = Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(
-                                        Convert.ToInt64(dreader["IdCliente"]));
+                                        Convert.ToInt64(dreader["IdCliente"]));*/
 
                     if (htUsuarios != null)
                         visita.UsuarioOrganizador = (clsUsuario) htUsuarios[dreader["IdUsuario"].ToString()];

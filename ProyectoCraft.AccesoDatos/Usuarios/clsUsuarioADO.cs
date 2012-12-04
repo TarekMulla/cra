@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Entidades.GlobalObject;

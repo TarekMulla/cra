@@ -8,21 +8,20 @@
               SELECT CASE
             WHEN COUNT(a.id) =0 THEN ''
             WHEN COUNT(a.id) >0 THEN 'red'
-        END as color,
+        END as 'color',
         COUNT(a.id) as 'cantidad'
         FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO1_PASOS_ESTADO B
              ON A.id=B.idAsignacion
         WHERE   A.TiempoEstimadoUsr1 < DATEDIFF(n,FechaAceptacionUsr1,  GETDATE())
-        AND     B.NumPaso=13
-        AND     B.fechamarca IS NULL
-        AND     A.IdEstado IN (5,6)
+        AND     (B.NumPaso=11  AND  B.fechamarca IS NULL) or (B.Id is null)
+        AND     A.IdEstado IN (4,5)
     ]]>
   </datasource>
   <detail>
     <datasourse>
       <![CDATA[
         
-        SELECT  NumMaster,
+	SELECT    I.NumConsolidado,
           FechaMaster,
           C.Descripcion as 'agente',
           D.Descripcion as 'naviera',
@@ -35,7 +34,7 @@
           g.NombreUsuario as 'usuario1',
           h.NombreUsuario as 'usuario2',
           F.Descripcion as 'Estado'
-          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
+          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO1_PASOS_ESTADO B
                ON A.id=B.idAsignacion
                   LEFT OUTER JOIN PAPERLESS_AGENTE C
                       ON A.IdAgente=C.Id
@@ -48,11 +47,13 @@
                                      LEFT OUTER JOIN USUARIOS G
                                      ON A.Usuario1 = G.Id
                                         LEFT OUTER JOIN USUARIOS H
-                                          ON A.Usuario2 = H.Id
-          WHERE   CONVERT(VARCHAR(20),A.aperturanavieras,112) < CONVERT(VARCHAR(20),GETDATE(),112)
-          AND     B.NumPaso=4
-          AND     B.fechamarca IS NULL
-          ORDER BY AperturaNavieras ASC
+                                        ON A.Usuario2 = H.Id
+                                            LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
+                                            ON A.Id = I.IdAsignacion
+        WHERE   A.TiempoEstimadoUsr1 < DATEDIFF(n,FechaAceptacionUsr1,  GETDATE())
+        AND     (B.NumPaso=11  AND  B.fechamarca IS NULL) or (B.Id is null)
+        AND     A.IdEstado IN (4,5)
+
       ]]>
     </datasourse>
   </detail>

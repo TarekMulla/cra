@@ -5,54 +5,52 @@
   </description>
   <datasource>
     <![CDATA[
-              SELECT CASE
-                  WHEN COUNT(a.id) =0 THEN ''
-                  WHEN COUNT(a.id) >0 THEN 'red'
-              END as color,
-              COUNT(a.id) as 'cantidad'
-              FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-                   ON A.id=B.idAsignacion
-              WHERE   convert(varchar(20),A.aperturanavieras,112) < convert(varchar(20),GETDATE(),112)
-              AND     B.NumPaso=4
-              AND     B.fechamarca IS NULL
+            SELECT CASE
+                WHEN COUNT(a.id) =0 THEN ''
+                WHEN COUNT(a.id) >0 THEN 'red'
+            END as 'color',
+            COUNT(a.id) as 'cantidad'
+            FROM PAPERLESS_ASIGNACION A 
+            WHERE       A.FechaAceptacionUsr1 is null
+                AND     A.IdEstado =3
+                AND     datediff(minute,FechaPaso3,getdate())>30
     ]]>
   </datasource>
   <detail>
     <datasourse>
       <![CDATA[
         
-        SELECT  NumMaster,
-          FechaMaster,
-          C.Descripcion as 'agente',
-          D.Descripcion as 'naviera',
-          E.Descripcion as 'nave',
-          Viaje,
-          NumHousesBL,
-          FechaETA,
-          AperturaNavieras as AperturaNavieras_GREEN,
-          PlazoEmbarcadores,
-          g.NombreUsuario as 'usuario1',
-          h.NombreUsuario as 'usuario2',
-          F.Descripcion as 'Estado'
-          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-               ON A.id=B.idAsignacion
-                  LEFT OUTER JOIN PAPERLESS_AGENTE C
-                      ON A.IdAgente=C.Id
-                      LEFT OUTER JOIN PAPERLESS_NAVIERA D
-                          ON A.IdNaviera = D.Id
-                              LEFT OUTER JOIN PAPERLESS_NAVE E
-                                 ON A.IdNave = E.Id
-                                 LEFT OUTER JOIN PAPERLESS_ESTADO F
-                                 ON A.IdEstado = F.Id
-                                     LEFT OUTER JOIN USUARIOS G
-                                     ON A.Usuario1 = G.Id
-                                        LEFT OUTER JOIN USUARIOS H
-                                          ON A.Usuario2 = H.Id
-          WHERE   CONVERT(VARCHAR(20),A.aperturanavieras,112) < CONVERT(VARCHAR(20),GETDATE(),112)
-          AND     B.NumPaso=4
-          AND     B.fechamarca IS NULL
-          ORDER BY AperturaNavieras ASC
-      ]]>
+            SELECT  FechaMaster,
+              C.Descripcion as 'Agente',
+              D.Descripcion as 'Naviera',
+              E.Descripcion as 'Nave',
+              A.NumHousesBL as 'Cant. Houses/BLs',
+              Viaje,
+              convert(varchar(20),FechaPaso3,113) as 'Fecha Asignacion',
+              convert(varchar(20),getdate(),113) as 'Actual',
+              cast(DateDiff(day, fechapaso3, getdate()) as varchar)  + ':' + convert(nvarchar(5),dateadd(minute,Datediff(minute,FechaPaso3,getdate()),0),8) as Tiempo,
+              g.NombreUsuario as 'usuario1',
+              F.Descripcion as 'Estado'
+              FROM PAPERLESS_ASIGNACION A 
+                      LEFT OUTER JOIN PAPERLESS_AGENTE C
+                          ON A.IdAgente=C.Id
+                          LEFT OUTER JOIN PAPERLESS_NAVIERA D
+                              ON A.IdNaviera = D.Id
+                                  LEFT OUTER JOIN PAPERLESS_NAVE E
+                                     ON A.IdNave = E.Id
+                                     LEFT OUTER JOIN PAPERLESS_ESTADO F
+                                     ON A.IdEstado = F.Id
+                                         LEFT OUTER JOIN USUARIOS G
+                                         ON A.Usuario1 = G.Id
+                                            LEFT OUTER JOIN USUARIOS H
+                                            ON A.Usuario2 = H.Id
+                                                LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
+                                                ON A.Id = I.IdAsignacion
+            WHERE   A.FechaAceptacionUsr1 is null
+            AND     A.IdEstado =3
+            AND     datediff(minute,FechaPaso3,getdate())>30
+     
+	 ]]>
     </datasourse>
   </detail>
 </control>

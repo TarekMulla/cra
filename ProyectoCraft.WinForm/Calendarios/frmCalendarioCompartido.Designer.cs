@@ -356,6 +356,7 @@
             this.resourcesCheckedListBoxControl1.SchedulerControl = this.schedulerControl1;
             this.resourcesCheckedListBoxControl1.Size = new System.Drawing.Size(225, 460);
             this.resourcesCheckedListBoxControl1.TabIndex = 0;
+            this.resourcesCheckedListBoxControl1.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.resourcesCheckedListBoxControl1_ItemCheck);
             // 
             // popupControlContainer1
             // 

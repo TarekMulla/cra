@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 //using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraRichEdit.Utils;
 using DevExpress.XtraScheduler;
-using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Enums;
-using ProyectoCraft.Entidades.GlobalObject;
 
 namespace ProyectoCraft.WinForm.Calendarios
 {
@@ -273,9 +265,9 @@ namespace ProyectoCraft.WinForm.Calendarios
             FrmNuevaVisita myForm = FrmNuevaVisita.Instancia;
 
             if (schedulerStorage.Appointments.IsNewAppointment(app))
-                myForm.Accion = Entidades.Enums.Enums.TipoAccionFormulario.Nuevo;
+                myForm.Accion = Enums.TipoAccionFormulario.Nuevo;
             else
-                myForm.Accion = Entidades.Enums.Enums.TipoAccionFormulario.Editar;
+                myForm.Accion = Enums.TipoAccionFormulario.Editar;
 
 
             myForm.ControlParam = (SchedulerControl)sender;
@@ -290,6 +282,16 @@ namespace ProyectoCraft.WinForm.Calendarios
             
             schedulerControl1.Refresh();
             e.Handled = true;
+        }
+
+        private void resourcesCheckedListBoxControl1_SelectedIndexChanged(object sender, EventArgs e) {
+            var foo = "";
+            foo = "hola";
+        }
+
+        private void resourcesCheckedListBoxControl1_SelectedValueChanged(object sender, EventArgs e) {
+            var foo = "";
+            foo = "hola";
         }
 
        

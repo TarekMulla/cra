@@ -132,6 +132,8 @@
             this.resourcesCheckedListBoxControl1.SchedulerControl = this.schedulerControl1;
             this.resourcesCheckedListBoxControl1.Size = new System.Drawing.Size(197, 414);
             this.resourcesCheckedListBoxControl1.TabIndex = 0;
+            this.resourcesCheckedListBoxControl1.SelectedIndexChanged += new System.EventHandler(this.resourcesCheckedListBoxControl1_SelectedIndexChanged);
+            this.resourcesCheckedListBoxControl1.SelectedValueChanged += new System.EventHandler(this.resourcesCheckedListBoxControl1_SelectedValueChanged);
             // 
             // schedulerControl1
             // 

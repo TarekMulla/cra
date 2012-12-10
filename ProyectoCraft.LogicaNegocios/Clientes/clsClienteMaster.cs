@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using ProyectoCraft.Entidades.Clientes;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Log;
-using ProyectoCraft.Entidades.Ventas.Productos;
 using ProyectoCraft.AccesoDatos.Clientes;
 using ProyectoCraft.LogicaNegocios.Log;
 

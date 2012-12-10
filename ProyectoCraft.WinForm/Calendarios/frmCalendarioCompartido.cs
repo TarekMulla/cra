@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
+using DevExpress.XtraScheduler.UI;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
@@ -42,7 +43,7 @@ namespace ProyectoCraft.WinForm.Calendarios {
                 IList<Int64> lista = new List<long>();
                 foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items) {
                     if (list.CheckState == CheckState.Checked) {
-                        var b = (DevExpress.XtraScheduler.UI.ResourceCheckedListBoxItem)list.Value;
+                        var b = (ResourceCheckedListBoxItem)list.Value;
 
                         var c = b.Resource.Id;
 
@@ -95,10 +96,10 @@ namespace ProyectoCraft.WinForm.Calendarios {
             Usuarios = ObtenerUsuarios();
             HtUsuarios = GenerateHashtableUsuarios(Usuarios);
 
-            IList<clsVisita> visitas = clsCalendarios.ListarVisitas(desde, hasta, Convert.ToInt16(Enums.VisitaEstado.Todas),
-                                                                    -1, -1, HtUsuarios);
+            /*IList<clsVisita> visitas = clsCalendarios.ListarVisitas(desde, hasta, Convert.ToInt16(Enums.VisitaEstado.Todas),
+                                                                    -1, -1, HtUsuarios);*/
 
-
+            IList<clsVisita> visitas = new List<clsVisita>();
 
             //visitas[0].Cliente.ToString()
             schedulerStorage1.Appointments.Clear();
@@ -124,49 +125,6 @@ namespace ProyectoCraft.WinForm.Calendarios {
         }
 
         public void CargarScheduler() {
-            Cursor.Current = Cursors.WaitCursor;
-
-            IList<Int64> listaseleccionados = ListResourcesSelected;
-
-            DateTime desde = new DateTime(9999, 07, 01, 0, 0, 1);
-            DateTime hasta = new DateTime(2011, 07, 30, 0, 0, 1);
-
-            //desde = schedulerControl1.Start;
-
-            IList<clsVisita> visitas = clsCalendarios.ListarVisitas(desde, hasta, Convert.ToInt16(Entidades.Enums.Enums.VisitaEstado.Todas),
-                                                                    -1, -1);
-
-            VisitasCargadas = visitas;
-            ListaVisitas = new List<clsVisita>(visitas);
-
-            schedulerStorage1.Appointments.Clear();
-            //schedulerStorage1.Resources.Clear();
-            schedulerStorage1.Appointments.DataSource = visitas;
-            //schedulerStorage1.RefreshData();
-
-
-            MapearCalendario(); //1
-            //CargarAsistentes(); //2
-            MapearAsistentesVisita(true); //3
-
-            //schedulerControl1.GroupType = SchedulerGroupType.Resource;
-
-            foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items) {
-                list.CheckState = CheckState.Unchecked;
-            }
-
-            foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items) {
-                foreach (var list2 in listaseleccionados) {
-                    DevExpress.XtraScheduler.UI.ResourceCheckedListBoxItem b = (DevExpress.XtraScheduler.UI.ResourceCheckedListBoxItem)list.Value;
-                    if (Convert.ToInt64(b.Resource.Id) == list2) {
-                        list.CheckState = CheckState.Checked;
-                        break;
-                    }
-                }
-            }
-
-            Cursor.Current = Cursors.Default;
-
         }
 
 
@@ -408,6 +366,51 @@ namespace ProyectoCraft.WinForm.Calendarios {
                 return;
             }
             mail.ModificarVisitaOutlook(visita, e.SourceAppointment.Start, e.SourceAppointment.End);
+        }
+
+        private void resourcesCheckedListBoxControl1_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e) {
+            var item = resourcesCheckedListBoxControl1.Items[e.Index];
+            var resource= (ResourceCheckedListBoxItem)item.Value;
+            var idUsuario = Convert.ToInt64(resource.Resource.Id);
+
+            IList<clsVisita> visitas = clsCalendarios.ListarVisitas(DateTime.Now, DateTime.Now, Convert.ToInt16(Enums.VisitaEstado.Todas),
+                                                                    idUsuario, -1, HtUsuarios);
+            ListaVisitas.AddRange(visitas);
+            schedulerStorage1.Appointments.Items.BeginUpdate();
+            foreach (var v in visitas) {
+                var foo = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
+                foo.ResourceId = v.Id;
+                foo.Subject = v.Asunto;
+                foo.Location = v.Ubicacion;
+                foo.Description = v.Descripcion;
+                foo.Start = v.FechaHoraComienzo;
+                foo.Start = v.FechaHoraTermino;
+                foo.StatusId = v.StatusUsuario;
+                foo.CustomFields["IdVisita"] = v.Id;
+                schedulerStorage1.Appointments.Items.Add(foo);
+            }
+
+            Int64 IdVisita = 0;
+            AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
+            foreach (var appointment in appointments) {
+                IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
+
+                if (IdVisita > 0) {
+                    clsVisita visita; 
+
+                    visita = ListaVisitas.Find(delegate(clsVisita var1) {
+                        return var1.Id == IdVisita;
+                    });
+
+                    if (visita == null) break;
+                    appointment.ResourceIds.Clear();
+                    foreach (var asisCraft in visita.AsistentesCraft) {
+                        appointment.ResourceIds.Add(asisCraft.Usuario.Id);
+                    }
+                    appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
+                }
+            }
+            schedulerStorage1.Appointments.Items.EndUpdate();
         }
     }
 }

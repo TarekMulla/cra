@@ -5,66 +5,55 @@
   </description>
   <datasource>
     <![CDATA[
-    
-      DECLARE @f_desde datetime
-      DECLARE @f_hoy	 datetime
-
-      SELECT @f_hoy = GETDATE()
-      EXEC  sp_f_proximo_dia_habil 5,@f_hoy,@f_desde OUT
-
-      SELECT CASE
-                  WHEN COUNT(a.id) =0 THEN '' 
-                  WHEN COUNT(a.id) >0 THEN 'green'
-              END as color,
-              COUNT(a.id) as 'cantidad'
-      FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-           ON A.id=B.idAsignacion
-      WHERE   convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
-      AND     B.NumPaso=4
-      AND     B.fechamarca IS NULL
+           SELECT CASE
+                WHEN COUNT(a.id) =0 THEN ''
+                WHEN COUNT(a.id) >0 THEN 'red'
+            END as 'color',
+            COUNT(a.id) as 'cantidad'
+            FROM PAPERLESS_ASIGNACION A 
+            WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
+                DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
+            AND IdEstado NOT IN (8)
+            AND (AperturaNavieras ='' or AperturaNavieras is null)
     ]]>
   </datasource>
   <detail>
     <datasourse>
       <![CDATA[
-          DECLARE @f_desde datetime
-          DECLARE @f_hoy	 datetime
-
-          SELECT @f_hoy = GETDATE()
-          EXEC  sp_f_proximo_dia_habil 5,@f_hoy,@f_desde OUT
-
-          SELECT  NumMaster,
-                  FechaMaster,
-                  C.Descripcion as 'agente',
-                  D.Descripcion as 'naviera',
-                  E.Descripcion as 'nave',
-                  Viaje,
-                  NumHousesBL,
-                  FechaETA,
-                  AperturaNavieras as AperturaNavieras_GREEN,
-                  PlazoEmbarcadores,
-                  g.NombreUsuario as 'usuario1',
-                  h.NombreUsuario as 'usuario2',
-                  F.Descripcion as 'Estado'
-          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-               ON A.id=B.idAsignacion
-                  LEFT OUTER JOIN PAPERLESS_AGENTE C
-                      ON A.IdAgente=C.Id
-                      LEFT OUTER JOIN PAPERLESS_NAVIERA D
-                          ON A.IdNaviera = D.Id
-                              LEFT OUTER JOIN PAPERLESS_NAVE E
-                                 ON A.IdNave = E.Id
-                                 LEFT OUTER JOIN PAPERLESS_ESTADO F
-                                 ON A.IdEstado = F.Id
-                                     LEFT OUTER JOIN USUARIOS G
-                                     ON A.Usuario1 = G.Id
-                                        LEFT OUTER JOIN USUARIOS H
-                                          ON A.Usuario2 = H.Id
-          WHERE   convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
-          AND     B.NumPaso=4
-          AND     B.fechamarca IS NULL
-          ORDER BY AperturaNavieras ASC
-      ]]>
+            SELECT  I.NumConsolidado,
+              FechaMaster,
+              C.Descripcion as 'Agente',
+              D.Descripcion as 'Naviera',
+              E.Descripcion as 'Nave',
+              A.NumHousesBL as 'Cant. Houses/BLs',
+              Viaje,
+              convert(varchar(20),getdate(),113) as 'Actual',
+              convert(varchar(20),FechaEta,113) as 'ETA',
+              DATEDIFF(DAY,GETDATE(),FechaETA) as 'Dif',
+              convert(varchar(20),AperturaNavieras,113) as 'Apertura',
+              g.NombreUsuario as 'usuario1',
+              F.Descripcion as 'Estado'
+              FROM PAPERLESS_ASIGNACION A 
+                      LEFT OUTER JOIN PAPERLESS_AGENTE C
+                          ON A.IdAgente=C.Id
+                          LEFT OUTER JOIN PAPERLESS_NAVIERA D
+                              ON A.IdNaviera = D.Id
+                                  LEFT OUTER JOIN PAPERLESS_NAVE E
+                                     ON A.IdNave = E.Id
+                                     LEFT OUTER JOIN PAPERLESS_ESTADO F
+                                     ON A.IdEstado = F.Id
+                                         LEFT OUTER JOIN USUARIOS G
+                                         ON A.Usuario1 = G.Id
+                                            LEFT OUTER JOIN USUARIOS H
+                                            ON A.Usuario2 = H.Id
+                                                LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
+                                                ON A.Id = I.IdAsignacion
+            WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
+                DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
+            AND IdEstado NOT IN (8)
+            AND (AperturaNavieras ='' or AperturaNavieras is null)
+            ORDER BY DATEDIFF(DAY,GETDATE(),FechaETA) DESC      
+	]]>
     </datasourse>
   </detail>
 </control>

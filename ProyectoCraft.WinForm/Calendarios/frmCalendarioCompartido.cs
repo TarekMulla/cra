@@ -14,35 +14,45 @@ using ProyectoCraft.LogicaNegocios.Calendarios;
 using ProyectoCraft.LogicaNegocios.Log;
 using SCCMultimodal.Utils;
 
-namespace ProyectoCraft.WinForm.Calendarios {
-    public partial class frmCalendarioCompartido : Form {
-        public frmCalendarioCompartido() {
+namespace ProyectoCraft.WinForm.Calendarios
+{
+    public partial class frmCalendarioCompartido : Form
+    {
+        public frmCalendarioCompartido()
+        {
             InitializeComponent();
         }
 
         private static frmCalendarioCompartido _form;
-        public static frmCalendarioCompartido Instancia {
-            get {
+        public static frmCalendarioCompartido Instancia
+        {
+            get
+            {
                 if (_form == null)
                     _form = new frmCalendarioCompartido();
 
                 return _form;
             }
-            set {
+            set
+            {
                 _form = value;
             }
         }
 
         private List<clsUsuario> Usuarios { set; get; }
         private Hashtable HtUsuarios { set; get; }
+        private Hashtable HtUsuariosCalendariosCargados { set; get; }
 
 
-
-        public IList<Int64> ListResourcesSelected {
-            get {
+        public IList<Int64> ListResourcesSelected
+        {
+            get
+            {
                 IList<Int64> lista = new List<long>();
-                foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items) {
-                    if (list.CheckState == CheckState.Checked) {
+                foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items)
+                {
+                    if (list.CheckState == CheckState.Checked)
+                    {
                         var b = (ResourceCheckedListBoxItem)list.Value;
 
                         var c = b.Resource.Id;
@@ -56,31 +66,36 @@ namespace ProyectoCraft.WinForm.Calendarios {
         }
 
         private IList<clsVisita> _visitasCargadas;
-        public IList<clsVisita> VisitasCargadas {
+        public IList<clsVisita> VisitasCargadas
+        {
             get { return _visitasCargadas; }
             set { _visitasCargadas = value; }
         }
 
         private List<clsVisita> _visitaslista;
-        public List<clsVisita> ListaVisitas {
+        public List<clsVisita> ListaVisitas
+        {
             get { return _visitaslista; }
             set { _visitaslista = value; }
         }
 
-        private void frmCalendarioCompartido_Load(object sender, EventArgs e) {
+        private void frmCalendarioCompartido_Load(object sender, EventArgs e)
+        {
             Dock = DockStyle.Fill;
 
             FormLoad();
 
             //Verificar si Outlook esta abierto, si no abrir en 2do plano
             bool resultado = Utils.Outlook.VerificarOutlookAbierto();
-            if (!resultado) {
+            if (!resultado)
+            {
                 MessageBox.Show(
                     "Microsoft Outlook no está abierto y ocurrio un problema al intentar abrirlo, intente abrirlo manualmente antes de utilizar el Modulo Calendario Compartido", "Calendario Compartido", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void FormLoad() {
+        public void FormLoad()
+        {
             //vhspiceros
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Dock = DockStyle.Fill;
@@ -117,80 +132,98 @@ namespace ProyectoCraft.WinForm.Calendarios {
 
             schedulerControl1.GroupType = SchedulerGroupType.Resource;
 
-            foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items) {
+            foreach (DevExpress.XtraEditors.Controls.CheckedListBoxItem list in resourcesCheckedListBoxControl1.Items)
+            {
                 list.CheckState = CheckState.Unchecked;
             }
 
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        public void CargarScheduler() {
+        public void CargarScheduler()
+        {
         }
 
 
-        private static List<clsUsuario> ObtenerUsuarios() {
+        private static List<clsUsuario> ObtenerUsuarios()
+        {
             List<clsUsuario> usuarios = null;
             ResultadoTransaccion res =
                 LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado,
                                                                    Enums.CargosUsuarios.Todos);
-            if (res.Estado == Enums.EstadoTransaccion.Aceptada) {
+            if (res.Estado == Enums.EstadoTransaccion.Aceptada)
+            {
                 usuarios = (List<clsUsuario>)res.ObjetoTransaccion;
             }
             return usuarios;
         }
 
-        private Hashtable GenerateHashtableUsuarios(IEnumerable<clsUsuario> usuarios) {
+        private Hashtable GenerateHashtableUsuarios(IEnumerable<clsUsuario> usuarios)
+        {
             var ht = new Hashtable();
-            foreach (var u in usuarios) {
+            foreach (var u in usuarios)
+            {
                 ht.Add(u.Id.ToString(), u);
             }
             return ht;
         }
 
-        private void CargarAsistentes() {
+        private void CargarAsistentes()
+        {
             var timer = System.Diagnostics.Stopwatch.StartNew();
 
             ResourceCollection collection = schedulerStorage1.Resources.Items;
 
-            foreach (var usuario in Usuarios) {
+            foreach (var usuario in Usuarios)
+            {
                 collection.Add(new Resource(usuario.Id, usuario.NombreCompleto));
             }
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
 
-        private void MapearAsistentesVisita(bool formload) {
+        private void MapearAsistentesVisita(bool formload)
+        {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
             Int64 IdVisita = 0;
 
 
-            if (formload) {
-                foreach (var appointment in appointments) {
+            if (formload)
+            {
+                foreach (var appointment in appointments)
+                {
                     IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
 
-                    if (IdVisita > 0) {
+                    if (IdVisita > 0)
+                    {
                         clsVisita visita = new clsVisita(); // clsCalendarios.ObtenerVisitaPorId(IdVisita);
 
-                        visita = ListaVisitas.Find(delegate(clsVisita var1) {
+                        visita = ListaVisitas.Find(delegate(clsVisita var1)
+                        {
                             return var1.Id == IdVisita;
                         });
 
                         if (visita == null) break;
                         appointment.ResourceIds.Clear();
-                        foreach (var asisCraft in visita.AsistentesCraft) {
+                        foreach (var asisCraft in visita.AsistentesCraft)
+                        {
                             appointment.ResourceIds.Add(asisCraft.Usuario.Id);
                         }
                         appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
                     }
                 }
-            } else {
+            }
+            else
+            {
                 Appointment appointment = appointments[appointments.Count - 1];
                 IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
-                if (IdVisita > 0) {
+                if (IdVisita > 0)
+                {
                     clsVisita visita = clsCalendarios.ObtenerVisitaPorId(IdVisita);
 
                     appointment.ResourceIds.Clear();
-                    foreach (var asisCraft in visita.AsistentesCraft) {
+                    foreach (var asisCraft in visita.AsistentesCraft)
+                    {
                         appointment.ResourceIds.Add(asisCraft.Usuario.Id);
                     }
                 }
@@ -201,7 +234,8 @@ namespace ProyectoCraft.WinForm.Calendarios {
 
         }
 
-        private void MapearCalendario() {
+        private void MapearCalendario()
+        {
 
             schedulerStorage1.Appointments.Mappings.Subject = "Asunto";
             schedulerStorage1.Appointments.Mappings.Location = "Ubicacion";
@@ -216,7 +250,8 @@ namespace ProyectoCraft.WinForm.Calendarios {
             schedulerStorage1.Appointments.CustomFieldMappings.Add(custom);
         }
 
-        private void schedulerControl1_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e) {
+        private void schedulerControl1_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
             Appointment app = e.Appointment;
 
             if (app.Description == "") app.CustomFields["IdVisita"] = "0";
@@ -237,33 +272,41 @@ namespace ProyectoCraft.WinForm.Calendarios {
             e.Handled = true;
         }
 
-        private void MenuCalendario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+        private void MenuCalendario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             popupControlContainer1.Visible = true;
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e) {
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
             popupControlContainer1.Visible = false;
         }
 
-        private void schedulerControl1_PreparePopupMenu(object sender, PreparePopupMenuEventArgs e) {
-            if (e.Menu.Id == SchedulerMenuItemId.DefaultMenu) {
+        private void schedulerControl1_PreparePopupMenu(object sender, PreparePopupMenuEventArgs e)
+        {
+            if (e.Menu.Id == SchedulerMenuItemId.DefaultMenu)
+            {
                 e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewAllDayEvent);
             }
         }
 
 
-        private void frmCalendarioCompartido_FormClosed(object sender, FormClosedEventArgs e) {
+        private void frmCalendarioCompartido_FormClosed(object sender, FormClosedEventArgs e)
+        {
             Instancia = null;
         }
 
-        private void btnSalir_Click(object sender, EventArgs e) {
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
             Close();
         }
 
-        private void schedulerStorage1_AppointmentInserting(object sender, PersistentObjectCancelEventArgs e) {
+        private void schedulerStorage1_AppointmentInserting(object sender, PersistentObjectCancelEventArgs e)
+        {
         }
 
-        private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e) {
+        private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e)
+        {
             Appointment app = (Appointment)e.Object;
 
             clsVisita visita = clsCalendarios.ObtenerVisitaPorId(Convert.ToInt64(app.CustomFields["IdVisita"]));
@@ -271,46 +314,56 @@ namespace ProyectoCraft.WinForm.Calendarios {
             if (visita == null) return;
 
             if (visita.UsuarioOrganizador.Id != Base.Usuario.UsuarioConectado.Usuario.Id &&
-               visita.Vendedor.Id != Base.Usuario.UsuarioConectado.Usuario.Id) {
+               visita.Vendedor.Id != Base.Usuario.UsuarioConectado.Usuario.Id)
+            {
                 MessageBox.Show("Solo el Organizador o Vendedor pueden eliminar esta visita.", "Calendario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
                 return;
             }
 
 
-            if (visita.EstadoBD == Enums.VisitaEstado.Realizada_Con_Informe || visita.EstadoBD == Enums.VisitaEstado.Realizada_Informe_Pendiente) {
+            if (visita.EstadoBD == Enums.VisitaEstado.Realizada_Con_Informe || visita.EstadoBD == Enums.VisitaEstado.Realizada_Informe_Pendiente)
+            {
                 MessageBox.Show("La visita esta marcada como realizada, no es posible eliminarla", "Calendario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
                 return;
             }
 
-            if (visita.EstadoBD == Enums.VisitaEstado.No_Realizada) {
+            if (visita.EstadoBD == Enums.VisitaEstado.No_Realizada)
+            {
                 MessageBox.Show("La Visita no fue realizada y se encuentra bloqueada, no es posible eliminarla", "Calendario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
                 return;
             }
 
             DialogResult resdialogo = MessageBox.Show("¿Está seguro de eliminar la Visita", "Calendario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resdialogo == DialogResult.Yes) {
+            if (resdialogo == DialogResult.Yes)
+            {
                 ResultadoTransaccion resultado = clsCalendarios.EliminarVisita(visita);
 
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                {
                     MessageBox.Show(resultado.Descripcion, "Calendario", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                 }
-            } else {
+            }
+            else
+            {
                 e.Cancel = true;
             }
         }
 
-        private bool PermitirModificarVisita(Appointment app) {
+        private bool PermitirModificarVisita(Appointment app)
+        {
             clsVisita visita = clsCalendarios.ObtenerVisitaPorId(
                                 Convert.ToInt64(app.CustomFields["IdVisita"]));
 
 
-            if (visita != null) {
+            if (visita != null)
+            {
                 if (visita.EstadoBD == Enums.VisitaEstado.Cancelada || visita.EstadoBD == Enums.VisitaEstado.Realizada_Informe_Pendiente ||
-                    visita.EstadoBD == Enums.VisitaEstado.Realizada_Con_Informe || visita.EstadoBD == Enums.VisitaEstado.Confirmada || visita.EstadoBD == Enums.VisitaEstado.No_Realizada) {
+                    visita.EstadoBD == Enums.VisitaEstado.Realizada_Con_Informe || visita.EstadoBD == Enums.VisitaEstado.Confirmada || visita.EstadoBD == Enums.VisitaEstado.No_Realizada)
+                {
                     MessageBox.Show("Visita en estado " + Convert.ToString(visita.EstadoBD).Replace("_", " ") + "\n No es posible modificarla", "Visitas", MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
 
@@ -318,7 +371,8 @@ namespace ProyectoCraft.WinForm.Calendarios {
                 }
 
                 if (visita.UsuarioOrganizador.Id != Base.Usuario.UsuarioConectado.Usuario.Id &&
-                    visita.Vendedor.Id != Base.Usuario.UsuarioConectado.Usuario.Id) {
+                    visita.Vendedor.Id != Base.Usuario.UsuarioConectado.Usuario.Id)
+                {
                     MessageBox.Show("Solo el usuario organizador puede modificar una Visita.", "Visitas", MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
@@ -329,9 +383,11 @@ namespace ProyectoCraft.WinForm.Calendarios {
             return true;
         }
 
-        private void schedulerControl1_AppointmentResized(object sender, AppointmentResizeEventArgs e) {
+        private void schedulerControl1_AppointmentResized(object sender, AppointmentResizeEventArgs e)
+        {
             var mail = new EnvioMailObject();
-            if (!PermitirModificarVisita(e.SourceAppointment)) {
+            if (!PermitirModificarVisita(e.SourceAppointment))
+            {
                 e.Allow = false;
                 e.Handled = true;
                 return;
@@ -345,7 +401,8 @@ namespace ProyectoCraft.WinForm.Calendarios {
                                 e.EditedAppointment.End.ToShortTimeString());
 
 
-            if (XtraMessageBox.Show(msg + "\r\nProceder?", "Mi Calendario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) {
+            if (XtraMessageBox.Show(msg + "\r\nProceder?", "Mi Calendario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
                 e.Allow = false;
                 e.Handled = true;
                 return;
@@ -359,7 +416,8 @@ namespace ProyectoCraft.WinForm.Calendarios {
 
             ResultadoTransaccion res = clsCalendarios.GuardarVisita(visita);
 
-            if (res.Estado == Enums.EstadoTransaccion.Rechazada) {
+            if (res.Estado == Enums.EstadoTransaccion.Rechazada)
+            {
                 MessageBox.Show(res.Descripcion, "Calendario", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Allow = false;
                 e.Handled = true;
@@ -368,49 +426,74 @@ namespace ProyectoCraft.WinForm.Calendarios {
             mail.ModificarVisitaOutlook(visita, e.SourceAppointment.Start, e.SourceAppointment.End);
         }
 
-        private void resourcesCheckedListBoxControl1_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e) {
-            var item = resourcesCheckedListBoxControl1.Items[e.Index];
-            var resource= (ResourceCheckedListBoxItem)item.Value;
-            var idUsuario = Convert.ToInt64(resource.Resource.Id);
+        private void resourcesCheckedListBoxControl1_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            if (HtUsuariosCalendariosCargados == null)
+                HtUsuariosCalendariosCargados = new Hashtable();
 
-            IList<clsVisita> visitas = clsCalendarios.ListarVisitas(DateTime.Now, DateTime.Now, Convert.ToInt16(Enums.VisitaEstado.Todas),
-                                                                    idUsuario, -1, HtUsuarios);
-            ListaVisitas.AddRange(visitas);
-            schedulerStorage1.Appointments.Items.BeginUpdate();
-            foreach (var v in visitas) {
-                var foo = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
-                foo.ResourceId = v.Id;
-                foo.Subject = v.Asunto;
-                foo.Location = v.Ubicacion;
-                foo.Description = v.Descripcion;
-                foo.Start = v.FechaHoraComienzo;
-                foo.Start = v.FechaHoraTermino;
-                foo.StatusId = v.StatusUsuario;
-                foo.CustomFields["IdVisita"] = v.Id;
-                schedulerStorage1.Appointments.Items.Add(foo);
-            }
 
-            Int64 IdVisita = 0;
-            AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
-            foreach (var appointment in appointments) {
-                IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
+            if (e.State.Equals(CheckState.Checked))
+            {
 
-                if (IdVisita > 0) {
-                    clsVisita visita; 
-
-                    visita = ListaVisitas.Find(delegate(clsVisita var1) {
-                        return var1.Id == IdVisita;
-                    });
-
-                    if (visita == null) break;
-                    appointment.ResourceIds.Clear();
-                    foreach (var asisCraft in visita.AsistentesCraft) {
-                        appointment.ResourceIds.Add(asisCraft.Usuario.Id);
-                    }
-                    appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
+                var item = resourcesCheckedListBoxControl1.Items[e.Index];
+                var resource = (ResourceCheckedListBoxItem)item.Value;
+                var idUsuario = Convert.ToInt64(resource.Resource.Id);
+                if (HtUsuariosCalendariosCargados.ContainsKey(idUsuario.ToString()))
+                {
+                    return;
                 }
+                else
+                {
+                    HtUsuariosCalendariosCargados.Add(idUsuario.ToString(), "1");
+                }
+
+                IList<clsVisita> visitas = clsCalendarios.ListarVisitas(DateTime.Now, DateTime.Now,
+                                                                        Convert.ToInt16(Enums.VisitaEstado.Todas),
+                                                                        idUsuario, -1, HtUsuarios);
+                ListaVisitas.AddRange(visitas);
+                schedulerStorage1.Appointments.Items.BeginUpdate();
+                foreach (var v in visitas)
+                {
+                    var foo = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
+                    foo.ResourceId = v.Id;
+                    foo.Subject = v.Asunto;
+                    foo.Location = v.Ubicacion;
+                    foo.Description = v.Descripcion;
+                    foo.Start = v.FechaHoraComienzo;
+                    foo.Start = v.FechaHoraTermino;
+                    foo.StatusId = v.StatusUsuario;
+                    foo.CustomFields["IdVisita"] = v.Id;
+                    schedulerStorage1.Appointments.Items.Add(foo);
+                }
+
+                Int64 IdVisita = 0;
+                AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
+                foreach (var appointment in appointments)
+                {
+                    IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
+
+                    if (IdVisita > 0)
+                    {
+                        clsVisita visita;
+
+                        visita = ListaVisitas.Find(delegate(clsVisita var1)
+                                                       {
+                                                           return var1.Id == IdVisita;
+                                                       });
+
+                        if (visita == null) break;
+                        appointment.ResourceIds.Clear();
+                        foreach (var asisCraft in visita.AsistentesCraft)
+                        {
+                            appointment.ResourceIds.Add(asisCraft.Usuario.Id);
+                        }
+                        appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
+                    }
+                }
+                schedulerStorage1.Appointments.Items.EndUpdate();
             }
-            schedulerStorage1.Appointments.Items.EndUpdate();
+            Cursor.Current = Cursors.Default;
         }
     }
 }

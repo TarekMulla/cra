@@ -1363,7 +1363,8 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             res = new ResultadoTransaccion();
 
-            if (VisitaActual.ConfirmadaSinPlanificar)
+            //Vhspiceros, se saca solo para poder crear la visita
+            /*if (VisitaActual.ConfirmadaSinPlanificar)
                 res = mail.EnviarEmailVisitaPlanificacion(VisitaActual, true, TipoCalendario == Enums.TipoCalendario.CalendarioCompartido); 
             //res = Utils.EnvioEmail.EnviarEmailVisitaPlanificacion(VisitaActual, true,TipoCalendario == Enums.TipoCalendario.CalendarioCompartido); 
             else
@@ -1378,7 +1379,7 @@ namespace ProyectoCraft.WinForm.Calendarios
                     res = mail.EnviarEmailVisitaConfirmadaReunionInterna(VisitaActual);
                     //res = Utils.EnvioEmail.EnviarEmailVisitaConfirmadaReunionInterna(VisitaActual);
                 }
-            }
+            }*/
 
             if (res.Estado == Enums.EstadoTransaccion.Rechazada)
             {

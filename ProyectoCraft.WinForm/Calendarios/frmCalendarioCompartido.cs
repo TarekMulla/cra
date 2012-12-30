@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
@@ -435,25 +436,28 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             if (e.State.Equals(CheckState.Checked))
             {
-
                 var item = resourcesCheckedListBoxControl1.Items[e.Index];
                 var resource = (ResourceCheckedListBoxItem)item.Value;
                 var idUsuario = Convert.ToInt64(resource.Resource.Id);
                 if (HtUsuariosCalendariosCargados.ContainsKey(idUsuario.ToString()))
-                {
                     return;
-                }
-                else
-                {
-                    HtUsuariosCalendariosCargados.Add(idUsuario.ToString(), "1");
-                }
+
+                HtUsuariosCalendariosCargados.Add(idUsuario.ToString(), "1");
 
                 IList<clsVisita> visitas = clsCalendarios.ListarVisitas(DateTime.Now, DateTime.Now,
                                                                         Convert.ToInt16(Enums.VisitaEstado.Todas),
                                                                         idUsuario, -1, HtUsuarios);
-                ListaVisitas.AddRange(visitas);
-                schedulerStorage1.Appointments.Items.BeginUpdate();
-                foreach (var v in visitas)
+                var newlistVisitas = new List<clsVisita>();
+                foreach (var v in visitas.Where(v => !ListaVisitas.Contains(v)))
+                {
+                    ListaVisitas.Add(v);
+                    newlistVisitas.Add(v);
+                }
+                //ListaVisitas.AddRange(visitas);
+                
+
+                //schedulerStorage1.Appointments.Items.BeginUpdate();
+                foreach (var v in newlistVisitas)
                 {
                     var foo = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
                     foo.ResourceId = v.Id;
@@ -466,14 +470,21 @@ namespace ProyectoCraft.WinForm.Calendarios
                     foo.CustomFields["IdVisita"] = v.Id;
                     schedulerStorage1.Appointments.Items.Add(foo);
                 }
-
+  
                 Int64 IdVisita = 0;
                 AppointmentCollection appointments = schedulerStorage1.Appointments.Items;
                 foreach (var appointment in appointments)
                 {
+                    var flag = false;
                     IdVisita = Convert.ToInt64(appointment.CustomFields["IdVisita"].ToString());
-
-                    if (IdVisita > 0)
+                    foreach (var v in visitas)
+                    {
+                        if (IdVisita == v.Id32)
+                            flag = true;
+  
+                    }
+                    
+                    if (flag && IdVisita > 0)
                     {
                         clsVisita visita;
 
@@ -484,14 +495,14 @@ namespace ProyectoCraft.WinForm.Calendarios
 
                         if (visita == null) break;
                         appointment.ResourceIds.Clear();
-                        foreach (var asisCraft in visita.AsistentesCraft)
+                        foreach (var asisCraft in visita.AsistentesCraft)   
                         {
                             appointment.ResourceIds.Add(asisCraft.Usuario.Id);
                         }
-                        appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
+                        if (!appointment.ResourceIds.Contains(visita.UsuarioOrganizador.Id))
+                            appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
                     }
                 }
-                schedulerStorage1.Appointments.Items.EndUpdate();
             }
             Cursor.Current = Cursors.Default;
         }

@@ -436,6 +436,7 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             if (e.State.Equals(CheckState.Checked))
             {
+                var timer = System.Diagnostics.Stopwatch.StartNew();
                 var item = resourcesCheckedListBoxControl1.Items[e.Index];
                 var resource = (ResourceCheckedListBoxItem)item.Value;
                 var idUsuario = Convert.ToInt64(resource.Resource.Id);
@@ -503,6 +504,8 @@ namespace ProyectoCraft.WinForm.Calendarios
                             appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
                     }
                 }
+                ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+
             }
             Cursor.Current = Cursors.Default;
         }

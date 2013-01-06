@@ -307,14 +307,22 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             if (TipoCalendario == Enums.TipoCalendario.CalendarioCompartido)
             {
-                Int64 IdResource = Convert.ToInt64(this.AppointmentCalendario.ResourceIds[0]);
-
-                foreach (AsistentesCraft asistente in (IList<AsistentesCraft>)grdAsistentesCraft.DataSource)
+                try
                 {
-                    if (asistente.Usuario.Id == IdResource)
-                        asistente.Asiste = true;
+                    Int64 IdResource = Convert.ToInt64(this.AppointmentCalendario.ResourceIds[0]);
+
+                    foreach (AsistentesCraft asistente in (IList<AsistentesCraft>) grdAsistentesCraft.DataSource)
+                    {
+                        if (asistente.Usuario.Id == IdResource)
+                            asistente.Asiste = true;
+                    }
+                    grdAsistentesCraft.RefreshDataSource();
+                }catch(Exception e){
+                    Console.Write(e.Message);
+                    Console.Write(e.InnerException);
+                    Instancia = null;
+                    this.Close();
                 }
-                grdAsistentesCraft.RefreshDataSource();
 
 
                 //for (int i = 0; i <= lstAsistentesCraft.Items.Count - 1; i++)

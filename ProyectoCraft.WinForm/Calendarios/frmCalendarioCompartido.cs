@@ -164,7 +164,8 @@ namespace ProyectoCraft.WinForm.Calendarios
             var ht = new Hashtable();
             foreach (var u in usuarios)
             {
-                ht.Add(u.Id.ToString(), u);
+                if (!ht.ContainsKey(u.Id.ToString()))
+                    ht.Add(u.Id.ToString(), u);
             }
             return ht;
         }
@@ -174,10 +175,14 @@ namespace ProyectoCraft.WinForm.Calendarios
             var timer = System.Diagnostics.Stopwatch.StartNew();
 
             ResourceCollection collection = schedulerStorage1.Resources.Items;
-
-            foreach (var usuario in Usuarios)
+            var myht = new Hashtable();
+             foreach (var usuario in Usuarios)
             {
-                collection.Add(new Resource(usuario.Id, usuario.NombreCompleto));
+                if (!myht.ContainsKey(usuario.Id.ToString()))
+                {
+                    collection.Add(new Resource(usuario.Id, usuario.NombreCompleto));
+                    myht.Add(usuario.Id.ToString(),usuario);
+                }
             }
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }

@@ -240,3 +240,6 @@ exec SP_CorrigeUsuarios 16,57
 --cfernandez
 exec SP_CorrigeUsuarios 12,59
 go
+
+ALTER TABLE USUARIOS_PERFILES ADD PRIMARY KEY (ID_USUARIO, ID_PERFIL,PRIORIDAD)
+go

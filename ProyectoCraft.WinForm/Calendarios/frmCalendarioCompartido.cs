@@ -245,7 +245,7 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             schedulerStorage1.Appointments.Mappings.Subject = "Asunto";
             schedulerStorage1.Appointments.Mappings.Location = "Ubicacion";
-            schedulerStorage1.Appointments.Mappings.Description = "Descripcion";
+            schedulerStorage1.Appointments.Mappings.Description = "Description";
             schedulerStorage1.Appointments.Mappings.Start = "FechaHoraComienzo";
             schedulerStorage1.Appointments.Mappings.End = "FechaHoraTermino";
             schedulerStorage1.Appointments.Mappings.Label = "EstadoVista";
@@ -461,19 +461,25 @@ namespace ProyectoCraft.WinForm.Calendarios
                 }
                 //ListaVisitas.AddRange(visitas);
                 
-
                 //schedulerStorage1.Appointments.Items.BeginUpdate();
+                
                 foreach (var v in newlistVisitas)
                 {
                     var foo = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
                     foo.ResourceId = v.Id;
-                    foo.Subject = v.Asunto;
+                    foo.Subject = v.Cliente.ToString();
                     foo.Location = v.Ubicacion;
-                    foo.Description = v.Descripcion;
+                    foo.Description =v.Descripcion;
                     foo.Start = v.FechaHoraComienzo;
-                    foo.Start = v.FechaHoraTermino;
+                    var fechaTermino = v.FechaHoraTermino;
+                    if (fechaTermino < v.FechaHoraComienzo)
+                        fechaTermino = v.FechaHoraComienzo;
+                    foo.End = fechaTermino;
                     foo.StatusId = v.StatusUsuario;
                     foo.CustomFields["IdVisita"] = v.Id;
+                    foo.LabelId = (Int32) v.EstadoVista;
+                   
+                    //foo.LabelId = 11;
                     schedulerStorage1.Appointments.Items.Add(foo);
                 }
   
@@ -509,6 +515,7 @@ namespace ProyectoCraft.WinForm.Calendarios
                             appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
                     }
                 }
+                //schedulerStorage1.RefreshData();
                 ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
 
             }

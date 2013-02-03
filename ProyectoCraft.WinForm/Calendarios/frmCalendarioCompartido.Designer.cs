@@ -42,6 +42,8 @@
             this.viewNavigatorZoomInItem1 = new DevExpress.XtraScheduler.UI.ViewNavigatorZoomInItem();
             this.viewNavigatorZoomOutItem1 = new DevExpress.XtraScheduler.UI.ViewNavigatorZoomOutItem();
             this.MenuCalendario = new DevExpress.XtraBars.BarButtonItem();
+            this.ListSemanas = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.viewSelectorBar1 = new DevExpress.XtraScheduler.UI.ViewSelectorBar();
             this.viewSelectorItem1 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
             this.viewSelectorItem2 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
@@ -64,6 +66,7 @@
             this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewNavigator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSelector1)).BeginInit();
@@ -116,8 +119,11 @@
             this.viewSelectorItem3,
             this.viewSelectorItem4,
             this.viewSelectorItem5,
-            this.MenuCalendario});
-            this.barManager1.MaxItemId = 21;
+            this.MenuCalendario,
+            this.ListSemanas});
+            this.barManager1.MaxItemId = 23;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox1});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
@@ -144,7 +150,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorTodayItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorZoomInItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorZoomOutItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MenuCalendario)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.MenuCalendario),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListSemanas)});
             this.viewNavigatorBar1.Offset = 361;
             // 
             // viewNavigatorBackwardItem1
@@ -203,6 +210,21 @@
             this.MenuCalendario.Name = "MenuCalendario";
             this.MenuCalendario.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.MenuCalendario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MenuCalendario_ItemClick);
+            // 
+            // ListSemanas
+            // 
+            this.ListSemanas.Caption = "ListSemanas";
+            this.ListSemanas.Edit = this.repositoryItemComboBox1;
+            this.ListSemanas.Id = 22;
+            this.ListSemanas.Name = "ListSemanas";
+            this.ListSemanas.EditValueChanged += new System.EventHandler(this.ListSemanas_EditValueChanged);
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
             // viewSelectorBar1
             // 
@@ -415,6 +437,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCalendarioCompartido_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewNavigator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSelector1)).EndInit();
@@ -462,5 +485,7 @@
         private DevExpress.XtraBars.BarButtonItem MenuCalendario;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton btnSalir;
+        private DevExpress.XtraBars.BarEditItem ListSemanas;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     }
 }

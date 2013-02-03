@@ -116,6 +116,8 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                     usuario.NombreUsuario = dreader["NombreUsuario"].ToString();
                     usuario.Estado = (Entidades.Enums.Enums.Estado)dreader["Estado"];
                     usuario.FechaCreacion = (DateTime)dreader["FechaCreacion"];
+                    if (!String.IsNullOrEmpty(dreader["SemanasCalendarioCompartido"].ToString()))
+                        usuario.CantidadSemanasCalentarioCompartido = Convert.ToInt64(dreader["SemanasCalendarioCompartido"]);
                     usuario.Cargo = new clsUsuarioCargo(Convert.ToInt16(dreader["IdCargo"]), dreader["Descripcion"].ToString());
                     usuario.CargoEnum = (Entidades.Enums.Enums.UsuariosCargo)Convert.ToInt64(dreader["IdCargo"]);
                     if (dreader["Email"] is DBNull)

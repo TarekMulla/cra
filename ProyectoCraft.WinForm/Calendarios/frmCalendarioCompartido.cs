@@ -95,6 +95,16 @@ namespace ProyectoCraft.WinForm.Calendarios
             }
         }
 
+
+        private void CargarCantidadSemanas()
+        {
+            repositoryItemComboBox1.Items.Clear();
+            for (var i = 1; i < 51; i++)
+                repositoryItemComboBox1.Items.Add(i.ToString());
+
+            ListSemanas.EditValue = Base.Usuario.UsuarioConectado.Usuario.CantidadSemanasCalentarioCompartido.ToString();
+        }
+
         public void FormLoad()
         {
             //vhspiceros
@@ -102,7 +112,7 @@ namespace ProyectoCraft.WinForm.Calendarios
             Dock = DockStyle.Fill;
             schedulerControl1.Start = DateTime.Now;
 
-
+            CargarCantidadSemanas();
             //CargarScheduler();
             DateTime desde = new DateTime(2011, 07, 01, 0, 0, 1);
             DateTime hasta = new DateTime(2011, 07, 30, 0, 0, 1);
@@ -435,8 +445,15 @@ namespace ProyectoCraft.WinForm.Calendarios
         private void resourcesCheckedListBoxControl1_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+
+            ListSemanas.Enabled = false;
+            var semanas = Base.Usuario.UsuarioConectado.Usuario.CantidadSemanasCalentarioCompartido;
+            DateTime desde = DateTime.Now.AddDays((semanas * 7) * -1);
+            DateTime hasta = DateTime.Now.AddMonths(3);
+
             if (HtUsuariosCalendariosCargados == null)
                 HtUsuariosCalendariosCargados = new Hashtable();
+
 
 
             if (e.State.Equals(CheckState.Checked))
@@ -450,7 +467,7 @@ namespace ProyectoCraft.WinForm.Calendarios
 
                 HtUsuariosCalendariosCargados.Add(idUsuario.ToString(), "1");
 
-                IList<clsVisita> visitas = clsCalendarios.ListarVisitas(DateTime.Now, DateTime.Now,
+                IList<clsVisita> visitas = clsCalendarios.ListarVisitas(desde, hasta,
                                                                         Convert.ToInt16(Enums.VisitaEstado.Todas),
                                                                         idUsuario, -1, HtUsuarios);
                 var newlistVisitas = new List<clsVisita>();
@@ -520,6 +537,12 @@ namespace ProyectoCraft.WinForm.Calendarios
 
             }
             Cursor.Current = Cursors.Default;
+        }
+
+        private void ListSemanas_EditValueChanged(object sender, EventArgs e)
+        {
+            Base.Usuario.UsuarioConectado.Usuario.CantidadSemanasCalentarioCompartido = Convert.ToInt64(ListSemanas.EditValue);
+
         }
     }
 }

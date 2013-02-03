@@ -42,5 +42,7 @@ namespace ProyectoCraft.Entidades.Usuarios {
             get { return Nombre.Substring(0, 1) + ApellidoPaterno.Substring(0, 1); }
         }
 
+        public Int64 CantidadSemanasCalentarioCompartido { set; get; }
+        
     }
 }

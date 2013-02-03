@@ -98,6 +98,7 @@ namespace ProyectoCraft.WinForm {
 
         private void MDICraft_Load(object sender, EventArgs e) {
 
+
             // #1
             foreach (Control control in this.Controls) {
                 // #2

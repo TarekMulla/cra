@@ -2035,7 +2035,11 @@ namespace SCCMultimodal.Utils
                 sb2 = sb2.Replace("[SALTO]", "\n");
                 EmailBody = sb2.ToString();
 
-                Destinatarios = ObjDestinatario.Email;
+                Destinatarios = DestinatariosCopia;
+                if (!Destinatarios.Contains(ObjDestinatario.Email))
+                {
+                    Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
+                }
                 if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "" && !Destinatarios.Contains(ObjDestinatario.Email))
                 {
                     Destinatarios = Destinatarios + ";" + DestinatariosCopia;

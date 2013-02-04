@@ -1,3 +1,9 @@
+ALTER TABLE usuarios add SemanasCalendarioCompartido bigint
+GO
+
+update usuarios set SemanasCalendarioCompartido=3
+GO
+
 ALTER PROCEDURE [dbo].[SP_C_CALENDARIO_VISITAS]
 @FechaDesde datetime,
 @FechaHasta datetime,
@@ -122,3 +128,26 @@ else if @IdEstadoVisita = 2
 		AND CC.IdCategoriaCliente = ISNULL(@IdCategoria,CC.IdCategoriaCliente )
    		AND CV.FechaHoraComienzo BETWEEN @FechaDesde  and @FechaHasta
    end
+GO
+
+ALTER PROCEDURE [dbo].[SP_C_USUARIO_POR_USERNAME]
+@UserName nvarchar(50)
+
+As
+
+SELECT     
+dbo.USUARIOS.Id, 
+dbo.USUARIOS.Nombres, 
+dbo.USUARIOS.ApellidoPaterno, 
+dbo.USUARIOS.ApellidoMaterno, 
+dbo.USUARIOS.NombreUsuario, 
+dbo.USUARIOS.Estado, 
+dbo.USUARIOS.FechaCreacion, 
+dbo.USUARIOS.Email,
+dbo.USUARIOS_CARGO.Id AS IdCargo, 
+dbo.USUARIOS_CARGO.Descripcion,
+dbo.USUARIOS.SemanasCalendarioCompartido
+FROM dbo.USUARIOS INNER JOIN
+dbo.USUARIOS_CARGO ON dbo.USUARIOS.IdCargo = dbo.USUARIOS_CARGO.Id
+WHERE NombreUsuario = @UserName
+GO

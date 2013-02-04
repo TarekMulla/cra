@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraPrinting;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
-using ProyectoCraft.Entidades.Ventas.Actividades.Llamadas_Telefonicas;
-using ProyectoCraft.Entidades.Ventas.Actividades;
-using ProyectoCraft.Entidades.Clientes.Target;
-using ProyectoCraft.Entidades.Clientes.Contacto;
-using ProyectoCraft.Entidades.Clientes.Cuenta;
-using ProyectoCraft.Entidades.Clientes;
+using ProyectoCraft.Entidades.Clientes.TargetAccount;
+using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Usuarios;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Direccion.Metas;
-using ProyectoCraft.WinForm;
-using DevExpress.XtraGrid;
+using ProyectoCraft.LogicaNegocios.Parametros;
+using ProyectoCraft.Entidades.Ventas.Productos;
 using System.IO;
 using System.Reflection;
 using SCCMultimodal.Utils;
@@ -59,6 +49,14 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             }
         }
 
+        private clsTargetAccount _targetaccount = null;
+        private clsTargetAccount TargetAccount
+        {
+            get { return _targetaccount; }
+            set { _targetaccount = value; }
+
+        }
+
         private void CargarGrillaObservaciones(long IdProspecto)
         {
             Entidades.GlobalObject.ResultadoTransaccion res =
@@ -88,10 +86,10 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             }
             return Destinatarios;
         }
-        private void CargarGraficos(string Estados,long IdUsuario, DateTime FechaDesde, DateTime FechaHasta)
+        private void CargarGraficos(string Estados, long IdUsuario, DateTime FechaDesde, DateTime FechaHasta)
         {
             DataTable res =
-                LogicaNegocios.Direccion.Metas.clsMetaNegocio.GraficaEstadoUsuario(Estados,IdUsuario,FechaDesde,FechaHasta);
+                LogicaNegocios.Direccion.Metas.clsMetaNegocio.GraficaEstadoUsuario(Estados, IdUsuario, FechaDesde, FechaHasta);
 
             this.ChartProspectos.Series.Clear();
             this.ChartProspectos.SeriesDataMember = "Estado";
@@ -157,10 +155,10 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             Estados = "1,2,3,4,5,6,7,8,9";
 
             Cursor.Current = Cursors.WaitCursor;
-            CargarGrillaProspectos(IdVendedor,Estados);
+            CargarGrillaProspectos(IdVendedor, Estados);
             FechaDesde = DateDesde.DateTime.Date;
             FechaHasta = DateHasta.DateTime.Date;
-            CargarGraficos(Estados, IdUsuario,FechaDesde, FechaHasta);
+            CargarGraficos(Estados, IdUsuario, FechaDesde, FechaHasta);
             Cursor.Current = Cursors.Default;
             MenuFollowUp.Enabled = true;
         }
@@ -227,7 +225,7 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             //Valida Datos Obligatorios
             if (ObjProspecto == null)
             {
-                MessageBox.Show("Debe seleccionar un Target antes de Aceptarlo","Sistema Comercial Craft",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Debe seleccionar un Target antes de Aceptarlo", "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -302,17 +300,17 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                 //Advertencia
                 if (MessageBox.Show("¿Desea Cerrar el Target Seleccionado?", "Sistema Comercial Craft", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                        fila_sel = gridViewProspectos.GetSelectedRows()[0];
-                        ObjPaso = (clsMeta)gridViewProspectos.GetRow(fila_sel);
-                        Ventas.Metas.frmCerrarTarget.IdMeta = ObjPaso.Id;
-                        Ventas.Metas.frmCerrarTarget.NombreProspecto = ObjPaso.GlosaClienteTarget;
-                        Ventas.Metas.frmCerrarTarget.NombreVendedorAsignado = ObjPaso.ObjMetaAsignacion.ObjVendedorAsignado.NombreUsuario;
-                        Ventas.Metas.frmCerrarTarget.IdVendedorActual = ObjPaso.ObjMetaAsignacion.ObjVendedorAsignado.Id;
-                        Ventas.Metas.frmCerrarTarget.TipoTarget = ObjPaso.TipoOportunidad;
-                        Ventas.Metas.frmCerrarTarget.ObjTarget = ObjPaso;
-                        Ventas.Metas.frmCerrarTarget form = Ventas.Metas.frmCerrarTarget.Instancia;
-                        form.ShowDialog(this);
-                 }
+                    fila_sel = gridViewProspectos.GetSelectedRows()[0];
+                    ObjPaso = (clsMeta)gridViewProspectos.GetRow(fila_sel);
+                    Ventas.Metas.frmCerrarTarget.IdMeta = ObjPaso.Id;
+                    Ventas.Metas.frmCerrarTarget.NombreProspecto = ObjPaso.GlosaClienteTarget;
+                    Ventas.Metas.frmCerrarTarget.NombreVendedorAsignado = ObjPaso.ObjMetaAsignacion.ObjVendedorAsignado.NombreUsuario;
+                    Ventas.Metas.frmCerrarTarget.IdVendedorActual = ObjPaso.ObjMetaAsignacion.ObjVendedorAsignado.Id;
+                    Ventas.Metas.frmCerrarTarget.TipoTarget = ObjPaso.TipoOportunidad;
+                    Ventas.Metas.frmCerrarTarget.ObjTarget = ObjPaso;
+                    Ventas.Metas.frmCerrarTarget form = Ventas.Metas.frmCerrarTarget.Instancia;
+                    form.ShowDialog(this);
+                }
             }
         }
 
@@ -321,13 +319,36 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             Instancia = null;
             this.Close();
         }
+        private void BuscarTargetAccount()
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
 
+            resultado = LogicaNegocios.Clientes.clsTargetAccount.ObtenerTargetAccountPorIdSource(ObjProspecto.Id);
+            if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
+            {
+                TargetAccount = new clsTargetAccount();
+                TargetAccount = (clsTargetAccount)resultado.ObjetoTransaccion;
+
+                if (TargetAccount == null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show(resultado.Descripcion, "Target Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void sButtonGrabarObs_Click(object sender, EventArgs e)
         {
+            BuscarTargetAccount();
             var mail = new EnvioMailObject();
             string Mensaje = "";
-            string ModificaGlosa="";
+            string ModificaGlosa = "";
             string NombreTarget = "";
+            string emailInformeLcl = "";
+            string emailInformeFcl = "";
+            string emailInformeAereo = "";
             IList<clsMetaObservaciones> ListaObservaciones;
 
             //Valida Datos Obligatorios
@@ -363,7 +384,7 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             foreach (clsMetaObservaciones Observacion in ListaObservaciones)
             {
                 Entidades.GlobalObject.ResultadoTransaccion res =
-                    LogicaNegocios.Direccion.Metas.clsMetaNegocio.GuardarObservacion(ObjProspecto.Id, Observacion,ref ModificaGlosa);
+                    LogicaNegocios.Direccion.Metas.clsMetaNegocio.GuardarObservacion(ObjProspecto.Id, Observacion, ref ModificaGlosa);
                 if (res.Estado == Enums.EstadoTransaccion.Aceptada && ModificaGlosa.ToUpper() == "S")
                 {
                     if (ObjProspecto.GlosaClienteTarget != "")
@@ -372,9 +393,32 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                     }
                     else
                     {
-                        NombreTarget =  ObjProspecto.ObjClienteMaster.NombreFantasia;
+                        NombreTarget = ObjProspecto.ObjClienteMaster.NombreFantasia;
                     }
                     string Destinatarios = ObtenerDestinatarios(ListaObservaciones);
+                    
+                    foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
+                    {
+                        emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
+                        emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+                        emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
+
+                        if (proPref.Producto.EsAereo)
+                        {
+                            if (!Destinatarios.Contains(emailInformeAereo))
+                                Destinatarios = Destinatarios + ";" + emailInformeAereo;
+                        }
+                        if (proPref.Producto.EsFCL)
+                        {
+                            if (!Destinatarios.Contains(emailInformeFcl))
+                                Destinatarios = Destinatarios + ";" + emailInformeFcl;
+                        }
+                        if (proPref.Producto.EsLCL)
+                        {
+                            if (!Destinatarios.Contains(emailInformeLcl))
+                                Destinatarios = Destinatarios + ";" + emailInformeLcl;
+                        }
+                    }
                     Entidades.GlobalObject.ResultadoTransaccion res2 =
                             mail.EnviarMailAvisoNewObservacionVendedor(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario,
                                                                                     ObjProspecto.UsuarioAsignador,
@@ -475,7 +519,7 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                 //    e.Appearance.BackColor = Color.Salmon;
                 //    e.Appearance.BackColor2 = Color.SeaShell;
                 //}
-                
+
             }
         }
 
@@ -602,8 +646,10 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             }
         }
 
-        private void MenuFollowUp_Click(object sender, EventArgs e) {
-            if (gridViewProspectos.SelectedRowsCount == 1) {
+        private void MenuFollowUp_Click(object sender, EventArgs e)
+        {
+            if (gridViewProspectos.SelectedRowsCount == 1)
+            {
 
                 var meta = (clsMeta)gridViewProspectos.GetRow(gridViewProspectos.GetSelectedRows()[0]);
                 var form = Clientes.frmtargetFollowUP.Instancia;

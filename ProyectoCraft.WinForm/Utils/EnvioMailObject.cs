@@ -1986,7 +1986,7 @@ namespace SCCMultimodal.Utils
                 if (CopiaFijo != "")
                 {
                     EmailDestinatario = EmailDestinatario + ";" + CopiaFijo;
-                }                
+                }
 
                 EnviarEmail(EmailDestinatario, Asunto, EmailBody);
             }
@@ -2008,6 +2008,8 @@ namespace SCCMultimodal.Utils
             string MailCopiaOtrosUsuariosObs = "";
             string Destinatarios = "";
 
+
+
             ResultadoTransaccion res = new ResultadoTransaccion();
             try
             {
@@ -2015,6 +2017,9 @@ namespace SCCMultimodal.Utils
                 Asunto = System.Configuration.ConfigurationSettings.AppSettings.Get("AsuntoEmailNewObservacion");
                 MailCopiaAsignadorObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaAsignadorObs");
                 MailCopiaOtrosUsuariosObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaOtrosUsuariosObs");
+
+
+
 
                 StringBuilder sb = new StringBuilder(Asunto);
                 sb.Replace("[USUARIO_ENVIA]", ObjEmisor.Nombre);
@@ -2031,11 +2036,11 @@ namespace SCCMultimodal.Utils
                 EmailBody = sb2.ToString();
 
                 Destinatarios = ObjDestinatario.Email;
-                if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "")
+                if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "" && !Destinatarios.Contains(ObjDestinatario.Email))
                 {
                     Destinatarios = Destinatarios + ";" + DestinatariosCopia;
                 }
-                if (MailCopiaAsignadorObs == "S" && ObjDestinatario.Email != "")
+                if (MailCopiaAsignadorObs == "S" && ObjDestinatario.Email != "" && !Destinatarios.Contains(ObjDestinatario.Email))
                 {
                     Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
                 }
@@ -2050,6 +2055,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-        
+
     }
 }

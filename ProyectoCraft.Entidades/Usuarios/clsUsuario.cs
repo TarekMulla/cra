@@ -43,6 +43,7 @@ namespace ProyectoCraft.Entidades.Usuarios {
         }
 
         public Int64 CantidadSemanasCalentarioCompartido { set; get; }
+        public Int64 CantidadSemanasMiCompartido { set; get; }
         
     }
 }

@@ -151,3 +151,33 @@ FROM dbo.USUARIOS INNER JOIN
 dbo.USUARIOS_CARGO ON dbo.USUARIOS.IdCargo = dbo.USUARIOS_CARGO.Id
 WHERE NombreUsuario = @UserName
 GO
+
+
+ALTER TABLE usuarios add SemanasMiCalendario bigint
+GO
+
+update usuarios set SemanasMiCalendario=3
+GO
+
+ALTER PROCEDURE [dbo].[SP_C_USUARIO_POR_USERNAME]
+@UserName nvarchar(50)
+
+As
+
+SELECT     
+dbo.USUARIOS.Id, 
+dbo.USUARIOS.Nombres, 
+dbo.USUARIOS.ApellidoPaterno, 
+dbo.USUARIOS.ApellidoMaterno, 
+dbo.USUARIOS.NombreUsuario, 
+dbo.USUARIOS.Estado, 
+dbo.USUARIOS.FechaCreacion, 
+dbo.USUARIOS.Email,
+dbo.USUARIOS_CARGO.Id AS IdCargo, 
+dbo.USUARIOS_CARGO.Descripcion,
+dbo.USUARIOS.SemanasCalendarioCompartido,
+dbo.USUARIOS.SemanasMiCalendario
+FROM dbo.USUARIOS INNER JOIN
+dbo.USUARIOS_CARGO ON dbo.USUARIOS.IdCargo = dbo.USUARIOS_CARGO.Id
+WHERE NombreUsuario = @UserName
+GO

@@ -83,10 +83,13 @@
             this.viewSelectorItem4 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
             this.viewSelectorItem5 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
             this.MenuCalendario = new DevExpress.XtraBars.BarButtonItem();
+            this.ListSemanas = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,6 +117,8 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewNavigator1)).BeginInit();
@@ -494,23 +499,28 @@
             this.viewSelectorItem3,
             this.viewSelectorItem4,
             this.viewSelectorItem5,
-            this.MenuCalendario});
-            this.barManager1.MaxItemId = 12;
+            this.MenuCalendario,
+            this.ListSemanas});
+            this.barManager1.MaxItemId = 14;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox1,
+            this.repositoryItemComboBox2});
             this.barManager1.ShowCloseButton = true;
             // 
             // viewNavigatorBar1
             // 
-            this.viewNavigatorBar1.DockCol = 0;
+            this.viewNavigatorBar1.DockCol = 1;
             this.viewNavigatorBar1.DockRow = 0;
             this.viewNavigatorBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.viewNavigatorBar1.FloatLocation = new System.Drawing.Point(390, 181);
-            this.viewNavigatorBar1.FloatSize = new System.Drawing.Size(370, 26);
+            this.viewNavigatorBar1.FloatLocation = new System.Drawing.Point(47, 104);
+            this.viewNavigatorBar1.FloatSize = new System.Drawing.Size(400, 26);
             this.viewNavigatorBar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorBackwardItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorForwardItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorTodayItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorZoomInItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewNavigatorZoomOutItem1)});
+            this.viewNavigatorBar1.Offset = 589;
             // 
             // viewNavigatorBackwardItem1
             // 
@@ -559,7 +569,7 @@
             // 
             // viewSelectorBar1
             // 
-            this.viewSelectorBar1.DockCol = 1;
+            this.viewSelectorBar1.DockCol = 0;
             this.viewSelectorBar1.DockRow = 0;
             this.viewSelectorBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.viewSelectorBar1.FloatLocation = new System.Drawing.Point(538, 162);
@@ -569,8 +579,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.viewSelectorItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewSelectorItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewSelectorItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.MenuCalendario, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.viewSelectorBar1.Offset = 344;
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.MenuCalendario, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ListSemanas)});
             // 
             // viewSelectorItem1
             // 
@@ -641,6 +651,28 @@
             this.MenuCalendario.Name = "MenuCalendario";
             this.MenuCalendario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MenuCalendario_ItemClick);
             // 
+            // ListSemanas
+            // 
+            this.ListSemanas.Caption = "Semanas";
+            this.ListSemanas.Edit = this.repositoryItemComboBox2;
+            this.ListSemanas.Id = 13;
+            this.ListSemanas.Name = "ListSemanas";
+            this.ListSemanas.EditValueChanged += new System.EventHandler(this.ListSemanas_EditValueChanged);
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
             // schedulerStorage1
             // 
             this.schedulerStorage1.AppointmentsChanged += new DevExpress.XtraScheduler.PersistentObjectsEventHandler(this.schedulerStorage1_AppointmentsChanged);
@@ -655,31 +687,31 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 92);
             this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.toolStripMenuItem1.Text = "Agregar Visita";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(196, 22);
             this.toolStripMenuItem2.Text = "Ver Visita";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(196, 22);
             this.toolStripMenuItem3.Text = "Eliminar Visita";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(198, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(196, 22);
             this.toolStripMenuItem4.Text = "Registrar Informe Visita";
             // 
             // viewNavigator1
@@ -851,6 +883,8 @@
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.viewNavigator1)).EndInit();
@@ -946,5 +980,8 @@
         private DevExpress.XtraNavBar.NavBarItem MenuCuentasCPConfirmadas;
         private DevExpress.XtraNavBar.NavBarItem MenuCuentasPeqConfirmadas;
         private DevExpress.XtraNavBar.NavBarItem MenuTargetConfirmadas;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.BarEditItem ListSemanas;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
     }
 }

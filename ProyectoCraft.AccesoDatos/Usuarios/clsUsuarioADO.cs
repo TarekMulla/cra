@@ -8,10 +8,8 @@ using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Perfiles;
 using ProyectoCraft.Entidades.Usuarios;
 
-namespace ProyectoCraft.AccesoDatos.Usuarios
-{
-    public static class clsUsuarioADO
-    {
+namespace ProyectoCraft.AccesoDatos.Usuarios {
+    public static class clsUsuarioADO {
         private static SqlParameter[] objParams = null;
         private static SqlConnection conn = null;
         private static SqlTransaction transaction = null;
@@ -19,13 +17,11 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
         private static ResultadoTransaccion resTransaccion = null;
 
 
-        public static ResultadoTransaccion ObtenerTransaccionUsuarioPorId(int idUsuario)
-        {
+        public static ResultadoTransaccion ObtenerTransaccionUsuarioPorId(int idUsuario) {
             return BuscaUsuarioPorId(idUsuario);
         }
 
-        public static clsUsuario ObtenerUsuarioPorId(int idUsuario)
-        {
+        public static clsUsuario ObtenerUsuarioPorId(int idUsuario) {
             ResultadoTransaccion resTran = BuscaUsuarioPorId(idUsuario);
             if (resTran.Estado == Entidades.Enums.Enums.EstadoTransaccion.Aceptada)
                 return (clsUsuario)resTran.ObjetoTransaccion;
@@ -33,14 +29,12 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
             return null;
         }
 
-        private static ResultadoTransaccion BuscaUsuarioPorId(int idUsuario)
-        {
+        private static ResultadoTransaccion BuscaUsuarioPorId(int idUsuario) {
 
             ResultadoTransaccion res = new ResultadoTransaccion();
             clsUsuario usuario = null;
 
-            try
-            {
+            try {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -52,8 +46,7 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read())
-                {
+                while (dreader.Read()) {
                     usuario = new clsUsuario();
                     usuario.Id = Convert.ToInt64(dreader[0]);
                     usuario.Nombre = dreader[1].ToString();
@@ -63,7 +56,7 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                     usuario.Estado = (Entidades.Enums.Enums.Estado)dreader[5];
                     usuario.FechaCreacion = (DateTime)dreader[6];
                     usuario.Email = dreader["Email"].ToString();
-                    usuario.Cargo = new clsUsuarioCargo(Convert.ToInt16(dreader[8]),dreader[9].ToString());
+                    usuario.Cargo = new clsUsuarioCargo(Convert.ToInt16(dreader[8]), dreader[9].ToString());
                     usuario.CargoEnum = (Entidades.Enums.Enums.UsuariosCargo)Convert.ToInt64(dreader["IdCargo"]);
                 }
 
@@ -71,30 +64,24 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = usuario;
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 res.Estado = Entidades.Enums.Enums.EstadoTransaccion.Rechazada;
                 res.Descripcion = ex.Message;
                 Base.Log.Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
-                if(dreader != null) dreader.Close();
-                if(conn != null) conn.Close();
+            } finally {
+                if (dreader != null) dreader.Close();
+                if (conn != null) conn.Close();
             }
 
             return res;
         }
 
-        public static ResultadoTransaccion BuscaUsuarioPorUserName(string username)
-        {
+        public static ResultadoTransaccion BuscaUsuarioPorUserName(string username) {
 
             ResultadoTransaccion res = new ResultadoTransaccion();
             clsUsuario usuario = null;
 
-            try
-            {
+            try {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -106,8 +93,7 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read())
-                {
+                while (dreader.Read()) {
                     usuario = new clsUsuario();
                     usuario.Id = Convert.ToInt64(dreader["Id"]);
                     usuario.Nombre = dreader["Nombres"].ToString();
@@ -118,11 +104,15 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                     usuario.FechaCreacion = (DateTime)dreader["FechaCreacion"];
                     if (!String.IsNullOrEmpty(dreader["SemanasCalendarioCompartido"].ToString()))
                         usuario.CantidadSemanasCalentarioCompartido = Convert.ToInt64(dreader["SemanasCalendarioCompartido"]);
+
+                    if (!String.IsNullOrEmpty(dreader["SemanasMiCalendario"].ToString()))
+                        usuario.CantidadSemanasMiCompartido = Convert.ToInt64(dreader["SemanasMiCalendario"]);
+
                     usuario.Cargo = new clsUsuarioCargo(Convert.ToInt16(dreader["IdCargo"]), dreader["Descripcion"].ToString());
                     usuario.CargoEnum = (Entidades.Enums.Enums.UsuariosCargo)Convert.ToInt64(dreader["IdCargo"]);
                     if (dreader["Email"] is DBNull)
                         usuario.Email = "";
-                    else 
+                    else
                         usuario.Email = dreader["Email"].ToString();
                 }
 
@@ -130,15 +120,11 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = usuario;
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 res.Estado = Entidades.Enums.Enums.EstadoTransaccion.Rechazada;
                 res.Descripcion = ex.Message;
                 Base.Log.Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
+            } finally {
                 if (dreader != null) dreader.Close();
                 if (conn != null) conn.Close();
             }
@@ -146,13 +132,11 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
             return res;
         }
 
-        public static ResultadoTransaccion ListarUsuarios(Entidades.Enums.Enums.Estado estado,Entidades.Enums.Enums.CargosUsuarios cargo)
-        {
+        public static ResultadoTransaccion ListarUsuarios(Entidades.Enums.Enums.Estado estado, Entidades.Enums.Enums.CargosUsuarios cargo) {
             ResultadoTransaccion res = new ResultadoTransaccion();
             clsUsuario usuario = null;
             IList<clsUsuario> listUsuarios = new List<clsUsuario>();
-            try
-            {
+            try {
                 //Abrir Conexion
                 conn = BaseDatos.Conexion();
 
@@ -165,8 +149,7 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read())
-                {
+                while (dreader.Read()) {
                     usuario = new clsUsuario();
                     usuario.Id = Convert.ToInt64(dreader[0]);
                     usuario.Nombre = dreader[1].ToString();
@@ -184,27 +167,21 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 res.Estado = Entidades.Enums.Enums.EstadoTransaccion.Aceptada;
                 res.ObjetoTransaccion = listUsuarios;
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 res.Estado = Entidades.Enums.Enums.EstadoTransaccion.Rechazada;
                 res.Descripcion = ex.Message;
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
 
             return res;
         }
 
-        public static IList<clsUsuarioCargo> ObtenerCargosUsuario(string username)
-        {
+        public static IList<clsUsuarioCargo> ObtenerCargosUsuario(string username) {
             IList<clsUsuarioCargo> cargos = new List<clsUsuarioCargo>();
             clsUsuarioCargo cargo;
 
-            try
-            {
+            try {
                 //Abrir Conexion
                 conn = BaseDatos.Conexion();
 
@@ -216,21 +193,16 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read())
-                {
+                while (dreader.Read()) {
                     cargo = new clsUsuarioCargo();
                     cargo.Id = Convert.ToInt64(dreader["Id"]);
                     cargo.Nombre = dreader["Descripcion"].ToString();
                     cargo.CargoEnum = (Entidades.Enums.Enums.UsuariosCargo)Convert.ToInt64(dreader["Id"]);
                     cargos.Add(cargo);
                 }
-            }
-            catch(Exception ex)
-            {
-                
-            }
-            finally
-            {
+            } catch (Exception ex) {
+
+            } finally {
                 conn.Close();
             }
             return cargos;
@@ -261,8 +233,7 @@ namespace ProyectoCraft.AccesoDatos.Usuarios
                         perfil.PanelDeControl.Id = Convert.ToInt32(dreader["id_panel"]);
                         perfil.PanelDeControl.Nombre = dreader["nombre_panel"].ToString();
                         perfil.PanelDeControl.XmlFile = dreader["xml_file"].ToString();
-                    }
-                    else {
+                    } else {
                         perfil.PanelDeControl = null;
                     }
                     listPerfiles.Add(perfil);

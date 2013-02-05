@@ -6,8 +6,10 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraEditors.DXErrorProvider;
+using ProyectoCraft.Entidades.Clientes.TargetAccount;
 using ProyectoCraft.Entidades.Direccion.Metas;
 using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Base.Log;
 using SCCMultimodal.Utils;
@@ -17,6 +19,13 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
 {
     public partial class frmGestionarMetas : Form
     {
+        private clsTargetAccount _targetaccount = null;
+        private clsTargetAccount TargetAccount
+        {
+            get { return _targetaccount; }
+            set { _targetaccount = value; }
+
+        }
         clsMeta ObjProspecto;
         long IdUsuario;
         public frmGestionarMetas()
@@ -201,12 +210,16 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
 
         private void sButtonGrabarObs_Click(object sender, EventArgs e)
         {
+            BuscarTargetAccount();
             var mail = new EnvioMailObject();
             string Mensaje="";
             string ModificaGlosa = "";
             string NombreTarget = "";
             IList<clsMetaObservaciones> ListaObservaciones;
             string DestinatariosCopia = "";
+            string emailInformeLcl = "";
+            string emailInformeFcl = "";
+            string emailInformeAereo = "";
 
             //Valida Datos Obligatorios
             if (this.gridObservaciones.DataSource==null)
@@ -253,6 +266,29 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
                             NombreTarget = ObjProspecto.ObjClienteMaster.NombreFantasia;
                         }
                         DestinatariosCopia = ObtenerDestinatarios(ListaObservaciones);
+                        foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
+                        {
+                            emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
+                            emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+                            emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
+
+                            if (proPref.Producto.EsAereo)
+                            {
+                                if (!DestinatariosCopia.Contains(emailInformeAereo))
+                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeAereo;
+                            }
+                            if (proPref.Producto.EsFCL)
+                            {
+                                if (!DestinatariosCopia.Contains(emailInformeFcl))
+                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFcl;
+                            }
+                            if (proPref.Producto.EsLCL)
+                            {
+                                if (!DestinatariosCopia.Contains(emailInformeLcl))
+                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeLcl;
+                            }
+                        }
+                        
                         Entidades.GlobalObject.ResultadoTransaccion res2 =
                                mail.EnviarMailAvisoNewObservacionGerente(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario,
                                                                                      ObjProspecto.ObjMetaAsignacion.ObjVendedorAsignado,
@@ -274,7 +310,26 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
             }
             Cursor.Current = Cursors.Default;
         }
+        private void BuscarTargetAccount()
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
 
+            resultado = LogicaNegocios.Clientes.clsTargetAccount.ObtenerTargetAccountPorIdSource(ObjProspecto.Id);
+            if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
+            {
+                TargetAccount = new clsTargetAccount();
+                TargetAccount = (clsTargetAccount)resultado.ObjetoTransaccion;
+
+                if (TargetAccount == null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show(resultado.Descripcion, "Target Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void MenuSalir_Click(object sender, EventArgs e)
         {
             Instancia = null;

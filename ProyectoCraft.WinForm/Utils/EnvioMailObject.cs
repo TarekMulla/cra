@@ -1846,14 +1846,18 @@ namespace SCCMultimodal.Utils
                 sb2 = sb2.Replace("[SALTO]", "\n");
                 EmailBody = sb2.ToString();
 
-                Destinatarios = ObjDestinatario.Email;
+                Destinatarios = DestinatariosCopia;
+                if (!Destinatarios.Contains(ObjDestinatario.Email))
+                    Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
                 if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "")
                 {
-                    Destinatarios = Destinatarios + ";" + DestinatariosCopia;
+                    if (!DestinatariosCopia.Contains(Destinatarios))
+                        Destinatarios = Destinatarios + ";" + DestinatariosCopia;
                 }
                 if (MailCopiaAsignadorObs == "S" && ObjAsignadorTarget.Email != "")
                 {
-                    Destinatarios = Destinatarios + ";" + ObjAsignadorTarget.Email;
+                    if (ObjAsignadorTarget.Email.Contains(Destinatarios))
+                        Destinatarios = Destinatarios + ";" + ObjAsignadorTarget.Email;
                 }
 
                 EnviarEmail(Destinatarios, Asunto, EmailBody);

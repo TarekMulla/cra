@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 //using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
@@ -15,7 +12,6 @@ using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Clientes.Target;
 using ProyectoCraft.Entidades.Parametros;
-using ProyectoCraft.WinForm.Calendarios;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Enums;
 using SCCMultimodal.Utils;
@@ -835,10 +831,14 @@ namespace ProyectoCraft.WinForm.Calendarios {
         }
 
         private void ListSemanas_EditValueChanged(object sender, EventArgs e) {
+            Cursor.Current = Cursors.WaitCursor;
             Base.Usuario.UsuarioConectado.Usuario.CantidadSemanasCalentarioCompartido = Convert.ToInt64(ListSemanas.EditValue);
             formularioLoad();
+            Cursor.Current = Cursors.Default;
         }
 
+        private void ListSemanas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
 
+        }
     }
 }

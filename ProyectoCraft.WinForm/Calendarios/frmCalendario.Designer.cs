@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalendario));
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.colContacto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
@@ -83,6 +86,7 @@
             this.viewSelectorItem4 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
             this.viewSelectorItem5 = new DevExpress.XtraScheduler.UI.ViewSelectorItem();
             this.MenuCalendario = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.ListSemanas = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -154,7 +158,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.schedulerControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(889, 526);
+            this.splitContainerControl1.Size = new System.Drawing.Size(984, 526);
             this.splitContainerControl1.SplitterPosition = 192;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -453,7 +457,7 @@
             this.schedulerControl1.OptionsCustomization.AllowAppointmentMultiSelect = false;
             this.schedulerControl1.OptionsCustomization.AllowInplaceEditor = DevExpress.XtraScheduler.UsedAppointmentType.None;
             this.schedulerControl1.PaintStyleName = "WindowsXP";
-            this.schedulerControl1.Size = new System.Drawing.Size(691, 526);
+            this.schedulerControl1.Size = new System.Drawing.Size(786, 526);
             this.schedulerControl1.Start = new System.DateTime(2011, 5, 2, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 0;
@@ -500,8 +504,9 @@
             this.viewSelectorItem4,
             this.viewSelectorItem5,
             this.MenuCalendario,
-            this.ListSemanas});
-            this.barManager1.MaxItemId = 14;
+            this.ListSemanas,
+            this.barStaticItem1});
+            this.barManager1.MaxItemId = 15;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2});
@@ -580,6 +585,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.viewSelectorItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.viewSelectorItem5),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.MenuCalendario, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.ListSemanas)});
             // 
             // viewSelectorItem1
@@ -651,12 +657,27 @@
             this.MenuCalendario.Name = "MenuCalendario";
             this.MenuCalendario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MenuCalendario_ItemClick);
             // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "Semanas";
+            this.barStaticItem1.Id = 14;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ListSemanas
             // 
             this.ListSemanas.Caption = "Semanas";
             this.ListSemanas.Edit = this.repositoryItemComboBox2;
             this.ListSemanas.Id = 13;
             this.ListSemanas.Name = "ListSemanas";
+            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem1.Text = "Semanas";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Cantidad de Semanas a desplegar";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.ListSemanas.SuperTip = superToolTip1;
+            this.ListSemanas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ListSemanas_ItemClick);
             this.ListSemanas.EditValueChanged += new System.EventHandler(this.ListSemanas_EditValueChanged);
             // 
             // repositoryItemComboBox2
@@ -665,6 +686,7 @@
             this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            this.repositoryItemComboBox2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // repositoryItemComboBox1
             // 
@@ -865,7 +887,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 552);
+            this.ClientSize = new System.Drawing.Size(984, 552);
             this.ControlBox = false;
             this.Controls.Add(this.PopupClientes);
             this.Controls.Add(this.popupControlContainer1);
@@ -983,5 +1005,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraBars.BarEditItem ListSemanas;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
     }
 }

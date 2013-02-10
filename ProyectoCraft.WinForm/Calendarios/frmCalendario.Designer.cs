@@ -670,10 +670,11 @@
             this.ListSemanas.Edit = this.repositoryItemComboBox2;
             this.ListSemanas.Id = 13;
             this.ListSemanas.Name = "ListSemanas";
-            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem1.Text = "Semanas";
+            toolTipTitleItem1.Text = "Rango de semanas";
             toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Cantidad de Semanas a desplegar";
+            toolTipItem1.Text = "Rango de semanas en el cual se desplegarán las visitas ya sea visitas ya realizad" +
+                "as o planificadas a futuro. Se considera semanas de 7 días a partir del día de h" +
+                "oy";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.ListSemanas.SuperTip = superToolTip1;

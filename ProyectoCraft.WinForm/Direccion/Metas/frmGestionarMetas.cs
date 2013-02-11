@@ -220,6 +220,8 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
             string emailInformeLcl = "";
             string emailInformeFcl = "";
             string emailInformeAereo = "";
+            string emailInformeFijo = "";
+            string emailNombreAsignadorTarget = "";
 
             //Valida Datos Obligatorios
             if (this.gridObservaciones.DataSource==null)
@@ -266,29 +268,40 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
                             NombreTarget = ObjProspecto.ObjClienteMaster.NombreFantasia;
                         }
                         DestinatariosCopia = ObtenerDestinatarios(ListaObservaciones);
-                        foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
-                        {
-                            emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
-                            emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
-                            emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
 
-                            if (proPref.Producto.EsAereo)
+                        emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+                        emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
+
+                        if (!string.IsNullOrEmpty(emailInformeFijo))
+                            DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFijo;
+
+                        if (!string.IsNullOrEmpty(emailNombreAsignadorTarget))
+                            DestinatariosCopia = DestinatariosCopia + ";" + emailNombreAsignadorTarget;
+
+                        if (TargetAccount != null && TargetAccount.ClienteMaster != null && TargetAccount.ClienteMaster.ProductosPreferidos != null)
+                            foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
                             {
-                                if (!DestinatariosCopia.Contains(emailInformeAereo))
-                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeAereo;
+                                emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
+                                emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+                                emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
+
+                                if (proPref.Producto.EsAereo)
+                                {
+                                    if (!DestinatariosCopia.Contains(emailInformeAereo))
+                                        DestinatariosCopia = DestinatariosCopia + ";" + emailInformeAereo;
+                                }
+                                if (proPref.Producto.EsFCL)
+                                {
+                                    if (!DestinatariosCopia.Contains(emailInformeFcl))
+                                        DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFcl;
+                                }
+                                if (proPref.Producto.EsLCL)
+                                {
+                                    if (!DestinatariosCopia.Contains(emailInformeLcl))
+                                        DestinatariosCopia = DestinatariosCopia + ";" + emailInformeLcl;
+                                }
                             }
-                            if (proPref.Producto.EsFCL)
-                            {
-                                if (!DestinatariosCopia.Contains(emailInformeFcl))
-                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFcl;
-                            }
-                            if (proPref.Producto.EsLCL)
-                            {
-                                if (!DestinatariosCopia.Contains(emailInformeLcl))
-                                    DestinatariosCopia = DestinatariosCopia + ";" + emailInformeLcl;
-                            }
-                        }
-                        
+
                         Entidades.GlobalObject.ResultadoTransaccion res2 =
                                mail.EnviarMailAvisoNewObservacionGerente(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario,
                                                                                      ObjProspecto.ObjMetaAsignacion.ObjVendedorAsignado,

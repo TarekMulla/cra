@@ -1851,12 +1851,12 @@ namespace SCCMultimodal.Utils
                     Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
                 if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "")
                 {
-                    if (!DestinatariosCopia.Contains(Destinatarios))
+                    if (!Destinatarios.Contains(DestinatariosCopia))
                         Destinatarios = Destinatarios + ";" + DestinatariosCopia;
                 }
                 if (MailCopiaAsignadorObs == "S" && ObjAsignadorTarget.Email != "")
                 {
-                    if (ObjAsignadorTarget.Email.Contains(Destinatarios))
+                    if (!Destinatarios.Contains(ObjAsignadorTarget.Email))
                         Destinatarios = Destinatarios + ";" + ObjAsignadorTarget.Email;
                 }
 

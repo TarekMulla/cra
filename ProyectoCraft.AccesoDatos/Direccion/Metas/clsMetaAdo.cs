@@ -327,37 +327,39 @@ namespace ProyectoCraft.AccesoDatos.Direccion.Metas
                         
                         Res =  GuardarFollowups(new List<clsClienteFollowUp>(), Prospecto);
                         Res = clsMetaAdo.GuardarProspectoUsuario(Prospecto.Id, Prospecto.ObjMetaAsignacion.ObjVendedorAsignado.Id, Prospecto.FechaApertura);
-                        foreach (clsMetaCompetencia Competencia in Prospecto.ObjMetaCompetencia)
-                        {
-                            Res = clsMetaAdo.GuardarProspectoCompetencia(Prospecto.Id, Competencia);
-                            if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                        if (Prospecto.ObjMetaCompetencia != null)
+                            foreach (clsMetaCompetencia Competencia in Prospecto.ObjMetaCompetencia)
                             {
-                                transaction.Rollback();
-                                Log.EscribirLog(Res.Descripcion);
-                                return Res;
+                                Res = clsMetaAdo.GuardarProspectoCompetencia(Prospecto.Id, Competencia);
+                                if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                                {
+                                    transaction.Rollback();
+                                    Log.EscribirLog(Res.Descripcion);
+                                    return Res;
+                                }
                             }
-                        }
-                        foreach (clsMetaGlosasTrafico Traficos in Prospecto.ObjMetaGlosasTrafico)
-                        {
-                            Res = clsMetaAdo.GuardarProspectoTraficos(Prospecto.Id, Traficos);
-                            if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                        if (Prospecto.ObjMetaGlosasTrafico != null)
+                            foreach (clsMetaGlosasTrafico Traficos in Prospecto.ObjMetaGlosasTrafico)
                             {
-                                transaction.Rollback();
-                                Log.EscribirLog(Res.Descripcion);
-                                return Res;
+                                Res = clsMetaAdo.GuardarProspectoTraficos(Prospecto.Id, Traficos);
+                                if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                                {
+                                    transaction.Rollback();
+                                    Log.EscribirLog(Res.Descripcion);
+                                    return Res;
+                                }
                             }
-                        }
-                        foreach (clsTipoProducto Producto in Prospecto.ObjTipoProducto)
-                        {
-                            Res = clsMetaAdo.GuardarProspectoTiposProductos(Prospecto.Id, Producto.Id);
-                            if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                        if (Prospecto.ObjTipoProducto != null)
+                            foreach (clsTipoProducto Producto in Prospecto.ObjTipoProducto)
                             {
-                                transaction.Rollback();
-                                Log.EscribirLog(Res.Descripcion);
-                                return Res;
+                                Res = clsMetaAdo.GuardarProspectoTiposProductos(Prospecto.Id, Producto.Id);
+                                if (Res.Estado == ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+                                {
+                                    transaction.Rollback();
+                                    Log.EscribirLog(Res.Descripcion);
+                                    return Res;
+                                }
                             }
-                        }
-
                     }
                 }
                 //Ejecutar transaccion

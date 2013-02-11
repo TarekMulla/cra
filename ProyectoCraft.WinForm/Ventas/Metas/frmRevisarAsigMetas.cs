@@ -349,6 +349,8 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             string emailInformeLcl = "";
             string emailInformeFcl = "";
             string emailInformeAereo = "";
+            string emailInformeFijo = "";
+            string emailNombreAsignadorTarget = "";
             IList<clsMetaObservaciones> ListaObservaciones;
 
             //Valida Datos Obligatorios
@@ -396,29 +398,40 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                         NombreTarget = ObjProspecto.ObjClienteMaster.NombreFantasia;
                     }
                     string Destinatarios = ObtenerDestinatarios(ListaObservaciones);
-                    
-                    foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
-                    {
-                        emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
-                        emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
-                        emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
 
-                        if (proPref.Producto.EsAereo)
+                    emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+                    emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
+
+                    if (!string.IsNullOrEmpty(emailInformeFijo))
+                        Destinatarios = Destinatarios + ";" + emailInformeFijo;
+
+                    if (!string.IsNullOrEmpty(emailNombreAsignadorTarget))
+                        Destinatarios = Destinatarios + ";" + emailNombreAsignadorTarget;
+
+
+                    if (TargetAccount != null && TargetAccount.ClienteMaster != null && TargetAccount.ClienteMaster.ProductosPreferidos != null)
+                        foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
                         {
-                            if (!Destinatarios.Contains(emailInformeAereo))
-                                Destinatarios = Destinatarios + ";" + emailInformeAereo;
+                            emailInformeLcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeLCL");
+                            emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+                            emailInformeAereo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeAereo");
+
+                            if (proPref.Producto.EsAereo)
+                            {
+                                if (!Destinatarios.Contains(emailInformeAereo))
+                                    Destinatarios = Destinatarios + ";" + emailInformeAereo;
+                            }
+                            if (proPref.Producto.EsFCL)
+                            {
+                                if (!Destinatarios.Contains(emailInformeFcl))
+                                    Destinatarios = Destinatarios + ";" + emailInformeFcl;
+                            }
+                            if (proPref.Producto.EsLCL)
+                            {
+                                if (!Destinatarios.Contains(emailInformeLcl))
+                                    Destinatarios = Destinatarios + ";" + emailInformeLcl;
+                            }
                         }
-                        if (proPref.Producto.EsFCL)
-                        {
-                            if (!Destinatarios.Contains(emailInformeFcl))
-                                Destinatarios = Destinatarios + ";" + emailInformeFcl;
-                        }
-                        if (proPref.Producto.EsLCL)
-                        {
-                            if (!Destinatarios.Contains(emailInformeLcl))
-                                Destinatarios = Destinatarios + ";" + emailInformeLcl;
-                        }
-                    }
                     Entidades.GlobalObject.ResultadoTransaccion res2 =
                             mail.EnviarMailAvisoNewObservacionVendedor(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario,
                                                                                     ObjProspecto.UsuarioAsignador,

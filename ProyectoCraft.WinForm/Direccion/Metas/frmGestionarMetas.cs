@@ -272,10 +272,10 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
                         emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
                         emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
 
-                        if (!string.IsNullOrEmpty(emailInformeFijo))
+                        if (!string.IsNullOrEmpty(emailInformeFijo) && !DestinatariosCopia.Contains(emailInformeFijo))
                             DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFijo;
 
-                        if (!string.IsNullOrEmpty(emailNombreAsignadorTarget))
+                        if (!string.IsNullOrEmpty(emailNombreAsignadorTarget) && !DestinatariosCopia.Contains(emailNombreAsignadorTarget))
                             DestinatariosCopia = DestinatariosCopia + ";" + emailNombreAsignadorTarget;
 
                         if (TargetAccount != null && TargetAccount.ClienteMaster != null && TargetAccount.ClienteMaster.ProductosPreferidos != null)

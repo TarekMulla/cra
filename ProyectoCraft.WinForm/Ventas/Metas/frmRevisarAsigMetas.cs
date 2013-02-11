@@ -402,10 +402,10 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                     emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
                     emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
 
-                    if (!string.IsNullOrEmpty(emailInformeFijo))
+                    if (!string.IsNullOrEmpty(emailInformeFijo) && !Destinatarios.Contains(emailInformeFijo))
                         Destinatarios = Destinatarios + ";" + emailInformeFijo;
 
-                    if (!string.IsNullOrEmpty(emailNombreAsignadorTarget))
+                    if (!string.IsNullOrEmpty(emailNombreAsignadorTarget) && !Destinatarios.Contains(emailNombreAsignadorTarget))
                         Destinatarios = Destinatarios + ";" + emailNombreAsignadorTarget;
 
 

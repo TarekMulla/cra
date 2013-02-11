@@ -221,7 +221,7 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
             string emailInformeFcl = "";
             string emailInformeAereo = "";
             string emailInformeFijo = "";
-            string emailNombreAsignadorTarget = "";
+            
 
             //Valida Datos Obligatorios
             if (this.gridObservaciones.DataSource==null)
@@ -270,14 +270,10 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
                         DestinatariosCopia = ObtenerDestinatarios(ListaObservaciones);
 
                         emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
-                        emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
-
+                        
                         if (!string.IsNullOrEmpty(emailInformeFijo) && !DestinatariosCopia.Contains(emailInformeFijo))
                             DestinatariosCopia = DestinatariosCopia + ";" + emailInformeFijo;
-
-                        if (!string.IsNullOrEmpty(emailNombreAsignadorTarget) && !DestinatariosCopia.Contains(emailNombreAsignadorTarget))
-                            DestinatariosCopia = DestinatariosCopia + ";" + emailNombreAsignadorTarget;
-
+                        
                         if (TargetAccount != null && TargetAccount.ClienteMaster != null && TargetAccount.ClienteMaster.ProductosPreferidos != null)
                             foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)
                             {

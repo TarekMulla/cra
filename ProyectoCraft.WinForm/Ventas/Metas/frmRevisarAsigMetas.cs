@@ -350,7 +350,7 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
             string emailInformeFcl = "";
             string emailInformeAereo = "";
             string emailInformeFijo = "";
-            string emailNombreAsignadorTarget = "";
+            
             IList<clsMetaObservaciones> ListaObservaciones;
 
             //Valida Datos Obligatorios
@@ -400,14 +400,11 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                     string Destinatarios = ObtenerDestinatarios(ListaObservaciones);
 
                     emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
-                    emailNombreAsignadorTarget = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAsignadorTarget");
+                    
 
                     if (!string.IsNullOrEmpty(emailInformeFijo) && !Destinatarios.Contains(emailInformeFijo))
                         Destinatarios = Destinatarios + ";" + emailInformeFijo;
-
-                    if (!string.IsNullOrEmpty(emailNombreAsignadorTarget) && !Destinatarios.Contains(emailNombreAsignadorTarget))
-                        Destinatarios = Destinatarios + ";" + emailNombreAsignadorTarget;
-
+                    
 
                     if (TargetAccount != null && TargetAccount.ClienteMaster != null && TargetAccount.ClienteMaster.ProductosPreferidos != null)
                         foreach (var proPref in TargetAccount.ClienteMaster.ProductosPreferidos)

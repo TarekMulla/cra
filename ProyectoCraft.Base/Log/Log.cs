@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 
 namespace ProyectoCraft.Base.Log
 {
@@ -11,10 +12,15 @@ namespace ProyectoCraft.Base.Log
             log4net.Config.XmlConfigurator.Configure();
             return log;
         }
-        public static void EscribirLog(string mensaje)
-        {
+
+        public static void EscribirLog(string mensaje){
+            try{
+                var foo = Usuario.UsuarioConectado.Usuario.NombreUsuario;
+                mensaje = string.Format("[{0}]{1}", foo, mensaje);
+            }catch(Exception e){
+                Console.Write(e.InnerException);
+            }
             GetLog("SistemaComercialCraft").Error(mensaje);
         }
-
     }
 }

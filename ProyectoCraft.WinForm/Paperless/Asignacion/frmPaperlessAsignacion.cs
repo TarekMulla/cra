@@ -48,7 +48,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
 
 
-        private void frmPaperless_Load(object sender, EventArgs e) {
+        private void frmPaperless_Load(object sender, EventArgs e)
+        {
 
             foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles)
             {
@@ -73,10 +74,15 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
         }
 
-        private void BloquearFormulario() {
+        private void BloquearFormulario() 
+        {
             btnAsignar.Enabled = false;
             btnSiguienteP2.Enabled = false;
             btnSiguienteP3.Enabled = false;
+            radioCourierDestino.Enabled = false;
+            chkConfirmacionMaster.Enabled = false;
+            txtfechaMasterConfirmado.Properties.ReadOnly = true;
+            txtfechaMasterConfirmado.Enabled = true;
         }
 
         public void FormLoad() {
@@ -183,13 +189,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 tabPrealerta.PageEnabled = true;
                 btnAsignar.Enabled = true;
                 tabAsignacion.SelectedTabPage = tabPrealerta;
-            } else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AsignadoUsuario1) {
-                tabInfGeneral.PageEnabled = true;
-                tabFechas.PageEnabled = true;
-                tabPrealerta.PageEnabled = true;
-                btnAsignar.Enabled = true;
-                tabAsignacion.SelectedTabPage = tabPrealerta;
-                btnAsignar.Enabled = true;
+            //} else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AsignadoUsuario1) {
+            //    tabInfGeneral.PageEnabled = true;
+            //    tabFechas.PageEnabled = true;
+            //    tabPrealerta.PageEnabled = true;
+            //    btnAsignar.Enabled = true;
+            //    tabAsignacion.SelectedTabPage = tabPrealerta;
+            //    btnAsignar.Enabled = true;               
             } else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AsignadoUsuario1
                   || PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AceptadoUsuario1
                   || PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnProcesoUsuario1
@@ -802,7 +808,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             //        dxErrorProvider1.SetError(txtPlazoEmbarcadores, "Debe seleccionar fecha plazo a embarcadores", ErrorType.Critical);
             //    }    
             //}
-
+            
 
             return valida;
         }
@@ -827,6 +833,19 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 PaperlessAsignacionActual.PlazoEmbarcadores = Convert.ToDateTime(txtPlazoEmbarcadores.Text);
 
             PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.EnAsignacion;
+            if (radioCourierDestino.SelectedIndex.Equals(0))
+            {
+                PaperlessAsignacionActual.ChkCourier = true;
+                PaperlessAsignacionActual.ChkEnDestino = false;
+            }            
+            else if (radioCourierDestino.SelectedIndex.Equals(1))
+            {
+                PaperlessAsignacionActual.ChkEnDestino = true;
+                PaperlessAsignacionActual.ChkCourier = false;
+            }
+            PaperlessAsignacionActual.ChkMasterConfirmado = chkConfirmacionMaster.Checked.Equals(true);
+            if (!string.IsNullOrEmpty(txtfechaMasterConfirmado.Text))
+                PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
         }
 
         private void btnAsignar_Click(object sender, EventArgs e) {
@@ -952,6 +971,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             txtNumHousesBL.Enabled = true;
             lvlMotivo.Visible = true;
             txtMotivo.Visible = true;
+            txtfechaMasterConfirmado.Enabled = true;
+            chkConfirmacionMaster.Enabled = true;
+
         }
         private void btnEditarFechas_Click(object sender, EventArgs e) {
             txtFechaETA.Properties.ReadOnly = false;
@@ -961,6 +983,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             txtFechaETA.Enabled = true;
             txtAperturaNavieras.Enabled = true;
             txtPlazoEmbarcadores.Enabled = true;
+            chkConfirmacionMaster.Enabled = true;
+            radioCourierDestino.Enabled = true;
+            txtfechaMasterConfirmado.Properties.ReadOnly = false;
+            txtfechaMasterConfirmado.Enabled = true;
         }
 
         private void btnGrabarBl_Click(object sender, EventArgs e) {
@@ -999,6 +1025,21 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 PaperlessAsignacionActual.PlazoEmbarcadores = null;
             else
                 PaperlessAsignacionActual.PlazoEmbarcadores = Convert.ToDateTime(txtPlazoEmbarcadores.Text);
+
+            if (radioCourierDestino.SelectedIndex.Equals(0))
+            {
+                PaperlessAsignacionActual.ChkCourier = true;
+                PaperlessAsignacionActual.ChkEnDestino = false;
+            }
+            else if (radioCourierDestino.SelectedIndex.Equals(1))
+            {
+                PaperlessAsignacionActual.ChkEnDestino = true;
+                PaperlessAsignacionActual.ChkCourier = false;
+            }
+            PaperlessAsignacionActual.ChkMasterConfirmado = chkConfirmacionMaster.Checked.Equals(true);
+            if (!string.IsNullOrEmpty(txtfechaMasterConfirmado.Text))
+                PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
+
 
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso2(PaperlessAsignacionActual, LogApertura);
@@ -1068,6 +1109,35 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             form.fromPaperless = true;
             form.InstanciaPaperless = Instancia;   
             form.Show();
+        }       
+        private void ChkCourierDestino(int valor)
+        {
+            if (valor.Equals(0))
+            {                
+                PaperlessAsignacionActual.ChkCourier = true;
+                PaperlessAsignacionActual.ChkEnDestino = false;                
+            }
+            else if (valor.Equals(1))
+            {
+                PaperlessAsignacionActual.ChkEnDestino = true;
+                PaperlessAsignacionActual.ChkCourier = false;                
+            }
+        }
+
+        private void txtFechaETA_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFechaETA.Text))
+                txtfechaMasterConfirmado.Text = Convert.ToDateTime(txtFechaETA.Text).AddDays(-15).ToString();
+        }
+
+        private void chkConfirmacionMaster_CheckedChanged(object sender, EventArgs e)
+        {
+            PaperlessAsignacionActual.ChkMasterConfirmado = true;
+        }
+
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            ChkCourierDestino(radioCourierDestino.SelectedIndex);
         }
     }
 }

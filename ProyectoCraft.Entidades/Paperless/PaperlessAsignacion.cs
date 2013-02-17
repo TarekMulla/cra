@@ -56,5 +56,10 @@ namespace ProyectoCraft.Entidades.Paperless
 
         public int IdResultado { get; set; }
         public string GlosaResultado { get; set; }
+        public bool ChkCourier { get; set; }
+        public bool ChkEnDestino { get; set; }
+        public bool ChkMasterConfirmado { get; set; }
+        public DateTime FechaMasterConfirmado { get; set; }
+
     }
 }

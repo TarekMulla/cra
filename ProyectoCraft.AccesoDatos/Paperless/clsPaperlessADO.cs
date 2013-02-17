@@ -707,6 +707,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     objParams[2].Value = paso2.PlazoEmbarcadores;
                 objParams[3].Value = paso2.Id;
                 objParams[4].Value = paso2.Estado;
+                objParams[5].Value = paso2.ChkCourier;
+                objParams[6].Value = paso2.ChkEnDestino;
+                objParams[7].Value = paso2.ChkMasterConfirmado;
+                objParams[8].Value = paso2.FechaMasterConfirmado;
+
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO2", conn);
                 command.Parameters.AddRange(objParams);

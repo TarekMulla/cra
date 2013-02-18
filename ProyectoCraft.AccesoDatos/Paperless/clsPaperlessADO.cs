@@ -358,6 +358,18 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (!(dreader["FechaPaso3"] is DBNull))
                         Asignacion.FechaPaso3 = Convert.ToDateTime(dreader["FechaPaso3"]);
 
+                    if (!(dreader["Courier"] is DBNull))
+                        Asignacion.ChkCourier = Convert.ToBoolean(dreader["Courier"]);
+
+                    if (!(dreader["EnDestino"] is DBNull))
+                        Asignacion.ChkEnDestino = Convert.ToBoolean(dreader["EnDestino"]);
+
+                    if (!(dreader["MasterConfirmado"] is DBNull))
+                        Asignacion.ChkMasterConfirmado =  Convert.ToBoolean(dreader["MasterConfirmado"]);
+
+                    if (!(dreader["FechaMasterConfirmado"] is DBNull))
+                        Asignacion.FechaMasterConfirmado = Convert.ToDateTime(dreader["FechaMasterConfirmado"]);
+
                 }
             } catch (Exception ex) {
                 Base.Log.Log.EscribirLog(ex.Message);

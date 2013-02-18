@@ -93,6 +93,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             CargarAgentesExistentes();
             CargarNavesExistentes();
             CargarImportancia();
+            
             ValidarEstados();
         }
 
@@ -167,7 +168,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                     txtNaveTransbordo.Text = String.Empty;
                     ddlNaveTransbordo.SelectedItem = null;
                 }
-
+                CargaMasterConfirmado();
                 ValidarEstados();
             }
         }
@@ -1138,6 +1139,16 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
         private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {           
             ChkCourierDestino(radioCourierDestino.SelectedIndex);
+        }
+        private void CargaMasterConfirmado ()
+        {
+            chkConfirmacionMaster.Checked = PaperlessAsignacionActual.ChkMasterConfirmado;
+            if (PaperlessAsignacionActual.ChkEnDestino)
+                radioCourierDestino.SelectedIndex = 1;
+            else if (PaperlessAsignacionActual.ChkCourier)
+                radioCourierDestino.SelectedIndex = 0;
+            else
+                radioCourierDestino.SelectedIndex = 0;
         }
     }
 }

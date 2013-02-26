@@ -94,6 +94,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.txtCourier = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -463,6 +464,7 @@
             // 
             // tabFechas
             // 
+            this.tabFechas.Controls.Add(this.txtCourier);
             this.tabFechas.Controls.Add(this.radioCourierDestino);
             this.tabFechas.Controls.Add(this.chkConfirmacionMaster);
             this.tabFechas.Controls.Add(this.txtfechaMasterConfirmado);
@@ -506,7 +508,7 @@
             // txtfechaMasterConfirmado
             // 
             this.txtfechaMasterConfirmado.EditValue = null;
-            this.txtfechaMasterConfirmado.Location = new System.Drawing.Point(364, 22);
+            this.txtfechaMasterConfirmado.Location = new System.Drawing.Point(364, 45);
             this.txtfechaMasterConfirmado.Name = "txtfechaMasterConfirmado";
             this.txtfechaMasterConfirmado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -764,6 +766,13 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // txtCourier
+            // 
+            this.txtCourier.Location = new System.Drawing.Point(364, 22);
+            this.txtCourier.Name = "txtCourier";
+            this.txtCourier.Size = new System.Drawing.Size(129, 20);
+            this.txtCourier.TabIndex = 120;
+            // 
             // frmPaperlessAsignacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,6 +897,7 @@
         private System.Windows.Forms.CheckBox chkConfirmacionMaster;
         private DevExpress.XtraEditors.DateEdit txtfechaMasterConfirmado;
         private DevExpress.XtraEditors.RadioGroup radioCourierDestino;
+        private System.Windows.Forms.TextBox txtCourier;
 
     }
 }

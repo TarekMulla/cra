@@ -83,6 +83,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             chkConfirmacionMaster.Enabled = false;
             txtfechaMasterConfirmado.Properties.ReadOnly = true;
             txtfechaMasterConfirmado.Enabled = true;
+            txtCourier.Enabled = false;            
         }
 
         public void FormLoad() {
@@ -847,6 +848,14 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             PaperlessAsignacionActual.ChkMasterConfirmado = chkConfirmacionMaster.Checked.Equals(true);
             if (!string.IsNullOrEmpty(txtfechaMasterConfirmado.Text))
                 PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
+
+            if (!string.IsNullOrEmpty(txtCourier.Text))
+            {
+                int number;
+                bool trynumber=Int32.TryParse(txtCourier.Text, out number);
+                PaperlessAsignacionActual.TxtCourier = trynumber ? number : 0;
+            }
+            
         }
 
         private void btnAsignar_Click(object sender, EventArgs e) {
@@ -988,6 +997,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             radioCourierDestino.Enabled = true;
             txtfechaMasterConfirmado.Properties.ReadOnly = false;
             txtfechaMasterConfirmado.Enabled = true;
+            txtCourier.Enabled = true;
+
         }
 
         private void btnGrabarBl_Click(object sender, EventArgs e) {
@@ -1040,6 +1051,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             PaperlessAsignacionActual.ChkMasterConfirmado = chkConfirmacionMaster.Checked.Equals(true);
             if (!string.IsNullOrEmpty(txtfechaMasterConfirmado.Text))
                 PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
+            
+            if (!string.IsNullOrEmpty(txtCourier.Text))
+            {
+                int number;
+                bool trynumber = Int32.TryParse(txtCourier.Text, out number);
+                PaperlessAsignacionActual.TxtCourier = trynumber ? number : 0;
+            }
 
 
             ResultadoTransaccion resultado = new ResultadoTransaccion();
@@ -1149,6 +1167,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 radioCourierDestino.SelectedIndex = 0;
             else
                 radioCourierDestino.SelectedIndex = 0;
+            if (PaperlessAsignacionActual.TxtCourier > 0)
+                txtCourier.Text = PaperlessAsignacionActual.TxtCourier.ToString();
+
         }
     }
 }

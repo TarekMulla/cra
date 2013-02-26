@@ -60,6 +60,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public bool ChkEnDestino { get; set; }
         public bool ChkMasterConfirmado { get; set; }
         public DateTime FechaMasterConfirmado { get; set; }
-
+        public int TxtCourier{ get; set; }
     }
 }

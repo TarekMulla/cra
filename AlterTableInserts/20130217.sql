@@ -6,6 +6,9 @@ alter table PAPERLESS_ASIGNACION add MasterConfirmado bit
 go
 alter table PAPERLESS_ASIGNACION add FechaMasterConfirmado datetime
 go
+alter table PAPERLESS_ASIGNACION add txtCourier int
+go
+
 
 ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO2]         
                 @FechaEta datetime,                                              
@@ -17,6 +20,7 @@ ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO2]
                 @EnDestino bit, 
                 @MasterConfirmado bit,
                 @FechaMasterConfirmado datetime,
+                @txtCourier int,
                 @IdResultado INT OUTPUT,
                 @Resultado VARCHAR(255) OUTPUT
 AS                                                               
@@ -73,12 +77,12 @@ UPDATE PAPERLESS_ASIGNACION SET
      courier= @Courier,
      EnDestino=@EnDestino,
      MasterConfirmado=@MasterConfirmado,
-     FechaMasterConfirmado=@FechaMasterConfirmado
+     FechaMasterConfirmado=@FechaMasterConfirmado,
+     txtCourier = @txtCourier
 WHERE Id = @IdAsignacion                                         
 
 
 RETURN 0
-
 
 
 
@@ -110,7 +114,8 @@ IdNaveTransbordo, PANAVET.Descripcion as NaveTransbordo,
 PA.Courier,
 PA.EnDestino,
 PA.MasterConfirmado,
-PA.FechaMasterConfirmado
+PA.FechaMasterConfirmado,
+PA.txtCourier
 FROM PAPERLESS_ASIGNACION PA
 LEFT OUTER JOIN PAPERLESS_AGENTE PAA
 ON PA.IdAgente = PAA.Id
@@ -133,4 +138,5 @@ ON PA.IdImportancia = PAR.Id
 LEFT OUTER JOIN PAPERLESS_TIPO_SERVICIO TS
 ON PA.IdTipoServicio = TS.Id
 WHERE PA.Id = @IdAsignacion
+
  

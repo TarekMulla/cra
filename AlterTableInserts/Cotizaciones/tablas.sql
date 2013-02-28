@@ -25,6 +25,7 @@ CREATE TABLE
         FechaSolicitud DATETIME DEFAULT GETDATE(),
         IdIncoterm BIGINT NOT NULL,
         PuertoEmbarque VARCHAR(100) ,
+        NombreCliente VARCHAR(120),
         POL VARCHAR(300) ,
         POD VARCHAR(300) ,
         NavieraReferencia VARCHAR(500) ,

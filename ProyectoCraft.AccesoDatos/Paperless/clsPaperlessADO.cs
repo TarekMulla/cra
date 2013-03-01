@@ -371,7 +371,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         Asignacion.FechaMasterConfirmado = Convert.ToDateTime(dreader["FechaMasterConfirmado"]);
 
                     if (!(dreader["txtCourier"] is DBNull))
-                        Asignacion.TxtCourier = Convert.ToInt32(dreader["txtCourier"]);
+                        Asignacion.TxtCourier = dreader["txtCourier"].ToString();
 
                 }
             } catch (Exception ex) {
@@ -725,8 +725,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[5].Value = paso2.ChkCourier;
                 objParams[6].Value = paso2.ChkEnDestino;
                 objParams[7].Value = paso2.ChkMasterConfirmado;
-                objParams[8].Value = paso2.FechaMasterConfirmado;
-                objParams[9].Value = paso2.TxtCourier;
+                objParams[8].Value = paso2.FechaMasterConfirmado.HasValue ? paso2.FechaMasterConfirmado : new DateTime(9999, 1, 1);
+
+                objParams[9].Value = !string.IsNullOrEmpty(paso2.TxtCourier) ? paso2.TxtCourier : "";
 
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO2", conn);

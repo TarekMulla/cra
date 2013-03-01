@@ -848,14 +848,11 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             PaperlessAsignacionActual.ChkMasterConfirmado = chkConfirmacionMaster.Checked.Equals(true);
             if (!string.IsNullOrEmpty(txtfechaMasterConfirmado.Text))
                 PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
+            else
+                PaperlessAsignacionActual.FechaMasterConfirmado = null;
 
             if (!string.IsNullOrEmpty(txtCourier.Text))
-            {
-                int number;
-                bool trynumber=Int32.TryParse(txtCourier.Text, out number);
-                PaperlessAsignacionActual.TxtCourier = trynumber ? number : 0;
-            }
-            
+                PaperlessAsignacionActual.TxtCourier = txtCourier.Text;                        
         }
 
         private void btnAsignar_Click(object sender, EventArgs e) {
@@ -1053,12 +1050,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 PaperlessAsignacionActual.FechaMasterConfirmado = Convert.ToDateTime(txtfechaMasterConfirmado.Text);
             
             if (!string.IsNullOrEmpty(txtCourier.Text))
-            {
-                int number;
-                bool trynumber = Int32.TryParse(txtCourier.Text, out number);
-                PaperlessAsignacionActual.TxtCourier = trynumber ? number : 0;
-            }
-
+                PaperlessAsignacionActual.TxtCourier = txtCourier.Text;
+            
 
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso2(PaperlessAsignacionActual, LogApertura);
@@ -1167,9 +1160,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                 radioCourierDestino.SelectedIndex = 0;
             else
                 radioCourierDestino.SelectedIndex = 0;
-            if (PaperlessAsignacionActual.TxtCourier > 0)
-                txtCourier.Text = PaperlessAsignacionActual.TxtCourier.ToString();
 
+            txtCourier.Text = PaperlessAsignacionActual.TxtCourier;
+            txtfechaMasterConfirmado.Text = PaperlessAsignacionActual.FechaMasterConfirmado.HasValue ? PaperlessAsignacionActual.FechaMasterConfirmado.Value.ToString() : "";
         }
     }
 }

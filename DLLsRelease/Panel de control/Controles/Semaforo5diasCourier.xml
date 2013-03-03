@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<control type="semaforo" refresh="90" title="Master Conf 6 dias"  baseControl="semaforo.xml">
+<control type="semaforo" refresh="90" title="Venc Master Conf"  baseControl="semaforo.xml">
   <description>
     Control para graficar las diferencias entre x e y
   </description>
   <datasource>
     <![CDATA[
     
-     SELECT CASE WHEN COUNT(a.id) =0 THEN '' 
-WHEN COUNT(a.id) > 0 THEN 'orange' END as color, 
+      SELECT CASE WHEN COUNT(a.id) =0 THEN '' 
+WHEN COUNT(a.id) > 0 THEN 'red' END as color, 
 COUNT(a.id) as 'cantidad' 
-from PAPERLESS_ASIGNACION A where FechaMasterConfirmado is not null and MasterConfirmado =0
-and FechaMasterConfirmado BETWEEN (getdate()-6) AND (getdate()) 
-
+from PAPERLESS_ASIGNACION A where FechaMasterConfirmado is not null and MasterConfirmado = 0
+and convert(varchar(20),A.FechaETA,112) >= (GETDATE()-20)
 
     ]]>
   </datasource>
@@ -19,38 +18,22 @@ and FechaMasterConfirmado BETWEEN (getdate()-6) AND (getdate())
     <datasourse>
       <![CDATA[
          
-          SELECT  I.NumConsolidado,
-                  FechaMaster,
-                  C.Descripcion as 'agente',
-                  D.Descripcion as 'naviera',
-                  E.Descripcion as 'nave',
-                  Viaje,
-                  NumHousesBL,
-                  FechaMasterConfirmado,
-                  AperturaNavieras as AperturaNavieras_GREEN,
-                  PlazoEmbarcadores,
-                  g.NombreUsuario as 'usuario1',
-                  h.NombreUsuario as 'usuario2',
-                  F.Descripcion as 'Estado'
-          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-               ON A.id=B.idAsignacion
-                  LEFT OUTER JOIN PAPERLESS_AGENTE C
-                      ON A.IdAgente=C.Id
-                      LEFT OUTER JOIN PAPERLESS_NAVIERA D
-                          ON A.IdNaviera = D.Id
-                              LEFT OUTER JOIN PAPERLESS_NAVE E
-                                 ON A.IdNave = E.Id
-                                 LEFT OUTER JOIN PAPERLESS_ESTADO F
-                                 ON A.IdEstado = F.Id
-                                     LEFT OUTER JOIN USUARIOS G
-                                     ON A.Usuario1 = G.Id
-                                        LEFT OUTER JOIN USUARIOS H
-                                          ON A.Usuario2 = H.Id
-                                            LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
-                                            ON A.Id = I.IdAsignacion
-        where FechaMasterConfirmado is not null and MasterConfirmado =0
-	and FechaMasterConfirmado BETWEEN (getdate()-6) AND (getdate()) 
-      ]]>
+SELECT distinct a.Id, I.NumConsolidado, 
+FechaMaster, 
+C.Descripcion as 'agente', 
+D.Descripcion as 'naviera',
+E.Descripcion as 'nave', 
+Viaje, 
+NumHousesBL, 
+FechaMasterConfirmado,
+FechaETA,
+AperturaNavieras as AperturaNavieras_RED, PlazoEmbarcadores, g.NombreUsuario as 'usuario1',
+h.NombreUsuario as 'usuario2', F.Descripcion as 'Estado' ,a.txtCourier as NumeroCourier
+FROM PAPERLESS_ASIGNACION A 
+LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B ON A.id=B.idAsignacion LEFT OUTER JOIN PAPERLESS_AGENTE C ON A.IdAgente=C.Id LEFT OUTER JOIN PAPERLESS_NAVIERA D ON A.IdNaviera = D.Id LEFT OUTER JOIN PAPERLESS_NAVE E ON A.IdNave = E.Id LEFT OUTER JOIN PAPERLESS_ESTADO F ON A.IdEstado = F.Id LEFT OUTER JOIN USUARIOS G ON A.Usuario1 = G.Id LEFT OUTER JOIN USUARIOS H ON A.Usuario2 = H.Id LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I ON A.Id = I.IdAsignacion 
+where FechaMasterConfirmado is not null and MasterConfirmado =0
+and convert(varchar(20),A.FechaETA,112) >= (GETDATE()-20)     
+ ]]>
     </datasourse>
   </detail>
 </control>

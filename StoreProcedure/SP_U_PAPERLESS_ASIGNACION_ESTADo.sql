@@ -27,6 +27,17 @@ SELECT @IdResultado=0, @Resultado=''
  8      Proceso Terminado              
  9      Rechazada Usuario 1ra Etapa    
 */
+
+
+IF @IdEstado=9
+BEGIN
+    UPDATE PAPERLESS_ASIGNACION                       
+SET IdEstado = @IdEstado                          
+WHERE Id = @IdAsignacion  
+SELECT @IdResultado=1
+        RETURN 0
+END     
+
  --Unica excepción en la secuencia de ids
 IF @IdEstado=9 and @IdEstadoActual<>3
     BEGIN
@@ -58,3 +69,6 @@ BEGIN
     SET FechaAceptacionUsr1 = getdate()                          
     WHERE Id = @IdAsignacion  
 END     
+                                                                                                                                       
+
+RETURN 0

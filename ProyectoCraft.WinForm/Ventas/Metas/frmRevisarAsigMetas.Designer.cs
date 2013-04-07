@@ -225,6 +225,7 @@
             this.gridViewProspectos.Name = "gridViewProspectos";
             this.gridViewProspectos.OptionsView.ShowGroupPanel = false;
             this.gridViewProspectos.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewProspectos_FocusedRowChanged);
+            this.gridViewProspectos.ColumnFilterChanged += new System.EventHandler(this.gridViewProspectos_ColumnFilterChanged);
             this.gridViewProspectos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewProspectos_RowStyle);
             // 
             // gridColumn3
@@ -448,7 +449,7 @@
             this.MenuSalir});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(956, 38);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(956, 36);
             this.toolStripBarraLlamada.TabIndex = 6;
             this.toolStripBarraLlamada.Text = "toolStrip1";
             this.toolStripBarraLlamada.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripBarraLlamada_ItemClicked);
@@ -456,14 +457,14 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuNuevo
             // 
             this.MenuNuevo.Image = ((System.Drawing.Image)(resources.GetObject("MenuNuevo.Image")));
             this.MenuNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuNuevo.Name = "MenuNuevo";
-            this.MenuNuevo.Size = new System.Drawing.Size(63, 35);
+            this.MenuNuevo.Size = new System.Drawing.Size(58, 33);
             this.MenuNuevo.Text = "Actualizar";
             this.MenuNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -475,7 +476,7 @@
             this.MenuAceptar.Image = ((System.Drawing.Image)(resources.GetObject("MenuAceptar.Image")));
             this.MenuAceptar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuAceptar.Name = "MenuAceptar";
-            this.MenuAceptar.Size = new System.Drawing.Size(52, 35);
+            this.MenuAceptar.Size = new System.Drawing.Size(49, 33);
             this.MenuAceptar.Text = "Aceptar";
             this.MenuAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuAceptar.Click += new System.EventHandler(this.MenuAceptar_Click);
@@ -485,7 +486,7 @@
             this.MenuDevolver.Image = ((System.Drawing.Image)(resources.GetObject("MenuDevolver.Image")));
             this.MenuDevolver.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuDevolver.Name = "MenuDevolver";
-            this.MenuDevolver.Size = new System.Drawing.Size(57, 35);
+            this.MenuDevolver.Size = new System.Drawing.Size(54, 33);
             this.MenuDevolver.Text = "Devolver";
             this.MenuDevolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuDevolver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -496,7 +497,7 @@
             this.MenuCerrar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCerrar.Image")));
             this.MenuCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuCerrar.Name = "MenuCerrar";
-            this.MenuCerrar.Size = new System.Drawing.Size(43, 35);
+            this.MenuCerrar.Size = new System.Drawing.Size(42, 33);
             this.MenuCerrar.Text = "Cerrar";
             this.MenuCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuCerrar.Click += new System.EventHandler(this.MenuGenerarOportunidad_Click);
@@ -504,7 +505,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuTodasAsignaciones
             // 
@@ -513,7 +514,7 @@
             this.MenuTodasAsignaciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.MenuTodasAsignaciones.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuTodasAsignaciones.Name = "MenuTodasAsignaciones";
-            this.MenuTodasAsignaciones.Size = new System.Drawing.Size(63, 35);
+            this.MenuTodasAsignaciones.Size = new System.Drawing.Size(59, 33);
             this.MenuTodasAsignaciones.Text = "Ver Todas";
             this.MenuTodasAsignaciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuTodasAsignaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -524,7 +525,7 @@
             this.MenuVerVisitas.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerVisitas.Image")));
             this.MenuVerVisitas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerVisitas.Name = "MenuVerVisitas";
-            this.MenuVerVisitas.Size = new System.Drawing.Size(64, 35);
+            this.MenuVerVisitas.Size = new System.Drawing.Size(60, 33);
             this.MenuVerVisitas.Text = "Ver Visitas";
             this.MenuVerVisitas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuVerVisitas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -535,7 +536,7 @@
             this.MenuVerLlamadas.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerLlamadas.Image")));
             this.MenuVerLlamadas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerLlamadas.Name = "MenuVerLlamadas";
-            this.MenuVerLlamadas.Size = new System.Drawing.Size(81, 35);
+            this.MenuVerLlamadas.Size = new System.Drawing.Size(74, 33);
             this.MenuVerLlamadas.Text = "Ver Llamadas";
             this.MenuVerLlamadas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuVerLlamadas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -543,14 +544,14 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuFichaTarget
             // 
             this.MenuFichaTarget.Image = ((System.Drawing.Image)(resources.GetObject("MenuFichaTarget.Image")));
             this.MenuFichaTarget.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFichaTarget.Name = "MenuFichaTarget";
-            this.MenuFichaTarget.Size = new System.Drawing.Size(76, 35);
+            this.MenuFichaTarget.Size = new System.Drawing.Size(71, 33);
             this.MenuFichaTarget.Text = "Ficha Target";
             this.MenuFichaTarget.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuFichaTarget.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -562,7 +563,7 @@
             this.MenuFollowUp.Image = ((System.Drawing.Image)(resources.GetObject("MenuFollowUp.Image")));
             this.MenuFollowUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFollowUp.Name = "MenuFollowUp";
-            this.MenuFollowUp.Size = new System.Drawing.Size(61, 35);
+            this.MenuFollowUp.Size = new System.Drawing.Size(54, 33);
             this.MenuFollowUp.Text = "FollowUp";
             this.MenuFollowUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuFollowUp.Click += new System.EventHandler(this.MenuFollowUp_Click);
@@ -573,7 +574,7 @@
             this.MenuFichaCuenta.Image = ((System.Drawing.Image)(resources.GetObject("MenuFichaCuenta.Image")));
             this.MenuFichaCuenta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFichaCuenta.Name = "MenuFichaCuenta";
-            this.MenuFichaCuenta.Size = new System.Drawing.Size(80, 35);
+            this.MenuFichaCuenta.Size = new System.Drawing.Size(74, 33);
             this.MenuFichaCuenta.Text = "Ficha Cuenta";
             this.MenuFichaCuenta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuFichaCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -581,14 +582,14 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuExcel
             // 
             this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
             this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
+            this.MenuExcel.Size = new System.Drawing.Size(36, 33);
             this.MenuExcel.Text = "Excel";
             this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -597,14 +598,14 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
+            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);

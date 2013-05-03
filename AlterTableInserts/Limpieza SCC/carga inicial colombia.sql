@@ -29,3 +29,6 @@ insert into  USUARIOS_PERFILES values (66,1,0)
 insert into  USUARIOS_PERFILES values (67,19,0)
 insert into  USUARIOS_PERFILES values (68,18,0)
 insert into  USUARIOS_PERFILES values (69,4,0)
+
+
+update USUARIOS set Estado = 0 where Id not in (65,66,67,68,69)

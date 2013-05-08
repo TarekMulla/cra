@@ -1,5 +1,3 @@
-use scc_col
-go
 
 truncate table CALENDARIO_VISITA_INFORME_TRAFICOS
 truncate table CALENDARIO_VISITA_INFORME_PRODUCTOS
@@ -52,4 +50,10 @@ drop table TARIFADO_UNIDADES
 drop table VENTAS_COTIZACION_ENCABEZADO
 drop table vENTAS_TIPOS_PRODUCTO_TRAFICO
 drop table VENTAS_CONDICIONES_PAGO
+go
+
+
+Truncate table PAPERLESS_NAVE
+go
+truncate table PAPERLESS_NAVIERA
 go

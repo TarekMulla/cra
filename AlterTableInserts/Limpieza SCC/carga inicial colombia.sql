@@ -1,4 +1,5 @@
-
+insert into PAPERLESS_NAVIERA values ('NavieraTest',1,getdate())
+go
 insert into PARAM_PAIS values ('Colombia')
 go
 

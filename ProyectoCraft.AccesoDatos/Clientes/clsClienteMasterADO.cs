@@ -172,6 +172,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                         if (master.Tipo == Enums.TipoPersona.Target)
                             master.EstadoTarget = (Enums.Estado)dreader[5];
                         else if (master.Tipo == Enums.TipoPersona.Cuenta) {
+                            if (dreader[6] != null && !string.IsNullOrEmpty(dreader[6].ToString()))
                             master.EstadoCuenta = (Enums.Estado)dreader[6];
                             master.Cuenta = new clsCuenta();
                             master.NombreFantasia = dreader["NombreFantasia"].ToString();

@@ -117,7 +117,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 i.TiempoTransito = reader["tiempotransito"].ToString();
                 i.FechaCreacion = Convert.ToDateTime(reader["createDate"]);
                 i.Estado = new Estado();
-                i.Estado.Id32 = Convert.ToInt32(reader["cotizacion_directa_estados_id"]);
+                i.Estado.Id32 = Convert.ToInt32(reader["Estado"]);
                 //i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
                 //idusuario,createdate,cotizacion_solicitud_cotizaciones_id,cotizacion_indirecta_estados_id
 

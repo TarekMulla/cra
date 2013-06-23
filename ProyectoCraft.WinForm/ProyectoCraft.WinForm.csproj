@@ -119,10 +119,21 @@
     <Reference Include="DevExpress.XtraVerticalGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\DLLsRelease\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -284,6 +295,24 @@
     </Compile>
     <Compile Include="Controles\EstadoPaperless.Designer.cs">
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.Designer.cs">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmListarCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmListarCotizaciones.designer.cs">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.Designer.cs">
+      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
     </Compile>
     <Compile Include="Direccion\Administracion\frmConsultarDEuda.cs">
       <SubType>Form</SubType>
@@ -532,12 +561,25 @@
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmCotizacionDirecta.resx">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmListarCotizaciones.resx">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmPrintPreviewCotizacoines.resx">
+      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmConsultarDEuda.resx">
       <DependentUpon>frmConsultarDEuda.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmDefinirAgente.resx">
       <DependentUpon>frmDefinirAgente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmDefinirLineaCredito.resx">
       <DependentUpon>frmDefinirLineaCredito.cs</DependentUpon>
@@ -549,21 +591,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmDefinirMeta.resx">
       <DependentUpon>frmDefinirMeta.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmDefinirSLead.resx">
       <DependentUpon>frmDefinirSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmEditarSLead.resx">
       <DependentUpon>frmEditarSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmGestionarMetas.resx">
       <DependentUpon>frmGestionarMetas.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmGestionarSLead.resx">
       <DependentUpon>frmGestionarSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmUsuarioProspecto.resx">
       <DependentUpon>frmUsuarioProspecto.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Escritorios\FoldersOutlook.resx">
       <DependentUpon>FoldersOutlook.cs</DependentUpon>
@@ -571,18 +619,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
       <DependentUpon>frmNavieras.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
       <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formPanelDeControl.resx">
       <DependentUpon>formPanelDeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MDICraft.resx">
       <DependentUpon>MDICraft.cs</DependentUpon>
@@ -610,6 +663,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
       <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
       <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>
@@ -625,6 +679,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario2\frmPaperlessUser2v2.resx">
       <DependentUpon>frmPaperlessUser2v2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -803,6 +858,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProyectoCraft.AccesoDatos\ProyectoCraft.AccesoDatos.csproj">
+      <Project>{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}</Project>
+      <Name>ProyectoCraft.AccesoDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">
       <Project>{37053216-ACFD-4932-94EF-49F874307A2C}</Project>
       <Name>ProyectoCraft.Base</Name>
@@ -819,7 +878,33 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cotizaciones\CotizacionSetting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image001.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image002.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image003.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\TemplateCotizacionMailBody.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\TemplateCotizacionMailPDF.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\TemplateCotizacionPreview.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="IconoCraft.ico" />
+    <Content Include="mailSalesLead\Cotizacion.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mailSalesLead\imagesCotizaciones\image001.png" />
+    <Content Include="mailSalesLead\imagesCotizaciones\image002.png" />
     <Content Include="mailSalesLead\templateAsignacion.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

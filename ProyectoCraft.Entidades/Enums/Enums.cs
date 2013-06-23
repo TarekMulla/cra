@@ -313,7 +313,17 @@ namespace ProyectoCraft.Entidades.Enums {
             Cierre = 4,
             Perdida = 5,
         }
-
+        public enum EstadosCotizacion
+        {
+            Ingresado = 1,
+            EnProceso = 2,
+            TarifaDisponible = 3,
+            Enviadacliente = 4,
+            Reevaluacion = 5,
+            PerdidoTarifa = 6,
+            PerdidoOtros = 7,
+            Cerrado = 8,
+        }
 
     }
 }

@@ -1,0 +1,11 @@
+CREATE Procedure [dbo].[SP_L_COTIZACION_DIRECTA_CONCEPTOS]
+AS
+Begin
+      SET NOCOUNT ON
+     SELECT [ID]
+      ,[NOMBRE]
+      ,[DESCRIPCION]
+      ,[ACTIVO]
+  FROM [dbo].[COTIZACION_DIRECTA_CONCEPTOS]
+end  
+

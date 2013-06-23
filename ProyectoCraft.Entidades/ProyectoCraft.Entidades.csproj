@@ -72,6 +72,17 @@
     <Compile Include="Clientes\TargetAccount\clsTipoObjeciones.cs" />
     <Compile Include="Clientes\TargetAccount\clsTipoServicioComplementario.cs" />
     <Compile Include="Clientes\Target\clsTarget.cs" />
+    <Compile Include="Cotizaciones\Comentario.cs" />
+    <Compile Include="Cotizaciones\Directa\Concepto.cs" />
+    <Compile Include="Cotizaciones\Directa\CotizacionDirecta.cs" />
+    <Compile Include="Cotizaciones\Directa\DetalleOpcion.cs" />
+    <Compile Include="Cotizaciones\Directa\Estado.cs" />
+    <Compile Include="Cotizaciones\Directa\Moneda.cs" />
+    <Compile Include="Cotizaciones\Directa\Opcion.cs" />
+    <Compile Include="Cotizaciones\Directa\Puerto.cs" />
+    <Compile Include="Cotizaciones\Directa\Unidad.cs" />
+    <Compile Include="Cotizaciones\ITableable.cs" />
+    <Compile Include="Cotizaciones\ITableableOpcion.cs" />
     <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
     <Compile Include="Direccion\Metas\clsMeta.cs" />
     <Compile Include="Direccion\Metas\SalesLaed.cs" />

@@ -659,7 +659,7 @@
             this.Menu_Salir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1175, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1175, 36);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -668,7 +668,7 @@
             this.Menu_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Salir.Image")));
             this.Menu_Salir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_Salir.Name = "Menu_Salir";
-            this.Menu_Salir.Size = new System.Drawing.Size(33, 35);
+            this.Menu_Salir.Size = new System.Drawing.Size(31, 33);
             this.Menu_Salir.Text = "Salir";
             this.Menu_Salir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Menu_Salir.Click += new System.EventHandler(this.Menu_Salir_Click);

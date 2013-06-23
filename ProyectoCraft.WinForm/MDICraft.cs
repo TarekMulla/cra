@@ -16,7 +16,9 @@ using ProyectoCraft.WinForm.Paperless.Asignacion;
 using ProyectoCraft.WinForm.Paperless.Usuario1;
 using ProyectoCraft.WinForm.Paperless.Usuario2;
 using SCCMultimodal;
+using SCCMultimodal.Cotizaciones;
 using SCCMultimodal.Panel_de_control;
+
 
 namespace ProyectoCraft.WinForm {
 
@@ -97,8 +99,6 @@ namespace ProyectoCraft.WinForm {
         }
 
         private void MDICraft_Load(object sender, EventArgs e) {
-
-
             // #1
             foreach (Control control in this.Controls) {
                 // #2
@@ -166,6 +166,9 @@ namespace ProyectoCraft.WinForm {
             /*     var form = Form1.Instancia;
                  form.MdiParent = this;
                  form.Show();*/
+            //formulario vhs
+            //var formulario = FrmCotizacionDirecta.Instancia;
+            //formulario.ShowDialog();
         }
 
         public void ChangePanelDeControl(object sender, EventArgs e) {
@@ -622,6 +625,14 @@ namespace ProyectoCraft.WinForm {
         private void MantenedorComunas_LinkClicked(object sender, NavBarLinkEventArgs e) {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Clientes.frmComunas form = Clientes.frmComunas.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+        private void CotizacionesLinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var timer = System.Diagnostics.Stopwatch.StartNew();           
+            Cotizaciones.FrmListarCotizaciones form = Cotizaciones.FrmListarCotizaciones.Instancia;
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

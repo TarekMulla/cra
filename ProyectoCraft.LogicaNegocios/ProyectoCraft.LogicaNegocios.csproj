@@ -54,6 +54,13 @@
     <Compile Include="Clientes\ClsNavieras.cs" />
     <Compile Include="Clientes\clsTarget.cs" />
     <Compile Include="Clientes\clsTargetAccount.cs" />
+    <Compile Include="Cotizaciones\ClsComentario.cs" />
+    <Compile Include="Cotizaciones\ClsMonedas.cs" />
+    <Compile Include="Cotizaciones\ClsPuertos.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsConceptos.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsCotizacionDirecta.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsUnidad.cs" />
+    <Compile Include="Cotizaciones\Directa\CotizacionDirectaEstado.cs" />
     <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
     <Compile Include="Direccion\Metas\clsMeta.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadNegocio.cs" />

@@ -66,18 +66,16 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.Administracion = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
-            this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MenuTargets = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuSalesLead = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuOportunidad = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuCotizaciones = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuTarget = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MenuTargets = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuSalesLead = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuOportunidad = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup10 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuMiCalendario = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
@@ -101,6 +99,9 @@
             this.MenuPaperlessUsuario2 = new DevExpress.XtraNavBar.NavBarItem();
             this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
             this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
+            this.Administracion = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
+            this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
             this.MantenedorNavieras = new DevExpress.XtraNavBar.NavBarItem();
             this.MatenedorComunas = new DevExpress.XtraNavBar.NavBarItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -404,7 +405,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.Administracion;
+            this.navBarControl1.ActiveGroup = this.navBarGroup2;
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -446,7 +447,8 @@
             this.MantenedorNavieras,
             this.MatenedorComunas,
             this.MantNavieras,
-            this.MantComunas});
+            this.MantComunas,
+            this.MenuCotizaciones});
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -456,29 +458,45 @@
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
             // 
-            // Administracion
+            // navBarGroup2
             // 
-            this.Administracion.Caption = "Administración de Datos";
-            this.Administracion.Expanded = true;
-            this.Administracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas)});
-            this.Administracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("Administracion.LargeImage")));
-            this.Administracion.Name = "Administracion";
+            this.navBarGroup2.Caption = "Ventas";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuTargets),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuSalesLead),
+            new DevExpress.XtraNavBar.NavBarItemLink(MenuRegistrarLlamada),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuOportunidad),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuCotizaciones)});
+            this.navBarGroup2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup2.LargeImage")));
+            this.navBarGroup2.Name = "navBarGroup2";
             // 
-            // MantNavieras
+            // MenuTargets
             // 
-            this.MantNavieras.Caption = "Mantenedor Navieras";
-            this.MantNavieras.Name = "MantNavieras";
-            this.MantNavieras.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantNavieras.SmallImage")));
-            this.MantNavieras.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorNavieras_LinkClicked);
+            this.MenuTargets.Caption = "Mis Targets";
+            this.MenuTargets.Name = "MenuTargets";
+            this.MenuTargets.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuTargets.SmallImage")));
+            this.MenuTargets.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargets_LinkClicked);
             // 
-            // MantComunas
+            // MenuSalesLead
             // 
-            this.MantComunas.Caption = "Mantenedor Comunas";
-            this.MantComunas.Name = "MantComunas";
-            this.MantComunas.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantComunas.SmallImage")));
-            this.MantComunas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorComunas_LinkClicked);
+            this.MenuSalesLead.Caption = "Mis Sales Leads";
+            this.MenuSalesLead.Name = "MenuSalesLead";
+            this.MenuSalesLead.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuSalesLead.SmallImage")));
+            this.MenuSalesLead.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuAsignacionSLead_LinkClicked);
+            // 
+            // MenuOportunidad
+            // 
+            this.MenuOportunidad.Caption = "Oportunidades";
+            this.MenuOportunidad.Name = "MenuOportunidad";
+            this.MenuOportunidad.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuOportunidad.SmallImage")));
+            // 
+            // MenuCotizaciones
+            // 
+            this.MenuCotizaciones.Caption = "Mis Cotizaciones";
+            this.MenuCotizaciones.Name = "MenuCotizaciones";
+            this.MenuCotizaciones.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuCotizaciones.SmallImage")));
+            this.MenuCotizaciones.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CotizacionesLinkClicked);
             // 
             // navBarGroup1
             // 
@@ -520,37 +538,6 @@
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.Visible = false;
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargetAccount_LinkClicked);
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Caption = "Ventas";
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuTargets),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuSalesLead),
-            new DevExpress.XtraNavBar.NavBarItemLink(MenuRegistrarLlamada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuOportunidad)});
-            this.navBarGroup2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup2.LargeImage")));
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // MenuTargets
-            // 
-            this.MenuTargets.Caption = "Mis Targets";
-            this.MenuTargets.Name = "MenuTargets";
-            this.MenuTargets.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuTargets.SmallImage")));
-            this.MenuTargets.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargets_LinkClicked);
-            // 
-            // MenuSalesLead
-            // 
-            this.MenuSalesLead.Caption = "Mis Sales Leads";
-            this.MenuSalesLead.Name = "MenuSalesLead";
-            this.MenuSalesLead.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuSalesLead.SmallImage")));
-            this.MenuSalesLead.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuAsignacionSLead_LinkClicked);
-            // 
-            // MenuOportunidad
-            // 
-            this.MenuOportunidad.Caption = "Oportunidades";
-            this.MenuOportunidad.Name = "MenuOportunidad";
-            this.MenuOportunidad.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuOportunidad.SmallImage")));
             // 
             // navBarGroup10
             // 
@@ -723,6 +710,29 @@
             this.MenuPaperlessGestion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessGestion.SmallImage")));
             this.MenuPaperlessGestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessGestion_LinkClicked);
             // 
+            // Administracion
+            // 
+            this.Administracion.Caption = "Administración de Datos";
+            this.Administracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas)});
+            this.Administracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("Administracion.LargeImage")));
+            this.Administracion.Name = "Administracion";
+            // 
+            // MantNavieras
+            // 
+            this.MantNavieras.Caption = "Mantenedor Navieras";
+            this.MantNavieras.Name = "MantNavieras";
+            this.MantNavieras.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantNavieras.SmallImage")));
+            this.MantNavieras.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorNavieras_LinkClicked);
+            // 
+            // MantComunas
+            // 
+            this.MantComunas.Caption = "Mantenedor Comunas";
+            this.MantComunas.Name = "MantComunas";
+            this.MantComunas.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantComunas.SmallImage")));
+            this.MantComunas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorComunas_LinkClicked);
+            // 
             // MantenedorNavieras
             // 
             this.MantenedorNavieras.Caption = "Mantenedor Navieras";
@@ -848,6 +858,7 @@
         private DevExpress.XtraNavBar.NavBarGroup Administracion;
         private DevExpress.XtraNavBar.NavBarItem MantNavieras;
         private DevExpress.XtraNavBar.NavBarItem MantComunas;
+        private DevExpress.XtraNavBar.NavBarItem MenuCotizaciones;
     }
 }
 

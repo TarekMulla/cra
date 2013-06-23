@@ -29,6 +29,8 @@
             this.repositoryItemComboBox23 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemMemoExEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.grpOportunidad = new System.Windows.Forms.GroupBox();
+            this.LblEstado = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.TxtObservaciones = new DevExpress.XtraEditors.MemoEdit();
             this.LblGastosLocales = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -97,8 +99,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.LblEstado = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit2)).BeginInit();
             this.grpOportunidad.SuspendLayout();
@@ -179,6 +179,27 @@
             this.grpOportunidad.TabIndex = 34;
             this.grpOportunidad.TabStop = false;
             this.grpOportunidad.Text = "General";
+            // 
+            // LblEstado
+            // 
+            this.LblEstado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.LblEstado.Appearance.Options.UseBorderColor = true;
+            this.LblEstado.Appearance.Options.UseFont = true;
+            this.LblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblEstado.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.LblEstado.Location = new System.Drawing.Point(125, 182);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.Size = new System.Drawing.Size(117, 25);
+            this.LblEstado.TabIndex = 117;
+            this.LblEstado.Text = "labelControl17";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(9, 188);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(33, 13);
+            this.labelControl11.TabIndex = 116;
+            this.labelControl11.Text = "Estado";
             // 
             // TxtObservaciones
             // 
@@ -364,7 +385,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -800,7 +821,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(721, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(721, 36);
             this.toolStrip1.TabIndex = 35;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -809,7 +830,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(53, 35);
+            this.toolStripButton1.Size = new System.Drawing.Size(50, 33);
             this.toolStripButton1.Text = "Guardar";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -817,14 +838,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
+            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
@@ -833,27 +854,6 @@
             // 
             this.ctrldxError.ContainerControl = this;
             // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(9, 188);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(33, 13);
-            this.labelControl11.TabIndex = 116;
-            this.labelControl11.Text = "Estado";
-            // 
-            // LblEstado
-            // 
-            this.LblEstado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LblEstado.Appearance.Options.UseBorderColor = true;
-            this.LblEstado.Appearance.Options.UseFont = true;
-            this.LblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.LblEstado.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.LblEstado.Location = new System.Drawing.Point(125, 182);
-            this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(117, 25);
-            this.LblEstado.TabIndex = 117;
-            this.LblEstado.Text = "labelControl17";
-            // 
             // FrmCotizacionDirecta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -861,6 +861,7 @@
             this.ClientSize = new System.Drawing.Size(721, 669);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.grpOportunidad);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCotizacionDirecta";
             this.Text = "Ingreso de Cotizacion Directa";
             this.Load += new System.EventHandler(this.SolicitarTarifa_Load);

@@ -230,6 +230,7 @@ namespace ProyectoCraft.WinForm {
             MenuPaperlessGestion.Visible = false;
             MantComunas.Visible = false;
             MantNavieras.Visible = false;
+            MenuCotizaciones.Visible = false;
         }
 
         private void HabilitarFuncionalidades() {
@@ -277,7 +278,7 @@ namespace ProyectoCraft.WinForm {
                 }
 
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Vendedor) {
-                    MenuCotizaciones.Visible = false;
+                    MenuCotizaciones.Visible = true;
                 }
 
 

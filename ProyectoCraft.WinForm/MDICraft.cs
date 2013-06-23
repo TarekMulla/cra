@@ -271,6 +271,16 @@ namespace ProyectoCraft.WinForm {
                 if (clsPerfil.Id != (int)Enums.UsuariosCargo.Customer_Service && clsPerfil.Id != (int)Enums.UsuariosCargo.Vendedor) {
                     MenuPaperlessGestion.Visible = true;
                 }
+
+                if (clsPerfil.Id != (int)Enums.UsuariosCargo.Customer_Service && clsPerfil.Id != (int)Enums.UsuariosCargo.Vendedor) {
+                    MenuPaperlessGestion.Visible = true;
+                }
+
+                if (clsPerfil.Id == (int)Enums.UsuariosCargo.Vendedor) {
+                    MenuCotizaciones.Visible = false;
+                }
+
+
                 if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString())) {
                     MantComunas.Visible = true;
                     MantNavieras.Visible = true;

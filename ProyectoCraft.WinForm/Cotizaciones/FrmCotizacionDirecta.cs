@@ -97,14 +97,19 @@ namespace SCCMultimodal.Cotizaciones {
             TxtGastosLocales.Text = CotizacionDirecta.GastosLocales.ToString();
             TxtObservaciones.Text = CotizacionDirecta.Observaciones;
             LblEstado.Text = CotizacionDirecta.EstadoDescripcion;
-            if (CotizacionDirecta.Estado.Id32.Equals(Enums.EstadosCotizacion.Cerrado) || CotizacionDirecta.Estado.Id32.Equals(Enums.EstadosCotizacion.PerdidoOtros) || CotizacionDirecta.Estado.Id32.Equals(  Enums.EstadosCotizacion.PerdidoTarifa))
+            if (CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Cerrado ||
+                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoOtros ||
+                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoTarifa ||
+                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Enviadacliente){
                 toolStripButton1.Enabled = false;
+                toolStripButton1.ToolTipText = "Imposible modificar cotización en el Estado actual";
+            }
         }
 
         private void NuevaCotizacion() {
             TxtFecha.DateTime = DateTime.Now;
             txtEjecutivo.Text = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.NombreCompleto;
-
+            LblEstado.Visible = labelControl11.Visible = false;
             ActivarDesactivarDetalle(false);
         }
 
@@ -305,7 +310,7 @@ namespace SCCMultimodal.Cotizaciones {
             ActiveControl = txtEjecutivo;
             if (ElFormularioTieneErrores())
                 return;
-            
+
             CargaDatosDelFormulario();
             if (CotizacionDirecta.IsNew)
                 CrearCotizacion();
@@ -330,8 +335,8 @@ namespace SCCMultimodal.Cotizaciones {
 
             var xmldoc = new XmlDocument();
             xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-            CotizacionDirecta.ObservacionesFijas =  xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
-           
+            CotizacionDirecta.ObservacionesFijas = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
+
             var list = (List<clsIncoTerm>)clsParametrosClientes.ListarIncoTerms(true);
             var incoTerm = list.Find(foo => foo.Codigo.ToUpper().Equals("FOB"));
             if (CotizacionDirecta.IsNew) {
@@ -371,9 +376,7 @@ namespace SCCMultimodal.Cotizaciones {
 
             if (CotizacionDirecta.Opciones.Count == 0)
                 ctrldxError.SetError(CboNaviera, "Debe ingresar al menos una opcion", ErrorType.Critical);
-            if (CotizacionDirecta.Estado.Id32.Equals(Enums.EstadosCotizacion.Cerrado) || CotizacionDirecta.Estado.Id32.Equals(Enums.EstadosCotizacion.PerdidoOtros) || CotizacionDirecta.Estado.Id32.Equals(Enums.EstadosCotizacion.PerdidoTarifa))
-                ctrldxError.SetError(LblEstado, "Imposible modificar cotización en el Estado actual", ErrorType.Critical);
-
+           
             bindingNavigator1.BindingSource.MoveFirst();
             var encontroErrorOpcion = false;
             for (var i = 0; i < CotizacionDirecta.Opciones.Count; i++) {

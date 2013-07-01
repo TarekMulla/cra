@@ -39,6 +39,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu_Salir = new System.Windows.Forms.ToolStripButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtShipping = new DevExpress.XtraEditors.TextEdit();
+            this.lblShipping = new System.Windows.Forms.Label();
             this.txtNumMaster = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.chkCreacionPaperless = new System.Windows.Forms.CheckBox();
@@ -81,11 +83,10 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.lblShipping = new System.Windows.Forms.Label();
-            this.txtShipping = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties)).BeginInit();
@@ -108,7 +109,6 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAsignaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -238,6 +238,22 @@
             this.groupControl1.Size = new System.Drawing.Size(943, 146);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Filtro Asignaciones";
+            // 
+            // txtShipping
+            // 
+            this.txtShipping.Location = new System.Drawing.Point(86, 125);
+            this.txtShipping.Name = "txtShipping";
+            this.txtShipping.Size = new System.Drawing.Size(100, 20);
+            this.txtShipping.TabIndex = 123;
+            // 
+            // lblShipping
+            // 
+            this.lblShipping.AutoSize = true;
+            this.lblShipping.Location = new System.Drawing.Point(8, 125);
+            this.lblShipping.Name = "lblShipping";
+            this.lblShipping.Size = new System.Drawing.Size(48, 13);
+            this.lblShipping.TabIndex = 116;
+            this.lblShipping.Text = "Shipping";
             // 
             // txtNumMaster
             // 
@@ -643,23 +659,6 @@
             this.labelControl6.TabIndex = 3;
             this.labelControl6.Text = "Supervisor Documental";
             // 
-            // lblShipping
-            // 
-            this.lblShipping.AutoSize = true;
-            this.lblShipping.Location = new System.Drawing.Point(8, 125);
-            this.lblShipping.Name = "lblShipping";
-            this.lblShipping.Size = new System.Drawing.Size(48, 13);
-            this.lblShipping.TabIndex = 116;
-            this.lblShipping.Text = "Shipping";
-            this.lblShipping.Visible = false;
-            // 
-            // txtShipping
-            // 
-            this.txtShipping.Location = new System.Drawing.Point(86, 125);
-            this.txtShipping.Name = "txtShipping";
-            this.txtShipping.Size = new System.Drawing.Size(100, 20);
-            this.txtShipping.TabIndex = 123;
-            // 
             // frmListaAsignaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,6 +676,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties)).EndInit();
@@ -699,7 +699,6 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

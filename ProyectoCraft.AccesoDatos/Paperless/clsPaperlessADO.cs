@@ -113,7 +113,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         public static IList<PaperlessFlujo> ObtenerAsignaciones(DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string estado,
             string numconsolidado, string nave, DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras,
-            string nummaster) {
+            string nummaster, string shipping)
+        {
             PaperlessFlujo flujopaperless = null;
             IList<PaperlessFlujo> listasignaciones = new List<PaperlessFlujo>();
             try {
@@ -132,6 +133,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[9].Value = desdeNavieras;
                 objParams[10].Value = hastaNavieras;
                 objParams[11].Value = nummaster;
+                objParams[12].Value = shipping;
 
                 SqlCommand command = new SqlCommand("SP_L_PAPERLESS_ASIGNACION", conn);
                 command.Parameters.AddRange(objParams);
@@ -372,6 +374,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     if (!(dreader["txtCourier"] is DBNull))
                         Asignacion.TxtCourier = dreader["txtCourier"].ToString();
+
+                    if (!(dreader["txtShipping"] is DBNull))
+                        Asignacion.TxtShipping = dreader["txtShipping"].ToString();
 
                 }
             } catch (Exception ex) {
@@ -628,6 +633,10 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 else
                     objParams[11].Value = -1;
 
+                if (!string.IsNullOrEmpty(AsignacionPaso1.TxtShipping))
+                    objParams[12].Value = AsignacionPaso1.TxtShipping;
+                
+
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;
                 command.Parameters.AddRange(objParams);
@@ -684,6 +693,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     objParams[11].Value = AsignacionPaso1.MotivoModificacion;
                 //else
                 //  objParams[10].Value = null;
+                if (!string.IsNullOrEmpty(AsignacionPaso1.TxtShipping))
+                    objParams[12].Value = AsignacionPaso1.TxtShipping;
+                
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;

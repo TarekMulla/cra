@@ -99,6 +99,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             Int64 estado = -1;
             string estados = "";
             string numconsolidado = "";
+            string Shipping = "";
             string nave = "";
             DateTime desdeNavieras = new DateTime(9999, 1, 1);
             DateTime hastaNavieras = new DateTime(9999, 1, 1);
@@ -166,7 +167,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             IList<Entidades.Paperless.PaperlessFlujo> asignaciones =
                 LogicaNegocios.Paperless.Paperless.ObtenerAsignaciones(desde, hasta, usuario1, usuario2, estados, numconsolidado, nave
-                , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster);
+                , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster, Shipping);
 
             gridAsignaciones.DataSource = asignaciones;
             //asignaciones[0].Asignacion.Usuario1.NombreCompleto

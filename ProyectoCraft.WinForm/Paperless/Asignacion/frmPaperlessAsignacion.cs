@@ -169,11 +169,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
                     txtNaveTransbordo.Text = String.Empty;
                     ddlNaveTransbordo.SelectedItem = null;
                 }
-                if (!string.IsNullOrEmpty(Asignacion.TxtShipping))
-                    chkRo.Checked = true;
-
-                txtShipping.Text = Asignacion.TxtShipping;
-
                 CargaMasterConfirmado();
                 ValidarEstados();
             }
@@ -696,8 +691,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
             else
                 PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
 
-            if (!string.IsNullOrEmpty(txtShipping.Text))
-                PaperlessAsignacionActual.TxtShipping = txtShipping.Text;
 
         }
 
@@ -1170,18 +1163,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion {
 
             txtCourier.Text = PaperlessAsignacionActual.TxtCourier;
             txtfechaMasterConfirmado.Text = PaperlessAsignacionActual.FechaMasterConfirmado.HasValue ? PaperlessAsignacionActual.FechaMasterConfirmado.Value.ToString() : "";
-        }
-
-        private void chkRo_CheckedChanged(object sender, EventArgs e)
-        {
-            lblShipping.Visible = chkRo.Checked;
-            txtShipping.Visible = chkRo.Checked;
-        }
-
-        private void ddlTipoCarga_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            if (!ddlTipoCarga.SelectedItem.ToString().Equals("Seleccione..."))
-            chkRo.Visible = ((PaperlessTipoCarga)ddlTipoCarga.SelectedItem).EsFCL;
         }
     }
 }

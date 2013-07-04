@@ -37,10 +37,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerNaves(estado);
         }
         public static IList<PaperlessFlujo> ObtenerAsignaciones(DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string estado, string numconsolidado, string nave
-            , DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras, string nummaster ,string shipping)
+            , DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras, string nummaster)
         {
             IList<PaperlessFlujo> asignaciones = AccesoDatos.Paperless.clsPaperlessADO.ObtenerAsignaciones(desde, hasta, usuario1, usuario2,
-                estado, numconsolidado, nave, desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster, shipping);
+                estado, numconsolidado, nave, desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster);
 
             if (numconsolidado != "-1")
             {

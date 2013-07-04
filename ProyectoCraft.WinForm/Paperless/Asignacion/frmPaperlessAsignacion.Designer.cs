@@ -65,7 +65,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tabFechas = new DevExpress.XtraTab.XtraTabPage();
-            this.txtCourier = new System.Windows.Forms.TextBox();
             this.radioCourierDestino = new DevExpress.XtraEditors.RadioGroup();
             this.chkConfirmacionMaster = new System.Windows.Forms.CheckBox();
             this.txtfechaMasterConfirmado = new DevExpress.XtraEditors.DateEdit();
@@ -95,9 +94,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.chkRo = new System.Windows.Forms.CheckBox();
-            this.txtShipping = new System.Windows.Forms.TextBox();
-            this.lblShipping = new System.Windows.Forms.Label();
+            this.txtCourier = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -147,9 +144,6 @@
             // 
             // tabInfGeneral
             // 
-            this.tabInfGeneral.Controls.Add(this.lblShipping);
-            this.tabInfGeneral.Controls.Add(this.txtShipping);
-            this.tabInfGeneral.Controls.Add(this.chkRo);
             this.tabInfGeneral.Controls.Add(this.btnMantNaviera);
             this.tabInfGeneral.Controls.Add(this.btnGrabarTransbordo);
             this.tabInfGeneral.Controls.Add(this.btnEditarTransbordo);
@@ -348,7 +342,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlTipoCarga.Size = new System.Drawing.Size(129, 20);
             this.ddlTipoCarga.TabIndex = 10;
-            this.ddlTipoCarga.SelectedIndexChanged += new System.EventHandler(this.ddlTipoCarga_SelectedIndexChanged);
             // 
             // btnSiguienteP2
             // 
@@ -489,13 +482,6 @@
             this.tabFechas.Name = "tabFechas";
             this.tabFechas.Size = new System.Drawing.Size(786, 284);
             this.tabFechas.Text = "Fechas y plazos";
-            // 
-            // txtCourier
-            // 
-            this.txtCourier.Location = new System.Drawing.Point(364, 22);
-            this.txtCourier.Name = "txtCourier";
-            this.txtCourier.Size = new System.Drawing.Size(129, 20);
-            this.txtCourier.TabIndex = 120;
             // 
             // radioCourierDestino
             // 
@@ -780,35 +766,12 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // chkRo
+            // txtCourier
             // 
-            this.chkRo.AutoSize = true;
-            this.chkRo.Location = new System.Drawing.Point(320, 21);
-            this.chkRo.Name = "chkRo";
-            this.chkRo.Size = new System.Drawing.Size(48, 17);
-            this.chkRo.TabIndex = 112;
-            this.chkRo.Text = "R.O.";
-            this.chkRo.UseVisualStyleBackColor = true;
-            this.chkRo.Visible = false;
-            this.chkRo.CheckedChanged += new System.EventHandler(this.chkRo_CheckedChanged);
-            // 
-            // txtShipping
-            // 
-            this.txtShipping.Location = new System.Drawing.Point(451, 18);
-            this.txtShipping.Name = "txtShipping";
-            this.txtShipping.Size = new System.Drawing.Size(100, 20);
-            this.txtShipping.TabIndex = 113;
-            this.txtShipping.Visible = false;
-            // 
-            // lblShipping
-            // 
-            this.lblShipping.AutoSize = true;
-            this.lblShipping.Location = new System.Drawing.Point(388, 21);
-            this.lblShipping.Name = "lblShipping";
-            this.lblShipping.Size = new System.Drawing.Size(48, 13);
-            this.lblShipping.TabIndex = 114;
-            this.lblShipping.Text = "Shipping";
-            this.lblShipping.Visible = false;
+            this.txtCourier.Location = new System.Drawing.Point(364, 22);
+            this.txtCourier.Name = "txtCourier";
+            this.txtCourier.Size = new System.Drawing.Size(129, 20);
+            this.txtCourier.TabIndex = 120;
             // 
             // frmPaperlessAsignacion
             // 
@@ -935,9 +898,6 @@
         private DevExpress.XtraEditors.DateEdit txtfechaMasterConfirmado;
         private DevExpress.XtraEditors.RadioGroup radioCourierDestino;
         private System.Windows.Forms.TextBox txtCourier;
-        private System.Windows.Forms.CheckBox chkRo;
-        private System.Windows.Forms.Label lblShipping;
-        private System.Windows.Forms.TextBox txtShipping;
 
     }
 }

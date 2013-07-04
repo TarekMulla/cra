@@ -39,8 +39,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu_Salir = new System.Windows.Forms.ToolStripButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txtShipping = new DevExpress.XtraEditors.TextEdit();
-            this.lblShipping = new System.Windows.Forms.Label();
             this.txtNumMaster = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.chkCreacionPaperless = new System.Windows.Forms.CheckBox();
@@ -86,7 +84,6 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties)).BeginInit();
@@ -125,7 +122,7 @@
             this.Menu_Salir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(951, 52);
+            this.toolStrip1.Size = new System.Drawing.Size(951, 54);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -134,7 +131,7 @@
             this.Menu_Nuevo.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Nuevo.Image")));
             this.Menu_Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_Nuevo.Name = "Menu_Nuevo";
-            this.Menu_Nuevo.Size = new System.Drawing.Size(42, 49);
+            this.Menu_Nuevo.Size = new System.Drawing.Size(46, 51);
             this.Menu_Nuevo.Text = "Nuevo";
             this.Menu_Nuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Menu_Nuevo.Click += new System.EventHandler(this.Menu_Nuevo_Click);
@@ -144,7 +141,7 @@
             this.Menu_Ver.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Ver.Image")));
             this.Menu_Ver.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_Ver.Name = "Menu_Ver";
-            this.Menu_Ver.Size = new System.Drawing.Size(36, 49);
+            this.Menu_Ver.Size = new System.Drawing.Size(36, 51);
             this.Menu_Ver.Text = "Ver";
             this.Menu_Ver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Menu_Ver.Click += new System.EventHandler(this.Menu_Ver_Click);
@@ -154,7 +151,7 @@
             this.Menu_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Eliminar.Image")));
             this.Menu_Eliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_Eliminar.Name = "Menu_Eliminar";
-            this.Menu_Eliminar.Size = new System.Drawing.Size(47, 49);
+            this.Menu_Eliminar.Size = new System.Drawing.Size(54, 51);
             this.Menu_Eliminar.Text = "Eliminar";
             this.Menu_Eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Menu_Eliminar.Visible = false;
@@ -165,7 +162,7 @@
             this.MenuVerRechazo.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerRechazo.Image")));
             this.MenuVerRechazo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerRechazo.Name = "MenuVerRechazo";
-            this.MenuVerRechazo.Size = new System.Drawing.Size(71, 49);
+            this.MenuVerRechazo.Size = new System.Drawing.Size(75, 51);
             this.MenuVerRechazo.Text = "Ver Rechazo";
             this.MenuVerRechazo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuVerRechazo.Click += new System.EventHandler(this.MenuVerRechazo_Click);
@@ -173,14 +170,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // MenuRefrescar
             // 
             this.MenuRefrescar.Image = ((System.Drawing.Image)(resources.GetObject("MenuRefrescar.Image")));
             this.MenuRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuRefrescar.Name = "MenuRefrescar";
-            this.MenuRefrescar.Size = new System.Drawing.Size(58, 49);
+            this.MenuRefrescar.Size = new System.Drawing.Size(59, 51);
             this.MenuRefrescar.Text = "Refrescar";
             this.MenuRefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuRefrescar.Click += new System.EventHandler(this.MenuRefrescar_Click);
@@ -188,14 +185,14 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // Menu_Salir
             // 
             this.Menu_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Menu_Salir.Image")));
             this.Menu_Salir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu_Salir.Name = "Menu_Salir";
-            this.Menu_Salir.Size = new System.Drawing.Size(36, 49);
+            this.Menu_Salir.Size = new System.Drawing.Size(36, 51);
             this.Menu_Salir.Text = "Salir";
             this.Menu_Salir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Menu_Salir.Click += new System.EventHandler(this.Menu_Salir_Click);
@@ -204,8 +201,6 @@
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.txtShipping);
-            this.groupControl1.Controls.Add(this.lblShipping);
             this.groupControl1.Controls.Add(this.txtNumMaster);
             this.groupControl1.Controls.Add(this.labelControl9);
             this.groupControl1.Controls.Add(this.chkCreacionPaperless);
@@ -239,32 +234,16 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Filtro Asignaciones";
             // 
-            // txtShipping
-            // 
-            this.txtShipping.Location = new System.Drawing.Point(86, 125);
-            this.txtShipping.Name = "txtShipping";
-            this.txtShipping.Size = new System.Drawing.Size(100, 20);
-            this.txtShipping.TabIndex = 123;
-            // 
-            // lblShipping
-            // 
-            this.lblShipping.AutoSize = true;
-            this.lblShipping.Location = new System.Drawing.Point(8, 125);
-            this.lblShipping.Name = "lblShipping";
-            this.lblShipping.Size = new System.Drawing.Size(48, 13);
-            this.lblShipping.TabIndex = 116;
-            this.lblShipping.Text = "Shipping";
-            // 
             // txtNumMaster
             // 
-            this.txtNumMaster.Location = new System.Drawing.Point(244, 101);
+            this.txtNumMaster.Location = new System.Drawing.Point(244, 122);
             this.txtNumMaster.Name = "txtNumMaster";
             this.txtNumMaster.Size = new System.Drawing.Size(127, 20);
             this.txtNumMaster.TabIndex = 122;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(192, 101);
+            this.labelControl9.Location = new System.Drawing.Point(190, 126);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(48, 13);
             this.labelControl9.TabIndex = 121;
@@ -383,14 +362,14 @@
             // 
             // txtNumConsolidado
             // 
-            this.txtNumConsolidado.Location = new System.Drawing.Point(86, 101);
+            this.txtNumConsolidado.Location = new System.Drawing.Point(84, 123);
             this.txtNumConsolidado.Name = "txtNumConsolidado";
             this.txtNumConsolidado.Size = new System.Drawing.Size(100, 20);
             this.txtNumConsolidado.TabIndex = 111;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(7, 97);
+            this.labelControl8.Location = new System.Drawing.Point(7, 125);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(73, 13);
             this.labelControl8.TabIndex = 110;
@@ -422,14 +401,14 @@
             // 
             // txtNave
             // 
-            this.txtNave.Location = new System.Drawing.Point(84, 75);
+            this.txtNave.Location = new System.Drawing.Point(85, 98);
             this.txtNave.Name = "txtNave";
             this.txtNave.Size = new System.Drawing.Size(286, 20);
             this.txtNave.TabIndex = 108;
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(5, 78);
+            this.labelControl7.Location = new System.Drawing.Point(8, 99);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(25, 13);
             this.labelControl7.TabIndex = 107;
@@ -437,11 +416,11 @@
             // 
             // ddlEstado
             // 
-            this.ddlEstado.Location = new System.Drawing.Point(244, 126);
+            this.ddlEstado.Location = new System.Drawing.Point(85, 73);
             this.ddlEstado.Name = "ddlEstado";
             this.ddlEstado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlEstado.Size = new System.Drawing.Size(127, 20);
+            this.ddlEstado.Size = new System.Drawing.Size(184, 20);
             this.ddlEstado.TabIndex = 3;
             // 
             // ddlUsuario2
@@ -480,7 +459,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(192, 128);
+            this.labelControl5.Location = new System.Drawing.Point(8, 75);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(33, 13);
             this.labelControl5.TabIndex = 0;
@@ -676,7 +655,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtShipping.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHastaEmbarcador.Properties)).EndInit();
@@ -758,7 +736,5 @@
         private DevExpress.XtraEditors.TextEdit txtNumMaster;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private System.Windows.Forms.Label lblShipping;
-        private DevExpress.XtraEditors.TextEdit txtShipping;
     }
 }

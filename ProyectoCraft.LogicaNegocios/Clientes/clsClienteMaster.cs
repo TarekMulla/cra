@@ -53,6 +53,10 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
         {
             return clsClienteMasterADO.ValidarExisteRut(rut, tipo);
         }
+        public static clsClienteMaster ObtenerClienteMasterPorRut(String rut)
+        {
+            return clsClienteMasterADO.ObtenerClienteMasterPorRut(rut);
+        }
 
         public static clsClienteMaster ObtenerClienteMasterPorId(Int64 IdCliente)
         {

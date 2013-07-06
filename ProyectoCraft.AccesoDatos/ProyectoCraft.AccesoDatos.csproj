@@ -83,6 +83,7 @@
     <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />
     <Compile Include="Emails\EmailsADO.cs" />
+    <Compile Include="Integracion\IntegracionADO.cs" />
     <Compile Include="Log\clsLogActividadUsuariosADO.cs" />
     <Compile Include="Log\ClsLogPerformanceADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />

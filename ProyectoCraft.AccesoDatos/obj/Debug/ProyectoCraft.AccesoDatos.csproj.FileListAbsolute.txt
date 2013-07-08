@@ -1,5 +1,0 @@
-D:\pbeltran\trunk\DLLs\ProyectoCraft.AccesoDatos.dll
-D:\pbeltran\trunk\DLLs\ProyectoCraft.AccesoDatos.pdb
-D:\pbeltran\trunk\ProyectoCraft.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
-D:\pbeltran\trunk\ProyectoCraft.AccesoDatos\obj\Debug\ProyectoCraft.AccesoDatos.dll
-D:\pbeltran\trunk\ProyectoCraft.AccesoDatos\obj\Debug\ProyectoCraft.AccesoDatos.pdb

@@ -371,10 +371,58 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     house.Index = i;
                     house.IdAsignacion = PaperlessAsignacionActual.Id;
                     house.Freehand = false;
-                    house.HouseBL = netShips[i - 1].HouseBl;
                     house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    house.Cliente =
-                        LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(netShips[i - 1].Rut);
+
+                    if (netShips != null && netShips.Count > 0)
+                    {
+                        house.HouseBL = netShips[i - 1].HouseBl;
+                        house.Cliente =
+                            LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(netShips[i - 1].Rut);
+                        if (house.Cliente == null)
+                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1466);
+                        house.Ruteado = netShips[i - 1].Ruteado;
+                        txtP1NumConsolidado.Text = netShips[i - 1].Consolidada;
+                        #region
+                        clsCuenta cuenta = new clsCuenta();
+                        PaperlessTipoCliente ptc = new PaperlessTipoCliente();
+                        var transaccion = LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente.Id);
+                        if (transaccion != null)
+                        {
+                            cuenta = (clsCuenta)transaccion.ObjetoTransaccion;
+                            if (cuenta != null && cuenta.ClienteMaster.ClienteMasterTipoCliente != null)
+                            {
+                                if (cuenta.ClienteMaster.ClienteMasterTipoCliente.Count.Equals(0) ||
+                                    cuenta.ClienteMaster.ClienteMasterTipoCliente.Count > 1)
+                                {
+                                    house.TipoCliente = null;
+                                }
+                                else
+                                {
+                                    ptc.Nombre = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Nombre;
+                                    ptc.Id = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Id;
+                                    house.TipoCliente = ptc;
+                                }
+                            }
+                            else
+                            {
+                                if (netShips != null)
+                                    if (netShips[i - 1].TipoCliente.Equals("Directo"))
+                                    {
+                                        ptc.Nombre = "Directo";
+                                        ptc.Id = 2;
+                                    }
+                                    else
+                                    {
+                                        ptc.Nombre = "Embarcador";
+                                        ptc.Id = 1;
+                                    }
+                                house.TipoCliente = ptc;
+                            }
+
+                        }
+                        #endregion
+                    }
+
                     housesnew.Add(house);
                 }
             }
@@ -666,8 +714,41 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                         PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL[e.RowHandle].TipoCliente = null;
                     }
                     else
-                    {
-                        CargaTipoCliente(clienteselecccionado,cuenta,e);
+                    {//revisar para mejorar y ordenar codigo
+                        //CargaTipoCliente(clienteselecccionado, cuenta, e);
+
+                        clienteselecccionado = (clsClienteMaster)this.ddlP1Cliente.SelectedItem;
+                        if (clienteselecccionado.Id != 0)
+                        {
+                            PaperlessTipoCliente ptc = new PaperlessTipoCliente();
+
+                            var transaccion = LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(clienteselecccionado.Id);
+                            if (transaccion != null)
+                            {
+                                cuenta = (clsCuenta)transaccion.ObjetoTransaccion;
+                                if (cuenta != null && cuenta.ClienteMaster.ClienteMasterTipoCliente != null)
+                                {
+                                    if (cuenta.ClienteMaster.ClienteMasterTipoCliente.Count.Equals(0) ||
+                                        cuenta.ClienteMaster.ClienteMasterTipoCliente.Count > 1)
+                                    {
+                                        PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL[e.RowHandle].TipoCliente = null;
+                                    }
+                                    else
+                                    {
+                                        ptc.Nombre = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Nombre;
+                                        ptc.Id = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Id;
+                                        PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL[e.RowHandle].TipoCliente = ptc;
+                                    }
+                                }
+                                else
+                                {
+                                    PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL[e.RowHandle].TipoCliente = null;
+                                }
+
+                            }
+                        }
+                        if (clienteselecccionado.NombreFantasia.Length.Equals(0))
+                            clienteselecccionado.NombreFantasia = clienteselecccionado.NombreCompañia;
                     }
                 }
 

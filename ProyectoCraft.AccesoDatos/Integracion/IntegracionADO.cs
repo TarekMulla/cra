@@ -41,7 +41,8 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                     netShip.Rut = dreader["RUT"].ToString();
                     netShip.Cliente = dreader["Cliente"].ToString();
                     netShip.TipoCliente = dreader["Tipo Cliente"].ToString();
-                    netShip.Ruteado = (bool)dreader["Ruteado"];
+                    if (!string.IsNullOrEmpty(dreader["Ruteado"].ToString()))
+                        netShip.Ruteado = dreader["Ruteado"].ToString().Equals("1");
                     lista.Add(netShip);
 
                 }
@@ -55,6 +56,6 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                 conn.Close();
             }
             return lista;
-        }       
+        }
     }
 }

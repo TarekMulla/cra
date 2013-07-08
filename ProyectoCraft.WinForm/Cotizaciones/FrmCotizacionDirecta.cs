@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -100,7 +101,7 @@ namespace SCCMultimodal.Cotizaciones {
             if (CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Cerrado ||
                 CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoOtros ||
                 CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoTarifa ||
-                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Enviadacliente){
+                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Enviadacliente) {
                 toolStripButton1.Enabled = false;
                 toolStripButton1.ToolTipText = "Imposible modificar cotización en el Estado actual";
             }
@@ -110,7 +111,10 @@ namespace SCCMultimodal.Cotizaciones {
             TxtFecha.DateTime = DateTime.Now;
             txtEjecutivo.Text = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.NombreCompleto;
             LblEstado.Visible = labelControl11.Visible = false;
+            LblGastosLocales.Visible = true;
+            LblGastosLocales.Text = "Sin Gastos Locales";
             ActivarDesactivarDetalle(false);
+
         }
 
         public FrmCotizacionDirecta() {
@@ -127,6 +131,7 @@ namespace SCCMultimodal.Cotizaciones {
         }
 
         private void SolicitarTarifa_Load(object sender, EventArgs e) {
+            TxtGastosLocales.Properties.Mask.Culture = new CultureInfo("es-CL");
             BeginForm();
         }
 
@@ -145,7 +150,7 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void TxtGastosLocales_EditValueChanged(object sender, EventArgs e) {
             if (!String.IsNullOrEmpty(TxtGastosLocales.Text)) {
-                if (Convert.ToDecimal(TxtGastosLocales.Text.Trim()) == 0)
+                if (Convert.ToDecimal(TxtGastosLocales.EditValue) == 0)
                     LblGastosLocales.Text = "Sin Gastos Locales";
                 else
                     LblGastosLocales.Text = "+ IVA";
@@ -376,7 +381,7 @@ namespace SCCMultimodal.Cotizaciones {
 
             if (CotizacionDirecta.Opciones.Count == 0)
                 ctrldxError.SetError(CboNaviera, "Debe ingresar al menos una opcion", ErrorType.Critical);
-           
+
             bindingNavigator1.BindingSource.MoveFirst();
             var encontroErrorOpcion = false;
             for (var i = 0; i < CotizacionDirecta.Opciones.Count; i++) {

@@ -1,6 +1,8 @@
-﻿namespace SCCMultimodal.Cotizaciones {
-    partial class FrmCotizacionDirecta
-    {
+﻿using System.Globalization;
+
+
+namespace SCCMultimodal.Cotizaciones {
+    partial class FrmCotizacionDirecta {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -81,7 +83,6 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtGastosLocales = new DevExpress.XtraEditors.TextEdit();
             this.chkincoterm = new System.Windows.Forms.RadioButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
@@ -94,6 +95,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.TxtGastosLocales = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -125,12 +127,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboCliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCommodity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEjecutivo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             this.SuspendLayout();
@@ -160,7 +162,6 @@
             this.grpOportunidad.Controls.Add(this.comboBoxEdit1);
             this.grpOportunidad.Controls.Add(this.labelControl16);
             this.grpOportunidad.Controls.Add(this.groupBox1);
-            this.grpOportunidad.Controls.Add(this.TxtGastosLocales);
             this.grpOportunidad.Controls.Add(this.chkincoterm);
             this.grpOportunidad.Controls.Add(this.labelControl12);
             this.grpOportunidad.Controls.Add(this.labelControl13);
@@ -173,6 +174,7 @@
             this.grpOportunidad.Controls.Add(this.labelControl1);
             this.grpOportunidad.Controls.Add(this.labelControl2);
             this.grpOportunidad.Controls.Add(this.labelControl4);
+            this.grpOportunidad.Controls.Add(this.TxtGastosLocales);
             this.grpOportunidad.Location = new System.Drawing.Point(3, 43);
             this.grpOportunidad.Name = "grpOportunidad";
             this.grpOportunidad.Size = new System.Drawing.Size(711, 614);
@@ -696,16 +698,6 @@
             this.labelControl5.TabIndex = 15;
             this.labelControl5.Text = "POL";
             // 
-            // TxtGastosLocales
-            // 
-            this.TxtGastosLocales.Location = new System.Drawing.Point(435, 26);
-            this.TxtGastosLocales.Name = "TxtGastosLocales";
-            this.TxtGastosLocales.Properties.Mask.EditMask = "f";
-            this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);
-            this.TxtGastosLocales.TabIndex = 10;
-            this.TxtGastosLocales.EditValueChanged += new System.EventHandler(this.TxtGastosLocales_EditValueChanged);
-            // 
             // chkincoterm
             // 
             this.chkincoterm.AutoSize = true;
@@ -813,6 +805,20 @@
             this.labelControl4.TabIndex = 13;
             this.labelControl4.Text = "Incoterm";
             // 
+            // TxtGastosLocales
+            // 
+            this.TxtGastosLocales.EditValue = "";
+            this.TxtGastosLocales.Location = new System.Drawing.Point(436, 26);
+            this.TxtGastosLocales.Name = "TxtGastosLocales";
+            this.TxtGastosLocales.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TxtGastosLocales.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TxtGastosLocales.Properties.Mask.EditMask = "c0";
+            this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.TxtGastosLocales.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);
+            this.TxtGastosLocales.TabIndex = 10;
+            this.TxtGastosLocales.EditValueChanged += new System.EventHandler(this.TxtGastosLocales_EditValueChanged);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -895,12 +901,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboCliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCommodity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEjecutivo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();

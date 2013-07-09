@@ -87,9 +87,9 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[commodity]", Commodity);
             stringXml = stringXml.Replace("[incoterm]", IncoTerm.Codigo);
 
-            var gastosLocales = GastosLocales == 0 ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0",new CultureInfo("es-CL")) + "  + IVA";
+            var gastosLocales = GastosLocales == 0 ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
 
-            
+
             stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);
             stringXml = stringXml.Replace("[observaciones]", ObservacionesFijas.Replace(Environment.NewLine, "<br/>"));
 
@@ -123,13 +123,19 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                                                   detalle.Unidad.Nombre, detalle.Moneda.Codigo,
                                                   detalle.Venta.ToString("N2"), detalle.Concepto.Nombre);
 
-                   
+
                 }
                 templateAlternativaXml = templateAlternativaXml.Replace("[detalle]", detalleString);
                 alternativasXml += templateAlternativaXml;
                 i++;
             }
             alternativaNode.InnerXml = alternativasXml;
+
+            if (File.Exists(String.Format("{0}/imagesCotizaciones/firmas/{1}.png", path, Usuario.NombreUsuario)))
+                xmldoc.InnerXml = xmldoc.InnerXml.Replace("[firma]", Usuario.NombreUsuario + ".png");
+            else
+                xmldoc.InnerXml = xmldoc.InnerXml.Replace("[firma]", "general.png");
+
             return xmldoc.InnerXml;
         }
 

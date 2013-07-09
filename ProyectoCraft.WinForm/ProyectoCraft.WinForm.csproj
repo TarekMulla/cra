@@ -881,6 +881,33 @@
     <Content Include="Cotizaciones\CotizacionSetting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cAravena.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cYanez.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\dOrtiz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\general.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\iTorres.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\lriquelme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\rLagos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sFuenzalida.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sVeliz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Cotizaciones\ImagesCotizaciones\image001.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

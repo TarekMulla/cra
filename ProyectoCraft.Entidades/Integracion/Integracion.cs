@@ -13,5 +13,7 @@ namespace ProyectoCraft.Entidades.Integracion
         public string Cliente { get; set; }
         public string TipoCliente { get; set; }
         public bool Ruteado { get; set; }
+        public string ShippingInstruction { get; set; }
+        public string Puerto { get; set; }
     }
 }

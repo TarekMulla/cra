@@ -43,6 +43,9 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                     netShip.TipoCliente = dreader["Tipo Cliente"].ToString();
                     if (!string.IsNullOrEmpty(dreader["Ruteado"].ToString()))
                         netShip.Ruteado = dreader["Ruteado"].ToString().Equals("1");
+                    netShip.ShippingInstruction = dreader["Shipping Instruction"].ToString();
+                    netShip.Puerto = dreader["Puerto"].ToString();
+
                     lista.Add(netShip);
 
                 }

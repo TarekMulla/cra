@@ -363,8 +363,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             if (houses == null || houses.Count == 0)
             {
+                clsClienteMaster ClienteNuevo;
                 //generar items para houses
-
+                if (Convert.ToInt32(txtP1CantHouses.Text) != netShips.Count)
+                {
+                    MessageBox.Show("La cantidad de Hbls :" + txtP1CantHouses.Text + " ingresadas es distinta a la de NetShip :"
+                        + netShips.Count + " ,Favor modifique el valor de la asignacion para no ver este mensaje", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 for (int i = 1; i <= int.Parse(txtP1CantHouses.Text); i++)
                 {
                     PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
@@ -376,10 +381,30 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     if (netShips != null && netShips.Count > 0)
                     {
                         house.HouseBL = netShips[i - 1].HouseBl;
-                        house.Cliente =
-                            LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(netShips[i - 1].Rut);
-                        if (house.Cliente == null)
-                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1466);
+                        var rut = netShips[i - 1].Rut;
+                        if (rut != null)
+                        {
+                            var cliente = netShips[i - 1].Cliente;
+                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(rut);
+
+                            if (cliente != null && house.Cliente == null && !string.IsNullOrEmpty(cliente))
+                            {
+                                ClienteNuevo = new clsClienteMaster(true)
+                                {
+                                    NombreFantasia = cliente,
+                                    NombreCompañia = cliente,
+                                    Tipo = Enums.TipoPersona.CuentaPaperless,
+                                    EstadoCuenta = Enums.Estado.Habilitado
+                                };
+                                house.Cliente = ClienteNuevo;
+                            }
+                            //else
+                            //    house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1446);
+                        }
+                        else
+                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1446);
+
+
                         house.Ruteado = netShips[i - 1].Ruteado;
                         txtP1NumConsolidado.Text = netShips[i - 1].Consolidada;
                         #region

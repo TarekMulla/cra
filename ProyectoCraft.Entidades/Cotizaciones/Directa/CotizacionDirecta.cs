@@ -105,8 +105,8 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                 var templateAlternativaXml = originalAlternativa;
                 templateAlternativaXml = templateAlternativaXml.Replace("[numOpcion]", i.ToString());
                 templateAlternativaXml = templateAlternativaXml.Replace("[naviera]", opcion.Naviera.Nombre);
-                templateAlternativaXml = templateAlternativaXml.Replace("[validezIni]", opcion.FechaValidezInicio.ToString("D", cl));
-                templateAlternativaXml = templateAlternativaXml.Replace("[validezFin]", opcion.FechaValidezFin.ToString("D", cl));
+                templateAlternativaXml = templateAlternativaXml.Replace("[validezIni]", opcion.FechaValidezInicio.ToString("d \\de MMMM ", cl));
+                templateAlternativaXml = templateAlternativaXml.Replace("[validezFin]", opcion.FechaValidezFin.ToString("d \\de MMMM \\de yyyy ", cl));
                 templateAlternativaXml = templateAlternativaXml.Replace("[TiempoTransito]", opcion.TiempoTransito);
 
                 var pod = opcion.Pod.Aggregate(string.Empty, (current, puerto) => current + puerto.Nombre + Environment.NewLine);

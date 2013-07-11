@@ -32,9 +32,14 @@ namespace SCCMultimodal.Cotizaciones {
             bindingSource1.DataSource = CotizacionDirecta.Opciones;
             CboNaviera.DataBindings.Add("SelectedItem", bindingSource1, "Naviera");
             TxtTiempoTransito.DataBindings.Add("Text", bindingSource1, "TiempoTransito");
+            
             txtFechaValidezIni.DataBindings.Add("Text", bindingSource1, "FechaValidezInicio");
-            txtFechaValidezFin.DataBindings.Add("Text", bindingSource1, "FechaValidezFin");
+            txtFechaValidezIni.DataBindings.Add("DateTime", bindingSource1, "FechaValidezInicio");
+            txtFechaValidezIni.DataBindings.Add("EditValue", bindingSource1, "FechaValidezInicio");
 
+            txtFechaValidezFin.DataBindings.Add("Text", bindingSource1, "FechaValidezFin");
+            txtFechaValidezFin.DataBindings.Add("DateTime", bindingSource1, "FechaValidezFin");
+            txtFechaValidezFin.DataBindings.Add("EditValue", bindingSource1, "FechaValidezFin");
             GridOpcionDetalle.DataBindings.Add("DataSource", bindingSource1, "Detalles");
 
 

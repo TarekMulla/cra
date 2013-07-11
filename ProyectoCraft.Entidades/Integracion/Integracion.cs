@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace ProyectoCraft.Entidades.Integracion
 {
     public class IntegracionNetShip
@@ -15,5 +17,9 @@ namespace ProyectoCraft.Entidades.Integracion
         public bool Ruteado { get; set; }
         public string ShippingInstruction { get; set; }
         public string Puerto { get; set; }
+        public Int32 IdPaperless { get; set; }
+        public string ValorPaperless{ get; set; }
+        public string ValorNetShip { get; set; }
+        public string Mensaje { get; set; }
     }
 }

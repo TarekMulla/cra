@@ -12,5 +12,10 @@ namespace ProyectoCraft.LogicaNegocios.Integracion
         {
             return AccesoDatos.Integracion.IntegracionADO.ObtieneValoresNetShip(NumMaster);            
         }
+
+        public static void GuardaLogProceso(IntegracionNetShip _int)
+        {
+            AccesoDatos.Integracion.IntegracionADO.GuardaLogProceso(_int);
+        }
     }
 }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Entidades.GlobalObject;
@@ -59,6 +57,51 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                 conn.Close();
             }
             return lista;
+        }
+
+        public static void GuardaLogProceso(IntegracionNetShip _int)
+        {
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_Paperless_IntegracionNetship");
+
+                objParams[0].Value = _int.IdPaperless;
+
+                if (_int.ValorPaperless != null)
+                    objParams[1].Value = _int.ValorPaperless;
+                else
+                    objParams[1].Value = null;
+
+                if (_int.ValorNetShip != null)
+                    objParams[2].Value = _int.ValorNetShip;
+                else
+                    objParams[2].Value = null;
+
+                if (_int.Mensaje != null)
+                    objParams[3].Value = _int.Mensaje;
+                else
+                    objParams[3].Value = null;
+
+
+                SqlCommand command = new SqlCommand("SP_N_Paperless_IntegracionNetship", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                //dreader = command.ExecuteReader();
+                var idRetorno = Convert.ToInt64(command.ExecuteScalar());
+
+                
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            
         }
     }
 }

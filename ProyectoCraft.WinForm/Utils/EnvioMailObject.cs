@@ -1955,8 +1955,9 @@ namespace SCCMultimodal.Utils {
                     foreach (var adj in pathAdjuntos)
                         mail.Attachments.Add((object)adj, OlAttachmentType.olEmbeddeditem, 1, (object)"Attachment");
 
+                mail.Save();
+                mail.Display(false);
 
-                mail.Display(true);
             } catch (Exception e) {
                 res.Descripcion = e.Message;
                 res.Estado = Enums.EstadoTransaccion.Rechazada;

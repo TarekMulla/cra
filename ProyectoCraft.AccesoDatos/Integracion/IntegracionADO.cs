@@ -103,5 +103,44 @@ namespace ProyectoCraft.AccesoDatos.Integracion
             }
             
         }
+
+        public static IList<PaperlessIntegracionNetShipLog> ObtieneLogPaperlessNetShip(Int32 IdPaperless)
+        {
+            List<PaperlessIntegracionNetShipLog> lista = new List<PaperlessIntegracionNetShipLog>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_Paperless_IntegracionNetship");
+                objParams[0].Value = IdPaperless;
+                SqlCommand command = new SqlCommand("SP_L_Paperless_IntegracionNetship", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                PaperlessIntegracionNetShipLog item = null;
+                while (dreader.Read())
+                {
+                    item = new PaperlessIntegracionNetShipLog();
+                    item.IdPaperless = Convert.ToInt32(dreader["IDPaperless"]);
+                    item.ValorPaperless = dreader["Valorpaperless"].ToString();
+                    item.ValorNetship = dreader["valorNetShip"].ToString();
+                    item.Mensaje = dreader["Mensaje"].ToString();
+                    item.CreateDate = Convert.ToDateTime(dreader["CreateDate"]);
+                    lista.Add(item);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return lista;
+        }
+
     }
 }

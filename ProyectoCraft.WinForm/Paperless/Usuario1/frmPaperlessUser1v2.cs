@@ -30,8 +30,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private List<PaperlessTipoExcepcion> TiposDeExcepciones;
         private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
         private List<PaperlessTipoDisputa> TiposDisputas;
-//        private int regOk;
-        private int regError;
+        //        private int regOk;
+        private int _regError;
+        private bool _mensajemostrado;
 
         private static frmPaperlessUser1v2 _instancia;
         public static frmPaperlessUser1v2 Instancia
@@ -79,7 +80,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private void frmPaperlessUser1_Load(object sender, EventArgs e)
         {
-            regError = 0;
+            _regError = 0;
             //regOk = 0;
             EstadoPaperless control = new EstadoPaperless();
             panel1.Controls.Add(control);
@@ -372,15 +373,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 //clsClienteMaster clienteNuevo = null;
 
                 //-debe enviar un mensaje cuando la cantidad de hoses BL sea distinta
-                if (Convert.ToInt32(txtP1CantHouses.Text) != netShips.Count)
-                {
-                    MessageBox.Show(@"La cantidad de Hbls :" + txtP1CantHouses.Text + @" ingresadas es distinta a la de NetShip :"
-                        + netShips.Count + @" ,Favor modifique el valor de la asignacion para no ver este mensaje", @"Paperless", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (_mensajemostrado != true)
+                    if (Convert.ToInt32(txtP1CantHouses.Text) != netShips.Count)
+                    {
 
-                    GuardaRegLogCarga(PaperlessAsignacionActual.Id32, txtP1CantHouses.Text, netShips.Count.ToString(),
-                        @"Existe una diferencia entre los valores de hbls");
-                    regError++;
-                }
+                        MessageBox.Show(@"La cantidad de Hbls :" + txtP1CantHouses.Text + @" ingresadas es distinta a la de NetShip :"
+                            + netShips.Count + @" ,Favor modifique el valor de la asignacion para no ver este mensaje", @"Paperless", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        GuardaRegLogCarga(PaperlessAsignacionActual.Id32, txtP1CantHouses.Text, netShips.Count.ToString(),
+                            @"Existe una diferencia entre los valores de hbls");
+                        _regError++;
+                        _mensajemostrado = true;
+                    }
 
 
                 if (netShips.Count > 0)
@@ -400,7 +404,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                         {
                             house.Cliente = CargaClientePaperlessNuevo(cliente, rut);
                             GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", rut, " Se creo el Cliente " + house.Cliente.Id32 + " con Rut :" + rut);
-                            regError++;
+                            _regError++;
                         }
 
                         #endregion
@@ -409,7 +413,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     {
                         house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1446);
                         GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Rut desde NetShip");
-                        regError++;
+                        _regError++;
                     }
 
 
@@ -420,7 +424,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     else
                     {
                         GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Numero de Consolidada");
-                        regError++;
+                        _regError++;
                     }
 
 
@@ -443,7 +447,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                         }
                     }
                     GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", ptc.Nombre, " Tipo de Cliente NetShip");
-                    regError++;
+                    _regError++;
                     house.TipoCliente = ptc;
                     #endregion
                     #endregion
@@ -451,7 +455,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 else
                 {
                     GuardaRegLogCarga(PaperlessAsignacionActual.Id32, PaperlessAsignacionActual.NumMaster, "", "No se encontro Numero Master");
-                    regError++;
+                    _regError++;
                 }
 
 
@@ -522,7 +526,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     house.IdAsignacion = PaperlessAsignacionActual.Id;
                     house.Freehand = false;
                     house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    house = IntegracionNetShip(house, i);
+                    //house = IntegracionNetShip(house, i);
 
 
                     housesnew.Add(house);
@@ -551,8 +555,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
 
             //Cargar Info Houses BL
-            PaperlessUsuario1HouseBLInfo info =
-                LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+            PaperlessUsuario1HouseBLInfo info = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
             if (info != null)
             {
                 txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
@@ -561,9 +564,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
 
-            if (info != null)
-                GuardaRegLogCarga(PaperlessAsignacionActual.Id32, (info.CantHouses - regError).ToString(), "", "Registros OK: " + (info.CantHouses - regError));
-            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", regError.ToString(), "Registros Error :" + regError);
+            //if (info != null)
+            //    GuardaRegLogCarga(PaperlessAsignacionActual.Id32, (info.CantHouses - regError).ToString(), "", "Registros OK: " + (info.CantHouses - regError));
+            //GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", regError.ToString(), "Registros Error :" + regError);
         }
 
         private void grdP1DigitarHousesBL_KeyUp(object sender, KeyEventArgs e)
@@ -1273,6 +1276,88 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     e.Cancel = true;
                 }
             }
+        }
+
+
+
+        private void pnlPaso1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TxtActualizarNetShip_Click(object sender, EventArgs e)
+        {
+            _mensajemostrado = false;
+            IList<PaperlessUsuario1HousesBL> housesnew = new List<PaperlessUsuario1HousesBL>();
+
+            IList<PaperlessUsuario1HousesBL> houses =
+                LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id);
+
+
+            if (houses == null || houses.Count == 0)
+            {
+
+                for (int i = 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                {
+                    PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                    house.Index = i;
+                    house.IdAsignacion = PaperlessAsignacionActual.Id;
+                    house.Freehand = false;
+                    house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                    house = IntegracionNetShip(house, i);
+
+
+                    housesnew.Add(house);
+                }
+            }
+            else
+            {
+                housesnew = houses;
+            }
+            if (int.Parse(txtP1CantHouses.Text) > housesnew.Count)
+            {
+                for (int i = housesnew.Count + 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                {
+                    PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                    house.Index = i;
+                    house.IdAsignacion = PaperlessAsignacionActual.Id;
+                    house.Freehand = false;
+                    house.HouseBL = "";
+                    house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                    housesnew.Add(house);
+                }
+            }
+
+            grdP1DigitarHousesBL.DataSource = housesnew;
+            grdP1DigitarHousesBL.RefreshDataSource();
+
+
+            //Cargar Info Houses BL
+            PaperlessUsuario1HouseBLInfo info =
+                LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+            if (info != null)
+            {
+                txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
+                txtP1NumConsolidado.Text = info.NumConsolidado;
+            }
+            PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
+            PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
+
+
+            if (info != null)
+                GuardaRegLogCarga(PaperlessAsignacionActual.Id32, (info.CantHouses - _regError).ToString(), "", "Registros OK: " + (info.CantHouses - _regError));
+            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", _regError.ToString(), "Registros Error :" + _regError);
+        }
+
+        private void txtLogCarga_Click(object sender, EventArgs e)
+        {
+            FrmPopupLogPaperlessIntegracion form = new FrmPopupLogPaperlessIntegracion(LogicaNegocios.Integracion.Integracion.ObtieneLogPaperlessNetShip(PaperlessAsignacionActual.Id32));            
+            if (form.ListaLogIntegracionNetShip != null)
+                form.ShowDialog();                
+            else
+                MessageBox.Show("Hubo un error al presentar el log de carga", "Sistema Comercial Craft",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error); 
+
         }
 
     }

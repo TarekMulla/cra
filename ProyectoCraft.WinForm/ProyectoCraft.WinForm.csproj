@@ -435,6 +435,12 @@
     <Compile Include="Paperless\Gestion\frmGestionPaperless.Designer.cs">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
     </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.Designer.cs">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paperless\Usuario1\frmListarUsuario1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,11 +453,11 @@
     <Compile Include="Paperless\Usuario1\frmPaperlessUser1.Designer.cs">
       <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
+    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.Designer.cs">
-      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.Designer.cs">
+      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
     </Compile>
     <Compile Include="Paperless\Usuario1\frmRechazarAsignacion.cs">
       <SubType>Form</SubType>
@@ -653,6 +659,10 @@
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmListarUsuario1.resx">
       <DependentUpon>frmListarUsuario1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -661,9 +671,8 @@
       <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
-      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.resx">
+      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
       <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>

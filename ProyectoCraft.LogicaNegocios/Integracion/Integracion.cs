@@ -17,5 +17,9 @@ namespace ProyectoCraft.LogicaNegocios.Integracion
         {
             AccesoDatos.Integracion.IntegracionADO.GuardaLogProceso(_int);
         }
+        public static IList<PaperlessIntegracionNetShipLog>  ObtieneLogPaperlessNetShip(Int32 idPaperless)
+        {
+            return AccesoDatos.Integracion.IntegracionADO.ObtieneLogPaperlessNetShip(idPaperless);            
+        }
     }
 }

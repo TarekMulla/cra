@@ -813,6 +813,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.TxtGastosLocales.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TxtGastosLocales.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TxtGastosLocales.Properties.Mask.EditMask = "c0";
+            this.TxtGastosLocales.Properties.Mask.Culture = new CultureInfo("es-CL");
             this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.TxtGastosLocales.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);

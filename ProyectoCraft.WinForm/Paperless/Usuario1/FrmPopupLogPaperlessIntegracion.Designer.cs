@@ -51,7 +51,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.MenuSalir});
             this.toobar.Location = new System.Drawing.Point(0, 0);
             this.toobar.Name = "toobar";
-            this.toobar.Size = new System.Drawing.Size(463, 38);
+            this.toobar.Size = new System.Drawing.Size(777, 38);
             this.toobar.TabIndex = 8;
             this.toobar.Text = "toolStrip1";
             // 
@@ -72,7 +72,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.GrdLog.Name = "GrdLog";
             this.GrdLog.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.RepositoryCheckPasos});
-            this.GrdLog.Size = new System.Drawing.Size(462, 326);
+            this.GrdLog.Size = new System.Drawing.Size(777, 386);
             this.GrdLog.TabIndex = 9;
             this.GrdLog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -87,11 +87,10 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.gridColumn3});
             this.gridView4.GridControl = this.GrdLog;
             this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsCustomization.AllowColumnMoving = false;
-            this.gridView4.OptionsCustomization.AllowColumnResizing = false;
+            this.gridView4.OptionsBehavior.Editable = false;
             this.gridView4.OptionsCustomization.AllowFilter = false;
             this.gridView4.OptionsCustomization.AllowGroup = false;
-            this.gridView4.OptionsCustomization.AllowSort = false;
+            this.gridView4.OptionsCustomization.AllowRowSizing = true;
             this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView4.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridView4.OptionsSelection.EnableAppearanceHideSelection = false;
@@ -107,7 +106,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 0;
-            this.gridColumn4.Width = 60;
+            this.gridColumn4.Width = 61;
             // 
             // gridColumn5
             // 
@@ -118,7 +117,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
-            this.gridColumn5.Width = 100;
+            this.gridColumn5.Width = 104;
             // 
             // gridColumn1
             // 
@@ -136,16 +135,18 @@ namespace SCCMultimodal.Paperless.Usuario1
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 120;
+            this.gridColumn2.Width = 294;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "CreateDate";
+            this.gridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy h:mm:ss";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn3.FieldName = "CreateDate";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 70;
+            this.gridColumn3.Width = 177;
             // 
             // RepositoryCheckPasos
             // 
@@ -156,7 +157,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 368);
+            this.ClientSize = new System.Drawing.Size(777, 422);
             this.Controls.Add(this.GrdLog);
             this.Controls.Add(this.toobar);
             this.Name = "FrmPopupLogPaperlessIntegracion";

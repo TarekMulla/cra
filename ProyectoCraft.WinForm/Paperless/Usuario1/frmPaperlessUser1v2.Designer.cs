@@ -314,29 +314,29 @@
             this.pnlPaso1.Size = new System.Drawing.Size(848, 377);
             this.pnlPaso1.TabIndex = 4;
             this.pnlPaso1.Visible = false;
-            this.pnlPaso1.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPaso1_Paint);
             // 
             // txtLogCarga
             // 
-            this.txtLogCarga.Location = new System.Drawing.Point(629, 15);
+            this.txtLogCarga.Location = new System.Drawing.Point(639, 15);
             this.txtLogCarga.Name = "txtLogCarga";
             this.txtLogCarga.Size = new System.Drawing.Size(58, 34);
-            this.txtLogCarga.TabIndex = 7;
+            this.txtLogCarga.TabIndex = 9;
             this.txtLogCarga.Text = "Log Carga";
             this.txtLogCarga.Click += new System.EventHandler(this.txtLogCarga_Click);
             // 
             // TxtActualizarNetShip
             // 
             this.TxtActualizarNetShip.Image = ((System.Drawing.Image)(resources.GetObject("TxtActualizarNetShip.Image")));
-            this.TxtActualizarNetShip.Location = new System.Drawing.Point(580, 15);
+            this.TxtActualizarNetShip.Location = new System.Drawing.Point(590, 15);
             this.TxtActualizarNetShip.Name = "TxtActualizarNetShip";
             this.TxtActualizarNetShip.Size = new System.Drawing.Size(31, 34);
-            this.TxtActualizarNetShip.TabIndex = 6;
+            this.TxtActualizarNetShip.TabIndex = 8;
+            this.TxtActualizarNetShip.ToolTip = "Obtener Informacion desde NetShip";
             this.TxtActualizarNetShip.Click += new System.EventHandler(this.TxtActualizarNetShip_Click);
             // 
             // ddlP1Cliente
             // 
-            this.ddlP1Cliente.Location = new System.Drawing.Point(321, 6);
+            this.ddlP1Cliente.Location = new System.Drawing.Point(521, 6);
             this.ddlP1Cliente.Name = "ddlP1Cliente";
             this.ddlP1Cliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -698,16 +698,13 @@
             // 
             // pnlExcepciones
             // 
-            this.pnlExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlExcepciones.Controls.Add(this.btnP11Excepciones);
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
             this.pnlExcepciones.Controls.Add(this.lblP11ErrorExcepcion);
-            this.pnlExcepciones.Location = new System.Drawing.Point(1, 2);
+            this.pnlExcepciones.Location = new System.Drawing.Point(313, 154);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(852, 371);
+            this.pnlExcepciones.Size = new System.Drawing.Size(854, 374);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Visible = false;
             // 
@@ -744,7 +741,7 @@
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3,
             this.repositoryItemMemoExEdit2});
-            this.grdExcepciones.Size = new System.Drawing.Size(842, 328);
+            this.grdExcepciones.Size = new System.Drawing.Size(844, 331);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -1560,7 +1557,6 @@
             this.pnlEnviarAviso.Controls.Add(this.btnReenviarAvisoUsuario2);
             this.pnlEnviarAviso.Controls.Add(this.labelControl2);
             this.pnlEnviarAviso.Controls.Add(this.btnP13EnviarAviso);
-            this.pnlEnviarAviso.Controls.Add(this.pnlExcepciones);
             this.pnlEnviarAviso.Location = new System.Drawing.Point(312, 154);
             this.pnlEnviarAviso.Name = "pnlEnviarAviso";
             this.pnlEnviarAviso.Size = new System.Drawing.Size(853, 378);
@@ -1652,6 +1648,7 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);

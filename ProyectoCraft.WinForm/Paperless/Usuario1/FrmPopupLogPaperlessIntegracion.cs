@@ -42,6 +42,7 @@ namespace SCCMultimodal.Paperless.Usuario1
         {
             GrdLog.DataSource = ListaLogIntegracionNetShip;
             GrdLog.RefreshDataSource();
+            
         }
 
         private void MenuSalir_Click(object sender, EventArgs e)

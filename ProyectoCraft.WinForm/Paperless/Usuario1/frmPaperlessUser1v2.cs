@@ -984,7 +984,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             if (info != null)
                 GuardaRegLogCarga(PaperlessAsignacionActual.Id32, (info.CantHouses - _regError).ToString(), "", "Registros OK: " + (info.CantHouses - _regError));
-            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", _regError.ToString(), "Registros Error :" + _regError);
+            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", _regError.ToString(), "Reglas Procesadas :" + _regError);
         }
         private void GuardaRegLogCarga(Int32 IdPaperless, string ValorPaperless, string ValorNetShip, string Mensaje)
         {

@@ -122,7 +122,7 @@ namespace SCCMultimodal.Paperless.Usuario1
             // gridColumn1
             // 
             this.gridColumn1.Caption = "ValorNetShip";
-            this.gridColumn1.FieldName = "ValorNetship ";
+            this.gridColumn1.FieldName = "ValorNetship";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.AccesoDatos.Clientes;
+using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Clientes;
@@ -83,9 +84,10 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 command.Parameters.AddRange(objParams);
 
                 var reader = command.ExecuteReader();
-                while (reader.Read()) {
-                    list.Add(GetOpcionFromDataReader(reader));
-                 }
+                while (reader.Read()){
+                    var i = GetOpcionFromDataReader(reader);
+                    list.Add(i);
+                }
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = list;
@@ -110,15 +112,11 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 i.FechaValidezInicio = Convert.ToDateTime(reader["fechavalidezinicio"]);
                 i.Naviera = new ClsNaviera();
                 i.Naviera.Nombre = reader["naviera"].ToString();
-                /* i.Pod = new Puerto();
-                 i.Pod.Nombre = reader["pod"].ToString();
-                 i.Pol = new Puerto();
-                 i.Pol.Nombre = reader["pol"].ToString();*/
                 i.TiempoTransito = reader["tiempotransito"].ToString();
                 i.FechaCreacion = Convert.ToDateTime(reader["createDate"]);
                 i.Estado = new Estado();
                 i.Estado.Id32 = Convert.ToInt32(reader["Estado"]);
-                //i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
+                i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
                 //idusuario,createdate,cotizacion_solicitud_cotizaciones_id,cotizacion_indirecta_estados_id
 
                 return i;
@@ -194,11 +192,11 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 cot.IncoTerm = Parametros.clsParametrosClientesDAO.ObtenerIncoTermPorId(Convert.ToInt16(reader["idincoterms"]));
 
                 cot.Commodity = reader["commodity"].ToString();
-                cot.GastosLocales = Convert.ToDecimal(reader["gastosLocales"]);
+                if (!String.IsNullOrEmpty(reader["gastosLocales"].ToString()))
+                    cot.GastosLocales = Convert.ToDecimal(reader["gastosLocales"]);
 
                 cot.Observaciones = reader["Observaciones"].ToString();
                 cot.ObservacionesFijas = reader["ObservacionesFijas"].ToString();
-
                 
                 var listEstados= (List<Estado>)ClsCotizacionDirectaEstadoDao.ListarEstadosCotizacionDirecta().ObjetoTransaccion;
                 cot.Estado =  listEstados.Find(estado => estado.Id == Convert.ToInt32(reader["COTIZACION_Directa_ESTADOS_id"]));

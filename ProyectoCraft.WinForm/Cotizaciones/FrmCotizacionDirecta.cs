@@ -357,7 +357,7 @@ namespace SCCMultimodal.Cotizaciones {
             CotizacionDirecta.Cliente = CboCliente.SelectedItem as clsClienteMaster;
             CotizacionDirecta.NombreCliente = CotizacionDirecta.Cliente.ToString();
             CotizacionDirecta.Commodity = txtCommodity.Text;
-            if (!String.IsNullOrEmpty(TxtGastosLocales.Text))
+            if (!String.IsNullOrEmpty(TxtGastosLocales.EditValue.ToString()))
                 CotizacionDirecta.GastosLocales = Convert.ToDecimal(TxtGastosLocales.EditValue);
             CotizacionDirecta.Observaciones = TxtObservaciones.Text;
 

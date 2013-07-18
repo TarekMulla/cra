@@ -10,6 +10,17 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             Detalles = new List<DetalleOpcion>();
             Pod = new List<Puerto>();
             Pol = new List<Puerto>();
+            FechaValidezInicio = DateTime.Now;
+
+            var cotizacionDirectaFechaValidezFinTXT = System.Configuration.ConfigurationSettings.AppSettings.Get("CotizacionDirectaFechaValidezFin");
+            var dias = 0;
+            if (String.IsNullOrEmpty(cotizacionDirectaFechaValidezFinTXT))
+                dias = 15;
+            else
+                dias = Convert.ToInt32(cotizacionDirectaFechaValidezFinTXT);
+
+            FechaValidezFin = FechaValidezInicio.AddDays(dias);
+            
         }
 
         public String Numero { set; get; }

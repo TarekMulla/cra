@@ -45,7 +45,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                     naviera.Id = Convert.ToInt64(objReader["Id"]);
                     naviera.Nombre = objReader["Descripcion"].ToString();
                     naviera.Activo = Convert.ToBoolean(objReader["Activo"]);
-                    naviera.FechaCreacion = Convert.ToDateTime(objReader["FechaCreacion"]);
+                    //naviera.FechaCreacion = Convert.ToDateTime(objReader["FechaCreacion"]);
                     lista.Add(naviera);
                 }
             }

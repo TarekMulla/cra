@@ -1008,6 +1008,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         {
             try
             {
+                Int32 regVarios = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings.Get("regVarios"));
+
                 IList<IntegracionNetShip> netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster);
                 //clsClienteMaster clienteNuevo = null;
 
@@ -1031,7 +1033,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     house.HouseBL = netShips[i - 1].HouseBl;//-Número BL
                     var rut = netShips[i - 1].Rut; //-Rut del Cliente.
 
-                    if (rut != null)
+                    if (rut != null && !string.IsNullOrEmpty(rut))
                     {
                         var cliente = netShips[i - 1].Cliente;
                         //-Si el Rut existe el sistema debe buscar en la base de datos y cargarlo con la información 
@@ -1050,7 +1052,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     }
                     else//-colocar el "varios" cuando el cliente no esté creado en el sistema,-si no viene rut , registro debe ser varios. 
                     {
-                        house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(1446);
+                        house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(regVarios);
                         GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Rut desde NetShip");
                         _regError++;
                     }

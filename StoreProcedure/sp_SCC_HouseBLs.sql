@@ -1,4 +1,4 @@
-alter Procedure sp_SCC_HouseBLs
+Alter Procedure sp_SCC_HouseBLs
 		@NrMaster varchar(30) = NULL
 as
 Begin
@@ -6,47 +6,59 @@ Begin
 Declare @CodMaster	integer
 Declare @NumConso	varchar(10)
 
---sp_SCC_HouseBLs 'SUDUN24676917008'
+--sp_SCC_HouseBLs 'HLCURTM130713895'
 
 --Select @NrMaster = 'SUDUN24676917008'
 
-/*exec sp_SCC_HouseBLs 'MOLU26006285475'
-MOLU26006285475
-KEVAP136168M
-MOLU26006228705
-MOLU13500936571
-NYKS7340175010
-HJSCSHSS39669500
-352-13-02557-352644 
-HLCURTM130701268
-HLCUHAM130709188
-NYKS7340175020*/
+Create table #Salida(
+NumConso varchar(20) null,
+Ha_nrHouse varchar(50) null ,
+UgHI_CneeRUT varchar(20) null,
+UgHI_CneeNome varchar(80) null,
+cl_tipo varchar(20) null,
+Ch_RoutingOrder varchar(20),
+CotaNum varchar(30) null,
+Origem varchar(50) null)
 		
 Select	@CodMaster = Ci_Codigo,
 		@NumConso = Ci_num		
 From	netship.CRAFTCHI.dbo.ConsoImp
 where	ci_nrmbl = @NrMaster
 
-select top 10	@NumConso as 'Consolidada',
+Insert into #Salida
+select	@NumConso as 'Consolidada',
 		Ha_nrHouse as 'House BL',
-		UgHI_CneeRUT as 'RUT',
-		Case When IsNull(UgHI_CneeRUT,'') <> '' Then UgHI_CneeNome 
+		IsNull(Cl_Cgc,'') as 'RUT',
+		Case When IsNull(Cl_Cgc,'') <> '' Then Cl_Fanta 
 			Else 'VARIOS' 
 		End as 'Cliente',
-		Case cl_tipo
+		Case IsNull(cl_tipo,'')
 			When 'COLOADER' Then 'Embarcador'
 			When 'F. FORWARDER' Then 'Embarcador'
 			Else 'Directo'
 		End as 'Tipo Cliente',
-		Ch_RoutingOrder as 'Ruteado'
-From	netship.CRAFTCHI.dbo.Chegada a,
-		netship.CRAFTCHI.dbo.HouseAdi h,
-		netship.CRAFTCHI.dbo.TUG_HouImpo t,
-		netship.CRAFTCHI.dbo.Cliente cl
+		Ch_RoutingOrder as 'Ruteado',
+		'',
+		Po_nome
+From	netship.CRAFTCHI.dbo.HouseAdi h
+Inner Join netship.CRAFTCHI.dbo.Chegada a on (ch_codigo = ha_codhouse)
+Inner Join netship.CRAFTCHI.dbo.Portos p on (Po_Codigo = ch_origem)
+Left Outer Join netship.CRAFTCHI.dbo.Cliente cl on (Cl_Codigo = Ch_Cnee)
 Where Ha_CodConso = @CodMaster
-And ch_codigo = ha_codhouse 
-And ha_codhouse  = UgHI_CodHouse
-And Cl_Codigo = ch_cliente
 
+Update	#Salida
+Set		CotaNum = Cti_CotaNum
+From	netship.CRAFTCHI.dbo.CotaImpGeral
+Where	Cti_NumHBL = Ha_nrHouse Collate SQL_Latin1_General_CP1_CI_AS 
+
+Select	NumConso as 'Consolidada',
+		Ha_nrHouse as 'House BL',
+		UgHI_CneeRUT as 'RUT',
+		UgHI_CneeNome as 'Cliente',
+		cl_tipo as 'Tipo Cliente',
+		Ch_RoutingOrder as Ruteado,
+		CotaNum as 'Shipping Instruction',
+		Origem as 'Puerto'
+From #Salida
 
 End

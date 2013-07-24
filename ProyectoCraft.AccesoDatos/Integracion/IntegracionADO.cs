@@ -84,6 +84,10 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                 else
                     objParams[3].Value = null;
 
+                if (_int.Mensaje != null)
+                    objParams[4].Value = _int.IdPaperlessTipoError;
+                else
+                    objParams[4].Value = null;
 
                 SqlCommand command = new SqlCommand("SP_N_Paperless_IntegracionNetship", conn);
                 command.Parameters.AddRange(objParams);

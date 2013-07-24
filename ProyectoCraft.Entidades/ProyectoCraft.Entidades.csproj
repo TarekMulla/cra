@@ -91,6 +91,7 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Integracion\Integracion.cs" />
     <Compile Include="Integracion\PaperlessIntegracionNetShipLog.cs" />
+    <Compile Include="Integracion\PaperlessTipoErrorLog.cs" />
     <Compile Include="Log\LogActividadUsuarios.cs" />
     <Compile Include="GlobalObject\ResultadoTransaccion.cs" />
     <Compile Include="GlobalObject\IdentifiableObject.cs" />

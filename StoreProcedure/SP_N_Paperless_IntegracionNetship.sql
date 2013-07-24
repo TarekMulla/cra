@@ -1,4 +1,4 @@
-drop table Paperless_IntegracionNetship
+/*drop table Paperless_IntegracionNetship
 go
 CREATE TABLE [dbo].[PAPERLESS_INTEGRACIONNETSHIP](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
@@ -15,30 +15,30 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-Create procedure SP_N_Paperless_IntegracionNetship
+*/
 
-@IDPaperless bigint ,
-@ValorPaperless varchar (20),
-@ValorNetShip varchar (20),
-@Mensaje varchar (255)
+Alter  procedure [dbo].[SP_N_Paperless_IntegracionNetship]  
+  
+@IDPaperless bigint ,  
+@ValorPaperless varchar (20),  
+@ValorNetShip varchar (20),  
+@Mensaje varchar (255),  
+@IDPaperlessTipoError bigint  
 
-AS
-
-
-INSERT INTO Paperless_IntegracionNetship
-           (IDPaperless ,
-			ValorPaperless ,
-			ValorNetShip ,
-			Mensaje ,
-			CreateDate )
-
-VALUES
-           (@IDPaperless ,
-			@ValorPaperless ,
-			@ValorNetShip ,
-			@Mensaje,
-			GetDate())
-			
-SELECT  SCOPE_IDENTITY()
-
-go
+ AS   
+ INSERT INTO Paperless_IntegracionNetship            
+ (IDPaperless ,  
+   ValorPaperless ,  
+   ValorNetShip ,  
+   Mensaje ,  
+   CreateDate ,  
+   IDPaperlessTipoError)  
+ VALUES            
+ (@IDPaperless ,  
+   @ValorPaperless ,  
+   @ValorNetShip ,  
+   @Mensaje,    
+   GetDate(),    
+   @IDPaperlessTipoError)     
+   
+   SELECT  SCOPE_IDENTITY() 

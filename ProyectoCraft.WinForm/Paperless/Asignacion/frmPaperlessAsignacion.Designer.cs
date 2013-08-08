@@ -65,6 +65,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tabFechas = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPuerto = new System.Windows.Forms.TextBox();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.txtShippingInstruction = new System.Windows.Forms.TextBox();
+            this.txtCourier = new System.Windows.Forms.TextBox();
             this.radioCourierDestino = new DevExpress.XtraEditors.RadioGroup();
             this.chkConfirmacionMaster = new System.Windows.Forms.CheckBox();
             this.txtfechaMasterConfirmado = new DevExpress.XtraEditors.DateEdit();
@@ -94,7 +99,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.txtCourier = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -464,6 +468,10 @@
             // 
             // tabFechas
             // 
+            this.tabFechas.Controls.Add(this.labelControl19);
+            this.tabFechas.Controls.Add(this.txtPuerto);
+            this.tabFechas.Controls.Add(this.labelControl18);
+            this.tabFechas.Controls.Add(this.txtShippingInstruction);
             this.tabFechas.Controls.Add(this.txtCourier);
             this.tabFechas.Controls.Add(this.radioCourierDestino);
             this.tabFechas.Controls.Add(this.chkConfirmacionMaster);
@@ -482,6 +490,45 @@
             this.tabFechas.Name = "tabFechas";
             this.tabFechas.Size = new System.Drawing.Size(786, 284);
             this.tabFechas.Text = "Fechas y plazos";
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(258, 108);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(32, 13);
+            this.labelControl19.TabIndex = 124;
+            this.labelControl19.Text = "Puerto";
+            // 
+            // txtPuerto
+            // 
+            this.txtPuerto.Location = new System.Drawing.Point(364, 105);
+            this.txtPuerto.Name = "txtPuerto";
+            this.txtPuerto.ReadOnly = true;
+            this.txtPuerto.Size = new System.Drawing.Size(129, 20);
+            this.txtPuerto.TabIndex = 123;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(258, 74);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(95, 13);
+            this.labelControl18.TabIndex = 122;
+            this.labelControl18.Text = "Shipping Instruction";
+            // 
+            // txtShippingInstruction
+            // 
+            this.txtShippingInstruction.Location = new System.Drawing.Point(364, 71);
+            this.txtShippingInstruction.Name = "txtShippingInstruction";
+            this.txtShippingInstruction.ReadOnly = true;
+            this.txtShippingInstruction.Size = new System.Drawing.Size(129, 20);
+            this.txtShippingInstruction.TabIndex = 121;
+            // 
+            // txtCourier
+            // 
+            this.txtCourier.Location = new System.Drawing.Point(364, 22);
+            this.txtCourier.Name = "txtCourier";
+            this.txtCourier.Size = new System.Drawing.Size(129, 20);
+            this.txtCourier.TabIndex = 120;
             // 
             // radioCourierDestino
             // 
@@ -748,7 +795,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(819, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(819, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -757,7 +804,7 @@
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
@@ -765,13 +812,6 @@
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // txtCourier
-            // 
-            this.txtCourier.Location = new System.Drawing.Point(364, 22);
-            this.txtCourier.Name = "txtCourier";
-            this.txtCourier.Size = new System.Drawing.Size(129, 20);
-            this.txtCourier.TabIndex = 120;
             // 
             // frmPaperlessAsignacion
             // 
@@ -898,6 +938,10 @@
         private DevExpress.XtraEditors.DateEdit txtfechaMasterConfirmado;
         private DevExpress.XtraEditors.RadioGroup radioCourierDestino;
         private System.Windows.Forms.TextBox txtCourier;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private System.Windows.Forms.TextBox txtPuerto;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private System.Windows.Forms.TextBox txtShippingInstruction;
 
     }
 }

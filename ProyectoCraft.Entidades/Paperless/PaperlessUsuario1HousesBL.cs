@@ -23,5 +23,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public Enums.Enums.PaperlessTipoReciboAperturaEmbarcador TipoReciboAperturaEmbarcador { get; set; }
         public String Observacion { set; get; }
         public PaperlessTipoTransito TransbordoTransito { set; get; }
+        public string ShippingInstruction { get; set; }
+        public string Puerto { get; set; }
     }
 }

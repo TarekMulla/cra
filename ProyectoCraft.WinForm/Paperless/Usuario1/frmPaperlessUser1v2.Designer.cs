@@ -54,6 +54,8 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.P1colTipoCliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -78,6 +80,8 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
             this.btnP11Excepciones = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblP11ErrorExcepcion = new DevExpress.XtraEditors.LabelControl();
             this.grdExcepciones = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -120,8 +124,6 @@
             this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.lblP11ErrorExcepcion = new DevExpress.XtraEditors.LabelControl();
             this.panelDisputas = new System.Windows.Forms.Panel();
             this.LabelErrorDisputa = new DevExpress.XtraEditors.LabelControl();
             this.sButtonAgregarDisputa = new DevExpress.XtraEditors.SimpleButton();
@@ -414,6 +416,8 @@
             this.gridColumn9,
             this.gridColumn17,
             this.P1colTipoCliente,
+            this.gridColumn43,
+            this.gridColumn44,
             this.gridColumn22,
             this.gridColumn18});
             this.gridView5.GridControl = this.grdP1DigitarHousesBL;
@@ -431,7 +435,7 @@
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
-            this.gridColumn7.Width = 40;
+            this.gridColumn7.Width = 38;
             // 
             // gridColumn8
             // 
@@ -441,7 +445,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 1;
-            this.gridColumn8.Width = 150;
+            this.gridColumn8.Width = 116;
             // 
             // gridColumn9
             // 
@@ -459,7 +463,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 2;
-            this.gridColumn17.Width = 316;
+            this.gridColumn17.Width = 241;
             // 
             // P1colTipoCliente
             // 
@@ -469,7 +473,25 @@
             this.P1colTipoCliente.Name = "P1colTipoCliente";
             this.P1colTipoCliente.Visible = true;
             this.P1colTipoCliente.VisibleIndex = 3;
-            this.P1colTipoCliente.Width = 104;
+            this.P1colTipoCliente.Width = 85;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Shipping Instruction";
+            this.gridColumn43.FieldName = "ShippingInstruction";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 4;
+            this.gridColumn43.Width = 137;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.Caption = "Puerto";
+            this.gridColumn44.FieldName = "Puerto";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 5;
+            this.gridColumn44.Width = 108;
             // 
             // gridColumn22
             // 
@@ -486,7 +508,8 @@
             this.gridColumn18.FieldName = "Ruteado";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 4;
+            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.Width = 77;
             // 
             // gridView2
             // 
@@ -699,9 +722,9 @@
             // pnlExcepciones
             // 
             this.pnlExcepciones.Controls.Add(this.btnP11Excepciones);
-            this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
             this.pnlExcepciones.Controls.Add(this.lblP11ErrorExcepcion);
+            this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Location = new System.Drawing.Point(313, 154);
             this.pnlExcepciones.Name = "pnlExcepciones";
             this.pnlExcepciones.Size = new System.Drawing.Size(854, 374);
@@ -717,6 +740,27 @@
             this.btnP11Excepciones.TabIndex = 2;
             this.btnP11Excepciones.Text = "Guardar Excepciones";
             this.btnP11Excepciones.Click += new System.EventHandler(this.btnP11Excepciones_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(16, 12);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(125, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Registrar Excepciones";
+            // 
+            // lblP11ErrorExcepcion
+            // 
+            this.lblP11ErrorExcepcion.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblP11ErrorExcepcion.Appearance.Options.UseForeColor = true;
+            this.lblP11ErrorExcepcion.Location = new System.Drawing.Point(204, 9);
+            this.lblP11ErrorExcepcion.Name = "lblP11ErrorExcepcion";
+            this.lblP11ErrorExcepcion.Size = new System.Drawing.Size(165, 13);
+            this.lblP11ErrorExcepcion.TabIndex = 3;
+            this.lblP11ErrorExcepcion.Text = "Debe ingresar toda la informacion.";
+            this.lblP11ErrorExcepcion.Visible = false;
             // 
             // grdExcepciones
             // 
@@ -1092,27 +1136,6 @@
             this.gridColumn38.Visible = true;
             this.gridColumn38.VisibleIndex = 4;
             this.gridColumn38.Width = 215;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(16, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(125, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Registrar Excepciones";
-            // 
-            // lblP11ErrorExcepcion
-            // 
-            this.lblP11ErrorExcepcion.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lblP11ErrorExcepcion.Appearance.Options.UseForeColor = true;
-            this.lblP11ErrorExcepcion.Location = new System.Drawing.Point(204, 9);
-            this.lblP11ErrorExcepcion.Name = "lblP11ErrorExcepcion";
-            this.lblP11ErrorExcepcion.Size = new System.Drawing.Size(165, 13);
-            this.lblP11ErrorExcepcion.TabIndex = 3;
-            this.lblP11ErrorExcepcion.Text = "Debe ingresar toda la informacion.";
-            this.lblP11ErrorExcepcion.Visible = false;
             // 
             // panelDisputas
             // 
@@ -1648,11 +1671,11 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
+            this.Controls.Add(this.pnlExcepciones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1891,5 +1914,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit2;
         private DevExpress.XtraEditors.SimpleButton txtLogCarga;
         private DevExpress.XtraEditors.SimpleButton TxtActualizarNetShip;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
     }
 }

@@ -24,7 +24,10 @@ TipoReciboAperturaEmbarcador,
 PE.RecargoCollect, 
 PE.Id IdExcepcion,
 PHBL.Observacion,
-cc.PaperlessTipoRecibo
+cc.PaperlessTipoRecibo,
+PHBL.Shippinginstruction,
+
+PHBL.Puerto
 FROM PAPERLESS_USUARIO1_HOUSESBL PHBL LEFT OUTER JOIN CLIENTES_MASTER_TIPO_CLIENTE TC ON PHBL.IdTipoCliente = TC.Id
 LEFT OUTER JOIN PAPERLESS_USUARIO1_EXCEPCIONES PE ON PHBL.Id = PE.IdHouseBL
 LEFT join CLIENTES_CUENTA cc on cc.IdMaster=IdCliente

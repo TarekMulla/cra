@@ -1200,6 +1200,14 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     house.HouseBL = netShips[i - 1].HouseBl;//-Número BL
                     var rut = netShips[i - 1].Rut; //-Rut del Cliente.
 
+                    var shippingInstruction = netShips[i - 1].ShippingInstruction;
+                    if (shippingInstruction != null)
+                        house.ShippingInstruction = shippingInstruction;
+                    
+                    var port = netShips[i - 1].Puerto;
+                    if (port != null)
+                        house.Puerto = port;
+
                     if (rut != null && !string.IsNullOrEmpty(rut))
                     {
                         var cliente = netShips[i - 1].Cliente;

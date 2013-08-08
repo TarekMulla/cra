@@ -226,10 +226,10 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     flujopaperless.Asignacion.ObservacionUsuario1 = dreader["ObservacionUsuario1"].ToString();
                     flujopaperless.Asignacion.ObservacionUsuario2 = dreader["ObservacionUsuario2"].ToString();
-                    flujopaperless.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();
-
+                    flujopaperless.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();                    
+                   
                     listasignaciones.Add(flujopaperless);
-                }
+                }              
             } catch (Exception ex) {
                 Base.Log.Log.EscribirLog(ex.Message);
             } finally {
@@ -1182,6 +1182,16 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                             //LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente);
                             house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = (Enums.PaperlessTipoReciboAperturaEmbarcador)Convert.ToInt16(dreader["PaperlessTipoRecibo"]);
                         }
+                        if (dreader["Shippinginstruction"] is DBNull)
+                            house.ShippingInstruction = "";
+                        else
+                            house.ShippingInstruction = dreader["Shippinginstruction"].ToString();
+
+
+                        if (dreader["puerto"] is DBNull)
+                            house.Puerto = "";
+                        else
+                            house.Puerto = dreader["puerto"].ToString();                       
 
                     } catch (Exception ex) {
                         Log.EscribirLog(ex.Message);
@@ -1310,6 +1320,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[3].Value = housebl.Freehand;
                 objParams[4].Value = housebl.Cliente.Id;
                 objParams[5].Value = housebl.TipoCliente.Id;
+                objParams[6].Value = housebl.ShippingInstruction;
+                objParams[7].Value = housebl.Puerto;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_HOUSESBL", connparam);
                 command.Parameters.AddRange(objParams);

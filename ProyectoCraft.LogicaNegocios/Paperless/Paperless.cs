@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -333,6 +334,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtieneDisputas(paperlessAsignacion);
+        }
+        public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignaciones(usuario, desde, hasta);
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionPaperless));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuAsignacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -98,17 +99,31 @@
             this.TabGestionPaperless = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BtnBuscatTab2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtShipping = new System.Windows.Forms.TextBox();
+            this.txtPuerto = new System.Windows.Forms.TextBox();
             this.grdHbls = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPuerto = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtShipping = new System.Windows.Forms.TextBox();
-            this.BtnBuscatTab2 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.GrdCantAsignaciones = new DevExpress.XtraGrid.GridControl();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.rdUsuario2 = new System.Windows.Forms.RadioButton();
+            this.rdUsuario1 = new System.Windows.Forms.RadioButton();
+            this.txtFechahastaAsignacion = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.btnBuscarAsignaciones = new DevExpress.XtraEditors.SimpleButton();
+            this.txtFechaDesdeAsignacion = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -121,6 +136,31 @@
             this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.checkedComboBoxEdit2 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit4 = new DevExpress.XtraEditors.DateEdit();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.dateEdit5 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit6 = new DevExpress.XtraEditors.DateEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -149,9 +189,38 @@
             this.TabGestionPaperless.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -812,6 +881,7 @@
             // 
             this.TabGestionPaperless.Controls.Add(this.tabPage1);
             this.TabGestionPaperless.Controls.Add(this.tabPage2);
+            this.TabGestionPaperless.Controls.Add(this.tabPage3);
             this.TabGestionPaperless.Location = new System.Drawing.Point(0, 57);
             this.TabGestionPaperless.Name = "TabGestionPaperless";
             this.TabGestionPaperless.SelectedIndex = 0;
@@ -832,12 +902,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupControl4);
             this.tabPage2.Controls.Add(this.grdHbls);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.txtPuerto);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.txtShipping);
-            this.tabPage2.Controls.Add(this.BtnBuscatTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -846,6 +912,63 @@
             this.tabPage2.Text = "Shipping Instruction";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl4.Controls.Add(this.label1);
+            this.groupControl4.Controls.Add(this.BtnBuscatTab2);
+            this.groupControl4.Controls.Add(this.label2);
+            this.groupControl4.Controls.Add(this.txtShipping);
+            this.groupControl4.Controls.Add(this.txtPuerto);
+            this.groupControl4.Location = new System.Drawing.Point(4, 6);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(1116, 108);
+            this.groupControl4.TabIndex = 6;
+            this.groupControl4.Text = "Filtros";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Shipping Instruction";
+            // 
+            // BtnBuscatTab2
+            // 
+            this.BtnBuscatTab2.Location = new System.Drawing.Point(136, 77);
+            this.BtnBuscatTab2.Name = "BtnBuscatTab2";
+            this.BtnBuscatTab2.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscatTab2.TabIndex = 0;
+            this.BtnBuscatTab2.Text = "Buscar";
+            this.BtnBuscatTab2.UseVisualStyleBackColor = true;
+            this.BtnBuscatTab2.Click += new System.EventHandler(this.BtnBuscatTab2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Puerto";
+            // 
+            // txtShipping
+            // 
+            this.txtShipping.Location = new System.Drawing.Point(111, 17);
+            this.txtShipping.Name = "txtShipping";
+            this.txtShipping.Size = new System.Drawing.Size(100, 20);
+            this.txtShipping.TabIndex = 1;
+            // 
+            // txtPuerto
+            // 
+            this.txtPuerto.Location = new System.Drawing.Point(111, 51);
+            this.txtPuerto.Name = "txtPuerto";
+            this.txtPuerto.Size = new System.Drawing.Size(100, 20);
+            this.txtPuerto.TabIndex = 3;
             // 
             // grdHbls
             // 
@@ -924,47 +1047,162 @@
             this.gridColumn42.VisibleIndex = 3;
             this.gridColumn42.Width = 126;
             // 
-            // label2
+            // tabPage3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Puerto";
+            this.tabPage3.Controls.Add(this.GrdCantAsignaciones);
+            this.tabPage3.Controls.Add(this.groupControl3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1128, 506);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Asignaciones";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txtPuerto
+            // GrdCantAsignaciones
             // 
-            this.txtPuerto.Location = new System.Drawing.Point(112, 48);
-            this.txtPuerto.Name = "txtPuerto";
-            this.txtPuerto.Size = new System.Drawing.Size(100, 20);
-            this.txtPuerto.TabIndex = 3;
+            this.GrdCantAsignaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridLevelNode2.RelationName = "Level1";
+            this.GrdCantAsignaciones.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
+            this.GrdCantAsignaciones.Location = new System.Drawing.Point(3, 97);
+            this.GrdCantAsignaciones.MainView = this.gridView4;
+            this.GrdCantAsignaciones.Name = "GrdCantAsignaciones";
+            this.GrdCantAsignaciones.Size = new System.Drawing.Size(548, 284);
+            this.GrdCantAsignaciones.TabIndex = 6;
+            this.GrdCantAsignaciones.UseEmbeddedNavigator = true;
+            this.GrdCantAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView4});
             // 
-            // label1
+            // gridView4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Shipping Instruction";
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn43,
+            this.gridColumn44});
+            this.gridView4.GridControl = this.GrdCantAsignaciones;
+            this.gridView4.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn43, "")});
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsView.ShowAutoFilterRow = true;
+            this.gridView4.OptionsView.ShowGroupedColumns = true;
             // 
-            // txtShipping
+            // gridColumn43
             // 
-            this.txtShipping.Location = new System.Drawing.Point(112, 14);
-            this.txtShipping.Name = "txtShipping";
-            this.txtShipping.Size = new System.Drawing.Size(100, 20);
-            this.txtShipping.TabIndex = 1;
+            this.gridColumn43.Caption = "Cantidad";
+            this.gridColumn43.FieldName = "Cantidad";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 0;
+            this.gridColumn43.Width = 114;
             // 
-            // BtnBuscatTab2
+            // gridColumn44
             // 
-            this.BtnBuscatTab2.Location = new System.Drawing.Point(139, 82);
-            this.BtnBuscatTab2.Name = "BtnBuscatTab2";
-            this.BtnBuscatTab2.Size = new System.Drawing.Size(75, 23);
-            this.BtnBuscatTab2.TabIndex = 0;
-            this.BtnBuscatTab2.Text = "Buscar";
-            this.BtnBuscatTab2.UseVisualStyleBackColor = true;
-            this.BtnBuscatTab2.Click += new System.EventHandler(this.BtnBuscatTab2_Click);
+            this.gridColumn44.Caption = "Usuario";
+            this.gridColumn44.FieldName = "NombreUsuario";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 1;
+            this.gridColumn44.Width = 139;
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl3.Controls.Add(this.rdUsuario2);
+            this.groupControl3.Controls.Add(this.rdUsuario1);
+            this.groupControl3.Controls.Add(this.txtFechahastaAsignacion);
+            this.groupControl3.Controls.Add(this.labelControl17);
+            this.groupControl3.Controls.Add(this.btnBuscarAsignaciones);
+            this.groupControl3.Controls.Add(this.txtFechaDesdeAsignacion);
+            this.groupControl3.Controls.Add(this.labelControl16);
+            this.groupControl3.Location = new System.Drawing.Point(3, 3);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(1116, 91);
+            this.groupControl3.TabIndex = 2;
+            this.groupControl3.Text = "Filtros";
+            this.groupControl3.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl3_Paint);
+            // 
+            // rdUsuario2
+            // 
+            this.rdUsuario2.AutoSize = true;
+            this.rdUsuario2.Location = new System.Drawing.Point(85, 65);
+            this.rdUsuario2.Name = "rdUsuario2";
+            this.rdUsuario2.Size = new System.Drawing.Size(70, 17);
+            this.rdUsuario2.TabIndex = 112;
+            this.rdUsuario2.TabStop = true;
+            this.rdUsuario2.Text = "Usuario 2";
+            this.rdUsuario2.UseVisualStyleBackColor = true;
+            // 
+            // rdUsuario1
+            // 
+            this.rdUsuario1.AutoSize = true;
+            this.rdUsuario1.Location = new System.Drawing.Point(5, 65);
+            this.rdUsuario1.Name = "rdUsuario1";
+            this.rdUsuario1.Size = new System.Drawing.Size(70, 17);
+            this.rdUsuario1.TabIndex = 111;
+            this.rdUsuario1.TabStop = true;
+            this.rdUsuario1.Text = "Usuario 1";
+            this.rdUsuario1.UseVisualStyleBackColor = true;
+            // 
+            // txtFechahastaAsignacion
+            // 
+            this.txtFechahastaAsignacion.EditValue = null;
+            this.txtFechahastaAsignacion.Location = new System.Drawing.Point(73, 39);
+            this.txtFechahastaAsignacion.Name = "txtFechahastaAsignacion";
+            this.txtFechahastaAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechahastaAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtFechahastaAsignacion.Size = new System.Drawing.Size(129, 20);
+            this.txtFechahastaAsignacion.TabIndex = 110;
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(5, 42);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(60, 13);
+            this.labelControl17.TabIndex = 109;
+            this.labelControl17.Text = "Fecha Hasta";
+            // 
+            // btnBuscarAsignaciones
+            // 
+            this.btnBuscarAsignaciones.Location = new System.Drawing.Point(200, 65);
+            this.btnBuscarAsignaciones.Name = "btnBuscarAsignaciones";
+            this.btnBuscarAsignaciones.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarAsignaciones.TabIndex = 108;
+            this.btnBuscarAsignaciones.Text = "Buscar";
+            this.btnBuscarAsignaciones.Click += new System.EventHandler(this.btnBuscarAsignaciones_Click);
+            // 
+            // txtFechaDesdeAsignacion
+            // 
+            this.txtFechaDesdeAsignacion.EditValue = null;
+            this.txtFechaDesdeAsignacion.Location = new System.Drawing.Point(73, 20);
+            this.txtFechaDesdeAsignacion.Name = "txtFechaDesdeAsignacion";
+            this.txtFechaDesdeAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtFechaDesdeAsignacion.Size = new System.Drawing.Size(129, 20);
+            this.txtFechaDesdeAsignacion.TabIndex = 107;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(5, 23);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(62, 13);
+            this.labelControl16.TabIndex = 106;
+            this.labelControl16.Text = "Fecha Desde";
             // 
             // gridView2
             // 
@@ -1071,6 +1309,257 @@
             this.gridColumn38.Visible = true;
             this.gridColumn38.VisibleIndex = 10;
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(432, 115);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(82, 13);
+            this.labelControl8.TabIndex = 112;
+            this.labelControl8.Text = "Estado Paperless";
+            this.labelControl8.Visible = false;
+            // 
+            // checkedComboBoxEdit2
+            // 
+            this.checkedComboBoxEdit2.EditValue = "";
+            this.checkedComboBoxEdit2.Location = new System.Drawing.Point(566, 111);
+            this.checkedComboBoxEdit2.Name = "checkedComboBoxEdit2";
+            this.checkedComboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.checkedComboBoxEdit2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("3", "Asignado Usuario 1ra Etapa"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("4", "Aceptado Por Usuario 1ra Etapa"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("5", "En Proceso Usuario 1ra Etala"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("6", "Enviado Usuario 2da Etapa"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("7", "En Proceso Usuario 2da Etapa"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("8", "Proceso Terminado")});
+            this.checkedComboBoxEdit2.Size = new System.Drawing.Size(126, 20);
+            this.checkedComboBoxEdit2.TabIndex = 111;
+            this.checkedComboBoxEdit2.Visible = false;
+            // 
+            // dateEdit1
+            // 
+            this.dateEdit1.EditValue = null;
+            this.dateEdit1.Enabled = false;
+            this.dateEdit1.Location = new System.Drawing.Point(565, 42);
+            this.dateEdit1.Name = "dateEdit1";
+            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit1.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit1.TabIndex = 110;
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Enabled = false;
+            this.dateEdit2.Location = new System.Drawing.Point(565, 62);
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit2.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit2.TabIndex = 109;
+            // 
+            // dateEdit3
+            // 
+            this.dateEdit3.EditValue = null;
+            this.dateEdit3.Enabled = false;
+            this.dateEdit3.Location = new System.Drawing.Point(432, 42);
+            this.dateEdit3.Name = "dateEdit3";
+            this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit3.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit3.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit3.TabIndex = 108;
+            // 
+            // dateEdit4
+            // 
+            this.dateEdit4.EditValue = null;
+            this.dateEdit4.Enabled = false;
+            this.dateEdit4.Location = new System.Drawing.Point(432, 62);
+            this.dateEdit4.Name = "dateEdit4";
+            this.dateEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit4.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit4.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit4.TabIndex = 107;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(741, 81);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(117, 17);
+            this.checkBox1.TabIndex = 106;
+            this.checkBox1.Text = "Creacion Paperless";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(741, 61);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(135, 17);
+            this.checkBox2.TabIndex = 105;
+            this.checkBox2.Text = "Plazo Apertura Naviera";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(741, 39);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(112, 17);
+            this.checkBox3.TabIndex = 104;
+            this.checkBox3.Text = "Plazo Embarcador";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(877, 24);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(48, 20);
+            this.comboBoxEdit1.TabIndex = 103;
+            this.comboBoxEdit1.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(256, 20);
+            this.textBox1.TabIndex = 7;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(9, 45);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(25, 13);
+            this.labelControl9.TabIndex = 6;
+            this.labelControl9.Text = "Nave";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(841, 113);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(89, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "Buscar";
+            // 
+            // comboBoxEdit2
+            // 
+            this.comboBoxEdit2.Location = new System.Drawing.Point(103, 95);
+            this.comboBoxEdit2.Name = "comboBoxEdit2";
+            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit2.Size = new System.Drawing.Size(201, 20);
+            this.comboBoxEdit2.TabIndex = 3;
+            // 
+            // comboBoxEdit3
+            // 
+            this.comboBoxEdit3.Location = new System.Drawing.Point(103, 69);
+            this.comboBoxEdit3.Name = "comboBoxEdit3";
+            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit3.Size = new System.Drawing.Size(201, 20);
+            this.comboBoxEdit3.TabIndex = 3;
+            // 
+            // dateEdit5
+            // 
+            this.dateEdit5.EditValue = null;
+            this.dateEdit5.Enabled = false;
+            this.dateEdit5.Location = new System.Drawing.Point(565, 82);
+            this.dateEdit5.Name = "dateEdit5";
+            this.dateEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit5.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit5.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit5.TabIndex = 2;
+            // 
+            // dateEdit6
+            // 
+            this.dateEdit6.EditValue = null;
+            this.dateEdit6.Enabled = false;
+            this.dateEdit6.Location = new System.Drawing.Point(432, 82);
+            this.dateEdit6.Name = "dateEdit6";
+            this.dateEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit6.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEdit6.Size = new System.Drawing.Size(127, 20);
+            this.dateEdit6.TabIndex = 2;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(103, 116);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(127, 20);
+            this.textEdit1.TabIndex = 1;
+            this.textEdit1.Visible = false;
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(103, 23);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(127, 20);
+            this.textEdit2.TabIndex = 1;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(9, 92);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(88, 13);
+            this.labelControl10.TabIndex = 0;
+            this.labelControl10.Text = "Usuario 2da Etapa";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(567, 23);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(59, 13);
+            this.labelControl11.TabIndex = 0;
+            this.labelControl11.Text = "Fecha hasta";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(9, 115);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(73, 13);
+            this.labelControl12.TabIndex = 0;
+            this.labelControl12.Text = "N° Consolidado";
+            this.labelControl12.Visible = false;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(9, 69);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(86, 13);
+            this.labelControl13.TabIndex = 0;
+            this.labelControl13.Text = "Usuario 1ra Etapa";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(432, 23);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(61, 13);
+            this.labelControl14.TabIndex = 0;
+            this.labelControl14.Text = "Fecha desde";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(9, 27);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(48, 13);
+            this.labelControl15.TabIndex = 0;
+            this.labelControl15.Text = "N° Master";
+            // 
             // frmGestionPaperless
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1111,10 +1600,40 @@
             this.TabGestionPaperless.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            this.groupControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1213,5 +1732,44 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit2;
+        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.DateEdit dateEdit2;
+        private DevExpress.XtraEditors.DateEdit dateEdit3;
+        private DevExpress.XtraEditors.DateEdit dateEdit4;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private System.Windows.Forms.TextBox textBox1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
+        private DevExpress.XtraEditors.DateEdit dateEdit5;
+        private DevExpress.XtraEditors.DateEdit dateEdit6;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.DateEdit txtFechahastaAsignacion;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.SimpleButton btnBuscarAsignaciones;
+        private DevExpress.XtraEditors.DateEdit txtFechaDesdeAsignacion;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private System.Windows.Forms.RadioButton rdUsuario2;
+        private System.Windows.Forms.RadioButton rdUsuario1;
+        private DevExpress.XtraGrid.GridControl GrdCantAsignaciones;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
     }
 }

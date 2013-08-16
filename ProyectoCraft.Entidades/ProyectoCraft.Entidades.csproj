@@ -102,6 +102,7 @@
     <Compile Include="GlobalObject\NamedObject.cs" />
     <Compile Include="Clientes\Target\clsEmpresaCompetencia.cs" />
     <Compile Include="Log\LogPerformance.cs" />
+    <Compile Include="Paperless\PaperlessCantUsuarios.cs" />
     <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
     <Compile Include="Paperless\PaperlessAgente.cs" />
     <Compile Include="Paperless\PaperlessAsignacion.cs" />

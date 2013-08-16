@@ -340,5 +340,46 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
                 grdHbls.RefreshDataSource();
             }                        
         }
+
+        private void groupControl3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnBuscarAsignaciones_Click(object sender, EventArgs e)
+        {
+            var tabla = "";
+            
+            if (ValidaTabAsignaciones())
+            {
+                DateTime desdeasignacion = Convert.ToDateTime(txtFechaDesdeAsignacion.Text);
+                DateTime hastaasignacion = Convert.ToDateTime(txtFechahastaAsignacion.Text);
+                tabla = rdUsuario1.Checked ? "USUARIO1" : "USUARIO2";
+                var listaHts = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignaciones(tabla, desdeasignacion, hastaasignacion);
+                GrdCantAsignaciones.DataSource = listaHts;
+                GrdCantAsignaciones.RefreshDataSource();
+            }
+            
+        }
+        private bool ValidaTabAsignaciones()
+        {
+            const bool valido = true;
+            if (string.IsNullOrEmpty(txtFechaDesdeAsignacion.Text)  )
+            {
+                MessageBox.Show(@"Debe seleccionar fecha desde ", @"Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtFechahastaAsignacion.Text))
+            {
+                MessageBox.Show(@"Debe seleccionar fecha hasta ", @"Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (rdUsuario1.Checked.Equals(false) && rdUsuario2.Checked.Equals(false))
+            {
+                MessageBox.Show(@"Debe seleccionar Usuario ", @"Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return valido;
+        }
     }
 }

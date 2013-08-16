@@ -25,5 +25,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public PaperlessTipoTransito TransbordoTransito { set; get; }
         public string ShippingInstruction { get; set; }
         public string Puerto { get; set; }
+        public string NumMaster { get; set; }
     }
 }

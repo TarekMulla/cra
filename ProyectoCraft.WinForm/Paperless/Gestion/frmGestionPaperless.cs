@@ -10,6 +10,7 @@ using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.Entidades.Usuarios;
 using SCCMultimodal.Paperless.Usuario1;
 using SCCMultimodal.Paperless.Usuario2;
@@ -319,6 +320,25 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
 
         private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e) {
 
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBuscatTab2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPuerto.Text) || !string.IsNullOrEmpty(txtShipping.Text) )
+            {
+                IList<PaperlessUsuario1HousesBL> houses =
+                LogicaNegocios.Paperless.Paperless.ObtenerHousesBLporShippingInstruction(txtShipping.Text, txtPuerto.Text);
+                //houses[0].IdAsignacion
+                //IList<PaperlessAsignacion> asignaciones = LogicaNegocios.Paperless.Paperless.ObtenerAsignacionPorId()
+
+                grdHbls.DataSource = houses;
+                grdHbls.RefreshDataSource();
+            }                        
         }
     }
 }

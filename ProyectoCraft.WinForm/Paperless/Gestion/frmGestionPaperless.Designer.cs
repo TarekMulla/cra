@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionPaperless));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuAsignacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -94,6 +95,32 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TabGestionPaperless = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grdHbls = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPuerto = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtShipping = new System.Windows.Forms.TextBox();
+            this.BtnBuscatTab2 = new System.Windows.Forms.Button();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -119,6 +146,12 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.TabGestionPaperless.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -135,7 +168,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(940, 54);
+            this.toolStrip1.Size = new System.Drawing.Size(1136, 54);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -236,9 +269,9 @@
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(3, 57);
+            this.groupControl1.Location = new System.Drawing.Point(6, 6);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(932, 143);
+            this.groupControl1.Size = new System.Drawing.Size(1116, 147);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Filtros";
             // 
@@ -504,9 +537,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl2.Controls.Add(this.grdAsignaciones);
-            this.groupControl2.Location = new System.Drawing.Point(3, 206);
+            this.groupControl2.Location = new System.Drawing.Point(6, 157);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(932, 286);
+            this.groupControl2.Size = new System.Drawing.Size(1116, 337);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Resultado";
             // 
@@ -516,7 +549,7 @@
             this.grdAsignaciones.Location = new System.Drawing.Point(2, 20);
             this.grdAsignaciones.MainView = this.gridView1;
             this.grdAsignaciones.Name = "grdAsignaciones";
-            this.grdAsignaciones.Size = new System.Drawing.Size(928, 264);
+            this.grdAsignaciones.Size = new System.Drawing.Size(1112, 315);
             this.grdAsignaciones.TabIndex = 0;
             this.grdAsignaciones.UseEmbeddedNavigator = true;
             this.grdAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -775,14 +808,276 @@
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 26;
             // 
+            // TabGestionPaperless
+            // 
+            this.TabGestionPaperless.Controls.Add(this.tabPage1);
+            this.TabGestionPaperless.Controls.Add(this.tabPage2);
+            this.TabGestionPaperless.Location = new System.Drawing.Point(0, 57);
+            this.TabGestionPaperless.Name = "TabGestionPaperless";
+            this.TabGestionPaperless.SelectedIndex = 0;
+            this.TabGestionPaperless.Size = new System.Drawing.Size(1136, 532);
+            this.TabGestionPaperless.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupControl1);
+            this.tabPage1.Controls.Add(this.groupControl2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1128, 506);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "General";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.grdHbls);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.txtPuerto);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.txtShipping);
+            this.tabPage2.Controls.Add(this.BtnBuscatTab2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1128, 506);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Shipping Instruction";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // grdHbls
+            // 
+            this.grdHbls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdHbls.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridLevelNode1.RelationName = "Level1";
+            this.grdHbls.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.grdHbls.Location = new System.Drawing.Point(3, 120);
+            this.grdHbls.MainView = this.gridView3;
+            this.grdHbls.Name = "grdHbls";
+            this.grdHbls.Size = new System.Drawing.Size(548, 380);
+            this.grdHbls.TabIndex = 5;
+            this.grdHbls.UseEmbeddedNavigator = true;
+            this.grdHbls.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn39,
+            this.gridColumn40,
+            this.gridColumn41,
+            this.gridColumn42});
+            this.gridView3.GridControl = this.grdHbls;
+            this.gridView3.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn39, "")});
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsView.ShowAutoFilterRow = true;
+            this.gridView3.OptionsView.ShowGroupedColumns = true;
+            // 
+            // gridColumn39
+            // 
+            this.gridColumn39.Caption = "Numero Master";
+            this.gridColumn39.FieldName = "NumMaster";
+            this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.Visible = true;
+            this.gridColumn39.VisibleIndex = 0;
+            this.gridColumn39.Width = 114;
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "House BL";
+            this.gridColumn40.FieldName = "HouseBL";
+            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.Visible = true;
+            this.gridColumn40.VisibleIndex = 1;
+            this.gridColumn40.Width = 139;
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "Shipping Instruction";
+            this.gridColumn41.FieldName = "ShippingInstruction";
+            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.Visible = true;
+            this.gridColumn41.VisibleIndex = 2;
+            this.gridColumn41.Width = 148;
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Puerto";
+            this.gridColumn42.FieldName = "Puerto";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 3;
+            this.gridColumn42.Width = 126;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Puerto";
+            // 
+            // txtPuerto
+            // 
+            this.txtPuerto.Location = new System.Drawing.Point(112, 48);
+            this.txtPuerto.Name = "txtPuerto";
+            this.txtPuerto.Size = new System.Drawing.Size(100, 20);
+            this.txtPuerto.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Shipping Instruction";
+            // 
+            // txtShipping
+            // 
+            this.txtShipping.Location = new System.Drawing.Point(112, 14);
+            this.txtShipping.Name = "txtShipping";
+            this.txtShipping.Size = new System.Drawing.Size(100, 20);
+            this.txtShipping.TabIndex = 1;
+            // 
+            // BtnBuscatTab2
+            // 
+            this.BtnBuscatTab2.Location = new System.Drawing.Point(139, 82);
+            this.BtnBuscatTab2.Name = "BtnBuscatTab2";
+            this.BtnBuscatTab2.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscatTab2.TabIndex = 0;
+            this.BtnBuscatTab2.Text = "Buscar";
+            this.BtnBuscatTab2.UseVisualStyleBackColor = true;
+            this.BtnBuscatTab2.Click += new System.EventHandler(this.BtnBuscatTab2_Click);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn28,
+            this.gridColumn29,
+            this.gridColumn30,
+            this.gridColumn31,
+            this.gridColumn32,
+            this.gridColumn33,
+            this.gridColumn34,
+            this.gridColumn35,
+            this.gridColumn36,
+            this.gridColumn37,
+            this.gridColumn38});
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.Caption = "Fecha Asignacion";
+            this.gridColumn28.FieldName = "Asignacion.FechaCreacion";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 0;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "N° Master";
+            this.gridColumn29.FieldName = "Asignacion.NumMaster";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 1;
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "Fecha Master";
+            this.gridColumn30.FieldName = "Asignacion.FechaMaster";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.Visible = true;
+            this.gridColumn30.VisibleIndex = 2;
+            // 
+            // gridColumn31
+            // 
+            this.gridColumn31.Caption = "N° Consolidado";
+            this.gridColumn31.FieldName = "Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado";
+            this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.Visible = true;
+            this.gridColumn31.VisibleIndex = 4;
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "Usuario 1";
+            this.gridColumn32.FieldName = "Asignacion.Usuario1";
+            this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.Visible = true;
+            this.gridColumn32.VisibleIndex = 5;
+            // 
+            // gridColumn33
+            // 
+            this.gridColumn33.Caption = "Importancia";
+            this.gridColumn33.FieldName = "Asignacion.ImportanciaUsuario1.Nombre";
+            this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.Visible = true;
+            this.gridColumn33.VisibleIndex = 7;
+            // 
+            // gridColumn34
+            // 
+            this.gridColumn34.Caption = "Usuario 2";
+            this.gridColumn34.FieldName = "Asignacion.Usuario2";
+            this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.Visible = true;
+            this.gridColumn34.VisibleIndex = 6;
+            // 
+            // gridColumn35
+            // 
+            this.gridColumn35.Caption = "Estado";
+            this.gridColumn35.FieldName = "EstadoFlujoDescripcion";
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.Visible = true;
+            this.gridColumn35.VisibleIndex = 8;
+            // 
+            // gridColumn36
+            // 
+            this.gridColumn36.Caption = "N° Houses/BL";
+            this.gridColumn36.FieldName = "Asignacion.NumHousesBL";
+            this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.Visible = true;
+            this.gridColumn36.VisibleIndex = 3;
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.Caption = "Nave";
+            this.gridColumn37.FieldName = "Asignacion.Nave";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.VisibleIndex = 9;
+            // 
+            // gridColumn38
+            // 
+            this.gridColumn38.Caption = "Nave Transbordo";
+            this.gridColumn38.FieldName = "Asignacion.NaveTransbordo";
+            this.gridColumn38.Name = "gridColumn38";
+            this.gridColumn38.Visible = true;
+            this.gridColumn38.VisibleIndex = 10;
+            // 
             // frmGestionPaperless
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 494);
+            this.ClientSize = new System.Drawing.Size(1136, 585);
             this.ControlBox = false;
-            this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.TabGestionPaperless);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmGestionPaperless";
             this.Load += new System.EventHandler(this.frmGestionPaperless_Load);
@@ -813,6 +1108,13 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.TabGestionPaperless.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -885,5 +1187,31 @@
         private System.Windows.Forms.CheckBox chkPlazoEmbarcador;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl lblEstadoPaperless;
+        private System.Windows.Forms.TabControl TabGestionPaperless;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPuerto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtShipping;
+        private System.Windows.Forms.Button BtnBuscatTab2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
+        private DevExpress.XtraGrid.GridControl grdHbls;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
     }
 }

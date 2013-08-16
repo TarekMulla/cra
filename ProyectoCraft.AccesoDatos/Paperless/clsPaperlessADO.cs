@@ -1207,7 +1207,123 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
             return houses;
         }
+        public static IList<PaperlessUsuario1HousesBL> ObtenerHousesBLporShippingInstruction(string ShippingInstruction,string puerto)
+        {
+            PaperlessUsuario1HousesBL house = null;
+            IList<PaperlessUsuario1HousesBL> houses = new List<PaperlessUsuario1HousesBL>();
 
+            try {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_HOUSEBL_SHIPPING");
+                objParams[0].Value = ShippingInstruction;
+                objParams[1].Value = puerto;
+
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_USUARIO1_HOUSEBL_SHIPPING", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read()) {
+                    house = new PaperlessUsuario1HousesBL();
+                    house.Id = Convert.ToInt64(dreader["Id"]);
+                    house.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
+                    house.Index = Convert.ToInt16(dreader["IndexHouse"]);
+                    house.HouseBL = dreader["HouseBL"].ToString();
+                    house.Freehand = Convert.ToBoolean(dreader["Freehand"].ToString());
+                    if (dreader["Ruteado"] is DBNull)
+                        house.Ruteado = false;
+                    else
+                        house.Ruteado = Convert.ToBoolean(dreader["Ruteado"]);
+
+                    if (dreader["IdCliente"] is DBNull)
+                        house.Cliente = null;
+                    else
+                        house.Cliente = Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(Convert.ToInt64(dreader["IdCliente"]));
+
+                    if (dreader["IdTipoCliente"] is DBNull)
+                        house.TipoCliente = null;
+                    else
+                        house.TipoCliente = new PaperlessTipoCliente() { Id = Convert.ToInt16(dreader["IdTipoCliente"].ToString()), Nombre = dreader["TipoCliente"].ToString() };
+
+                    if (dreader["EmbarcadorContactado"] is DBNull)
+                        house.EmbarcadorContactado = false;
+                    else
+                        house.EmbarcadorContactado = Convert.ToBoolean(dreader["EmbarcadorContactado"]);
+
+                    if (dreader["ReciboAperturaEmbarcador"] is DBNull)
+                        house.ReciboAperturaEmbarcador = false;
+                    else
+                        house.ReciboAperturaEmbarcador = Convert.ToBoolean(dreader["ReciboAperturaEmbarcador"]);
+
+                    if (dreader["FechaReciboAperturaEmbarcador"] is DBNull)
+                        house.FechaReciboAperturaEmbarcador = null;
+                    else
+                        house.FechaReciboAperturaEmbarcador = Convert.ToDateTime(dreader["FechaReciboAperturaEmbarcador"]);
+
+                    if (dreader["TipoReciboAperturaEmbarcador"] is DBNull)
+                        house.TipoReciboAperturaEmbarcador = Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido;
+                    else
+                        house.TipoReciboAperturaEmbarcador =
+                            (Enums.PaperlessTipoReciboAperturaEmbarcador)
+                            Convert.ToInt16(dreader["TipoReciboAperturaEmbarcador"]);
+
+                    if (dreader["RecargoCollect"] is DBNull)
+                        house.ExcepcionRecargoCollect = null;
+                    else
+                        house.ExcepcionRecargoCollect = new PaperlessExcepcion()
+                        {
+                            RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]),
+                            Id = Convert.ToInt64(dreader["IdExcepcion"])
+                        };
+
+                    try {
+                        if (dreader["Observacion"] is DBNull)
+                            house.Observacion = "";
+                        else
+                            house.Observacion = dreader["Observacion"].ToString();
+
+
+                        if (dreader["PaperlessTipoRecibo"] is DBNull) {
+                            if (house.Cliente != null && house.Cliente.Cuenta != null)
+                                house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido;
+                        } else if (house.Cliente != null && house.Cliente.Cuenta != null) {
+
+                            //LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente);
+                            house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = (Enums.PaperlessTipoReciboAperturaEmbarcador)Convert.ToInt16(dreader["PaperlessTipoRecibo"]);
+                        }
+                        if (dreader["Shippinginstruction"] is DBNull)
+                            house.ShippingInstruction = "";
+                        else
+                            house.ShippingInstruction = dreader["Shippinginstruction"].ToString();
+
+
+                        if (dreader["puerto"] is DBNull)
+                            house.Puerto = "";
+                        else
+                            house.Puerto = dreader["puerto"].ToString();
+
+                        if (dreader["NumMaster"] is DBNull)
+                            house.NumMaster = "";
+                        else
+                            house.NumMaster = dreader["NumMaster"].ToString();   
+
+                    } catch (Exception ex) {
+                        Log.EscribirLog(ex.Message);
+                    }
+
+                    houses.Add(house);
+                }
+            } catch (Exception ex) {
+                Base.Log.Log.EscribirLog(ex.Message);
+            } finally {
+                conn.Close();
+            }
+
+            return houses;
+        }
+
+      
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses,
                                                                   PaperlessUsuario1HouseBLInfo info,

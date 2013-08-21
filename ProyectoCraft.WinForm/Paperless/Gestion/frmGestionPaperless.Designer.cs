@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionPaperless));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.MenuAsignacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -111,19 +110,6 @@
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.GrdCantAsignaciones = new DevExpress.XtraGrid.GridControl();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.rdUsuario2 = new System.Windows.Forms.RadioButton();
-            this.rdUsuario1 = new System.Windows.Forms.RadioButton();
-            this.txtFechahastaAsignacion = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.btnBuscarAsignaciones = new DevExpress.XtraEditors.SimpleButton();
-            this.txtFechaDesdeAsignacion = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -193,15 +179,6 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
@@ -881,7 +858,6 @@
             // 
             this.TabGestionPaperless.Controls.Add(this.tabPage1);
             this.TabGestionPaperless.Controls.Add(this.tabPage2);
-            this.TabGestionPaperless.Controls.Add(this.tabPage3);
             this.TabGestionPaperless.Location = new System.Drawing.Point(0, 57);
             this.TabGestionPaperless.Name = "TabGestionPaperless";
             this.TabGestionPaperless.SelectedIndex = 0;
@@ -1046,163 +1022,6 @@
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 3;
             this.gridColumn42.Width = 126;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.GrdCantAsignaciones);
-            this.tabPage3.Controls.Add(this.groupControl3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1128, 506);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Asignaciones";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // GrdCantAsignaciones
-            // 
-            this.GrdCantAsignaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Enabled = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Enabled = false;
-            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode2.RelationName = "Level1";
-            this.GrdCantAsignaciones.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            this.GrdCantAsignaciones.Location = new System.Drawing.Point(3, 97);
-            this.GrdCantAsignaciones.MainView = this.gridView4;
-            this.GrdCantAsignaciones.Name = "GrdCantAsignaciones";
-            this.GrdCantAsignaciones.Size = new System.Drawing.Size(548, 284);
-            this.GrdCantAsignaciones.TabIndex = 6;
-            this.GrdCantAsignaciones.UseEmbeddedNavigator = true;
-            this.GrdCantAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView4});
-            // 
-            // gridView4
-            // 
-            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn43,
-            this.gridColumn44});
-            this.gridView4.GridControl = this.GrdCantAsignaciones;
-            this.gridView4.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn43, "")});
-            this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsBehavior.Editable = false;
-            this.gridView4.OptionsView.ShowAutoFilterRow = true;
-            this.gridView4.OptionsView.ShowGroupedColumns = true;
-            // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Cantidad";
-            this.gridColumn43.FieldName = "Cantidad";
-            this.gridColumn43.Name = "gridColumn43";
-            this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 0;
-            this.gridColumn43.Width = 114;
-            // 
-            // gridColumn44
-            // 
-            this.gridColumn44.Caption = "Usuario";
-            this.gridColumn44.FieldName = "NombreUsuario";
-            this.gridColumn44.Name = "gridColumn44";
-            this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 1;
-            this.gridColumn44.Width = 139;
-            // 
-            // groupControl3
-            // 
-            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl3.Controls.Add(this.rdUsuario2);
-            this.groupControl3.Controls.Add(this.rdUsuario1);
-            this.groupControl3.Controls.Add(this.txtFechahastaAsignacion);
-            this.groupControl3.Controls.Add(this.labelControl17);
-            this.groupControl3.Controls.Add(this.btnBuscarAsignaciones);
-            this.groupControl3.Controls.Add(this.txtFechaDesdeAsignacion);
-            this.groupControl3.Controls.Add(this.labelControl16);
-            this.groupControl3.Location = new System.Drawing.Point(3, 3);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1116, 91);
-            this.groupControl3.TabIndex = 2;
-            this.groupControl3.Text = "Filtros";
-            this.groupControl3.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl3_Paint);
-            // 
-            // rdUsuario2
-            // 
-            this.rdUsuario2.AutoSize = true;
-            this.rdUsuario2.Location = new System.Drawing.Point(85, 65);
-            this.rdUsuario2.Name = "rdUsuario2";
-            this.rdUsuario2.Size = new System.Drawing.Size(70, 17);
-            this.rdUsuario2.TabIndex = 112;
-            this.rdUsuario2.TabStop = true;
-            this.rdUsuario2.Text = "Usuario 2";
-            this.rdUsuario2.UseVisualStyleBackColor = true;
-            // 
-            // rdUsuario1
-            // 
-            this.rdUsuario1.AutoSize = true;
-            this.rdUsuario1.Location = new System.Drawing.Point(5, 65);
-            this.rdUsuario1.Name = "rdUsuario1";
-            this.rdUsuario1.Size = new System.Drawing.Size(70, 17);
-            this.rdUsuario1.TabIndex = 111;
-            this.rdUsuario1.TabStop = true;
-            this.rdUsuario1.Text = "Usuario 1";
-            this.rdUsuario1.UseVisualStyleBackColor = true;
-            // 
-            // txtFechahastaAsignacion
-            // 
-            this.txtFechahastaAsignacion.EditValue = null;
-            this.txtFechahastaAsignacion.Location = new System.Drawing.Point(73, 39);
-            this.txtFechahastaAsignacion.Name = "txtFechahastaAsignacion";
-            this.txtFechahastaAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtFechahastaAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtFechahastaAsignacion.Size = new System.Drawing.Size(129, 20);
-            this.txtFechahastaAsignacion.TabIndex = 110;
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(5, 42);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(60, 13);
-            this.labelControl17.TabIndex = 109;
-            this.labelControl17.Text = "Fecha Hasta";
-            // 
-            // btnBuscarAsignaciones
-            // 
-            this.btnBuscarAsignaciones.Location = new System.Drawing.Point(200, 65);
-            this.btnBuscarAsignaciones.Name = "btnBuscarAsignaciones";
-            this.btnBuscarAsignaciones.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarAsignaciones.TabIndex = 108;
-            this.btnBuscarAsignaciones.Text = "Buscar";
-            this.btnBuscarAsignaciones.Click += new System.EventHandler(this.btnBuscarAsignaciones_Click);
-            // 
-            // txtFechaDesdeAsignacion
-            // 
-            this.txtFechaDesdeAsignacion.EditValue = null;
-            this.txtFechaDesdeAsignacion.Location = new System.Drawing.Point(73, 20);
-            this.txtFechaDesdeAsignacion.Name = "txtFechaDesdeAsignacion";
-            this.txtFechaDesdeAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtFechaDesdeAsignacion.Size = new System.Drawing.Size(129, 20);
-            this.txtFechaDesdeAsignacion.TabIndex = 107;
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Location = new System.Drawing.Point(5, 23);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(62, 13);
-            this.labelControl16.TabIndex = 106;
-            this.labelControl16.Text = "Fecha Desde";
             // 
             // gridView2
             // 
@@ -1605,16 +1424,6 @@
             this.groupControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
@@ -1733,8 +1542,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraEditors.GroupControl groupControl4;
-        private System.Windows.Forms.TabPage tabPage3;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit2;
         private DevExpress.XtraEditors.DateEdit dateEdit1;
@@ -1760,16 +1567,5 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.DateEdit txtFechahastaAsignacion;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.SimpleButton btnBuscarAsignaciones;
-        private DevExpress.XtraEditors.DateEdit txtFechaDesdeAsignacion;
-        private DevExpress.XtraEditors.LabelControl labelControl16;
-        private System.Windows.Forms.RadioButton rdUsuario2;
-        private System.Windows.Forms.RadioButton rdUsuario1;
-        private DevExpress.XtraGrid.GridControl GrdCantAsignaciones;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
     }
 }

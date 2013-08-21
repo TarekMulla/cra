@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaAsignaciones));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Nuevo = new System.Windows.Forms.ToolStripButton();
             this.Menu_Ver = new System.Windows.Forms.ToolStripButton();
@@ -81,6 +83,39 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grdHbls = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtShippingSI = new System.Windows.Forms.TextBox();
+            this.txtPuertoSI = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.GrdCantAsignaciones = new DevExpress.XtraGrid.GridControl();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.rdUsuario2 = new System.Windows.Forms.RadioButton();
+            this.rdUsuario1 = new System.Windows.Forms.RadioButton();
+            this.txtFechahastaAsignacion = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.btnBuscarAsignaciones = new DevExpress.XtraEditors.SimpleButton();
+            this.txtFechaDesdeAsignacion = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BtnBuscatTab2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtShipping = new System.Windows.Forms.TextBox();
+            this.txtPuerto = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -106,6 +141,22 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridAsignaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -122,7 +173,7 @@
             this.Menu_Salir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(951, 54);
+            this.toolStrip1.Size = new System.Drawing.Size(1051, 54);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -228,9 +279,9 @@
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(4, 89);
+            this.groupControl1.Location = new System.Drawing.Point(6, 6);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(943, 146);
+            this.groupControl1.Size = new System.Drawing.Size(1025, 146);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Filtro Asignaciones";
             // 
@@ -377,7 +428,7 @@
             // 
             // ddlNave
             // 
-            this.ddlNave.Location = new System.Drawing.Point(913, 23);
+            this.ddlNave.Location = new System.Drawing.Point(837, 23);
             this.ddlNave.Name = "ddlNave";
             this.ddlNave.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -392,7 +443,7 @@
             this.btnBuscar.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.btnBuscar.Appearance.Options.UseFont = true;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(844, 119);
+            this.btnBuscar.Location = new System.Drawing.Point(690, 116);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(91, 22);
             this.btnBuscar.TabIndex = 4;
@@ -425,17 +476,17 @@
             // 
             // ddlUsuario2
             // 
-            this.ddlUsuario2.Location = new System.Drawing.Point(913, 72);
+            this.ddlUsuario2.Location = new System.Drawing.Point(837, 73);
             this.ddlUsuario2.Name = "ddlUsuario2";
             this.ddlUsuario2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlUsuario2.Size = new System.Drawing.Size(25, 20);
+            this.ddlUsuario2.Size = new System.Drawing.Size(30, 20);
             this.ddlUsuario2.TabIndex = 3;
             this.ddlUsuario2.Visible = false;
             // 
             // ddlUsuario1
             // 
-            this.ddlUsuario1.Location = new System.Drawing.Point(913, 48);
+            this.ddlUsuario1.Location = new System.Drawing.Point(839, 49);
             this.ddlUsuario1.Name = "ddlUsuario1";
             this.ddlUsuario1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -503,9 +554,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl2.Controls.Add(this.gridAsignaciones);
-            this.groupControl2.Location = new System.Drawing.Point(4, 241);
+            this.groupControl2.Location = new System.Drawing.Point(4, 158);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(943, 261);
+            this.groupControl2.Size = new System.Drawing.Size(1027, 332);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Lista de Asignaciones";
             // 
@@ -515,7 +566,7 @@
             this.gridAsignaciones.Location = new System.Drawing.Point(2, 20);
             this.gridAsignaciones.MainView = this.gridView1;
             this.gridAsignaciones.Name = "gridAsignaciones";
-            this.gridAsignaciones.Size = new System.Drawing.Size(939, 239);
+            this.gridAsignaciones.Size = new System.Drawing.Size(1023, 310);
             this.gridAsignaciones.TabIndex = 0;
             this.gridAsignaciones.UseEmbeddedNavigator = true;
             this.gridAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -638,15 +689,380 @@
             this.labelControl6.TabIndex = 3;
             this.labelControl6.Text = "Supervisor Documental";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 82);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1047, 516);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupControl1);
+            this.tabPage1.Controls.Add(this.groupControl2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1039, 490);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Supervisor Documental";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.grdHbls);
+            this.tabPage2.Controls.Add(this.groupControl4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1039, 490);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Shipping Instruction";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // grdHbls
+            // 
+            this.grdHbls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdHbls.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.grdHbls.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridLevelNode3.RelationName = "Level1";
+            this.grdHbls.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode3});
+            this.grdHbls.Location = new System.Drawing.Point(3, 120);
+            this.grdHbls.MainView = this.gridView3;
+            this.grdHbls.Name = "grdHbls";
+            this.grdHbls.Size = new System.Drawing.Size(548, 370);
+            this.grdHbls.TabIndex = 8;
+            this.grdHbls.UseEmbeddedNavigator = true;
+            this.grdHbls.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn39,
+            this.gridColumn40,
+            this.gridColumn41,
+            this.gridColumn42});
+            this.gridView3.GridControl = this.grdHbls;
+            this.gridView3.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn39, "")});
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsView.ShowAutoFilterRow = true;
+            this.gridView3.OptionsView.ShowGroupedColumns = true;
+            // 
+            // gridColumn39
+            // 
+            this.gridColumn39.Caption = "Numero Master";
+            this.gridColumn39.FieldName = "NumMaster";
+            this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.Visible = true;
+            this.gridColumn39.VisibleIndex = 0;
+            this.gridColumn39.Width = 114;
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "House BL";
+            this.gridColumn40.FieldName = "HouseBL";
+            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.Visible = true;
+            this.gridColumn40.VisibleIndex = 1;
+            this.gridColumn40.Width = 139;
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "Shipping Instruction";
+            this.gridColumn41.FieldName = "ShippingInstruction";
+            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.Visible = true;
+            this.gridColumn41.VisibleIndex = 2;
+            this.gridColumn41.Width = 148;
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Puerto";
+            this.gridColumn42.FieldName = "Puerto";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 3;
+            this.gridColumn42.Width = 126;
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl4.Controls.Add(this.label3);
+            this.groupControl4.Controls.Add(this.button1);
+            this.groupControl4.Controls.Add(this.label4);
+            this.groupControl4.Controls.Add(this.txtShippingSI);
+            this.groupControl4.Controls.Add(this.txtPuertoSI);
+            this.groupControl4.Location = new System.Drawing.Point(3, 6);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(1036, 108);
+            this.groupControl4.TabIndex = 7;
+            this.groupControl4.Text = "Filtros";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Shipping Instruction";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(136, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Puerto";
+            // 
+            // txtShippingSI
+            // 
+            this.txtShippingSI.Location = new System.Drawing.Point(111, 21);
+            this.txtShippingSI.Name = "txtShippingSI";
+            this.txtShippingSI.Size = new System.Drawing.Size(100, 20);
+            this.txtShippingSI.TabIndex = 1;
+            // 
+            // txtPuertoSI
+            // 
+            this.txtPuertoSI.Location = new System.Drawing.Point(111, 51);
+            this.txtPuertoSI.Name = "txtPuertoSI";
+            this.txtPuertoSI.Size = new System.Drawing.Size(100, 20);
+            this.txtPuertoSI.TabIndex = 3;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.GrdCantAsignaciones);
+            this.tabPage3.Controls.Add(this.groupControl3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1039, 490);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Asignaciones";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // GrdCantAsignaciones
+            // 
+            this.GrdCantAsignaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridLevelNode1.RelationName = "Level1";
+            this.GrdCantAsignaciones.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.GrdCantAsignaciones.Location = new System.Drawing.Point(3, 100);
+            this.GrdCantAsignaciones.MainView = this.gridView4;
+            this.GrdCantAsignaciones.Name = "GrdCantAsignaciones";
+            this.GrdCantAsignaciones.Size = new System.Drawing.Size(548, 284);
+            this.GrdCantAsignaciones.TabIndex = 7;
+            this.GrdCantAsignaciones.UseEmbeddedNavigator = true;
+            this.GrdCantAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView4});
+            // 
+            // gridView4
+            // 
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn43,
+            this.gridColumn44});
+            this.gridView4.GridControl = this.GrdCantAsignaciones;
+            this.gridView4.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn43, "")});
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsView.ShowAutoFilterRow = true;
+            this.gridView4.OptionsView.ShowGroupedColumns = true;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Cantidad";
+            this.gridColumn43.FieldName = "Cantidad";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 0;
+            this.gridColumn43.Width = 114;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.Caption = "Usuario";
+            this.gridColumn44.FieldName = "NombreUsuario";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 1;
+            this.gridColumn44.Width = 139;
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl3.Controls.Add(this.rdUsuario2);
+            this.groupControl3.Controls.Add(this.rdUsuario1);
+            this.groupControl3.Controls.Add(this.txtFechahastaAsignacion);
+            this.groupControl3.Controls.Add(this.labelControl17);
+            this.groupControl3.Controls.Add(this.btnBuscarAsignaciones);
+            this.groupControl3.Controls.Add(this.txtFechaDesdeAsignacion);
+            this.groupControl3.Controls.Add(this.labelControl16);
+            this.groupControl3.Location = new System.Drawing.Point(3, 3);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(1032, 91);
+            this.groupControl3.TabIndex = 3;
+            this.groupControl3.Text = "Filtros";
+            // 
+            // rdUsuario2
+            // 
+            this.rdUsuario2.AutoSize = true;
+            this.rdUsuario2.Location = new System.Drawing.Point(85, 65);
+            this.rdUsuario2.Name = "rdUsuario2";
+            this.rdUsuario2.Size = new System.Drawing.Size(70, 17);
+            this.rdUsuario2.TabIndex = 112;
+            this.rdUsuario2.TabStop = true;
+            this.rdUsuario2.Text = "Usuario 2";
+            this.rdUsuario2.UseVisualStyleBackColor = true;
+            // 
+            // rdUsuario1
+            // 
+            this.rdUsuario1.AutoSize = true;
+            this.rdUsuario1.Location = new System.Drawing.Point(5, 65);
+            this.rdUsuario1.Name = "rdUsuario1";
+            this.rdUsuario1.Size = new System.Drawing.Size(70, 17);
+            this.rdUsuario1.TabIndex = 111;
+            this.rdUsuario1.TabStop = true;
+            this.rdUsuario1.Text = "Usuario 1";
+            this.rdUsuario1.UseVisualStyleBackColor = true;
+            // 
+            // txtFechahastaAsignacion
+            // 
+            this.txtFechahastaAsignacion.EditValue = null;
+            this.txtFechahastaAsignacion.Location = new System.Drawing.Point(73, 39);
+            this.txtFechahastaAsignacion.Name = "txtFechahastaAsignacion";
+            this.txtFechahastaAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechahastaAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtFechahastaAsignacion.Size = new System.Drawing.Size(129, 20);
+            this.txtFechahastaAsignacion.TabIndex = 110;
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(5, 42);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(60, 13);
+            this.labelControl17.TabIndex = 109;
+            this.labelControl17.Text = "Fecha Hasta";
+            // 
+            // btnBuscarAsignaciones
+            // 
+            this.btnBuscarAsignaciones.Location = new System.Drawing.Point(200, 65);
+            this.btnBuscarAsignaciones.Name = "btnBuscarAsignaciones";
+            this.btnBuscarAsignaciones.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarAsignaciones.TabIndex = 108;
+            this.btnBuscarAsignaciones.Text = "Buscar";
+            this.btnBuscarAsignaciones.Click += new System.EventHandler(this.btnBuscarAsignaciones_Click);
+            // 
+            // txtFechaDesdeAsignacion
+            // 
+            this.txtFechaDesdeAsignacion.EditValue = null;
+            this.txtFechaDesdeAsignacion.Location = new System.Drawing.Point(73, 20);
+            this.txtFechaDesdeAsignacion.Name = "txtFechaDesdeAsignacion";
+            this.txtFechaDesdeAsignacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtFechaDesdeAsignacion.Size = new System.Drawing.Size(129, 20);
+            this.txtFechaDesdeAsignacion.TabIndex = 107;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(5, 23);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(62, 13);
+            this.labelControl16.TabIndex = 106;
+            this.labelControl16.Text = "Fecha Desde";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Shipping Instruction";
+            // 
+            // BtnBuscatTab2
+            // 
+            this.BtnBuscatTab2.Location = new System.Drawing.Point(136, 77);
+            this.BtnBuscatTab2.Name = "BtnBuscatTab2";
+            this.BtnBuscatTab2.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscatTab2.TabIndex = 0;
+            this.BtnBuscatTab2.Text = "Buscar";
+            this.BtnBuscatTab2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Puerto";
+            // 
+            // txtShipping
+            // 
+            this.txtShipping.Location = new System.Drawing.Point(111, 17);
+            this.txtShipping.Name = "txtShipping";
+            this.txtShipping.Size = new System.Drawing.Size(100, 20);
+            this.txtShipping.TabIndex = 1;
+            // 
+            // txtPuerto
+            // 
+            this.txtPuerto.Location = new System.Drawing.Point(111, 51);
+            this.txtPuerto.Name = "txtPuerto";
+            this.txtPuerto.Size = new System.Drawing.Size(100, 20);
+            this.txtPuerto.TabIndex = 3;
+            // 
             // frmListaAsignaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 504);
+            this.ClientSize = new System.Drawing.Size(1051, 636);
             this.ControlBox = false;
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmListaAsignaciones";
             this.Load += new System.EventHandler(this.frmListaAsignaciones_Load);
@@ -677,6 +1093,24 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdHbls)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            this.groupControl4.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrdCantAsignaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechahastaAsignacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesdeAsignacion.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -736,5 +1170,38 @@
         private DevExpress.XtraEditors.TextEdit txtNumMaster;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtShippingSI;
+        private System.Windows.Forms.TextBox txtPuertoSI;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnBuscatTab2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtShipping;
+        private System.Windows.Forms.TextBox txtPuerto;
+        private DevExpress.XtraGrid.GridControl grdHbls;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private System.Windows.Forms.RadioButton rdUsuario2;
+        private System.Windows.Forms.RadioButton rdUsuario1;
+        private DevExpress.XtraEditors.DateEdit txtFechahastaAsignacion;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.SimpleButton btnBuscarAsignaciones;
+        private DevExpress.XtraEditors.DateEdit txtFechaDesdeAsignacion;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraGrid.GridControl GrdCantAsignaciones;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
     }
 }

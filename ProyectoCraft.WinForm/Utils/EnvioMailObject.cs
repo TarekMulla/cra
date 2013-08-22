@@ -1553,6 +1553,20 @@ namespace SCCMultimodal.Utils {
                 EmailBody = sb.ToString();
                 string asunto = "Confirmacion de Proceso Documental de Usuario 1ra Etapa";
 
+                try
+                {
+                    string mailEnCopia = System.Configuration.ConfigurationSettings.AppSettings.Get("MailEnCopia");
+                    if (!string.IsNullOrEmpty(mailEnCopia))
+                        if (!asignacion.Usuario2.Email.Contains(mailEnCopia.Replace(";", "")))
+                        {
+                            asignacion.Usuario2.Email += mailEnCopia;
+                        }
+                }
+                catch (Exception ex)
+                {
+                    Log.EscribirLog(ex.Message);
+                }
+
                 EnviarEmail(asignacion.Usuario2.Email, asunto, EmailBody);
 
                 //LogEnviarEmail(Enums.VisitaTipoEmail.ComentarioAInformeVisita, asignacion, EmailBody, asunto);

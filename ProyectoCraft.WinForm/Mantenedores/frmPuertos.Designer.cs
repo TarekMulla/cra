@@ -24,14 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPuertos));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
-            this.grdComunas = new DevExpress.XtraGrid.GridControl();
+            this.gridPuertos = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtCodigo = new DevExpress.XtraEditors.TextEdit();
             this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -46,9 +44,9 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtPais = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).BeginInit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPuertos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
@@ -68,30 +66,27 @@
             this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click);
             // 
-            // grdComunas
+            // gridPuertos
             // 
-            this.grdComunas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.gridPuertos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdComunas.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.Edit.Enabled = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.Remove.Enabled = false;
-            this.grdComunas.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode2.RelationName = "Level1";
-            this.grdComunas.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            this.grdComunas.Location = new System.Drawing.Point(0, 170);
-            this.grdComunas.MainView = this.gridView1;
-            this.grdComunas.Name = "grdComunas";
-            this.grdComunas.Size = new System.Drawing.Size(476, 297);
-            this.grdComunas.TabIndex = 10;
-            this.grdComunas.UseEmbeddedNavigator = true;
-            this.grdComunas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridPuertos.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.gridPuertos.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gridPuertos.Location = new System.Drawing.Point(0, 170);
+            this.gridPuertos.MainView = this.gridView1;
+            this.gridPuertos.Name = "gridPuertos";
+            this.gridPuertos.Size = new System.Drawing.Size(476, 297);
+            this.gridPuertos.TabIndex = 10;
+            this.gridPuertos.UseEmbeddedNavigator = true;
+            this.gridPuertos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
@@ -99,20 +94,20 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn5,
-            this.gridColumn7,
-            this.gridColumn2});
-            this.gridView1.GridControl = this.grdComunas;
+            this.gridColumn7});
+            this.gridView1.GridControl = this.gridPuertos;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn1, "")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowGroupedColumns = true;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "ID";
-            this.gridColumn1.FieldName = "Id";
+            this.gridColumn1.Caption = "Codigo";
+            this.gridColumn1.FieldName = "Codigo";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Width = 49;
             // 
@@ -127,21 +122,12 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "Ciudad";
-            this.gridColumn7.FieldName = "Ciudad";
+            this.gridColumn7.Caption = "Pais";
+            this.gridColumn7.FieldName = "Pais";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 1;
             this.gridColumn7.Width = 123;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Pais";
-            this.gridColumn2.FieldName = "Ciudad.Pais.Nombre";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 108;
             // 
             // txtCodigo
             // 
@@ -209,6 +195,7 @@
             this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuExcel.ToolTipText = "Exportar Excel";
+            this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
             // 
             // labelControl1
             // 
@@ -265,6 +252,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(33, 35);
             this.toolStripButton1.Text = "Salir";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // btnBuscar
             // 
@@ -305,16 +293,6 @@
             this.groupControl1.TabIndex = 11;
             this.groupControl1.Text = "Busqueda";
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(5, 33);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(40, 13);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Codigo";
-            // 
             // txtPais
             // 
             this.txtPais.Enabled = false;
@@ -325,17 +303,28 @@
             this.txtPais.Size = new System.Drawing.Size(231, 20);
             this.txtPais.TabIndex = 37;
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(5, 33);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(40, 13);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "Codigo";
+            // 
             // frmPuertos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 458);
-            this.Controls.Add(this.grdComunas);
+            this.Controls.Add(this.gridPuertos);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
             this.Name = "frmPuertos";
             this.Text = "Mantenedor de Puertos";
-            ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).EndInit();
+            this.Load += new System.EventHandler(this.frmPuertos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridPuertos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
@@ -353,12 +342,11 @@
         #endregion
 
         private System.Windows.Forms.ToolStripButton MenuGuardar;
-        private DevExpress.XtraGrid.GridControl grdComunas;
+        private DevExpress.XtraGrid.GridControl gridPuertos;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.TextEdit txtCodigo;
         private System.Windows.Forms.ToolStripButton MenuVerDatos;
         private System.Windows.Forms.ToolStripButton toolStripButton2;

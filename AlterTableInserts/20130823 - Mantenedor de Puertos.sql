@@ -19,7 +19,7 @@ CREATE PROCEDURE [dbo].[SP_N_PUERTOS]
      @nombre varchar(100),
      @pais	varchar(100)
 AS
-	INSERT INTO [scctest].[dbo].[Puertos]
+	INSERT INTO [dbo].[Puertos]
            ([codigo]
            ,[nombre]
            ,[pais]

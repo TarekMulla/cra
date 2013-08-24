@@ -112,7 +112,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
             var conn = BaseDatos.Conexion();
             try {
 
-                var command = new SqlCommand("SP_L_Puertos_por_codigo", conn);
+                var command = new SqlCommand("SP_A_PUERTOS", conn);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@codigo", puerto.Codigo);
                 command.Parameters.AddWithValue("@nombre", puerto.Nombre);
@@ -120,7 +120,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
                 var foo = command.ExecuteNonQuery();
 
                 res.ObjetoTransaccion = puerto;
-                res.Descripcion = "Se actualizo el PuertoExitosamente";
+                res.Descripcion = "Se actualizo el Puerto Exitosamente";
 
             } catch (Exception ex) {
                 Log.EscribirLog(ex.Message);
@@ -139,7 +139,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
             try {
-                var command = new SqlCommand("SP_L_Puertos_por_codigo", conn);
+                var command = new SqlCommand("SP_N_PUERTOS", conn);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@codigo", puerto.Codigo);
                 command.Parameters.AddWithValue("@nombre", puerto.Nombre);
@@ -166,7 +166,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
             try {
-                var command = new SqlCommand("SP_L_Puertos_por_codigo", conn);
+                var command = new SqlCommand("SP_E_PUERTOS", conn);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@codigo", puerto.Codigo);
                 var foo = command.ExecuteNonQuery();

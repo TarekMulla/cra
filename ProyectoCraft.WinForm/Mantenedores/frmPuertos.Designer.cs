@@ -24,25 +24,23 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPuertos));
-            this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
             this.gridPuertos = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtCodigo = new DevExpress.XtraEditors.TextEdit();
-            this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MenuEliminar = new System.Windows.Forms.ToolStripButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuExcel = new System.Windows.Forms.ToolStripButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.MenuImprimirListado = new System.Windows.Forms.ToolStripButton();
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.toolStripBarraListarLlamada = new System.Windows.Forms.ToolStrip();
+            this.MenuActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtPais = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -55,16 +53,6 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPais.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // MenuGuardar
-            // 
-            this.MenuGuardar.Image = ((System.Drawing.Image)(resources.GetObject("MenuGuardar.Image")));
-            this.MenuGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuGuardar.Name = "MenuGuardar";
-            this.MenuGuardar.Size = new System.Drawing.Size(53, 35);
-            this.MenuGuardar.Text = "Guardar";
-            this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click);
             // 
             // gridPuertos
             // 
@@ -83,8 +71,8 @@
             this.gridPuertos.Location = new System.Drawing.Point(0, 170);
             this.gridPuertos.MainView = this.gridView1;
             this.gridPuertos.Name = "gridPuertos";
-            this.gridPuertos.Size = new System.Drawing.Size(476, 297);
-            this.gridPuertos.TabIndex = 10;
+            this.gridPuertos.Size = new System.Drawing.Size(476, 290);
+            this.gridPuertos.TabIndex = 6;
             this.gridPuertos.UseEmbeddedNavigator = true;
             this.gridPuertos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -95,13 +83,16 @@
             this.gridColumn1,
             this.gridColumn5,
             this.gridColumn7});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView1.GridControl = this.gridPuertos;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn1, "")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowGroupedColumns = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // gridColumn1
@@ -109,7 +100,9 @@
             this.gridColumn1.Caption = "Codigo";
             this.gridColumn1.FieldName = "Codigo";
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Width = 49;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 65;
             // 
             // gridColumn5
             // 
@@ -117,8 +110,8 @@
             this.gridColumn5.FieldName = "Nombre";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 0;
-            this.gridColumn5.Width = 371;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 272;
             // 
             // gridColumn7
             // 
@@ -126,29 +119,17 @@
             this.gridColumn7.FieldName = "Pais";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 1;
-            this.gridColumn7.Width = 123;
+            this.gridColumn7.VisibleIndex = 2;
+            this.gridColumn7.Width = 93;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(75, 30);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Properties.Appearance.Options.UseFont = true;
             this.txtCodigo.Size = new System.Drawing.Size(231, 20);
-            this.txtCodigo.TabIndex = 36;
-            // 
-            // MenuVerDatos
-            // 
-            this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
-            this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuVerDatos.Name = "MenuVerDatos";
-            this.MenuVerDatos.Size = new System.Drawing.Size(41, 35);
-            this.MenuVerDatos.Text = "Editar";
-            this.MenuVerDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuVerDatos.ToolTipText = "Editar";
+            this.txtCodigo.TabIndex = 1;
             // 
             // toolStripButton2
             // 
@@ -170,6 +151,7 @@
             this.MenuEliminar.Text = "Eliminar";
             this.MenuEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEliminar.ToolTipText = "Eliminar";
+            this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click);
             // 
             // labelControl3
             // 
@@ -205,44 +187,41 @@
             this.labelControl1.TabIndex = 34;
             this.labelControl1.Text = "Nombre";
             // 
-            // MenuImprimirListado
-            // 
-            this.MenuImprimirListado.Enabled = false;
-            this.MenuImprimirListado.Image = ((System.Drawing.Image)(resources.GetObject("MenuImprimirListado.Image")));
-            this.MenuImprimirListado.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.MenuImprimirListado.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuImprimirListado.Name = "MenuImprimirListado";
-            this.MenuImprimirListado.Size = new System.Drawing.Size(98, 35);
-            this.MenuImprimirListado.Text = "Imprimir Listado";
-            this.MenuImprimirListado.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuImprimirListado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // txtNombre
             // 
-            this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(75, 55);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Properties.Appearance.Options.UseFont = true;
             this.txtNombre.Size = new System.Drawing.Size(231, 20);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 2;
             // 
             // toolStripBarraListarLlamada
             // 
             this.toolStripBarraListarLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuActualizar,
             this.toolStripButton2,
-            this.MenuGuardar,
-            this.MenuVerDatos,
             this.MenuEliminar,
-            this.MenuImprimirListado,
             this.MenuExcel,
             this.toolStripSeparator2,
             this.toolStripButton1});
             this.toolStripBarraListarLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraListarLlamada.Name = "toolStripBarraListarLlamada";
-            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(533, 38);
+            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(488, 38);
             this.toolStripBarraListarLlamada.TabIndex = 12;
             this.toolStripBarraListarLlamada.Text = "toolStrip1";
+            // 
+            // MenuActualizar
+            // 
+            this.MenuActualizar.Image = ((System.Drawing.Image)(resources.GetObject("MenuActualizar.Image")));
+            this.MenuActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuActualizar.Name = "MenuActualizar";
+            this.MenuActualizar.Size = new System.Drawing.Size(63, 35);
+            this.MenuActualizar.Text = "Actualizar";
+            this.MenuActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuActualizar.ToolTipText = "Actualizar";
+            this.MenuActualizar.Click += new System.EventHandler(this.MenuActualizar_Click);
             // 
             // toolStripButton1
             // 
@@ -254,19 +233,18 @@
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // btnBuscar
+            // btnGuardar
             // 
-            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscar.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.btnBuscar.Appearance.Options.UseFont = true;
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(375, 85);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(91, 22);
-            this.btnBuscar.TabIndex = 3;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuardar.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            this.btnGuardar.Appearance.Options.UseFont = true;
+            this.btnGuardar.Location = new System.Drawing.Point(215, 103);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(91, 22);
+            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // groupControl1
             // 
@@ -283,7 +261,7 @@
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txtNombre);
-            this.groupControl1.Controls.Add(this.btnBuscar);
+            this.groupControl1.Controls.Add(this.btnGuardar);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Location = new System.Drawing.Point(0, 33);
             this.groupControl1.LookAndFeel.SkinName = "Glass Oceans";
@@ -291,17 +269,17 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(476, 131);
             this.groupControl1.TabIndex = 11;
-            this.groupControl1.Text = "Busqueda";
+            this.groupControl1.Text = "Nuevo";
             // 
             // txtPais
             // 
-            this.txtPais.Enabled = false;
             this.txtPais.Location = new System.Drawing.Point(75, 77);
             this.txtPais.Name = "txtPais";
             this.txtPais.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPais.Properties.Appearance.Options.UseFont = true;
             this.txtPais.Size = new System.Drawing.Size(231, 20);
-            this.txtPais.TabIndex = 37;
+            this.txtPais.TabIndex = 4;
+            this.txtPais.EditValueChanged += new System.EventHandler(this.txtPais_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -317,7 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 458);
+            this.ClientSize = new System.Drawing.Size(488, 458);
             this.Controls.Add(this.gridPuertos);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
@@ -341,28 +319,26 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripButton MenuGuardar;
         private DevExpress.XtraGrid.GridControl gridPuertos;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.TextEdit txtCodigo;
-        private System.Windows.Forms.ToolStripButton MenuVerDatos;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton MenuEliminar;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton MenuExcel;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.ToolStripButton MenuImprimirListado;
         private DevExpress.XtraEditors.TextEdit txtNombre;
         private System.Windows.Forms.ToolStrip toolStripBarraListarLlamada;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private DevExpress.XtraEditors.SimpleButton btnBuscar;
+        private DevExpress.XtraEditors.SimpleButton btnGuardar;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtPais;
+        private System.Windows.Forms.ToolStripButton MenuActualizar;
 
     }
 }

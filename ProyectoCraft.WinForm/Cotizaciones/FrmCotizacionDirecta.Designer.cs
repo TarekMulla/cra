@@ -303,7 +303,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // ListPod
             // 
-            this.ListPod.Location = new System.Drawing.Point(349, 105);
+            this.ListPod.Location = new System.Drawing.Point(349, 108);
             this.ListPod.Name = "ListPod";
             this.ListPod.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListPod.Size = new System.Drawing.Size(104, 95);
@@ -387,7 +387,7 @@ namespace SCCMultimodal.Cotizaciones {
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(36, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -813,7 +813,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.TxtGastosLocales.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TxtGastosLocales.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TxtGastosLocales.Properties.Mask.EditMask = "c0";
-            this.TxtGastosLocales.Properties.Mask.Culture = new CultureInfo("es-CL");
             this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.TxtGastosLocales.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);
@@ -828,7 +827,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(721, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(721, 38);
             this.toolStrip1.TabIndex = 35;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -837,7 +836,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(50, 33);
+            this.toolStripButton1.Size = new System.Drawing.Size(53, 35);
             this.toolStripButton1.Text = "Guardar";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
@@ -845,14 +844,14 @@ namespace SCCMultimodal.Cotizaciones {
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);

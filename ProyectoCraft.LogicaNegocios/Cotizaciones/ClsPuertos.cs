@@ -30,5 +30,9 @@ namespace ProyectoCraft.LogicaNegocios.Cotizaciones {
         public static ResultadoTransaccion EliminaPuerto(Puerto puerto) {
             return ClsPuertosDao.EliminaPuerto(puerto);
         }
+
+        public static ResultadoTransaccion ObtieneLosPaisesConPuertos(){
+            return ClsPuertosDao.ObtieneLosPaisesConPuertos();
+        }
     }
 }

@@ -93,6 +93,8 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);
             stringXml = stringXml.Replace("[observaciones]", ObservacionesFijas.Replace(Environment.NewLine, "<br/>"));
 
+            stringXml = stringXml.Replace("[ObservacionesOpcionales]", Observaciones.Replace(Environment.NewLine, "<br/>"));
+
             stringXml = stringXml.Replace("[vendedor]", Usuario.NombreCompleto);
             stringXml = stringXml.Replace("[cargo]", Usuario.Cargo.Nombre);
             xmldoc.InnerXml = stringXml;

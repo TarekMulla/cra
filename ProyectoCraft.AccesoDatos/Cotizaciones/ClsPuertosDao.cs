@@ -194,7 +194,34 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
             return p;
         }
 
+        public static ResultadoTransaccion ObtieneLosPaisesConPuertos(){
+            var res = new ResultadoTransaccion();
+            var paises = new List<String>();
+            //Abrir Conexion
+            var conn = BaseDatos.Conexion();
+            try {
 
+                var command = new SqlCommand("SP_L_Puertos_Paises", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                while (reader.Read()) 
+                    paises.Add(reader["pais"].ToString());
+
+                res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
+                res.ObjetoTransaccion = paises;
+                res.Descripcion = "Se creo la cotizacion Exitosamente";
+
+            } catch (Exception ex) {
+                Log.EscribirLog(ex.Message);
+
+                res.Descripcion = ex.Message;
+                res.ArchivoError = NombreClase;
+                res.MetodoError = MethodBase.GetCurrentMethod().Name;
+            } finally {
+                conn.Close();
+            }
+            return res;
+        } 
 
     }
 }

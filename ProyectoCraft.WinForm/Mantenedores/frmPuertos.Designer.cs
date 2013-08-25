@@ -299,6 +299,7 @@
             this.Controls.Add(this.gridPuertos);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPuertos";
             this.Text = "Mantenedor de Puertos";
             this.Load += new System.EventHandler(this.frmPuertos_Load);

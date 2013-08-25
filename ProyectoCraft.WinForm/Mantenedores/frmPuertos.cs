@@ -10,7 +10,8 @@ using ProyectoCraft.LogicaNegocios.Cotizaciones;
 namespace SCCMultimodal.Mantenedores {
     public partial class frmPuertos : Form {
         private Puerto _puerto = null;
-        
+        private List<String> _paises = null;
+
         public frmPuertos() {
             InitializeComponent();
         }
@@ -32,13 +33,13 @@ namespace SCCMultimodal.Mantenedores {
         private void LimpiarDatos() {
             txtCodigo.Text = txtNombre.Text = txtPais.Text = String.Empty;
             groupControl1.Text = "Nuevo";
+            txtCodigo.Enabled = true;
         }
 
         private void toolStripButton2_Click_1(object sender, EventArgs e) {
             _puerto = null;
             ActiveControl = txtCodigo;
             LimpiarDatos();
-            groupControl1.Text = "Nuevo";
             gridView1.ClearSelection();
             var seleccionados = gridView1.GetSelectedRows();
             foreach (var i in seleccionados)
@@ -52,7 +53,13 @@ namespace SCCMultimodal.Mantenedores {
         }
 
         private void frmPuertos_Load(object sender, EventArgs e) {
-
+            _paises = ClsPuertos.ObtieneLosPaisesConPuertos().ObjetoTransaccion as List<String>;
+            txtPais.MaskBox.AutoCompleteMode = AutoCompleteMode.Append;
+            txtPais.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
+            foreach (var p in _paises)
+                auto.Add(p);
+            txtPais.MaskBox.AutoCompleteCustomSource = auto;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e) {
@@ -97,6 +104,7 @@ namespace SCCMultimodal.Mantenedores {
                 txtNombre.Text = puerto.Nombre;
                 groupControl1.Text = "Editar";
                 MenuEliminar.Enabled = true;
+                txtCodigo.Enabled = false;
             }
 
         }
@@ -128,7 +136,6 @@ namespace SCCMultimodal.Mantenedores {
                 MessageBox.Show(resultado.Descripcion);
                 _puerto = null;
 
-                groupControl1.Text = "Nuevo";
                 LimpiarDatos();
                 if (gridPuertos.DataSource != null)
                     ListarPuertos();
@@ -142,8 +149,11 @@ namespace SCCMultimodal.Mantenedores {
 
         }
 
-        private void MenuEliminar_Click(object sender, EventArgs e){
-            ClsPuertos.EliminaPuerto(_puerto);
+        private void MenuEliminar_Click(object sender, EventArgs e) {
+            ClsPuertos.EliminaPuerto(GetSelectedRow(gridView1));
+            LimpiarDatos();
+            if (gridPuertos.DataSource != null)
+                ListarPuertos();
         }
     }
 }

@@ -11,12 +11,14 @@ using ProyectoCraft.Entidades.Perfiles;
 using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Usuarios;
+using ProyectoCraft.WinForm.Clientes;
 using ProyectoCraft.WinForm.Direccion.Administracion;
 using ProyectoCraft.WinForm.Paperless.Asignacion;
 using ProyectoCraft.WinForm.Paperless.Usuario1;
 using ProyectoCraft.WinForm.Paperless.Usuario2;
 using SCCMultimodal;
 using SCCMultimodal.Cotizaciones;
+using SCCMultimodal.Mantenedores;
 using SCCMultimodal.Panel_de_control;
 
 
@@ -162,13 +164,6 @@ namespace ProyectoCraft.WinForm {
                     Console.Write(ex);
                 }
             }
-
-            /*     var form = Form1.Instancia;
-                 form.MdiParent = this;
-                 form.Show();*/
-            //formulario vhs
-            //var formulario = FrmCotizacionDirecta.Instancia;
-            //formulario.ShowDialog();
         }
 
         public void ChangePanelDeControl(object sender, EventArgs e) {
@@ -286,6 +281,8 @@ namespace ProyectoCraft.WinForm {
                     MantComunas.Visible = true;
                     MantNavieras.Visible = true;
                 }
+                MantComunas.Visible = true;
+                MantNavieras.Visible = true;
 
             }
 
@@ -640,10 +637,26 @@ namespace ProyectoCraft.WinForm {
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
-        private void CotizacionesLinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void CotizacionesLinkClicked(object sender, NavBarLinkEventArgs e)
         {
             var timer = System.Diagnostics.Stopwatch.StartNew();           
             Cotizaciones.FrmListarCotizaciones form = Cotizaciones.FrmListarCotizaciones.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void MantPuertos_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            var form = frmPuertos.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void manCotDirectas_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            var form = FrmCotizacionesDirectasParametros.Instancia;
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

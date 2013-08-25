@@ -2,12 +2,12 @@
 <setting>
   <cotizacionDirecta>
     <observacionFija>* Sujeto a aceptación de espacio y disponibilidad de equipo por parte de naviera.
-      * Carga IMO sujeto a aceptación de la naviera.
-      * Carga + unidad no debe sobrepasar peso máximo en origen.-
-      * Tiempo de carguío EXW no debe exceder 2 Hrs.
-      * Tarifa sujeta a recargos por sobrepeso.
-      * No cubre eventual intervención por aduana.
-      * Tarifa Sujeta a posibles reajustes de GRI/GRR/Bunker.
+* Carga IMO sujeto a aceptación de la naviera.
+* Carga + unidad no debe sobrepasar peso máximo en origen.-
+* Tiempo de carguío EXW no debe exceder 2 Hrs.
+* Tarifa sujeta a recargos por sobrepeso.
+* No cubre eventual intervención por aduana.
+* Tarifa Sujeta a posibles reajustes de GRI/GRR/Bunker.
     </observacionFija>
     <subjectMail>ACTUALIZACION DE TARIFAS // DESDE ASIA  VIA  CRAFT MULTIMODAL // [nombreCliente]</subjectMail>
   </cotizacionDirecta>

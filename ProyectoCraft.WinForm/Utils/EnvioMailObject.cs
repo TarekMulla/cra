@@ -1052,20 +1052,7 @@ namespace SCCMultimodal.Utils {
                 sb.Replace("[USUARIOCONTRAPARTE]", asignacion.Usuario1.NombreCompleto);
                 sb.Replace("[OBSERVACION]", asignacion.ObservacionUsuario1);
                 sb.Replace("[SALTO]", "\n");
-                EmailBody = sb.ToString();
-                try
-                {
-                    string MailEnCopia = System.Configuration.ConfigurationSettings.AppSettings.Get("MailEnCopia");
-                    if (!string.IsNullOrEmpty(MailEnCopia))
-                        if (!asignacion.Usuario2.Email.Contains(MailEnCopia.Replace(";", "")))
-                        {
-                            asignacion.Usuario2.Email += MailEnCopia;
-                        }
-                }
-                catch (Exception ex)
-                {
-                    Log.EscribirLog(ex.Message);                    
-                }
+                EmailBody = sb.ToString();                
                 
                 EnviarEmail(asignacion.Usuario2.Email, asunto, EmailBody);
 

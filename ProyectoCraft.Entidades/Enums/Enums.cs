@@ -82,6 +82,8 @@ namespace ProyectoCraft.Entidades.Enums {
             PaperlessImportanciaUsuario1 = 29,
             Incoterms = 30,
             TipoCompentencia = 31,
+
+            CotizacionDirectaObsertvacionFija = 32,
             Any = 99
         }
 

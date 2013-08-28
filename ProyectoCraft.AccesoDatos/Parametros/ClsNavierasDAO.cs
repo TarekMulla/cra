@@ -98,7 +98,60 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
             return lista;
         }
-        public static ResultadoTransaccion NuevaNaviera(string nombre)
+
+        private static  void CreaRelacionPuertos(Int64 id,string relacionPuertos, SqlConnection conn )
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                //Abrir Conexion
+                //conn = BaseDatos.Conexion();
+
+                //Crear Transaccion
+                transaction = conn.BeginTransaction();
+
+                //Actualizar
+                //objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.Conexion(), "SP_A_CLIENTES_DIRECCION");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_NAVIERA_PUERTO_RELACION");
+                objParams[0].Value = id;
+                objParams[1].Value = relacionPuertos;
+
+                SqlCommand command = new SqlCommand("SP_N_NAVIERA_PUERTO_RELACION", conn, transaction);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                resTransaccion.Accion = Enums.AccionTransaccion.Actualizar;
+                resTransaccion.ObjetoTransaccion = id;
+                resTransaccion.Descripcion = "Se actualizo la relacion de la naviera con los puertos";
+
+                //Registrar Actividad
+                //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
+                //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Log.EscribirLog(ex.Message);
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+            }
+            finally
+            {
+                //conn.Close();
+
+            }
+
+            //return resTransaccion;
+            
+        }
+
+        public static ResultadoTransaccion NuevaNaviera(string nombre, string relacionPuertos)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -127,12 +180,13 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
                 
                 //resTransaccion.ObjetoTransaccion = id;//idMaster = (Int64)resTransaccion.ObjetoTransaccion;
-                resTransaccion.Descripcion = "Se Creo Naviera con Id " + (Int64)resTransaccion.ObjetoTransaccion;
+                var id = (Int64) resTransaccion.ObjetoTransaccion;
+                resTransaccion.Descripcion = "Se Creo Naviera con Id " + id;
 
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
                 //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
-
+                CreaRelacionPuertos(id, relacionPuertos, conn);
             }
             catch (Exception ex)
             {
@@ -151,7 +205,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre)
+        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre, string relacionPuertos)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -183,7 +237,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
                 //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
-
+                CreaRelacionPuertos(id, relacionPuertos, conn);
             }
             catch (Exception ex)
             {

@@ -87,7 +87,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[commodity]", Commodity);
             stringXml = stringXml.Replace("[incoterm]", IncoTerm.Codigo);
 
-            var gastosLocales = GastosLocales == 0 ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
+            var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
 
 
             stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);

@@ -944,9 +944,6 @@
     <Content Include="Cotizaciones\ImagesCotizaciones\image003.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Cotizaciones\TemplateCotizacionMailBody.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Cotizaciones\TemplateCotizacionMailPDF.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

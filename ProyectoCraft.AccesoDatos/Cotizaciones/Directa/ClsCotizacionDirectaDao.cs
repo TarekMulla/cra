@@ -480,6 +480,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             }
             return Res;
         }
+        
         public static ResultadoTransaccion ModificarOpciones(CotizacionDirecta cotizacionDirecta, SqlCommand command)
         {
             var num = 1;
@@ -518,6 +519,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 throw e;
             }
         }
+        
         public static ResultadoTransaccion ModificarDeatlle(Opcion opcion, SqlCommand command)
         {
             try
@@ -547,6 +549,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 throw e;
             }
         }
+        
         public static ResultadoTransaccion ModificarRelacionPuertos(Opcion opcion, SqlCommand command)
         {
             try

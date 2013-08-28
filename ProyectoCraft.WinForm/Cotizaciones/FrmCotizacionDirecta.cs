@@ -32,7 +32,7 @@ namespace SCCMultimodal.Cotizaciones {
             bindingSource1.DataSource = CotizacionDirecta.Opciones;
             CboNaviera.DataBindings.Add("SelectedItem", bindingSource1, "Naviera");
             TxtTiempoTransito.DataBindings.Add("Text", bindingSource1, "TiempoTransito");
-            
+
             txtFechaValidezIni.DataBindings.Add("Text", bindingSource1, "FechaValidezInicio");
             txtFechaValidezIni.DataBindings.Add("DateTime", bindingSource1, "FechaValidezInicio");
             txtFechaValidezIni.DataBindings.Add("EditValue", bindingSource1, "FechaValidezInicio");
@@ -345,7 +345,9 @@ namespace SCCMultimodal.Cotizaciones {
 
             var xmldoc = new XmlDocument();
             xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-            CotizacionDirecta.ObservacionesFijas = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
+            //CotizacionDirecta.ObservacionesFijas = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
+            CotizacionDirecta.ObservacionesFijas =
+                clsParametros.ListarParametrosPorTipo(Enums.TipoParametro.CotizacionDirectaObsertvacionFija).Items[0].Nombre;
 
             var list = (List<clsIncoTerm>)clsParametrosClientes.ListarIncoTerms(true);
             var incoTerm = list.Find(foo => foo.Codigo.ToUpper().Equals("FOB"));

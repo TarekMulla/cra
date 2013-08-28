@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.Parametros;
+using ProyectoCraft.LogicaNegocios.Parametros;
 
 
 namespace SCCMultimodal.Mantenedores {
@@ -9,6 +12,7 @@ namespace SCCMultimodal.Mantenedores {
             InitializeComponent();
         }
 
+        private static clsItemParametro parametro;
         private static FrmCotizacionesDirectasParametros _instancia = null;
         public static FrmCotizacionesDirectasParametros Instancia {
             get {
@@ -23,10 +27,12 @@ namespace SCCMultimodal.Mantenedores {
 
 
         private void FrmCotizacionesDirectasParametros_Load(object sender, System.EventArgs e) {
-            var xmldoc = new XmlDocument();
-            xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-            var text = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
-            TxtObservaciones.Text = text;
+            /*          var xmldoc = new XmlDocument();
+                        xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
+                        var text = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
+                        TxtObservaciones.Text = text;*/
+            parametro = clsParametros.ListarParametrosPorTipo(Enums.TipoParametro.CotizacionDirectaObsertvacionFija).Items[0];
+            TxtObservaciones.Text = parametro.Nombre;
         }
 
         private void MenuGuardar_Click(object sender, System.EventArgs e) {
@@ -39,10 +45,12 @@ namespace SCCMultimodal.Mantenedores {
         }
 
         private void toolStripButton3_Click(object sender, System.EventArgs e) {
-            var xmldoc = new XmlDocument();
+            /*var xmldoc = new XmlDocument();
             xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
             xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText = TxtObservaciones.Text;
-            xmldoc.Save(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
+            xmldoc.Save(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));*/
+            parametro.Nombre = TxtObservaciones.Text;
+            clsParametros.ActualizaParametroPorId(parametro);
             MessageBox.Show("Los paramatros se guardaron Satisfactoriamente", "Cotizacion Directa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -52,7 +60,7 @@ namespace SCCMultimodal.Mantenedores {
             Close();
         }
 
-        private void FrmCotizacionesDirectasParametros_FormClosed(object sender, FormClosedEventArgs e){
+        private void FrmCotizacionesDirectasParametros_FormClosed(object sender, FormClosedEventArgs e) {
             Instancia = null;
         }
     }

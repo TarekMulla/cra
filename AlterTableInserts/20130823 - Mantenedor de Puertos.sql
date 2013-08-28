@@ -1,9 +1,32 @@
+/*EJECUTAR SOLO UNA VEZ */
 ALTER TABLE puertos ADD
 	activo bit  default(1)
 GO
 
 update Puertos set  activo=1
 GO
+
+ALTER TABLE dbo.PARAM_PARAMETROS
+ALTER COLUMN [Descripcion] VARCHAR(1000)
+GO
+
+/*EJECUTAR SOLO UNA VEZ */
+INSERT INTO [dbo].[PARAM_PARAMETROS]
+           (IdTipoParametro,
+           [CodParametro]
+           ,[Descripcion])
+     VALUES
+           (32,32
+           ,'* Sujeto a aceptación de espacio y disponibilidad de equipo por parte de naviera.
+* Carga IMO sujeto a aceptación de la naviera.
+* Carga + unidad no debe sobrepasar peso máximo en origen.-
+* Tiempo de carguío EXW no debe exceder 2 Hrs.
+* Tarifa sujeta a recargos por sobrepeso.
+* No cubre eventual intervención por aduana.
+* Tarifa Sujeta a posibles reajustes de GRI/GRR/Bunker.')
+GO
+
+
 
 DROP PROCEDURE [dbo].[SP_A_PUERTOS]
 GO
@@ -87,6 +110,20 @@ Begin
 	SET NOCOUNT ON
 	select distinct pais from puertos
 end  
+GO
+
+
+DROP  PROCEDURE [dbo].[SP_A_PARAM_PARAMETROS_POR_ID]                                                                  
+go
+
+create  PROCEDURE [dbo].[SP_A_PARAM_PARAMETROS_POR_ID]                                                                  
+     @id bigint,
+     @descripcion varchar(1000)
+AS
+        UPDATE PARAM_PARAMETROS
+         SET descripcion = @descripcion
+        WHERE Id=@id
+
 GO
 
 

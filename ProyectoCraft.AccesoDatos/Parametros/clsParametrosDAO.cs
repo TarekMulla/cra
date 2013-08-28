@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
@@ -183,7 +184,38 @@ namespace ProyectoCraft.AccesoDatos.Parametros {
         }
 
         public static ResultadoTransaccion ActualizaParametroPorId(clsItemParametro item) {
-            return new ResultadoTransaccion();
+            var Res = new ResultadoTransaccion();
+            SqlTransaction trans = null;
+            //Abrir Conexion
+            var conn = BaseDatos.Conexion();
+            try {
+                var command = new SqlCommand("SP_A_PARAM_PARAMETROS_POR_ID", conn);
+
+                command.Transaction = conn.BeginTransaction();
+                trans = command.Transaction;
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@id", item.Id32);
+                command.Parameters.AddWithValue("@descripcion", item.Nombre);
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteScalar();
+
+                //Ejecutar transaccion
+                trans.Commit();
+                Res.Estado = Enums.EstadoTransaccion.Aceptada;
+                Res.Descripcion = "Se modificó la cotización correctamente";
+            } catch (Exception ex) {
+                if (trans != null)
+                    trans.Rollback();
+                Log.EscribirLog(ex.Message);
+                Res.Descripcion = ex.Message;
+                Res.ArchivoError = "clsParametrosDAO";
+                Res.MetodoError = MethodBase.GetCurrentMethod().Name;
+            } finally {
+                conn.Close();
+            }
+            return Res;
         }
 
         #region "Direcciones"

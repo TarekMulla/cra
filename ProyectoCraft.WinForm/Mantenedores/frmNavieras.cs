@@ -190,10 +190,20 @@ namespace ProyectoCraft.WinForm.Clientes
 
             IList<Puerto> puertosSel = (IList<Puerto>)trx.ObjetoTransaccion;
             PuertosAll = (IList<Puerto>)trxAllPort.ObjetoTransaccion;
-
-            ListPuertoSeleccionado.Items.Clear();
+            var existe = false;
+            ListaPuertos.Items.Clear();
             foreach (var puerto in PuertosAll)
-                ListaPuertos.Items.Add(puerto);
+            {
+                foreach (var sel in puertosSel)
+                {
+                    if (sel.Nombre.Equals(puerto.Nombre))
+                        existe = true;
+                }
+                if (!existe)
+                    ListaPuertos.Items.Add(puerto);
+                existe = false;
+            }
+
 
             ListPuertoSeleccionado.Items.Clear();
             foreach (var puerto in puertosSel)
@@ -226,7 +236,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuGuardar_Click_1(object sender, EventArgs e)
         {
-            
+
             if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
             {
                 var res = ClsNavieras.ActualizarNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text, ObtienePuertosSeleccionados());
@@ -260,15 +270,15 @@ namespace ProyectoCraft.WinForm.Clientes
             //var puertos = (IList<Puerto>);
             foreach (var puerto in ListPuertoSeleccionado.Items)
             {
-                puertosConcatenados += ((Puerto)puerto).Codigo + ","; 
+                puertosConcatenados += ((Puerto)puerto).Codigo + ",";
                 //foreach (var p in PuertosAll)
                 //{
                 //    if (p.Nombre.Equals(puerto))
                 //        puertosConcatenados +=p.Codigo + ",";    
                 //}
-                
+
             }
-            
+
 
             puertosConcatenados = puertosConcatenados.Substring(0, puertosConcatenados.Length - 1);
             //puertosConcatenados += "'";

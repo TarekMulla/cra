@@ -125,7 +125,19 @@ namespace SCCMultimodal.Mantenedores {
             return puerto;
         }
 
+        private bool validar(){
+            ctrldxError.ClearErrors();
+            if (String.IsNullOrEmpty(txtCodigo.Text))
+                ctrldxError.SetError(txtCodigo,"Debe ingresar el Codigo");
+            if (String.IsNullOrEmpty(txtNombre.Text))
+                ctrldxError.SetError(txtNombre, "Debe ingresar el Nombre");
+            if (String.IsNullOrEmpty(txtPais.Text))
+                ctrldxError.SetError(txtPais, "Debe ingresar el Pais");
+            return ctrldxError.HasErrors;
+        }
         private void btnGuardar_Click(object sender, EventArgs e) {
+            if (validar())
+                return;
             var puerto = BindViewToDomain();
             ResultadoTransaccion resultado = null;
             try {
@@ -133,7 +145,8 @@ namespace SCCMultimodal.Mantenedores {
                     resultado = ClsPuertos.CreaPuerto(puerto);
                 else
                     resultado = ClsPuertos.ActualizaPuerto(puerto);
-                MessageBox.Show(resultado.Descripcion);
+                MessageBox.Show(resultado.Descripcion, "Mantenedor de Puertos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 _puerto = null;
 
                 LimpiarDatos();

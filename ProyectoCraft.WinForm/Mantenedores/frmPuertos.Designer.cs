@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPuertos));
             this.gridPuertos = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -44,6 +45,7 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtPais = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridPuertos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).BeginInit();
@@ -52,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPais.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             this.SuspendLayout();
             // 
             // gridPuertos
@@ -291,6 +294,10 @@
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Codigo";
             // 
+            // ctrldxError
+            // 
+            this.ctrldxError.ContainerControl = this;
+            // 
             // frmPuertos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +320,7 @@
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPais.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,6 +348,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtPais;
         private System.Windows.Forms.ToolStripButton MenuActualizar;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider ctrldxError;
 
     }
 }

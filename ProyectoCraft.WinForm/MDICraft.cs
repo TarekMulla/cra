@@ -222,10 +222,9 @@ namespace ProyectoCraft.WinForm {
             MenuPaperlessAsignar.Visible = false;
             MenuPaperlessUsuario1.Visible = false;
             MenuPaperlessUsuario2.Visible = false;
-            MenuPaperlessGestion.Visible = false;
-            MantComunas.Visible = false;
-            MantNavieras.Visible = false;
+            MenuPaperlessGestion.Visible = false;            
             MenuCotizaciones.Visible = false;
+            menuAdministracion.Visible = false;
         }
 
         private void HabilitarFuncionalidades() {
@@ -276,13 +275,13 @@ namespace ProyectoCraft.WinForm {
                     MenuCotizaciones.Visible = true;
                 }
 
+                
 
-                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString())) {
-                    MantComunas.Visible = true;
-                    MantNavieras.Visible = true;
+                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
+                {
+                    menuAdministracion.Visible = true;                   
                 }
-                MantComunas.Visible = true;
-                MantNavieras.Visible = true;
+                
 
             }
 

@@ -134,7 +134,7 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "Estado";
+            this.gridColumn7.Caption = "Activo";
             this.gridColumn7.FieldName = "Activo";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;

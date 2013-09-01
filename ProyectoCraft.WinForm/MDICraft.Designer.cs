@@ -66,7 +66,7 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.Administracion = new DevExpress.XtraNavBar.NavBarGroup();
+            this.menuAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
             this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
             this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
             this.MantPuertos = new DevExpress.XtraNavBar.NavBarItem();
@@ -407,7 +407,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.Administracion;
+            this.navBarControl1.ActiveGroup = this.menuAdministracion;
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -420,7 +420,7 @@
             this.navBarGroup6,
             this.navBarGroup7,
             this.navBarGroup8,
-            this.Administracion});
+            this.menuAdministracion});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.MenuTarget,
             this.navBarItem2,
@@ -462,18 +462,18 @@
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
             // 
-            // Administracion
+            // menuAdministracion
             // 
-            this.Administracion.Caption = "Administración de Datos";
-            this.Administracion.Expanded = true;
-            this.Administracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            this.menuAdministracion.Caption = "Administración de Datos";
+            this.menuAdministracion.Expanded = true;
+            this.menuAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantPuertos),
             new DevExpress.XtraNavBar.NavBarItemLink(this.manCotDirectas)});
-            this.Administracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("Administracion.LargeImage")));
-            this.Administracion.Name = "Administracion";
-            this.Administracion.TopVisibleLinkIndex = 1;
+            this.menuAdministracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("menuAdministracion.LargeImage")));
+            this.menuAdministracion.Name = "menuAdministracion";
+            this.menuAdministracion.TopVisibleLinkIndex = 1;
             // 
             // MantNavieras
             // 
@@ -877,7 +877,7 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private DevExpress.XtraNavBar.NavBarItem MantenedorNavieras;
         private DevExpress.XtraNavBar.NavBarItem MatenedorComunas;
-        private DevExpress.XtraNavBar.NavBarGroup Administracion;
+        private DevExpress.XtraNavBar.NavBarGroup menuAdministracion;
         private DevExpress.XtraNavBar.NavBarItem MantNavieras;
         private DevExpress.XtraNavBar.NavBarItem MantComunas;
         private DevExpress.XtraNavBar.NavBarItem MenuCotizaciones;

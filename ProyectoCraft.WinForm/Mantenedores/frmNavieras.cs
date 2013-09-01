@@ -104,6 +104,8 @@ namespace ProyectoCraft.WinForm.Clientes
         {
             txtNombre.Text = "";
             txtId.Text = "";
+            ListaPuertos.Items.Clear();
+            ListPuertoSeleccionado.Items.Clear();
         }
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
@@ -180,11 +182,17 @@ namespace ProyectoCraft.WinForm.Clientes
             foreach (var i in list)
                 ListPuertoSeleccionado.Items.RemoveAt(i);
         }
-        private void MenuVerDatos_Click_1(object sender, EventArgs e)
+        private void CargaPuertos()
         {
+            ResultadoTransaccion trxAllPort = ClsPuertos.ObtieneTodosLosPuertos();
+            PuertosAll = (IList<Puerto>)trxAllPort.ObjetoTransaccion;
+            foreach (var puerto in PuertosAll)
+                ListaPuertos.Items.Add(puerto);
 
-            ClsNaviera naviera = ObtenerNaviera();
-            frmNavieras form = frmNavieras.Instancia;
+        }
+
+        private void CargaPuertosPorNaviera(ClsNaviera naviera)
+        {
             ResultadoTransaccion trx = ClsPuertos.ObtienePuertosPorNaviera(naviera);
             ResultadoTransaccion trxAllPort = ClsPuertos.ObtieneTodosLosPuertos();
 
@@ -204,24 +212,18 @@ namespace ProyectoCraft.WinForm.Clientes
                 existe = false;
             }
 
-
             ListPuertoSeleccionado.Items.Clear();
             foreach (var puerto in puertosSel)
                 ListPuertoSeleccionado.Items.Add(puerto);
 
+        }
 
-            //if (puertosSel != null)
-            //{
-            //    ListPuertoSeleccionado.DataSource = puertosSel;
-            //    ListPuertoSeleccionado.Refresh();
-            //}
-            //if (puertosAll != null)
-            //{
-            //    ListaPuertos.DataSource = puertosAll;
-            //    ListaPuertos.Refresh();
-            //}
+        private void MenuVerDatos_Click_1(object sender, EventArgs e)
+        {
 
-
+            ClsNaviera naviera = ObtenerNaviera();
+            frmNavieras form = frmNavieras.Instancia;
+            CargaPuertosPorNaviera(naviera);
 
             if (naviera != null)
             {
@@ -254,9 +256,9 @@ namespace ProyectoCraft.WinForm.Clientes
                 LimpiarDatos();
                 if (fromPaperless.Equals(true))
                 {
-                    InstanciaPaperless.CargarNavierasExistentes();
+                    InstanciaPaperless.CargarNavierasExistentes();                    
+                    CargaPuertos();
                 }
-
             }
             else
             {
@@ -266,22 +268,16 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private string ObtienePuertosSeleccionados()
         {
-            string puertosConcatenados = "";//'
-            //var puertos = (IList<Puerto>);
+            string puertosConcatenados = "";
+
             foreach (var puerto in ListPuertoSeleccionado.Items)
             {
                 puertosConcatenados += ((Puerto)puerto).Codigo + ",";
-                //foreach (var p in PuertosAll)
-                //{
-                //    if (p.Nombre.Equals(puerto))
-                //        puertosConcatenados +=p.Codigo + ",";    
-                //}
-
             }
 
+            if (!puertosConcatenados.Length.Equals(0))
+                puertosConcatenados = puertosConcatenados.Substring(0, puertosConcatenados.Length - 1);
 
-            puertosConcatenados = puertosConcatenados.Substring(0, puertosConcatenados.Length - 1);
-            //puertosConcatenados += "'";
             return puertosConcatenados;
         }
 
@@ -289,6 +285,7 @@ namespace ProyectoCraft.WinForm.Clientes
         private void Menu_Nuevo_Click_1(object sender, EventArgs e)
         {
             LimpiarDatos();
+            CargaPuertos();
         }
 
         private void MenuExcel_Click(object sender, EventArgs e)

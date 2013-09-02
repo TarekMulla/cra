@@ -168,5 +168,10 @@ namespace SCCMultimodal.Mantenedores {
             if (gridPuertos.DataSource != null)
                 ListarPuertos();
         }
+
+        private void frmPuertos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instancia = null;
+        }
     }
 }

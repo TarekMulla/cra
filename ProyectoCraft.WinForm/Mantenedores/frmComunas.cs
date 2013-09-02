@@ -229,8 +229,7 @@ namespace ProyectoCraft.WinForm.Clientes
         }
 
         private void frmComunas_Load(object sender, EventArgs e)
-        {
-
+        {                      
         }
 
         private void MenuGuardar_Click_1(object sender, EventArgs e)
@@ -309,6 +308,11 @@ namespace ProyectoCraft.WinForm.Clientes
                 Log.EscribirLog(ex.Message);
                 MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        
+        private void frmComunas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instancia = null;
         }
     }
 }

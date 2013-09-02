@@ -378,6 +378,7 @@
             this.Name = "frmComunas";
             this.Text = "Mantenedor de Comunas";
             this.Load += new System.EventHandler(this.frmComunas_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmComunas_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.grdComunas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

@@ -405,6 +405,7 @@
             this.Name = "frmNavieras";
             this.Text = "Mantenedor Navieras";
             this.Load += new System.EventHandler(this.frmNavieras_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmNavieras_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.grdNavieras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

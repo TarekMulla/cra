@@ -343,5 +343,10 @@ namespace ProyectoCraft.WinForm.Clientes
             }
             
         }
+
+        private void frmNavieras_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instancia = null;
+        }
     }
 }

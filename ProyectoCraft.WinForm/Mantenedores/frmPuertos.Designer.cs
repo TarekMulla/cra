@@ -310,6 +310,7 @@
             this.Name = "frmPuertos";
             this.Text = "Mantenedor de Puertos";
             this.Load += new System.EventHandler(this.frmPuertos_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPuertos_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gridPuertos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo.Properties)).EndInit();

@@ -61,11 +61,15 @@ namespace ProyectoCraft.WinForm.Clientes
         public frmNavieras()
         {
             InitializeComponent();
+            FormLoad();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            ListarNavieras();
+            if (!string.IsNullOrEmpty(txtNombre.Text))
+                BuscarNavieraPorTextoLike(txtNombre.Text);
+            else
+                ListarNavieras();
         }
         public void ListarNavieras()
         {
@@ -73,8 +77,16 @@ namespace ProyectoCraft.WinForm.Clientes
             grdNavieras.DataSource = listNavieras;
             grdNavieras.RefreshDataSource();
         }
+        private  void BuscarNavieraPorTextoLike(string naviera )
+        {
+           var nav= ClsNavieras.BuscarNavieraPorTextoLike(naviera);
+           grdNavieras.DataSource = nav;
+           grdNavieras.RefreshDataSource();
+        }
+
         public void FormLoad()
         {
+            CargaPuertos();
         }
 
         private void MenuVerDatos_Click(object sender, EventArgs e)
@@ -218,23 +230,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         }
 
-        private void MenuVerDatos_Click_1(object sender, EventArgs e)
-        {
-
-            ClsNaviera naviera = ObtenerNaviera();
-            frmNavieras form = frmNavieras.Instancia;
-            CargaPuertosPorNaviera(naviera);
-
-            if (naviera != null)
-            {
-                form.NavieraActual = naviera;
-                txtNombre.Text = naviera.Nombre;
-                txtId.Text = naviera.Id.ToString();
-
-            }
-            else
-                MessageBox.Show("Debe seleccionar una Naviera", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+     
 
         private void MenuGuardar_Click_1(object sender, EventArgs e)
         {
@@ -325,6 +321,27 @@ namespace ProyectoCraft.WinForm.Clientes
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void grdNavieras_Click(object sender, EventArgs e)
+        {
+            ClsNaviera naviera = ObtenerNaviera();
+            if(naviera!= null)
+            {
+                frmNavieras form = frmNavieras.Instancia;
+                CargaPuertosPorNaviera(naviera);
+
+                if (naviera != null)
+                {
+                    form.NavieraActual = naviera;
+                    txtNombre.Text = naviera.Nombre;
+                    txtId.Text = naviera.Id.ToString();
+
+                }
+                else
+                    MessageBox.Show("Debe seleccionar una Naviera", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }

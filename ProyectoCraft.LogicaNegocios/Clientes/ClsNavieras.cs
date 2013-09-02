@@ -30,5 +30,10 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
         {
             return AccesoDatos.Parametros.ClsNavierasDAO.EliminaNaviera(id);
         }
+        public static IList<ClsNaviera> BuscarNavieraPorTextoLike(string naviera)
+        {
+            return AccesoDatos.Parametros.ClsNavierasDAO.BuscarNavieraPorTextoLike(naviera);                     
+        }
+        
     }
 }

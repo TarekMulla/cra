@@ -63,7 +63,18 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Listar();
+            if (! string.IsNullOrEmpty(txtNombre.Text))
+            {
+                IList<clsComuna> comunas = clsParametros.ListarComunasPorLike(txtNombre.Text);
+                grdComunas.DataSource = comunas;
+                grdComunas.RefreshDataSource();
+            }
+
+            else
+            {
+                Listar();    
+            }
+            
         }
         public void Listar()
         {
@@ -194,7 +205,21 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void grdComunas_Click(object sender, EventArgs e)
         {
-
+            clsComuna comuna = ObtenerRegistro();
+            if (comuna != null)
+            {
+                frmComunas form = frmComunas.Instancia;
+                //if (comuna != null)
+                //{
+                    form.Actual = comuna;
+                    txtNombre.Text = comuna.Nombre;
+                    txtId.Text = comuna.Id.ToString();
+                    txtPais.Text = comuna.Ciudad.Pais.Nombre;
+                //}
+                //else
+                //    MessageBox.Show("Debe seleccionar una Comuna", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -244,18 +269,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void MenuVerDatos_Click_1(object sender, EventArgs e)
         {
-            clsComuna comuna = ObtenerRegistro();
-            frmComunas form = frmComunas.Instancia;
-
-            if (comuna != null)
-            {
-                form.Actual = comuna;
-                txtNombre.Text = comuna.Nombre;
-                txtId.Text = comuna.Id.ToString();
-                txtPais.Text = comuna.Ciudad.Pais.Nombre;
-            }
-            else
-                MessageBox.Show("Debe seleccionar una Comuna", "Comuna", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)

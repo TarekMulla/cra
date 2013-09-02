@@ -273,6 +273,39 @@ namespace ProyectoCraft.AccesoDatos.Parametros {
             return lista;
         }
 
+        public static IList<clsComuna> ListarComunasPorLike(string Ciudad)
+        {
+            IList<clsComuna> lista = new List<clsComuna>();
+            SqlDataReader objReader = null;
+            SqlParameter[] objParams;
+            try {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_C_PARAM_LISTAR_COMUNAS_POR_LIKE");
+                objParams[0].Value = Ciudad;
+                objReader = SqlHelper.ExecuteReader(BaseDatos.Conexion(), "SP_C_PARAM_LISTAR_COMUNAS_POR_LIKE", objParams);
+                while (objReader.Read()) {
+                    clsComuna comuna = new clsComuna();
+                    comuna.Id = Convert.ToInt64(objReader["Id"]);
+                    comuna.Nombre = objReader["Comuna"].ToString();
+                    comuna.Ciudad = new clsCiudad();
+                    comuna.Ciudad.Id = Convert.ToInt64(objReader["IdCiudad"]);
+                    comuna.Ciudad.Nombre = objReader["Ciudad"].ToString();
+                    comuna.Ciudad.Pais = new clsPais();
+                    comuna.Ciudad.Pais.Id = Convert.ToInt64(objReader["IdPais"]);
+                    comuna.Ciudad.Pais.Nombre = objReader["Pais"].ToString();
+                    lista.Add(comuna);
+                }
+            } catch (Exception ex) {
+                Base.Log.Log.EscribirLog(ex.Message);
+                return null;
+
+            } finally {
+                if (objReader != null) objReader.Close();
+                BaseDatos.CerrarConexion();
+
+            }
+            return lista;
+        }
+
         public static IList<clsComuna> ListarComunas(Int64 idCiudad) {
             IList<clsComuna> lista = new List<clsComuna>();
             SqlDataReader objReader = null;

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComunas));
             this.grdComunas = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -51,7 +51,6 @@
             this.toolStripBarraListarLlamada = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
-            this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
             this.MenuEliminar = new System.Windows.Forms.ToolStripButton();
             this.MenuImprimirListado = new System.Windows.Forms.ToolStripButton();
             this.MenuExcel = new System.Windows.Forms.ToolStripButton();
@@ -83,9 +82,9 @@
             this.grdComunas.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdComunas.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.grdComunas.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.grdComunas.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.grdComunas.Location = new System.Drawing.Point(0, 178);
             this.grdComunas.MainView = this.gridView1;
             this.grdComunas.Name = "grdComunas";
@@ -284,7 +283,6 @@
             this.toolStripBarraListarLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton2,
             this.MenuGuardar,
-            this.MenuVerDatos,
             this.MenuEliminar,
             this.MenuImprimirListado,
             this.MenuExcel,
@@ -315,18 +313,6 @@
             this.MenuGuardar.Text = "Guardar";
             this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click_1);
-            // 
-            // MenuVerDatos
-            // 
-            this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
-            this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuVerDatos.Name = "MenuVerDatos";
-            this.MenuVerDatos.Size = new System.Drawing.Size(41, 35);
-            this.MenuVerDatos.Text = "Editar";
-            this.MenuVerDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuVerDatos.ToolTipText = "Editar";
-            this.MenuVerDatos.Click += new System.EventHandler(this.MenuVerDatos_Click_1);
             // 
             // MenuEliminar
             // 
@@ -431,7 +417,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.ToolStrip toolStripBarraListarLlamada;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton MenuVerDatos;
         private System.Windows.Forms.ToolStripButton MenuEliminar;
         private System.Windows.Forms.ToolStripButton MenuImprimirListado;
         private System.Windows.Forms.ToolStripButton MenuExcel;

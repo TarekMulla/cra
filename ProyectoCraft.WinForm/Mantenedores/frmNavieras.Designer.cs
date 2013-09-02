@@ -45,7 +45,6 @@
             this.toolStripBarraListarLlamada = new System.Windows.Forms.ToolStrip();
             this.Menu_Nuevo = new System.Windows.Forms.ToolStripButton();
             this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
-            this.MenuVerDatos = new System.Windows.Forms.ToolStripButton();
             this.MenuEliminar = new System.Windows.Forms.ToolStripButton();
             this.MenuImprimirListado = new System.Windows.Forms.ToolStripButton();
             this.MenuExcel = new System.Windows.Forms.ToolStripButton();
@@ -97,6 +96,7 @@
             this.grdNavieras.UseEmbeddedNavigator = true;
             this.grdNavieras.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grdNavieras.Click += new System.EventHandler(this.grdNavieras_Click);
             // 
             // gridView1
             // 
@@ -230,7 +230,6 @@
             this.toolStripBarraListarLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Nuevo,
             this.MenuGuardar,
-            this.MenuVerDatos,
             this.MenuEliminar,
             this.MenuImprimirListado,
             this.MenuExcel,
@@ -261,18 +260,6 @@
             this.MenuGuardar.Text = "Guardar";
             this.MenuGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuGuardar.Click += new System.EventHandler(this.MenuGuardar_Click_1);
-            // 
-            // MenuVerDatos
-            // 
-            this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
-            this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuVerDatos.Name = "MenuVerDatos";
-            this.MenuVerDatos.Size = new System.Drawing.Size(41, 35);
-            this.MenuVerDatos.Text = "Editar";
-            this.MenuVerDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuVerDatos.ToolTipText = "Editar";
-            this.MenuVerDatos.Click += new System.EventHandler(this.MenuVerDatos_Click_1);
             // 
             // MenuEliminar
             // 
@@ -454,7 +441,6 @@
         private System.Windows.Forms.ToolStrip toolStripBarraListarLlamada;
         private System.Windows.Forms.ToolStripButton Menu_Nuevo;
         private System.Windows.Forms.ToolStripButton MenuGuardar;
-        private System.Windows.Forms.ToolStripButton MenuVerDatos;
         private System.Windows.Forms.ToolStripButton MenuEliminar;
         private System.Windows.Forms.ToolStripButton MenuImprimirListado;
         private System.Windows.Forms.ToolStripButton MenuExcel;

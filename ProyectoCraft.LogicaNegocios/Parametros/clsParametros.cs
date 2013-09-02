@@ -30,6 +30,11 @@ namespace ProyectoCraft.LogicaNegocios.Parametros {
         public static IList<clsComuna> ListarComunas(Int64 idCiudad) {
             return clsParametrosDAO.ListarComunas(idCiudad);
         }
+        public static IList<clsComuna> ListarComunasPorLike(string ciudad)
+        {
+            return clsParametrosDAO.ListarComunasPorLike(ciudad);
+        }
+
         public static ResultadoTransaccion CrearComuna(Int64 IdCiudad, string Comuna, string pais) {
             var val = clsParametrosDAO.CrearComuna(IdCiudad, Comuna, pais);
             return val;

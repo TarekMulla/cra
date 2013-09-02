@@ -72,7 +72,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             try
             {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL");
-                
+
 
                 objReader = SqlHelper.ExecuteReader(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL", objParams);
                 while (objReader.Read())
@@ -99,7 +99,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             return lista;
         }
 
-        private static  void CreaRelacionPuertos(Int64 id,string relacionPuertos, SqlConnection conn )
+        private static void CreaRelacionPuertos(Int64 id, string relacionPuertos, SqlConnection conn)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -148,7 +148,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
 
             //return resTransaccion;
-            
+
         }
 
         public static ResultadoTransaccion NuevaNaviera(string nombre, string relacionPuertos)
@@ -178,9 +178,9 @@ namespace ProyectoCraft.AccesoDatos.Parametros
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
-                
+
                 //resTransaccion.ObjetoTransaccion = id;//idMaster = (Int64)resTransaccion.ObjetoTransaccion;
-                var id = (Int64) resTransaccion.ObjetoTransaccion;
+                var id = (Int64)resTransaccion.ObjetoTransaccion;
                 resTransaccion.Descripcion = "Se Creo Naviera con Id " + id;
 
                 //Registrar Actividad
@@ -271,7 +271,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 //objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.Conexion(), "SP_A_CLIENTES_DIRECCION");
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_NAVIERA");
                 objParams[0].Value = id;
-                
+
 
                 SqlCommand command = new SqlCommand("SP_E_PAPERLESS_NAVIERA", conn, transaction);
                 command.Parameters.AddRange(objParams);
@@ -305,6 +305,42 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
 
             return resTransaccion;
+        }
+        public static IList<ClsNaviera> BuscarNavieraPorTextoLike(string Naviera)
+        {
+            IList<ClsNaviera> lista = new List<ClsNaviera>();
+            ClsNaviera naviera;
+
+            SqlDataReader objReader = null;
+            SqlParameter[] objParams;
+
+            try
+            {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERA_POR_LIKE");
+                objParams[0].Value = Naviera;
+                objReader = SqlHelper.ExecuteReader(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERA_POR_LIKE", objParams);
+                
+                while (objReader.Read())
+                {
+                    naviera = new ClsNaviera();
+                    naviera.Id = Convert.ToInt64(objReader["Id"]);
+                    naviera.Nombre = objReader["Descripcion"].ToString();
+                    naviera.Activo = Convert.ToBoolean(objReader["Activo"]);
+                    naviera.FechaCreacion = Convert.ToDateTime(objReader["FechaCreacion"]);
+                    lista.Add(naviera);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+                return null;
+
+            }
+            finally
+            {
+                if (objReader != null) objReader.Close();
+            }
+            return lista;
         }
     }
 }

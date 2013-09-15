@@ -164,6 +164,9 @@ namespace ProyectoCraft.WinForm {
                     Console.Write(ex);
                 }
             }
+
+            //Cargamos la configuracion
+            var configuracion = Base.Configuracion.Configuracion.Instance();
         }
 
         public void ChangePanelDeControl(object sender, EventArgs e) {
@@ -222,7 +225,7 @@ namespace ProyectoCraft.WinForm {
             MenuPaperlessAsignar.Visible = false;
             MenuPaperlessUsuario1.Visible = false;
             MenuPaperlessUsuario2.Visible = false;
-            MenuPaperlessGestion.Visible = false;            
+            MenuPaperlessGestion.Visible = false;
             MenuCotizaciones.Visible = false;
             menuAdministracion.Visible = false;
         }
@@ -275,13 +278,12 @@ namespace ProyectoCraft.WinForm {
                     MenuCotizaciones.Visible = true;
                 }
 
-                
 
-                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
-                {
-                    menuAdministracion.Visible = true;                   
+
+                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString())) {
+                    menuAdministracion.Visible = true;
                 }
-                
+
 
             }
 
@@ -636,9 +638,8 @@ namespace ProyectoCraft.WinForm {
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
-        private void CotizacionesLinkClicked(object sender, NavBarLinkEventArgs e)
-        {
-            var timer = System.Diagnostics.Stopwatch.StartNew();           
+        private void CotizacionesLinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             Cotizaciones.FrmListarCotizaciones form = Cotizaciones.FrmListarCotizaciones.Instancia;
             form.MdiParent = this;
             form.Show();

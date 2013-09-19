@@ -97,7 +97,8 @@
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.MenuSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.MenuMantNavieras = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
@@ -792,22 +793,34 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuSalir});
+            this.toolStripButton1,
+            this.MenuMantNavieras});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(819, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // MenuSalir
+            // toolStripButton1
             // 
-            this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
-            this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
-            this.MenuSalir.Text = "Salir";
-            this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(33, 35);
+            this.toolStripButton1.Text = "Salir";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // MenuMantNavieras
+            // 
+            this.MenuMantNavieras.Image = ((System.Drawing.Image)(resources.GetObject("MenuMantNavieras.Image")));
+            this.MenuMantNavieras.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuMantNavieras.Name = "MenuMantNavieras";
+            this.MenuMantNavieras.Size = new System.Drawing.Size(56, 35);
+            this.MenuMantNavieras.Text = "Navieras";
+            this.MenuMantNavieras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuMantNavieras.Visible = false;
+            this.MenuMantNavieras.Click += new System.EventHandler(this.MenuMantNavieras_Click);
             // 
             // dxErrorProvider1
             // 
@@ -918,7 +931,7 @@
         private System.Windows.Forms.TextBox txtNaviera;
         private System.Windows.Forms.TextBox txtAgente;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton MenuSalir;
+        private System.Windows.Forms.ToolStripButton MenuMantNavieras;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.ComboBoxEdit ddlTipoServicio;
         private DevExpress.XtraEditors.LabelControl labelControl17;
@@ -942,6 +955,7 @@
         private System.Windows.Forms.TextBox txtPuerto;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private System.Windows.Forms.TextBox txtShippingInstruction;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
 
     }
 }

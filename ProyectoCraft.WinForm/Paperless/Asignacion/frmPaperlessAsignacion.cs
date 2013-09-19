@@ -5,9 +5,11 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
+using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Parametros;
 using SCCMultimodal.Utils;
 
@@ -58,28 +60,21 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void frmPaperless_Load(object sender, EventArgs e)
         {
-
-            foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles)
-            {
-                if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
-                    btnMantNaviera.Visible = true;
-            }
-            //dejamos invisible los controles nave transbordo
-            //lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = false;
+            //Cargamos la configuracion
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_BtnMantNavieras_Enabled"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles)
+                {
+                    if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
+                        MenuMantNavieras.Visible = true;
+                }            
 
             if (Accion == Enums.TipoAccionFormulario.Nuevo)
                 FormLoad();
 
             if (Accion == Enums.TipoAccionFormulario.Consultar)
                 BloquearFormulario();
-
-
-            //this.Dock = DockStyle.Fill;
-
-            //Controles.EstadoPaperless control = new EstadoPaperless();
-            //panel1.Controls.Add(control);
-
-
         }
 
         private void BloquearFormulario()
@@ -493,14 +488,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         //    //Usuario1.frmPaperlessUser1 form = new frmPaperlessUser1();
         //    //form.Show();
         //}
-
-        private void MenuSalir_Click(object sender, EventArgs e)
-        {
-            Paperless.Asignacion.frmListaAsignaciones form = frmListaAsignaciones.Instancia;
-            form.ListarAsignaciones();
-            Instancia = null;
-            this.Close();
-        }
 
         private void frmPaperlessAsignacion_Leave(object sender, EventArgs e)
         {
@@ -948,7 +935,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 PaperlessAsignacionActual.FechaMasterConfirmado = null;
 
             if (!string.IsNullOrEmpty(txtCourier.Text))
-                PaperlessAsignacionActual.TxtCourier = txtCourier.Text;                       
+                PaperlessAsignacionActual.TxtCourier = txtCourier.Text;
         }
 
         private void btnAsignar_Click(object sender, EventArgs e)
@@ -1303,7 +1290,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             txtCourier.Text = PaperlessAsignacionActual.TxtCourier;
             txtfechaMasterConfirmado.Text = PaperlessAsignacionActual.FechaMasterConfirmado.HasValue ? PaperlessAsignacionActual.FechaMasterConfirmado.Value.ToString() : "";
         }
-        private  void CargaShippingPuerto()
+        private void CargaShippingPuerto()
         {
             try
             {
@@ -1320,6 +1307,24 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             catch (Exception ex)
             {
             }
+        }
+
+        private void MenuMantNavieras_Click(object sender, EventArgs e)
+        {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            Clientes.frmNavieras form = Clientes.frmNavieras.Instancia;
+            form.fromPaperless = true;
+            form.InstanciaPaperless = Instancia;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            frmListaAsignaciones form = frmListaAsignaciones.Instancia;
+            form.ListarAsignaciones();
+            Instancia = null;
+            Close();
         }
     }
 }

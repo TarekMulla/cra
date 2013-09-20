@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<panel name="" description="">
+  <panel title="PaperLess indicadores Fase 1" x="210" y="30" width="620" heigth="300">
+    <control x="-50" y="10" width="200" heigth="280">SemaforosAceptados.xml</control>
+  </panel>
+</panel>

@@ -20,7 +20,7 @@
   <detail>
     <datasourse>
       <![CDATA[
-            SELECT  I.NumConsolidado,
+           SELECT  I.NumConsolidado,
               FechaMaster,
               C.Descripcion as 'Agente',
               D.Descripcion as 'Naviera',
@@ -31,7 +31,8 @@
               convert(varchar(20),FechaEta,113) as 'ETA',
               DATEDIFF(DAY,GETDATE(),FechaETA) as 'Dif',
               convert(varchar(20),AperturaNavieras,113) as 'Apertura',
-              g.NombreUsuario as 'usuario1',
+              g.NombreUsuario as 'Usuario1',
+              H.NombreUsuario as 'Usuario2',
               F.Descripcion as 'Estado'
               FROM PAPERLESS_ASIGNACION A 
                       LEFT OUTER JOIN PAPERLESS_AGENTE C

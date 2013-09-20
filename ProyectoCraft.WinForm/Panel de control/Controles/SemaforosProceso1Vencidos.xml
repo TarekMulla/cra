@@ -29,8 +29,8 @@
           Viaje,
           NumHousesBL,
           FechaETA,
-          AperturaNavieras as AperturaNavieras_GREEN,
-          PlazoEmbarcadores,
+	  A.TiempoEstimadoUsr1 as 'Plazo(min)',
+	  DATEDIFF(n,FechaAceptacionUsr1,  GETDATE()) as 'Real(min)', 
           g.NombreUsuario as 'usuario1',
           h.NombreUsuario as 'usuario2',
           F.Descripcion as 'Estado'

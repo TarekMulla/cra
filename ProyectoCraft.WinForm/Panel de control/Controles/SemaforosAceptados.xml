@@ -28,7 +28,8 @@
               Viaje,
               convert(varchar(20),FechaPaso3,113) as 'Fecha Asignacion',
               convert(varchar(20),getdate(),113) as 'Actual',
-              cast(DateDiff(day, fechapaso3, getdate()) as varchar)  + ':' + convert(nvarchar(5),dateadd(minute,Datediff(minute,FechaPaso3,getdate()),0),8) as Tiempo,
+              --cast(DateDiff(day, fechapaso3, getdate()) as varchar)  + ':' + convert(nvarchar(5),dateadd(minute,Datediff(minute,FechaPaso3,getdate()),0),8) as Tiempo,
+	      cast((Datediff(minute,fechaPaso3,getdate())/1440) as varchar)  + ':' + convert(nvarchar(5),dateadd(minute,Datediff(minute,fechaPaso3,getdate()),0),8) as Tiempo,
               g.NombreUsuario as 'usuario1',
               F.Descripcion as 'Estado'
               FROM PAPERLESS_ASIGNACION A 

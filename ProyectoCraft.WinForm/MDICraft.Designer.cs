@@ -473,7 +473,6 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.manCotDirectas)});
             this.menuAdministracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("menuAdministracion.LargeImage")));
             this.menuAdministracion.Name = "menuAdministracion";
-            this.menuAdministracion.TopVisibleLinkIndex = 1;
             // 
             // MantNavieras
             // 

@@ -122,13 +122,14 @@ namespace ProyectoCraft.WinForm {
 
             //mostrando el panel de control
             if (Base.Usuario.UsuarioConectado.Usuario.Perfiles != null && Base.Usuario.UsuarioConectado.Usuario.Perfiles.Count > 0)
-                if (Base.Usuario.UsuarioConectado.Usuario.Perfiles[0].PanelDeControl != null) {
+                //if (Base.Usuario.UsuarioConectado.Usuario.Perfiles[0].PanelDeControl != null) 
+                //{
                     foreach (var clsPerfil in Base.Usuario.UsuarioConectado.Usuario.Perfiles) {
                         if (clsPerfil.PanelDeControl != null && !String.IsNullOrEmpty(clsPerfil.PanelDeControl.XmlFile)) {
                             panelDecontrols.Add(clsPerfil.PanelDeControl);
                         }
                     }
-                }
+                //}
 
             foreach (var clsPanelDeControl in panelDecontrols) {
                 ToolStripMenuItem item1 = new ToolStripMenuItem(clsPanelDeControl.Nombre);

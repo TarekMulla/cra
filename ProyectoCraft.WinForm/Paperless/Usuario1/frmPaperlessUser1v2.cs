@@ -133,8 +133,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             CargarPasos();
         }
-
-        protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
+        private void MarcarCambioEstadoPasoChile(object sender, EventArgs e)
         {
             DevExpress.XtraEditors.CheckEdit check = sender as DevExpress.XtraEditors.CheckEdit;
             if (check == null) return;
@@ -174,6 +173,65 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 CargarPasos();
             }
         }
+        private void MarcarCambioEstadoPasoBrasil(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit check = sender as DevExpress.XtraEditors.CheckEdit;
+            if (check == null) return;
+
+            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+
+            //paso.Paso.NumPaso == 1 || paso.Paso.NumPaso == 2 || paso.Paso.NumPaso == 6 || 
+
+            if (paso.Paso.NumPaso == 1)
+            {
+                paso.Estado = false;
+                CargarPasos();
+                return;
+            }
+
+            if (paso.Paso.NumPaso == 11)
+            {
+                //paso.Estado = false;
+                //CargarPasos();
+                //return;
+            }
+
+            if (!ValidarPermiteCambiarPasoEstado(paso))
+            {
+                paso.Estado = false;
+                CargarPasos();
+                return;
+            }
+
+            if (paso.Estado)
+            {
+                CargarPasos();
+                return;
+            }
+
+
+            paso.Estado = check.Checked;
+            Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1CambiarEstadoPaso(paso);
+            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+            {
+                MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CargarPasos();
+            }
+        }
+
+        protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
+        {
+            var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                MarcarCambioEstadoPasoBrasil(sender, e);
+            else
+                MarcarCambioEstadoPasoChile(sender, e);
+        }
 
         public void LimpiarFormulario()
         {
@@ -198,18 +256,70 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private void CargarClientesExistentesHousesBL()
         {
-            CargaClientes();
-            ComboBoxItemCollection coll = ddlP1Cliente.Properties.Items;
-            coll.Add(Utils.Utils.ObtenerPrimerItem());
-            foreach (var list in clientes)
+            var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(false))
             {
-                coll.Add(list);
-            }
-            ddlP1Cliente.SelectedIndex = 0;
+                CargaClientes();
+                ComboBoxItemCollection coll = ddlP1Cliente.Properties.Items;
+                coll.Add(Utils.Utils.ObtenerPrimerItem());
+                foreach (var list in clientes)
+                {
+                    coll.Add(list);
+                }
+                ddlP1Cliente.SelectedIndex = 0;
+            }            
         }
 
-        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e)
+        private void MarcaPasoBrasil(object sender, CustomRowCellEditEventArgs e)
         {
+            pnlPaso1.Visible = false;
+            pnlPaso3.Visible = false;
+            pnlExcepciones.Visible = false;
+            pnlEnviarAviso.Visible = false;
+            panelDisputas.Visible = false;
+            var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
+
+
+            if (e.RowHandle == 0)
+            {
+                pnlPaso1.Visible = true;
+                grdP1DigitarHousesBL.Visible = false;
+            }
+
+            if (e.RowHandle == 1)
+            {
+                //if (foo[0].Estado)
+                //{
+                //    CargarPaso2TransitoTransbordo();
+                //    pnlPaso3.Visible = true;
+                //}
+            }
+            if (e.RowHandle == 5)
+            {
+                //if (foo[4].Estado)
+                //{
+                //    CargarPaso6Excepciones();
+                //    pnlExcepciones.Visible = true;
+                //}
+            }
+
+            //if (e.RowHandle == 9)
+            //    if (foo[8].Estado)
+            //    {
+            //        CargarPasoDisputa();
+            //    }
+
+            if (e.RowHandle == 18)
+                if (foo[9].Estado)
+                {
+                    pnlEnviarAviso.Visible = true;
+                }
+
+        }
+        private void MarcaPasoChile(object sender, CustomRowCellEditEventArgs e)
+        {
+
             pnlPaso1.Visible = false;
             pnlPaso3.Visible = false;
             pnlExcepciones.Visible = false;
@@ -267,6 +377,19 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 {
                     pnlEnviarAviso.Visible = true;
                 }
+
+        }
+
+        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e)
+        {
+            //Cargamos la configuracion
+            var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                MarcaPasoBrasil(sender, e);
+            else
+                MarcaPasoChile(sender, e);
+
         }
 
         private void CargarPasoDisputa()
@@ -438,6 +561,16 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private bool ValidarHousesBLInfo()
         {
+            //Cargamos la configuracion
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                return ValidarHousesBLInfoBrasil();
+            return ValidarHousesBLInfoChile();
+        }
+
+        private bool ValidarHousesBLInfoChile()
+        {
             bool valida = true;
 
             dxErrorProvider1.ClearErrors();
@@ -462,6 +595,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 dxErrorProvider1.ClearErrors();
             }
 
+
+
             IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
             foreach (var house in listhouses)
             {
@@ -474,8 +609,62 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             }
 
             return valida;
-        }
 
+        }
+        private bool ValidarHousesBLInfoBrasil()
+        {
+            bool valida = true;
+
+            dxErrorProvider1.ClearErrors();
+            if (txtP1CantHouses.Text.Length.Equals(0))
+            {
+                dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses", ErrorType.Critical);
+                valida = false;
+            }
+
+            if (txtP1NumConsolidado.Text.Length.Equals(0))
+            {
+                dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar numero de consolidado", ErrorType.Critical);
+                valida = false;
+            }
+            else
+            {
+                if (LogicaNegocios.Paperless.Paperless.ValidaNumConsolidado(txtP1NumConsolidado.Text).Equals(true))
+                {
+                    dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el numero de consolidado", ErrorType.Critical);
+                    return false;
+                }
+                dxErrorProvider1.ClearErrors();
+            }
+            int cont = 1;
+            //cambio guillermo, se quita validacion de hbls
+            IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
+            foreach (var house in listhouses)
+            {
+                cont++;
+                if (house.HouseBL.Trim().Length.Equals(0) || house.Cliente == null || house.TipoCliente == null || house.TipoCliente.Id.Equals(0))
+                {
+                    GeneraDummy(house, cont);
+                    //lblP1errorHouses.Visible = true;
+                    //valida = false;
+                    //break;T
+                }
+            }
+
+            return valida;
+        }
+        private void GeneraDummy(PaperlessUsuario1HousesBL house, int i)
+        {
+            var item = new IntegracionNetShip();
+            item.HouseBl = "hblsDummy" + i;
+            item.Rut = i.ToString();
+            item.Cliente = "ClienteDummy";
+            item.TipoCliente = "Directo";
+            item.Ruteado = true;
+            item.ShippingInstruction = "";
+            item.Puerto = "";
+            return;
+        }
         private PaperlessUsuario1HouseBLInfo Usuario1ObtenerHousesBLInfo()
         {
             PaperlessUsuario1HouseBLInfo info = new PaperlessUsuario1HouseBLInfo();
@@ -894,18 +1083,23 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private void CargaClientes()
         {
-            if (listTargets == null)
-                listTargets = LogicaNegocios.Clientes.clsClientesMaster.ListarClienteMaster("-1", Enums.TipoPersona.Cuenta, Enums.Estado.Todos, true);
-            if (listClientesPaperless == null)
-                listClientesPaperless = LogicaNegocios.Clientes.clsClientesMaster.ListarClienteMaster("-1", Enums.TipoPersona.CuentaPaperless,
-                                                                                  Enums.Estado.Todos, true);
-            if (clientes == null)
-                clientes = new List<clsClienteMaster>();
-            if (clientes.Count.Equals(0))
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(false))
             {
-                clientes.AddRange(listTargets);
-                clientes.AddRange(listClientesPaperless);
-            }
+                if (listTargets == null)
+                    listTargets = LogicaNegocios.Clientes.clsClientesMaster.ListarClienteMaster("-1", Enums.TipoPersona.Cuenta, Enums.Estado.Todos, true);
+                if (listClientesPaperless == null)
+                    listClientesPaperless = LogicaNegocios.Clientes.clsClientesMaster.ListarClienteMaster("-1", Enums.TipoPersona.CuentaPaperless,
+                                                                                      Enums.Estado.Todos, true);
+                if (clientes == null)
+                    clientes = new List<clsClienteMaster>();
+                if (clientes.Count.Equals(0))
+                {
+                    clientes.AddRange(listTargets);
+                    clientes.AddRange(listClientesPaperless);
+                }
+            }       
         }
 
         private void grdExcepciones_Click(object sender, EventArgs e)
@@ -1203,7 +1397,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     var shippingInstruction = netShips[i - 1].ShippingInstruction;
                     if (shippingInstruction != null)
                         house.ShippingInstruction = shippingInstruction;
-                    
+
                     var port = netShips[i - 1].Puerto;
                     if (port != null)
                         house.Puerto = port;

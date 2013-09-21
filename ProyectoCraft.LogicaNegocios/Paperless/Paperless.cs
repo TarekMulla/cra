@@ -270,7 +270,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
 
             listparaembarcadores = housesembarcadoressource.FindAll(delegate(PaperlessUsuario1HousesBL foo)
                                                           {
-                                                              return foo.TipoCliente.Nombre.ToUpper() == "EMBARCADOR";
+                                                              return foo.TipoCliente != null && foo.TipoCliente.Nombre.ToUpper() == "EMBARCADOR";
                                                           });
             return listparaembarcadores;
         }

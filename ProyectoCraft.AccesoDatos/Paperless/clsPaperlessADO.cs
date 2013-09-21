@@ -1514,9 +1514,137 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return houses;
         }
 
+        private static ResultadoTransaccion Usuario1GuardaHousesBL_Brasil(IList<PaperlessUsuario1HousesBL> houses,
+                                                               PaperlessUsuario1HouseBLInfo info,
+                                                               PaperlessPasosEstado paso)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+            bool esupdate = false;
 
+            try
+            {
+                //Eliminar Info anterior
+                //resultado = Usuario1EliminarHousesBLFull(houses[0].IdAsignacion, conn, transaction);
+                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                //    throw new Exception(resultado.Descripcion);
+
+                //Registrar houses
+                foreach (var house in houses)
+                {
+                    if (house.IsNew)
+                    {
+                        if (house.Cliente != null && house.Cliente.IsNew)
+                        {
+                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
+                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                                throw new Exception(resultado.Descripcion);
+                            else
+                            {
+                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                            }
+                        }
+
+
+                        resultado = Usuario1AgregarHouseBL(house, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                        else
+                        {
+                            house.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                        }
+
+                        //verificar si tiene recargo collect
+
+                        house.ExcepcionRecargoCollect.IdAsignacion = house.IdAsignacion;
+                        house.ExcepcionRecargoCollect.HouseBL.Id = house.Id;
+
+
+                        resultado = Usuario1MarcaIngresoExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+
+                    }
+                    else
+                    {
+                        if (house.Cliente.IsNew)
+                        {
+                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
+                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                                throw new Exception(resultado.Descripcion);
+                            else
+                            {
+                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                            }
+                        }
+
+                        resultado = Usuario1ActualizaPaso1(house, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                        esupdate = true;
+
+                        resultado = Usuario1ActualizaExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                    }
+
+                }
+
+                //guardar info
+                if (!esupdate)
+                {
+                    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                    else
+                        info.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                }
+                else
+                {
+                    resultado = Usuario1ActualizaPaso1Info(info, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                }
+
+
+                //cambiar estado paso
+                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resultado.Descripcion);
+
+
+                transaction.Commit();
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return resultado;
+        }
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses,
+                                                               PaperlessUsuario1HouseBLInfo info,
+                                                               PaperlessPasosEstado paso)
+        {
+
+            //Cargamos la configuracion
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                return Usuario1GuardaHousesBL_Brasil(houses, info, paso);
+            return Usuario1GuardaHousesBL_Chile(houses, info, paso);
+
+        }
+        public static ResultadoTransaccion Usuario1GuardaHousesBL_Chile(IList<PaperlessUsuario1HousesBL> houses,
                                                                   PaperlessUsuario1HouseBLInfo info,
                                                                   PaperlessPasosEstado paso)
         {
@@ -1645,10 +1773,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[1].Value = housebl.Index;
                 objParams[2].Value = housebl.HouseBL;
                 objParams[3].Value = housebl.Freehand;
-                objParams[4].Value = housebl.Cliente.Id;
-                objParams[5].Value = housebl.TipoCliente.Id;
-                objParams[6].Value = housebl.ShippingInstruction;
-                objParams[7].Value = housebl.Puerto;
+                //objParams[4].Value = housebl.Cliente.Id;
+                //objParams[5].Value = housebl.TipoCliente.Id;
+                if (housebl.Cliente != null) objParams[4].Value = housebl.Cliente.Id;
+                if (housebl.TipoCliente != null) objParams[5].Value = housebl.TipoCliente.Id;
+
+                if (housebl.ShippingInstruction != null) objParams[6].Value = housebl.ShippingInstruction;
+                if (housebl.ShippingInstruction != null) objParams[7].Value = housebl.Puerto;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_HOUSESBL", connparam);
                 command.Parameters.AddRange(objParams);
@@ -3748,7 +3879,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 {
                     var ht = new PaperlessCantUsuarios();
                     ht.NombreUsuario = dreader["NOMBREUSUARIO"].ToString();
-                    ht.Cantidad = Convert.ToInt32(dreader["CANT"]);                    
+                    ht.Cantidad = Convert.ToInt32(dreader["CANT"]);
                     lista.Add(ht);
                 }
             }

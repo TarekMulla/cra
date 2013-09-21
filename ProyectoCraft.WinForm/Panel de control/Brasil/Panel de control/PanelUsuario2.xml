@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<panel name="" description="">
+  <panel title="Indicadores Conferencia – Vinculación" x="210" y="30" width="800" heigth="300">
+    <!--<control x="-50" y="30" width="300" heigth="300">control1</control>
+    <control x="100" y="30" width="300" heigth="300">control1_0</control>-->
+    <control x="-50" y="10" width="200" heigth="280">Semaforo5dias.xml</control>
+    <control x="100" y="10" width="200" heigth="280">Semaforo2dias.xml</control>
+    <control x="250" y="10" width="200" heigth="280">Semaforo1dias.xml</control>
+    <control x="400" y="10" width="200" heigth="280">SemaforosVencidos.xml</control>
+    <col></col>
+  </panel>
+</panel>

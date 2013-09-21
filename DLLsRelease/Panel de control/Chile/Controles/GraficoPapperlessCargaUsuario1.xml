@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<control type="GraficoBarra3D" refresh="90" title="este es el titulo"  baseControl="graficoBarra.xml">
+  <description>
+    Control para graficar las diferencias entre x e y
+  </description>
+  <datasource>
+    select 'Jan' as mes , 'Section1' as seccion, 10 as Value
+    union
+    select 'Feb' as mes , 'Section1' as seccion, 30 as Value
+    union
+    select 'Mar' as mes , 'Section1' as seccion, 20 as Value
+    UNION
+    select 'Jan' as mes , 'Section2' as seccion, 200 as Value
+    union
+    select 'Feb' as mes , 'Section2' as seccion, 50 as Value
+    union
+    select 'Mar' as mes , 'Section2' as seccion, 10 as Value
+    UNION
+    select 'Jan' as mes , 'Section3' as seccion, 80 as Value
+    union
+    select 'Feb' as mes , 'Section3' as seccion, 80 as Value
+    union
+    select 'Mar' as mes , 'Section3' as seccion, 100 as Value
+
+  </datasource>
+  <detail>
+    <datasourse>
+      <![CDATA[
+        
+        SELECT  NumMaster,
+          FechaMaster,
+          C.Descripcion as 'agente',
+          D.Descripcion as 'naviera',
+          E.Descripcion as 'nave',
+          Viaje,
+          NumHousesBL,
+          FechaETA,
+          AperturaNavieras as AperturaNavieras_GREEN,
+          PlazoEmbarcadores,
+          g.NombreUsuario as 'usuario1',
+          h.NombreUsuario as 'usuario2',
+          F.Descripcion as 'Estado'
+          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
+               ON A.id=B.idAsignacion
+                  LEFT OUTER JOIN PAPERLESS_AGENTE C
+                      ON A.IdAgente=C.Id
+                      LEFT OUTER JOIN PAPERLESS_NAVIERA D
+                          ON A.IdNaviera = D.Id
+                              LEFT OUTER JOIN PAPERLESS_NAVE E
+                                 ON A.IdNave = E.Id
+                                 LEFT OUTER JOIN PAPERLESS_ESTADO F
+                                 ON A.IdEstado = F.Id
+                                     LEFT OUTER JOIN USUARIOS G
+                                     ON A.Usuario1 = G.Id
+                                        LEFT OUTER JOIN USUARIOS H
+                                          ON A.Usuario2 = H.Id
+          WHERE   CONVERT(VARCHAR(20),A.aperturanavieras,112) < CONVERT(VARCHAR(20),GETDATE(),112)
+          AND     B.NumPaso=4
+          AND     B.fechamarca IS NULL
+          ORDER BY AperturaNavieras ASC
+      ]]>
+    </datasourse>
+  </detail>
+</control>

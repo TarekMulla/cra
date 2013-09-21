@@ -977,46 +977,103 @@
     <Content Include="Panel de control\baseControl\termometro_vertical.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\control1.xml">
+    <Content Include="Panel de control\Brasil\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\control1_0.xml">
+    <Content Include="Panel de control\Brasil\Controles\control1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+    <Content Include="Panel de control\Brasil\Controles\control1_0.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\Semaforo5diasCourier.xml">
+    <Content Include="Panel de control\Brasil\Controles\GraficoPapperlessCargaUsuario1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\SemaforosAceptados.xml">
+    <Content Include="Panel de control\Brasil\Controles\Semaforo1dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\GraficoPapperlessCargaUsuario1.xml">
+    <Content Include="Panel de control\Brasil\Controles\Semaforo2dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\SemaforosProceso1Vencidos.xml">
+    <Content Include="Panel de control\Brasil\Controles\Semaforo5dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\SemaforosVencidos.xml">
+    <Content Include="Panel de control\Brasil\Controles\Semaforo5diasCourier.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\Semaforo1dias.xml">
+    <Content Include="Panel de control\Brasil\Controles\SemaforosAceptados.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\Semaforo2dias.xml">
+    <Content Include="Panel de control\Brasil\Controles\SemaforosProceso1Vencidos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Controles\Semaforo5dias.xml">
+    <Content Include="Panel de control\Brasil\Controles\SemaforosVencidos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Panel de control\PanelUsuario1.xml">
+    <Content Include="Panel de control\Brasil\Panel de control\panel1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Panel de control\panel1.xml">
+    <Content Include="Panel de control\Brasil\Panel de control\panel1_.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Panel de control\PanelPaperLessindicadoresFase1.xml">
+    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1_OLD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2_old.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\control1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\control1_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo5diasCourier.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosAceptados.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\GraficoPapperlessCargaUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosProceso1Vencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosVencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo1dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo2dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo5dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\panel1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelPaperLessindicadoresFase1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\iconoPuerto.png" />

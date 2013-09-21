@@ -1,1 +1,11 @@
 insert into configuracion values ('Paperless_BtnMantNavieras_Enabled',1,'Habilitar el boton de Mantenedor de Navieras en la pantalla de paperless asignacion',GETDATE())
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chk_paso1_Ruteado_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chk_paso1_Shipping_instruction_enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chk_Paso1_Tipo_de_cliente_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chklist_Fcl_FH_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chklist_FCL_RO_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chkList_LCL_Estandar_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_GraficosAsignacionUsuario1y2_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_txtfechaAperturaNavieras_Enabled',1) 
+INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_txtfechaMaximaVinculacion_Enabled',1) 
+GO

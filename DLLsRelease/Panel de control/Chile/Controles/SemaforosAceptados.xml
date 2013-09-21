@@ -20,7 +20,9 @@
     <datasourse>
       <![CDATA[
         
-            SELECT  FechaMaster,
+          SELECT  
+	      I.NumConsolidado,
+	      FechaMaster,
               C.Descripcion as 'Agente',
               D.Descripcion as 'Naviera',
               E.Descripcion as 'Nave',

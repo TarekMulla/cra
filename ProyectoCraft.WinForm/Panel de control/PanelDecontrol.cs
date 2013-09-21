@@ -25,9 +25,21 @@ namespace SCCMultimodal.Panel_de_control {
         public String Name { set; get; }
         public String Description { set; get; }
         public IList<PanelContainer> PanelContainers { set; get; }
+        public string Path { get; set; }
+
         public void LoadControls(String panelName) {
-            var pathxml = Path.Combine(Application.StartupPath, string.Format(
-                                                 @"panel de control/panel de control/{0}", panelName));
+
+            //Cargamos la configuracion
+            var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Semaforos_Brasil_Enabled"); //puede retornar un true, false o null
+
+            var pathxml = "";
+
+            Path = opcion.HasValue && opcion.Value.Equals(true) ? @"panel de control/Brasil" : @"panel de control/Chile";
+
+            pathxml = System.IO.Path.Combine(Application.StartupPath, string.Format(
+                                                 @Path + "/panel de control/{0}", panelName));
+            
             var xmldoc = new XmlDocument();
             xmldoc.Load(pathxml);
 
@@ -46,8 +58,8 @@ namespace SCCMultimodal.Panel_de_control {
                     if (!String.IsNullOrEmpty(xmlnode.InnerText.Trim())) {
                         MyControl myControl = null;
                         var xmldocControles = new XmlDocument();
-                        xmldocControles.Load(Path.Combine(Application.StartupPath, string.Format(
-                            @"panel de control/controles/{0}", xmlnode.InnerText.Trim())));
+                        xmldocControles.Load(System.IO.Path.Combine(Application.StartupPath, string.Format(
+                            @Path + "/controles/{0}", xmlnode.InnerText.Trim())));
                         var TypeOfControl = xmldocControles.SelectSingleNode("/control").Attributes["type"].Value;
                         size = new Size(Convert.ToInt16(xmlnode.Attributes["width"].Value),
                                             Convert.ToInt16(xmlnode.Attributes["heigth"].Value));

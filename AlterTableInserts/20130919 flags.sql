@@ -8,4 +8,6 @@ INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_chkList_LCL_E
 INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_GraficosAsignacionUsuario1y2_Enabled',1) 
 INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_txtfechaAperturaNavieras_Enabled',1) 
 INSERT INTO [dbo].[configuracion]([key],[value]) VALUES('paperless_txtfechaMaximaVinculacion_Enabled',1) 
+Insert into configuracion values  ('Semaforos_Brasil_Enabled', 1, '', GETDATE())
+Insert into configuracion values  ('Paperless_ParcialBrasil', 1, 'Carga la version piloto de brasil en el SCC', GETDATE())
 GO

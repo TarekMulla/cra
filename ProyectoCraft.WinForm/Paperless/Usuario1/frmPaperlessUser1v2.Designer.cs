@@ -311,9 +311,9 @@
             this.pnlPaso1.Controls.Add(this.grdP1DigitarHousesBL);
             this.pnlPaso1.Controls.Add(this.txtP1NumConsolidado);
             this.pnlPaso1.Controls.Add(this.labelControl15);
-            this.pnlPaso1.Location = new System.Drawing.Point(312, 157);
+            this.pnlPaso1.Location = new System.Drawing.Point(345, 157);
             this.pnlPaso1.Name = "pnlPaso1";
-            this.pnlPaso1.Size = new System.Drawing.Size(848, 432);
+            this.pnlPaso1.Size = new System.Drawing.Size(839, 432);
             this.pnlPaso1.TabIndex = 4;
             this.pnlPaso1.Visible = false;
             // 
@@ -401,7 +401,7 @@
             this.grdP1DigitarHousesBL.Location = new System.Drawing.Point(13, 55);
             this.grdP1DigitarHousesBL.MainView = this.gridView5;
             this.grdP1DigitarHousesBL.Name = "grdP1DigitarHousesBL";
-            this.grdP1DigitarHousesBL.Size = new System.Drawing.Size(823, 370);
+            this.grdP1DigitarHousesBL.Size = new System.Drawing.Size(814, 370);
             this.grdP1DigitarHousesBL.TabIndex = 0;
             this.grdP1DigitarHousesBL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5,
@@ -542,7 +542,7 @@
             this.grdP3HousesRuteados.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
             this.repositoryItemComboBox1});
-            this.grdP3HousesRuteados.Size = new System.Drawing.Size(823, 361);
+            this.grdP3HousesRuteados.Size = new System.Drawing.Size(816, 361);
             this.grdP3HousesRuteados.TabIndex = 5;
             this.grdP3HousesRuteados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3,
@@ -683,9 +683,9 @@
             this.pnlPaso3.Controls.Add(this.btnP2GuardarHousesRuteados);
             this.pnlPaso3.Controls.Add(this.labelControl20);
             this.pnlPaso3.Controls.Add(this.grdP3HousesRuteados);
-            this.pnlPaso3.Location = new System.Drawing.Point(314, 156);
+            this.pnlPaso3.Location = new System.Drawing.Point(345, 156);
             this.pnlPaso3.Name = "pnlPaso3";
-            this.pnlPaso3.Size = new System.Drawing.Size(858, 434);
+            this.pnlPaso3.Size = new System.Drawing.Size(851, 434);
             this.pnlPaso3.TabIndex = 4;
             // 
             // lblErrorPaso2
@@ -725,9 +725,9 @@
             this.pnlExcepciones.Controls.Add(this.labelControl1);
             this.pnlExcepciones.Controls.Add(this.lblP11ErrorExcepcion);
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
-            this.pnlExcepciones.Location = new System.Drawing.Point(313, 154);
+            this.pnlExcepciones.Location = new System.Drawing.Point(345, 154);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(854, 374);
+            this.pnlExcepciones.Size = new System.Drawing.Size(822, 374);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Visible = false;
             // 
@@ -767,7 +767,7 @@
             this.grdExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdExcepciones.Location = new System.Drawing.Point(5, 38);
+            this.grdExcepciones.Location = new System.Drawing.Point(32, 38);
             this.grdExcepciones.MainView = this.gridView1;
             this.grdExcepciones.Name = "grdExcepciones";
             this.grdExcepciones.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -785,7 +785,7 @@
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3,
             this.repositoryItemMemoExEdit2});
-            this.grdExcepciones.Size = new System.Drawing.Size(844, 331);
+            this.grdExcepciones.Size = new System.Drawing.Size(785, 331);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -1145,9 +1145,9 @@
             this.panelDisputas.Controls.Add(this.GridDisputas);
             this.panelDisputas.Controls.Add(this.btnGuardarDisputas);
             this.panelDisputas.Controls.Add(this.labelControl5);
-            this.panelDisputas.Location = new System.Drawing.Point(312, 157);
+            this.panelDisputas.Location = new System.Drawing.Point(345, 157);
             this.panelDisputas.Name = "panelDisputas";
-            this.panelDisputas.Size = new System.Drawing.Size(848, 377);
+            this.panelDisputas.Size = new System.Drawing.Size(815, 377);
             this.panelDisputas.TabIndex = 8;
             // 
             // LabelErrorDisputa
@@ -1208,7 +1208,7 @@
             this.repositoryItemComboBox7,
             this.repositoryItemMemoExEdit1,
             this.repositoryItemTextEdit3});
-            this.GridDisputas.Size = new System.Drawing.Size(764, 329);
+            this.GridDisputas.Size = new System.Drawing.Size(731, 329);
             this.GridDisputas.TabIndex = 4;
             this.GridDisputas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDisputas,
@@ -1510,7 +1510,7 @@
             this.grdPasos.Name = "grdPasos";
             this.grdPasos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.RepositoryCheckPasos});
-            this.grdPasos.Size = new System.Drawing.Size(294, 436);
+            this.grdPasos.Size = new System.Drawing.Size(327, 436);
             this.grdPasos.TabIndex = 3;
             this.grdPasos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1539,12 +1539,13 @@
             // 
             this.gridColumn4.Caption = "N°";
             this.gridColumn4.FieldName = "Paso.NumPaso";
+            this.gridColumn4.MinWidth = 10;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 0;
-            this.gridColumn4.Width = 47;
+            this.gridColumn4.Width = 30;
             // 
             // gridColumn5
             // 
@@ -1555,16 +1556,17 @@
             this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 1;
-            this.gridColumn5.Width = 177;
+            this.gridColumn5.Width = 195;
             // 
             // gridColumn6
             // 
             this.gridColumn6.ColumnEdit = this.RepositoryCheckPasos;
             this.gridColumn6.FieldName = "Estado";
+            this.gridColumn6.MinWidth = 10;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 70;
+            this.gridColumn6.Width = 40;
             // 
             // RepositoryCheckPasos
             // 
@@ -1580,9 +1582,9 @@
             this.pnlEnviarAviso.Controls.Add(this.btnReenviarAvisoUsuario2);
             this.pnlEnviarAviso.Controls.Add(this.labelControl2);
             this.pnlEnviarAviso.Controls.Add(this.btnP13EnviarAviso);
-            this.pnlEnviarAviso.Location = new System.Drawing.Point(312, 154);
+            this.pnlEnviarAviso.Location = new System.Drawing.Point(345, 154);
             this.pnlEnviarAviso.Name = "pnlEnviarAviso";
-            this.pnlEnviarAviso.Size = new System.Drawing.Size(853, 433);
+            this.pnlEnviarAviso.Size = new System.Drawing.Size(844, 433);
             this.pnlEnviarAviso.TabIndex = 6;
             this.pnlEnviarAviso.Visible = false;
             // 
@@ -1634,7 +1636,7 @@
             this.MenuSalir});
             this.toobar.Location = new System.Drawing.Point(0, 0);
             this.toobar.Name = "toobar";
-            this.toobar.Size = new System.Drawing.Size(1172, 38);
+            this.toobar.Size = new System.Drawing.Size(1196, 38);
             this.toobar.TabIndex = 7;
             this.toobar.Text = "toolStrip1";
             // 
@@ -1666,7 +1668,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 599);
+            this.ClientSize = new System.Drawing.Size(1196, 599);
             this.Controls.Add(this.toobar);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);

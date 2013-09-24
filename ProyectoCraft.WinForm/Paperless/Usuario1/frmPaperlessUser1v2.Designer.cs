@@ -75,9 +75,9 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pnlPaso3 = new DevExpress.XtraEditors.PanelControl();
-            this.lblErrorPaso2 = new DevExpress.XtraEditors.LabelControl();
             this.btnP2GuardarHousesRuteados = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.lblErrorPaso2 = new DevExpress.XtraEditors.LabelControl();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
             this.btnP11Excepciones = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -679,25 +679,14 @@
             this.pnlPaso3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPaso3.Controls.Add(this.lblErrorPaso2);
             this.pnlPaso3.Controls.Add(this.btnP2GuardarHousesRuteados);
             this.pnlPaso3.Controls.Add(this.labelControl20);
+            this.pnlPaso3.Controls.Add(this.lblErrorPaso2);
             this.pnlPaso3.Controls.Add(this.grdP3HousesRuteados);
             this.pnlPaso3.Location = new System.Drawing.Point(345, 156);
             this.pnlPaso3.Name = "pnlPaso3";
             this.pnlPaso3.Size = new System.Drawing.Size(839, 434);
             this.pnlPaso3.TabIndex = 4;
-            // 
-            // lblErrorPaso2
-            // 
-            this.lblErrorPaso2.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorPaso2.Appearance.Options.UseForeColor = true;
-            this.lblErrorPaso2.Location = new System.Drawing.Point(165, 13);
-            this.lblErrorPaso2.Name = "lblErrorPaso2";
-            this.lblErrorPaso2.Size = new System.Drawing.Size(220, 13);
-            this.lblErrorPaso2.TabIndex = 6;
-            this.lblErrorPaso2.Text = "Existen Transbordo y transitos no ingresados ";
-            this.lblErrorPaso2.Visible = false;
             // 
             // btnP2GuardarHousesRuteados
             // 
@@ -718,6 +707,17 @@
             this.labelControl20.Size = new System.Drawing.Size(114, 13);
             this.labelControl20.TabIndex = 2;
             this.labelControl20.Text = "Marcar Transbordos";
+            // 
+            // lblErrorPaso2
+            // 
+            this.lblErrorPaso2.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorPaso2.Appearance.Options.UseForeColor = true;
+            this.lblErrorPaso2.Location = new System.Drawing.Point(165, 13);
+            this.lblErrorPaso2.Name = "lblErrorPaso2";
+            this.lblErrorPaso2.Size = new System.Drawing.Size(220, 13);
+            this.lblErrorPaso2.TabIndex = 6;
+            this.lblErrorPaso2.Text = "Existen Transbordo y transitos no ingresados ";
+            this.lblErrorPaso2.Visible = false;
             // 
             // pnlExcepciones
             // 

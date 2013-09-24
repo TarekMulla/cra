@@ -308,9 +308,9 @@
             this.pnlPaso1.Controls.Add(this.lblP1errorHouses);
             this.pnlPaso1.Controls.Add(this.labelControl16);
             this.pnlPaso1.Controls.Add(this.labelControl14);
-            this.pnlPaso1.Controls.Add(this.grdP1DigitarHousesBL);
             this.pnlPaso1.Controls.Add(this.txtP1NumConsolidado);
             this.pnlPaso1.Controls.Add(this.labelControl15);
+            this.pnlPaso1.Controls.Add(this.grdP1DigitarHousesBL);
             this.pnlPaso1.Location = new System.Drawing.Point(345, 157);
             this.pnlPaso1.Name = "pnlPaso1";
             this.pnlPaso1.Size = new System.Drawing.Size(839, 432);
@@ -542,7 +542,7 @@
             this.grdP3HousesRuteados.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
             this.repositoryItemComboBox1});
-            this.grdP3HousesRuteados.Size = new System.Drawing.Size(816, 361);
+            this.grdP3HousesRuteados.Size = new System.Drawing.Size(804, 361);
             this.grdP3HousesRuteados.TabIndex = 5;
             this.grdP3HousesRuteados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3,
@@ -685,7 +685,7 @@
             this.pnlPaso3.Controls.Add(this.grdP3HousesRuteados);
             this.pnlPaso3.Location = new System.Drawing.Point(345, 156);
             this.pnlPaso3.Name = "pnlPaso3";
-            this.pnlPaso3.Size = new System.Drawing.Size(851, 434);
+            this.pnlPaso3.Size = new System.Drawing.Size(839, 434);
             this.pnlPaso3.TabIndex = 4;
             // 
             // lblErrorPaso2
@@ -727,14 +727,14 @@
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Location = new System.Drawing.Point(345, 154);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(822, 374);
+            this.pnlExcepciones.Size = new System.Drawing.Size(839, 374);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Visible = false;
             // 
             // btnP11Excepciones
             // 
             this.btnP11Excepciones.Image = ((System.Drawing.Image)(resources.GetObject("btnP11Excepciones.Image")));
-            this.btnP11Excepciones.Location = new System.Drawing.Point(691, 5);
+            this.btnP11Excepciones.Location = new System.Drawing.Point(659, 5);
             this.btnP11Excepciones.Name = "btnP11Excepciones";
             this.btnP11Excepciones.Size = new System.Drawing.Size(156, 29);
             this.btnP11Excepciones.TabIndex = 2;
@@ -785,7 +785,7 @@
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3,
             this.repositoryItemMemoExEdit2});
-            this.grdExcepciones.Size = new System.Drawing.Size(785, 331);
+            this.grdExcepciones.Size = new System.Drawing.Size(802, 331);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -1486,7 +1486,7 @@
             // btnGuardarDisputas
             // 
             this.btnGuardarDisputas.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarDisputas.Image")));
-            this.btnGuardarDisputas.Location = new System.Drawing.Point(671, 12);
+            this.btnGuardarDisputas.Location = new System.Drawing.Point(639, 9);
             this.btnGuardarDisputas.Name = "btnGuardarDisputas";
             this.btnGuardarDisputas.Size = new System.Drawing.Size(156, 29);
             this.btnGuardarDisputas.TabIndex = 3;
@@ -1584,7 +1584,7 @@
             this.pnlEnviarAviso.Controls.Add(this.btnP13EnviarAviso);
             this.pnlEnviarAviso.Location = new System.Drawing.Point(345, 154);
             this.pnlEnviarAviso.Name = "pnlEnviarAviso";
-            this.pnlEnviarAviso.Size = new System.Drawing.Size(844, 433);
+            this.pnlEnviarAviso.Size = new System.Drawing.Size(839, 433);
             this.pnlEnviarAviso.TabIndex = 6;
             this.pnlEnviarAviso.Visible = false;
             // 

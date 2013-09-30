@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
+ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]                                                                     
  --DECLARE                                                                                                               
  @desde datetime,                                                                                                        
  @hasta datetime,                                                                                                        
@@ -11,8 +11,7 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  @HastaEmbarcadores datetime,
  @DesdeNavieras datetime,
  @HastaNavieras datetime,
- @nummaster nvarchar (100),
- @Shipping varchar(100)
+ @nummaster nvarchar (100)
                                                                                                       
  AS                                                                                                                      
                                                                                                                          
@@ -69,8 +68,8 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  set @sql += ' PHINFO.NumConsolidado,'                                                                                   
  set @sql += ' PA.IdUsuarioCreacion, UC.ApellidoPaterno UCAP, UC.ApellidoMaterno UCAM, UC.Nombres UCN, UC.Email EmailUC, '
  set @sql += ' isnull(PA.IdNaveTransbordo,0) as IdNaveTransbordo ,isnull(PNAVET.Descripcion ,'''') as NaveTransbordo,'
- set @sql += ' PA.versionUsuario1,'
- set @sql += ' PA.txtShipping'
+ set @sql += ' PA.versionUsuario1'
+ set @sql += ' ,PA.FechaMaximaVinculacion'
  set @sql += ' FROM PAPERLESS_ASIGNACION PA'                                                                             
  set @sql += ' LEFT OUTER JOIN USUARIOS U1'                                                                              
  set @sql += ' ON PA.Usuario1 = U1.Id'                                                                                   
@@ -86,7 +85,7 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  set @sql += ' ON PA.IdNaviera = PN.Id'                                                                                  
  set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVE'                                                                     
  set @sql += ' ON PA.IdNave = PNAVE.Id'
-set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVET'                                                                     
+ set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVET'                                                                     
  set @sql += ' ON PA.IdNaveTransbordo = PNAVET.Id'                                                                                   
  set @sql += ' INNER JOIN PAPERLESS_TIPO_CARGA TP'                                                                       
  set @sql += ' ON PA.IdTipoCarga = TP.Id'                                                                                
@@ -129,9 +128,6 @@ if (@HastaNavieras is not null and @HastaNavieras <> '')
                                                     
 if(@nummaster is not null and  @nummaster <> '')                                                                                                       
     set @sql += ' AND PA.NumMaster = ISNULL(''' + @nummaster + ''',PA.NumMaster)' 
-    
-if(@Shipping is not null and  @Shipping <> '')                                                                                                       
-    set @sql += ' AND PA.txtShipping = ISNULL(''' + @Shipping + ''',PA.txtShipping)'     
                                                                                                                                
  set @sql += ' ORDER BY PA.Id desc'                                                                                      
  execute(@sql)                                                                                                           

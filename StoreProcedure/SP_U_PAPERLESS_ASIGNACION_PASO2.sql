@@ -17,7 +17,7 @@ AS
                                                                   
 IF YEAR(@AperturaNavieras) = 9999 SET @AperturaNavieras = NULL   
 IF YEAR(@PlazoEmbarcadores) = 9999 SET @PlazoEmbarcadores = NULL 
-
+IF YEAR(@FechaMaximaVinculacion) = 9999 SET @FechaMaximaVinculacion = NULL 
 
 DECLARE @IdEstadoActual INT
 

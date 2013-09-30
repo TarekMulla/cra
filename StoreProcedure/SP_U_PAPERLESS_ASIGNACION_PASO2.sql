@@ -10,6 +10,7 @@ ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO2]
                 @FechaMasterConfirmado datetime,
                 @txtCourier varchar(30),
                 @FechaMaximaVinculacionDiff int,
+                @FechaMaximaVinculacion datetime,
                 @IdResultado INT OUTPUT,
                 @Resultado VARCHAR(255) OUTPUT
 AS                                                               
@@ -72,10 +73,12 @@ UPDATE PAPERLESS_ASIGNACION SET
      MasterConfirmado=@MasterConfirmado,
      FechaMasterConfirmado=@FechaMasterConfirmado,
      txtCourier = @txtCourier,
-     FechaMaximaVinculacionDiff=@FechaMaximaVinculacionDiff
+     FechaMaximaVinculacionDiff=@FechaMaximaVinculacionDiff,
+     FechaMaximaVinculacion=@FechaMaximaVinculacion
 WHERE Id = @IdAsignacion                                         
 
 
 RETURN 0
+
 
 Go

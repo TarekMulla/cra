@@ -72,3 +72,8 @@ if not exists (select * from configuracion where [key]='Paperless_Mail_Finalizac
 Begin
 	insert into configuracion values ('Paperless_Mail_Finalizacion_Etapa1FCL',1,'Correo de finalizacion del usuario 1 , se debe agregar el correo en el App.config y los mails deben estar separados por ;',GETDATE())
 End
+
+if not exists (select * from configuracion where [key]='Paperless_Usuario1_Valida_Num_Consolidado' )
+Begin
+	insert into configuracion values ('Paperless_Usuario1_Valida_Num_Consolidado',1,'Flag para validar el numero de consolidado en el usuario 1',GETDATE())
+End

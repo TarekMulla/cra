@@ -56,6 +56,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             set { _accion = value; }
         }
 
+        private PaperlessPasosEstado _pasoEstadoActual;
+        
+
         private void frmPaperlessUser2_Load(object sender, EventArgs e)
         {
             //ProyectoCraft.WinForm.Controles.EstadoPaperless control = new EstadoPaperless();
@@ -181,17 +184,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         protected void RecargarPasos(object sender, EventArgs e)
         {
-            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-            if (paso.Paso.NumPaso == 4)
-            {
-                if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
-                {
-                    pnlReenviarCorreo.Visible = true;
-                    btnReenviarCorreoTermino.Visible = true;
-                }
-
-            }
-
             CargarPasos();
         }
         private  void MarcarCambioEstadoPasoChile(object sender, EventArgs e)
@@ -281,7 +273,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
             if (paso.Paso.NumPaso == 1)
             {
-                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
+                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                 pasoSeleccionado.Estado = true;
                 //CargarPasos();                
                 paso.Estado = check.Checked;
@@ -359,12 +351,38 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
         {
-          var configuracion = Base.Configuracion.Configuracion.Instance();
-          var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-            if (opcion.HasValue && opcion.Value.Equals(true))
-                MarcarCambioEstadoPasoBrasil(sender, e);
-            else
-                MarcarCambioEstadoPasoChile(sender, e);
+            var check = sender as DevExpress.XtraEditors.CheckEdit;
+            if (check == null) return;
+
+            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+
+            if (!ValidarPermiteCambiarPasoEstado(paso)) {
+                paso.Estado = false;
+                CargarPasos();
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(paso.Pantalla)) {
+                //if (paso.Paso.NumPaso == 1 || paso.Paso.NumPaso == 2 || paso.Paso.NumPaso == 6 || paso.Paso.NumPaso == 11) {
+                paso.Estado = false;
+                CargarPasos();
+                return;
+            }
+
+
+            if (paso.Estado) {
+                CargarPasos();
+                return;
+            }
+
+            paso.Estado = check.Checked;
+            Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1CambiarEstadoPaso(paso);
+            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else {
+                CargarPasos();
+            }
         }
 
         private bool ValidarPermiteCambiarPasoEstado(PaperlessPasosEstado pasoactual)
@@ -437,13 +455,63 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
 
 
+        public void CallDinamicMethod(PaperlessPasosEstado paso) {
+            if (String.IsNullOrEmpty(paso.Pantalla))
+                return;
 
-        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e)
-        {
-            pnlExcepciones.Visible = false;
-            pnlContactarembarcador.Visible = false;
-            pnlRecibirAperturaEmb.Visible = false;
-            pnlReenviarCorreo.Visible = false;
+            var name = paso.Pantalla;
+            // Call it with each of these parameters.
+            object[] parameters = { paso };
+            // Get MethodInfo.
+            var type = this.GetType();
+            var info = type.GetMethod(name);
+            info.Invoke(this, parameters);
+        }
+
+
+        #region pasosConPaneles
+        public void ResolverExcepciones(PaperlessPasosEstado paso){
+            _pasoEstadoActual = paso;
+            pnlExcepciones.Visible = true;
+        }
+
+        public void ContactarEnbarcador(PaperlessPasosEstado paso) {
+            _pasoEstadoActual = paso;
+            pnlContactarembarcador.Visible = true;
+
+        }
+
+        public void AperturaEmbarcadores(PaperlessPasosEstado paso) {
+            _pasoEstadoActual = paso;
+            pnlRecibirAperturaEmb.Visible = true;
+
+        }
+        
+        public void PresentarManifiesto(PaperlessPasosEstado paso) {
+            _pasoEstadoActual = paso;
+            if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado){
+                pnlRecibirAperturaEmb.Visible = true;
+                pnlReenviarCorreo.Visible = true;
+                btnReenviarCorreoTermino.Visible = true;
+            }
+
+
+        }
+        
+        #endregion
+
+        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e){
+            var paso = (PaperlessPasosEstado)((GridView)sender).GetRow(e.RowHandle);
+            if (!ValidarPermiteCambiarPasoEstado(paso))
+                return;
+
+            var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
+            QuitaTodosPaneles();
+            CallDinamicMethod(paso);
+
+            return;
+
+        
             //pnlEnviarAviso.Visible = false;
 
             //if(e.Column.FieldName == "Estado")
@@ -470,12 +538,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         }
 
-        private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(int numpaso)
-        {
-            IList<PaperlessPasosEstado> pasos = (IList<PaperlessPasosEstado>)grdPasos.DataSource;
+        private void QuitaTodosPaneles(){
+            pnlExcepciones.Visible = false;
+            pnlContactarembarcador.Visible = false;
+            pnlRecibirAperturaEmb.Visible = false;
+            pnlReenviarCorreo.Visible = false;
+        }
 
-            return pasos[numpaso - 1];
-
+        private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(){
+            return _pasoEstadoActual;
         }
 
         private void btnP1GuardarExcepciones_Click(object sender, EventArgs e)
@@ -487,7 +558,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
                 if (excepciones != null)
                 {
-                    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
+                    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
                     ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
@@ -544,7 +615,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 //var cuenta = LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente);
                 if (houses != null)
                 {
-                    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(2);
+                    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
 
                     foreach (var house in houses)
@@ -627,8 +698,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
                 if (houses != null)
                 {
-                    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(3);
-
+                    var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
+                    pasoSeleccionado.Estado = true;
+            
                     bool pasocompleto = true;
                     foreach (var house in houses)
                     {

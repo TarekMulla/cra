@@ -531,10 +531,10 @@
             this.pnlRecibirAperturaEmb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlRecibirAperturaEmb.Controls.Add(this.pnlReenviarCorreo);
             this.pnlRecibirAperturaEmb.Controls.Add(this.grdRecibirAperturaEmb);
             this.pnlRecibirAperturaEmb.Controls.Add(this.btnP3GuardarAperturaEmbarcadores);
             this.pnlRecibirAperturaEmb.Controls.Add(this.labelControl3);
+            this.pnlRecibirAperturaEmb.Controls.Add(this.pnlReenviarCorreo);
             this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(471, 89);
             this.pnlRecibirAperturaEmb.Name = "pnlRecibirAperturaEmb";
             this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(677, 365);
@@ -545,10 +545,10 @@
             // 
             this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
-            this.pnlReenviarCorreo.Location = new System.Drawing.Point(32, 107);
+            this.pnlReenviarCorreo.Location = new System.Drawing.Point(1, 0);
             this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
-            this.pnlReenviarCorreo.Size = new System.Drawing.Size(409, 222);
-            this.pnlReenviarCorreo.TabIndex = 9;
+            this.pnlReenviarCorreo.Size = new System.Drawing.Size(671, 384);
+            this.pnlReenviarCorreo.TabIndex = 10;
             this.pnlReenviarCorreo.Visible = false;
             // 
             // btnReenviarCorreoTermino
@@ -560,7 +560,6 @@
             this.btnReenviarCorreoTermino.TabIndex = 3;
             this.btnReenviarCorreoTermino.Text = "Reenviar Email";
             this.btnReenviarCorreoTermino.Visible = false;
-            this.btnReenviarCorreoTermino.Click += new System.EventHandler(this.btnReenviarCorreoTermino_Click);
             // 
             // labelControl5
             // 
@@ -745,13 +744,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 466);
-            this.Controls.Add(this.pnlExcepciones);
-            this.Controls.Add(this.pnlContactarembarcador);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlRecibirAperturaEmb);
+            this.Controls.Add(this.pnlExcepciones);
+            this.Controls.Add(this.pnlContactarembarcador);
             this.Name = "frmPaperlessUser2v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso Paperless Usuario 2";
@@ -856,9 +855,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryViaReciboApertura;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.PanelControl pnlReenviarCorreo;
-        private DevExpress.XtraEditors.SimpleButton btnReenviarCorreoTermino;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
@@ -869,5 +865,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit1;
+        private DevExpress.XtraEditors.PanelControl pnlReenviarCorreo;
+        private DevExpress.XtraEditors.SimpleButton btnReenviarCorreoTermino;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }

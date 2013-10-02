@@ -1077,6 +1077,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     paso.Paso.Nombre = dreader["Descripcion"].ToString();
                     paso.IdPasoEstado = Convert.ToInt64(dreader["IdPasoEstado"]);
                     paso.Paso.NumPaso = Convert.ToInt16(dreader["NumPaso"]);
+                    paso.Pantalla = dreader["pantalla"].ToString();
                     pasos.Add(paso);
                 }
             } catch (Exception ex) {

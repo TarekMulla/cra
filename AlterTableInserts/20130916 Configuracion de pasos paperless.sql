@@ -1,17 +1,26 @@
-ALTER TABLE PAPERLESS_PASOS_USUARIO1 ADD
-	idTipoCarga bigint
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO1' and name = 'idTipoCarga')
+begin
+	ALTER TABLE PAPERLESS_PASOS_USUARIO1 ADD	idTipoCarga bigint
+end
 GO
 
-ALTER TABLE PAPERLESS_PASOS_USUARIO1_V2 ADD
-	idTipoCarga bigint 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO1_V2' and name = 'idTipoCarga')
+begin 
+	ALTER TABLE PAPERLESS_PASOS_USUARIO1_V2 ADD idTipoCarga bigint 
+end
 GO
 
-ALTER TABLE PAPERLESS_PASOS_USUARIO1 ADD
-	pantalla varchar(300)
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO1' and name = 'pantalla')
+begin 
+	ALTER TABLE PAPERLESS_PASOS_USUARIO1 ADD pantalla varchar(300)
+end
 GO
 
-ALTER TABLE PAPERLESS_PASOS_USUARIO1_V2 ADD
-	pantalla varchar(300)
+
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO1_V2' and name = 'pantalla')
+begin
+	ALTER TABLE PAPERLESS_PASOS_USUARIO1_V2 ADD pantalla varchar(300)
+end
 GO
 
 
@@ -28,8 +37,11 @@ GO
 
 
 /* DE AQUI EN ADELANTE PROCEDIMIENTOS ALMACENADOS */
-DROP PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS]
+
+IF object_id('SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS', 'p') is not null
+	DROP PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS]
 GO
+
 CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS]
 		@IdAsignacion bigint
 	AS 
@@ -44,8 +56,10 @@ CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS]
 		END
 GO
 
-DROP PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2]
+IF object_id('SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2', 'p') is not null
+	DROP PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2]
 GO
+
 CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2]
 	    @IdAsignacion bigint
 	AS 
@@ -61,7 +75,8 @@ CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2]
 	UPDATE PAPERLESS_ASIGNACION  set versionUsuario1 = 2 where id=@IdAsignacion and idTipoCarga=@idCarga
 GO
 
-DROP PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO_v2] 
+IF object_id('SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO_v2', 'p') is not null
+	DROP PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO_v2]
 GO
 CREATE PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO_v2] 
 	@IdAsignacion bigint

@@ -1,3 +1,5 @@
+BEGIN TRAN
+
 if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO2' and name = 'idTipoCarga')
 Begin
 	ALTER TABLE PAPERLESS_PASOS_USUARIO2 ADD	idTipoCarga bigint 
@@ -7,13 +9,13 @@ if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_
 Begin
 	ALTER TABLE PAPERLESS_PASOS_USUARIO2 ADD pantalla varchar(300)
 END
-
+GO
 
 update PAPERLESS_PASOS_USUARIO2 set idTipoCarga=1 
 GO
 
 
-//PROCEDIMIENTOS
+/*PROCEDIMIENTOS */
 
 IF object_id('SP_N_PAPERLESS_USUARIO2_PREPARA_PASOS', 'p') is not null
 	DROP PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO2_PREPARA_PASOS]
@@ -65,3 +67,5 @@ update PAPERLESS_PASOS_USUARIO2 set pantalla='ContactarEnbarcador' where idPAso=
 update PAPERLESS_PASOS_USUARIO2 set pantalla='AperturaEmbarcadores' where idPAso=3
 update PAPERLESS_PASOS_USUARIO2 set pantalla='PresentarManifiesto' where idPAso=4
 GO
+
+ROLLBACK

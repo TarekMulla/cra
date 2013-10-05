@@ -77,3 +77,9 @@ if not exists (select * from configuracion where [key]='Paperless_Usuario1_Valid
 Begin
 	insert into configuracion values ('Paperless_Usuario1_Valida_Num_Consolidado',1,'Flag para validar el numero de consolidado en el usuario 1',GETDATE())
 End
+
+if not exists (select * from configuracion where [key]='Paperless_ExcepcionesBrasil_Usuario1' )
+Begin
+	insert into configuracion values ('Paperless_ExcepcionesBrasil_Usuario1',1,'Carga las excepciones del Paperless para Brasil',GETDATE())
+End
+

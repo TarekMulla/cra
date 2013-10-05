@@ -273,7 +273,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
             if (paso.Paso.NumPaso == 1)
             {
-                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
+                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
                 pasoSeleccionado.Estado = true;
                 //CargarPasos();                
                 paso.Estado = check.Checked;
@@ -351,38 +351,46 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
         {
-            var check = sender as DevExpress.XtraEditors.CheckEdit;
-            if (check == null) return;
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+                MarcarCambioEstadoPasoBrasil(sender, e);
+            else
+                MarcarCambioEstadoPasoChile(sender, e);
 
-            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+            //Codigo antes del merge
+            //var check = sender as DevExpress.XtraEditors.CheckEdit;
+            //if (check == null) return;
 
-            if (!ValidarPermiteCambiarPasoEstado(paso)) {
-                paso.Estado = false;
-                CargarPasos();
-                return;
-            }
+            //PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
 
-            if (!String.IsNullOrEmpty(paso.Pantalla)) {
-                //if (paso.Paso.NumPaso == 1 || paso.Paso.NumPaso == 2 || paso.Paso.NumPaso == 6 || paso.Paso.NumPaso == 11) {
-                paso.Estado = false;
-                CargarPasos();
-                return;
-            }
+            //if (!ValidarPermiteCambiarPasoEstado(paso)) {
+            //    paso.Estado = false;
+            //    CargarPasos();
+            //    return;
+            //}
+
+            //if (!String.IsNullOrEmpty(paso.Pantalla)) {
+            //    //if (paso.Paso.NumPaso == 1 || paso.Paso.NumPaso == 2 || paso.Paso.NumPaso == 6 || paso.Paso.NumPaso == 11) {
+            //    paso.Estado = false;
+            //    CargarPasos();
+            //    return;
+            //}
 
 
-            if (paso.Estado) {
-                CargarPasos();
-                return;
-            }
+            //if (paso.Estado) {
+            //    CargarPasos();
+            //    return;
+            //}
 
-            paso.Estado = check.Checked;
-            Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1CambiarEstadoPaso(paso);
-            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
-                MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else {
-                CargarPasos();
-            }
+            //paso.Estado = check.Checked;
+            //Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1CambiarEstadoPaso(paso);
+            //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+            //    MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //} else {
+            //    CargarPasos();
+            //}
         }
 
         private bool ValidarPermiteCambiarPasoEstado(PaperlessPasosEstado pasoactual)
@@ -547,6 +555,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(){
             return _pasoEstadoActual;
+        }
+        private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(int numpaso)
+        {
+            IList<PaperlessPasosEstado> pasos = (IList<PaperlessPasosEstado>)grdPasos.DataSource;
+
+            return pasos[numpaso - 1];
+
         }
 
         private void btnP1GuardarExcepciones_Click(object sender, EventArgs e)
@@ -858,6 +873,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void pnlReenviarCorreo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 

@@ -30,6 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaperlessAsignacion));
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel4 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel5 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel6 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.tabAsignacion = new DevExpress.XtraTab.XtraTabControl();
             this.tabInfGeneral = new DevExpress.XtraTab.XtraTabPage();
             this.btnMantNaviera = new DevExpress.XtraEditors.SimpleButton();
@@ -65,6 +77,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tabFechas = new DevExpress.XtraTab.XtraTabPage();
+            this.lblasteriscofechaMaximaVinculacion = new System.Windows.Forms.Label();
+            this.lblAvisoFechaMaximaVinculacion = new DevExpress.XtraEditors.LabelControl();
+            this.lblLeyendaFechaMaximaVinculacion = new DevExpress.XtraEditors.LabelControl();
+            this.txtFechaMaximaVinculacion = new DevExpress.XtraEditors.DateEdit();
+            this.lblFechaMaximaVinculacion = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.txtPuerto = new System.Windows.Forms.TextBox();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
@@ -85,6 +102,8 @@
             this.txtFechaETA = new DevExpress.XtraEditors.DateEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.tabPrealerta = new DevExpress.XtraTab.XtraTabPage();
+            this.Chartusuario2 = new DevExpress.XtraCharts.ChartControl();
+            this.ChartUsuario1 = new DevExpress.XtraCharts.ChartControl();
             this.txtObservacionU2 = new DevExpress.XtraEditors.MemoEdit();
             this.txtObsercacionU1 = new DevExpress.XtraEditors.MemoEdit();
             this.ddlImportanciaU1 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -100,6 +119,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.MenuMantNavieras = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -116,6 +136,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties)).BeginInit();
             this.tabFechas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioCourierDestino.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfechaMasterConfirmado.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfechaMasterConfirmado.Properties)).BeginInit();
@@ -126,6 +148,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaETA.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaETA.Properties)).BeginInit();
             this.tabPrealerta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartUsuario1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacionU2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObsercacionU1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlImportanciaU1.Properties)).BeginInit();
@@ -137,10 +173,10 @@
             // 
             // tabAsignacion
             // 
-            this.tabAsignacion.Location = new System.Drawing.Point(12, 52);
+            this.tabAsignacion.Location = new System.Drawing.Point(12, 41);
             this.tabAsignacion.Name = "tabAsignacion";
             this.tabAsignacion.SelectedTabPage = this.tabInfGeneral;
-            this.tabAsignacion.Size = new System.Drawing.Size(795, 315);
+            this.tabAsignacion.Size = new System.Drawing.Size(840, 609);
             this.tabAsignacion.TabIndex = 0;
             this.tabAsignacion.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabInfGeneral,
@@ -182,7 +218,7 @@
             this.tabInfGeneral.Controls.Add(this.labelControl2);
             this.tabInfGeneral.Controls.Add(this.labelControl1);
             this.tabInfGeneral.Name = "tabInfGeneral";
-            this.tabInfGeneral.Size = new System.Drawing.Size(786, 284);
+            this.tabInfGeneral.Size = new System.Drawing.Size(831, 578);
             this.tabInfGeneral.Text = "Informacion General";
             this.tabInfGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.tabInfGeneral_Paint);
             // 
@@ -354,7 +390,7 @@
             this.btnSiguienteP2.Appearance.Options.UseFont = true;
             this.btnSiguienteP2.Image = ((System.Drawing.Image)(resources.GetObject("btnSiguienteP2.Image")));
             this.btnSiguienteP2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnSiguienteP2.Location = new System.Drawing.Point(373, 224);
+            this.btnSiguienteP2.Location = new System.Drawing.Point(497, 413);
             this.btnSiguienteP2.Name = "btnSiguienteP2";
             this.btnSiguienteP2.Size = new System.Drawing.Size(283, 36);
             this.btnSiguienteP2.TabIndex = 11;
@@ -469,6 +505,11 @@
             // 
             // tabFechas
             // 
+            this.tabFechas.Controls.Add(this.lblasteriscofechaMaximaVinculacion);
+            this.tabFechas.Controls.Add(this.lblAvisoFechaMaximaVinculacion);
+            this.tabFechas.Controls.Add(this.lblLeyendaFechaMaximaVinculacion);
+            this.tabFechas.Controls.Add(this.txtFechaMaximaVinculacion);
+            this.tabFechas.Controls.Add(this.lblFechaMaximaVinculacion);
             this.tabFechas.Controls.Add(this.labelControl19);
             this.tabFechas.Controls.Add(this.txtPuerto);
             this.tabFechas.Controls.Add(this.labelControl18);
@@ -489,12 +530,64 @@
             this.tabFechas.Controls.Add(this.txtFechaETA);
             this.tabFechas.Controls.Add(this.labelControl7);
             this.tabFechas.Name = "tabFechas";
-            this.tabFechas.Size = new System.Drawing.Size(786, 284);
+            this.tabFechas.Size = new System.Drawing.Size(831, 578);
             this.tabFechas.Text = "Fechas y plazos";
+            this.tabFechas.Paint += new System.Windows.Forms.PaintEventHandler(this.tabFechas_Paint);
+            // 
+            // lblasteriscofechaMaximaVinculacion
+            // 
+            this.lblasteriscofechaMaximaVinculacion.AutoSize = true;
+            this.lblasteriscofechaMaximaVinculacion.ForeColor = System.Drawing.Color.Red;
+            this.lblasteriscofechaMaximaVinculacion.Location = new System.Drawing.Point(256, 133);
+            this.lblasteriscofechaMaximaVinculacion.Name = "lblasteriscofechaMaximaVinculacion";
+            this.lblasteriscofechaMaximaVinculacion.Size = new System.Drawing.Size(11, 13);
+            this.lblasteriscofechaMaximaVinculacion.TabIndex = 129;
+            this.lblasteriscofechaMaximaVinculacion.Text = "*";
+            this.lblasteriscofechaMaximaVinculacion.Visible = false;
+            // 
+            // lblAvisoFechaMaximaVinculacion
+            // 
+            this.lblAvisoFechaMaximaVinculacion.Location = new System.Drawing.Point(272, 137);
+            this.lblAvisoFechaMaximaVinculacion.Name = "lblAvisoFechaMaximaVinculacion";
+            this.lblAvisoFechaMaximaVinculacion.Size = new System.Drawing.Size(321, 13);
+            this.lblAvisoFechaMaximaVinculacion.TabIndex = 128;
+            this.lblAvisoFechaMaximaVinculacion.Text = "No pudo ser determinada automaticamente, debe ingresar manual.";
+            this.lblAvisoFechaMaximaVinculacion.Visible = false;
+            // 
+            // lblLeyendaFechaMaximaVinculacion
+            // 
+            this.lblLeyendaFechaMaximaVinculacion.Location = new System.Drawing.Point(-3, 480);
+            this.lblLeyendaFechaMaximaVinculacion.Name = "lblLeyendaFechaMaximaVinculacion";
+            this.lblLeyendaFechaMaximaVinculacion.Size = new System.Drawing.Size(320, 13);
+            this.lblLeyendaFechaMaximaVinculacion.TabIndex = 127;
+            this.lblLeyendaFechaMaximaVinculacion.Text = "*Se calcula automaticamente a partir de la ETA (10 o 7 días plazo).";
+            // 
+            // txtFechaMaximaVinculacion
+            // 
+            this.txtFechaMaximaVinculacion.EditValue = null;
+            this.txtFechaMaximaVinculacion.Location = new System.Drawing.Point(138, 130);
+            this.txtFechaMaximaVinculacion.Name = "txtFechaMaximaVinculacion";
+            this.txtFechaMaximaVinculacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtFechaMaximaVinculacion.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtFechaMaximaVinculacion.Size = new System.Drawing.Size(114, 20);
+            this.txtFechaMaximaVinculacion.TabIndex = 126;
+            this.txtFechaMaximaVinculacion.Visible = false;
+            this.txtFechaMaximaVinculacion.EditValueChanged += new System.EventHandler(this.txtFechaMaximaVinculacion_EditValueChanged);
+            // 
+            // lblFechaMaximaVinculacion
+            // 
+            this.lblFechaMaximaVinculacion.Location = new System.Drawing.Point(6, 137);
+            this.lblFechaMaximaVinculacion.Name = "lblFechaMaximaVinculacion";
+            this.lblFechaMaximaVinculacion.Size = new System.Drawing.Size(132, 13);
+            this.lblFechaMaximaVinculacion.TabIndex = 125;
+            this.lblFechaMaximaVinculacion.Text = "Fecha Maxima Vinculacion *";
+            this.lblFechaMaximaVinculacion.Visible = false;
             // 
             // labelControl19
             // 
-            this.labelControl19.Location = new System.Drawing.Point(258, 108);
+            this.labelControl19.Location = new System.Drawing.Point(272, 108);
             this.labelControl19.Name = "labelControl19";
             this.labelControl19.Size = new System.Drawing.Size(32, 13);
             this.labelControl19.TabIndex = 124;
@@ -502,7 +595,7 @@
             // 
             // txtPuerto
             // 
-            this.txtPuerto.Location = new System.Drawing.Point(364, 105);
+            this.txtPuerto.Location = new System.Drawing.Point(378, 105);
             this.txtPuerto.Name = "txtPuerto";
             this.txtPuerto.ReadOnly = true;
             this.txtPuerto.Size = new System.Drawing.Size(129, 20);
@@ -510,7 +603,7 @@
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(258, 74);
+            this.labelControl18.Location = new System.Drawing.Point(272, 74);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(95, 13);
             this.labelControl18.TabIndex = 122;
@@ -518,7 +611,7 @@
             // 
             // txtShippingInstruction
             // 
-            this.txtShippingInstruction.Location = new System.Drawing.Point(364, 71);
+            this.txtShippingInstruction.Location = new System.Drawing.Point(378, 71);
             this.txtShippingInstruction.Name = "txtShippingInstruction";
             this.txtShippingInstruction.ReadOnly = true;
             this.txtShippingInstruction.Size = new System.Drawing.Size(129, 20);
@@ -526,14 +619,14 @@
             // 
             // txtCourier
             // 
-            this.txtCourier.Location = new System.Drawing.Point(364, 22);
+            this.txtCourier.Location = new System.Drawing.Point(378, 22);
             this.txtCourier.Name = "txtCourier";
             this.txtCourier.Size = new System.Drawing.Size(129, 20);
             this.txtCourier.TabIndex = 120;
             // 
             // radioCourierDestino
             // 
-            this.radioCourierDestino.Location = new System.Drawing.Point(258, 22);
+            this.radioCourierDestino.Location = new System.Drawing.Point(272, 22);
             this.radioCourierDestino.Name = "radioCourierDestino";
             this.radioCourierDestino.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Courier"),
@@ -545,7 +638,7 @@
             // chkConfirmacionMaster
             // 
             this.chkConfirmacionMaster.AutoSize = true;
-            this.chkConfirmacionMaster.Location = new System.Drawing.Point(506, 23);
+            this.chkConfirmacionMaster.Location = new System.Drawing.Point(513, 23);
             this.chkConfirmacionMaster.Name = "chkConfirmacionMaster";
             this.chkConfirmacionMaster.Size = new System.Drawing.Size(116, 17);
             this.chkConfirmacionMaster.TabIndex = 118;
@@ -556,7 +649,7 @@
             // txtfechaMasterConfirmado
             // 
             this.txtfechaMasterConfirmado.EditValue = null;
-            this.txtfechaMasterConfirmado.Location = new System.Drawing.Point(364, 45);
+            this.txtfechaMasterConfirmado.Location = new System.Drawing.Point(378, 45);
             this.txtfechaMasterConfirmado.Name = "txtfechaMasterConfirmado";
             this.txtfechaMasterConfirmado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -589,7 +682,7 @@
             // 
             this.lblAlertaPlazoembarcadores.AutoSize = true;
             this.lblAlertaPlazoembarcadores.ForeColor = System.Drawing.Color.Red;
-            this.lblAlertaPlazoembarcadores.Location = new System.Drawing.Point(241, 108);
+            this.lblAlertaPlazoembarcadores.Location = new System.Drawing.Point(256, 95);
             this.lblAlertaPlazoembarcadores.Name = "lblAlertaPlazoembarcadores";
             this.lblAlertaPlazoembarcadores.Size = new System.Drawing.Size(11, 13);
             this.lblAlertaPlazoembarcadores.TabIndex = 12;
@@ -599,7 +692,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(241, 23);
+            this.label1.Location = new System.Drawing.Point(257, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(11, 13);
             this.label1.TabIndex = 12;
@@ -608,18 +701,18 @@
             // txtAperturaNavieras
             // 
             this.txtAperturaNavieras.EditValue = null;
-            this.txtAperturaNavieras.Location = new System.Drawing.Point(108, 63);
+            this.txtAperturaNavieras.Location = new System.Drawing.Point(138, 55);
             this.txtAperturaNavieras.Name = "txtAperturaNavieras";
             this.txtAperturaNavieras.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtAperturaNavieras.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtAperturaNavieras.Size = new System.Drawing.Size(129, 20);
+            this.txtAperturaNavieras.Size = new System.Drawing.Size(114, 20);
             this.txtAperturaNavieras.TabIndex = 11;
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(10, 66);
+            this.labelControl11.Location = new System.Drawing.Point(9, 59);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(88, 13);
             this.labelControl11.TabIndex = 10;
@@ -628,18 +721,18 @@
             // txtPlazoEmbarcadores
             // 
             this.txtPlazoEmbarcadores.EditValue = null;
-            this.txtPlazoEmbarcadores.Location = new System.Drawing.Point(108, 105);
+            this.txtPlazoEmbarcadores.Location = new System.Drawing.Point(138, 92);
             this.txtPlazoEmbarcadores.Name = "txtPlazoEmbarcadores";
             this.txtPlazoEmbarcadores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPlazoEmbarcadores.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtPlazoEmbarcadores.Size = new System.Drawing.Size(129, 20);
+            this.txtPlazoEmbarcadores.Size = new System.Drawing.Size(114, 20);
             this.txtPlazoEmbarcadores.TabIndex = 9;
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(9, 108);
+            this.labelControl10.Location = new System.Drawing.Point(9, 95);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(96, 13);
             this.labelControl10.TabIndex = 8;
@@ -651,7 +744,7 @@
             this.btnSiguienteP3.Appearance.Options.UseFont = true;
             this.btnSiguienteP3.Image = ((System.Drawing.Image)(resources.GetObject("btnSiguienteP3.Image")));
             this.btnSiguienteP3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnSiguienteP3.Location = new System.Drawing.Point(339, 217);
+            this.btnSiguienteP3.Location = new System.Drawing.Point(502, 412);
             this.btnSiguienteP3.Name = "btnSiguienteP3";
             this.btnSiguienteP3.Size = new System.Drawing.Size(283, 36);
             this.btnSiguienteP3.TabIndex = 7;
@@ -661,19 +754,19 @@
             // txtFechaETA
             // 
             this.txtFechaETA.EditValue = null;
-            this.txtFechaETA.Location = new System.Drawing.Point(108, 20);
+            this.txtFechaETA.Location = new System.Drawing.Point(138, 20);
             this.txtFechaETA.Name = "txtFechaETA";
             this.txtFechaETA.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtFechaETA.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.txtFechaETA.Size = new System.Drawing.Size(129, 20);
+            this.txtFechaETA.Size = new System.Drawing.Size(114, 20);
             this.txtFechaETA.TabIndex = 3;
             this.txtFechaETA.EditValueChanged += new System.EventHandler(this.txtFechaETA_EditValueChanged);
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(10, 23);
+            this.labelControl7.Location = new System.Drawing.Point(10, 24);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(51, 13);
             this.labelControl7.TabIndex = 2;
@@ -681,6 +774,9 @@
             // 
             // tabPrealerta
             // 
+            this.tabPrealerta.Controls.Add(this.labelControl20);
+            this.tabPrealerta.Controls.Add(this.Chartusuario2);
+            this.tabPrealerta.Controls.Add(this.ChartUsuario1);
             this.tabPrealerta.Controls.Add(this.txtObservacionU2);
             this.tabPrealerta.Controls.Add(this.txtObsercacionU1);
             this.tabPrealerta.Controls.Add(this.ddlImportanciaU1);
@@ -693,26 +789,87 @@
             this.tabPrealerta.Controls.Add(this.labelControl14);
             this.tabPrealerta.Controls.Add(this.labelControl9);
             this.tabPrealerta.Name = "tabPrealerta";
-            this.tabPrealerta.Size = new System.Drawing.Size(786, 284);
+            this.tabPrealerta.Size = new System.Drawing.Size(831, 578);
             this.tabPrealerta.Text = "Asignar Pre alerta";
+            // 
+            // Chartusuario2
+            // 
+            this.Chartusuario2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.Chartusuario2.Diagram = xyDiagram1;
+            this.Chartusuario2.Location = new System.Drawing.Point(460, 115);
+            this.Chartusuario2.Name = "Chartusuario2";
+            sideBySideBarSeriesLabel1.LineVisible = true;
+            sideBySideBarSeriesLabel1.OverlappingOptionsTypeName = "OverlappingOptions";
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.Name = "Series 1";
+            sideBySideBarSeriesLabel2.LineVisible = true;
+            sideBySideBarSeriesLabel2.OverlappingOptionsTypeName = "OverlappingOptions";
+            series2.Label = sideBySideBarSeriesLabel2;
+            series2.Name = "Series 2";
+            this.Chartusuario2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1,
+        series2};
+            sideBySideBarSeriesLabel3.LineVisible = true;
+            sideBySideBarSeriesLabel3.OverlappingOptionsTypeName = "OverlappingOptions";
+            this.Chartusuario2.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
+            this.Chartusuario2.Size = new System.Drawing.Size(364, 418);
+            this.Chartusuario2.TabIndex = 73;
+            // 
+            // ChartUsuario1
+            // 
+            this.ChartUsuario1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.ChartUsuario1.Diagram = xyDiagram2;
+            this.ChartUsuario1.Location = new System.Drawing.Point(5, 116);
+            this.ChartUsuario1.Name = "ChartUsuario1";
+            this.ChartUsuario1.PaletteName = "Oriel";
+            sideBySideBarSeriesLabel4.LineVisible = true;
+            sideBySideBarSeriesLabel4.OverlappingOptionsTypeName = "OverlappingOptions";
+            series3.Label = sideBySideBarSeriesLabel4;
+            series3.Name = "Series 1";
+            sideBySideBarSeriesLabel5.LineVisible = true;
+            sideBySideBarSeriesLabel5.OverlappingOptionsTypeName = "OverlappingOptions";
+            series4.Label = sideBySideBarSeriesLabel5;
+            series4.Name = "Series 2";
+            this.ChartUsuario1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series3,
+        series4};
+            sideBySideBarSeriesLabel6.LineVisible = true;
+            sideBySideBarSeriesLabel6.OverlappingOptionsTypeName = "OverlappingOptions";
+            this.ChartUsuario1.SeriesTemplate.Label = sideBySideBarSeriesLabel6;
+            this.ChartUsuario1.Size = new System.Drawing.Size(449, 417);
+            this.ChartUsuario1.TabIndex = 72;
             // 
             // txtObservacionU2
             // 
-            this.txtObservacionU2.Location = new System.Drawing.Point(133, 164);
+            this.txtObservacionU2.Location = new System.Drawing.Point(521, 39);
             this.txtObservacionU2.Name = "txtObservacionU2";
-            this.txtObservacionU2.Size = new System.Drawing.Size(650, 48);
+            this.txtObservacionU2.Size = new System.Drawing.Size(303, 48);
             this.txtObservacionU2.TabIndex = 12;
             // 
             // txtObsercacionU1
             // 
-            this.txtObsercacionU1.Location = new System.Drawing.Point(133, 38);
+            this.txtObsercacionU1.Location = new System.Drawing.Point(115, 38);
             this.txtObsercacionU1.Name = "txtObsercacionU1";
-            this.txtObsercacionU1.Size = new System.Drawing.Size(650, 48);
+            this.txtObsercacionU1.Size = new System.Drawing.Size(293, 48);
             this.txtObsercacionU1.TabIndex = 12;
             // 
             // ddlImportanciaU1
             // 
-            this.ddlImportanciaU1.Location = new System.Drawing.Point(133, 90);
+            this.ddlImportanciaU1.Location = new System.Drawing.Point(115, 90);
             this.ddlImportanciaU1.Name = "ddlImportanciaU1";
             this.ddlImportanciaU1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -721,7 +878,7 @@
             // 
             // ddlUsuario2
             // 
-            this.ddlUsuario2.Location = new System.Drawing.Point(133, 141);
+            this.ddlUsuario2.Location = new System.Drawing.Point(521, 13);
             this.ddlUsuario2.Name = "ddlUsuario2";
             this.ddlUsuario2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -730,7 +887,7 @@
             // 
             // ddlUsuario1
             // 
-            this.ddlUsuario1.Location = new System.Drawing.Point(133, 15);
+            this.ddlUsuario1.Location = new System.Drawing.Point(115, 15);
             this.ddlUsuario1.Name = "ddlUsuario1";
             this.ddlUsuario1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -743,7 +900,7 @@
             this.btnAsignar.Appearance.Options.UseFont = true;
             this.btnAsignar.Image = ((System.Drawing.Image)(resources.GetObject("btnAsignar.Image")));
             this.btnAsignar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnAsignar.Location = new System.Drawing.Point(585, 240);
+            this.btnAsignar.Location = new System.Drawing.Point(640, 539);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(184, 31);
             this.btnAsignar.TabIndex = 10;
@@ -752,7 +909,7 @@
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(23, 95);
+            this.labelControl13.Location = new System.Drawing.Point(8, 93);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(57, 13);
             this.labelControl13.TabIndex = 9;
@@ -760,7 +917,7 @@
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(23, 167);
+            this.labelControl15.Location = new System.Drawing.Point(418, 42);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(60, 13);
             this.labelControl15.TabIndex = 9;
@@ -768,7 +925,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(23, 41);
+            this.labelControl12.Location = new System.Drawing.Point(5, 41);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(60, 13);
             this.labelControl12.TabIndex = 9;
@@ -776,7 +933,7 @@
             // 
             // labelControl14
             // 
-            this.labelControl14.Location = new System.Drawing.Point(23, 144);
+            this.labelControl14.Location = new System.Drawing.Point(418, 16);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(97, 13);
             this.labelControl14.TabIndex = 9;
@@ -784,7 +941,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(23, 18);
+            this.labelControl9.Location = new System.Drawing.Point(5, 18);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(97, 13);
             this.labelControl9.TabIndex = 9;
@@ -797,7 +954,7 @@
             this.MenuMantNavieras});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(819, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(853, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -826,11 +983,19 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(5, 557);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(378, 13);
+            this.labelControl20.TabIndex = 74;
+            this.labelControl20.Text = "Corresponde a la cantidad de HBL asignados por usuario en los últimos 30 días.";
+            // 
             // frmPaperlessAsignacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 368);
+            this.ClientSize = new System.Drawing.Size(853, 652);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabAsignacion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -860,6 +1025,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties)).EndInit();
             this.tabFechas.ResumeLayout(false);
             this.tabFechas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioCourierDestino.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfechaMasterConfirmado.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfechaMasterConfirmado.Properties)).EndInit();
@@ -871,6 +1038,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaETA.Properties)).EndInit();
             this.tabPrealerta.ResumeLayout(false);
             this.tabPrealerta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartUsuario1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacionU2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObsercacionU1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlImportanciaU1.Properties)).EndInit();
@@ -956,6 +1137,14 @@
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private System.Windows.Forms.TextBox txtShippingInstruction;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private DevExpress.XtraCharts.ChartControl ChartUsuario1;
+        private DevExpress.XtraCharts.ChartControl Chartusuario2;
+        private DevExpress.XtraEditors.DateEdit txtFechaMaximaVinculacion;
+        private DevExpress.XtraEditors.LabelControl lblFechaMaximaVinculacion;
+        private DevExpress.XtraEditors.LabelControl lblLeyendaFechaMaximaVinculacion;
+        private DevExpress.XtraEditors.LabelControl lblAvisoFechaMaximaVinculacion;
+        private System.Windows.Forms.Label lblasteriscofechaMaximaVinculacion;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
 
     }
 }

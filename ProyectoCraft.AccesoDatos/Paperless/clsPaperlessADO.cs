@@ -206,6 +206,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     else
                         flujopaperless.Asignacion.FechaETA = Convert.ToDateTime(dreader["FechaETA"]);
 
+                    if (dreader["FechaMaximaVinculacion"] is DBNull)
+                        flujopaperless.Asignacion.FechaMaximaVinculacion = null;
+                    else                        
+                        flujopaperless.Asignacion.FechaMaximaVinculacion = Convert.ToDateTime(dreader["FechaMaximaVinculacion"]);
+
+
+
                     if (dreader["AperturaNavieras"] is DBNull)
                         flujopaperless.Asignacion.AperturaNavieras = null;
                     else
@@ -291,6 +298,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         Asignacion.FechaETA = null;
                     else
                         Asignacion.FechaETA = Convert.ToDateTime(dreader["FechaETA"]);
+
+                    if (dreader["FechaMaximaVinculacion"] is DBNull)
+                        Asignacion.FechaMaximaVinculacion = null;
+                    else
+                        Asignacion.FechaMaximaVinculacion = Convert.ToDateTime(dreader["FechaMaximaVinculacion"]);
 
                     if (dreader["AperturaNavieras"] is DBNull)
                         Asignacion.AperturaNavieras = null;
@@ -719,7 +731,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[8].Value = paso2.FechaMasterConfirmado.HasValue ? paso2.FechaMasterConfirmado : new DateTime(9999, 1, 1);
 
                 objParams[9].Value = !string.IsNullOrEmpty(paso2.TxtCourier) ? paso2.TxtCourier : "";
-
+                objParams[10].Value = paso2.FechaMaximaVinculacionDiff;
+                objParams[11].Value = paso2.FechaMaximaVinculacion.HasValue ? paso2.FechaMaximaVinculacion : new DateTime(9999, 1, 1);
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO2", conn);
                 command.Parameters.AddRange(objParams);
@@ -2775,8 +2788,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             }
             return false;
         }
-        public static bool ValidaNumConsolidado(string numMaster) {
-            try {
+      
+        public static bool ValidaNumConsolidado(string numMaster, string idAsignacion)
+        {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_NUMCONSOLIDADO");
@@ -2789,7 +2805,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 while (dreader.Read()) {
                     string num = dreader["NumConsolidado"].ToString();
-                    if (!string.IsNullOrEmpty(num))
+                    string idasignacionquery = dreader["idasignacion"].ToString();
+
+                    if (idAsignacion != null && (numMaster != null && numMaster.Equals(num) && (idasignacionquery.Equals(idAsignacion))))
+                        return false;
+                    else if (!string.IsNullOrEmpty(num))
                         return true;
                 }
             } catch (Exception ex) {
@@ -3153,9 +3173,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion) {
+       public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion)
+        {
             var listDisputas = new List<PaperlessUsuario1Disputas>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION");
@@ -3165,7 +3187,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var disputa = new PaperlessUsuario1Disputas();
                     disputa.Id = Convert.ToInt64(dreader["Id"]);
                     if (!string.IsNullOrEmpty(dreader["Numero"].ToString()))
@@ -3177,43 +3200,104 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     disputa.TipoDisputa.Nombre = dreader["tipoDescripcion"].ToString();
                     listDisputas.Add(disputa);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listDisputas;
         }
 
-        public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta) {
-            var lista = new List<PaperlessCantUsuarios>();
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES");
-                objParams[0].Value = usuario;
-                objParams[1].Value = desde;
-                objParams[2].Value = hasta;
-                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                dreader = command.ExecuteReader();
+       public static DataTable ObtenerCantidadAsignacionesGrafico(string usuario, DateTime desde, DateTime hasta)
+       {
+           DataTable Grafica = new DataTable("Grafico");
+           string Estado;
+           string Vendedor;
+           Int32 Value;
+           try
+           {
+               //Abrir Conexion
+               conn = BaseDatos.NuevaConexion();
+               objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES");
+               objParams[0].Value = usuario;
+               objParams[1].Value = desde;
+               objParams[2].Value = hasta;
+               SqlCommand command = new SqlCommand("SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES", conn);
+               command.Parameters.AddRange(objParams);
+               command.CommandType = CommandType.StoredProcedure;
+               dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
-                    var ht = new PaperlessCantUsuarios();
-                    ht.NombreUsuario = dreader["NOMBREUSUARIO"].ToString();
-                    ht.Cantidad = Convert.ToInt32(dreader["CANT"]);
-                    lista.Add(ht);
-                }
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-            } finally {
-                conn.Close();
-            }
 
-            return lista;
-        }
+               Grafica.Columns.Add("Estado", typeof(String));
+               Grafica.Columns.Add("Vendedor", typeof(String));
+               Grafica.Columns.Add("Value", typeof(Int32));
+               //Estado = "Polaco";
+               //Vendedor ="Usuario 1";
+               //Value = Convert.ToInt32(10);
+               //Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
+
+
+               while (dreader.Read())
+               {
+                   Estado = dreader["NOMBREUSUARIO"].ToString();
+                   Vendedor = usuario;
+                   Value = Convert.ToInt32(dreader["CANT"]);
+                   Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
+               }
+           }
+           catch (Exception ex)
+           {
+               Log.EscribirLog(ex.Message);
+           }
+           finally
+           {
+               conn.Close();
+           }
+           return Grafica;
+       }
+
+       public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta)
+       {
+           var lista = new List<PaperlessCantUsuarios>();
+           try
+           {
+               //Abrir Conexion
+               conn = BaseDatos.NuevaConexion();
+               objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES");
+               objParams[0].Value = usuario;
+               objParams[1].Value = desde;
+               objParams[2].Value = hasta;
+               SqlCommand command = new SqlCommand("SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES", conn);
+               command.Parameters.AddRange(objParams);
+               command.CommandType = CommandType.StoredProcedure;
+               dreader = command.ExecuteReader();
+
+               while (dreader.Read())
+               {
+                   var ht = new PaperlessCantUsuarios();
+                   ht.NombreUsuario = dreader["NOMBREUSUARIO"].ToString();
+                   ht.Cantidad = Convert.ToInt32(dreader["CANT"]);
+                   lista.Add(ht);
+               }
+           }
+           catch (Exception ex)
+           {
+               Log.EscribirLog(ex.Message);
+           }
+           finally
+           {
+               conn.Close();
+           }
+
+           return lista;
+       }
+
+
     }
 }
 

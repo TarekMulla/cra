@@ -47,6 +47,8 @@
             this.lblP1errorHouses = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.txtP1NumConsolidado = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.grdP1DigitarHousesBL = new DevExpress.XtraGrid.GridControl();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,8 +61,6 @@
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtP1NumConsolidado = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.grdP3HousesRuteados = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -180,6 +180,7 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.P1repositoryItemCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1repositoryTipoCiente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -191,10 +192,10 @@
             this.pnlPaso1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddlP1Cliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1CantHouses.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdP1DigitarHousesBL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdP3HousesRuteados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -393,6 +394,21 @@
             this.labelControl14.TabIndex = 1;
             this.labelControl14.Text = "Digitar Houses BL";
             // 
+            // txtP1NumConsolidado
+            // 
+            this.txtP1NumConsolidado.Location = new System.Drawing.Point(108, 23);
+            this.txtP1NumConsolidado.Name = "txtP1NumConsolidado";
+            this.txtP1NumConsolidado.Size = new System.Drawing.Size(208, 20);
+            this.txtP1NumConsolidado.TabIndex = 3;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(14, 26);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(88, 13);
+            this.labelControl15.TabIndex = 2;
+            this.labelControl15.Text = "N° de Consolidado";
+            // 
             // grdP1DigitarHousesBL
             // 
             this.grdP1DigitarHousesBL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -515,21 +531,6 @@
             // 
             this.gridView2.GridControl = this.grdP1DigitarHousesBL;
             this.gridView2.Name = "gridView2";
-            // 
-            // txtP1NumConsolidado
-            // 
-            this.txtP1NumConsolidado.Location = new System.Drawing.Point(108, 23);
-            this.txtP1NumConsolidado.Name = "txtP1NumConsolidado";
-            this.txtP1NumConsolidado.Size = new System.Drawing.Size(208, 20);
-            this.txtP1NumConsolidado.TabIndex = 3;
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(14, 26);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(88, 13);
-            this.labelControl15.TabIndex = 2;
-            this.labelControl15.Text = "N° de Consolidado";
             // 
             // grdP3HousesRuteados
             // 
@@ -721,6 +722,7 @@
             // 
             // pnlExcepciones
             // 
+            this.pnlExcepciones.Controls.Add(this.MailExcepcion);
             this.pnlExcepciones.Controls.Add(this.btnP11Excepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
             this.pnlExcepciones.Controls.Add(this.lblP11ErrorExcepcion);
@@ -879,9 +881,11 @@
             // 
             this.gridColumn19.Caption = "Resuelto";
             this.gridColumn19.ColumnEdit = this.repositoryItemCheckEdit9;
-            this.gridColumn19.FieldName = "RecargoCollectResuelto";
+            this.gridColumn19.FieldName = "Resuelto";
             this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Width = 55;
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 6;
+            this.gridColumn19.Width = 68;
             // 
             // repositoryItemCheckEdit9
             // 
@@ -922,7 +926,7 @@
             this.ColTieneExcepcion.Name = "ColTieneExcepcion";
             this.ColTieneExcepcion.Visible = true;
             this.ColTieneExcepcion.VisibleIndex = 2;
-            this.ColTieneExcepcion.Width = 103;
+            this.ColTieneExcepcion.Width = 91;
             // 
             // repositoryItemCheckEdit12
             // 
@@ -937,7 +941,7 @@
             this.ColExcepcion.Name = "ColExcepcion";
             this.ColExcepcion.Visible = true;
             this.ColExcepcion.VisibleIndex = 3;
-            this.ColExcepcion.Width = 191;
+            this.ColExcepcion.Width = 170;
             // 
             // repositoryItemComboBox2
             // 
@@ -955,7 +959,7 @@
             this.ColResponsabilidad.Name = "ColResponsabilidad";
             this.ColResponsabilidad.Visible = true;
             this.ColResponsabilidad.VisibleIndex = 5;
-            this.ColResponsabilidad.Width = 193;
+            this.ColResponsabilidad.Width = 155;
             // 
             // repositoryItemComboBox3
             // 
@@ -974,7 +978,7 @@
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 4;
-            this.gridColumn42.Width = 161;
+            this.gridColumn42.Width = 143;
             // 
             // repositoryItemMemoExEdit2
             // 
@@ -1664,6 +1668,14 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
+            // MailExcepcion
+            // 
+            this.MailExcepcion.Image = ((System.Drawing.Image)(resources.GetObject("MailExcepcion.Image")));
+            this.MailExcepcion.Location = new System.Drawing.Point(627, 5);
+            this.MailExcepcion.Name = "MailExcepcion";
+            this.MailExcepcion.Size = new System.Drawing.Size(26, 27);
+            this.MailExcepcion.TabIndex = 4;
+            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1673,11 +1685,11 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
-            this.Controls.Add(this.pnlExcepciones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1697,10 +1709,10 @@
             this.pnlPaso1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddlP1Cliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1CantHouses.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdP1DigitarHousesBL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdP3HousesRuteados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
@@ -1918,5 +1930,6 @@
         private DevExpress.XtraEditors.SimpleButton TxtActualizarNetShip;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
+        private DevExpress.XtraEditors.SimpleButton MailExcepcion;
     }
 }

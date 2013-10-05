@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using ProyectoCraft.Entidades.Enums;
@@ -305,9 +306,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumMaster(numMaster);
         }
-        public static bool ValidaNumConsolidado(string numConsolidado)
+        public static bool ValidaNumConsolidado(string numConsolidado, string idasignacion)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidado(numConsolidado);
+            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidado(numConsolidado, idasignacion);
         }
 
         public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad()
@@ -338,6 +339,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignaciones(usuario, desde, hasta);
+        }
+        public static  DataTable ObtenerCantidadAsignacionesGrafico(string usuario, DateTime desde, DateTime hasta)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGrafico(usuario, desde, hasta);
         }
     }
 }

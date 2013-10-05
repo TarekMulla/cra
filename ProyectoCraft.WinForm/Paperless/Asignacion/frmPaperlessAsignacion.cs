@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
@@ -68,7 +69,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 {
                     if (clsPerfil.Nombre.ToString().Equals(Enums.UsuariosCargo.AdministradorDatosMaestros.ToString()))
                         MenuMantNavieras.Visible = true;
-                }            
+                }
 
             if (Accion == Enums.TipoAccionFormulario.Nuevo)
                 FormLoad();
@@ -98,8 +99,86 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             CargarAgentesExistentes();
             CargarNavesExistentes();
             CargarImportancia();
-
+            HabilitarOpcionesPorFlags();
             ValidarEstados();
+        }
+        private void HabilitarOpcionesPorFlags()
+        {
+            CargarGraficos();// IdUsuario,FechaDesde,FechaHasta
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("paperless_txtfechaMaximaVinculacion_Enabled");//puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+            {
+                txtAperturaNavieras.Enabled = false;
+                lblasteriscofechaMaximaVinculacion.Visible = true;
+                txtFechaMaximaVinculacion.Visible = true;
+                lblFechaMaximaVinculacion.Visible = true;
+                lblLeyendaFechaMaximaVinculacion.Visible = true;
+            }
+            else
+            {
+                txtAperturaNavieras.Enabled = true;
+                lblasteriscofechaMaximaVinculacion.Visible = false;
+                txtFechaMaximaVinculacion.Visible = false;
+                lblFechaMaximaVinculacion.Visible = false;
+                lblLeyendaFechaMaximaVinculacion.Visible = false;
+            }
+        }
+        private void CargaFechaMaximaVinculacion()
+        {
+            try
+            {
+                //Cargamos la configuracion
+                var configuracion = Base.Configuracion.Configuracion.Instance();
+                var opcion = configuracion.GetValue("paperless_txtfechaMaximaVinculacion_Enabled");//puede retornar un true, false o null
+                if (opcion.HasValue && opcion.Value.Equals(true))
+                {
+                    /*2 fechas de control 10 y 7 dias, el sistema controlará y mostrara una fecha precalculada en 2 ocaciones 
+                         * cuando el eta - la fecha actual sea menor a 7 o 10 dias, si eso no se cumple se debe enviar un  aviso q debe decir 
+                         "se ha superado el plazo que el sistema asigna automaticamente y usted debe ingresar la vinculacion, 
+                         * ademas se manejará un log minimo que indicará cual fue la opcion tomada, 10, 7 o manipulado por el usuario, 
+                         * la fecha de apertura se oculta para brasil.*/
+                    int dif = 0; //(txtFechaETA.DateTime - DateTime.Now).Days;
+
+                    if (txtFechaETA.DateTime.AddDays(-10) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = 10;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-7).ToShortDateString();
+                        dif = 7;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        lblAvisoFechaMaximaVinculacion.Visible = true;
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        txtFechaMaximaVinculacion.Text = "";
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-10) > DateTime.Now)
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    PaperlessAsignacionActual.FechaMaximaVinculacionDiff = dif;
+                    if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
+                        PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
+                }
+                else
+                {
+                    txtAperturaNavieras.Enabled = true;
+                    txtFechaMaximaVinculacion.Visible = false;
+                    lblFechaMaximaVinculacion.Visible = false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public void CargarFormulario()
@@ -246,62 +325,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             }
 
         }
-        //private void ValidarEstados()
-        //{
-        //    if(PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.Nuevo)
-        //    {
-        //        tabInfGeneral.PageEnabled = true;
-        //        tabFechas.PageEnabled = false;
-        //        tabPrealerta.PageEnabled = false;
-        //        tabAsignacion.SelectedTabPage = tabInfGeneral;
-        //    }else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnAsignacion && PaperlessAsignacionActual.NumMaster != null && !PaperlessAsignacionActual.FechaETA.HasValue)
-        //    {
-        //        tabInfGeneral.PageEnabled = true;
-        //        tabFechas.PageEnabled = true;
-        //        tabPrealerta.PageEnabled = false;
-        //        tabAsignacion.SelectedTabPage = tabFechas;
-        //    } else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnAsignacion && PaperlessAsignacionActual.FechaETA.HasValue && (PaperlessAsignacionActual.Usuario1 == null || PaperlessAsignacionActual.Usuario1.Id <= 0))
-        //    {
-        //        tabInfGeneral.PageEnabled = true;
-        //        tabFechas.PageEnabled = true;
-        //        tabPrealerta.PageEnabled = true;
-        //        btnAsignar.Enabled = true;
-        //        tabAsignacion.SelectedTabPage = tabPrealerta;                
-        //    } else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AsignadoUsuario1)
-        //    {
-        //        tabInfGeneral.PageEnabled = true;
-        //        tabFechas.PageEnabled = true;
-        //        tabPrealerta.PageEnabled = true;
-        //        btnAsignar.Enabled = true;
-        //        tabAsignacion.SelectedTabPage = tabPrealerta;
-        //        btnAsignar.Enabled = true;                
-        //    }
-        //    //else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.AceptadoUsuario1 
-        //    //    || PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnProcesoUsuario1)
-        //    //{
-        //    //    btnEditar.Visible = true;
-        //    //    btnGrabarBl.Visible = true;
-        //    //    BloqueaBotonesTabInfGeneral();
-        //    //    BloquearFormulario();
-        //    //}
-        //    //else if (PaperlessAsignacionActual.Estado.Equals(Enums.EstadoPaperless.EnProcesoUsuario2))
-        //    //{//PaperlessAsignacionActual.Estado.Equals(Enums.EstadoPaperless.EnviadoUsuario2) || 
-        //    //    MessageBox.Show("Imposible Editar. Paperless ya ha sido Asignado a Usuario 2");
-        //    //    BloqueaBotonesTabInfGeneral();
-        //    //    BloquearFormulario();
-        //    //}
-        //    //else if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnviadoUsuario2)
-        //    //{                
-        //    //}
-        //    else
-        //    {
-        //        tabInfGeneral.PageEnabled = true;
-        //        tabFechas.PageEnabled = true;
-        //        tabPrealerta.PageEnabled = true;
-        //        btnAsignar.Enabled = true;
-        //        tabAsignacion.SelectedTabPage = tabPrealerta;                       
-        //    }
-        //}
 
         private void BloqueaBotonesTabInfGeneral()
         {
@@ -471,11 +494,36 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 }
                 ddlUsuario2.SelectedIndex = 0;
             }
-
-
-
         }
+        private void CargarGraficos()
+        {
+            try
+            {
+                //Cargamos la configuracion
+                var configuracion = Base.Configuracion.Configuracion.Instance();
+                var opcion = configuracion.GetValue("paperless_GraficosAsignacionUsuario1y2_Enabled"); //puede retornar un true, false o null
+                if (opcion.HasValue && opcion.Value.Equals(true))
+                {
+                    DataTable resUsuario1 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGrafico("Usuario1", DateTime.Now.AddDays(-30), DateTime.Now);
+                    ChartUsuario1.Series.Clear();
+                    ChartUsuario1.SeriesDataMember = "Estado";
+                    ChartUsuario1.SeriesTemplate.ArgumentDataMember = "Vendedor";
+                    ChartUsuario1.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "Value" });
+                    ChartUsuario1.DataSource = (DataTable)resUsuario1;
 
+                    DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGrafico("Usuario2", DateTime.Now.AddDays(-30), DateTime.Now);
+                    Chartusuario2.Series.Clear();
+                    Chartusuario2.SeriesDataMember = "Estado";
+                    Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";
+                    Chartusuario2.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "Value" });
+                    Chartusuario2.DataSource = (DataTable)resUsuario2;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private void CargarImportancia()
         {
             clsParametrosInfo lstDestinoDireccion =
@@ -483,11 +531,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             Utils.Utils.CargaComboBoxParametros(lstDestinoDireccion, this.ddlImportanciaU1);
         }
 
-        //private void simpleButton4_Click(object sender, EventArgs e)
-        //{
-        //    //Usuario1.frmPaperlessUser1 form = new frmPaperlessUser1();
-        //    //form.Show();
-        //}
+
 
         private void frmPaperlessAsignacion_Leave(object sender, EventArgs e)
         {
@@ -496,9 +540,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void btnSiguienteP2_Click(object sender, EventArgs e)
         {
-            //if(PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.Nuevo)
             GuardarPaso1();
-            //else
             tabAsignacion.SelectedTabPage = tabFechas;
         }
 
@@ -882,17 +924,17 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     dxErrorProvider1.SetError(txtPlazoEmbarcadores, "Debe seleccionar fecha plazo a embarcadores", ErrorType.Critical);
                 }
             }
-
-            //if (!((PaperlessTipoServicio)ddlTipoServicio.SelectedItem).Nombre.Equals("Transbordo"))
-            //{
-            //    if (txtPlazoEmbarcadores.Text.Length.Equals(0))
-            //    {
-            //        valida = false;
-            //        dxErrorProvider1.SetError(txtPlazoEmbarcadores, "Debe seleccionar fecha plazo a embarcadores", ErrorType.Critical);
-            //    }    
-            //}
-
-
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("paperless_txtfechaMaximaVinculacion_Enabled");//puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+            {
+                if (txtFechaMaximaVinculacion.Text.Length.Equals(0))
+                {
+                    MessageBox.Show("Debe completar Fecha Maxima de Vinculación", "Paperless", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);  
+                    valida = false;
+                }                          
+            }
             return valida;
         }
 
@@ -1266,6 +1308,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         {
             if (!string.IsNullOrEmpty(txtFechaETA.Text))
                 txtfechaMasterConfirmado.Text = Convert.ToDateTime(txtFechaETA.Text).AddDays(-15).ToString();
+
+            CargaFechaMaximaVinculacion();
+
         }
 
         private void chkConfirmacionMaster_CheckedChanged(object sender, EventArgs e)
@@ -1325,6 +1370,17 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             form.ListarAsignaciones();
             Instancia = null;
             Close();
+        }
+
+        private void tabFechas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtFechaMaximaVinculacion_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
+                PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
         }
     }
 }

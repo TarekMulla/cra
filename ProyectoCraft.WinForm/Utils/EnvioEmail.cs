@@ -94,6 +94,38 @@ namespace ProyectoCraft.WinForm.Utils
 
             return res;
 
+        }
+
+        public static ResultadoTransaccion MailEnBorrador(string toValue, string subjectValue, string bodyValue)
+        {
+            ResultadoTransaccion res = new ResultadoTransaccion();
+            try
+            {
+                oApp = new Application();
+                oNameSpace = oApp.GetNamespace("MAPI");
+                oOutboxFolder = oNameSpace.GetDefaultFolder(OlDefaultFolders.olFolderDrafts);
+                _MailItem oMailItem = (_MailItem)oApp.CreateItem(OlItemType.olMailItem);
+                oMailItem.To = toValue;
+                oMailItem.Subject = subjectValue;
+                oMailItem.Body = bodyValue;
+                //oMailItem.SaveSentMessageFolder = oOutboxFolder;
+                
+                oMailItem.BodyFormat = OlBodyFormat.olFormatRichText;
+
+                oMailItem.Save();
+
+                res.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                res.Descripcion = ex.Message;
+                res.Estado = Enums.EstadoTransaccion.Rechazada;
+
+                Log.EscribirLog(ex.Message);
+            }
+
+            return res;
+
         }       
     }
 

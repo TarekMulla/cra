@@ -42,6 +42,18 @@ namespace SCCMultimodal.Utils
             {
                 emailPersonas.Add(toValue);
                 return EnvioEmail.EnviarEmail(toValue, subjectValue, bodyValue);
+                
+            }
+            return null;
+        }
+
+        public ResultadoTransaccion MailEnBorrador(string toValue, string subjectValue, string bodyValue)
+        {
+            if (!emailPersonas.Contains(toValue))
+            {
+                emailPersonas.Add(toValue);
+                return EnvioEmail.MailEnBorrador(toValue, subjectValue, bodyValue);
+
             }
             return null;
         }

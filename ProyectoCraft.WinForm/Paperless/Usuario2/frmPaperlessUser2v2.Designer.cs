@@ -42,7 +42,6 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RepositoryCheckPasos = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
-            this.btnP1GuardarExcepciones = new DevExpress.XtraEditors.SimpleButton();
             this.grdExcepciones = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,13 +55,17 @@
             this.repositoryItemCheckEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.Responsabilidad = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.repositoryItemMemoEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.btnP1GuardarExcepciones = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pnlContactarembarcador = new DevExpress.XtraEditors.PanelControl();
             this.btnP2ContactarEmbarcador = new DevExpress.XtraEditors.SimpleButton();
@@ -73,6 +76,10 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.pnlRecibirAperturaEmb = new DevExpress.XtraEditors.PanelControl();
+            this.pnlReenviarCorreo = new DevExpress.XtraEditors.PanelControl();
+            this.btnReenviarCorreoTermino = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.grdRecibirAperturaEmb = new DevExpress.XtraGrid.GridControl();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -87,13 +94,10 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.btnP3GuardarAperturaEmbarcadores = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlReenviarCorreo = new DevExpress.XtraEditors.PanelControl();
-            this.btnReenviarCorreoTermino = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Salir = new System.Windows.Forms.ToolStripButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPasos)).BeginInit();
@@ -106,7 +110,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
@@ -119,6 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRecibirAperturaEmb)).BeginInit();
             this.pnlRecibirAperturaEmb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).BeginInit();
+            this.pnlReenviarCorreo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRecibirAperturaEmb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -126,8 +134,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryViaReciboApertura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).BeginInit();
-            this.pnlReenviarCorreo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -247,6 +253,7 @@
             this.pnlExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlExcepciones.Controls.Add(this.MailExcepcion);
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.btnP1GuardarExcepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
@@ -255,16 +262,6 @@
             this.pnlExcepciones.Size = new System.Drawing.Size(692, 365);
             this.pnlExcepciones.TabIndex = 6;
             this.pnlExcepciones.Visible = false;
-            // 
-            // btnP1GuardarExcepciones
-            // 
-            this.btnP1GuardarExcepciones.Image = ((System.Drawing.Image)(resources.GetObject("btnP1GuardarExcepciones.Image")));
-            this.btnP1GuardarExcepciones.Location = new System.Drawing.Point(525, 9);
-            this.btnP1GuardarExcepciones.Name = "btnP1GuardarExcepciones";
-            this.btnP1GuardarExcepciones.Size = new System.Drawing.Size(162, 34);
-            this.btnP1GuardarExcepciones.TabIndex = 2;
-            this.btnP1GuardarExcepciones.Text = "Guardar Excepciones";
-            this.btnP1GuardarExcepciones.Click += new System.EventHandler(this.btnP1GuardarExcepciones_Click);
             // 
             // grdExcepciones
             // 
@@ -283,7 +280,9 @@
             this.repositoryItemMemoEdit1,
             this.repositoryItemMemoEdit2,
             this.repositoryItemTextEdit3,
-            this.repositoryItemMemoExEdit1});
+            this.repositoryItemMemoExEdit1,
+            this.repositoryItemComboBox2,
+            this.repositoryItemComboBox3});
             this.grdExcepciones.Size = new System.Drawing.Size(681, 308);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -300,11 +299,13 @@
             this.gridColumn16,
             this.gridColumn13,
             this.gridColumn22,
-            this.gridColumn23});
+            this.gridColumn23,
+            this.Responsabilidad});
             this.gridView1.GridControl = this.grdExcepciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowGroup = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.ShownEditor += new System.EventHandler(this.grdExcepciones_ShownEditor);
             this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
             // 
             // gridColumn1
@@ -315,7 +316,7 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 50;
+            this.gridColumn1.Width = 55;
             // 
             // gridColumn8
             // 
@@ -325,7 +326,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 1;
-            this.gridColumn8.Width = 150;
+            this.gridColumn8.Width = 148;
             // 
             // gridColumn9
             // 
@@ -335,7 +336,7 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 2;
-            this.gridColumn9.Width = 100;
+            this.gridColumn9.Width = 97;
             // 
             // gridColumn10
             // 
@@ -344,7 +345,8 @@
             this.gridColumn10.FieldName = "SobreValorPendienteResuelto";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 5;
+            this.gridColumn10.VisibleIndex = 6;
+            this.gridColumn10.Width = 77;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -387,11 +389,19 @@
             // gridColumn22
             // 
             this.gridColumn22.Caption = "Excepcion";
+            this.gridColumn22.ColumnEdit = this.repositoryItemComboBox2;
             this.gridColumn22.FieldName = "TipoExcepcion";
             this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.OptionsColumn.AllowEdit = false;
             this.gridColumn22.Visible = true;
             this.gridColumn22.VisibleIndex = 3;
+            this.gridColumn22.Width = 81;
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
             // 
             // gridColumn23
             // 
@@ -402,6 +412,7 @@
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 4;
+            this.gridColumn23.Width = 91;
             // 
             // repositoryItemMemoExEdit1
             // 
@@ -410,6 +421,23 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemMemoExEdit1.Name = "repositoryItemMemoExEdit1";
             this.repositoryItemMemoExEdit1.ShowIcon = false;
+            // 
+            // Responsabilidad
+            // 
+            this.Responsabilidad.Caption = "Responsabilidad";
+            this.Responsabilidad.ColumnEdit = this.repositoryItemComboBox3;
+            this.Responsabilidad.FieldName = "Responsabilidad";
+            this.Responsabilidad.Name = "Responsabilidad";
+            this.Responsabilidad.Visible = true;
+            this.Responsabilidad.VisibleIndex = 5;
+            this.Responsabilidad.Width = 111;
+            // 
+            // repositoryItemComboBox3
+            // 
+            this.repositoryItemComboBox3.AutoHeight = false;
+            this.repositoryItemComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
             // 
             // repositoryItemCheckEdit4
             // 
@@ -433,6 +461,16 @@
             // 
             this.repositoryItemTextEdit3.AutoHeight = false;
             this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
+            // btnP1GuardarExcepciones
+            // 
+            this.btnP1GuardarExcepciones.Image = ((System.Drawing.Image)(resources.GetObject("btnP1GuardarExcepciones.Image")));
+            this.btnP1GuardarExcepciones.Location = new System.Drawing.Point(525, 9);
+            this.btnP1GuardarExcepciones.Name = "btnP1GuardarExcepciones";
+            this.btnP1GuardarExcepciones.Size = new System.Drawing.Size(162, 34);
+            this.btnP1GuardarExcepciones.TabIndex = 2;
+            this.btnP1GuardarExcepciones.Text = "Guardar Excepciones";
+            this.btnP1GuardarExcepciones.Click += new System.EventHandler(this.btnP1GuardarExcepciones_Click);
             // 
             // labelControl1
             // 
@@ -539,6 +577,48 @@
             this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(677, 365);
             this.pnlRecibirAperturaEmb.TabIndex = 7;
             this.pnlRecibirAperturaEmb.Visible = false;
+            // 
+            // pnlReenviarCorreo
+            // 
+            this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
+            this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
+            this.pnlReenviarCorreo.Controls.Add(this.labelControl3);
+            this.pnlReenviarCorreo.Location = new System.Drawing.Point(1, 0);
+            this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
+            this.pnlReenviarCorreo.Size = new System.Drawing.Size(671, 384);
+            this.pnlReenviarCorreo.TabIndex = 10;
+            this.pnlReenviarCorreo.Visible = false;
+            this.pnlReenviarCorreo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReenviarCorreo_Paint);
+            // 
+            // btnReenviarCorreoTermino
+            // 
+            this.btnReenviarCorreoTermino.Image = ((System.Drawing.Image)(resources.GetObject("btnReenviarCorreoTermino.Image")));
+            this.btnReenviarCorreoTermino.Location = new System.Drawing.Point(25, 54);
+            this.btnReenviarCorreoTermino.Name = "btnReenviarCorreoTermino";
+            this.btnReenviarCorreoTermino.Size = new System.Drawing.Size(142, 28);
+            this.btnReenviarCorreoTermino.TabIndex = 3;
+            this.btnReenviarCorreoTermino.Text = "Reenviar Email";
+            this.btnReenviarCorreoTermino.Visible = false;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(16, 13);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(204, 13);
+            this.labelControl5.TabIndex = 2;
+            this.labelControl5.Text = "Reenviar correo termino de proceso";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(16, 13);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(177, 13);
+            this.labelControl3.TabIndex = 1;
+            this.labelControl3.Text = "Recibir Apertura Embarcadores";
             // 
             // grdRecibirAperturaEmb
             // 
@@ -668,48 +748,6 @@
             this.btnP3GuardarAperturaEmbarcadores.Text = "Guardar";
             this.btnP3GuardarAperturaEmbarcadores.Click += new System.EventHandler(this.btnP3GuardarAperturaEmbarcadores_Click);
             // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(16, 13);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(177, 13);
-            this.labelControl3.TabIndex = 1;
-            this.labelControl3.Text = "Recibir Apertura Embarcadores";
-            // 
-            // pnlReenviarCorreo
-            // 
-            this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
-            this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
-            this.pnlReenviarCorreo.Controls.Add(this.labelControl3);
-            this.pnlReenviarCorreo.Location = new System.Drawing.Point(1, 0);
-            this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
-            this.pnlReenviarCorreo.Size = new System.Drawing.Size(671, 384);
-            this.pnlReenviarCorreo.TabIndex = 10;
-            this.pnlReenviarCorreo.Visible = false;
-            this.pnlReenviarCorreo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReenviarCorreo_Paint);
-            // 
-            // btnReenviarCorreoTermino
-            // 
-            this.btnReenviarCorreoTermino.Image = ((System.Drawing.Image)(resources.GetObject("btnReenviarCorreoTermino.Image")));
-            this.btnReenviarCorreoTermino.Location = new System.Drawing.Point(25, 54);
-            this.btnReenviarCorreoTermino.Name = "btnReenviarCorreoTermino";
-            this.btnReenviarCorreoTermino.Size = new System.Drawing.Size(142, 28);
-            this.btnReenviarCorreoTermino.TabIndex = 3;
-            this.btnReenviarCorreoTermino.Text = "Reenviar Email";
-            this.btnReenviarCorreoTermino.Visible = false;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(16, 13);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(204, 13);
-            this.labelControl5.TabIndex = 2;
-            this.labelControl5.Text = "Reenviar correo termino de proceso";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -739,6 +777,15 @@
             this.labelControl4.Size = new System.Drawing.Size(93, 13);
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Check List Pasos";
+            // 
+            // MailExcepcion
+            // 
+            this.MailExcepcion.Image = ((System.Drawing.Image)(resources.GetObject("MailExcepcion.Image")));
+            this.MailExcepcion.Location = new System.Drawing.Point(493, 12);
+            this.MailExcepcion.Name = "MailExcepcion";
+            this.MailExcepcion.Size = new System.Drawing.Size(26, 27);
+            this.MailExcepcion.TabIndex = 9;
+            this.MailExcepcion.Click += new System.EventHandler(this.MailExcepcion_Click);
             // 
             // frmPaperlessUser2v2
             // 
@@ -770,7 +817,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
@@ -784,6 +833,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRecibirAperturaEmb)).EndInit();
             this.pnlRecibirAperturaEmb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).EndInit();
+            this.pnlReenviarCorreo.ResumeLayout(false);
+            this.pnlReenviarCorreo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRecibirAperturaEmb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
@@ -791,9 +843,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryViaReciboApertura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).EndInit();
-            this.pnlReenviarCorreo.ResumeLayout(false);
-            this.pnlReenviarCorreo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -868,5 +917,9 @@
         private DevExpress.XtraEditors.PanelControl pnlReenviarCorreo;
         private DevExpress.XtraEditors.SimpleButton btnReenviarCorreoTermino;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private DevExpress.XtraGrid.Columns.GridColumn Responsabilidad;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox3;
+        private DevExpress.XtraEditors.SimpleButton MailExcepcion;
     }
 }

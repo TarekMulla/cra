@@ -57,7 +57,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
 
         private PaperlessPasosEstado _pasoEstadoActual;
-        
+        private List<PaperlessTipoExcepcion> TiposDeExcepciones;
+        private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
+
+        private bool IsBrasil { get; set; }
 
         private void frmPaperlessUser2_Load(object sender, EventArgs e)
         {
@@ -67,13 +70,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             var configuracion = Base.Configuracion.Configuracion.Instance();
             var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
             if (opcion.HasValue && opcion.Value.Equals(true))
+            {
                 frmPaperlessUser2_LoadBrasil(sender, e);
+                IsBrasil = true;
+            }
             else
+            {
                 frmPaperlessUser2_LoadChile(sender, e);
-
-
-
-
+                IsBrasil = false;
+            }
             //Control Tiempo
             //control.AsignacionActual = PaperlessAsignacionActual;
             //control.ObtenerTiemposProcesoUsuario2();
@@ -94,6 +99,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             CargarPasos();
             ValidarAccion();
+
+            gridView1.Columns.View.Columns[3].Visible = true;
+            MailExcepcion.Visible = true;
         }
         private void frmPaperlessUser2_LoadChile(object sender, EventArgs e)
         {
@@ -108,8 +116,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             CargarPaso1Excepciones();
             CargarP2ContactarEmbarcadores();
             CargarP3AperturaEmbarcadores();
-
+            gridView1.Columns.View.Columns[3].Visible = false;
+            MailExcepcion.Visible = false;
             ValidarAccion();
+
         }
 
         private void ValidarAccion()
@@ -138,10 +148,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
 
         private void CargarP2ContactarEmbarcadores()
-        {         
-            var configuracion = Base.Configuracion.Configuracion.Instance();
-            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-            if (opcion.HasValue && opcion.Value.Equals(true))
+        {
+            if (IsBrasil)
                 CargarP2ContactarEmbarcadoresBrasil();
             else
                 CargarP2ContactarEmbarcadoresChile();
@@ -186,7 +194,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         {
             CargarPasos();
         }
-        private  void MarcarCambioEstadoPasoChile(object sender, EventArgs e)
+        private void MarcarCambioEstadoPasoChile(object sender, EventArgs e)
         {
 
             var mail = new EnvioMailObject();
@@ -264,7 +272,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 }
             }
         }
-        private  void MarcarCambioEstadoPasoBrasil(object sender, EventArgs e)
+        private void MarcarCambioEstadoPasoBrasil(object sender, EventArgs e)
         {
             var mail = new EnvioMailObject();
             DevExpress.XtraEditors.CheckEdit check = sender as DevExpress.XtraEditors.CheckEdit;
@@ -275,27 +283,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
                 pasoSeleccionado.Estado = true;
-                //CargarPasos();                
+                LogicaNegocios.Paperless.Paperless.Usuario2ActualizaPaso(PaperlessAsignacionActual, paso);
+
+                CargarPasos();
                 paso.Estado = check.Checked;
+
                 return;
             }
-            //if (paso.Paso.NumPaso == 1 || paso.Paso.NumPaso == 2 || paso.Paso.NumPaso == 3) {
-            //    paso.Estado = false;
-            //    CargarPasos();
-            //    return;
-            //}
 
-            //if (!ValidarPermiteCambiarPasoEstado(paso)) {
-            //    paso.Estado = false;
-            //    CargarPasos();
-            //    return;
-            //}
-
-            //if (paso.Estado) {
-            //    CargarPasos();
-            //    return;
-            //}
-            if (paso.Paso.NumPaso == 2)
+            if (paso.Paso.NumPaso == 3)
             {
 
 
@@ -351,9 +347,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
         {
-            var configuracion = Base.Configuracion.Configuracion.Instance();
-            var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-            if (opcion.HasValue && opcion.Value.Equals(true))
+            if (IsBrasil)
                 MarcarCambioEstadoPasoBrasil(sender, e);
             else
                 MarcarCambioEstadoPasoChile(sender, e);
@@ -439,8 +433,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         {
             try
             {
-                IList<PaperlessPasosEstado> pasos =
-                LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario2(PaperlessAsignacionActual.Id);
+                IList<PaperlessPasosEstado> pasos = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario2(PaperlessAsignacionActual.Id);
 
                 grdPasos.DataSource = pasos;
             }
@@ -462,8 +455,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             grdExcepciones.RefreshDataSource();
         }
 
-
-        public void CallDinamicMethod(PaperlessPasosEstado paso) {
+        public void CallDinamicMethod(PaperlessPasosEstado paso)
+        {
             if (String.IsNullOrEmpty(paso.Pantalla))
                 return;
 
@@ -478,26 +471,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
 
         #region pasosConPaneles
-        public void ResolverExcepciones(PaperlessPasosEstado paso){
+        public void ResolverExcepciones(PaperlessPasosEstado paso)
+        {
             _pasoEstadoActual = paso;
             pnlExcepciones.Visible = true;
         }
 
-        public void ContactarEnbarcador(PaperlessPasosEstado paso) {
+        public void ContactarEnbarcador(PaperlessPasosEstado paso)
+        {
             _pasoEstadoActual = paso;
             pnlContactarembarcador.Visible = true;
 
         }
 
-        public void AperturaEmbarcadores(PaperlessPasosEstado paso) {
+        public void AperturaEmbarcadores(PaperlessPasosEstado paso)
+        {
             _pasoEstadoActual = paso;
             pnlRecibirAperturaEmb.Visible = true;
 
         }
-        
-        public void PresentarManifiesto(PaperlessPasosEstado paso) {
+
+        public void PresentarManifiesto(PaperlessPasosEstado paso)
+        {
             _pasoEstadoActual = paso;
-            if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado){
+            if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
+            {
                 pnlRecibirAperturaEmb.Visible = true;
                 pnlReenviarCorreo.Visible = true;
                 btnReenviarCorreoTermino.Visible = true;
@@ -505,10 +503,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
 
         }
-        
+
         #endregion
 
-        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e){
+        protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e)
+        {
             var paso = (PaperlessPasosEstado)((GridView)sender).GetRow(e.RowHandle);
             if (!ValidarPermiteCambiarPasoEstado(paso))
                 return;
@@ -518,42 +517,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             CallDinamicMethod(paso);
 
             return;
-
-        
-            //pnlEnviarAviso.Visible = false;
-
-            //if(e.Column.FieldName == "Estado")
-            //{
-            if (e.RowHandle == 0)
-            {
-                pnlExcepciones.Visible = true;
-            }
-            if (e.RowHandle == 1)
-            {
-                pnlContactarembarcador.Visible = true;
-            }
-            if (e.RowHandle == 2)
-            {
-                pnlRecibirAperturaEmb.Visible = true;
-            }
-            if (e.RowHandle == 11)
-            {
-                //pnlEnviarAviso.Visible = true;
-            }
-
-            //}
-
-
         }
 
-        private void QuitaTodosPaneles(){
+        private void QuitaTodosPaneles()
+        {
             pnlExcepciones.Visible = false;
             pnlContactarembarcador.Visible = false;
             pnlRecibirAperturaEmb.Visible = false;
             pnlReenviarCorreo.Visible = false;
         }
 
-        private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(){
+        private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla()
+        {
             return _pasoEstadoActual;
         }
         private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla(int numpaso)
@@ -571,7 +546,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
 
-                if (excepciones != null)
+                if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
+                {
+                    MessageBox.Show(@"Falta informacion, debe ingresar al paso 'Excepciones'", @"Paperless");
+                }
+                else if (excepciones != null)
                 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
@@ -715,7 +694,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 {
                     var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
-            
+
                     bool pasocompleto = true;
                     foreach (var house in houses)
                     {
@@ -899,7 +878,148 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         //}
 
+        public void RegistrarExcepciones(PaperlessPasosEstado paso)
+        {
+            _pasoEstadoActual = paso;
+            pnlExcepciones.Visible = true;
+            var excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.RefrescarExcepciones(excepciones);
+            var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
+
+            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
+            grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
+            grdExcepciones.RefreshDataSource();
 
 
+        }
+        private void grdExcepciones_ShownEditor(object sender, EventArgs e)
+        {
+            try
+            {
+                var foo = sender as GridView;
+                var lista = foo.DataSource as IList<PaperlessExcepcion>;
+                var itemSelecccionado = lista[foo.FocusedRowHandle];
+                if (IsBrasil)
+                {
+                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones();
+                    TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
+
+                    DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
+
+                    if (!itemSelecccionado.TieneExcepcion)
+                    {
+                        itemSelecccionado.TipoExcepcion = null;
+                        itemSelecccionado.Responsabilidad = null;
+                        itemSelecccionado.Comentario = String.Empty;
+                    }
+
+                }
+
+                if (foo.FocusedColumn.FieldName.Equals("TipoExcepcion"))
+                {
+                    if (!IsBrasil)
+                        foo.FocusedColumn.OptionsColumn.AllowEdit = false;
+                    else
+                    {
+                        foo.FocusedColumn.OptionsColumn.AllowEdit = true;
+                        if (itemSelecccionado.TieneExcepcion)
+                        {
+                            var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                            cbo.Properties.Items.Clear();
+                            foreach (var tipos in TiposDeExcepciones)
+                            {
+                                cbo.Properties.Items.Add(tipos);
+                            }
+                        }
+                        else
+                        {
+                            var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                            cbo.Properties.Items.Clear();
+                            cbo.EditValue = null;
+                            cbo.Properties.Items.Add(new PaperlessTipoExcepcion());
+                        }
+                    }
+                }
+
+                if (foo.FocusedColumn.FieldName.Equals("Responsabilidad"))
+                {
+                    if (!IsBrasil)
+                        foo.FocusedColumn.OptionsColumn.AllowEdit = false;
+                    else
+                    {
+                        foo.FocusedColumn.OptionsColumn.AllowEdit = true;
+                        if (foo.FocusedColumn.OptionsColumn.AllowEdit.Equals(true))
+                            if (itemSelecccionado.TieneExcepcion)
+                            {
+                                var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                                cbo.Properties.Items.Clear();
+                                foreach (var tipos in TiposResponsabilidad)
+                                {
+                                    if (!tipos.Nombre.Equals("Usuario 1"))
+                                        cbo.Properties.Items.Add(tipos);
+                                }
+                            }
+                            else
+                            {
+                                var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                                cbo.Properties.Items.Clear();
+                                cbo.EditValue = null;
+                                cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
+                            }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+                throw;
+            }
+
+        }
+
+        private void MailExcepcion_Click(object sender, EventArgs e)
+        {
+            var filaSelected = grdExcepciones.DefaultView.GetRow(gridView1.FocusedRowHandle);
+
+            var x = (List<PaperlessExcepcion>)grdExcepciones.DefaultView.DataSource;
+            foreach (var paperlessExcepcion in x)
+            {
+                if (paperlessExcepcion.TieneExcepcion)
+                {
+                    var mail = new EnvioMailObject();
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    mail.MailEnBorrador("none@none.com", "Paperless Usuario 2 Excepciones", paperlessExcepcion.TipoExcepcion.ToString());
+                }
+            }
+        }
+        private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones)
+        {
+               var x = (List<PaperlessExcepcion>)grdExcepciones.DefaultView.DataSource;
+               foreach (var paperlessExcepcion in x)
+               {
+                   if (paperlessExcepcion.TieneExcepcion)
+                   {
+                       if(paperlessExcepcion.Resuelto.Equals(false))
+                       return false;
+                   }
+               }
+
+            foreach (PaperlessExcepcion excepcion in excepciones)
+            {
+                if (!IsBrasil)
+                {
+                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))
+                        return false;
+
+                }
+                else
+                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))//!excepcion.Resuelto
+                        return false;
+                    else if (excepcion.Responsabilidad.Nombre.Equals("Usuario 2"))
+                        return false;
+            }
+            return true;
+        }
     }
 }

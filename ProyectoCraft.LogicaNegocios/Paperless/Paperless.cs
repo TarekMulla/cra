@@ -286,6 +286,11 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2TerminaProceso(asignacion, paso, termino);
         }
 
+        public static ResultadoTransaccion Usuario2ActualizaPaso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2ActualizaPaso(asignacion, paso);
+        }
+
         public static ResultadoTransaccion Usuario1RechazaAsignacion(PaperlessUsuario1Rechaza rechazo)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1RechazaAsignacion(rechazo);

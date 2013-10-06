@@ -100,7 +100,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             CargarPasos();
             ValidarAccion();
 
-            gridView1.Columns.View.Columns[3].Visible = true;
+            gridView1.Columns.View.Columns[10].Visible = true;
             MailExcepcion.Visible = true;
         }
         private void frmPaperlessUser2_LoadChile(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             CargarPaso1Excepciones();
             CargarP2ContactarEmbarcadores();
             CargarP3AperturaEmbarcadores();
-            gridView1.Columns.View.Columns[3].Visible = false;
+            gridView1.Columns.View.Columns[10].Visible = false;
             MailExcepcion.Visible = false;
             ValidarAccion();
 
@@ -995,15 +995,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
         private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones)
         {
-               var x = (List<PaperlessExcepcion>)grdExcepciones.DefaultView.DataSource;
-               foreach (var paperlessExcepcion in x)
-               {
-                   if (paperlessExcepcion.TieneExcepcion)
-                   {
-                       if(paperlessExcepcion.Resuelto.Equals(false))
-                       return false;
-                   }
-               }
+             
 
             foreach (PaperlessExcepcion excepcion in excepciones)
             {
@@ -1016,7 +1008,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 else
                     if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))//!excepcion.Resuelto
                         return false;
-                    else if (excepcion.Responsabilidad.Nombre.Equals("Usuario 2"))
+                    else if (excepcion.Responsabilidad.Nombre.Equals("Usuario 2") || excepcion.ResueltoUser2.Equals(false))
                         return false;
             }
             return true;

@@ -42,6 +42,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RepositoryCheckPasos = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
+            this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
             this.grdExcepciones = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -97,7 +98,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Salir = new System.Windows.Forms.ToolStripButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPasos)).BeginInit();
@@ -135,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit9)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -263,6 +266,15 @@
             this.pnlExcepciones.TabIndex = 6;
             this.pnlExcepciones.Visible = false;
             // 
+            // MailExcepcion
+            // 
+            this.MailExcepcion.Image = ((System.Drawing.Image)(resources.GetObject("MailExcepcion.Image")));
+            this.MailExcepcion.Location = new System.Drawing.Point(493, 12);
+            this.MailExcepcion.Name = "MailExcepcion";
+            this.MailExcepcion.Size = new System.Drawing.Size(26, 27);
+            this.MailExcepcion.TabIndex = 9;
+            this.MailExcepcion.Click += new System.EventHandler(this.MailExcepcion_Click);
+            // 
             // grdExcepciones
             // 
             this.grdExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -282,7 +294,8 @@
             this.repositoryItemTextEdit3,
             this.repositoryItemMemoExEdit1,
             this.repositoryItemComboBox2,
-            this.repositoryItemComboBox3});
+            this.repositoryItemComboBox3,
+            this.repositoryItemCheckEdit9});
             this.grdExcepciones.Size = new System.Drawing.Size(681, 308);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -300,7 +313,8 @@
             this.gridColumn13,
             this.gridColumn22,
             this.gridColumn23,
-            this.Responsabilidad});
+            this.Responsabilidad,
+            this.gridColumn24});
             this.gridView1.GridControl = this.grdExcepciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowGroup = false;
@@ -344,8 +358,6 @@
             this.gridColumn10.ColumnEdit = this.repositoryItemCheckEdit3;
             this.gridColumn10.FieldName = "SobreValorPendienteResuelto";
             this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 6;
             this.gridColumn10.Width = 77;
             // 
             // repositoryItemCheckEdit3
@@ -778,14 +790,19 @@
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Check List Pasos";
             // 
-            // MailExcepcion
+            // gridColumn24
             // 
-            this.MailExcepcion.Image = ((System.Drawing.Image)(resources.GetObject("MailExcepcion.Image")));
-            this.MailExcepcion.Location = new System.Drawing.Point(493, 12);
-            this.MailExcepcion.Name = "MailExcepcion";
-            this.MailExcepcion.Size = new System.Drawing.Size(26, 27);
-            this.MailExcepcion.TabIndex = 9;
-            this.MailExcepcion.Click += new System.EventHandler(this.MailExcepcion_Click);
+            this.gridColumn24.Caption = "Resuelto Usuario 2";
+            this.gridColumn24.ColumnEdit = this.repositoryItemCheckEdit9;
+            this.gridColumn24.FieldName = "ResueltoUser2";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 6;
+            // 
+            // repositoryItemCheckEdit9
+            // 
+            this.repositoryItemCheckEdit9.AutoHeight = false;
+            this.repositoryItemCheckEdit9.Name = "repositoryItemCheckEdit9";
             // 
             // frmPaperlessUser2v2
             // 
@@ -845,6 +862,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -921,5 +939,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Responsabilidad;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox3;
         private DevExpress.XtraEditors.SimpleButton MailExcepcion;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit9;
     }
 }

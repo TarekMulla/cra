@@ -3590,6 +3590,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
                 objParams[4].Value = excepcion.Comentario;
                 objParams[5].Value = excepcion.Resuelto;
+                objParams[6].Value = excepcion.ResueltoUser2;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
                 command.Parameters.AddRange(objParams);
@@ -3649,6 +3650,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
                         if (!String.IsNullOrEmpty(dreader["Resuelto"].ToString()))
                             excepcion.Resuelto = Convert.ToBoolean(dreader["Resuelto"]);
+
+                        if (!String.IsNullOrEmpty(dreader["Resuelto_User2"].ToString()))
+                            excepcion.ResueltoUser2 = Convert.ToBoolean(dreader["Resuelto_User2"]);
 
                         excepcion.TipoExcepcion = tipoExcepcion;
                         excepcion.Responsabilidad = tipoResponsabilidad;

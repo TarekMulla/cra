@@ -10,9 +10,14 @@ Begin
 END
 
 
-if not exists(select * from syscolumns where object_name(id) = PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Resuelto')
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Resuelto')
 Begin
 	alter table PAPERLESS_USUARIO1_EXCEPCIONES add Resuelto bit 	
+END
+
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Resuelto_user2')
+Begin
+	alter table PAPERLESS_USUARIO1_EXCEPCIONES add Resuelto_user2 bit 	
 END
 
 

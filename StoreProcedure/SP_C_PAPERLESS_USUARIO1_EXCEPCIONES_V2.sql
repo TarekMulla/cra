@@ -8,7 +8,8 @@ b.id as id_tipo_excepcion,
 b.descripcion as descripcion_tipo_excepcion,  
 c.id as id_tipo_responsabilidad,  
 c.descripcion as descripcion_tipo_responsabilidad  ,
-a.Resuelto
+a.Resuelto,
+a.Resuelto_User2
 from PAPERLESS_USUARIO1_EXCEPCIONES A  
 LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.tipoExcepcion= b.id  
 LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id  
@@ -24,9 +25,11 @@ b.id as id_tipo_excepcion,
 b.descripcion as descripcion_tipo_excepcion,  
 c.id as id_tipo_responsabilidad,  
 c.descripcion as descripcion_tipo_responsabilidad  ,
-a.Resuelto
+a.Resuelto,
+a.Resuelto_User2
 from PAPERLESS_USUARIO1_EXCEPCIONES A  
 LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.tipoExcepcion= b.id  
 LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id  
 where A.id=@IdExcepcion    
 ')
+

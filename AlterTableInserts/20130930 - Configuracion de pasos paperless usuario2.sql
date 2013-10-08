@@ -1,5 +1,3 @@
-BEGIN TRAN
-
 if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO2' and name = 'idTipoCarga')
 Begin
 	ALTER TABLE PAPERLESS_PASOS_USUARIO2 ADD	idTipoCarga bigint 
@@ -67,5 +65,3 @@ update PAPERLESS_PASOS_USUARIO2 set pantalla='ContactarEnbarcador' where idPAso=
 update PAPERLESS_PASOS_USUARIO2 set pantalla='AperturaEmbarcadores' where idPAso=3
 update PAPERLESS_PASOS_USUARIO2 set pantalla='PresentarManifiesto' where idPAso=4
 GO
-
-ROLLBACK

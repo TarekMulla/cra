@@ -44,3 +44,16 @@ update PAPERLESS_PASOS_USUARIO2  set Descripcion = 'Exceções Entry', PasoSiguien
 go
 insert into PAPERLESS_PASOS_USUARIO2   values (3,'Vinculacion',1,2,null,1,'PresentarManifiesto')
 go
+
+
+
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (1,'Imprimir docs e tracking',1,null,2,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (2,'Imprimir desova (Santos)',1,1,3,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (3,'Redestinar (Santos)',1,2,4,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (4,'Conferir',1,3,5,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (5,'Transferir RO para consolidada',1,4,6,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (6,'Inserir courier number na consolidada.',1,5,7,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (7,'Inserir terminal de redestinação (Santos)',1,6,8,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (8,'Disponibilizar invoice para financeiro (Intranet)',1,7,9,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (9,'Alimentar planilha de controle de embarque',1,8,10,2,null)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (10,'Alimentar planilha de erros',1,9,null,2,null)

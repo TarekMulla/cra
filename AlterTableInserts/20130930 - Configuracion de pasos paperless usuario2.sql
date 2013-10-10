@@ -28,7 +28,7 @@ AS
 	IF (SELECT COUNT(*) FROM PAPERLESS_USUARIO2_PASOS_ESTADO WHERE IdAsignacion = @IdAsignacion) = 0
 	BEGIN
 		INSERT INTO PAPERLESS_USUARIO2_PASOS_ESTADO
-		SELECT @IdAsignacion, NumPaso, 'false',null FROM PAPERLESS_PASOS_USUARIO2   
+		SELECT @IdAsignacion, NumPaso, 'false',null FROM PAPERLESS_PASOS_USUARIO2   where @idCarga=idTipoCarga
 	END
 GO
 

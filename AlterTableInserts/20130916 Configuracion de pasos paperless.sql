@@ -70,7 +70,7 @@ CREATE PROCEDURE [dbo].[SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2]
 	IF (SELECT COUNT(*) FROM PAPERLESS_USUARIO1_PASOS_ESTADO WHERE IdAsignacion = @IdAsignacion) = 0
 	   BEGIN
 		INSERT INTO PAPERLESS_USUARIO1_PASOS_ESTADO
-		SELECT @IdAsignacion, NumPaso, 'false',null FROM PAPERLESS_PASOS_USUARIO1_v2 where  activo=1
+		SELECT @IdAsignacion, NumPaso, 'false',null FROM PAPERLESS_PASOS_USUARIO1_v2 where  activo=1 and idTipoCarga=@idCarga
 	    END
 	UPDATE PAPERLESS_ASIGNACION  set versionUsuario1 = 2 where id=@IdAsignacion and idTipoCarga=@idCarga
 GO

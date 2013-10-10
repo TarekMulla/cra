@@ -562,7 +562,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
 
             Entidades.GlobalObject.ResultadoTransaccion resultado =
-                LogicaNegocios.Paperless.Paperless.PreparaPasosUsuario1(PaperlessAsignacionActual, inicio);
+                LogicaNegocios.Paperless.Paperless.PreparaPasosUsuario1V2(PaperlessAsignacionActual, inicio);
 
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {

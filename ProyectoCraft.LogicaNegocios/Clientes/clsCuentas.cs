@@ -15,6 +15,7 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
             return AccesoDatos.Clientes.clsCuentaADO.ListarCuentas(nombre, vendedor, customer, IdEstado);
         }
 
+
         public static ResultadoTransaccion GuardarCuenta(clsCuenta cuenta)
         {
             if(cuenta.IsNew)

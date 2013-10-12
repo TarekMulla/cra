@@ -80,6 +80,8 @@
     <Compile Include="Cotizaciones\Directa\Moneda.cs" />
     <Compile Include="Cotizaciones\Directa\Opcion.cs" />
     <Compile Include="Cotizaciones\Directa\Puerto.cs" />
+    <Compile Include="Cotizaciones\Directa\TiposServicios.cs" />
+    <Compile Include="Cotizaciones\Directa\TiposVia.cs" />
     <Compile Include="Cotizaciones\Directa\Unidad.cs" />
     <Compile Include="Cotizaciones\ITableable.cs" />
     <Compile Include="Cotizaciones\ITableableOpcion.cs" />

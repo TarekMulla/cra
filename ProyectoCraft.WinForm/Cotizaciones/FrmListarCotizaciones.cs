@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors.DXErrorProvider;
@@ -9,9 +11,11 @@ using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.LogicaNegocios.Cotizaciones.Directa;
 using SCCMultimodal.Cotizaciones;
+using SCCMultimodal.Utils;
 
 
 namespace ProyectoCraft.WinForm.Cotizaciones {
@@ -249,21 +253,64 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             Cursor.Current = Cursors.WaitCursor;
             ResultadoTransaccion resultado = new ResultadoTransaccion();
 
-            var comentario = new Comentario
-            {
+            var comentario = new Comentario {
                 EsHistorial = false,
                 Observacion = txtComentario.Text,
                 Usuario = Base.Usuario.UsuarioConectado.Usuario
             };
             var cotizacion = GetSelectedRow(gridViewSLeads);
-            //if (Seleccion == "cot")
-            //{
             resultado = ClsComentario.GuardarMensaje(cotizacion, comentario);
-            //}
-            //if (Seleccion == "op")
-            //{
-            //    resultado = ClsComentario.GuardarMensaje(OpcionSeleccionada, comentario);
-            //}
+
+            var comentarios = gridComentarios.DataSource as List<Comentario>;
+
+            /*emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+            emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+            */
+            var mailFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+            var listMail = new List<String>();
+            foreach (var mail in mailFijo.Split(';')) {
+                if (!listMail.Contains(mail))
+                    listMail.Add(mail);
+            }
+            foreach (var c in comentarios) {
+                if (!listMail.Contains(c.Usuario.Email))
+                    listMail.Add(c.Usuario.Email);
+            }
+            var cot =  ClsCotizacionDirecta.ObtieneCotizacionDirecta(cotizacion.Id32).ObjetoTransaccion as CotizacionDirecta;
+            
+            if (!listMail.Contains(cot.Usuario.Email))
+                listMail.Add(cot.Usuario.Email);
+            var xmldoc = new XmlDocument();
+            xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
+
+
+            var subjectComenterio = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/subject").InnerText;
+            var bodyComentario = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/body").InnerText;
+
+            var subjectCambioEstado = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/subject").InnerText;
+            var bodyCambioEstado = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/body").InnerText;
+            var body = String.Empty;
+            var subject = String.Empty;
+
+            if (cboEstado.SelectedIndex != 0) {
+                body = bodyCambioEstado;
+                subject = subjectCambioEstado;
+            } else{
+                body = bodyComentario;
+                subject = subjectComenterio;
+            }
+
+            subject = subject.Replace("[numero]", cotizacion.Numero);
+            body = body.Replace("[usuario]", comentario.Usuario.NombreCompleto);
+            body = body.Replace("[estado]", ((Estado)cboEstado.SelectedItem).Nombre);
+            body = body.Replace("[comentario]", comentario.Observacion);
+
+
+            foreach (var to in listMail) {
+                new EnvioMailObject().EnviarEmail(to, subject, body);
+            }
+
+
             if (cboEstado.SelectedIndex != 0) {
                 Estado = (Estado)cboEstado.SelectedItem;
                 resultado = CotizacionDirectaEstado.ModificarEstado(cotizacion.Id32, Estado.Id32);

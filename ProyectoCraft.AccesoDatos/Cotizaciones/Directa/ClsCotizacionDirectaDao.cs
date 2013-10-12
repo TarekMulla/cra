@@ -296,6 +296,12 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
                     com.Parameters.AddWithValue("@COTIZACION_SOLICITUD_COTIZACIONES_id", cotizacionDirecta.Id32);
+                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
+                    if (o.TipoVia != null)
+                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
+                    else
+                        com.Parameters.AddWithValue("@idTipoVia", null);
+                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
@@ -503,6 +509,12 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
+                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
+                    if (o.TipoVia != null)
+                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
+                    else
+                        com.Parameters.AddWithValue("@idTipoVia", null);
+                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     com.ExecuteScalar();

@@ -25,12 +25,17 @@ namespace SCCMultimodal.Cotizaciones {
         private List<Concepto> _conceptos = new List<Concepto>();
         private List<Unidad> _unidades = new List<Unidad>();
         public CotizacionDirecta CotizacionDirecta = new CotizacionDirecta();
+        private List<TiposServicio> _tiposServicios;
+        private List<TiposVia> _tiposVias;
 
         public String mode = "Nueva";
 
         private void AddDataBindings() {
             bindingSource1.DataSource = CotizacionDirecta.Opciones;
             CboNaviera.DataBindings.Add("SelectedItem", bindingSource1, "Naviera");
+            cboServicio.DataBindings.Add("SelectedItem", bindingSource1, "TiposServicio");
+            cboVia.DataBindings.Add("SelectedItem", bindingSource1, "TipoVia");
+
             TxtTiempoTransito.DataBindings.Add("Text", bindingSource1, "TiempoTransito");
 
             txtFechaValidezIni.DataBindings.Add("Text", bindingSource1, "FechaValidezInicio");
@@ -47,15 +52,37 @@ namespace SCCMultimodal.Cotizaciones {
 
 
         public void BeginForm() {
-            _clientes = clsClientesMaster.ListarClienteMaster
+            /*_clientes = clsClientesMaster.ListarClienteMaster
                             (String.Empty, Enums.TipoPersona.Comercial, Enums.Estado.Todos, true) as
-                        List<clsClienteMaster>;
-            _targets = (List<clsTarget>)ProyectoCraft.LogicaNegocios.Clientes.clsTarget.ListarTarget(String.Empty, 0, 0);
+                        List<clsClienteMaster>;*/
+
+            _clientes = clsClientesMaster.ListarCuentasYTarget(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32);
+            /*var target = ProyectoCraft.LogicaNegocios.Direccion.Metas.clsMetaNegocio.ListarProspectosUsuarioEstado(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, "1,2,3,4,5,6,7,8,9").ObjetoTransaccion as  IList<clsMeta>;
+            var cuentas = clsCuentas.ListarCuentas("-1", ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, -1, -1);
+            
+
+            foreach (var c in cuentas){
+                c.ClienteMaster.Tipo = Enums.TipoPersona.Cuenta;
+                _clientes.Add(c.ClienteMaster);
+            }
+
+            foreach (var t in target) {
+                t.ObjClienteMaster.Tipo = Enums.TipoPersona.Target;
+                _clientes.Add(t.ObjClienteMaster);
+            }
+*/
+            _clientes.Sort((foo, bar) => foo.ToString().CompareTo(bar.ToString()));
+
+            //_targets = (List<clsTarget>)ProyectoCraft.LogicaNegocios.Clientes.clsTarget.ListarTarget(String.Empty, 0, 0);
             _monedas = ClsMonedas.ObtieneTodasLasMonedas().ObjetoTransaccion as List<Moneda>;
             _navieras = (List<ClsNaviera>)ClsNavieras.ListarNavieras(true);
             _conceptos = ClsConceptos.ObtieneTodosLosConceptos().ObjetoTransaccion as List<Concepto>;
             _unidades = ClsUnidad.ObtieneTodasLasUnidades().ObjetoTransaccion as List<Unidad>;
+            _tiposServicios = ClsTipoServicio.ObtieneTiposServicios().ObjetoTransaccion as List<TiposServicio>;
 
+            _tiposVias = ClsTipoVia.ObtieneTiposVias().ObjetoTransaccion as List<TiposVia>;
+            _tiposVias.Add(new TiposVia { Nombre = "" });
+            _tiposVias.Sort((foo, bar) => foo.ToString().CompareTo(bar.ToString()));
 
             CboCliente.Properties.Items.Clear();
             foreach (var c in _clientes)
@@ -80,6 +107,17 @@ namespace SCCMultimodal.Cotizaciones {
             if (_monedas != null)
                 foreach (var m in _monedas)
                     repositoryItemComboBox2.Items.Add(m);
+
+            cboServicio.Properties.Items.Clear();
+
+            cboServicio.Properties.Items.Add(new TiposServicio());
+            
+            foreach (var s in _tiposServicios)
+                cboServicio.Properties.Items.Add(s);
+
+            cboVia.Properties.Items.Clear();
+            foreach (var v in _tiposVias)
+                cboVia.Properties.Items.Add(v);
 
 
             if (mode == "Nueva")
@@ -268,6 +306,9 @@ namespace SCCMultimodal.Cotizaciones {
                 ActivarDesactivarDetalle(true);
             CboNaviera.SelectedIndex = 0;
 
+            cboServicio.SelectedIndex = 0;
+            cboVia.SelectedIndex = 0;
+
         }
 
         public void Cargaopcion(Opcion op) {
@@ -308,6 +349,10 @@ namespace SCCMultimodal.Cotizaciones {
             ListPol.Enabled = ListPolSeleccionado.Enabled = enabled;
             CboNaviera.SelectedIndex = 0;
             CboNaviera.Enabled = enabled;
+            cboServicio.SelectedIndex = 0;
+            cboServicio.Enabled = enabled;
+            cboVia.SelectedIndex = 0;
+            cboVia.Enabled = enabled;
             txtFechaValidezIni.Enabled = txtFechaValidezFin.Enabled = enabled;
             gridView1.OptionsBehavior.Editable = enabled;
             EliminarDetalle.Enabled = AgregarDetalle.Enabled = enabled;
@@ -398,6 +443,18 @@ namespace SCCMultimodal.Cotizaciones {
                     ctrldxError.SetError(CboNaviera, "Debe ingresar una naviera", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
+                if (o.TiposServicio == null) {
+                    ctrldxError.SetError(cboServicio, "Debe ingresar el tipo de servicio", ErrorType.Critical);
+                    encontroErrorOpcion = true;
+                }
+
+
+
+                if (o.TiposServicio != null && o.TiposServicio.Id32 == 2 && o.TipoVia == null) {
+                    ctrldxError.SetError(cboVia, "Debe ingresar un valor para Via", ErrorType.Critical);
+                    encontroErrorOpcion = true;
+                }
+
                 if (o.Pol.Count == 0) {
                     ctrldxError.SetError(ListPolSeleccionado, "Debe seleccionar al menos un POL", ErrorType.Critical);
                     errorTexto += "Debe seleccionar al menos un POL" + Environment.NewLine;

@@ -362,7 +362,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
             } finally {
                 conn.Close();
             }
-
+                
             return existe;
         }
 
@@ -1093,5 +1093,56 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
 
         }
         #endregion
+
+        public static IList<clsClienteMaster> ListarTarget(long idVendedor){
+            var  listMaster = new List<clsClienteMaster>();
+            SqlDataReader readercliente = null;
+            try {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_CLIENTES_MASTER_TARGET_POR_VENDEDOR");
+                objParams[0].Value = idVendedor;
+
+                SqlCommand command = new SqlCommand("SP_L_CLIENTES_MASTER_TARGET_POR_VENDEDOR", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                readercliente = command.ExecuteReader();
+
+                while (readercliente.Read()) {
+                    
+                    var master = new clsClienteMaster(true);
+                    master.Id = Convert.ToInt64(readercliente["Id"]);
+                    master.NombreCompañia = readercliente["NombreCompania"].ToString();
+                    master.Nombres = readercliente["Nombres"].ToString();
+                    master.ApellidoPaterno = readercliente["ApellidoPaterno"].ToString();
+                    master.ApellidoMaterno = readercliente["ApellidoMaterno"].ToString();
+                    master.RUT = readercliente["RUT"].ToString();
+
+                    if (readercliente["NombreFantasia"] is DBNull)
+                        master.NombreFantasia = "";
+                    else
+                        master.NombreFantasia = readercliente["NombreFantasia"].ToString();
+
+                    master.Tipo = (Enums.TipoPersona)readercliente["CodTipo"];
+
+                    if (readercliente["IdDireccionInfo"] is DBNull)
+                        master.DireccionInfo = null;
+                    else
+                        master.DireccionInfo = clsDireccionADO.ListarDireccionesPorIdInfo(Convert.ToInt64(readercliente["IdDireccionInfo"]));
+
+                    master.ProductosPreferidos = ObtenerProductosPreferidos(master.Id);
+                    listMaster.Add(master);
+                }
+
+            } catch (Exception ex) {
+                Base.Log.Log.EscribirLog(ex.Message);
+            } finally {
+                if (!readercliente.IsClosed)
+                    readercliente.Close();
+            }
+
+            return listMaster;
+        }
     }
 }

@@ -77,8 +77,10 @@
     <Compile Include="Cotizaciones\Directa\ClsOpcionDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsOpcionDetalleDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsPuertoDao.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsTiposServiciosDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsUnidadDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsCotizacionDirectaEstadoDao.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsTipoViaDao.cs" />
     <Compile Include="Direccion\Administracion\clsControlCreditoAdo.cs" />
     <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />

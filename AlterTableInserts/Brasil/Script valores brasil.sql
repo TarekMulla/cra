@@ -99,3 +99,40 @@ FROM PAPERLESS_TIPO_CARGA
 WHERE Activo = @Activo  
 Order by Descripcion
   
+
+
+
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (1,	'Pasta ok na planilla'	,1	,NULL	,2	,3	,'IngresoDeDatos')
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (2,	'Colocar dasta no pos it do mbl'	,1	,1	,3	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (3,	'Enviar pre-alerta para Sao Paulo'	,1	,2	,4	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (4,	'Enviar pre-alerta ao porto (o/portos)'	,1	,3	,5	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (5,	'Free time Santos (RF 5 dias Dry 7 dias)',	1,	4,	6,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (6,	'Dispoonibilizar invoices ao financiero',	1,	5,	7,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (7,	'Redestinar ao terminal (Santos)',	1	,6	,8	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (8,	'Fechamento da RO',	1,	7,	9,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (9,	'Conferir os documentos',	1	,8	,10	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (10,	'Carimbo de DTA no HBL (Santos)'	,1	,9	,11	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (11,	'Enviar hbls para Dpto DTA (Santos)'	,1	,10	,12	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (12,	'Verificar se ha carga IMO',	1,	11,	13,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (13,	'Solicitar ficha de emergencia',	1,	12,	14,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (14,	'Colocar pre-alerta na pasta confirmacao de embarque',	1,	13,	15,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (15,	'Disponibilizar pre-alerta na rede',	1,	14,	16,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (16,	'Cobrar Invoice',	1,	15,	17,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (17,	'Verificar trasbordo',	1	,16	,18	,3	,NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (18,	'Aprovar documentacao ao agente',	1,	17,	19,	3,	NULL)
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (19,	'Exceções Entry',	1,	18,	20,	3	,'RegistrarExcepciones')
+Insert into PAPERLESS_PASOS_USUARIO1_V2 values (20,	'Envio Do Courier',	1,	19,	NULL,	3,	'EnviarAvisoUsuario2')
+
+
+
+insert into PAPERLESS_PASOS_USUARIO2 values (1,'Conferencia',1,null,2,3, null)
+insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Entry',1,1,3,3,'RegistrarExcepciones')
+insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,3,'PresentarManifiesto')
+
+
+
+alter table PAPERLESS_TIPO_CARGA add DescripcionLarga varchar (20) 
+Insert into PAPERLESS_TIPO_CARGA values ('FCL',1,'FCL FHC')
+update PAPERLESS_TIPO_CARGA set Descripcionlarga ='FCL RO' where Id = 1
+update PAPERLESS_TIPO_CARGA set Descripcionlarga ='LCL' where Id = 2
+update PAPERLESS_TIPO_CARGA set Descripcionlarga ='FAK' where Id = 2

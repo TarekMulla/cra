@@ -93,10 +93,6 @@ END
 
 update PAPERLESS_PASOS_USUARIO2  set Descripcion = 'Exceções Entry', PasoSiguiente=3, pantalla = 'RegistrarExcepciones' where IdPaso = 2
 go
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where NumPaso=3)
-Begin
-	insert into PAPERLESS_PASOS_USUARIO2   values (3,'Vinculacion',1,2,null,1,'PresentarManifiesto')
-End
 
 
 update PAPERLESS_TIPO_CARGA set Descripcionlarga ='FCL RO' where Id = 1
@@ -148,11 +144,27 @@ END
 update PAPERLESS_PASOS_USUARIO2 set idtipocarga = 1
 go
 --select * from PAPERLESS_PASOS_USUARIO2
+truncate table PAPERLESS_PASOS_USUARIO2 
+go 
+
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where idtipocarga=1 and Descripcion ='Conferencia')
+BEGIN
+	insert into PAPERLESS_PASOS_USUARIO2 values (1,'Conferencia',1,null,2,1, null)
+	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Entry',1,1,3,1,'RegistrarExcepciones')
+	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,1,'PresentarManifiesto')
+END
+
 if not exists(select * from PAPERLESS_PASOS_USUARIO2 where idtipocarga=2 and Descripcion ='Conferencia')
 BEGIN
 	insert into PAPERLESS_PASOS_USUARIO2 values (1,'Conferencia',1,null,2,2, null)
 	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Entry',1,1,3,2,'RegistrarExcepciones')
 	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,2,'PresentarManifiesto')
+END
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where idtipocarga=3 and Descripcion ='Conferencia')
+BEGIN
+	insert into PAPERLESS_PASOS_USUARIO2 values (1,'Conferencia',1,null,2,3, null)
+	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Entry',1,1,3,3,'RegistrarExcepciones')
+	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,3,'PresentarManifiesto')
 END
 
 if not exists(select * from PAPERLESS_PASOS_USUARIO2 where idtipocarga=4 and Descripcion ='Conferencia')
@@ -162,12 +174,7 @@ BEGIN
 	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,4,'PresentarManifiesto')
 END
 
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where idtipocarga=3 and Descripcion ='Conferencia')
-BEGIN
-	insert into PAPERLESS_PASOS_USUARIO2 values (1,'Conferencia',1,null,2,3, null)
-	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Entry',1,1,3,3,'RegistrarExcepciones')
-	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Vinculacion',1,2,null,3,'PresentarManifiesto')
-END
+
 
 if not exists(select * from sysobjects  where name ='SP_L_PAPERLESS_TIPO_CARGA')
 	BEGIN

@@ -9,8 +9,6 @@ Begin
 END
 GO
 
-update PAPERLESS_PASOS_USUARIO2 set idTipoCarga=1 
-GO
 
 
 /*PROCEDIMIENTOS */
@@ -58,10 +56,3 @@ AS
 	ORDER BY PA.Id, PU2ESTADO.NumPaso
 GO
 
-
-
-update PAPERLESS_PASOS_USUARIO2 set pantalla='ResolverExcepciones' where idPAso=1
-update PAPERLESS_PASOS_USUARIO2 set pantalla='ContactarEnbarcador' where idPAso=2
-update PAPERLESS_PASOS_USUARIO2 set pantalla='AperturaEmbarcadores' where idPAso=3
-update PAPERLESS_PASOS_USUARIO2 set pantalla='PresentarManifiesto' where idPAso=4
-GO

@@ -4,6 +4,19 @@ begin
 end
 GO
 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_TIPO_EXCEPCIONES ' and name = 'Tipo')
+begin
+	alter table PAPERLESS_TIPO_EXCEPCIONES add Tipo varchar (20)
+end
+GO
+
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_TIPO_RESPONSABILIDAD' and name = 'Tipo')
+begin
+	alter table PAPERLESS_TIPO_RESPONSABILIDAD add Tipo varchar(20)
+end
+GO
+
+
 if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_PASOS_USUARIO1_V2' and name = 'idTipoCarga')
 begin 
 	ALTER TABLE PAPERLESS_PASOS_USUARIO1_V2 ADD idTipoCarga bigint 
@@ -23,17 +36,6 @@ begin
 end
 GO
 
-
-/* Actualizacion de los pasos */
-update PAPERLESS_PASOS_USUARIO1_v2 set idTipoCarga=1, pantalla=null
-update PAPERLESS_PASOS_USUARIO1 set idTipoCarga=1, pantalla=null
-
-update PAPERLESS_PASOS_USUARIO1_v2 set pantalla='IngresoDeDatos' where numpaso=1
-update PAPERLESS_PASOS_USUARIO1_v2 set pantalla='CrearManifiesto' where numpaso=2
-update PAPERLESS_PASOS_USUARIO1_v2 set pantalla='RegistrarExcepciones' where numpaso=6
-update PAPERLESS_PASOS_USUARIO1_v2 set pantalla='EnvioDisputa' where numpaso=10
-update PAPERLESS_PASOS_USUARIO1_v2 set pantalla='EnviarAvisoUsuario2' where numpaso=11
-GO
 
 
 /* DE AQUI EN ADELANTE PROCEDIMIENTOS ALMACENADOS */

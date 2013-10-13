@@ -136,3 +136,32 @@ Insert into PAPERLESS_TIPO_CARGA values ('FCL',1,'FCL FHC')
 update PAPERLESS_TIPO_CARGA set Descripcionlarga ='FCL RO' where Id = 1
 update PAPERLESS_TIPO_CARGA set Descripcionlarga ='LCL' where Id = 2
 update PAPERLESS_TIPO_CARGA set Descripcionlarga ='FAK' where Id = 2
+
+
+alter PROCEDURE SP_L_PAPERLESS_TIPO_CARGA  
+@Activo bit  
+  
+AS  
+  
+SELECT  distinct  
+Id,  
+Descripcion,  
+Activo  
+FROM PAPERLESS_TIPO_CARGA  
+WHERE Activo = @Activo  
+  
+
+
+CREATE PROCEDURE SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA  
+@Activo bit  
+  
+AS  
+  
+SELECT  distinct  
+Id,  
+Descripcion,  
+Activo  ,
+DescripcionLarga
+FROM PAPERLESS_TIPO_CARGA  
+WHERE Activo = @Activo  
+  

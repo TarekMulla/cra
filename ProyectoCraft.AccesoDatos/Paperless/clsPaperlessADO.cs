@@ -2374,7 +2374,44 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipo.Activo = Convert.ToBoolean(dreader["Activo"]);
+                 
+                    tipos.Add(tipo);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
 
+            return tipos;
+        }
+        public static IList<PaperlessTipoCarga> ListarTipoCargaDescripcionLarga(Enums.Estado activo)
+        {
+            PaperlessTipoCarga tipo = null;
+            IList<PaperlessTipoCarga> tipos = new List<PaperlessTipoCarga>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA");
+                objParams[0].Value = activo;
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    tipo = new PaperlessTipoCarga();
+                    tipo.Id = Convert.ToInt64(dreader["Id"]);
+                    tipo.Nombre = dreader["Descripcion"].ToString();
+                    tipo.Activo = Convert.ToBoolean(dreader["Activo"]);
+                    tipo.DescripcionLarga = dreader["DescripcionLarga"].ToString();
                     tipos.Add(tipo);
                 }
             }

@@ -25,5 +25,7 @@ namespace ProyectoCraft.Entidades.Paperless
         {
             get { return this.Nombre == "FAK"; }
         }
+
+        public string DescripcionLarga { get; set; }
     }
 }

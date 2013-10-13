@@ -102,6 +102,7 @@
             this.txtFechaETA = new DevExpress.XtraEditors.DateEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.tabPrealerta = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.Chartusuario2 = new DevExpress.XtraCharts.ChartControl();
             this.ChartUsuario1 = new DevExpress.XtraCharts.ChartControl();
             this.txtObservacionU2 = new DevExpress.XtraEditors.MemoEdit();
@@ -119,7 +120,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.MenuMantNavieras = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.ddlTipoCargaDescLarga = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
@@ -169,6 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlUsuario1.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabAsignacion
@@ -185,6 +187,7 @@
             // 
             // tabInfGeneral
             // 
+            this.tabInfGeneral.Controls.Add(this.ddlTipoCargaDescLarga);
             this.tabInfGeneral.Controls.Add(this.btnMantNaviera);
             this.tabInfGeneral.Controls.Add(this.btnGrabarTransbordo);
             this.tabInfGeneral.Controls.Add(this.btnEditarTransbordo);
@@ -383,6 +386,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlTipoCarga.Size = new System.Drawing.Size(129, 20);
             this.ddlTipoCarga.TabIndex = 10;
+            this.ddlTipoCarga.SelectedIndexChanged += new System.EventHandler(this.ddlTipoCarga_SelectedIndexChanged);
             // 
             // btnSiguienteP2
             // 
@@ -792,6 +796,14 @@
             this.tabPrealerta.Size = new System.Drawing.Size(831, 578);
             this.tabPrealerta.Text = "Asignar Pre alerta";
             // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(5, 557);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(378, 13);
+            this.labelControl20.TabIndex = 74;
+            this.labelControl20.Text = "Corresponde a la cantidad de HBL asignados por usuario en los últimos 30 días.";
+            // 
             // Chartusuario2
             // 
             this.Chartusuario2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -983,13 +995,14 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // labelControl20
+            // ddlTipoCargaDescLarga
             // 
-            this.labelControl20.Location = new System.Drawing.Point(5, 557);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(378, 13);
-            this.labelControl20.TabIndex = 74;
-            this.labelControl20.Text = "Corresponde a la cantidad de HBL asignados por usuario en los últimos 30 días.";
+            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(243, 233);
+            this.ddlTipoCargaDescLarga.Name = "ddlTipoCargaDescLarga";
+            this.ddlTipoCargaDescLarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlTipoCargaDescLarga.Size = new System.Drawing.Size(129, 20);
+            this.ddlTipoCargaDescLarga.TabIndex = 112;
             // 
             // frmPaperlessAsignacion
             // 
@@ -1060,6 +1073,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1145,6 +1159,7 @@
         private DevExpress.XtraEditors.LabelControl lblAvisoFechaMaximaVinculacion;
         private System.Windows.Forms.Label lblasteriscofechaMaximaVinculacion;
         private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.ComboBoxEdit ddlTipoCargaDescLarga;
 
     }
 }

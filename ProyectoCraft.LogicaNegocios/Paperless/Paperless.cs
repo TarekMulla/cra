@@ -228,6 +228,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTipoCarga(activo);
         }
+        public static IList<PaperlessTipoCarga> ListarTipoCargaDescripcionLarga(Enums.Estado activo)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTipoCargaDescripcionLarga(activo);
+        }
 
         public static IList<PaperlessTipoServicio> ListarTipoServicios(Enums.Estado activo)
         {

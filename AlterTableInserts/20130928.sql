@@ -12,6 +12,7 @@ END
 
 if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Resuelto')
 Begin
+--select * from PAPERLESS_USUARIO1_EXCEPCIONES
 	alter table PAPERLESS_USUARIO1_EXCEPCIONES add Resuelto bit 	
 END
 
@@ -24,3 +25,49 @@ END
 Begin
 	alter table PAPERLESS_TIPO_CARGA add DescripcionLarga varchar (20) 	
 END
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2') 
+BEGIN
+	DROP PROCEDURE [dbo].[SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2]
+END
+GO
+
+
+CREATE    PROCEDURE [dbo].[SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2]
+
+		@TieneExcepciones bit,        
+		@TipoExcepcion bigint,        
+		@TipoResponsabilidad bigint,        
+		@IdExcepcion bigint,        
+		@comentario varchar(300),      
+		@Resuelto bit        ,  
+		@ResueltoUser2 bit   
+		AS                                            
+		UPDATE PAPERLESS_USUARIO1_EXCEPCIONES        
+		SET TieneExcepciones = @TieneExcepciones,TipoExcepcion=@TipoExcepcion, TipoResponsabilidad=@TipoResponsabilidad, comentario=@comentario  ,       
+		Resuelto=@Resuelto    ,  
+		Resuelto_User2=@ResueltoUser2    
+		WHERE Id = @IdExcepcion 
+go
+
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2') 
+BEGIN
+print 'elimino [SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]'
+	DROP PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]
+END
+GO
+
+CREATE PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]    
+@IdExcepcion bigint    
+AS    
+select a.TieneExcepciones,    
+b.id as id_tipo_excepcion,    
+b.descripcion as descripcion_tipo_excepcion,    
+c.id as id_tipo_responsabilidad,    
+c.descripcion as descripcion_tipo_responsabilidad  ,  
+a.Resuelto,  
+a.Resuelto_User2  
+from PAPERLESS_USUARIO1_EXCEPCIONES A    
+LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.tipoExcepcion= b.id    
+LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id    
+where A.id=@IdExcepcion      
+go

@@ -57,7 +57,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             set { _accion = value; }
         }
 
+        private IList<PaperlessTipoCarga> Cargas { get; set; }
 
+        IList<PaperlessTipoCarga> CargasDesclarga { get; set; }
 
         private void frmPaperless_Load(object sender, EventArgs e)
         {
@@ -205,7 +207,59 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     txtNaveTransbordo.Text = Asignacion.NaveTransbordo.Nombre;
                 txtViaje.Text = Asignacion.Viaje;
                 txtNumHousesBL.Text = Asignacion.NumHousesBL.ToString();
-                ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
+                try
+                {
+                    if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
+                    {
+                        if (Asignacion.TipoCarga.Id > 3)
+                        {
+                            foreach (var paperlessTipoCarga in Cargas)
+                            {
+                                if (paperlessTipoCarga.Nombre.Equals("FCL"))
+                                {
+                                    ddlTipoCarga.SelectedItem = paperlessTipoCarga;
+                                    ddlTipoCargaDescLarga.Visible = true;
+                                    foreach (var descLarga in CargasDesclarga)
+                                    {
+                                        if (descLarga.Id.Equals(Asignacion.TipoCarga.Id))
+                                            ddlTipoCargaDescLarga.SelectedItem = descLarga;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
+
+                            if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
+                            {
+                                foreach (var paperlessTipoCarga in Cargas)
+                                {
+                                    if (paperlessTipoCarga.Nombre.Equals("FCL"))
+                                    {
+                                        ddlTipoCarga.SelectedItem = paperlessTipoCarga;
+                                        ddlTipoCargaDescLarga.Visible = true;
+                                        foreach (var descLarga in CargasDesclarga)
+                                        {
+                                            if (descLarga.Id.Equals(Asignacion.TipoCarga.Id))
+                                                ddlTipoCargaDescLarga.SelectedItem = descLarga;
+                                        }
+                                    }
+                                }
+                            }
+                           
+                        }
+                        
+                    }
+                    else
+                        ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;              
+                }
+                catch (Exception e)
+                {
+
+                }
+
+
 
                 if (!Asignacion.TipoCarga.EsFAK && (Asignacion.TipoServicio != null && Asignacion.TipoServicio.Nombre.Equals("Transbordo")))
                 {
@@ -437,16 +491,37 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void CargarProductos()
         {
-            IList<PaperlessTipoCarga> cargas =
-                LogicaNegocios.Paperless.Paperless.ListarTipoCarga(Enums.Estado.Habilitado);
+            bool cargofcl = false;
+            Cargas = LogicaNegocios.Paperless.Paperless.ListarTipoCarga(Enums.Estado.Habilitado);
+            CargasDesclarga = LogicaNegocios.Paperless.Paperless.ListarTipoCargaDescripcionLarga(Enums.Estado.Habilitado);
 
             ComboBoxItemCollection coll = ddlTipoCarga.Properties.Items;
             coll.Add(Utils.Utils.ObtenerPrimerItem());
-            foreach (var list in cargas)
+            foreach (var list in Cargas)
             {
-                coll.Add(list);
+                if (cargofcl.Equals(false))
+                {
+                    if (list.Nombre.Equals("FCL"))
+                        cargofcl = true;
+                    coll.Add(list);
+                }
+                else if (!list.Nombre.Equals("FCL"))
+                    coll.Add(list);
             }
             ddlTipoCarga.SelectedIndex = 0;
+
+            ComboBoxItemCollection collTipoDescLarga = ddlTipoCargaDescLarga.Properties.Items;
+            collTipoDescLarga.Add(Utils.Utils.ObtenerPrimerItem());
+            foreach (var list in CargasDesclarga)
+            {
+                if (list.EsFCL)
+                {
+                    list.Nombre = list.DescripcionLarga;
+                    collTipoDescLarga.Add(list);
+                }
+
+            }
+            ddlTipoCargaDescLarga.SelectedIndex = 0;
         }
 
         private void CargarTipoServicios()
@@ -706,48 +781,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.EnAsignacion;
 
             PaperlessAsignacionActual.Agente = (PaperlessAgente)ddlAgente.SelectedItem;
-            //if (txtAgente.Text.Trim() == "")
-            //{
-            //    PaperlessAsignacionActual.Agente = null;
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < ddlAgente.Properties.Items.Count; i++)
-            //    {
-            //        if (ddlAgente.Properties.Items[i].ToString() == txtAgente.Text)
-            //            ddlAgente.SelectedIndex = i;
-            //    }
 
-            //    if (ddlAgente.SelectedIndex == 0)
-            //    {
-            //        PaperlessAsignacionActual.Agente= new PaperlessAgente(){ Nombre = txtAgente.Text, Id = 0, Activo = true};
-            //    }
-            //    else
-            //        PaperlessAsignacionActual.Agente = (PaperlessAgente)this.ddlAgente.SelectedItem;
-            //}
 
             PaperlessAsignacionActual.Naviera = (PaperlessNaviera)ddlNaviera.SelectedItem;
-            //if (txtNaviera.Text.Trim() == "")
-            //{
-            //    PaperlessAsignacionActual.Naviera = null;
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < ddlNaviera.Properties.Items.Count; i++)
-            //    {
-            //        if (ddlNaviera.Properties.Items[i].ToString() == txtNaviera.Text)
-            //            ddlNaviera.SelectedIndex = i;
-            //    }
 
-            //    if (ddlNaviera.SelectedIndex == 0)
-            //    {
-            //        PaperlessAsignacionActual.Naviera = new PaperlessNaviera() { Nombre = txtNaviera.Text, Id = 0, Activo = true };
-            //    }
-            //    else
-            //        PaperlessAsignacionActual.Naviera = (PaperlessNaviera)this.ddlNaviera.SelectedItem;
-            //}
-
-            //PaperlessAsignacionActual.Nave = (PaperlessNave) ddlNave.SelectedItem;
             if (txtNave.Text.Trim() == "")
             {
                 PaperlessAsignacionActual.Nave = null;
@@ -793,6 +830,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             PaperlessAsignacionActual.Viaje = txtViaje.Text;
             PaperlessAsignacionActual.NumHousesBL = Convert.ToInt16(txtNumHousesBL.Text);
             PaperlessAsignacionActual.TipoCarga = (PaperlessTipoCarga)ddlTipoCarga.SelectedItem;
+            if (ddlTipoCargaDescLarga.Visible.Equals(true))
+            {
+                PaperlessAsignacionActual.TipoCarga = (PaperlessTipoCarga)ddlTipoCargaDescLarga.SelectedItem;
+            }
 
             if (ddlTipoServicio.SelectedIndex <= 0)
                 PaperlessAsignacionActual.TipoServicio = null;
@@ -931,9 +972,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 if (txtFechaMaximaVinculacion.Text.Length.Equals(0))
                 {
                     MessageBox.Show("Debe completar Fecha Maxima de Vinculación", "Paperless", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);  
+                                    MessageBoxIcon.Error);
                     valida = false;
-                }                          
+                }
             }
             return valida;
         }
@@ -1250,15 +1291,23 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void ddlTipoServicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((ddlTipoServicio.SelectedIndex == 0 || !((PaperlessTipoServicio)ddlTipoServicio.SelectedItem).Nombre.Equals("Transbordo")))
+            try
             {
-                lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = false;
-                txtNaveTransbordo.Text = "";
+                if ((ddlTipoServicio.SelectedIndex == 0 || !((PaperlessTipoServicio)ddlTipoServicio.SelectedItem).Nombre.Equals("Transbordo")))
+                {
+                    lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = false;
+                    txtNaveTransbordo.Text = "";
+                }
+                else
+                {
+                    lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblNaveTransbordo.Visible = txtNaveTransbordo.Visible = true;
+                MessageBox.Show(ex.Message + ex.StackTrace, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
         private void btnEditarTransbordo_Click(object sender, EventArgs e)
@@ -1381,6 +1430,11 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         {
             if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
                 PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
+        }
+
+        private void ddlTipoCarga_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
         }
     }
 }

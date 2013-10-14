@@ -102,6 +102,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             gridView1.Columns.View.Columns[10].Visible = true;
             MailExcepcion.Visible = true;
+            AgregarExcepcionManual.Visible = true;
+            gridView1.Columns.View.Columns[8].OptionsColumn.AllowEdit = true;
+            gridView1.Columns.View.Columns[7].OptionsColumn.AllowEdit = true;
+            //foo.FocusedColumn.OptionsColumn.AllowEdit = true;
         }
         private void frmPaperlessUser2_LoadChile(object sender, EventArgs e)
         {
@@ -119,7 +123,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             gridView1.Columns.View.Columns[10].Visible = false;
             MailExcepcion.Visible = false;
             ValidarAccion();
-
+            AgregarExcepcionManual.Visible = false;
         }
 
         private void ValidarAccion()
@@ -847,6 +851,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             var itemSelecccionado = lista[foo.FocusedRowHandle];
             if (foo.FocusedColumn.FieldName.Equals("Comentario"))
             {
+                if (IsBrasil)
+                    e.Cancel = false;
+                else
                 if (!itemSelecccionado.TipoExcepcion.Id.Equals(6))
                 {
                     e.Cancel = true;
@@ -902,9 +909,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 if (IsBrasil)
                 {
                     TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
-                    TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
+
+                    TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
 
                     DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
+
+                    if (itemSelecccionado.HouseBL.Cliente == null)
+                        itemSelecccionado.TieneExcepcion = true;
 
                     if (!itemSelecccionado.TieneExcepcion)
                     {
@@ -1012,6 +1023,24 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                         return false;
             }
             return true;
+        }
+
+        private void AgregarExcepcionManual_Click(object sender, EventArgs e)
+        {
+            IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
+            var item = new PaperlessExcepcion() { RecargoCollect = false };
+
+            PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+            house.Index = excepciones.Count + 1;
+            house.IdAsignacion = PaperlessAsignacionActual.Id;
+            house.Freehand = false;
+            house.HouseBL = (excepciones.Count + 1).ToString();
+            house.ExcepcionRecargoCollect = new PaperlessExcepcion {RecargoCollect = false, TieneExcepcion = true};
+
+            item.HouseBL = house;
+            excepciones.Add(item);
+            grdExcepciones.DataSource = excepciones;
+            grdExcepciones.RefreshDataSource();
         }
     }
 }

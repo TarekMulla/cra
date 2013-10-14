@@ -320,9 +320,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidado(numConsolidado, idasignacion);
         }
 
-        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad()
+        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad(string resp)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposResponsabilidad();
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposResponsabilidad(resp);
 
         }
 

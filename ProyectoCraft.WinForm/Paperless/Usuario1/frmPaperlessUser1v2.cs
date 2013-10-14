@@ -130,6 +130,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         {
             gridView1.Columns.View.Columns[6].Visible = true;
             MailExcepcion.Visible = true;
+            AgregarExcepcionManual.Visible = true;
         }
         private void LoadConfChile()
         {
@@ -1287,7 +1288,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             if (TiposDeExcepciones == null)
                 TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
             if (TiposResponsabilidad == null)
-                TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
+                TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
 
             var foo = sender as GridView;
             DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
@@ -1448,6 +1449,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             if (foo.FocusedColumn.FieldName.Equals("Comentario"))
             {
+                if (IsBrasil)
+                    e.Cancel = false;
+                else
                 if (itemSelecccionado.TieneExcepcion)
                 {
                     if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Id.Equals(6))
@@ -1821,10 +1825,30 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             //  var paso = (PaperlessPasosEstado)gridView4.GetRow(gridView4.FocusedRowHandle);
             //// return paso;
 
-            // var pasos = (IList<PaperlessPasosEstado>)grdPasos.DataSource;
+            // var pasos = (IList<PaperlessPasosEstado>)grdPasos.DataSource;5
 
             // return pasos[numpaso - 1];
 
+        }
+
+        private void AgregarDetalle_Click(object sender, EventArgs e)
+        {
+
+            IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
+            var item = new PaperlessExcepcion() {RecargoCollect = false};
+
+            PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+            house.Index = excepciones.Count + 1;
+            house.IdAsignacion = PaperlessAsignacionActual.Id;
+            house.Freehand = false;
+            house.HouseBL = (excepciones.Count + 1).ToString();
+            house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+
+            item.HouseBL = house;
+            excepciones.Add(item);
+            grdExcepciones.DataSource = excepciones;
+            grdExcepciones.RefreshDataSource();
+            
         }
     }
 }

@@ -3544,7 +3544,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return tipos;
         }
 
-        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad()
+        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad(string resp)
         {
             var tipos = new List<PaperlessTipoResponsabilidad>();
             try
@@ -3552,7 +3552,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_EXCEPCIONES");
+                objParams[0].Value = resp;
+
                 var command = new SqlCommand("SP_L_PAPERLESS_TIPO_RESPONSABILIDAD", conn);
+                command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
@@ -3630,7 +3634,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     objParams[2].Value = -1;
                 objParams[3].Value = excepcion.Id;
 
-                objParams[4].Value = excepcion.Comentario;
+                objParams[4].Value = excepcion.Comentario ?? "";
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = excepcion.ResueltoUser2;
 

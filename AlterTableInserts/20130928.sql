@@ -93,6 +93,12 @@ BEGIN
 END
 GO
 
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_PAPERLESS_TIPO_RESPONSABILIDAD') 
+BEGIN
+	DROP PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_RESPONSABILIDAD]
+END
+GO
+
 CREATE PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_EXCEPCIONES]  
 @tipo varchar (20)
 AS  
@@ -100,3 +106,19 @@ select id,Descripcion
 from PAPERLESS_TIPO_EXCEPCIONES  
 where activo = 1   and Tipo = @tipo
 order by id 
+
+go
+
+CREATE PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_RESPONSABILIDAD]
+@tipo varchar(20)
+AS  
+select id,Descripcion  
+from PAPERLESS_TIPO_RESPONSABILIDAD  
+where activo = 1   and tipo=@tipo
+UNION
+select id,Descripcion  
+from PAPERLESS_TIPO_RESPONSABILIDAD  
+where activo = 1   and tipo is null
+order by id   
+
+go

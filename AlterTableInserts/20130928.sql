@@ -77,6 +77,11 @@ Begin
 	DROP TABLE PAPERLESS_USUARIO1_EXCEPECIONES
 END
 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_TIPO_EXCEPCIONES' and name = 'Tipo')
+Begin
+	alter table PAPERLESS_TIPO_EXCEPCIONES add Tipo varchar (20)
+END
+
 
 IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_PAPERLESS_TIPO_EXCEPCIONES') 
 BEGIN

@@ -4,10 +4,14 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 using ProyectoCraft.Entidades.Clientes;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.LogicaNegocios.Clientes;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
@@ -32,6 +36,18 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void AddDataBindings() {
             bindingSource1.DataSource = CotizacionDirecta.Opciones;
+            CboNaviera.DataBindings.Clear();
+            cboServicio.DataBindings.Clear();
+            cboVia.DataBindings.Clear();
+            TxtTiempoTransito.DataBindings.Clear();
+            txtFechaValidezIni.DataBindings.Clear();
+            txtFechaValidezIni.DataBindings.Clear();
+            txtFechaValidezIni.DataBindings.Clear();
+            txtFechaValidezFin.DataBindings.Clear();
+            txtFechaValidezFin.DataBindings.Clear();
+            txtFechaValidezFin.DataBindings.Clear();
+            GridOpcionDetalle.DataBindings.Clear();
+
             CboNaviera.DataBindings.Add("SelectedItem", bindingSource1, "Naviera");
             cboServicio.DataBindings.Add("SelectedItem", bindingSource1, "TiposServicio");
             cboVia.DataBindings.Add("SelectedItem", bindingSource1, "TipoVia");
@@ -52,6 +68,9 @@ namespace SCCMultimodal.Cotizaciones {
 
 
         public void BeginForm() {
+
+            CboNaviera.Properties.AutoComplete = true;
+
             /*_clientes = clsClientesMaster.ListarClienteMaster
                             (String.Empty, Enums.TipoPersona.Comercial, Enums.Estado.Todos, true) as
                         List<clsClienteMaster>;*/
@@ -111,7 +130,7 @@ namespace SCCMultimodal.Cotizaciones {
             cboServicio.Properties.Items.Clear();
 
             cboServicio.Properties.Items.Add(new TiposServicio());
-            
+
             foreach (var s in _tiposServicios)
                 cboServicio.Properties.Items.Add(s);
 
@@ -286,6 +305,7 @@ namespace SCCMultimodal.Cotizaciones {
 
             GridOpcionDetalle.DataSource = list;
             GridOpcionDetalle.RefreshDataSource();
+
         }
 
 
@@ -377,12 +397,12 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void ActualizarCotizacion() {
             var resultado = ClsCotizacionDirecta.Modificar(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion);
+            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft");
         }
 
         private void CrearCotizacion() {
             var resultado = ClsCotizacionDirecta.Crear(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion);
+            MessageBox.Show(resultado.Descripcion,"Sistema Comercial Craft");
         }
 
         private void CargaDatosDelFormulario() {
@@ -463,7 +483,7 @@ namespace SCCMultimodal.Cotizaciones {
 
                 if (o.Pod.Count == 0) {
                     ctrldxError.SetError(ListPod, "Debe seleccionar al menos un POD", ErrorType.Critical);
-                    errorTexto += "Debe seleccionar al menos un Pod" + Environment.NewLine;
+                    errorTexto += "Debe seleccionar al menos un POD" + Environment.NewLine;
                     encontroErrorOpcion = true;
                 }
 
@@ -492,9 +512,31 @@ namespace SCCMultimodal.Cotizaciones {
                     encontroErrorOpcion = true;
                 }
 
+
+
+                var errorCotizacion = false;
+                GridView view = gridView1 as GridView;
+                for (int j = 0; j < view.RowCount; j++){
+                    var row = view.GetDataRow(j);
+
+                    foreach (GridColumn column in view.Columns){
+
+                        var foo = view.GetRowCellValue(j, column) as IIdentifiableObject;
+                        if (foo != null && foo.Id32 == 0){
+                            errorCotizacion = true;
+                            encontroErrorOpcion = true;
+                        }
+
+
+                    }
+                }
+
+                if (errorCotizacion)
+                    errorTexto += "Debe ingresar todo el detalle de la cotización" + Environment.NewLine;
+                        
                 if (!String.IsNullOrEmpty(errorTexto))
                     MessageBox.Show("Se han encontrado los siguientes problemas: " + Environment.NewLine + errorTexto,
-                                    "validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                     "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (encontroErrorOpcion)
                     return true;
@@ -502,6 +544,33 @@ namespace SCCMultimodal.Cotizaciones {
             }
             return ctrldxError.HasErrors;
         }
+
+        private void CboNaviera_KeyPress(object sender, KeyPressEventArgs e) {
+            var foo = "bar";
+        }
+
+        private void cboServicio_KeyPress(object sender, KeyPressEventArgs e) {
+            var foo = "bar";
+        }
+
+        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
+          /*  var valid = true;
+            GridView view = sender as GridView;
+            foreach (GridColumn column in view.Columns) {
+                var foo = view.GetRowCellValue(e.RowHandle, column) as IIdentifiableObject;
+                if (foo != null && foo.Id32 == 0) {
+                    valid = false;
+                    view.SetColumnError(column, "Debe ingresar un valor");
+                }
+            }
+
+            e.Valid = valid;*/
+        }
+
+        private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e) {
+        /*    //Suppress displaying the error message box
+            e.ExceptionMode = ExceptionMode.NoAction;
+        */}
     }
 }
 

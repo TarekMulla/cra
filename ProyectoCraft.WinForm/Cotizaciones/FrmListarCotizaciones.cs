@@ -103,10 +103,13 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         }
 
         private void toolStripButton2_Click_1(object sender, EventArgs e) {
-
-            var formulario = FrmCotizacionDirecta.Instancia;
-            //formulario.FrmListarCotizaciones = this;
-            formulario.ShowDialog();
+            try{
+                var formulario = FrmCotizacionDirecta.Instancia;
+                //formulario.FrmListarCotizaciones = this;
+                formulario.ShowDialog();
+            }catch(Exception ex){
+                Console.Write(ex.InnerException);
+            }
         }
 
         private void MenuEnviarAlCliente_Click(object sender, EventArgs e) {

@@ -255,7 +255,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = cotizacionDirecta;
-                res.Descripcion = "La cotizacion Directa se guardo Exitosamente";
+                res.Descripcion = "La cotizacion Directa se guardó Exitosamente";
 
             } catch (Exception ex) {
                 cotizacionDirecta.Id = cotizacionDirecta.Id32 = 0;

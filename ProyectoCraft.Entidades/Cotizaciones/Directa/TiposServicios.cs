@@ -69,7 +69,12 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         }
 
         public string ToString(IFormatProvider provider){
+            if (Nombre == null)
+                return string.Empty;
             return Nombre;
+        }
+        public override string ToString(){
+            return ToString(null);
         }
 
         public object ToType(Type conversionType, IFormatProvider provider){

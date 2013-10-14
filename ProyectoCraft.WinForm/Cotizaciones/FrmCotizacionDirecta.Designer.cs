@@ -38,6 +38,8 @@ namespace SCCMultimodal.Cotizaciones {
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboVia = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cboServicio = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.RemovePod = new DevExpress.XtraEditors.SimpleButton();
@@ -103,14 +105,14 @@ namespace SCCMultimodal.Cotizaciones {
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.cboServicio = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cboVia = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit2)).BeginInit();
             this.grpOportunidad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtObservaciones.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPodSeleccionado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPolSeleccionado)).BeginInit();
@@ -139,8 +141,6 @@ namespace SCCMultimodal.Cotizaciones {
             ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemComboBox23
@@ -284,6 +284,29 @@ namespace SCCMultimodal.Cotizaciones {
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
+            // 
+            // cboVia
+            // 
+            this.cboVia.EditValue = "";
+            this.cboVia.Location = new System.Drawing.Point(425, 184);
+            this.cboVia.Name = "cboVia";
+            this.cboVia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboVia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboVia.Size = new System.Drawing.Size(158, 20);
+            this.cboVia.TabIndex = 133;
+            // 
+            // cboServicio
+            // 
+            this.cboServicio.EditValue = "";
+            this.cboServicio.Location = new System.Drawing.Point(140, 184);
+            this.cboServicio.Name = "cboServicio";
+            this.cboServicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboServicio.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboServicio.Size = new System.Drawing.Size(158, 20);
+            this.cboServicio.TabIndex = 132;
+            this.cboServicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboServicio_KeyPress);
             // 
             // labelControl17
             // 
@@ -560,6 +583,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.CboNaviera.Size = new System.Drawing.Size(158, 20);
             this.CboNaviera.TabIndex = 17;
             this.CboNaviera.SelectedIndexChanged += new System.EventHandler(this.CboNaviera_SelectedIndexChanged);
+            this.CboNaviera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNaviera_KeyPress);
             // 
             // labelControl14
             // 
@@ -632,6 +656,8 @@ namespace SCCMultimodal.Cotizaciones {
             this.gridView1.OptionsBehavior.CacheValuesOnRowUpdating = DevExpress.Data.CacheRowValuesMode.Disabled;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gridView1_InvalidRowException);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
             // gridColumn2
             // 
@@ -886,28 +912,6 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             this.ctrldxError.ContainerControl = this;
             // 
-            // cboServicio
-            // 
-            this.cboServicio.EditValue = "";
-            this.cboServicio.Location = new System.Drawing.Point(140, 184);
-            this.cboServicio.Name = "cboServicio";
-            this.cboServicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboServicio.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboServicio.Size = new System.Drawing.Size(158, 20);
-            this.cboServicio.TabIndex = 132;
-            // 
-            // cboVia
-            // 
-            this.cboVia.EditValue = "";
-            this.cboVia.Location = new System.Drawing.Point(425, 184);
-            this.cboVia.Name = "cboVia";
-            this.cboVia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboVia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboVia.Size = new System.Drawing.Size(158, 20);
-            this.cboVia.TabIndex = 133;
-            // 
             // FrmCotizacionDirecta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,6 +932,8 @@ namespace SCCMultimodal.Cotizaciones {
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPodSeleccionado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPolSeleccionado)).EndInit();
@@ -958,8 +964,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

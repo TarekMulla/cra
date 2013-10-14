@@ -71,3 +71,23 @@ LEFT OUTER JOIN PAPERLESS_TIPO_EXCEPCIONES B on a.tipoExcepcion= b.id
 LEFT OUTER JOIN PAPERLESS_TIPO_RESPONSABILIDAD c on a.TipoResponsabilidad = c.id    
 where A.id=@IdExcepcion      
 go
+
+if exists(select * from sysobjects where name = 'PAPERLESS_USUARIO1_EXCEPECIONES')
+Begin
+	DROP TABLE PAPERLESS_USUARIO1_EXCEPECIONES
+END
+
+
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_PAPERLESS_TIPO_EXCEPCIONES') 
+BEGIN
+	DROP PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_EXCEPCIONES]
+END
+GO
+
+CREATE PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_EXCEPCIONES]  
+@tipo varchar (20)
+AS  
+select id,Descripcion 
+from PAPERLESS_TIPO_EXCEPCIONES  
+where activo = 1   and Tipo = @tipo
+order by id 

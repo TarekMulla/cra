@@ -72,6 +72,33 @@ insert into PAPERLESS_TIPO_EXCEPCIONES values ('Modalidade de frete/THC/desconso
 insert into PAPERLESS_TIPO_EXCEPCIONES values ('Moeda de frete/THC/desconsolidação/liberação',1,'FCL')
 Go
 
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('HBL FALTANTE',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('CBM',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('CONSIGNEE',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('CNPJ HOUSE',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('CNPJ MASTER',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('CONTAINER',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('DATA DO HBL',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('DATA DO MASTER',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('DESCRIÇÃO',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('EMBALAGEM',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('FALTA DE MASTER',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('FINAL DESTINATION',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('FRETE',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('MOEDA',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('NCM',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('NOMENCLATURA',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('NOTIFY',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('ORIGEN',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('PESO',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('PORT OF LOADING',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('PORTO DE DESTINO',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('QUANTIDADE',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('RO INCOMPLETA',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('SHIPPER',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('SI INCOMPLETA',1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES values ('TAXAS',1,'FAK')
+go
 
 if not exists(select * from PAPERLESS_TIPO_RESPONSABILIDAD where Descripcion='AGENTE')
 Begin
@@ -268,3 +295,6 @@ Update PAPERLESS_PASOS_USUARIO1_V2 set idtipocarga=2 where idtipocarga is null
 go
 --select * from PAPERLESS_PASOS_USUARIO1_V2
 --select * from paperless_tipo_carga --2=3
+
+update PAPERLESS_PASOS_USUARIO1_v2 set pantalla = 'RegistrarExcepciones' where IdPaso in (29)
+go

@@ -901,7 +901,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 var itemSelecccionado = lista[foo.FocusedRowHandle];
                 if (IsBrasil)
                 {
-                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones();
+                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
                     TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
 
                     DataRow row = foo.GetDataRow(foo.FocusedRowHandle);

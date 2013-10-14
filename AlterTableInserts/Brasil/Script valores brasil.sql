@@ -103,6 +103,7 @@ go
 if not exists(select * from PAPERLESS_TIPO_RESPONSABILIDAD where Descripcion='AGENTE')
 Begin
 --LCL
+--select * from PAPERLESS_TIPO_RESPONSABILIDAD
 	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('AGENTE',1,'LCL')
 	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('COORDENAÇAO',1,'LCL')
 	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('PRICING',1,'LCL')
@@ -129,11 +130,13 @@ go
 
 if not exists(select * from PAPERLESS_TIPO_CARGA where descripcionLarga='FCL FHC')
 Begin
+	--delete from PAPERLESS_TIPO_CARGA where Id in (4,5)
 	Insert into PAPERLESS_TIPO_CARGA values ('FCL',1,'FCL FHC')
 End
 
 
---select * from PAPERLESS_PASOS_USUARIO1_V2
+--select * from PAPERLESS_PASOS_USUARIO1_V2 where idtipocarga = 4
+--delete  from PAPERLESS_PASOS_USUARIO1_V2 where idtipocarga = 1 and IDpaso < 21
 --select * from PAPERLESS_TIPO_CARGA
 
 if not exists(select * from PAPERLESS_PASOS_USUARIO1_V2 where idtipocarga=1 and Descripcion ='Imprimir docs e tracking')
@@ -171,6 +174,7 @@ END
 update PAPERLESS_PASOS_USUARIO2 set idtipocarga = 1
 go
 --select * from PAPERLESS_PASOS_USUARIO2
+--update PAPERLESS_PASOS_USUARIO2 set idtipocarga = 6 where idtipocarga =4
 truncate table PAPERLESS_PASOS_USUARIO2 
 go 
 
@@ -293,8 +297,14 @@ Update PAPERLESS_PASOS_USUARIO1_V2 set pantalla='RegistrarExcepciones' where Des
 go
 Update PAPERLESS_PASOS_USUARIO1_V2 set idtipocarga=2 where idtipocarga is null
 go
---select * from PAPERLESS_PASOS_USUARIO1_V2
+Update PAPERLESS_PASOS_USUARIO1_V2 set pantalla='RegistrarExcepciones' where Descripcion='Alimentar planilha de controle de embarque' and idtipocarga = 1
+go
+Update PAPERLESS_PASOS_USUARIO1_V2 set pantalla='RegistrarExcepciones' where Descripcion='Inserir courier number na consolidada' and idtipocarga = 4
+go
+
+--select * from PAPERLESS_PASOS_USUARIO1_V2 where idtipocarga = 4
 --select * from paperless_tipo_carga --2=3
+--update PAPERLESS_PASOS_USUARIO1_V2 set idtipocarga=6  where idtipocarga = 4
 
 update PAPERLESS_PASOS_USUARIO1_v2 set pantalla = 'RegistrarExcepciones' where IdPaso in (29)
 go

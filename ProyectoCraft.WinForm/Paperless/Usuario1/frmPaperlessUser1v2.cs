@@ -1285,7 +1285,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private void grdExcepciones_ShownEditor(object sender, EventArgs e)
         {
             if (TiposDeExcepciones == null)
-                TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones();
+                TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
             if (TiposResponsabilidad == null)
                 TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad();
 

@@ -3475,7 +3475,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return houses;
         }
 
-        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones()
+        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones(string tipoE)
         {
             var tipos = new List<PaperlessTipoExcepcion>();
             try
@@ -3483,7 +3483,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_EXCEPCIONES");
+                objParams[0].Value = tipoE;
+
+
                 SqlCommand command = new SqlCommand("SP_L_PAPERLESS_TIPO_EXCEPCIONES", conn);
+                command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 

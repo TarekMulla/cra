@@ -184,9 +184,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposTransitoTransbordo();
         }
 
-        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones()
+        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones(string tipo)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposExcepciones();
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposExcepciones(tipo);
         }
 
         public static IList<PaperlessTipoDisputa> ListarTiposDisputa()

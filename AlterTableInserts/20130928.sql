@@ -51,7 +51,7 @@ go
 
 IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2') 
 BEGIN
-print 'elimino [SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]'
+--print 'elimino [SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]'
 	DROP PROCEDURE [dbo].[SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2]
 END
 GO
@@ -82,6 +82,10 @@ Begin
 	alter table PAPERLESS_TIPO_EXCEPCIONES add Tipo varchar (20)
 END
 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_TIPO_RESPONSABILIDAD' and name = 'Tipo')
+Begin
+	alter table PAPERLESS_TIPO_RESPONSABILIDAD add Tipo varchar (20)
+END
 
 IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_PAPERLESS_TIPO_EXCEPCIONES') 
 BEGIN

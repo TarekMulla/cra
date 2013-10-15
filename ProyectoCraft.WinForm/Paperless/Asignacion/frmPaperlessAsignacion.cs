@@ -214,7 +214,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     txtNaveTransbordo.Text = Asignacion.NaveTransbordo.Nombre;
                 txtViaje.Text = Asignacion.Viaje;
                 txtNumHousesBL.Text = Asignacion.NumHousesBL.ToString();
-                if (!IsBrasil)
+                if (IsBrasil)
                     try
                     {
                         if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
@@ -1442,7 +1442,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void ddlTipoCarga_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
+            if (IsBrasil)
+                ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
         }
     }
 }

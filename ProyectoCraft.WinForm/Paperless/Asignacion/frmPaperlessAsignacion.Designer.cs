@@ -44,6 +44,7 @@
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel6 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.tabAsignacion = new DevExpress.XtraTab.XtraTabControl();
             this.tabInfGeneral = new DevExpress.XtraTab.XtraTabPage();
+            this.ddlTipoCargaDescLarga = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnMantNaviera = new DevExpress.XtraEditors.SimpleButton();
             this.btnGrabarTransbordo = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditarTransbordo = new DevExpress.XtraEditors.SimpleButton();
@@ -120,10 +121,10 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.MenuMantNavieras = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.ddlTipoCargaDescLarga = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNaveTransbordo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNave.Properties)).BeginInit();
@@ -170,7 +171,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlUsuario1.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabAsignacion
@@ -224,6 +224,16 @@
             this.tabInfGeneral.Size = new System.Drawing.Size(831, 578);
             this.tabInfGeneral.Text = "Informacion General";
             this.tabInfGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.tabInfGeneral_Paint);
+            // 
+            // ddlTipoCargaDescLarga
+            // 
+            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(243, 233);
+            this.ddlTipoCargaDescLarga.Name = "ddlTipoCargaDescLarga";
+            this.ddlTipoCargaDescLarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlTipoCargaDescLarga.Size = new System.Drawing.Size(129, 20);
+            this.ddlTipoCargaDescLarga.TabIndex = 112;
+            this.ddlTipoCargaDescLarga.Visible = false;
             // 
             // btnMantNaviera
             // 
@@ -995,15 +1005,6 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // ddlTipoCargaDescLarga
-            // 
-            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(243, 233);
-            this.ddlTipoCargaDescLarga.Name = "ddlTipoCargaDescLarga";
-            this.ddlTipoCargaDescLarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlTipoCargaDescLarga.Size = new System.Drawing.Size(129, 20);
-            this.ddlTipoCargaDescLarga.TabIndex = 112;
-            // 
             // frmPaperlessAsignacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1024,6 +1025,7 @@
             this.tabAsignacion.ResumeLayout(false);
             this.tabInfGeneral.ResumeLayout(false);
             this.tabInfGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNaveTransbordo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotivo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNave.Properties)).EndInit();
@@ -1073,7 +1075,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

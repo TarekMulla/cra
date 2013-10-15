@@ -86,4 +86,26 @@ insert into PAPERLESS_PASOS_USUARIO2 values (3,	'Recibir Apertura Embarcadores',
 insert into PAPERLESS_PASOS_USUARIO2 values (4,	'Presentar Manifiesto'	,1	,3	,NULL	,3,	'PresentarManifiesto')
 
 
+truncate table PAPERLESS_TIPO_EXCEPCIONES  
 
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Sobrevalor pendiente',1,	'FCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Falta de informacion de contacto'	,1,'FCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master en la nominacion'	,1,'FCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master no valorado'	,1,'FCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('No envio de copia  de BL',1,	'FCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Otros',	1,'FCL')
+
+
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Sobrevalor pendiente',1,	'LCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Falta de informacion de contacto'	,1,'LCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master en la nominacion'	,1,'LCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master no valorado'	,1,'LCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('No envio de copia  de BL',1,	'LCL')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Otros',	1,'LCL')
+
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Sobrevalor pendiente',1,	'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Falta de informacion de contacto'	,1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master en la nominacion'	,1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Master no valorado'	,1,'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('No envio de copia  de BL',1,	'FAK')
+insert into PAPERLESS_TIPO_EXCEPCIONES  values ('Otros',	1,'FAK')

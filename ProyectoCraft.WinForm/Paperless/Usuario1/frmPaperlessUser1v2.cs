@@ -1287,9 +1287,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         {
             if (TiposDeExcepciones == null)
                 TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
+            else
+                if (TiposDeExcepciones.Count.Equals(0))
+                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
             if (TiposResponsabilidad == null)
                 TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
-
+            
             var foo = sender as GridView;
             DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
             var lista = foo.DataSource as IList<PaperlessExcepcion>;
@@ -1452,21 +1455,21 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 if (IsBrasil)
                     e.Cancel = false;
                 else
-                if (itemSelecccionado.TieneExcepcion)
-                {
-                    if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Id.Equals(6))
+                    if (itemSelecccionado.TieneExcepcion)
                     {
-                        e.Cancel = false;
+                        if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Id.Equals(6))
+                        {
+                            e.Cancel = false;
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                     else
                     {
                         e.Cancel = true;
                     }
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
             }
         }
 
@@ -1835,7 +1838,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         {
 
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            var item = new PaperlessExcepcion() {RecargoCollect = false};
+            var item = new PaperlessExcepcion() { RecargoCollect = false };
 
             PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
             house.Index = excepciones.Count + 1;
@@ -1848,7 +1851,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             excepciones.Add(item);
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
-            
+
         }
     }
 }

@@ -122,3 +122,24 @@ where activo = 1   and tipo is null
 order by id   
 
 go
+
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA') 
+BEGIN
+	DROP PROCEDURE [dbo].[SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA]
+END
+GO
+
+  CREATE PROCEDURE SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA    
+   @Activo bit    
+       
+   AS    
+       
+   SELECT  distinct    
+   Id,    
+   Descripcion,    
+   Activo  ,  
+   DescripcionLarga  
+   FROM PAPERLESS_TIPO_CARGA    
+   WHERE Activo = @Activo 
+   
+go

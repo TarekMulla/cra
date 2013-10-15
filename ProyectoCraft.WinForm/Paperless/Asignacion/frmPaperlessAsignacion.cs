@@ -58,11 +58,18 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         }
 
         private IList<PaperlessTipoCarga> Cargas { get; set; }
-
+        private bool IsBrasil { get; set; }
         IList<PaperlessTipoCarga> CargasDesclarga { get; set; }
 
         private void frmPaperless_Load(object sender, EventArgs e)
         {
+
+            var conf = Base.Configuracion.Configuracion.Instance();
+            var op = conf.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (op.HasValue && op.Value.Equals(true))
+                IsBrasil = true;
+
+
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
             var opcion = configuracion.GetValue("Paperless_BtnMantNavieras_Enabled"); //puede retornar un true, false o null
@@ -207,31 +214,12 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     txtNaveTransbordo.Text = Asignacion.NaveTransbordo.Nombre;
                 txtViaje.Text = Asignacion.Viaje;
                 txtNumHousesBL.Text = Asignacion.NumHousesBL.ToString();
-                try
-                {
-                    if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
+                if (!IsBrasil)
+                    try
                     {
-                        if (Asignacion.TipoCarga.Id > 3)
+                        if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
                         {
-                            foreach (var paperlessTipoCarga in Cargas)
-                            {
-                                if (paperlessTipoCarga.Nombre.Equals("FCL"))
-                                {
-                                    ddlTipoCarga.SelectedItem = paperlessTipoCarga;
-                                    ddlTipoCargaDescLarga.Visible = true;
-                                    foreach (var descLarga in CargasDesclarga)
-                                    {
-                                        if (descLarga.Id.Equals(Asignacion.TipoCarga.Id))
-                                            ddlTipoCargaDescLarga.SelectedItem = descLarga;
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
-
-                            if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
+                            if (Asignacion.TipoCarga.Id > 3)
                             {
                                 foreach (var paperlessTipoCarga in Cargas)
                                 {
@@ -247,17 +235,37 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                                     }
                                 }
                             }
-                           
-                        }
-                        
-                    }
-                    else
-                        ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;              
-                }
-                catch (Exception e)
-                {
+                            else
+                            {
+                                ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
 
-                }
+                                if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
+                                {
+                                    foreach (var paperlessTipoCarga in Cargas)
+                                    {
+                                        if (paperlessTipoCarga.Nombre.Equals("FCL"))
+                                        {
+                                            ddlTipoCarga.SelectedItem = paperlessTipoCarga;
+                                            ddlTipoCargaDescLarga.Visible = true;
+                                            foreach (var descLarga in CargasDesclarga)
+                                            {
+                                                if (descLarga.Id.Equals(Asignacion.TipoCarga.Id))
+                                                    ddlTipoCargaDescLarga.SelectedItem = descLarga;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+                        else
+                            ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
 
 
 

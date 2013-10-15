@@ -1457,7 +1457,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 else
                     if (itemSelecccionado.TieneExcepcion)
                     {
-                        if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Id.Equals(6))
+                        if (itemSelecccionado.TipoExcepcion != null && itemSelecccionado.TipoExcepcion.Nombre.Equals("Otros"))
                         {
                             e.Cancel = false;
                         }

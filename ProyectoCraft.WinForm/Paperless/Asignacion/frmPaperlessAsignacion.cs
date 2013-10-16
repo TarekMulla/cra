@@ -215,7 +215,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 txtViaje.Text = Asignacion.Viaje;
                 txtNumHousesBL.Text = Asignacion.NumHousesBL.ToString();
                 if (IsBrasil)
-                    try
+                {try
                     {
                         if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
                         {
@@ -266,7 +266,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     {
 
                     }
-
+                }
+                else
+                    ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
+     
 
 
                 if (!Asignacion.TipoCarga.EsFAK && (Asignacion.TipoServicio != null && Asignacion.TipoServicio.Nombre.Equals("Transbordo")))

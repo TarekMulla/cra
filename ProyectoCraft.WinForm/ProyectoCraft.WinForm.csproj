@@ -386,6 +386,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\frmAgentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmAgentes.Designer.cs">
+      <DependentUpon>frmAgentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\frmComunas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -638,6 +644,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmAgentes.resx">
+      <DependentUpon>frmAgentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>

@@ -7,6 +7,7 @@ using ProyectoCraft.LogicaNegocios.Mantenedores;
 
 namespace ProyectoCraft.LogicaNegocios.Cotizaciones {
     public class ClsPuertos {
+
         public static ResultadoTransaccion ObtieneTodosLosPuertos() {
             return ClsPuertosDao.ObtieneTodosLosPuertos();
         }

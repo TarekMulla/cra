@@ -76,6 +76,7 @@
     <Compile Include="Log\ClsLogPerformance.cs" />
     <Compile Include="PanelDeControl\clsPanelDeControl.cs" />
     <Compile Include="Paperless\Paperless.cs" />
+    <Compile Include="Parametros\ClsAgente.cs" />
     <Compile Include="Parametros\clsParametros.cs" />
     <Compile Include="Parametros\clsParametrosClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

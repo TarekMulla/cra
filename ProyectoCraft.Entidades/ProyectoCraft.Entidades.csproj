@@ -129,6 +129,7 @@
     <Compile Include="Paperless\PaperlessUsuario1HousesBL.cs" />
     <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />
     <Compile Include="Paperless\PaperlessTipoTransito.cs" />
+    <Compile Include="Cotizaciones\Directa\Agente.cs" />
     <Compile Include="Parametros\clsCiudad.cs" />
     <Compile Include="Parametros\clsComuna.cs" />
     <Compile Include="Parametros\clsIncoTerm.cs" />

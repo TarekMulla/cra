@@ -90,6 +90,7 @@
     <Compile Include="Log\ClsLogPerformanceADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
     <Compile Include="Paperless\clsPaperlessADO.cs" />
+    <Compile Include="Parametros\ClsAgenteDAO.cs" />
     <Compile Include="Parametros\ClsNavierasDAO.cs" />
     <Compile Include="Parametros\clsParametrosClientesDAO.cs" />
     <Compile Include="Parametros\clsParametrosDAO.cs" />

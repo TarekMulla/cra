@@ -756,7 +756,7 @@ namespace ProyectoCraft.WinForm
         private void MantPuertos_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            var form = frmPuertos.Instancia;
+            var form = frmAgentes.Instancia;
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

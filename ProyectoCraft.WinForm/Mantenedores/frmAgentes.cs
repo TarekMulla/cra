@@ -33,6 +33,7 @@ namespace SCCMultimodal.Mantenedores {
             }
         }
 
+
         private void LimpiarDatos() {
             txtDescripcion.Text = txtContacto.Text = txtEmail.Text = txtAlias.Text = String.Empty;
             groupControl1.Text = "Nuevo";

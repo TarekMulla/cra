@@ -471,12 +471,12 @@
             this.menuAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantPuertos),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantAgentes),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantPuertos),
             new DevExpress.XtraNavBar.NavBarItemLink(this.manCotDirectas)});
             this.menuAdministracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("menuAdministracion.LargeImage")));
             this.menuAdministracion.Name = "menuAdministracion";
-            this.menuAdministracion.TopVisibleLinkIndex = 1;
+            this.menuAdministracion.TopVisibleLinkIndex = 2;
             // 
             // MantNavieras
             // 

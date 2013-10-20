@@ -54,7 +54,6 @@ namespace ProyectoCraft.AccesoDatos.Parametros
            }
            return res;
 
-
        }
 
 

@@ -25,6 +25,11 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgentes));
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtDescripcion = new DevExpress.XtraEditors.TextEdit();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MenuEliminar = new System.Windows.Forms.ToolStripButton();
@@ -38,28 +43,83 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnGuardar = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtAlias = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.gridAgentes = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GridAgentes2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContacto.Properties)).BeginInit();
             this.toolStripBarraListarLlamada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAlias.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAgentes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAgentes2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn5,
+            this.gridColumn7,
+            this.gridColumn2});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn1, "")});
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowGroupedColumns = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Nombre Agente";
+            this.gridColumn1.FieldName = "Descripcion";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 381;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Contacto";
+            this.gridColumn5.FieldName = "Contacto";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 264;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "E-Mail";
+            this.gridColumn7.FieldName = "Email";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 2;
+            this.gridColumn7.Width = 141;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Alias";
+            this.gridColumn2.FieldName = "Alias";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 119;
             // 
             // txtDescripcion
             // 
@@ -146,7 +206,7 @@
             this.toolStripButton1});
             this.toolStripBarraListarLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraListarLlamada.Name = "toolStripBarraListarLlamada";
-            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(488, 38);
+            this.toolStripBarraListarLlamada.Size = new System.Drawing.Size(761, 38);
             this.toolStripBarraListarLlamada.TabIndex = 12;
             this.toolStripBarraListarLlamada.Text = "toolStrip1";
             // 
@@ -195,22 +255,48 @@
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseBackColor = true;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
-            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.txtAlias);
+            this.groupControl1.Controls.Add(this.labelControl4);
+            this.groupControl1.Controls.Add(this.txtEmail);
             this.groupControl1.Controls.Add(this.txtDescripcion);
+            this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txtContacto);
-            this.groupControl1.Controls.Add(this.labelControl3);
-            this.groupControl1.Controls.Add(this.txtEmail);
-            this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.txtAlias);
             this.groupControl1.Controls.Add(this.btnGuardar);
-            this.groupControl1.Location = new System.Drawing.Point(0, 36);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Location = new System.Drawing.Point(0, 33);
             this.groupControl1.LookAndFeel.SkinName = "Glass Oceans";
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(476, 159);
             this.groupControl1.TabIndex = 11;
             this.groupControl1.Text = "Nuevo";
+            // 
+            // txtAlias
+            // 
+            this.txtAlias.Location = new System.Drawing.Point(100, 101);
+            this.txtAlias.Name = "txtAlias";
+            this.txtAlias.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlias.Properties.Appearance.Options.UseFont = true;
+            this.txtAlias.Size = new System.Drawing.Size(280, 20);
+            this.txtAlias.TabIndex = 4;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(5, 104);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(22, 13);
+            this.labelControl4.TabIndex = 38;
+            this.labelControl4.Text = "Alias";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(100, 78);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtEmail.Size = new System.Drawing.Size(280, 20);
+            this.txtEmail.TabIndex = 3;
             // 
             // labelControl2
             // 
@@ -222,125 +308,100 @@
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Nombre Agente";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(100, 78);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Properties.Appearance.Options.UseFont = true;
-            this.txtEmail.Size = new System.Drawing.Size(280, 20);
-            this.txtEmail.TabIndex = 3;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(5, 104);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(22, 13);
-            this.labelControl4.TabIndex = 38;
-            this.labelControl4.Text = "Alias";
-            // 
-            // txtAlias
-            // 
-            this.txtAlias.Location = new System.Drawing.Point(100, 101);
-            this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlias.Properties.Appearance.Options.UseFont = true;
-            this.txtAlias.Size = new System.Drawing.Size(280, 20);
-            this.txtAlias.TabIndex = 4;
-            // 
             // ctrldxError
             // 
             this.ctrldxError.ContainerControl = this;
             // 
-            // gridAgentes
+            // GridAgentes2
             // 
-            this.gridAgentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.GridAgentes2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridAgentes.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.Edit.Enabled = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.Remove.Enabled = false;
-            this.gridAgentes.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridAgentes.Location = new System.Drawing.Point(0, 201);
-            this.gridAgentes.MainView = this.gridView1;
-            this.gridAgentes.Name = "gridAgentes";
-            this.gridAgentes.Size = new System.Drawing.Size(476, 299);
-            this.gridAgentes.TabIndex = 13;
-            this.gridAgentes.UseEmbeddedNavigator = true;
-            this.gridAgentes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.GridAgentes2.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.CancelEdit.Enabled = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.Edit.Enabled = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.EndEdit.Enabled = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.GridAgentes2.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.GridAgentes2.Location = new System.Drawing.Point(5, 198);
+            this.GridAgentes2.MainView = this.gridView2;
+            this.GridAgentes2.Name = "GridAgentes2";
+            this.GridAgentes2.Size = new System.Drawing.Size(749, 322);
+            this.GridAgentes2.TabIndex = 13;
+            this.GridAgentes2.UseEmbeddedNavigator = true;
+            this.GridAgentes2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
             // 
-            // gridView1
+            // gridView2
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn5,
-            this.gridColumn7,
-            this.gridColumn2});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.GridControl = this.gridAgentes;
-            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn1, "")});
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
-            this.gridView1.OptionsView.ShowGroupedColumns = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn6,
+            this.gridColumn8});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.GridControl = this.GridAgentes2;
+            this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn3, "")});
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowAutoFilterRow = true;
+            this.gridView2.OptionsView.ShowGroupedColumns = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
-            // gridColumn1
+            // gridColumn3
             // 
-            this.gridColumn1.Caption = "Nombre Agente";
-            this.gridColumn1.FieldName = "descripcion";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 174;
+            this.gridColumn3.Caption = "Nombre";
+            this.gridColumn3.FieldName = "Descripcion";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 0;
+            this.gridColumn3.Width = 204;
             // 
-            // gridColumn5
+            // gridColumn4
             // 
-            this.gridColumn5.Caption = "Contacto";
-            this.gridColumn5.FieldName = "contacto";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
-            this.gridColumn5.Width = 127;
+            this.gridColumn4.Caption = "Contacto";
+            this.gridColumn4.FieldName = "Contacto";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.Width = 208;
             // 
-            // gridColumn7
+            // gridColumn6
             // 
-            this.gridColumn7.Caption = "E-Mail";
-            this.gridColumn7.FieldName = "email";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 79;
+            this.gridColumn6.Caption = "Email";
+            this.gridColumn6.FieldName = "Email";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
+            this.gridColumn6.Width = 172;
             // 
-            // gridColumn2
+            // gridColumn8
             // 
-            this.gridColumn2.Caption = "Alias";
-            this.gridColumn2.FieldName = "alias";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn8.Caption = "Alias";
+            this.gridColumn8.FieldName = "Alias";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 3;
+            this.gridColumn8.Width = 144;
             // 
             // frmAgentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 499);
-            this.Controls.Add(this.gridAgentes);
+            this.ClientSize = new System.Drawing.Size(761, 531);
+            this.Controls.Add(this.GridAgentes2);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAgentes";
             this.Text = "Mantenedor de Agentes";
-            this.Load += new System.EventHandler(this.frmAgentes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContacto.Properties)).EndInit();
             this.toolStripBarraListarLlamada.ResumeLayout(false);
@@ -348,11 +409,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAlias.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAgentes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAgentes2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,7 +421,11 @@
 
         #endregion
 
-
+        private DevExpress.XtraGrid.GridControl gridAgentes;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.TextEdit txtDescripcion;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton MenuEliminar;
@@ -379,13 +444,13 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider ctrldxError;
         private DevExpress.XtraEditors.TextEdit txtAlias;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraGrid.GridControl gridAgentes;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
- 
+        private DevExpress.XtraGrid.GridControl GridAgentes2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
 
     }
 }

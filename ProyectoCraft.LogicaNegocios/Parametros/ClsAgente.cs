@@ -27,6 +27,5 @@ namespace ProyectoCraft.Entidades.Parametros
         }
 
 
-
     }
 }

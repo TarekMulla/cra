@@ -173,5 +173,10 @@ namespace SCCMultimodal.Mantenedores {
         {
             Instancia = null;
         }
+
+        private void gridPuertos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

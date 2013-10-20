@@ -54,6 +54,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
            }
            return res;
 
+
        }
 
 
@@ -149,7 +150,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
            {
                var command = new SqlCommand("SP_E_AGENTES", conn);
                command.CommandType = CommandType.StoredProcedure;
-               command.Parameters.AddWithValue("@descripcion", agente.Descripcion);
+               if (agente.Descripcion != null) command.Parameters.AddWithValue("@descripcion", agente.Descripcion);
                var foo = command.ExecuteNonQuery();
 
                res.ObjetoTransaccion = agente;

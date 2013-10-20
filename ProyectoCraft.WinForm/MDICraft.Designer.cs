@@ -69,8 +69,8 @@
             this.menuAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
             this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
             this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
-            this.MantPuertos = new DevExpress.XtraNavBar.NavBarItem();
             this.MantAgentes = new DevExpress.XtraNavBar.NavBarItem();
+            this.MantPuertos = new DevExpress.XtraNavBar.NavBarItem();
             this.manCotDirectas = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuTarget = new DevExpress.XtraNavBar.NavBarItem();
@@ -492,6 +492,13 @@
             this.MantComunas.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantComunas.SmallImage")));
             this.MantComunas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorComunas_LinkClicked);
             // 
+            // MantAgentes
+            // 
+            this.MantAgentes.Caption = "Mantenedor Agentes";
+            this.MantAgentes.Name = "MantAgentes";
+            this.MantAgentes.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantAgentes.SmallImage")));
+            this.MantAgentes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantAgen_Link);
+            // 
             // MantPuertos
             // 
             this.MantPuertos.Appearance.Options.UseImage = true;
@@ -499,13 +506,6 @@
             this.MantPuertos.Name = "MantPuertos";
             this.MantPuertos.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantPuertos.SmallImage")));
             this.MantPuertos.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantPuertos_LinkClicked);
-            // 
-            // MantAgentes
-            // 
-            this.MantAgentes.Caption = "Mantenedor Agentes";
-            this.MantAgentes.Name = "MantAgentes";
-            this.MantAgentes.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantAgentes.SmallImage")));
-            this.MantAgentes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantAgen_Link);
             // 
             // manCotDirectas
             // 

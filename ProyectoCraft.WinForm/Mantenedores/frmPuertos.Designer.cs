@@ -79,6 +79,7 @@
             this.gridPuertos.UseEmbeddedNavigator = true;
             this.gridPuertos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridPuertos.Click += new System.EventHandler(this.gridPuertos_Click);
             // 
             // gridView1
             // 

@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
-using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.GlobalObject;
-using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.Entidades.Parametros;
 
-namespace SCCMultimodal.Mantenedores {
-    public partial class frmAgentes : Form {
+namespace SCCMultimodal.Mantenedores
+{
+    public partial class frmAgentes : Form
+    {
         private Agente _agente = null;
 
         public frmAgentes()
@@ -21,20 +20,23 @@ namespace SCCMultimodal.Mantenedores {
 
         private static frmAgentes _instancia = null;
 
-        public static frmAgentes Instancia {
-            get {
+        public static frmAgentes Instancia
+        {
+            get
+            {
                 if (_instancia == null)
                     _instancia = new frmAgentes();
 
                 return _instancia;
             }
-            set {
+            set
+            {
                 _instancia = value;
             }
         }
 
-
-        private void LimpiarDatos() {
+        private void LimpiarDatos()
+        {
             txtDescripcion.Text = txtContacto.Text = txtEmail.Text = txtAlias.Text = String.Empty;
             groupControl1.Text = "Nuevo";
             txtDescripcion.Enabled = true;
@@ -43,12 +45,13 @@ namespace SCCMultimodal.Mantenedores {
         private void ListarAgentes()
         {
             var agentes = ClsAgente.ObtenerAgentes().ObjetoTransaccion as List<Agente>;
-            gridAgentes.DataSource = agentes;
-            gridAgentes.RefreshDataSource();
+            GridAgentes2.DataSource = agentes;
+            GridAgentes2.RefreshDataSource();
         }
 
 
-        private void toolStripButton2_Click_1(object sender, EventArgs e) {
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
             _agente = null;
             ActiveControl = txtDescripcion;
             LimpiarDatos();
@@ -59,13 +62,16 @@ namespace SCCMultimodal.Mantenedores {
         }
 
 
-        private void toolStripButton1_Click(object sender, EventArgs e) {
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
             Instancia = null;
             Close();
         }
 
-        private void MenuExcel_Click(object sender, EventArgs e) {
-            try {
+        private void MenuExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 SaveFileDialog GrabarArchivo = new SaveFileDialog();
                 GrabarArchivo.Filter = "Excel(xls)|*.xls";
                 GrabarArchivo.Title = "Exportar Excel";
@@ -74,27 +80,34 @@ namespace SCCMultimodal.Mantenedores {
                 GrabarArchivo.OverwritePrompt = true;
                 GrabarArchivo.ShowDialog();
 
-                if (GrabarArchivo.FileName != "") {
+                if (GrabarArchivo.FileName != "")
+                {
                     // Saves the Image via a FileStream created by the OpenFile method.
                     System.IO.FileStream fs =
                        (System.IO.FileStream)GrabarArchivo.OpenFile();
-                    gridAgentes.ExportToXls(fs, true);
+                    GridAgentes2.ExportToXls(fs, true);
 
                     fs.Close();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
                 MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
             var agente = GetSelectedRow(sender as GridView);
-            if (agente == null) {//Se seleccionaron los filtros de la grilla
+            if (agente == null)
+            {//Se seleccionaron los filtros de la grilla
                 LimpiarDatos();
                 MenuEliminar.Enabled = false;
-            } else {
+            }
+            else
+            {
                 _agente = agente;
                 txtDescripcion.Text = agente.Descripcion;
                 txtContacto.Text = agente.Contacto;
@@ -107,31 +120,37 @@ namespace SCCMultimodal.Mantenedores {
 
         }
 
-        private Agente GetSelectedRow(GridView view) {
+        private Agente GetSelectedRow(GridView view)
+        {
             return (Agente)view.GetRow(view.FocusedRowHandle);
         }
 
-        private void MenuActualizar_Click(object sender, EventArgs e) {
+        private void MenuActualizar_Click(object sender, EventArgs e)
+        {
             ListarAgentes();
         }
 
 
-        private bool validar(){
+
+        private bool validar()
+        {
             ctrldxError.ClearErrors();
             if (String.IsNullOrEmpty(txtDescripcion.Text))
-                ctrldxError.SetError(txtDescripcion,"Debe ingresar el Nombre del Agente");
+                ctrldxError.SetError(txtDescripcion, "Debe ingresar el Nombre del Agente");
             if (String.IsNullOrEmpty(txtContacto.Text))
                 ctrldxError.SetError(txtContacto, "Debe ingresar el Contacto");
             if (String.IsNullOrEmpty(txtEmail.Text))
                 ctrldxError.SetError(txtEmail, "Debe ingresar el E-Mail");
             return ctrldxError.HasErrors;
         }
-        private void btnGuardar_Click(object sender, EventArgs e) {
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
             if (validar())
                 return;
             var agente = BindViewToDomain();
             ResultadoTransaccion resultado = null;
-            try {
+            try
+            {
                 if (_agente == null)
                     resultado = ClsAgente.CreaAgente(agente);
                 else
@@ -140,11 +159,9 @@ namespace SCCMultimodal.Mantenedores {
 
                 _agente = null;
 
-                LimpiarDatos();
-                if(gridAgentes.DataSource != null)
-                    ListarAgentes();
-
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Console.Write(ex.InnerException);
             }
         }
@@ -160,18 +177,15 @@ namespace SCCMultimodal.Mantenedores {
             return item;
         }
 
-        private void MenuEliminar_Click(object sender, EventArgs e) {
-            ClsAgente.EliminaAgente(GetSelectedRow(gridView1));
-            LimpiarDatos();
-            if (gridAgentes.DataSource != null)
-                ListarAgentes();
-        }
-
-        private void frmAgentes_Load(object sender, EventArgs e)
+        private void MenuEliminar_Click(object sender, EventArgs e)
         {
-
+            var agente = BindViewToDomain();
+            //var agente = GetSelectedRow(gridView1);
+            ClsAgente.EliminaAgente(agente);
+            LimpiarDatos();
+            //if (gridPuertos.DataSource != null)
+            //ListarPuertos();
         }
-
 
     }
 }

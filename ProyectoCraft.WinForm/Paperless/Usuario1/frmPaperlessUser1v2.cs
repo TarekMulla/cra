@@ -764,13 +764,14 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             foreach (var house in listhouses)
             {
                 cont++;
-                if (house.HouseBL.Trim().Length.Equals(0) || house.Cliente == null || house.TipoCliente == null || house.TipoCliente.Id.Equals(0))
-                {
-                    GeneraDummy(house, cont);
-                    //lblP1errorHouses.Visible = true;
-                    //valida = false;
-                    //break;T
-                }
+                if (house.HouseBL != null && house.TipoCliente != null)
+                    if (house.HouseBL.Trim().Length.Equals(0) || house.Cliente == null || house.TipoCliente == null || house.TipoCliente.Id.Equals(0))
+                    {
+                        GeneraDummy(house, cont);
+                        //lblP1errorHouses.Visible = true;
+                        //valida = false;
+                        //break;T
+                    }
             }
 
             return valida;
@@ -1292,7 +1293,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
             if (TiposResponsabilidad == null)
                 TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
-            
+
             var foo = sender as GridView;
             DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
             var lista = foo.DataSource as IList<PaperlessExcepcion>;

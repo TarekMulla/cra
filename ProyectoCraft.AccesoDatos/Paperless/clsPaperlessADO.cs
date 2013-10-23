@@ -1553,7 +1553,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 {
                     if (house.IsNew)
                     {
-                        if (house.Cliente.IsNew)
+                        if (house.Cliente != null && house.Cliente.IsNew)
                         {
                             resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -1661,8 +1661,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[1].Value = housebl.Index;
                 objParams[2].Value = housebl.HouseBL;
                 objParams[3].Value = housebl.Freehand;
-                objParams[4].Value = housebl.Cliente.Id;
-                objParams[5].Value = housebl.TipoCliente.Id;
+                if (housebl.Cliente != null) objParams[4].Value = housebl.Cliente.Id;
+                else objParams[4].Value = 0;
+
+                if (housebl.TipoCliente != null) objParams[5].Value = housebl.TipoCliente.Id;
+                else objParams[5].Value = 0;
 
                 /*descomentar despues */
                 /* objParams[6].Value = housebl.ShippingInstruction;

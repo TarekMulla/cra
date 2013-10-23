@@ -407,6 +407,8 @@ namespace ProyectoCraft.WinForm
 
                     string usuarioConectado = "Usuario Conectado: ";
                     usuarioConectado += Base.Usuario.UsuarioConectado.Usuario.NombreCompleto;
+                    usuarioConectado += Base.Usuario.UsuarioConectado.BasedeDatos;
+
                     //usuarioConectado += " Cargo: ";
                     //usuarioConectado += Base.Usuario.UsuarioConectado.Usuario.Cargo.Nombre;
 

@@ -62,15 +62,15 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         }
 
         public String GenerateHtmlPreviewAndBody(String startupPath) {
-            return renderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
+            return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
             //return renderHtml(Path.Combine(startupPath, @"cotizaciones\Copy of TemplateCotizacionPreview.html"));
         }
 
         public String GenerateHTMLforPDF(String startupPath) {
-            return renderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionMailPDF.html"));
+            return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionMailPDF.html"));
         }
 
-        private String renderHtml(String path) {
+        private String RenderHtml(String path) {
             var xmldoc = new XmlDocument();
             xmldoc.Load(path);
 
@@ -112,7 +112,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                 templateAlternativaXml = templateAlternativaXml.Replace("[TiempoTransito]", opcion.TiempoTransito);
 
                 var text = opcion.TiposServicio.Nombre;
-                if (opcion.TipoVia != null)
+                if (opcion.TipoVia != null && !String.IsNullOrEmpty(opcion.TipoVia.Nombre))
                     text += "    / <b>Via</b> " + opcion.TipoVia.Nombre;
                 templateAlternativaXml = templateAlternativaXml.Replace("[servicio]", text);
 

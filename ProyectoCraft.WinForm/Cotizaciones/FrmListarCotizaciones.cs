@@ -270,6 +270,13 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
             */
             var mailFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+            
+            
+            var xmldoc = new XmlDocument();
+            xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
+            var mailFCL = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/notificaciones/FCL").InnerText;
+            
+            mailFijo = mailFijo + ";" + mailFCL;
             var listMail = new List<String>();
             foreach (var mail in mailFijo.Split(';')) {
                 if (!listMail.Contains(mail))
@@ -283,9 +290,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             
             if (!listMail.Contains(cot.Usuario.Email))
                 listMail.Add(cot.Usuario.Email);
-            var xmldoc = new XmlDocument();
-            xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-
 
             var subjectComenterio = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/subject").InnerText;
             var bodyComentario = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/body").InnerText;

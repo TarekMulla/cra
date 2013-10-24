@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <setting>
   <cotizacionDirecta>
+    <notificaciones>
+      <FCL>vhspiceros@gmail.com;victor.saavedra@ultranav.cl;vsaavedra@ultramar.cl;</FCL>
+    </notificaciones>
     <observacionFija>* Sujeto a aceptación de espacio y disponibilidad de equipo por parte de naviera.
 * Carga IMO sujeto a aceptación de la naviera.
 * Carga + unidad no debe sobrepasar peso máximo en origen.-

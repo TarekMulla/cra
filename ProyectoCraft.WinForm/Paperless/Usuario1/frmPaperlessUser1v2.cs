@@ -128,14 +128,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         }
         private void LoadConfBrasil()
         {
+            ValidaBtnNetShip();
             gridView1.Columns.View.Columns[6].Visible = true;
             MailExcepcion.Visible = true;
             AgregarExcepcionManual.Visible = true;
         }
         private void LoadConfChile()
         {
+            ValidaBtnNetShip();
             gridView1.Columns.View.Columns[6].Visible = false;
             MailExcepcion.Visible = false;
+        }
+        private void ValidaBtnNetShip()
+        {
+            var configuracion = Base.Configuracion.Configuracion.Instance();
+            var opcion = configuracion.GetValue("Paperless_Btn_NetShip"); //puede retornar un true, false o null
+            if (opcion.HasValue && opcion.Value.Equals(true))
+            {
+                TxtActualizarNetShip.Visible = true;
+                txtLogCarga.Visible = true;
+            }
+            else
+            {
+                TxtActualizarNetShip.Visible = false;
+                txtLogCarga.Visible = false;
+            }
         }
 
         private void ValidarAccion()
@@ -764,14 +781,19 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             foreach (var house in listhouses)
             {
                 cont++;
-                if (house.HouseBL != null && house.TipoCliente != null)
-                    if (house.HouseBL.Trim().Length.Equals(0) || house.Cliente == null || house.TipoCliente == null || house.TipoCliente.Id.Equals(0))
-                    {
-                        GeneraDummy(house, cont);
-                        //lblP1errorHouses.Visible = true;
-                        //valida = false;
-                        //break;T
-                    }
+                if (house.HouseBL == null || house.TipoCliente == null)
+                {
+                    lblP1errorHouses.Visible = true;
+                    valida = false;
+                    break;
+                }
+                if (house.HouseBL.Trim().Length.Equals(0) || house.Cliente == null || house.TipoCliente == null || house.TipoCliente.Id.Equals(0))
+                {
+                    //GeneraDummy(house, cont);
+                    lblP1errorHouses.Visible = true;
+                    valida = false;
+                    break;
+                }
             }
 
             return valida;

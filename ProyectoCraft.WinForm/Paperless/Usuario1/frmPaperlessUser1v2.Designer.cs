@@ -87,6 +87,7 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.lblErrorPaso2 = new DevExpress.XtraEditors.LabelControl();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
+            this.AgregarExcepcionManual = new DevExpress.XtraEditors.SimpleButton();
             this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
             this.btnP11Excepciones = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -176,7 +177,6 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.AgregarExcepcionManual = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit9)).BeginInit();
@@ -774,6 +774,17 @@
             this.pnlExcepciones.Size = new System.Drawing.Size(839, 374);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Visible = false;
+            // 
+            // AgregarExcepcionManual
+            // 
+            this.AgregarExcepcionManual.Image = ((System.Drawing.Image)(resources.GetObject("AgregarExcepcionManual.Image")));
+            this.AgregarExcepcionManual.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.AgregarExcepcionManual.Location = new System.Drawing.Point(599, 6);
+            this.AgregarExcepcionManual.Name = "AgregarExcepcionManual";
+            this.AgregarExcepcionManual.Size = new System.Drawing.Size(22, 24);
+            this.AgregarExcepcionManual.TabIndex = 8;
+            this.AgregarExcepcionManual.Visible = false;
+            this.AgregarExcepcionManual.Click += new System.EventHandler(this.AgregarDetalle_Click);
             // 
             // MailExcepcion
             // 
@@ -1627,17 +1638,6 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
-            // AgregarExcepcionManual
-            // 
-            this.AgregarExcepcionManual.Image = ((System.Drawing.Image)(resources.GetObject("AgregarExcepcionManual.Image")));
-            this.AgregarExcepcionManual.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.AgregarExcepcionManual.Location = new System.Drawing.Point(599, 6);
-            this.AgregarExcepcionManual.Name = "AgregarExcepcionManual";
-            this.AgregarExcepcionManual.Size = new System.Drawing.Size(22, 24);
-            this.AgregarExcepcionManual.TabIndex = 8;
-            this.AgregarExcepcionManual.Visible = false;
-            this.AgregarExcepcionManual.Click += new System.EventHandler(this.AgregarDetalle_Click);
-            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1647,11 +1647,11 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
+            this.Controls.Add(this.pnlExcepciones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

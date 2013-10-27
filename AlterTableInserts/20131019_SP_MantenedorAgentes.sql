@@ -1,34 +1,9 @@
-
-drop procedure  [dbo].[SP_N_AGENTES]
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_L_AGENTES') 
+BEGIN
+	DROP PROCEDURE [dbo].[SP_L_AGENTES]
+END
 GO
 
-CREATE PROCEDURE [dbo].[SP_N_AGENTES]
-	@descripcion varchar(100),
-	@contacto varchar(50),
-	@email varchar(50),
-	@alias varchar(59)
-	 
-AS  
- INSERT INTO [dbo].[PAPERLESS_AGENTE]
-           (Descripcion,
-			FechaCreacion,
-			Activo,
-			Contacto,
-			Email,
-			alias)  
- VALUES
-	(@descripcion,
-	getdate(),
-	1,
-	@contacto,
-	@email,
-	@alias)
-           
-GO
-----------------------------
-
-drop procedure  [dbo].[SP_L_AGENTES]
-GO
 
 CREATE Procedure [dbo].[SP_L_AGENTES]  
 AS  
@@ -46,10 +21,13 @@ where Activo = 1
 end 
 
 GO
-----------------------------
 
-drop procedure  [dbo].[SP_A_AGENTES]
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_A_AGENTES') 
+BEGIN
+	drop procedure  [dbo].[SP_A_AGENTES]
+END
 GO
+
 
 CREATE PROCEDURE [dbo].[SP_A_AGENTES]
 	 @descripcion varchar(100),
@@ -72,9 +50,12 @@ WHERE Id = @Id
  
 GO 
 ----------------------------
-
-drop procedure  [dbo].[SP_E_AGENTES]
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_E_AGENTES') 
+BEGIN
+	drop procedure  [dbo].[SP_E_AGENTES]
+END
 GO
+
 
 CREATE PROCEDURE [dbo].[SP_E_AGENTES]
 	@descripcion varchar(100)  

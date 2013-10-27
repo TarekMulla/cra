@@ -308,3 +308,5 @@ go
 
 update PAPERLESS_PASOS_USUARIO1_v2 set pantalla = 'RegistrarExcepciones' where IdPaso in (29)
 go
+
+insert into configuracion values ('Paperless_Btn_NetShip', 0, 'Omite la integracion con netShip', GETDATE())

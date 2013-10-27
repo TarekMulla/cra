@@ -408,7 +408,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.menuAdministracion;
+            this.navBarControl1.ActiveGroup = this.navBarGroup5;
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -467,7 +467,6 @@
             // menuAdministracion
             // 
             this.menuAdministracion.Caption = "Administración de Datos";
-            this.menuAdministracion.Expanded = true;
             this.menuAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas),
@@ -640,6 +639,7 @@
             // navBarGroup5
             // 
             this.navBarGroup5.Caption = "Dirección";
+            this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuDefinirLineaCredito),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuConsultarDueda),
@@ -647,8 +647,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuGestionTarger),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuConsultarLineaCredito),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuDefinirSLead),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuGestionSLead),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuAgentes)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuGestionSLead)});
             this.navBarGroup5.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup5.LargeImage")));
             this.navBarGroup5.Name = "navBarGroup5";
             this.navBarGroup5.TopVisibleLinkIndex = 2;

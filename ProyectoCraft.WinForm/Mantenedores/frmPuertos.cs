@@ -162,11 +162,21 @@ namespace SCCMultimodal.Mantenedores {
 
         }
 
-        private void MenuEliminar_Click(object sender, EventArgs e) {
-            ClsPuertos.EliminaPuerto(GetSelectedRow(gridView1));
-            LimpiarDatos();
-            if (gridPuertos.DataSource != null)
+        private void MenuEliminar_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado;
+            resultado = MessageBox.Show("¿Está seguro que desea Eliminar el Puerto?", "Eliminar Puerto",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                        MessageBoxDefaultButton.Button2);
+            if (resultado == DialogResult.Yes)
+            { 
+                ClsPuertos.EliminaPuerto(GetSelectedRow(gridView1));
+                LimpiarDatos();
+                if (gridPuertos.DataSource != null)
                 ListarPuertos();
+            }
+
         }
 
         private void frmPuertos_FormClosed(object sender, FormClosedEventArgs e)

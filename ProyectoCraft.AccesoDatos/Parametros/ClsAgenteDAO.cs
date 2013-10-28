@@ -61,6 +61,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
        private static Agente GetFromDataReader(SqlDataReader reader)
        {
            var p = new Agente();
+           p.Clave = Convert.ToInt64(reader["Id"]);
            p.Descripcion = reader["descripcion"].ToString();
            p.Contacto = reader["contacto"].ToString();
            p.Email = reader["email"].ToString();
@@ -115,6 +116,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
 
                var command = new SqlCommand("SP_A_AGENTES", conn);
                command.CommandType = CommandType.StoredProcedure;
+               command.Parameters.AddWithValue("@clave", agente.Clave);
                command.Parameters.AddWithValue("@descripcion", agente.Descripcion);
                command.Parameters.AddWithValue("@contacto", agente.Contacto);
                command.Parameters.AddWithValue("@email", agente.Email);

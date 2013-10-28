@@ -54,6 +54,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtClave = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContacto.Properties)).BeginInit();
@@ -65,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridAgentes2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClave.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -390,11 +392,22 @@
             this.gridColumn8.VisibleIndex = 3;
             this.gridColumn8.Width = 144;
             // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(386, 63);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClave.Properties.Appearance.Options.UseFont = true;
+            this.txtClave.Size = new System.Drawing.Size(85, 20);
+            this.txtClave.TabIndex = 39;
+            this.txtClave.Visible = false;
+            // 
             // frmAgentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 531);
+            this.Controls.Add(this.txtClave);
             this.Controls.Add(this.GridAgentes2);
             this.Controls.Add(this.toolStripBarraListarLlamada);
             this.Controls.Add(this.groupControl1);
@@ -414,6 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridAgentes2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClave.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,6 +465,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.TextEdit txtClave;
 
     }
 }

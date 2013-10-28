@@ -49,11 +49,12 @@ namespace SCCMultimodal.Mantenedores
             GridAgentes2.RefreshDataSource();
         }
 
-
+        //Botón Nuevo_Click
         private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
             _agente = null;
             ActiveControl = txtDescripcion;
+            txtDescripcion.Focus();
             LimpiarDatos();
             gridView1.ClearSelection();
             var seleccionados = gridView1.GetSelectedRows();
@@ -61,7 +62,7 @@ namespace SCCMultimodal.Mantenedores
                 gridView1.UnselectRow(i);
         }
 
-
+        //Boton Salir_Click
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Instancia = null;
@@ -102,20 +103,21 @@ namespace SCCMultimodal.Mantenedores
         {
             var agente = GetSelectedRow(sender as GridView);
             if (agente == null)
-            {//Se seleccionaron los filtros de la grilla
+            {
                 LimpiarDatos();
                 MenuEliminar.Enabled = false;
             }
             else
             {
                 _agente = agente;
+                txtClave.Text = agente.Clave.ToString();
                 txtDescripcion.Text = agente.Descripcion;
                 txtContacto.Text = agente.Contacto;
                 txtEmail.Text = agente.Email;
                 txtAlias.Text = agente.Alias;
                 groupControl1.Text = "Editar";
                 MenuEliminar.Enabled = true;
-                txtDescripcion.Enabled = false;
+                //txtDescripcion.Enabled = false;
             }
 
         }
@@ -157,6 +159,9 @@ namespace SCCMultimodal.Mantenedores
                     resultado = ClsAgente.ActualizaAgente(agente);
                 MessageBox.Show(resultado.Descripcion, "Mantenedor de Agentes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                ListarAgentes();
+                LimpiarDatos();
+
                 _agente = null;
 
             }
@@ -170,6 +175,7 @@ namespace SCCMultimodal.Mantenedores
         private Agente BindViewToDomain()
         {
             var item = new Agente();
+            item.Clave = Convert.ToInt64(txtClave.Text);
             item.Contacto = txtContacto.Text;
             item.Descripcion = txtDescripcion.Text;
             item.Email = txtEmail.Text;
@@ -179,12 +185,26 @@ namespace SCCMultimodal.Mantenedores
 
         private void MenuEliminar_Click(object sender, EventArgs e)
         {
-            var agente = BindViewToDomain();
-            //var agente = GetSelectedRow(gridView1);
-            ClsAgente.EliminaAgente(agente);
-            LimpiarDatos();
-            //if (gridPuertos.DataSource != null)
-            //ListarPuertos();
+
+            //Pregunta para eliminación de agente
+
+            DialogResult resultado;
+            resultado = MessageBox.Show("¿Está seguro que desea eliminar el Agente?", "Eliminar Agente", MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+
+            if (resultado == DialogResult.Yes)
+            {
+            //SI Eliminar Agente
+                var agente = BindViewToDomain();
+                //var agente = GetSelectedRow(gridView1);
+                ClsAgente.EliminaAgente(agente);
+                ListarAgentes();
+                LimpiarDatos();
+                
+            }
+
+            
+
+            
         }
 
     }

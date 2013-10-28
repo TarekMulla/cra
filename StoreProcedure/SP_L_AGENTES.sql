@@ -1,17 +1,14 @@
-CREATE Procedure [dbo].[SP_L_AGENTES]  
+Create Procedure [dbo].[SP_L_AGENTES]  
 AS  
 
-Begin  
+select 
+Id,
+descripcion,
+Contacto,
+Email,
+alias
 
- SET NOCOUNT ON  
- 
- select 
- descripcion,
- Contacto,
- Email,
- alias
- 
- from PAPERLESS_AGENTE  
- where Activo = 1
+from PAPERLESS_AGENTE  
+where Activo = 1
     
-end 
+go

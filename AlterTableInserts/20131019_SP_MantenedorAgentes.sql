@@ -4,51 +4,46 @@ BEGIN
 END
 GO
 
-
-CREATE Procedure [dbo].[SP_L_AGENTES]  
+Create Procedure [dbo].[SP_L_AGENTES]  
 AS  
 
-Begin  
-SET NOCOUNT ON  
- 
 select 
- descripcion,
- Contacto,
- Email,
- alias
+Id,
+descripcion,
+Contacto,
+Email,
+alias
+
 from PAPERLESS_AGENTE  
 where Activo = 1
-end 
+    
+go
 
-GO
-
+-----------------------------------------------
 IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_A_AGENTES') 
 BEGIN
 	drop procedure  [dbo].[SP_A_AGENTES]
 END
 GO
 
-
-CREATE PROCEDURE [dbo].[SP_A_AGENTES]
-	 @descripcion varchar(100),
-	 @contacto varchar(50),
-	 @email varchar(50),
-	 @alias varchar(50)   
+Create PROCEDURE [dbo].[SP_A_AGENTES]
+	@clave bigint,
+	@descripcion varchar(100),
+	@contacto varchar(50),
+	@email varchar(50),
+	@alias varchar(50)   
 AS  
-
-Declare @Id bigint
-Set @Id = (Select Id From PAPERLESS_AGENTE where Descripcion = @descripcion)
 
 UPDATE PAPERLESS_AGENTE
 SET
---Descripcion = @descripcion,  
+Descripcion = @descripcion,  
 Contacto = @contacto,  
 Email = @email,
 alias = @alias
-WHERE Id = @Id
- 
- 
-GO 
+
+WHERE Id = @clave
+
+go
 ----------------------------
 IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_E_AGENTES') 
 BEGIN
@@ -67,3 +62,33 @@ WHERE Descripcion = @descripcion
  
 GO
 ----------------------------
+
+IF EXISTS (SELECT * FROM sysobjects WHERE name='SP_N_AGENTES') 
+BEGIN
+	drop procedure  [dbo].[SP_N_AGENTES]
+END
+GO
+
+CREATE PROCEDURE [dbo].[SP_N_AGENTES]
+	@descripcion varchar(100),
+	@contacto varchar(50),
+	@email varchar(50),
+	@alias varchar(59)
+AS  
+
+ INSERT INTO [dbo].[PAPERLESS_AGENTE]
+           (Descripcion,
+			FechaCreacion,
+			Activo,
+			Contacto,
+			Email,
+			alias)  
+ VALUES
+	(@descripcion,
+	getdate(),
+	1,
+	@contacto,
+	@email,
+	@alias)
+           
+GO

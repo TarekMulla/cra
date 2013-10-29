@@ -1859,7 +1859,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private void AgregarDetalle_Click(object sender, EventArgs e)
         {
-
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
             var item = new PaperlessExcepcion() { RecargoCollect = false };
 
@@ -1872,6 +1871,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             item.HouseBL = house;
             excepciones.Add(item);
+
+            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+
+            
+            Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
+
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
 

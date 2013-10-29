@@ -559,7 +559,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
-                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
+                    //ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
+                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
+                    
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                     {
@@ -1039,6 +1041,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             item.HouseBL = house;
             excepciones.Add(item);
+            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+            ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
+
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
         }

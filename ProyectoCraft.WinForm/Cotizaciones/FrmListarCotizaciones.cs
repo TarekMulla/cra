@@ -313,10 +313,9 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             body = body.Replace("[comentario]", comentario.Observacion);
 
 
-            foreach (var to in listMail) {
-                new EnvioMailObject().EnviarEmail(to, subject, body);
-            }
-
+            var destinatarios = String.Join(";", listMail.ToArray());
+            new EnvioMailObject().EnviarEmail(destinatarios, subject, body);
+            
 
             if (cboEstado.SelectedIndex != 0) {
                 Estado = (Estado)cboEstado.SelectedItem;

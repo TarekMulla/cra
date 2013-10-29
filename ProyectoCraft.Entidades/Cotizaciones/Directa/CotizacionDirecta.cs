@@ -113,7 +113,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
 
                 var text = opcion.TiposServicio.Nombre;
                 if (opcion.TipoVia != null && !String.IsNullOrEmpty(opcion.TipoVia.Nombre))
-                    text += "    / <b>Via</b> " + opcion.TipoVia.Nombre;
+                    text += "    / <b>Vía</b> " + opcion.TipoVia.Nombre;
                 templateAlternativaXml = templateAlternativaXml.Replace("[servicio]", text);
 
 

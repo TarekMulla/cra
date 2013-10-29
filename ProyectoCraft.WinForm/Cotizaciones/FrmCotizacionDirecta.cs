@@ -397,12 +397,12 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void ActualizarCotizacion() {
             var resultado = ClsCotizacionDirecta.Modificar(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft");
+            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CrearCotizacion() {
             var resultado = ClsCotizacionDirecta.Crear(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion,"Sistema Comercial Craft");
+            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CargaDatosDelFormulario() {
@@ -463,14 +463,14 @@ namespace SCCMultimodal.Cotizaciones {
                     ctrldxError.SetError(CboNaviera, "Debe ingresar una naviera", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
-                if (o.TiposServicio == null) {
+                if (o.TiposServicio == null || o.TiposServicio.Id32 == 0 ) {
                     ctrldxError.SetError(cboServicio, "Debe ingresar el tipo de servicio", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
 
 
 
-                if (o.TiposServicio != null && o.TiposServicio.Id32 == 2 && o.TipoVia == null) {
+                if ((o.TiposServicio != null && o.TiposServicio.Id32 == 2) && (o.TipoVia == null || o.TipoVia.Id32 == 0)) {
                     ctrldxError.SetError(cboVia, "Debe ingresar un valor para Via", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
@@ -516,13 +516,13 @@ namespace SCCMultimodal.Cotizaciones {
 
                 var errorCotizacion = false;
                 GridView view = gridView1 as GridView;
-                for (int j = 0; j < view.RowCount; j++){
+                for (int j = 0; j < view.RowCount; j++) {
                     var row = view.GetDataRow(j);
 
-                    foreach (GridColumn column in view.Columns){
+                    foreach (GridColumn column in view.Columns) {
 
                         var foo = view.GetRowCellValue(j, column) as IIdentifiableObject;
-                        if (foo != null && foo.Id32 == 0){
+                        if (foo != null && foo.Id32 == 0) {
                             errorCotizacion = true;
                             encontroErrorOpcion = true;
                         }
@@ -533,7 +533,7 @@ namespace SCCMultimodal.Cotizaciones {
 
                 if (errorCotizacion)
                     errorTexto += "Debe ingresar todo el detalle de la cotización" + Environment.NewLine;
-                        
+
                 if (!String.IsNullOrEmpty(errorTexto))
                     MessageBox.Show("Se han encontrado los siguientes problemas: " + Environment.NewLine + errorTexto,
                                      "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -554,23 +554,24 @@ namespace SCCMultimodal.Cotizaciones {
         }
 
         private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
-          /*  var valid = true;
-            GridView view = sender as GridView;
-            foreach (GridColumn column in view.Columns) {
-                var foo = view.GetRowCellValue(e.RowHandle, column) as IIdentifiableObject;
-                if (foo != null && foo.Id32 == 0) {
-                    valid = false;
-                    view.SetColumnError(column, "Debe ingresar un valor");
-                }
-            }
+            /*  var valid = true;
+              GridView view = sender as GridView;
+              foreach (GridColumn column in view.Columns) {
+                  var foo = view.GetRowCellValue(e.RowHandle, column) as IIdentifiableObject;
+                  if (foo != null && foo.Id32 == 0) {
+                      valid = false;
+                      view.SetColumnError(column, "Debe ingresar un valor");
+                  }
+              }
 
-            e.Valid = valid;*/
+              e.Valid = valid;*/
         }
 
         private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e) {
-        /*    //Suppress displaying the error message box
-            e.ExceptionMode = ExceptionMode.NoAction;
-        */}
+            /*    //Suppress displaying the error message box
+                e.ExceptionMode = ExceptionMode.NoAction;
+            */
+        }
     }
 }
 

@@ -8,9 +8,9 @@ namespace ProyectoCraft.LogicaNegocios.Integracion
 {
     public class Integracion
     {
-        public static IList<IntegracionNetShip> ObtenerHousesBlDesdeNetShip(string NumMaster)
+        public static IList<IntegracionNetShip> ObtenerHousesBlDesdeNetShip(string NumMaster, string StoreProcedureName)
         {
-            return AccesoDatos.Integracion.IntegracionADO.ObtieneValoresNetShip(NumMaster);            
+            return AccesoDatos.Integracion.IntegracionADO.ObtieneValoresNetShip(NumMaster, StoreProcedureName);            
         }
 
         public static void GuardaLogProceso(IntegracionNetShip _int)

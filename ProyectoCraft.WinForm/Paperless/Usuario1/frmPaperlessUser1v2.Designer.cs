@@ -177,6 +177,7 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit9)).BeginInit();
@@ -241,6 +242,7 @@
             this.pnlEnviarAviso.SuspendLayout();
             this.toobar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemCheckEdit4
@@ -342,6 +344,7 @@
             this.pnlPaso1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPaso1.Controls.Add(this.DdlEmpresa);
             this.pnlPaso1.Controls.Add(this.txtLogCarga);
             this.pnlPaso1.Controls.Add(this.TxtActualizarNetShip);
             this.pnlPaso1.Controls.Add(this.ddlP1Cliente);
@@ -371,16 +374,16 @@
             // TxtActualizarNetShip
             // 
             this.TxtActualizarNetShip.Image = ((System.Drawing.Image)(resources.GetObject("TxtActualizarNetShip.Image")));
-            this.TxtActualizarNetShip.Location = new System.Drawing.Point(590, 15);
+            this.TxtActualizarNetShip.Location = new System.Drawing.Point(608, 15);
             this.TxtActualizarNetShip.Name = "TxtActualizarNetShip";
             this.TxtActualizarNetShip.Size = new System.Drawing.Size(31, 34);
             this.TxtActualizarNetShip.TabIndex = 8;
             this.TxtActualizarNetShip.ToolTip = "Obtener Informacion desde NetShip";
-            this.TxtActualizarNetShip.Click += new System.EventHandler(this.TxtActualizarNetShip_Click);
+            this.TxtActualizarNetShip.Click += new System.EventHandler(this.TxtActualizarNetShipClick);
             // 
             // ddlP1Cliente
             // 
-            this.ddlP1Cliente.Location = new System.Drawing.Point(521, 6);
+            this.ddlP1Cliente.Location = new System.Drawing.Point(456, 2);
             this.ddlP1Cliente.Name = "ddlP1Cliente";
             this.ddlP1Cliente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -400,7 +403,7 @@
             // 
             // txtP1CantHouses
             // 
-            this.txtP1CantHouses.Location = new System.Drawing.Point(422, 24);
+            this.txtP1CantHouses.Location = new System.Drawing.Point(393, 24);
             this.txtP1CantHouses.Name = "txtP1CantHouses";
             this.txtP1CantHouses.Properties.ReadOnly = true;
             this.txtP1CantHouses.Size = new System.Drawing.Size(102, 20);
@@ -419,7 +422,7 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(351, 28);
+            this.labelControl16.Location = new System.Drawing.Point(322, 27);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(65, 13);
             this.labelControl16.TabIndex = 2;
@@ -1638,6 +1641,15 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
+            // DdlEmpresa
+            // 
+            this.DdlEmpresa.Location = new System.Drawing.Point(501, 23);
+            this.DdlEmpresa.Name = "DdlEmpresa";
+            this.DdlEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DdlEmpresa.Size = new System.Drawing.Size(101, 20);
+            this.DdlEmpresa.TabIndex = 10;
+            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1729,6 +1741,7 @@
             this.toobar.ResumeLayout(false);
             this.toobar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1884,5 +1897,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit8;
         private DevExpress.XtraEditors.SimpleButton AgregarExcepcionManual;
+        private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
     }
 }

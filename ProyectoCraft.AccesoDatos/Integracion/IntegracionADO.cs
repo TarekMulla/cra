@@ -16,16 +16,16 @@ namespace ProyectoCraft.AccesoDatos.Integracion
         private static SqlDataReader dreader = null;
         private static ResultadoTransaccion resTransaccion = null;
 
-        public static IList<IntegracionNetShip> ObtieneValoresNetShip(string NumMaster)
+        public static IList<IntegracionNetShip> ObtieneValoresNetShip(string NumMaster, string StoreProcedureName)
         {
             List<IntegracionNetShip> lista = new List<IntegracionNetShip>();
             try
             {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "sp_SCC_HouseBLs");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, StoreProcedureName);
                 objParams[0].Value = NumMaster;
-                SqlCommand command = new SqlCommand("sp_SCC_HouseBLs", conn);
+                SqlCommand command = new SqlCommand(StoreProcedureName, conn);
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();

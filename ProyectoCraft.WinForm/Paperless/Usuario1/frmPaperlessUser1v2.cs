@@ -132,12 +132,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             gridView1.Columns.View.Columns[6].Visible = true;
             MailExcepcion.Visible = true;
             AgregarExcepcionManual.Visible = true;
+            DdlEmpresa.Visible = true;
+            DdlEmpresa.Properties.Items.Add("Craft");
+            DdlEmpresa.Properties.Items.Add("Contact");
+            DdlEmpresa.Properties.Items.Add("Slotlog");
+            DdlEmpresa.Properties.Items.Add("Neutral");
         }
         private void LoadConfChile()
         {
             ValidaBtnNetShip();
             gridView1.Columns.View.Columns[6].Visible = false;
             MailExcepcion.Visible = false;
+            DdlEmpresa.Visible = false;
         }
         private void ValidaBtnNetShip()
         {
@@ -1515,7 +1521,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     house.IdAsignacion = PaperlessAsignacionActual.Id;
                     house.Freehand = false;
                     house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    house = IntegracionNetShip(house, i);
+                    house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
 
 
                     housesnew.Add(house);
@@ -1581,13 +1587,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private PaperlessUsuario1HousesBL IntegracionNetShip(PaperlessUsuario1HousesBL house, int i)
+        private PaperlessUsuario1HousesBL IntegracionNetShip(PaperlessUsuario1HousesBL house, int i, string storeProcedureName)
         {
             try
             {
                 Int32 regVarios = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings.Get("regVarios"));
 
-                IList<IntegracionNetShip> netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster);
+                IList<IntegracionNetShip> netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
                 //clsClienteMaster clienteNuevo = null;
 
                 //-debe enviar un mensaje cuando la cantidad de hoses BL sea distinta
@@ -1734,65 +1740,124 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             return ClienteNuevo;
         }
 
-        private void TxtActualizarNetShip_Click(object sender, EventArgs e)
+        private void TxtActualizarNetShipClick(object sender, EventArgs e)
         {
-            _mensajemostrado = false;
-            IList<PaperlessUsuario1HousesBL> housesnew = new List<PaperlessUsuario1HousesBL>();
-
-            IList<PaperlessUsuario1HousesBL> houses =
-                LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id);
-
-
-            if (houses == null || houses.Count == 0)
+            if (IsBrasil)
             {
-
-                for (int i = 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                if (DdlEmpresa.SelectedItem != null && !string.IsNullOrEmpty(DdlEmpresa.SelectedItem.ToString()))
                 {
-                    PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
-                    house.Index = i;
-                    house.IdAsignacion = PaperlessAsignacionActual.Id;
-                    house.Freehand = false;
-                    house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    house = IntegracionNetShip(house, i);
+                    _mensajemostrado = false;
+                    IList<PaperlessUsuario1HousesBL> housesnew = new List<PaperlessUsuario1HousesBL>();
+
+                    IList<PaperlessUsuario1HousesBL> houses = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id);
+
+                    if (houses == null || houses.Count == 0)
+                    {
+                        for (int i = 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                        {
+                            PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                            house.Index = i;
+                            house.IdAsignacion = PaperlessAsignacionActual.Id;
+                            house.Freehand = false;
+                            house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                            house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.SelectedText);
+
+                            housesnew.Add(house);
+                        }
+                    }
+                    else
+                    {
+                        housesnew = houses;
+                    }
+                    if (int.Parse(txtP1CantHouses.Text) > housesnew.Count)
+                    {
+                        for (int i = housesnew.Count + 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                        {
+                            PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                            house.Index = i;
+                            house.IdAsignacion = PaperlessAsignacionActual.Id;
+                            house.Freehand = false;
+                            house.HouseBL = "";
+                            house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                            housesnew.Add(house);
+                        }
+                    }
+
+                    grdP1DigitarHousesBL.DataSource = housesnew;
+                    grdP1DigitarHousesBL.RefreshDataSource();
 
 
-                    housesnew.Add(house);
+                    //Cargar Info Houses BL
+                    PaperlessUsuario1HouseBLInfo info =
+                        LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+                    if (info != null)
+                    {
+                        txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
+                        txtP1NumConsolidado.Text = info.NumConsolidado;
+                    }
+                    PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
+                    PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
+
+                    GuardaRegLogCarga(PaperlessAsignacionActual.Id32, reglasAplicadas.ToString(), reglasConError.ToString(), "Resumen Reglas Aplicadas:" + reglasAplicadas + " Error :" + reglasConError, (Int32)PaperlessTipoErrorLog.PaperlessTipoError.Resumen);
                 }
             }
             else
             {
-                housesnew = houses;
-            }
-            if (int.Parse(txtP1CantHouses.Text) > housesnew.Count)
-            {
-                for (int i = housesnew.Count + 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                _mensajemostrado = false;
+                IList<PaperlessUsuario1HousesBL> housesnew = new List<PaperlessUsuario1HousesBL>();
+
+                IList<PaperlessUsuario1HousesBL> houses = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id);
+
+                if (houses == null || houses.Count == 0)
                 {
-                    PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
-                    house.Index = i;
-                    house.IdAsignacion = PaperlessAsignacionActual.Id;
-                    house.Freehand = false;
-                    house.HouseBL = "";
-                    house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    housesnew.Add(house);
+                    for (int i = 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                    {
+                        PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                        house.Index = i;
+                        house.IdAsignacion = PaperlessAsignacionActual.Id;
+                        house.Freehand = false;
+                        house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                        house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
+
+                        housesnew.Add(house);
+                    }
                 }
+                else
+                {
+                    housesnew = houses;
+                }
+                if (int.Parse(txtP1CantHouses.Text) > housesnew.Count)
+                {
+                    for (int i = housesnew.Count + 1; i <= int.Parse(txtP1CantHouses.Text); i++)
+                    {
+                        PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+                        house.Index = i;
+                        house.IdAsignacion = PaperlessAsignacionActual.Id;
+                        house.Freehand = false;
+                        house.HouseBL = "";
+                        house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+                        housesnew.Add(house);
+                    }
+                }
+
+                grdP1DigitarHousesBL.DataSource = housesnew;
+                grdP1DigitarHousesBL.RefreshDataSource();
+
+
+                //Cargar Info Houses BL
+                PaperlessUsuario1HouseBLInfo info =
+                    LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+                if (info != null)
+                {
+                    txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
+                    txtP1NumConsolidado.Text = info.NumConsolidado;
+                }
+                PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
+                PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
+
+                GuardaRegLogCarga(PaperlessAsignacionActual.Id32, reglasAplicadas.ToString(), reglasConError.ToString(), "Resumen Reglas Aplicadas:" + reglasAplicadas + " Error :" + reglasConError, (Int32)PaperlessTipoErrorLog.PaperlessTipoError.Resumen);
             }
 
-            grdP1DigitarHousesBL.DataSource = housesnew;
-            grdP1DigitarHousesBL.RefreshDataSource();
-
-
-            //Cargar Info Houses BL
-            PaperlessUsuario1HouseBLInfo info =
-                LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
-            if (info != null)
-            {
-                txtP1CantHouses.Text = PaperlessAsignacionActual.NumHousesBL.ToString();
-                txtP1NumConsolidado.Text = info.NumConsolidado;
-            }
-            PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
-            PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
-
-            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, reglasAplicadas.ToString(), reglasConError.ToString(), "Resumen Reglas Aplicadas:" + reglasAplicadas + " Error :" + reglasConError, (Int32)PaperlessTipoErrorLog.PaperlessTipoError.Resumen);
         }
 
         private void txtLogCarga_Click(object sender, EventArgs e)
@@ -1874,7 +1939,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
 
-            
+
             Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
 
             grdExcepciones.DataSource = excepciones;

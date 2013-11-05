@@ -559,8 +559,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
-                    //ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
-                    ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
+                    ResultadoTransaccion resultado;
+                    if (IsBrasil)
+                        resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
+                    else
+                        resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
+                    
                     
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)

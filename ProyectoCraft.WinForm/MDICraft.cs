@@ -20,6 +20,7 @@ using SCCMultimodal;
 using SCCMultimodal.Cotizaciones;
 using SCCMultimodal.Mantenedores;
 using SCCMultimodal.Panel_de_control;
+using ProyectoCraft.WinForm.Paperless.GestionAsignacion;
 
 
 namespace ProyectoCraft.WinForm
@@ -777,6 +778,15 @@ namespace ProyectoCraft.WinForm
         {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             var form = frmAgentes.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void MenuPaperlessGestionAsignaciones_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            var form = frmGestionAsignaciones.Instancia;
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

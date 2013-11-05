@@ -453,6 +453,12 @@
     <Compile Include="Paperless\Gestion\frmGestionPaperless.Designer.cs">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
     </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionAsignaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionAsignaciones.Designer.cs">
+      <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -681,6 +687,9 @@
     <EmbeddedResource Include="Paperless\Asignacion\frmPaperlessAsignacion.resx">
       <DependentUpon>frmPaperlessAsignacion.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Gestion\frmGestionAsignaciones.resx">
+      <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperless.resx">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>

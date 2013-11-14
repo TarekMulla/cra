@@ -32,10 +32,11 @@ namespace ProyectoCraft.AccesoDatos.Integracion
 
                 IntegracionNetShip netShip = null;
                 while (dreader.Read())
-                {
+                {                    
+
                     netShip = new IntegracionNetShip();
                     netShip.Consolidada = dreader["Consolidada"].ToString();
-                    netShip.HouseBl = dreader["House BL"].ToString();
+                    netShip.HouseBl = dreader["House BL"].ToString();                    
                     netShip.Rut = dreader["RUT"].ToString();
                     netShip.Cliente = dreader["Cliente"].ToString();
                     netShip.TipoCliente = dreader["Tipo Cliente"].ToString();
@@ -43,6 +44,8 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                         netShip.Ruteado = dreader["Ruteado"].ToString().Equals("1");
                     netShip.ShippingInstruction = dreader["Shipping Instruction"].ToString();
                     netShip.Puerto = dreader["Puerto"].ToString();
+                    
+                    Base.Log.Log.EscribirLog(netShip.HouseBl);                    
 
                     lista.Add(netShip);
 
@@ -85,7 +88,14 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                     objParams[3].Value = null;
 
                 if (_int.Mensaje != null)
-                    objParams[4].Value = _int.IdPaperlessTipoError;
+                    try
+                    {
+                        objParams[4].Value = _int.IdPaperlessTipoError;
+                    }
+                    catch (Exception)
+                    {                       
+                    }
+                    
                 else
                     objParams[4].Value = null;
 

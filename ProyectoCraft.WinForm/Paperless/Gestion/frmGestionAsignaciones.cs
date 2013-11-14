@@ -52,6 +52,11 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ddlTipoCarga.Properties.Items.Add("FAK");
             ddlTipoCarga.Properties.Items.Add("LCL");
 
+            DdlEmpresa.Properties.Items.Add("Craft");
+            DdlEmpresa.Properties.Items.Add("Contact");
+            DdlEmpresa.Properties.Items.Add("Slotlog");
+            DdlEmpresa.Properties.Items.Add("Neutral");
+
             DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGrafico("Usuario2", DateTime.Now.AddDays(-30), DateTime.Now);
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";

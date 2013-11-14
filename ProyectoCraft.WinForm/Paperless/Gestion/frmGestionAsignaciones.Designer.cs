@@ -80,6 +80,8 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.txtFechaHasta = new DevExpress.XtraEditors.DateEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.TabGestionPaperless.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -101,6 +103,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesde.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TabGestionPaperless
@@ -542,11 +545,30 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.labelControl11.TabIndex = 119;
             this.labelControl11.Text = "Fecha Hasta";
             // 
+            // DdlEmpresa
+            // 
+            this.DdlEmpresa.Location = new System.Drawing.Point(103, 70);
+            this.DdlEmpresa.Name = "DdlEmpresa";
+            this.DdlEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DdlEmpresa.Size = new System.Drawing.Size(201, 20);
+            this.DdlEmpresa.TabIndex = 120;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(12, 73);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(29, 13);
+            this.labelControl1.TabIndex = 121;
+            this.labelControl1.Text = "Marca";
+            // 
             // frmGestionAsignaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 621);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.DdlEmpresa);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.txtFechaHasta);
@@ -583,6 +605,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaDesde.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,6 +658,8 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         private DevExpress.XtraEditors.DateEdit txtFechaHasta;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
 
     }
 }

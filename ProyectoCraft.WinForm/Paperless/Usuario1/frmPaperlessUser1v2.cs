@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraGrid.Views.Grid;
+using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Clientes;
 using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Enums;
@@ -40,6 +41,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private PaperlessPasosEstado _pasoEstadoActual;
         private bool _mensajemostrado;
         private bool IsBrasil { get; set; }
+        private IList<IntegracionNetShip> netShips;
 
         private static frmPaperlessUser1v2 _instancia;
 
@@ -1521,7 +1523,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     house.IdAsignacion = PaperlessAsignacionActual.Id;
                     house.Freehand = false;
                     house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                    house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
+                    //house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
+                    house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.SelectedText);
 
 
                     housesnew.Add(house);
@@ -1593,7 +1596,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             {
                 Int32 regVarios = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings.Get("regVarios"));
 
-                IList<IntegracionNetShip> netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
+                if (netShips == null)
+                 netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
                 //clsClienteMaster clienteNuevo = null;
 
                 //-debe enviar un mensaje cuando la cantidad de hoses BL sea distinta
@@ -1613,76 +1617,83 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
                 if (netShips.Count > 0)
                 {
-                    house.HouseBL = netShips[i - 1].HouseBl;//-Número BL
-                    var rut = netShips[i - 1].Rut; //-Rut del Cliente.
-
-                    var shippingInstruction = netShips[i - 1].ShippingInstruction;
-                    if (shippingInstruction != null)
-                        house.ShippingInstruction = shippingInstruction;
-
-                    var port = netShips[i - 1].Puerto;
-                    if (port != null)
-                        house.Puerto = port;
-
-                    if (rut != null && !string.IsNullOrEmpty(rut))
+                    try
                     {
-                        var cliente = netShips[i - 1].Cliente;
-                        //-Si el Rut existe el sistema debe buscar en la base de datos y cargarlo con la información 
-                        //que existe en el sistema para que este cliente se muestre en la pantalla de ingreso de Bls
-                        house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(rut);
+                        house.HouseBL = netShips[i - 1].HouseBl;//-Número BL
+                        var rut =  netShips[i - 1].Rut; //-Rut del Cliente.
 
-                        #region si el rut no existe debe crear un nuevo cliente, pero de tipo paperless  con la información que actualmente está enviando NetShip
-                        if (cliente != null && house.Cliente == null && !string.IsNullOrEmpty(cliente))
+                        var shippingInstruction = netShips[i - 1].ShippingInstruction;
+                        if (shippingInstruction != null)
+                            house.ShippingInstruction = shippingInstruction;
+
+                        var port = netShips[i - 1].Puerto;
+                        if (port != null)
+                            house.Puerto = port;
+
+                        if (rut != null && !string.IsNullOrEmpty(rut))
                         {
-                            house.Cliente = CargaClientePaperlessNuevo(cliente, rut);
-                            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", rut, " Se creo el Cliente " + house.Cliente.Id32 + " con Rut :" + rut, (Int32)PaperlessTipoErrorLog.PaperlessTipoError.RutNoExiste);
+                            var cliente = netShips[i - 1].Cliente;
+                            //-Si el Rut existe el sistema debe buscar en la base de datos y cargarlo con la información 
+                            //que existe en el sistema para que este cliente se muestre en la pantalla de ingreso de Bls
+                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorRut(rut);
+
+                            #region si el rut no existe debe crear un nuevo cliente, pero de tipo paperless  con la información que actualmente está enviando NetShip
+                            if (cliente != null && house.Cliente == null && !string.IsNullOrEmpty(cliente))
+                            {
+                                house.Cliente = CargaClientePaperlessNuevo(cliente, rut);
+                                GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", rut, " Se creo el Cliente " + house.Cliente.Id32 + " con Rut :" + rut, (Int32)PaperlessTipoErrorLog.PaperlessTipoError.RutNoExiste);
+                                reglasAplicadas++;
+                            }
+
+                            #endregion
+                        }
+                        else//-colocar el "varios" cuando el cliente no esté creado en el sistema,-si no viene rut , registro debe ser varios. 
+                        {
+                            house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(regVarios);
+                            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Rut desde NetShip", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.RegVarios);
                             reglasAplicadas++;
                         }
 
-                        #endregion
-                    }
-                    else//-colocar el "varios" cuando el cliente no esté creado en el sistema,-si no viene rut , registro debe ser varios. 
-                    {
-                        house.Cliente = LogicaNegocios.Clientes.clsClientesMaster.ObtenerClienteMasterPorId(regVarios);
-                        GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Rut desde NetShip", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.RegVarios);
-                        reglasAplicadas++;
-                    }
 
-
-                    house.Ruteado = netShips[i - 1].Ruteado;//-Indicar si es Ruteado o no
-                    var consolidada = netShips[i - 1].Consolidada;
-                    if (consolidada != null)
-                        txtP1NumConsolidado.Text = consolidada;//- Número Consolidado
-                    else
-                    {
-                        GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Numero de Consolidada", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.SinNumeroConsolidada);
-                        reglasAplicadas++;
-                    }
-
-
-                    #region-va a prevalecer el tipo de cliente que tenga paperless, al momento de la carga.
-                    PaperlessTipoCliente ptc = ObtieneTipodeCliente(house);//-Tipo de Cliente
-
-                    #region Agrega Tipo Cliente de la integracion si desde el ClienteMaster retorna null
-                    if (ptc == null)
-                    {
-                        ptc = new PaperlessTipoCliente();
-                        if (netShips[i - 1].TipoCliente.Equals("Directo"))
-                        {
-                            ptc.Nombre = "Directo";
-                            ptc.Id = 2;
-                        }
+                        house.Ruteado = netShips[i - 1].Ruteado;//-Indicar si es Ruteado o no
+                        var consolidada = netShips[i - 1].Consolidada;
+                        if (consolidada != null)
+                            txtP1NumConsolidado.Text = consolidada;//- Número Consolidado
                         else
                         {
-                            ptc.Nombre = "Embarcador";
-                            ptc.Id = 1;
+                            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Numero de Consolidada", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.SinNumeroConsolidada);
+                            reglasAplicadas++;
                         }
+
+
+                        #region-va a prevalecer el tipo de cliente que tenga paperless, al momento de la carga.
+                        PaperlessTipoCliente ptc = ObtieneTipodeCliente(house);//-Tipo de Cliente
+
+                        #region Agrega Tipo Cliente de la integracion si desde el ClienteMaster retorna null
+                        if (ptc == null)
+                        {
+                            ptc = new PaperlessTipoCliente();
+                            if (netShips[i - 1].TipoCliente.Equals("Directo"))
+                            {
+                                ptc.Nombre = "Directo";
+                                ptc.Id = 2;
+                            }
+                            else
+                            {
+                                ptc.Nombre = "Embarcador";
+                                ptc.Id = 1;
+                            }
+                        }
+                        GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", ptc.Nombre, " Tipo de Cliente NetShip", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.DobleDefinicionPpValorNetShip);
+                        reglasConError++;
+                        house.TipoCliente = ptc;
+                        #endregion
+                        #endregion
                     }
-                    GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", ptc.Nombre, " Tipo de Cliente NetShip", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.DobleDefinicionPpValorNetShip);
-                    reglasConError++;
-                    house.TipoCliente = ptc;
-                    #endregion
-                    #endregion
+                    catch (Exception ex)
+                    {
+                        Log.EscribirLog(ex.Message);                      
+                    }                   
                 }
                 else
                 {
@@ -1705,22 +1716,25 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         {
             clsCuenta cuenta = new clsCuenta();
             PaperlessTipoCliente ptc = new PaperlessTipoCliente();
-            var transaccion = LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente.Id);
-            if (transaccion != null)
+            if (house.Cliente != null)
             {
-                cuenta = (clsCuenta)transaccion.ObjetoTransaccion;
-                if (cuenta != null && cuenta.ClienteMaster.ClienteMasterTipoCliente != null)
+                var transaccion = LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente.Id);
+                if (transaccion != null)
                 {
-                    if (cuenta.ClienteMaster.ClienteMasterTipoCliente.Count.Equals(0) ||
-                        cuenta.ClienteMaster.ClienteMasterTipoCliente.Count > 1)
+                    cuenta = (clsCuenta)transaccion.ObjetoTransaccion;
+                    if (cuenta != null && cuenta.ClienteMaster.ClienteMasterTipoCliente != null)
                     {
-                        house.TipoCliente = null;
-                    }
-                    else
-                    {
-                        ptc.Nombre = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Nombre;
-                        ptc.Id = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Id;
-                        house.TipoCliente = ptc;
+                        if (cuenta.ClienteMaster.ClienteMasterTipoCliente.Count.Equals(0) ||
+                            cuenta.ClienteMaster.ClienteMasterTipoCliente.Count > 1)
+                        {
+                            house.TipoCliente = null;
+                        }
+                        else
+                        {
+                            ptc.Nombre = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Nombre;
+                            ptc.Id = cuenta.ClienteMaster.ClienteMasterTipoCliente[0].Id;
+                            house.TipoCliente = ptc;
+                        }
                     }
                 }
             }
@@ -1817,7 +1831,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                         house.IdAsignacion = PaperlessAsignacionActual.Id;
                         house.Freehand = false;
                         house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                        house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
+                        //house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
+                        house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.SelectedText);
 
                         housesnew.Add(house);
                     }

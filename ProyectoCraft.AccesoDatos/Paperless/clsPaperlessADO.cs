@@ -3929,6 +3929,155 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return lista;
         }
 
+        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta, 
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
+            PaperlessFlujo asignaciones = null;
+            IList<PaperlessFlujo> listasignaciones = new List<PaperlessFlujo>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION___");
+                objParams[0].Value = desde;
+                objParams[1].Value = hasta;
+                objParams[2].Value = usuario;
+                objParams[3].Value = tipocarga;
+                objParams[4].Value = EstadoPaperless;
+                objParams[5].Value = marca;
+                
+
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    asignaciones = new PaperlessFlujo();
+                    asignaciones.Asignacion.Id = Convert.ToInt64(dreader["Id"]);
+                    asignaciones.Asignacion.NumMaster = dreader["NumMaster"].ToString();
+                    asignaciones.Asignacion.FechaMaster = Convert.ToDateTime(dreader["FechaMaster"]);
+                    asignaciones.Asignacion.Agente = new PaperlessAgente() { Nombre = dreader["Agente"].ToString() };
+                    asignaciones.Asignacion.Naviera = new PaperlessNaviera() { Nombre = dreader["Naviera"].ToString() };
+                    asignaciones.Asignacion.Nave = new PaperlessNave() { Nombre = dreader["Nave"].ToString() };
+                    asignaciones.Asignacion.Viaje = dreader["Viaje"].ToString();
+                    asignaciones.Asignacion.NumHousesBL = Convert.ToInt16(dreader["NumHousesBL"]);
+                    asignaciones.Asignacion.TipoCarga = new PaperlessTipoCarga() { Nombre = dreader["TipoCarga"].ToString(), Id = Convert.ToInt64(dreader["IdTipoCarga"]) };
+                    asignaciones.Asignacion.FechaPaso1 = Convert.ToDateTime(dreader["FechaPaso1"]);
+
+                    if (dreader["FechaETA"] is DBNull)
+                        asignaciones.Asignacion.FechaETA = null;
+                    else
+                        asignaciones.Asignacion.FechaETA = Convert.ToDateTime(dreader["FechaETA"]);
+
+                    if (dreader["AperturaNavieras"] is DBNull)
+                        asignaciones.Asignacion.AperturaNavieras = null;
+                    else
+                        asignaciones.Asignacion.AperturaNavieras = Convert.ToDateTime(dreader["AperturaNavieras"]);
+
+                    if (dreader["PlazoEmbarcadores"] is DBNull)
+                        asignaciones.Asignacion.PlazoEmbarcadores = null;
+                    else
+                        asignaciones.Asignacion.PlazoEmbarcadores = Convert.ToDateTime(dreader["PlazoEmbarcadores"]);
+
+                    if (dreader["FechaPaso2"] is DBNull)
+                        asignaciones.Asignacion.FechaPaso2 = null;
+                    else
+                        asignaciones.Asignacion.FechaPaso2 = Convert.ToDateTime(dreader["FechaPaso2"]);
+
+                    if (dreader["U1N"] is DBNull)
+                        asignaciones.Asignacion.Usuario1 = null;
+                    else
+                        asignaciones.Asignacion.Usuario1 = new clsUsuario(dreader["U1N"].ToString(), dreader["U1AP"].ToString(), dreader["U1AM"].ToString());
+
+                    if (dreader["ObservacionUsuario1"] is DBNull)
+                        asignaciones.Asignacion.ObservacionUsuario1 = "";
+                    else
+                        asignaciones.Asignacion.ObservacionUsuario1 = dreader["ObservacionUsuario1"].ToString();
+
+                    if (dreader["Importancia"] is DBNull)
+                        asignaciones.Asignacion.ImportanciaUsuario1 = null;
+                    else
+                        asignaciones.Asignacion.ImportanciaUsuario1 = new clsItemParametro() { Nombre = dreader["Importancia"].ToString() };
+
+                    if (dreader["U2N"] is DBNull)
+                        asignaciones.Asignacion.Usuario2 = null;
+                    else
+                        asignaciones.Asignacion.Usuario2 = new clsUsuario(dreader["U2N"].ToString(), dreader["U2AP"].ToString(), dreader["U2AM"].ToString());
+
+                    if (dreader["ObservacionUsuario2"] is DBNull)
+                        asignaciones.Asignacion.ObservacionUsuario2 = "";
+                    else
+                        asignaciones.Asignacion.ObservacionUsuario2 = dreader["ObservacionUsuario2"].ToString();
+
+                    if (dreader["FechaPaso3"] is DBNull)
+                        asignaciones.Asignacion.FechaPaso3 = null;
+                    else
+                        asignaciones.Asignacion.FechaPaso3 = Convert.ToDateTime(dreader["FechaPaso3"]);
+
+                    asignaciones.EstadoFlujoDescripcion = dreader["Estado"].ToString();
+                    asignaciones.EstadoFlujo = (Enums.EstadoPaperless)(int.Parse(dreader["IdEstado"].ToString()));
+                    asignaciones.Asignacion.Estado = (Enums.EstadoPaperless)(int.Parse(dreader["IdEstado"].ToString()));
+
+                    if (dreader["NumConsolidado"] is DBNull)
+                        asignaciones.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = "";
+                    else
+                        asignaciones.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();
+
+                    if (dreader["ComienzoUsuario1"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.ComienzoUsuario1 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.ComienzoUsuario1 =
+                            Convert.ToDateTime(dreader["ComienzoUsuario1"]);
+
+                    if (dreader["TerminoUsuario1"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.TerminoUsuario1 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.TerminoUsuario1 =
+                            Convert.ToDateTime(dreader["TerminoUsuario1"]);
+
+                    if (dreader["ComienzoUsuario2"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.ComienzoUsuario2 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.ComienzoUsuario2 =
+                            Convert.ToDateTime(dreader["ComienzoUsuario2"]);
+
+                    if (dreader["TerminoUsaurio2"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.TerminoUsuario2 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.TerminoUsuario2 =
+                            Convert.ToDateTime(dreader["TerminoUsaurio2"]);
+
+                    if (dreader["UltimoPasoU1"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.UltimoPasoUsuario1 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.UltimoPasoUsuario1 =
+                            Convert.ToDateTime(dreader["UltimoPasoU1"]);
+
+                    if (dreader["UltimoPasoU2"] is DBNull)
+                        asignaciones.Asignacion.TiemposUsuarios.UltimoPasoUsuario2 = null;
+                    else
+                        asignaciones.Asignacion.TiemposUsuarios.UltimoPasoUsuario2 =
+                            Convert.ToDateTime(dreader["UltimoPasoU2"]);
+
+                    asignaciones.Asignacion.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
+
+                    asignaciones.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
+                    listasignaciones.Add(asignaciones);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return listasignaciones;
+        }
 
     }
 }

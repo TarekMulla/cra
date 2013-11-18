@@ -460,6 +460,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.btnBuscar.Size = new System.Drawing.Size(114, 23);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // ddlAgrupadoPor
             // 

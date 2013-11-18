@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 //using System.Linq;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
@@ -11,13 +12,10 @@ using ProyectoCraft.Entidades.Perfiles;
 using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Usuarios;
-using ProyectoCraft.WinForm.Clientes;
 using ProyectoCraft.WinForm.Direccion.Administracion;
 using ProyectoCraft.WinForm.Paperless.Asignacion;
 using ProyectoCraft.WinForm.Paperless.Usuario1;
 using ProyectoCraft.WinForm.Paperless.Usuario2;
-using SCCMultimodal;
-using SCCMultimodal.Cotizaciones;
 using SCCMultimodal.Mantenedores;
 using SCCMultimodal.Panel_de_control;
 using ProyectoCraft.WinForm.Paperless.GestionAsignacion;
@@ -32,9 +30,12 @@ namespace ProyectoCraft.WinForm
         private int childFormNumber = 0;
         private List<ClsPanelDeControl> panelDecontrols;
         private ClsPanelDeControl panelDeControlSeleccionado;
-
+        private Stopwatch TimerMDI;
         public MDICraft()
+
         {
+            TimerMDI = System.Diagnostics.Stopwatch.StartNew();
+            
             InitializeComponent();
             panelDecontrols = new List<ClsPanelDeControl>();
         }
@@ -198,6 +199,8 @@ namespace ProyectoCraft.WinForm
 
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
+        ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, TimerMDI.Elapsed.TotalSeconds,"Carga Inicial de SCC"));
+        
         }
 
         public void ChangePanelDeControl(object sender, EventArgs e)
@@ -387,9 +390,9 @@ namespace ProyectoCraft.WinForm
                 username = UsuarioConectado;
 
             Entidades.GlobalObject.ResultadoTransaccion resultado =
-                LogicaNegocios.Usuarios.clsUsuarios.ValidaUsuarioAutorizado(username);
+                clsUsuarios.ValidaUsuarioAutorizado(username);
 
-            if (resultado.Estado == Entidades.Enums.Enums.EstadoTransaccion.Rechazada)
+            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
             {
                 MessageBox.Show(resultado.Descripcion, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

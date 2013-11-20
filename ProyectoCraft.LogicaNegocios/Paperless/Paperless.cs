@@ -353,5 +353,11 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGrafico(usuario, desde, hasta);
         }
+        public static DataTable ObtenerCantidadAsignacionesGraficoGestionPaperless(DateTime desde, DateTime hasta,
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGraficoGestionPaperless(desde, hasta, usuario,tipocarga,EstadoPaperless,marca);
+        }
+        
     }
 }

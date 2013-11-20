@@ -94,16 +94,17 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             Int64 usuario1 = -1;
             Int64 usuario2 = -1;
             string nave = "";
-            IList<Entidades.Paperless.PaperlessFlujo> asignaciones =
-                LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperless(nummaster, numconsolidado, DateTime.Now.AddDays(-90),//desde,
-                                                                                 DateTime.Now,
-                                                                             usuario1, usuario2, nave
-                                                                             , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras);
+            //IList<Entidades.Paperless.PaperlessFlujo> asignaciones =
+            //    LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperless(nummaster, numconsolidado, DateTime.Now.AddDays(-90),//desde,
+            //                                                                     DateTime.Now,
+            //                                                                 usuario1, usuario2, nave
+            //                                                                 , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras);
 
-            grdAsignaciones.DataSource = asignaciones;
-            grdAsignaciones.RefreshDataSource();
+            //grdAsignaciones.DataSource = asignaciones;
+            //grdAsignaciones.RefreshDataSource();
 
-            DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGrafico("Usuario2", DateTime.Now.AddDays(-30), DateTime.Now);
+            DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGraficoGestionPaperless(
+               DateTime.Now.AddDays(-90), DateTime.Now, ddlAgrupadoPor.Text,ddlTipoCarga.SelectedIndex.ToString(), "8", "");
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";

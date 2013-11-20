@@ -4078,6 +4078,64 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
             return listasignaciones;
         }
+        public static DataTable ObtenerCantidadAsignacionesGraficoGestionPaperless(DateTime desde, DateTime hasta,
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
+            DataTable Grafica = new DataTable("Grafico");
+            string Estado;
+            string Vendedor;
+            Int32 Value;
+
+            /*@USUARIO VARCHAR (20),    
+            @DESDE DATETIME,    
+            @HASTA DATETIME,  
+            @TIPOCARGA VARCHAR(10) ,  
+            @ESTADOPAPERLESS VARCHAR(10),  
+            @MARCA VARCHAR (20)  */
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES_GESTION_PAPERLESS");
+                objParams[0].Value = usuario;
+                objParams[1].Value = desde;
+                objParams[2].Value = hasta;
+                objParams[3].Value = tipocarga;
+                objParams[4].Value = EstadoPaperless;
+                objParams[5].Value = marca;
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES_GESTION_PAPERLESS", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+
+                Grafica.Columns.Add("Estado", typeof(String));
+                Grafica.Columns.Add("Vendedor", typeof(String));
+                Grafica.Columns.Add("Value", typeof(Int32));
+                //Estado = "Polaco";
+                //Vendedor ="Usuario 1";
+                //Value = Convert.ToInt32(10);
+                //Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
+
+
+                while (dreader.Read())
+                {
+                    Estado = dreader["NOMBREUSUARIO"].ToString();
+                    Vendedor = usuario;
+                    Value = Convert.ToInt32(dreader["CANT"]);
+                    Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Grafica;
+        }
 
     }
 }

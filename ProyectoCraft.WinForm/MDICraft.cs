@@ -311,6 +311,7 @@ namespace ProyectoCraft.WinForm
                 {
                     MenuPaperlessAsignacion.Visible = true;
                     MenuPaperlessAsignar.Visible = true;
+                    MenuGestionAsignaciones.Visible = true;
                 }
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Encargado_Documental_1ra_Etapa)
                 {

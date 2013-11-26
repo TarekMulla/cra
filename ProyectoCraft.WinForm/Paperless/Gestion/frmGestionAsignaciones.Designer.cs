@@ -82,6 +82,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.ddlTipoCargaDescLarga = new DevExpress.XtraEditors.ComboBoxEdit();
             this.TabGestionPaperless.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -104,6 +105,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TabGestionPaperless
@@ -473,12 +475,13 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // ddlTipoCarga
             // 
-            this.ddlTipoCarga.Location = new System.Drawing.Point(103, 2);
+            this.ddlTipoCarga.Location = new System.Drawing.Point(102, 2);
             this.ddlTipoCarga.Name = "ddlTipoCarga";
             this.ddlTipoCarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlTipoCarga.Size = new System.Drawing.Size(201, 20);
+            this.ddlTipoCarga.Size = new System.Drawing.Size(139, 20);
             this.ddlTipoCarga.TabIndex = 3;
+            this.ddlTipoCarga.SelectedIndexChanged += new System.EventHandler(this.ddlTipoCarga_SelectedIndexChanged);
             // 
             // ddlEstadoPaperless
             // 
@@ -563,11 +566,22 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.labelControl1.TabIndex = 121;
             this.labelControl1.Text = "Marca";
             // 
+            // ddlTipoCargaDescLarga
+            // 
+            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(240, 2);
+            this.ddlTipoCargaDescLarga.Name = "ddlTipoCargaDescLarga";
+            this.ddlTipoCargaDescLarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlTipoCargaDescLarga.Size = new System.Drawing.Size(64, 20);
+            this.ddlTipoCargaDescLarga.TabIndex = 123;
+            this.ddlTipoCargaDescLarga.Visible = false;
+            // 
             // frmGestionAsignaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 621);
+            this.Controls.Add(this.ddlTipoCargaDescLarga);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.DdlEmpresa);
             this.Controls.Add(this.labelControl11);
@@ -585,6 +599,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.Name = "frmGestionAsignaciones";
             this.Text = "GestionAsignaciones";
             this.Load += new System.EventHandler(this.frmGestionAsignaciones_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGestionAsignaciones_FormClosed);
             this.TabGestionPaperless.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -607,6 +622,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -661,6 +677,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit ddlTipoCargaDescLarga;
 
     }
 }

@@ -1128,6 +1128,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         private void frmPaperlessAsignacion_FormClosed(object sender, FormClosedEventArgs e)
         {
             Instancia = null;
+            Close();
         }
 
         private void LimpiarFormulario()

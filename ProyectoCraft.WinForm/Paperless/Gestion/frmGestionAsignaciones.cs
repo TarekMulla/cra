@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.LogicaNegocios;
@@ -15,6 +16,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
     public partial class frmGestionAsignaciones : Form
     {
         private IList<PaperlessTipoCarga> Cargas { get; set; }
+        private IList<PaperlessTipoCarga> CargasDesclarga { get; set; }
 
         private static frmGestionAsignaciones _instancia = null;
         public static frmGestionAsignaciones Instancia
@@ -30,13 +32,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             {
                 _instancia = value;
             }
-        }
+        }        
 
         public frmGestionAsignaciones()
         {
             InitializeComponent();
         }
-
         private void frmGestionAsignaciones_Load(object sender, EventArgs e)
         {
             ddlAgrupadoPor.Properties.Items.Add("Usuario1");
@@ -52,11 +53,11 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ddlEstadoPaperless.Properties.Items.Add(Enums.EstadoPaperless.ProcesoTerminado);
             ddlEstadoPaperless.Properties.Items.Add(Enums.EstadoPaperless.RechazadaUsuario1);
                        
-            Cargas = LogicaNegocios.Paperless.Paperless.ListarTipoCarga(Enums.Estado.Habilitado);
-            foreach (var c in Cargas)
-            {
-                ddlTipoCarga.Properties.Items.Add(c.Nombre);
-            }
+            //Cargas = LogicaNegocios.Paperless.Paperless.ListarTipoCarga(Enums.Estado.Habilitado);
+            //foreach (var c in Cargas)
+            //{
+            //    ddlTipoCarga.Properties.Items.Add(c.Nombre);
+            //}
            
             //ddlTipoCarga.Properties.Items.Add("FCL");
             //ddlTipoCarga.Properties.Items.Add("FAK");
@@ -67,13 +68,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             DdlEmpresa.Properties.Items.Add("Slotlog");
             DdlEmpresa.Properties.Items.Add("Neutral");
 
-          
-
-           
-
-
-          
-        }
+            CargaProductos();        }
 
         private void dateEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -110,9 +105,52 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";
             Chartusuario2.SeriesTemplate.ValueDataMembers.AddRange(new string[] { "Value" });
             Chartusuario2.DataSource = (DataTable)resUsuario2;
+        }
+        private void CargaProductos()
+        {
+            bool cargofcl = false;
+            Cargas = LogicaNegocios.Paperless.Paperless.ListarTipoCarga(Enums.Estado.Habilitado);
+            CargasDesclarga = LogicaNegocios.Paperless.Paperless.ListarTipoCargaDescripcionLarga(Enums.Estado.Habilitado);
 
+            ComboBoxItemCollection coll = ddlTipoCarga.Properties.Items;
+            coll.Add(Utils.Utils.ObtenerPrimerItem());
+            foreach (var list in Cargas)
+            {
+                if (cargofcl.Equals(false))
+                {
+                    if (list.Nombre.Equals("FCL"))
+                        cargofcl = true;
+                    coll.Add(list);
+                }
+                else if (!list.Nombre.Equals("FCL"))
+                    coll.Add(list);
+            }
+            ddlTipoCarga.SelectedIndex = 0;
 
+            ComboBoxItemCollection collTipoDescLarga = ddlTipoCargaDescLarga.Properties.Items;
+            collTipoDescLarga.Add(Utils.Utils.ObtenerPrimerItem());
+            if (CargasDesclarga != null)
+                foreach (var list in CargasDesclarga)
+                {
+                    if (list.EsFCL)
+                    {
+                        list.Nombre = list.DescripcionLarga;
+                        collTipoDescLarga.Add(list);
+                    }
 
+                }
+            ddlTipoCargaDescLarga.SelectedIndex = 0;
+        }
+
+        private void ddlTipoCarga_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
+        }
+
+        private void frmGestionAsignaciones_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instancia = null;
+            Close();
         }
     }
 }

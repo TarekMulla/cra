@@ -175,7 +175,8 @@ namespace SCCMultimodal.Mantenedores
         private Agente BindViewToDomain()
         {
             var item = new Agente();
-            item.Clave = Convert.ToInt64(txtClave.Text);
+            if (!string.IsNullOrEmpty(txtClave.Text))
+                item.Clave = Convert.ToInt64(txtClave.Text);
             item.Contacto = txtContacto.Text;
             item.Descripcion = txtDescripcion.Text;
             item.Email = txtEmail.Text;
@@ -189,22 +190,22 @@ namespace SCCMultimodal.Mantenedores
             //Pregunta para eliminación de agente
 
             DialogResult resultado;
-            resultado = MessageBox.Show("¿Está seguro que desea eliminar el Agente?", "Eliminar Agente", MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+            resultado = MessageBox.Show("¿Está seguro que desea eliminar el Agente?", "Eliminar Agente", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
             if (resultado == DialogResult.Yes)
             {
-            //SI Eliminar Agente
+                //SI Eliminar Agente
                 var agente = BindViewToDomain();
                 //var agente = GetSelectedRow(gridView1);
                 ClsAgente.EliminaAgente(agente);
                 ListarAgentes();
                 LimpiarDatos();
-                
+
             }
 
-            
 
-            
+
+
         }
 
     }

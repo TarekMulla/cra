@@ -310,3 +310,19 @@ update PAPERLESS_PASOS_USUARIO1_v2 set pantalla = 'RegistrarExcepciones' where I
 go
 
 insert into configuracion values ('Paperless_Btn_NetShip', 0, 'Omite la integracion con netShip', GETDATE())
+
+
+if not exists(select * from PAPERLESS_TIPO_RESPONSABILIDAD where Descripcion ='SAO PAULO' and Tipo='FAK')
+BEGIN
+	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('SAO PAULO',1,'FAK')
+END
+
+if not exists(select * from PAPERLESS_TIPO_RESPONSABILIDAD where Descripcion ='OTRO DEPTO DE NEUTRAL' and Tipo='FAK')
+BEGIN
+	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('OTRO DEPTO DE NEUTRAL',1,'FAK')
+END
+
+if not exists(select * from PAPERLESS_TIPO_RESPONSABILIDAD where Descripcion ='AGENTE' and Tipo='FAK')
+BEGIN
+	insert into PAPERLESS_TIPO_RESPONSABILIDAD values ('AGENTE',1,'FAK')
+END

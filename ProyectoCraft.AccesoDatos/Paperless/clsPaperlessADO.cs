@@ -3555,7 +3555,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_EXCEPCIONES");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_RESPONSABILIDAD");
                 objParams[0].Value = resp;
 
                 var command = new SqlCommand("SP_L_PAPERLESS_TIPO_RESPONSABILIDAD", conn);

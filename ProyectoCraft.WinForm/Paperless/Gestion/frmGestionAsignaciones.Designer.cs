@@ -485,6 +485,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // ddlEstadoPaperless
             // 
+            this.ddlEstadoPaperless.AllowDrop = true;
             this.ddlEstadoPaperless.Location = new System.Drawing.Point(103, 47);
             this.ddlEstadoPaperless.Name = "ddlEstadoPaperless";
             this.ddlEstadoPaperless.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

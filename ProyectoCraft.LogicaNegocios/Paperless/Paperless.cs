@@ -358,6 +358,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGraficoGestionPaperless(desde, hasta, usuario,tipocarga,EstadoPaperless,marca);
         }
-        
+        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta,
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ConsultarGestionPaperlessGraficosUsuario1y2(desde,hasta,usuario,tipocarga,EstadoPaperless,marca);
+        }
     }
 }

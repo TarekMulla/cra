@@ -68,7 +68,10 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             DdlEmpresa.Properties.Items.Add("Slotlog");
             DdlEmpresa.Properties.Items.Add("Neutral");
 
-            CargaProductos();        }
+            CargaProductos();
+            txtFechaDesde.Text = DateTime.Now.AddDays(-90).ToShortDateString();
+            txtFechaHasta.Text = DateTime.Now.ToShortDateString();
+        }
 
         private void dateEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -77,29 +80,26 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string nummaster = "-1";
-            string numconsolidado = "-1";
             DateTime desde = new DateTime(9999, 1, 1);
             DateTime hasta = new DateTime(9999, 1, 1);
-            DateTime desdeNavieras = new DateTime(9999, 1, 1);
-            DateTime hastaNavieras = new DateTime(9999, 1, 1);
-            DateTime desdeEmbarcadores = new DateTime(9999, 1, 1);
-            DateTime hastaEmbarcadores = new DateTime(9999, 1, 1);
+            string status = "";
+            if (ddlEstadoPaperless.SelectedItem != null)
+                status = Convert.ToInt32((Enums.EstadoPaperless)ddlEstadoPaperless.SelectedItem).ToString();
 
-            Int64 usuario1 = -1;
-            Int64 usuario2 = -1;
-            string nave = "";
-            //IList<Entidades.Paperless.PaperlessFlujo> asignaciones =
-            //    LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperless(nummaster, numconsolidado, DateTime.Now.AddDays(-90),//desde,
-            //                                                                     DateTime.Now,
-            //                                                                 usuario1, usuario2, nave
-            //                                                                 , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras);
+            if (!string.IsNullOrEmpty(txtFechaDesde.Text))
+                desde = Convert.ToDateTime(txtFechaDesde.Text);
 
-            //grdAsignaciones.DataSource = asignaciones;
-            //grdAsignaciones.RefreshDataSource();
+            if (!string.IsNullOrEmpty(txtFechaHasta.Text))
+                hasta = Convert.ToDateTime(txtFechaHasta.Text);
+
+           // IList<PaperlessFlujo> asignaciones =
+           //     LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperlessGraficosUsuario1y2(desde, hasta, 
+           // ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
+           // grdAsignaciones.DataSource = asignaciones;
+           // grdAsignaciones.RefreshDataSource();
 
             DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGraficoGestionPaperless(
-               DateTime.Now.AddDays(-90), DateTime.Now, ddlAgrupadoPor.Text,ddlTipoCarga.SelectedIndex.ToString(), "8", "");
+               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";

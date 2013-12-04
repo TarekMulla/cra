@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProyectoCraft.Entidades.Clientes.Target.clsTarget">
+    <Position X="2.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAICIgAEAAAoAAEgRAAECgAAAlAAoAAgAAQAo=</HashCode>
+      <FileName>Clientes\Target\clsTarget.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EmpresaConQueTrabaja" />
+      <Property Name="OrigenCarga" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Clientes.Direcciones.clsDireccion">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAASCACAAAAAAAAhAAIAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Clientes\Direcciones\clsDireccion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ciudad" />
+      <Property Name="Comuna" />
+      <Property Name="Pais" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Clientes.Direcciones.clsDireccionInfo">
+    <Position X="4.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clientes\Direcciones\clsDireccionInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Clientes.clsClienteMaster">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAQAAAAAAGAAAAAAAACAAAAAAAAACAAAAAQ=</HashCode>
+      <FileName>Clientes\clsClienteMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.GlobalObject.IdentifiableObject">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAQQAgABAAAgAAAAAAIAAAEAAAAAAABA=</HashCode>
+      <FileName>GlobalObject\IdentifiableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.GlobalObject.NamedObject">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalObject\NamedObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.GlobalObject.Item">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalObject\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Clientes.Target.clsEmpresaCompetencia" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clientes\Target\clsEmpresaCompetencia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Clientes.Target.clsOrigenCarga" Collapsed="true">
+    <Position X="4.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clientes\Target\clsOrigenCarga.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Parametros.clsComuna">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parametros\clsComuna.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Ciudad" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Parametros.clsCiudad">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parametros\clsCiudad.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Pais" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Parametros.clsPais" Collapsed="true">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parametros\clsPais.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Parametros.clsItemParametro">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Parametros\clsItemParametro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Enums.Enums" Collapsed="true">
+    <Position X="12.25" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.TipoPersona" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.Estado" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.Sexo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.Dias" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.Jornadas" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.TipoParametro" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ProyectoCraft.Entidades.Enums.Enums.EstadoTransaccion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Enums\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

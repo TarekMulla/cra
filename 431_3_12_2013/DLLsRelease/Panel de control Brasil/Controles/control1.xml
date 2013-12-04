@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<control type="LinearGauge" refresh="90" title="este es el titulo"  baseControl="termometro_vertical.xml">
+  <description>
+    Control para graficar las diferencias entre x e y
+  </description>
+  <datasource>
+    SELECT 0 as min,count(*) as value, 15 as max , 10 as overmax 
+    FROM PAPERLESS_ASIGNACION
+    WHERE  AperturaNavieras between  GETDATE() and dateadd(day,7,getdate())
+  </datasource>
+  <detail>
+    <datasourse>
+      SELECT NumMaster, PAPERLESS_NAVIERA.Descripcion as Naviera, PAPERLESS_NAVE.Descripcion as Nave,Viaje,AperturaNavieras,usuarios.NombreUsuario,us2.NombreUsuario
+      FROM PAPERLESS_ASIGNACION,PAPERLESS_NAVIERA,PAPERLESS_NAVE,USUARIOS , USUARIOS as us2
+      WHERE  AperturaNavieras between  GETDATE() and dateadd(day,7,getdate())
+      and PAPERLESS_NAVIERA.Id=PAPERLESS_ASIGNACION.IdNaviera
+      and PAPERLESS_NAVE.Id=PAPERLESS_ASIGNACION.IdNave
+      and USUARIOS.Id = PAPERLESS_ASIGNACION.Usuario1
+      and us2.Id = PAPERLESS_ASIGNACION.Usuario2
+    </datasourse>
+  </detail>
+</control>

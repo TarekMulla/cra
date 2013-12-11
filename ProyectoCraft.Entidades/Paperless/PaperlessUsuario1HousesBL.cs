@@ -26,5 +26,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public string ShippingInstruction { get; set; }
         public string Puerto { get; set; }
         public string NumMaster { get; set; }
+      
     }
 }

@@ -47,6 +47,7 @@
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlPaso1 = new DevExpress.XtraEditors.PanelControl();
+            this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtLogCarga = new DevExpress.XtraEditors.SimpleButton();
             this.TxtActualizarNetShip = new DevExpress.XtraEditors.SimpleButton();
             this.ddlP1Cliente = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -87,6 +88,7 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.lblErrorPaso2 = new DevExpress.XtraEditors.LabelControl();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
+            this.sButtonEliminarExcepcion = new DevExpress.XtraEditors.SimpleButton();
             this.AgregarExcepcionManual = new DevExpress.XtraEditors.SimpleButton();
             this.MailExcepcion = new DevExpress.XtraEditors.SimpleButton();
             this.btnP11Excepciones = new DevExpress.XtraEditors.SimpleButton();
@@ -177,7 +179,6 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit9)).BeginInit();
@@ -195,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlPaso1)).BeginInit();
             this.pnlPaso1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlP1Cliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1CantHouses.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).BeginInit();
@@ -242,7 +244,6 @@
             this.pnlEnviarAviso.SuspendLayout();
             this.toobar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemCheckEdit4
@@ -361,6 +362,15 @@
             this.pnlPaso1.Size = new System.Drawing.Size(839, 432);
             this.pnlPaso1.TabIndex = 4;
             this.pnlPaso1.Visible = false;
+            // 
+            // DdlEmpresa
+            // 
+            this.DdlEmpresa.Location = new System.Drawing.Point(501, 23);
+            this.DdlEmpresa.Name = "DdlEmpresa";
+            this.DdlEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DdlEmpresa.Size = new System.Drawing.Size(101, 20);
+            this.DdlEmpresa.TabIndex = 10;
             // 
             // txtLogCarga
             // 
@@ -766,6 +776,7 @@
             // 
             // pnlExcepciones
             // 
+            this.pnlExcepciones.Controls.Add(this.sButtonEliminarExcepcion);
             this.pnlExcepciones.Controls.Add(this.AgregarExcepcionManual);
             this.pnlExcepciones.Controls.Add(this.MailExcepcion);
             this.pnlExcepciones.Controls.Add(this.btnP11Excepciones);
@@ -777,6 +788,17 @@
             this.pnlExcepciones.Size = new System.Drawing.Size(839, 374);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Visible = false;
+            this.pnlExcepciones.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlExcepciones_Paint);
+            // 
+            // sButtonEliminarExcepcion
+            // 
+            this.sButtonEliminarExcepcion.AutoSizeInLayoutControl = true;
+            this.sButtonEliminarExcepcion.Image = ((System.Drawing.Image)(resources.GetObject("sButtonEliminarExcepcion.Image")));
+            this.sButtonEliminarExcepcion.Location = new System.Drawing.Point(567, 7);
+            this.sButtonEliminarExcepcion.Name = "sButtonEliminarExcepcion";
+            this.sButtonEliminarExcepcion.Size = new System.Drawing.Size(26, 24);
+            this.sButtonEliminarExcepcion.TabIndex = 47;
+            this.sButtonEliminarExcepcion.Click += new System.EventHandler(this.sButtonEliminarTrafico_Click);
             // 
             // AgregarExcepcionManual
             // 
@@ -883,9 +905,6 @@
             this.gridColumn1.Caption = "House BL";
             this.gridColumn1.FieldName = "HouseBL.HouseBL";
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsColumn.AllowFocus = false;
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 127;
@@ -1641,15 +1660,6 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
-            // DdlEmpresa
-            // 
-            this.DdlEmpresa.Location = new System.Drawing.Point(501, 23);
-            this.DdlEmpresa.Name = "DdlEmpresa";
-            this.DdlEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DdlEmpresa.Size = new System.Drawing.Size(101, 20);
-            this.DdlEmpresa.TabIndex = 10;
-            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1659,11 +1669,11 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
-            this.Controls.Add(this.pnlExcepciones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1689,6 +1699,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlPaso1)).EndInit();
             this.pnlPaso1.ResumeLayout(false);
             this.pnlPaso1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlP1Cliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1CantHouses.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP1NumConsolidado.Properties)).EndInit();
@@ -1741,7 +1752,6 @@
             this.toobar.ResumeLayout(false);
             this.toobar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1898,5 +1908,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit8;
         private DevExpress.XtraEditors.SimpleButton AgregarExcepcionManual;
         private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
+        private DevExpress.XtraEditors.SimpleButton sButtonEliminarExcepcion;
     }
 }

@@ -846,8 +846,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             if (!ValidarHousesBLInfo()) return;
 
             Cursor.Current = Cursors.WaitCursor;
-            IList<PaperlessUsuario1HousesBL> listhouses =
-                (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
+            IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
             //PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
             var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
             pasoSeleccionado.Estado = true;
@@ -1115,13 +1114,17 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 lblP11ErrorExcepcion.Visible = false;
             }
 
-            //lblP11ErrorExcepcion
-
-            Entidades.GlobalObject.ResultadoTransaccion resultado =
-                LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
-
-
             PaperlessAsignacionActual.DataUsuario1.Excepciones = excepciones;
+
+            //LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(houses)
+            //foreach (var paperlessExcepcion in excepciones)
+            //{
+            //    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBLDesdeExcepcion(paperlessExcepcion.HouseBL, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado);
+            //}
+            IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
+            LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado);
+
+            Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
 
             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
             {
@@ -1597,7 +1600,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 Int32 regVarios = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings.Get("regVarios"));
 
                 if (netShips == null)
-                 netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
+                    netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
                 //clsClienteMaster clienteNuevo = null;
 
                 //-debe enviar un mensaje cuando la cantidad de hoses BL sea distinta
@@ -1620,7 +1623,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     try
                     {
                         house.HouseBL = netShips[i - 1].HouseBl;//-Número BL
-                        var rut =  netShips[i - 1].Rut; //-Rut del Cliente.
+                        var rut = netShips[i - 1].Rut; //-Rut del Cliente.
 
                         var shippingInstruction = netShips[i - 1].ShippingInstruction;
                         if (shippingInstruction != null)
@@ -1692,8 +1695,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     }
                     catch (Exception ex)
                     {
-                        Log.EscribirLog(ex.Message);                      
-                    }                   
+                        Log.EscribirLog(ex.Message);
+                    }
                 }
                 else
                 {
@@ -1942,24 +1945,51 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
             var item = new PaperlessExcepcion() { RecargoCollect = false };
 
+            IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
+
+            //emulamos la excepcion como un house a mostrar 
             PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
             house.Index = excepciones.Count + 1;
             house.IdAsignacion = PaperlessAsignacionActual.Id;
+            item.IdAsignacion = PaperlessAsignacionActual.Id;
             house.Freehand = false;
-            house.HouseBL = (excepciones.Count + 1).ToString();
-            house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
+            var pasoexcepcion = Obtiene_Excepcion();
+
+            house.HouseBL = pasoexcepcion.HouseBL.HouseBL;// (excObtiene_Excepcionepciones.Count + 1).ToString();
+            house.Id = listhouses[0].Id;
+            house.ExcepcionRecargoCollect = new PaperlessExcepcion() { HouseBL = house, RecargoCollect = false, IdAsignacion = PaperlessAsignacionActual.Id };
+            house.TipoCliente = new PaperlessTipoCliente { Id = 1 };
+
 
             item.HouseBL = house;
             excepciones.Add(item);
 
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-
-
             Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
 
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
 
+        }
+
+        private void sButtonEliminarTrafico_Click(object sender, EventArgs e)
+        {
+            LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxion(Obtiene_Excepcion());
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+            grdExcepciones.DataSource = excepcionesActualizadas;
+            grdP3HousesRuteados.RefreshDataSource();
+        }
+
+        private void pnlExcepciones_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private PaperlessExcepcion Obtiene_Excepcion()
+        {
+            var paso = (PaperlessExcepcion)gridView1.GetRow(gridView1.FocusedRowHandle);//grdExcepciones
+            return paso;
         }
     }
 }

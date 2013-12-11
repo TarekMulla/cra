@@ -363,5 +363,14 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ConsultarGestionPaperlessGraficosUsuario1y2(desde,hasta,usuario,tipocarga,EstadoPaperless,marca);
         }
+        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBLDesdeExcepcion(houses, info, paso);
+        }
+        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion)
+        {
+             AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion);
+        }
+
     }
 }

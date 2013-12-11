@@ -1530,7 +1530,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return houses;
         }
 
-
+        
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses,
                                                                   PaperlessUsuario1HouseBLInfo info,
@@ -1586,7 +1586,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     }
                     else
                     {
-                        if (house.Cliente.IsNew)
+                        if (house.Cliente != null && house.Cliente.IsNew)
                         {
                             resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -2081,8 +2081,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[0].Value = house.HouseBL;
                 objParams[1].Value = house.Freehand;
                 objParams[2].Value = house.Id;
-                objParams[3].Value = house.Cliente.Id;
-                objParams[4].Value = house.TipoCliente.Id;
+                objParams[3].Value = house.Cliente != null ? house.Cliente.Id : 0;
+                objParams[4].Value = house.TipoCliente != null ? house.TipoCliente.Id : 0;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_HOUSESBL_P1", connparam);
                 command.Parameters.AddRange(objParams);
@@ -2230,7 +2230,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return excepciones;
         }
 
-
+        
         public static ResultadoTransaccion Usuario1IngresarExcepxiones(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
         {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
@@ -3592,7 +3592,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Registrar excepciones
                 foreach (var excepcion in excepciones)
                 {
-                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);
+                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
                 }
@@ -4137,6 +4137,143 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return Grafica;
         }
 
+
+
+        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL h,
+                                                                  PaperlessUsuario1HouseBLInfo info,
+                                                                  PaperlessPasosEstado paso)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+            bool esupdate = false;
+           IList<PaperlessUsuario1HousesBL> houses=new List<PaperlessUsuario1HousesBL>();
+           houses.Add(h);  
+
+
+            try
+            {
+                //Eliminar Info anterior
+                //resultado = Usuario1EliminarHousesBLFull(houses[0].IdAsignacion, conn, transaction);
+                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                //    throw new Exception(resultado.Descripcion);
+
+                //Registrar houses
+                foreach (var house in houses)
+                {
+                    if (house.IsNew)
+                    {
+                        if (house.Cliente != null && house.Cliente.IsNew)
+                        {
+                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
+                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                                throw new Exception(resultado.Descripcion);
+                            else
+                            {
+                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                            }
+                        }
+
+
+                        resultado = Usuario1AgregarHouseBL(house, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                        else
+                        {
+                            house.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                        }
+
+                        //verificar si tiene recargo collect
+
+                        if (house.ExcepcionRecargoCollect != null)
+                        {
+                            house.ExcepcionRecargoCollect.IdAsignacion = house.IdAsignacion;
+                            house.ExcepcionRecargoCollect.HouseBL.Id = house.Id;
+
+
+                            resultado = Usuario1MarcaIngresoExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
+                        }
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+
+                    }
+                    else
+                    {
+                        if (house.Cliente != null && house.Cliente.IsNew)
+                        {
+                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
+                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                                throw new Exception(resultado.Descripcion);
+                            else
+                            {
+                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                            }
+                        }
+
+                        resultado = Usuario1ActualizaPaso1(house, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                        esupdate = true;
+
+                        if (house.ExcepcionRecargoCollect != null)
+                            resultado = Usuario1ActualizaExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                    }
+
+                }
+
+                //cambiar estado paso
+                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resultado.Descripcion);
+
+
+                transaction.Commit();
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return resultado;
+        }
+
+
+        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion)
+        {
+         
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES");
+                objParams[0].Value = excepcion.Id;
+
+                SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();              
+
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
 

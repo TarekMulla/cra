@@ -1943,7 +1943,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private void AgregarDetalle_Click(object sender, EventArgs e)
         {
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            var item = new PaperlessExcepcion() { RecargoCollect = false };
+            var item = new PaperlessExcepcion() { RecargoCollect = false, IdUsuarioUltimaModificacion = Base.Usuario.UsuarioConectado.Usuario.Id };
 
             IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
 
@@ -1974,7 +1974,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private void sButtonEliminarTrafico_Click(object sender, EventArgs e)
         {
-            LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxion(Obtiene_Excepcion());
+            LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxion(Obtiene_Excepcion(), Base.Usuario.UsuarioConectado.Usuario.Id);
             var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
             grdExcepciones.DataSource = excepcionesActualizadas;

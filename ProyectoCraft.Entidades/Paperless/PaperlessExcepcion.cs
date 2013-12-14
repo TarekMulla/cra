@@ -36,5 +36,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public String Comentario { get; set; }
         public bool Resuelto { get; set; }
         public bool ResueltoUser2 { get; set; }
+        public Int64 IdUsuarioUltimaModificacion { get; set; }
+       
     }
 }

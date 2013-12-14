@@ -2205,6 +2205,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     excepcion.HouseBL.Freehand = Convert.ToBoolean(dreader["Freehand"]);
                     excepcion.HouseBL.HouseBL = dreader["HouseBL"].ToString();
                     excepcion.HouseBL.Index = Convert.ToInt32(dreader["IndexHouse"].ToString());
+
+                    if (dreader["UsuarioUltimaMod"] is DBNull)
+                        excepcion.IdUsuarioUltimaModificacion = 0;
+                    else
+                        excepcion.IdUsuarioUltimaModificacion = Convert.ToInt64(dreader["UsuarioUltimaMod"]);
+                   
                     try
                     {
                         excepcion.Comentario = dreader["Comentario"].ToString();
@@ -2304,6 +2310,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[5].Value = excepcion.SobreValorPendienteResuelto;
                 objParams[6].Value = excepcion.AvisoNoEnviado;
                 objParams[7].Value = excepcion.AvisoNoEnviadoResuelto;
+                objParams[8].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES", connparam);
                 command.Parameters.AddRange(objParams);
@@ -4248,7 +4255,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
         }
 
 
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion)
+        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion,Int64 IdusuarioUltimaModificacion)
         {
          
             ResultadoTransaccion resultado = new ResultadoTransaccion();
@@ -4258,6 +4265,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES");
                 objParams[0].Value = excepcion.Id;
+                objParams[1].Value = IdusuarioUltimaModificacion;
+
 
                 SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES", conn);
                 command.Parameters.AddRange(objParams);

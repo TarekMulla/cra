@@ -367,9 +367,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBLDesdeExcepcion(houses, info, paso);
         }
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion)
+        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion, Int64 idUsuarioUltimaModificacion)
         {
-             AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion);
+            AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion, idUsuarioUltimaModificacion);
         }
 
     }

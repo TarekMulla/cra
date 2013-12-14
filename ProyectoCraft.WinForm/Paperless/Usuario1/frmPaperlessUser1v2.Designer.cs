@@ -110,6 +110,8 @@
             this.ColExcepcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ColResponsabilidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ColCausador = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox8 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -215,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdExcepciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
             this.panelDisputas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridDisputas)).BeginInit();
@@ -860,7 +863,8 @@
             this.grdExcepciones.MainView = this.gridView1;
             this.grdExcepciones.Name = "grdExcepciones";
             this.grdExcepciones.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit8});
+            this.repositoryItemCheckEdit8,
+            this.repositoryItemComboBox8});
             this.grdExcepciones.Size = new System.Drawing.Size(802, 331);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -883,7 +887,8 @@
             this.ColTieneExcepcion,
             this.ColExcepcion,
             this.ColResponsabilidad,
-            this.gridColumn42});
+            this.gridColumn42,
+            this.ColCausador});
             this.gridView1.GridControl = this.grdExcepciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowGroup = false;
@@ -898,7 +903,7 @@
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 0;
-            this.gridColumn26.Width = 46;
+            this.gridColumn26.Width = 41;
             // 
             // gridColumn1
             // 
@@ -907,7 +912,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 127;
+            this.gridColumn1.Width = 113;
             // 
             // gridColumn2
             // 
@@ -945,8 +950,8 @@
             this.Resuelto.FieldName = "Resuelto";
             this.Resuelto.Name = "Resuelto";
             this.Resuelto.Visible = true;
-            this.Resuelto.VisibleIndex = 6;
-            this.Resuelto.Width = 68;
+            this.Resuelto.VisibleIndex = 7;
+            this.Resuelto.Width = 69;
             // 
             // repositoryItemCheckEdit8
             // 
@@ -977,7 +982,7 @@
             this.ColTieneExcepcion.Name = "ColTieneExcepcion";
             this.ColTieneExcepcion.Visible = true;
             this.ColTieneExcepcion.VisibleIndex = 2;
-            this.ColTieneExcepcion.Width = 91;
+            this.ColTieneExcepcion.Width = 81;
             // 
             // ColExcepcion
             // 
@@ -987,7 +992,7 @@
             this.ColExcepcion.Name = "ColExcepcion";
             this.ColExcepcion.Visible = true;
             this.ColExcepcion.VisibleIndex = 3;
-            this.ColExcepcion.Width = 170;
+            this.ColExcepcion.Width = 151;
             // 
             // ColResponsabilidad
             // 
@@ -996,8 +1001,8 @@
             this.ColResponsabilidad.FieldName = "Responsabilidad";
             this.ColResponsabilidad.Name = "ColResponsabilidad";
             this.ColResponsabilidad.Visible = true;
-            this.ColResponsabilidad.VisibleIndex = 5;
-            this.ColResponsabilidad.Width = 155;
+            this.ColResponsabilidad.VisibleIndex = 6;
+            this.ColResponsabilidad.Width = 91;
             // 
             // gridColumn42
             // 
@@ -1007,7 +1012,24 @@
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 4;
-            this.gridColumn42.Width = 143;
+            this.gridColumn42.Width = 127;
+            // 
+            // ColCausador
+            // 
+            this.ColCausador.Caption = "Causador";
+            this.ColCausador.ColumnEdit = this.repositoryItemComboBox8;
+            this.ColCausador.FieldName = "Causador";
+            this.ColCausador.Name = "ColCausador";
+            this.ColCausador.Visible = true;
+            this.ColCausador.VisibleIndex = 5;
+            this.ColCausador.Width = 108;
+            // 
+            // repositoryItemComboBox8
+            // 
+            this.repositoryItemComboBox8.AutoHeight = false;
+            this.repositoryItemComboBox8.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox8.Name = "repositoryItemComboBox8";
             // 
             // gridView7
             // 
@@ -1720,6 +1742,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdExcepciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
             this.panelDisputas.ResumeLayout(false);
             this.panelDisputas.PerformLayout();
@@ -1909,5 +1932,7 @@
         private DevExpress.XtraEditors.SimpleButton AgregarExcepcionManual;
         private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
         private DevExpress.XtraEditors.SimpleButton sButtonEliminarExcepcion;
+        private DevExpress.XtraGrid.Columns.GridColumn ColCausador;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox8;
     }
 }

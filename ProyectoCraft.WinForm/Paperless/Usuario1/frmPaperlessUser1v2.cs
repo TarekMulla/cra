@@ -33,6 +33,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private List<PaperlessTipoTransito> TiposTransitoTransbordo = null;
         private List<PaperlessTipoExcepcion> TiposDeExcepciones;
         private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
+        private List<PaperlessAgenteCausador> TiposAgenteCausador;
         private List<PaperlessTipoDisputa> TiposDisputas;
         private int reglasAplicadas;
         private int reglasConError;
@@ -1221,12 +1222,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
         private bool validarCicloCompleto()
         {
             var numHouses = PaperlessAsignacionActual.NumHousesBL;
-            if (LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id).Count !=
-                numHouses)
-            {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'ingreso de datos'");
-                return false;
-            }
+            //se quita, con la nueva mejora  siempre habrá diferencia de Houses Bls
+            //if (LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id).Count !=
+            //    numHouses)
+            //{
+            //    MessageBox.Show("Falta informacion, debe ingresar al paso 'ingreso de datos'");
+            //    return false;
+            //}
 
             /*var houses = LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo((List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
             if (houses.Any(house => house.TransbordoTransito == null || house.TransbordoTransito.Id == 0)) {
@@ -1327,6 +1329,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             if (TiposResponsabilidad == null)
                 TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
 
+            if (TiposAgenteCausador == null)
+                TiposAgenteCausador = LogicaNegocios.Paperless.Paperless.ListarTiposPaperlessAgenteCausador();
+
+
             var foo = sender as GridView;
             DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
             var lista = foo.DataSource as IList<PaperlessExcepcion>;
@@ -1373,6 +1379,23 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     cbo.Properties.Items.Clear();
                     cbo.EditValue = null;
                     cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
+                }
+            }
+            if (foo.FocusedColumn.FieldName.Equals("Causador"))
+            {
+                if (itemSelecccionado.TieneExcepcion)
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    foreach (var tipos in TiposAgenteCausador)
+                        cbo.Properties.Items.Add(tipos);
+                }
+                else
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    cbo.EditValue = null;
+                    cbo.Properties.Items.Add(new PaperlessAgenteCausador());
                 }
             }
 

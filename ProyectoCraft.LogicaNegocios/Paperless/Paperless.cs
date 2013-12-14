@@ -371,6 +371,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion, idUsuarioUltimaModificacion);
         }
+        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador()
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposPaperlessAgenteCausador();
 
+        }
     }
 }

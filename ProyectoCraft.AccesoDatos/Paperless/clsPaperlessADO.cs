@@ -2210,6 +2210,14 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                         excepcion.IdUsuarioUltimaModificacion = 0;
                     else
                         excepcion.IdUsuarioUltimaModificacion = Convert.ToInt64(dreader["UsuarioUltimaMod"]);
+                    
+                    //if (dreader["Causador"] is DBNull)
+                    //    excepcion.Causador = null;
+                    //else
+                    //{excepcion.Causador = new PaperlessAgenteCausador( );
+                    // Convert.ToInt32(dreader["Causador"]
+                    //}
+                           
                    
                     try
                     {
@@ -3647,6 +3655,10 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[4].Value = excepcion.Comentario ?? "";
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = excepcion.ResueltoUser2;
+                if (excepcion.Causador != null)
+                    objParams[7].Value = excepcion.Causador;
+                else
+                    objParams[7].Value = 0;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
                 command.Parameters.AddRange(objParams);
@@ -3710,8 +3722,18 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                         if (!String.IsNullOrEmpty(dreader["Resuelto_User2"].ToString()))
                             excepcion.ResueltoUser2 = Convert.ToBoolean(dreader["Resuelto_User2"]);
 
+
+                        var AgenteCausador = new PaperlessAgenteCausador();
+                        if (!String.IsNullOrEmpty(dreader["Causador"].ToString()) && dreader["Causador"].ToString()!="0")
+                        {
+                            AgenteCausador.Id = Convert.ToInt64(dreader["Causador"]);
+                            AgenteCausador.Nombre = dreader["Descripcion"].ToString();
+                        }
+
+
                         excepcion.TipoExcepcion = tipoExcepcion;
                         excepcion.Responsabilidad = tipoResponsabilidad;
+                        excepcion.Causador = AgenteCausador;
 
 
                     }
@@ -4282,6 +4304,40 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             {
                 conn.Close();
             }
+        }
+        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador()
+        {
+            var tipos = new List<PaperlessAgenteCausador>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_AGENTECAUSADOR");
+                //objParams[0].Value = resp;
+
+                var command = new SqlCommand("SP_L_PAPERLESS_TIPO_AGENTECAUSADOR", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    var tipo = new PaperlessAgenteCausador();
+                    tipo.Id = Convert.ToInt64(dreader["Id"]);
+                    tipo.Nombre = dreader["Descripcion"].ToString();
+                    tipos.Add(tipo);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tipos;
         }
     }
 }

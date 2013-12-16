@@ -110,7 +110,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
             MenuRegistrarLlamada = new DevExpress.XtraNavBar.NavBarItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -455,8 +454,7 @@
             this.MenuCotizaciones,
             this.MantPuertos,
             this.manCotDirectas,
-            this.MantAgentes,
-            this.navBarItem5});
+            this.MantAgentes});
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -475,11 +473,9 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion)});
             this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
             this.navBarGroup8.Name = "navBarGroup8";
-            this.navBarGroup8.TopVisibleLinkIndex = 1;
             // 
             // MenuPaperlessAsignacion
             // 
@@ -786,12 +782,6 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_tick);
             // 
-            // navBarItem5
-            // 
-            this.navBarItem5.Caption = "Gestion Asignaciones";
-            this.navBarItem5.Name = "navBarItem5";
-            this.navBarItem5.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem5_LinkClicked);
-            // 
             // MDICraft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -903,7 +893,6 @@
         private DevExpress.XtraNavBar.NavBarItem MantPuertos;
         private DevExpress.XtraNavBar.NavBarItem manCotDirectas;
         private DevExpress.XtraNavBar.NavBarItem MantAgentes;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem5;
     }
 }
 

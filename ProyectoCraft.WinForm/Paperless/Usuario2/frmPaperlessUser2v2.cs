@@ -905,6 +905,21 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
 
         }
+        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
+        {
+            //_pasoEstadoActual = paso;
+            //pnlExcepciones.Visible = true;
+            //var excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            //excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.RefrescarExcepciones(excepciones);
+            //var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
+
+            //PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
+            //grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
+            //grdExcepciones.RefreshDataSource();
+
+
+        }
+
         private void grdExcepciones_ShownEditor(object sender, EventArgs e)
         {
             try
@@ -1025,7 +1040,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 else
                     if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))//!excepcion.Resuelto
                         return false;
-                    else if (excepcion.Responsabilidad.Nombre.Equals("Usuario 2") || excepcion.ResueltoUser2.Equals(false))
+                    else if (excepcion.ResueltoUser2.Equals(false))
                         return false;
             }
             return true;

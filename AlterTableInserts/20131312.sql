@@ -20,5 +20,20 @@ INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('COORDENAÇAO',1)
 INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('PRICING',1)
 INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('SALES (MARCAS)',1)
 
+go
+ alter table PAPERLESS_USUARIO1_EXCEPCIONES add Causador int
 
-  alter table PAPERLESS_USUARIO1_EXCEPCIONES add Causador int
+go
+create table PAPERLESS_USUARIO1_EXCEPCIONES_MASTER
+(
+ ID bigint primary key  not null identity,
+ Idasignacion bigint, 
+ Idhousebl bigint,
+ TieneExcepcion bit,
+ Tipoexcepcion int,
+ Tiporesponsabilidad int,
+ Comentario varchar (200),
+ Resuelto bit,
+ Estado bit,
+ UsuarioUltimaModificacion Bigint ,
+ AgenteCausador int )

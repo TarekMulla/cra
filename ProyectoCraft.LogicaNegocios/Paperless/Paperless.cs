@@ -376,5 +376,14 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposPaperlessAgenteCausador();
 
         }
+
+        public static IList<PaperlessExcepcionMaster> Usuario1ObtenerExcepcionesMaster(Int64 idAsignacion)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ObtenerExcepcionesMaster(idAsignacion);
+        }
+        public static ResultadoTransaccion Usuario1IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado pasoSeleccionado)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
+        }
     }
 }

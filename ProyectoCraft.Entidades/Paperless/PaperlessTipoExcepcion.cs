@@ -27,11 +27,11 @@ namespace ProyectoCraft.Entidades.Paperless {
         }
 
         public ushort ToUInt16(IFormatProvider provider) {
-            throw new NotImplementedException();
+            return (ushort) Id;
         }
 
         public int ToInt32(IFormatProvider provider) {
-            throw new NotImplementedException();
+            return (int) Id;
         }
 
         public uint ToUInt32(IFormatProvider provider) {

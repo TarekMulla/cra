@@ -9,7 +9,7 @@ namespace ProyectoCraft.Entidades.Paperless
         //public Int64 Idhousebl { get; set; }
         public bool TieneExcepcion { get; set; }
         public int Index { get; set; }
-        public PaperlessTipoExcepcion Tipoexcepcion { get; set; }
+        public PaperlessTipoExcepcion TipoExcepcion { get; set; }
         public PaperlessTipoResponsabilidad Tiporesponsabilidad { get; set; }
         public string Comentario { get; set; }
         public bool Resuelto { get; set; }

@@ -318,7 +318,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             ddlP1Cliente.SelectedIndex = 0;
         }
 
-        
+
         protected void QuitaTodosPaneles()
         {
             pnlPaso1.Visible = false;
@@ -326,6 +326,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             pnlExcepciones.Visible = false;
             pnlEnviarAviso.Visible = false;
             panelDisputas.Visible = false;
+            PanelExcepMaster.Visible = false;
+
         }
 
         #region pasosConPaneles
@@ -360,28 +362,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             grdP3HousesRuteados.RefreshDataSource();
             pnlExcepciones.Visible = true;
         }
-
-        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
-        {
-            _pasoEstadoActual = paso;
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
-            //var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
-            if (excepciones.Count.Equals(0))
-            {
-                var excepMaster = new PaperlessExcepcionMaster();
-                excepMaster.IdAsignacion = _asignacion.Id;
-                excepMaster.Index = 1;
-                excepciones.Add(excepMaster);
-            }
-
-            GrdExcepcionMaster.DataSource = excepciones;
-            GrdExcepcionMaster.RefreshDataSource();
-
-            pnlExcepcionMaster.Visible = true;
-            BtnEliminarExcepMaster.Visible = true;
-            BtnAgregarExcepMaster.Visible = true;
-        }
-
 
         public void EnvioDisputa(PaperlessPasosEstado paso)
         {
@@ -426,104 +406,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             return;
         }
 
-        private void MarcaPasoBrasil(object sender, CustomRowCellEditEventArgs e)
-        {
-            pnlPaso1.Visible = false;
-            pnlPaso3.Visible = false;
-            pnlExcepciones.Visible = false;
-            pnlEnviarAviso.Visible = false;
-            panelDisputas.Visible = false;
-            var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
+        //private void CargarPasoDisputa()
+        //{
+        //    panelDisputas.Visible = true;
+        //    var disputas = LogicaNegocios.Paperless.Paperless.ObtieneDisputas(PaperlessAsignacionActual);
+        //    GridDisputas.DataSource = disputas;
+        //    GridDisputas.RefreshDataSource();
+        //}
 
+        //private void CargarPaso2TransitoTransbordo()
+        //{
+        //    var houses =
+        //        LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo(
+        //            (List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
+        //    grdP3HousesRuteados.DataSource = houses;
+        //    grdP3HousesRuteados.RefreshDataSource();
+        //}
 
-            if (e.RowHandle == 0)
-            {
-                pnlPaso1.Visible = true;
-                grdP1DigitarHousesBL.Visible = false;
-            }
-
-
-            if (e.RowHandle == 18)
-                if (foo[9].Estado)
-                {
-                    pnlEnviarAviso.Visible = true;
-                }
-
-        }
-
-        private void MarcaPasoChile(object sender, CustomRowCellEditEventArgs e)
-        {
-
-            pnlPaso1.Visible = false;
-            pnlPaso3.Visible = false;
-            pnlExcepciones.Visible = false;
-            pnlEnviarAviso.Visible = false;
-            panelDisputas.Visible = false;
-            var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
-
-
-            if (e.RowHandle == 0)
-            {
-                pnlPaso1.Visible = true;
-               
-            }
-
-            if (e.RowHandle == 1)
-            {
-                if (foo[0].Estado)
-                {
-                    CargarPaso2TransitoTransbordo();
-                    pnlPaso3.Visible = true;
-                }
-            }
-            if (e.RowHandle == 5)
-            {
-                if (foo[4].Estado)
-                {
-                    CargarPaso6Excepciones();
-                    pnlExcepciones.Visible = true;
-                }
-            }
-
-            if (e.RowHandle == 9)
-                if (foo[8].Estado)
-                {
-                    CargarPasoDisputa();
-                }
-
-            if (e.RowHandle == 10)
-                if (foo[9].Estado)
-                {
-                    pnlEnviarAviso.Visible = true;
-                }
-
-        }
-
-        private void CargarPasoDisputa()
-        {
-            panelDisputas.Visible = true;
-            var disputas = LogicaNegocios.Paperless.Paperless.ObtieneDisputas(PaperlessAsignacionActual);
-            GridDisputas.DataSource = disputas;
-            GridDisputas.RefreshDataSource();
-        }
-
-        private void CargarPaso2TransitoTransbordo()
-        {
-            var houses =
-                LogicaNegocios.Paperless.Paperless.RefrescarTiposTransitoTransbordo(
-                    (List<PaperlessUsuario1HousesBL>)PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL);
-            grdP3HousesRuteados.DataSource = houses;
-            grdP3HousesRuteados.RefreshDataSource();
-        }
-
-        private void CargarPaso6Excepciones()
-        {
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
-            var excepcionesActualizadas =
-                LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
-            grdExcepciones.DataSource = excepcionesActualizadas;
-            grdP3HousesRuteados.RefreshDataSource();
-        }
+        //private void CargarPaso6Excepciones()
+        //{
+        //    var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+        //    var excepcionesActualizadas =
+        //        LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+        //    grdExcepciones.DataSource = excepcionesActualizadas;
+        //    grdP3HousesRuteados.RefreshDataSource();
+        //}
 
         private void CargarPasos()
         {
@@ -1995,7 +1902,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             var itemSelecccionado = lista[foo.FocusedRowHandle];
             if (!itemSelecccionado.TieneExcepcion)
             {
-                itemSelecccionado.Tipoexcepcion = null;
+                itemSelecccionado.TipoExcepcion = null;
                 itemSelecccionado.Tiporesponsabilidad = null;
                 itemSelecccionado.Comentario = String.Empty;
             }
@@ -2020,7 +1927,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 }
             }
 
-            if (foo.FocusedColumn.FieldName.Equals("Responsabilidad"))
+            if (foo.FocusedColumn.FieldName.Equals("Tiporesponsabilidad"))
             {
                 if (itemSelecccionado.TieneExcepcion)
                 {
@@ -2037,7 +1944,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
                 }
             }
-            if (foo.FocusedColumn.FieldName.Equals("Causador"))
+            if (foo.FocusedColumn.FieldName.Equals("AgenteCausador"))
             {
                 if (itemSelecccionado.TieneExcepcion)
                 {
@@ -2106,14 +2013,60 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             {
                 if (!IsBrasil)
                 {
-                    if (excepcion.TieneExcepcion && (excepcion.Tipoexcepcion == null || excepcion.Tiporesponsabilidad == null))
+                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Tiporesponsabilidad == null))
                         return false;
                 }
                 else
-                    if (excepcion.TieneExcepcion && (excepcion.Tipoexcepcion == null || excepcion.Tiporesponsabilidad == null || !excepcion.Resuelto))
+                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Tiporesponsabilidad == null || !excepcion.Resuelto))
                         return false;
             }
             return true;
+        }
+        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
+        {
+            _pasoEstadoActual = paso;
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+            //var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+            if (excepciones.Count.Equals(0))
+            {
+                var excepMaster = new PaperlessExcepcionMaster();
+                excepMaster.IdAsignacion = _asignacion.Id;
+                excepMaster.Index = 1;
+                excepciones.Add(excepMaster);
+            }
+
+            GrdExcepcionMaster.DataSource = excepciones;
+            GrdExcepcionMaster.RefreshDataSource();
+
+            PanelExcepMaster.Visible = true;
+            BtnEliminarExcepMaster.Visible = true;
+            BtnAgregarExcepMaster.Visible = true;
+        }
+
+        private void BtnAgregarExcepMaster_Click(object sender, EventArgs e)
+        {
+            IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepcionMaster.DataSource;
+            var excepMaster = new PaperlessExcepcionMaster();
+            excepMaster.IdAsignacion = _asignacion.Id;
+            excepMaster.Index = excepciones.Count + 1;
+            excepciones.Add(excepMaster);
+
+            GrdExcepcionMaster.DataSource = excepciones;
+            GrdExcepcionMaster.RefreshDataSource();
+        }
+
+        private void BtnEliminarExcepMaster_Click(object sender, EventArgs e)
+        {
+            LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxionMaster(Obtiene_ExcepcionMaster(), Base.Usuario.UsuarioConectado.Usuario.Id);
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+
+            grdExcepciones.DataSource = excepciones;
+            grdExcepciones.RefreshDataSource();
+        }
+        private PaperlessExcepcionMaster Obtiene_ExcepcionMaster()
+        {
+            var paso = (PaperlessExcepcionMaster)gridView1.GetRow(gridView8.FocusedRowHandle);//grdExcepciones
+            return paso;
         }
 
     }

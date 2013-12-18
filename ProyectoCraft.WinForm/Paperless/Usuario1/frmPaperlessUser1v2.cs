@@ -954,8 +954,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                         return false;
                 }
                 else
-                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null || !excepcion.Resuelto))
-                        return false;
+                    if (excepcion.TieneExcepcion)
+                    {
+                        if (excepcion.Responsabilidad.Nombre.Equals("Usuario 1") && !excepcion.Resuelto)
+                        {
+                            MessageBox.Show(@"Las Excepciones de Responsabilidad Usuario 1 deben quedar Resueltas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+
+                    }
             }
             return true;
         }
@@ -1982,11 +1989,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                             MessageBox.Show(@"Las Excepciones de Responsabilidad Usuario 1 deben quedar Resueltas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }
-                        //if ( excepcion.Tiporesponsabilidad == null || !excepcion.Resuelto)
-                        //{
-                        //}
+                    
                     }
-                return false;
             }
             return true;
         }
@@ -2013,7 +2017,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
         private PaperlessExcepcionMaster Obtiene_ExcepcionMaster()
         {
-            var paso = (PaperlessExcepcionMaster)gridView1.GetRow(gridView8.FocusedRowHandle);//grdExcepciones
+            var paso = (PaperlessExcepcionMaster)gridView8.GetRow(gridView8.FocusedRowHandle);//grdExcepciones
             return paso;
         }
 
@@ -2034,8 +2038,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxionMaster(Obtiene_ExcepcionMaster(), Base.Usuario.UsuarioConectado.Usuario.Id);
             var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
 
-            grdExcepciones.DataSource = excepciones;
-            grdExcepciones.RefreshDataSource();
+            GrdExcepcionMaster.DataSource = excepciones;
+            GrdExcepcionMaster.RefreshDataSource();
         }
 
         private void btnGuardarExcepcionMaster_Click_1(object sender, EventArgs e)

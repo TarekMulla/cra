@@ -128,6 +128,12 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblP11ErrorExcepcion = new DevExpress.XtraEditors.LabelControl();
             this.PanelExcepMaster = new System.Windows.Forms.Panel();
+            this.BtnEliminarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.BtnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.lblValidacionErrorExcepMaster = new DevExpress.XtraEditors.LabelControl();
+            this.BtnMailExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGuardarExcepcionMaster = new DevExpress.XtraEditors.SimpleButton();
             this.GrdExcepcionMaster = new DevExpress.XtraGrid.GridControl();
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -155,12 +161,6 @@
             this.gridColumn79 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn80 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.BtnEliminarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.BtnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.lblValidacionErrorExcepMaster = new DevExpress.XtraEditors.LabelControl();
-            this.BtnMailExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGuardarExcepcionMaster = new DevExpress.XtraEditors.SimpleButton();
             this.panelDisputas = new System.Windows.Forms.Panel();
             this.LabelErrorDisputa = new DevExpress.XtraEditors.LabelControl();
             this.sButtonAgregarDisputa = new DevExpress.XtraEditors.SimpleButton();
@@ -1228,6 +1228,66 @@
             this.PanelExcepMaster.TabIndex = 0;
             this.PanelExcepMaster.Visible = false;
             // 
+            // BtnEliminarExcepMaster
+            // 
+            this.BtnEliminarExcepMaster.AutoSizeInLayoutControl = true;
+            this.BtnEliminarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarExcepMaster.Image")));
+            this.BtnEliminarExcepMaster.Location = new System.Drawing.Point(569, 10);
+            this.BtnEliminarExcepMaster.Name = "BtnEliminarExcepMaster";
+            this.BtnEliminarExcepMaster.Size = new System.Drawing.Size(26, 24);
+            this.BtnEliminarExcepMaster.TabIndex = 60;
+            this.BtnEliminarExcepMaster.Click += new System.EventHandler(this.BtnEliminarExcepMaster_Click_1);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(18, 15);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(168, 13);
+            this.labelControl6.TabIndex = 55;
+            this.labelControl6.Text = "Registrar Excepciones Master";
+            // 
+            // BtnAgregarExcepMaster
+            // 
+            this.BtnAgregarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarExcepMaster.Image")));
+            this.BtnAgregarExcepMaster.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.BtnAgregarExcepMaster.Location = new System.Drawing.Point(601, 9);
+            this.BtnAgregarExcepMaster.Name = "BtnAgregarExcepMaster";
+            this.BtnAgregarExcepMaster.Size = new System.Drawing.Size(22, 24);
+            this.BtnAgregarExcepMaster.TabIndex = 59;
+            this.BtnAgregarExcepMaster.Visible = false;
+            this.BtnAgregarExcepMaster.Click += new System.EventHandler(this.BtnAgregarExcepMaster_Click_1);
+            // 
+            // lblValidacionErrorExcepMaster
+            // 
+            this.lblValidacionErrorExcepMaster.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblValidacionErrorExcepMaster.Appearance.Options.UseForeColor = true;
+            this.lblValidacionErrorExcepMaster.Location = new System.Drawing.Point(206, 12);
+            this.lblValidacionErrorExcepMaster.Name = "lblValidacionErrorExcepMaster";
+            this.lblValidacionErrorExcepMaster.Size = new System.Drawing.Size(165, 13);
+            this.lblValidacionErrorExcepMaster.TabIndex = 57;
+            this.lblValidacionErrorExcepMaster.Text = "Debe ingresar toda la informacion.";
+            this.lblValidacionErrorExcepMaster.Visible = false;
+            // 
+            // BtnMailExcepMaster
+            // 
+            this.BtnMailExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnMailExcepMaster.Image")));
+            this.BtnMailExcepMaster.Location = new System.Drawing.Point(629, 8);
+            this.BtnMailExcepMaster.Name = "BtnMailExcepMaster";
+            this.BtnMailExcepMaster.Size = new System.Drawing.Size(26, 27);
+            this.BtnMailExcepMaster.TabIndex = 58;
+            // 
+            // btnGuardarExcepcionMaster
+            // 
+            this.btnGuardarExcepcionMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExcepcionMaster.Image")));
+            this.btnGuardarExcepcionMaster.Location = new System.Drawing.Point(661, 8);
+            this.btnGuardarExcepcionMaster.Name = "btnGuardarExcepcionMaster";
+            this.btnGuardarExcepcionMaster.Size = new System.Drawing.Size(156, 29);
+            this.btnGuardarExcepcionMaster.TabIndex = 56;
+            this.btnGuardarExcepcionMaster.Text = "Guardar Excepciones";
+            this.btnGuardarExcepcionMaster.Click += new System.EventHandler(this.btnGuardarExcepcionMaster_Click_1);
+            // 
             // GrdExcepcionMaster
             // 
             this.GrdExcepcionMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -1316,6 +1376,7 @@
             this.repositoryItemMemoExEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemMemoExEdit3.Name = "repositoryItemMemoExEdit3";
+            this.repositoryItemMemoExEdit3.ShowIcon = false;
             // 
             // gridColumn69
             // 
@@ -1484,66 +1545,6 @@
             this.gridColumn81.Visible = true;
             this.gridColumn81.VisibleIndex = 4;
             this.gridColumn81.Width = 215;
-            // 
-            // BtnEliminarExcepMaster
-            // 
-            this.BtnEliminarExcepMaster.AutoSizeInLayoutControl = true;
-            this.BtnEliminarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarExcepMaster.Image")));
-            this.BtnEliminarExcepMaster.Location = new System.Drawing.Point(569, 10);
-            this.BtnEliminarExcepMaster.Name = "BtnEliminarExcepMaster";
-            this.BtnEliminarExcepMaster.Size = new System.Drawing.Size(26, 24);
-            this.BtnEliminarExcepMaster.TabIndex = 60;
-            this.BtnEliminarExcepMaster.Click += new System.EventHandler(this.BtnEliminarExcepMaster_Click_1);
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(18, 15);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(168, 13);
-            this.labelControl6.TabIndex = 55;
-            this.labelControl6.Text = "Registrar Excepciones Master";
-            // 
-            // BtnAgregarExcepMaster
-            // 
-            this.BtnAgregarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnAgregarExcepMaster.Image")));
-            this.BtnAgregarExcepMaster.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.BtnAgregarExcepMaster.Location = new System.Drawing.Point(601, 9);
-            this.BtnAgregarExcepMaster.Name = "BtnAgregarExcepMaster";
-            this.BtnAgregarExcepMaster.Size = new System.Drawing.Size(22, 24);
-            this.BtnAgregarExcepMaster.TabIndex = 59;
-            this.BtnAgregarExcepMaster.Visible = false;
-            this.BtnAgregarExcepMaster.Click += new System.EventHandler(this.BtnAgregarExcepMaster_Click_1);
-            // 
-            // lblValidacionErrorExcepMaster
-            // 
-            this.lblValidacionErrorExcepMaster.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lblValidacionErrorExcepMaster.Appearance.Options.UseForeColor = true;
-            this.lblValidacionErrorExcepMaster.Location = new System.Drawing.Point(206, 12);
-            this.lblValidacionErrorExcepMaster.Name = "lblValidacionErrorExcepMaster";
-            this.lblValidacionErrorExcepMaster.Size = new System.Drawing.Size(165, 13);
-            this.lblValidacionErrorExcepMaster.TabIndex = 57;
-            this.lblValidacionErrorExcepMaster.Text = "Debe ingresar toda la informacion.";
-            this.lblValidacionErrorExcepMaster.Visible = false;
-            // 
-            // BtnMailExcepMaster
-            // 
-            this.BtnMailExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnMailExcepMaster.Image")));
-            this.BtnMailExcepMaster.Location = new System.Drawing.Point(629, 8);
-            this.BtnMailExcepMaster.Name = "BtnMailExcepMaster";
-            this.BtnMailExcepMaster.Size = new System.Drawing.Size(26, 27);
-            this.BtnMailExcepMaster.TabIndex = 58;
-            // 
-            // btnGuardarExcepcionMaster
-            // 
-            this.btnGuardarExcepcionMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExcepcionMaster.Image")));
-            this.btnGuardarExcepcionMaster.Location = new System.Drawing.Point(661, 8);
-            this.btnGuardarExcepcionMaster.Name = "btnGuardarExcepcionMaster";
-            this.btnGuardarExcepcionMaster.Size = new System.Drawing.Size(156, 29);
-            this.btnGuardarExcepcionMaster.TabIndex = 56;
-            this.btnGuardarExcepcionMaster.Text = "Guardar Excepciones";
-            this.btnGuardarExcepcionMaster.Click += new System.EventHandler(this.btnGuardarExcepcionMaster_Click_1);
             // 
             // panelDisputas
             // 

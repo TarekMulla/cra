@@ -1,39 +1,43 @@
-alter table  PAPERLESS_USUARIO1_EXCEPCIONES add  UsuarioUltimaMod bigint
-go
-alter table  PAPERLESS_USUARIO1_EXCEPCIONES add  Estado bit
-  go
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'UsuarioUltimaMod')
+Begin
+	alter table  PAPERLESS_USUARIO1_EXCEPCIONES add  UsuarioUltimaMod bigint
+END
+
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Estado')
+Begin
+	alter table  PAPERLESS_USUARIO1_EXCEPCIONES add  Estado bit
+END
+
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'Causador')
+Begin
+	 alter table PAPERLESS_USUARIO1_EXCEPCIONES add Causador int
+END
 
 
-  CREATE TABLE PAPERLESS_TIPO_AGENTECAUSADOR
+if not exists(select * from sysobjects where object_name(id) = 'PAPERLESS_TIPO_AGENTECAUSADOR')
+begin
+CREATE TABLE PAPERLESS_TIPO_AGENTECAUSADOR
   (
   ID BIGINT IDENTITY  NOT NULL PRIMARY KEY,
   DESCRIPCION VARCHAR (200),
   ACTIVO BIT
   )
-
-GO
-
+end
   
-
-INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('AGENTE',1)
-INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('COORDENAÇAO',1)
-INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('PRICING',1)
-INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('SALES (MARCAS)',1)
-
-go
- alter table PAPERLESS_USUARIO1_EXCEPCIONES add Causador int
-
-go
-create table PAPERLESS_USUARIO1_EXCEPCIONES_MASTER
-(
- ID bigint primary key  not null identity,
- Idasignacion bigint, 
- Idhousebl bigint,
- TieneExcepcion bit,
- Tipoexcepcion int,
- Tiporesponsabilidad int,
- Comentario varchar (200),
- Resuelto bit,
- Estado bit,
- UsuarioUltimaModificacion Bigint ,
- AgenteCausador int )
+  
+if not exists(select * from sysobjects where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES_MASTER')
+begin
+	create table PAPERLESS_USUARIO1_EXCEPCIONES_MASTER
+	(
+	 ID bigint primary key  not null identity,
+	 Idasignacion bigint, 
+	 Idhousebl bigint,
+	 TieneExcepcion bit,
+	 Tipoexcepcion int,
+	 Tiporesponsabilidad int,
+	 Comentario varchar (200),
+	 Resuelto bit,
+	 Estado bit,
+	 UsuarioUltimaModificacion Bigint ,
+	 AgenteCausador int )
+ end

@@ -118,6 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnEliminarExcepcion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKTSURBVDhPjZJdSJNRHMbfi26iqCBQgoKSgqIgIYKg
+        sKAuoosgqKDLIDCE1D7MC5F0Ok26msMCE1wpqBHmClPxo/ALdbJc8W5Dc+xDNsV3w+2wnffwvu95Opt9
+        mIzs4uFwLs7v/zz/80gTM25F9gbJN0/gt1zuAJl2zpPxKZn0fJxMvrWPL7W295943Tkktb8ZkZ7UvpAA
+        ZCTNzn2nnHNslGEYSFINCaLhy1cfFhYj6B92rra09V1o+x9AWpRpIEkGl+wHSWlQVQ1jU27W2T16vbJm
+        KwdCqgAwzUBP7xgGR6YxMe3CpzEnmlvfo6K66f6WAKbp0HRDPJTROzSDbvsoXtrssHX0o6TMTP8JSCv9
+        mFKGBDOgxFV4l+KYdHjhmPOhqKQyC0DXwOUpcI8DurhTYZ/oHGHPAmIVRVh81QqHHILLHcK9B1VZAH4Z
+        vKUK3FIKbaALStLAqtsDevca+JHtoBfz4Z2VMR9cQ/HDbACmgg92gJffAC+6DGouBrt9BfzwDrCC4wi/
+        s2PBr8AfiglA9QaAax2QEktLf51qt8G4dQb8/CHwY3vArp5FZHYOgagKX0BBKJJAySPTH4DzJyCh6iCG
+        yP6hE7wgT0zeCZ67DezUUSzPuBAkBgJBBeHlNCCLA0JSYDYL+LmDYvJeaDcvQc/LBZckaDk5WOnqQWA1
+        hcgK+dvBLwDt6wY/vS8zWTU9RowaiIvcxq7dGQjbfwAh2YdwjGWPQKJrUMsLQa3PEKc6oikdivjG6MBn
+        0JP5UJ43iwhRhFeSmyJsKlK6hekeME3UWSgp9hIX92i6UDGKtYSO0rINDoZHnUptvYXUNTRlZG6wrp9P
+        raS23kpq6huFrMRU10hMZgupqbOSO4VlyjoA0g8ZWD5ilxLVwAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="AgregarExcepcionManual.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

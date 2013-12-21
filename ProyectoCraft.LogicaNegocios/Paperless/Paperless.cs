@@ -393,6 +393,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxionesMaster(excepciones, paso);
         }
+        public static ResultadoTransaccion Usuario1ActualizaExcepcionV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesV2_Usuario2(excepciones,paso);
+        }
         
     }
 }

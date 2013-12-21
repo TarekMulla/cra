@@ -132,7 +132,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.BtnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
             this.lblValidacionErrorExcepMaster = new DevExpress.XtraEditors.LabelControl();
-            this.BtnMailExcepMaster = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuardarExcepcionMaster = new DevExpress.XtraEditors.SimpleButton();
             this.GrdExcepcionMaster = new DevExpress.XtraGrid.GridControl();
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -1219,7 +1218,6 @@
             this.PanelExcepMaster.Controls.Add(this.labelControl6);
             this.PanelExcepMaster.Controls.Add(this.BtnAgregarExcepMaster);
             this.PanelExcepMaster.Controls.Add(this.lblValidacionErrorExcepMaster);
-            this.PanelExcepMaster.Controls.Add(this.BtnMailExcepMaster);
             this.PanelExcepMaster.Controls.Add(this.btnGuardarExcepcionMaster);
             this.PanelExcepMaster.Controls.Add(this.GrdExcepcionMaster);
             this.PanelExcepMaster.Location = new System.Drawing.Point(345, 154);
@@ -1269,14 +1267,6 @@
             this.lblValidacionErrorExcepMaster.TabIndex = 57;
             this.lblValidacionErrorExcepMaster.Text = "Debe ingresar toda la informacion.";
             this.lblValidacionErrorExcepMaster.Visible = false;
-            // 
-            // BtnMailExcepMaster
-            // 
-            this.BtnMailExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnMailExcepMaster.Image")));
-            this.BtnMailExcepMaster.Location = new System.Drawing.Point(629, 8);
-            this.BtnMailExcepMaster.Name = "BtnMailExcepMaster";
-            this.BtnMailExcepMaster.Size = new System.Drawing.Size(26, 27);
-            this.BtnMailExcepMaster.TabIndex = 58;
             // 
             // btnGuardarExcepcionMaster
             // 
@@ -2367,7 +2357,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton BtnAgregarExcepMaster;
         private DevExpress.XtraEditors.LabelControl lblValidacionErrorExcepMaster;
-        private DevExpress.XtraEditors.SimpleButton BtnMailExcepMaster;
         private DevExpress.XtraEditors.SimpleButton btnGuardarExcepcionMaster;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox10;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox11;

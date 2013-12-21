@@ -59,6 +59,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         private PaperlessPasosEstado _pasoEstadoActual;
         private List<PaperlessTipoExcepcion> TiposDeExcepciones;
         private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
+        private List<PaperlessAgenteCausador> TiposAgenteCausador;
 
         private bool IsBrasil { get; set; }
 
@@ -397,7 +398,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             foreach (var paso in pasos)
             {
-                if (paso.IdPasoEstado < pasoactual.IdPasoEstado && !paso.Estado)
+                //if (paso.IdPasoEstado < pasoactual.IdPasoEstado && !paso.Estado)
+                if (paso.Paso.NumPaso < pasoactual.Paso.NumPaso && !paso.Estado)
                 {
                     MessageBox.Show("Hay pasos previos pendientes de realizar. Debe marcarlos como realizados para continuar", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
@@ -564,8 +566,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                         resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
                     else
                         resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
-                    
-                    
+
+
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                     {
@@ -860,10 +862,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 if (IsBrasil)
                     e.Cancel = false;
                 else
-                if (!itemSelecccionado.TipoExcepcion.Id.Equals(6))
-                {
-                    e.Cancel = true;
-                }
+                    if (!itemSelecccionado.TipoExcepcion.Id.Equals(6))
+                    {
+                        e.Cancel = true;
+                    }
             }
         }
 
@@ -897,28 +899,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             pnlExcepciones.Visible = true;
             var excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.RefrescarExcepciones(excepciones);
-            var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
-
-            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
+            //var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
+            //PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
+            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepciones;
             grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
             grdExcepciones.RefreshDataSource();
 
-
+            
         }
-        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
-        {
-            //_pasoEstadoActual = paso;
-            //pnlExcepciones.Visible = true;
-            //var excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
-            //excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.RefrescarExcepciones(excepciones);
-            //var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
 
-            //PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
-            //grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
-            //grdExcepciones.RefreshDataSource();
-
-
-        }
 
         private void grdExcepciones_ShownEditor(object sender, EventArgs e)
         {
@@ -1027,7 +1016,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
         private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones)
         {
-             
+
 
             foreach (PaperlessExcepcion excepcion in excepciones)
             {
@@ -1056,7 +1045,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             house.IdAsignacion = PaperlessAsignacionActual.Id;
             house.Freehand = false;
             house.HouseBL = (excepciones.Count + 1).ToString();
-            house.ExcepcionRecargoCollect = new PaperlessExcepcion {RecargoCollect = false, TieneExcepcion = true};
+            house.ExcepcionRecargoCollect = new PaperlessExcepcion { RecargoCollect = false, TieneExcepcion = true };
 
             item.HouseBL = house;
             excepciones.Add(item);
@@ -1066,5 +1055,185 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
         }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnAgregarExcepMaster_Click(object sender, EventArgs e)
+        {
+            IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepMaster.DataSource;
+            var excepMaster = new PaperlessExcepcionMaster();
+            excepMaster.IdAsignacion = _asignacion.Id;
+            excepMaster.Index = excepciones.Count + 1;
+            excepMaster.UsuarioCreador = 2;
+            excepciones.Add(excepMaster);
+
+            GrdExcepMaster.DataSource = excepciones;
+            GrdExcepMaster.RefreshDataSource();
+        }
+
+        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
+        {
+
+            _pasoEstadoActual = paso;
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+            //var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+
+            if (excepciones.Count.Equals(0))
+            {
+                var excepMaster = new PaperlessExcepcionMaster();
+                excepMaster.IdAsignacion = _asignacion.Id;
+                excepMaster.Index = 1;
+                excepciones.Add(excepMaster);
+            }
+
+            GrdExcepMaster.DataSource = excepciones;
+            GrdExcepMaster.RefreshDataSource();
+
+            pnlExcepMaster.Visible = true;
+            BtnEliminarExcepMaster.Visible = true;
+            btnAgregarExcepMaster.Visible = true;
+        }
+
+        private void btnGuardarExcepMaster_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
+
+            if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
+                return;
+
+            pasoSeleccionado.Estado = true;
+            IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepMaster.DataSource;
+            //if (! validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepciones))
+            //{
+            //    lblP11ErrorExcepcion.Visible = true;
+            //    return;
+            //}
+            //else
+            //{
+            //    lblP11ErrorExcepcion.Visible = false;
+            //}
+            ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
+            
+
+            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CargarPasos();
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Excepciones han sido guardadas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //btnP11Excepciones.Enabled = false;
+            }
+        }
+
+        private void grdExcepcionesMaster_ShownEditor(object sender, EventArgs e)
+        {
+            if (TiposDeExcepciones == null)
+                TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
+            else
+                if (TiposDeExcepciones.Count.Equals(0))
+                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
+            if (TiposResponsabilidad == null)
+                TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
+
+            if (TiposAgenteCausador == null)
+                TiposAgenteCausador = LogicaNegocios.Paperless.Paperless.ListarTiposPaperlessAgenteCausador();
+
+
+            var foo = sender as GridView;
+            DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
+            var lista = foo.DataSource as IList<PaperlessExcepcionMaster>;
+            var itemSelecccionado = lista[foo.FocusedRowHandle];
+            if (!itemSelecccionado.TieneExcepcion)
+            {
+                itemSelecccionado.TipoExcepcion = null;
+                itemSelecccionado.Tiporesponsabilidad = null;
+                itemSelecccionado.Comentario = String.Empty;
+            }
+
+            if (foo.FocusedColumn.FieldName.Equals("TipoExcepcion"))
+            {
+                if (itemSelecccionado.TieneExcepcion)
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    foreach (var tipos in TiposDeExcepciones)
+                    {
+                        cbo.Properties.Items.Add(tipos);
+                    }
+                }
+                else
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    cbo.EditValue = null;
+                    cbo.Properties.Items.Add(new PaperlessTipoExcepcion());
+                }
+            }
+
+            if (foo.FocusedColumn.FieldName.Equals("Tiporesponsabilidad"))
+            {
+                if (itemSelecccionado.TieneExcepcion)
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    foreach (var tipos in TiposResponsabilidad)
+                        cbo.Properties.Items.Add(tipos);
+                }
+                else
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    cbo.EditValue = null;
+                    cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
+                }
+            }
+            if (foo.FocusedColumn.FieldName.Equals("AgenteCausador"))
+            {
+                if (itemSelecccionado.TieneExcepcion)
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    foreach (var tipos in TiposAgenteCausador)
+                        cbo.Properties.Items.Add(tipos);
+                }
+                else
+                {
+                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
+                    cbo.Properties.Items.Clear();
+                    cbo.EditValue = null;
+                    cbo.Properties.Items.Add(new PaperlessAgenteCausador());
+                }
+            }
+
+        }
+
+        private void BtnEliminarExcepMaster_Click(object sender, EventArgs e)
+        {
+
+            var excepAEliminar = Obtiene_ExcepcionMaster();
+            if (excepAEliminar.UsuarioCreador.Equals(2))
+                LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxionMaster(excepAEliminar, Base.Usuario.UsuarioConectado.Usuario.Id);
+            else
+                MessageBox.Show("El usuario 2 no puede eliminar Excepciones del usuario 1", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+
+            GrdExcepMaster.DataSource = excepciones;
+            GrdExcepMaster.RefreshDataSource();
+        }
+        private PaperlessExcepcionMaster Obtiene_ExcepcionMaster()
+        {
+            var paso = (PaperlessExcepcionMaster)gridView6.GetRow(gridView6.FocusedRowHandle);//grdExcepciones
+            return paso;
+        }
+
     }
 }

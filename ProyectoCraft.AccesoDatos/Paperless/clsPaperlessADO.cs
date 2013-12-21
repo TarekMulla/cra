@@ -2749,7 +2749,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return resultado;
         }
 
-        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
+        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -4401,6 +4401,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                         excepcion.AgenteCausador = AgenteCausador;
                     }
 
+                    excepcion.UsuarioCreador = Convert.ToInt32(dreader["UsuarioCreador"]);
+
                     excepciones.Add(excepcion);
                 }
             }
@@ -4485,6 +4487,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
                 objParams[7].Value = excepcion.AgenteCausador;
+                objParams[8].Value = excepcion.UsuarioCreador;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
                 command.Parameters.AddRange(objParams);
@@ -4519,6 +4522,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[6].Value = excepcion.Resuelto;
                 objParams[7].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
                 objParams[8].Value = excepcion.AgenteCausador;
+                objParams[9].Value = excepcion.UsuarioCreador;
 
               
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
@@ -4566,6 +4570,46 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 conn.Close();
             }
         }
+        public static ResultadoTransaccion Usuario2IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado paso)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+
+            try
+            {
+                //Registrar excepciones
+                foreach (var excepcion in excepciones)
+                {
+                    resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                }
+
+                //cambiar estado paso
+                resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resultado.Descripcion);
+
+
+                transaction.Commit();
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return resultado;
+        }
+
     }
 }
 

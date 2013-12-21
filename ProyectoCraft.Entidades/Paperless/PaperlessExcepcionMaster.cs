@@ -16,6 +16,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public bool Estado { get; set; }
         public Int64 IdUsuarioUltimaModificacion { get; set; }
         public PaperlessAgenteCausador AgenteCausador { get; set; }
-
+        public Int32 UsuarioCreador { get; set; }
+        
     }
 }

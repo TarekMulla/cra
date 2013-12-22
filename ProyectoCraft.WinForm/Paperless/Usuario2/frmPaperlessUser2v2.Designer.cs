@@ -77,6 +77,33 @@
             this.repositoryItemComboBox7 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.btnP1GuardarExcepciones = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pnlExcepMaster = new DevExpress.XtraEditors.PanelControl();
+            this.BtnEliminarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.GrdExcepMaster = new DevExpress.XtraGrid.GridControl();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoExEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit10 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit15 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemMemoEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.repositoryItemMemoEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.btnGuardarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
+            this.lblExcepmaster = new DevExpress.XtraEditors.LabelControl();
             this.pnlContactarembarcador = new DevExpress.XtraEditors.PanelControl();
             this.btnP2ContactarEmbarcador = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -107,33 +134,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Salir = new System.Windows.Forms.ToolStripButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.pnlExcepMaster = new DevExpress.XtraEditors.PanelControl();
-            this.BtnEliminarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.GrdExcepMaster = new DevExpress.XtraGrid.GridControl();
-            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemMemoExEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
-            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit10 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit15 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemMemoEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
-            this.repositoryItemMemoEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
-            this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.btnGuardarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
-            this.lblExcepmaster = new DevExpress.XtraEditors.LabelControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPasos)).BeginInit();
@@ -158,23 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlContactarembarcador)).BeginInit();
-            this.pnlContactarembarcador.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdContactarembarcador)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlRecibirAperturaEmb)).BeginInit();
-            this.pnlRecibirAperturaEmb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).BeginInit();
-            this.pnlReenviarCorreo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecibirAperturaEmb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryViaReciboApertura)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlExcepMaster)).BeginInit();
             this.pnlExcepMaster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrdExcepMaster)).BeginInit();
@@ -192,6 +177,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlContactarembarcador)).BeginInit();
+            this.pnlContactarembarcador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdContactarembarcador)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRecibirAperturaEmb)).BeginInit();
+            this.pnlRecibirAperturaEmb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlReenviarCorreo)).BeginInit();
+            this.pnlReenviarCorreo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecibirAperturaEmb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryViaReciboApertura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -252,7 +254,7 @@
             this.grdPasos.Name = "grdPasos";
             this.grdPasos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.RepositoryCheckPasos});
-            this.grdPasos.Size = new System.Drawing.Size(455, 365);
+            this.grdPasos.Size = new System.Drawing.Size(455, 386);
             this.grdPasos.TabIndex = 5;
             this.grdPasos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -310,15 +312,16 @@
             this.pnlExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlExcepciones.Controls.Add(this.label1);
             this.pnlExcepciones.Controls.Add(this.btnEliminarExcepcion);
             this.pnlExcepciones.Controls.Add(this.AgregarExcepcionManual);
             this.pnlExcepciones.Controls.Add(this.MailExcepcion);
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.btnP1GuardarExcepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
-            this.pnlExcepciones.Location = new System.Drawing.Point(472, 89);
+            this.pnlExcepciones.Location = new System.Drawing.Point(472, 75);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(692, 365);
+            this.pnlExcepciones.Size = new System.Drawing.Size(699, 395);
             this.pnlExcepciones.TabIndex = 6;
             this.pnlExcepciones.Visible = false;
             // 
@@ -376,7 +379,7 @@
             this.repositoryItemCheckEdit16,
             this.repositoryItemComboBox7,
             this.repositoryItemComboBox8});
-            this.grdExcepciones.Size = new System.Drawing.Size(681, 308);
+            this.grdExcepciones.Size = new System.Drawing.Size(688, 314);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -535,7 +538,6 @@
             this.gridColumn31.ColumnEdit = this.repositoryItemComboBox8;
             this.gridColumn31.FieldName = "Causador";
             this.gridColumn31.Name = "gridColumn31";
-            this.gridColumn31.OptionsColumn.AllowEdit = false;
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 6;
             this.gridColumn31.Width = 58;
@@ -629,6 +631,249 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Resolver Excepciones";
             // 
+            // pnlExcepMaster
+            // 
+            this.pnlExcepMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlExcepMaster.Controls.Add(this.label2);
+            this.pnlExcepMaster.Controls.Add(this.BtnEliminarExcepMaster);
+            this.pnlExcepMaster.Controls.Add(this.btnAgregarExcepMaster);
+            this.pnlExcepMaster.Controls.Add(this.GrdExcepMaster);
+            this.pnlExcepMaster.Controls.Add(this.btnGuardarExcepMaster);
+            this.pnlExcepMaster.Controls.Add(this.lblExcepmaster);
+            this.pnlExcepMaster.Location = new System.Drawing.Point(471, 70);
+            this.pnlExcepMaster.Name = "pnlExcepMaster";
+            this.pnlExcepMaster.Size = new System.Drawing.Size(699, 394);
+            this.pnlExcepMaster.TabIndex = 9;
+            this.pnlExcepMaster.Visible = false;
+            this.pnlExcepMaster.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
+            // 
+            // BtnEliminarExcepMaster
+            // 
+            this.BtnEliminarExcepMaster.AutoSizeInLayoutControl = true;
+            this.BtnEliminarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarExcepMaster.Image")));
+            this.BtnEliminarExcepMaster.Location = new System.Drawing.Point(433, 12);
+            this.BtnEliminarExcepMaster.Name = "BtnEliminarExcepMaster";
+            this.BtnEliminarExcepMaster.Size = new System.Drawing.Size(26, 24);
+            this.BtnEliminarExcepMaster.TabIndex = 61;
+            this.BtnEliminarExcepMaster.Click += new System.EventHandler(this.BtnEliminarExcepMaster_Click);
+            // 
+            // btnAgregarExcepMaster
+            // 
+            this.btnAgregarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarExcepMaster.Image")));
+            this.btnAgregarExcepMaster.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnAgregarExcepMaster.Location = new System.Drawing.Point(465, 12);
+            this.btnAgregarExcepMaster.Name = "btnAgregarExcepMaster";
+            this.btnAgregarExcepMaster.Size = new System.Drawing.Size(22, 24);
+            this.btnAgregarExcepMaster.TabIndex = 9;
+            this.btnAgregarExcepMaster.Visible = false;
+            this.btnAgregarExcepMaster.Click += new System.EventHandler(this.btnAgregarExcepMaster_Click);
+            // 
+            // GrdExcepMaster
+            // 
+            this.GrdExcepMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrdExcepMaster.Location = new System.Drawing.Point(6, 52);
+            this.GrdExcepMaster.MainView = this.gridView6;
+            this.GrdExcepMaster.Name = "GrdExcepMaster";
+            this.GrdExcepMaster.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit14,
+            this.repositoryItemCheckEdit15,
+            this.repositoryItemCheckEdit11,
+            this.repositoryItemCheckEdit12,
+            this.repositoryItemCheckEdit10,
+            this.repositoryItemMemoEdit3,
+            this.repositoryItemMemoEdit4,
+            this.repositoryItemTextEdit4,
+            this.repositoryItemMemoExEdit2,
+            this.repositoryItemComboBox4,
+            this.repositoryItemComboBox5,
+            this.repositoryItemCheckEdit13,
+            this.repositoryItemComboBox6});
+            this.GrdExcepMaster.Size = new System.Drawing.Size(688, 322);
+            this.GrdExcepMaster.TabIndex = 1;
+            this.GrdExcepMaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView6});
+            // 
+            // gridView6
+            // 
+            this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn25,
+            this.gridColumn26,
+            this.gridColumn27,
+            this.gridColumn33,
+            this.gridColumn32,
+            this.gridColumn34,
+            this.gridColumn28});
+            this.gridView6.GridControl = this.GrdExcepMaster;
+            this.gridView6.Name = "gridView6";
+            this.gridView6.OptionsCustomization.AllowGroup = false;
+            this.gridView6.OptionsView.ShowGroupPanel = false;
+            this.gridView6.ShownEditor += new System.EventHandler(this.grdExcepcionesMaster_ShownEditor);
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "Numero";
+            this.gridColumn25.FieldName = "Index";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 0;
+            this.gridColumn25.Width = 55;
+            // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "¿Tiene Excepcion?";
+            this.gridColumn26.FieldName = "TieneExcepcion";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 1;
+            this.gridColumn26.Width = 97;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "Tipo Excepcion";
+            this.gridColumn27.ColumnEdit = this.repositoryItemComboBox6;
+            this.gridColumn27.FieldName = "TipoExcepcion";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 2;
+            this.gridColumn27.Width = 107;
+            // 
+            // repositoryItemComboBox6
+            // 
+            this.repositoryItemComboBox6.AutoHeight = false;
+            this.repositoryItemComboBox6.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox6.Name = "repositoryItemComboBox6";
+            // 
+            // gridColumn33
+            // 
+            this.gridColumn33.Caption = "Comentario";
+            this.gridColumn33.ColumnEdit = this.repositoryItemMemoExEdit2;
+            this.gridColumn33.FieldName = "Comentario";
+            this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.Visible = true;
+            this.gridColumn33.VisibleIndex = 4;
+            this.gridColumn33.Width = 100;
+            // 
+            // repositoryItemMemoExEdit2
+            // 
+            this.repositoryItemMemoExEdit2.AutoHeight = false;
+            this.repositoryItemMemoExEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemMemoExEdit2.Name = "repositoryItemMemoExEdit2";
+            this.repositoryItemMemoExEdit2.ShowIcon = false;
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "Causador";
+            this.gridColumn32.ColumnEdit = this.repositoryItemComboBox4;
+            this.gridColumn32.FieldName = "AgenteCausador";
+            this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.Visible = true;
+            this.gridColumn32.VisibleIndex = 3;
+            this.gridColumn32.Width = 88;
+            // 
+            // repositoryItemComboBox4
+            // 
+            this.repositoryItemComboBox4.AutoHeight = false;
+            this.repositoryItemComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox4.Name = "repositoryItemComboBox4";
+            // 
+            // gridColumn34
+            // 
+            this.gridColumn34.Caption = "Responsable";
+            this.gridColumn34.ColumnEdit = this.repositoryItemComboBox5;
+            this.gridColumn34.FieldName = "Tiporesponsabilidad";
+            this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.Visible = true;
+            this.gridColumn34.VisibleIndex = 5;
+            this.gridColumn34.Width = 123;
+            // 
+            // repositoryItemComboBox5
+            // 
+            this.repositoryItemComboBox5.AutoHeight = false;
+            this.repositoryItemComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.Caption = "Resuelto";
+            this.gridColumn28.ColumnEdit = this.repositoryItemCheckEdit10;
+            this.gridColumn28.FieldName = "Resuelto";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 6;
+            this.gridColumn28.Width = 90;
+            // 
+            // repositoryItemCheckEdit10
+            // 
+            this.repositoryItemCheckEdit10.AutoHeight = false;
+            this.repositoryItemCheckEdit10.Name = "repositoryItemCheckEdit10";
+            // 
+            // repositoryItemCheckEdit14
+            // 
+            this.repositoryItemCheckEdit14.AutoHeight = false;
+            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
+            // 
+            // repositoryItemCheckEdit15
+            // 
+            this.repositoryItemCheckEdit15.AutoHeight = false;
+            this.repositoryItemCheckEdit15.Name = "repositoryItemCheckEdit15";
+            // 
+            // repositoryItemCheckEdit11
+            // 
+            this.repositoryItemCheckEdit11.AutoHeight = false;
+            this.repositoryItemCheckEdit11.Name = "repositoryItemCheckEdit11";
+            // 
+            // repositoryItemCheckEdit12
+            // 
+            this.repositoryItemCheckEdit12.AutoHeight = false;
+            this.repositoryItemCheckEdit12.Name = "repositoryItemCheckEdit12";
+            // 
+            // repositoryItemMemoEdit3
+            // 
+            this.repositoryItemMemoEdit3.Name = "repositoryItemMemoEdit3";
+            // 
+            // repositoryItemMemoEdit4
+            // 
+            this.repositoryItemMemoEdit4.Name = "repositoryItemMemoEdit4";
+            // 
+            // repositoryItemTextEdit4
+            // 
+            this.repositoryItemTextEdit4.AutoHeight = false;
+            this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
+            // 
+            // repositoryItemCheckEdit13
+            // 
+            this.repositoryItemCheckEdit13.AutoHeight = false;
+            this.repositoryItemCheckEdit13.Name = "repositoryItemCheckEdit13";
+            // 
+            // btnGuardarExcepMaster
+            // 
+            this.btnGuardarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExcepMaster.Image")));
+            this.btnGuardarExcepMaster.Location = new System.Drawing.Point(525, 9);
+            this.btnGuardarExcepMaster.Name = "btnGuardarExcepMaster";
+            this.btnGuardarExcepMaster.Size = new System.Drawing.Size(162, 34);
+            this.btnGuardarExcepMaster.TabIndex = 2;
+            this.btnGuardarExcepMaster.Text = "Guardar Excepciones";
+            this.btnGuardarExcepMaster.Click += new System.EventHandler(this.btnGuardarExcepMaster_Click);
+            // 
+            // lblExcepmaster
+            // 
+            this.lblExcepmaster.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblExcepmaster.Appearance.Options.UseFont = true;
+            this.lblExcepmaster.Location = new System.Drawing.Point(16, 12);
+            this.lblExcepmaster.Name = "lblExcepmaster";
+            this.lblExcepmaster.Size = new System.Drawing.Size(165, 13);
+            this.lblExcepmaster.TabIndex = 0;
+            this.lblExcepmaster.Text = "Resolver Excepciones Master";
+            // 
             // pnlContactarembarcador
             // 
             this.pnlContactarembarcador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -639,7 +884,7 @@
             this.pnlContactarembarcador.Controls.Add(this.grdContactarembarcador);
             this.pnlContactarembarcador.Location = new System.Drawing.Point(473, 98);
             this.pnlContactarembarcador.Name = "pnlContactarembarcador";
-            this.pnlContactarembarcador.Size = new System.Drawing.Size(595, 356);
+            this.pnlContactarembarcador.Size = new System.Drawing.Size(602, 377);
             this.pnlContactarembarcador.TabIndex = 7;
             this.pnlContactarembarcador.Visible = false;
             // 
@@ -673,7 +918,7 @@
             this.grdContactarembarcador.Name = "grdContactarembarcador";
             this.grdContactarembarcador.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.grdContactarembarcador.Size = new System.Drawing.Size(575, 296);
+            this.grdContactarembarcador.Size = new System.Drawing.Size(582, 317);
             this.grdContactarembarcador.TabIndex = 0;
             this.grdContactarembarcador.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -721,7 +966,7 @@
             this.pnlRecibirAperturaEmb.Controls.Add(this.btnP3GuardarAperturaEmbarcadores);
             this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(471, 89);
             this.pnlRecibirAperturaEmb.Name = "pnlRecibirAperturaEmb";
-            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(677, 365);
+            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(684, 386);
             this.pnlRecibirAperturaEmb.TabIndex = 7;
             this.pnlRecibirAperturaEmb.Visible = false;
             // 
@@ -781,7 +1026,7 @@
             this.repositoryViaReciboApertura,
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2});
-            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(667, 322);
+            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(674, 343);
             this.grdRecibirAperturaEmb.TabIndex = 3;
             this.grdRecibirAperturaEmb.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -901,7 +1146,7 @@
             this.Menu_Salir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1175, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1182, 38);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -925,253 +1170,29 @@
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "Check List Pasos";
             // 
-            // pnlExcepMaster
+            // label2
             // 
-            this.pnlExcepMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlExcepMaster.Controls.Add(this.BtnEliminarExcepMaster);
-            this.pnlExcepMaster.Controls.Add(this.btnAgregarExcepMaster);
-            this.pnlExcepMaster.Controls.Add(this.GrdExcepMaster);
-            this.pnlExcepMaster.Controls.Add(this.btnGuardarExcepMaster);
-            this.pnlExcepMaster.Controls.Add(this.lblExcepmaster);
-            this.pnlExcepMaster.Location = new System.Drawing.Point(483, 70);
-            this.pnlExcepMaster.Name = "pnlExcepMaster";
-            this.pnlExcepMaster.Size = new System.Drawing.Size(692, 365);
-            this.pnlExcepMaster.TabIndex = 9;
-            this.pnlExcepMaster.Visible = false;
-            this.pnlExcepMaster.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 377);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Utilice el botón (+) para copiar una fila";
             // 
-            // BtnEliminarExcepMaster
+            // label1
             // 
-            this.BtnEliminarExcepMaster.AutoSizeInLayoutControl = true;
-            this.BtnEliminarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarExcepMaster.Image")));
-            this.BtnEliminarExcepMaster.Location = new System.Drawing.Point(433, 12);
-            this.BtnEliminarExcepMaster.Name = "BtnEliminarExcepMaster";
-            this.BtnEliminarExcepMaster.Size = new System.Drawing.Size(26, 24);
-            this.BtnEliminarExcepMaster.TabIndex = 61;
-            this.BtnEliminarExcepMaster.Click += new System.EventHandler(this.BtnEliminarExcepMaster_Click);
-            // 
-            // btnAgregarExcepMaster
-            // 
-            this.btnAgregarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarExcepMaster.Image")));
-            this.btnAgregarExcepMaster.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnAgregarExcepMaster.Location = new System.Drawing.Point(465, 12);
-            this.btnAgregarExcepMaster.Name = "btnAgregarExcepMaster";
-            this.btnAgregarExcepMaster.Size = new System.Drawing.Size(22, 24);
-            this.btnAgregarExcepMaster.TabIndex = 9;
-            this.btnAgregarExcepMaster.Visible = false;
-            this.btnAgregarExcepMaster.Click += new System.EventHandler(this.btnAgregarExcepMaster_Click);
-            // 
-            // GrdExcepMaster
-            // 
-            this.GrdExcepMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrdExcepMaster.Location = new System.Drawing.Point(6, 52);
-            this.GrdExcepMaster.MainView = this.gridView6;
-            this.GrdExcepMaster.Name = "GrdExcepMaster";
-            this.GrdExcepMaster.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit14,
-            this.repositoryItemCheckEdit15,
-            this.repositoryItemCheckEdit11,
-            this.repositoryItemCheckEdit12,
-            this.repositoryItemCheckEdit10,
-            this.repositoryItemMemoEdit3,
-            this.repositoryItemMemoEdit4,
-            this.repositoryItemTextEdit4,
-            this.repositoryItemMemoExEdit2,
-            this.repositoryItemComboBox4,
-            this.repositoryItemComboBox5,
-            this.repositoryItemCheckEdit13,
-            this.repositoryItemComboBox6});
-            this.GrdExcepMaster.Size = new System.Drawing.Size(681, 308);
-            this.GrdExcepMaster.TabIndex = 1;
-            this.GrdExcepMaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView6});
-            // 
-            // gridView6
-            // 
-            this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn25,
-            this.gridColumn26,
-            this.gridColumn27,
-            this.gridColumn33,
-            this.gridColumn32,
-            this.gridColumn34,
-            this.gridColumn28});
-            this.gridView6.GridControl = this.GrdExcepMaster;
-            this.gridView6.Name = "gridView6";
-            this.gridView6.OptionsCustomization.AllowGroup = false;
-            this.gridView6.OptionsView.ShowGroupPanel = false;
-            this.gridView6.ShownEditor += new System.EventHandler(this.grdExcepcionesMaster_ShownEditor);
-            // 
-            // gridColumn25
-            // 
-            this.gridColumn25.Caption = "Numero";
-            this.gridColumn25.FieldName = "Index";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.OptionsColumn.AllowEdit = false;
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 0;
-            this.gridColumn25.Width = 55;
-            // 
-            // gridColumn26
-            // 
-            this.gridColumn26.Caption = "Tiene Excepcion";
-            this.gridColumn26.FieldName = "TieneExcepcion";
-            this.gridColumn26.Name = "gridColumn26";
-            this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 1;
-            this.gridColumn26.Width = 148;
-            // 
-            // gridColumn27
-            // 
-            this.gridColumn27.Caption = "Tipo Excepcion";
-            this.gridColumn27.ColumnEdit = this.repositoryItemComboBox6;
-            this.gridColumn27.FieldName = "TipoExcepcion";
-            this.gridColumn27.Name = "gridColumn27";
-            this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 2;
-            this.gridColumn27.Width = 97;
-            // 
-            // repositoryItemComboBox6
-            // 
-            this.repositoryItemComboBox6.AutoHeight = false;
-            this.repositoryItemComboBox6.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox6.Name = "repositoryItemComboBox6";
-            // 
-            // gridColumn33
-            // 
-            this.gridColumn33.Caption = "Comentario";
-            this.gridColumn33.ColumnEdit = this.repositoryItemMemoExEdit2;
-            this.gridColumn33.FieldName = "Comentario";
-            this.gridColumn33.Name = "gridColumn33";
-            this.gridColumn33.Visible = true;
-            this.gridColumn33.VisibleIndex = 4;
-            this.gridColumn33.Width = 91;
-            // 
-            // repositoryItemMemoExEdit2
-            // 
-            this.repositoryItemMemoExEdit2.AutoHeight = false;
-            this.repositoryItemMemoExEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemMemoExEdit2.Name = "repositoryItemMemoExEdit2";
-            this.repositoryItemMemoExEdit2.ShowIcon = false;
-            // 
-            // gridColumn32
-            // 
-            this.gridColumn32.Caption = "Acusador";
-            this.gridColumn32.ColumnEdit = this.repositoryItemComboBox4;
-            this.gridColumn32.FieldName = "AgenteCausador";
-            this.gridColumn32.Name = "gridColumn32";
-            this.gridColumn32.Visible = true;
-            this.gridColumn32.VisibleIndex = 3;
-            this.gridColumn32.Width = 81;
-            // 
-            // repositoryItemComboBox4
-            // 
-            this.repositoryItemComboBox4.AutoHeight = false;
-            this.repositoryItemComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox4.Name = "repositoryItemComboBox4";
-            // 
-            // gridColumn34
-            // 
-            this.gridColumn34.Caption = "Responsable";
-            this.gridColumn34.ColumnEdit = this.repositoryItemComboBox5;
-            this.gridColumn34.FieldName = "Tiporesponsabilidad";
-            this.gridColumn34.Name = "gridColumn34";
-            this.gridColumn34.Visible = true;
-            this.gridColumn34.VisibleIndex = 5;
-            this.gridColumn34.Width = 111;
-            // 
-            // repositoryItemComboBox5
-            // 
-            this.repositoryItemComboBox5.AutoHeight = false;
-            this.repositoryItemComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
-            // 
-            // gridColumn28
-            // 
-            this.gridColumn28.Caption = "Resuelto";
-            this.gridColumn28.ColumnEdit = this.repositoryItemCheckEdit10;
-            this.gridColumn28.FieldName = "Resuelto";
-            this.gridColumn28.Name = "gridColumn28";
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 6;
-            this.gridColumn28.Width = 77;
-            // 
-            // repositoryItemCheckEdit10
-            // 
-            this.repositoryItemCheckEdit10.AutoHeight = false;
-            this.repositoryItemCheckEdit10.Name = "repositoryItemCheckEdit10";
-            // 
-            // repositoryItemCheckEdit14
-            // 
-            this.repositoryItemCheckEdit14.AutoHeight = false;
-            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
-            // 
-            // repositoryItemCheckEdit15
-            // 
-            this.repositoryItemCheckEdit15.AutoHeight = false;
-            this.repositoryItemCheckEdit15.Name = "repositoryItemCheckEdit15";
-            // 
-            // repositoryItemCheckEdit11
-            // 
-            this.repositoryItemCheckEdit11.AutoHeight = false;
-            this.repositoryItemCheckEdit11.Name = "repositoryItemCheckEdit11";
-            // 
-            // repositoryItemCheckEdit12
-            // 
-            this.repositoryItemCheckEdit12.AutoHeight = false;
-            this.repositoryItemCheckEdit12.Name = "repositoryItemCheckEdit12";
-            // 
-            // repositoryItemMemoEdit3
-            // 
-            this.repositoryItemMemoEdit3.Name = "repositoryItemMemoEdit3";
-            // 
-            // repositoryItemMemoEdit4
-            // 
-            this.repositoryItemMemoEdit4.Name = "repositoryItemMemoEdit4";
-            // 
-            // repositoryItemTextEdit4
-            // 
-            this.repositoryItemTextEdit4.AutoHeight = false;
-            this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
-            // 
-            // repositoryItemCheckEdit13
-            // 
-            this.repositoryItemCheckEdit13.AutoHeight = false;
-            this.repositoryItemCheckEdit13.Name = "repositoryItemCheckEdit13";
-            // 
-            // btnGuardarExcepMaster
-            // 
-            this.btnGuardarExcepMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExcepMaster.Image")));
-            this.btnGuardarExcepMaster.Location = new System.Drawing.Point(525, 9);
-            this.btnGuardarExcepMaster.Name = "btnGuardarExcepMaster";
-            this.btnGuardarExcepMaster.Size = new System.Drawing.Size(162, 34);
-            this.btnGuardarExcepMaster.TabIndex = 2;
-            this.btnGuardarExcepMaster.Text = "Guardar Excepciones";
-            this.btnGuardarExcepMaster.Click += new System.EventHandler(this.btnGuardarExcepMaster_Click);
-            // 
-            // lblExcepmaster
-            // 
-            this.lblExcepmaster.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblExcepmaster.Appearance.Options.UseFont = true;
-            this.lblExcepmaster.Location = new System.Drawing.Point(16, 12);
-            this.lblExcepmaster.Name = "lblExcepmaster";
-            this.lblExcepmaster.Size = new System.Drawing.Size(165, 13);
-            this.lblExcepmaster.TabIndex = 0;
-            this.lblExcepmaster.Text = "Resolver Excepciones Master";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1, 374);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 13);
+            this.label1.TabIndex = 62;
+            this.label1.Text = "Utilice el botón (+) para copiar una fila";
             // 
             // frmPaperlessUser2v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 466);
+            this.ClientSize = new System.Drawing.Size(1182, 487);
             this.Controls.Add(this.pnlExcepciones);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelControl4);
@@ -1210,6 +1231,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlExcepMaster)).EndInit();
+            this.pnlExcepMaster.ResumeLayout(false);
+            this.pnlExcepMaster.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrdExcepMaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlContactarembarcador)).EndInit();
             this.pnlContactarembarcador.ResumeLayout(false);
             this.pnlContactarembarcador.PerformLayout();
@@ -1230,24 +1269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnlExcepMaster)).EndInit();
-            this.pnlExcepMaster.ResumeLayout(false);
-            this.pnlExcepMaster.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrdExcepMaster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1360,5 +1381,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox8;
         private DevExpress.XtraEditors.SimpleButton btnEliminarExcepcion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

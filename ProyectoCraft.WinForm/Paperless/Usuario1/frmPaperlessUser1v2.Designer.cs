@@ -216,6 +216,8 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
@@ -837,6 +839,7 @@
             // 
             // pnlExcepciones
             // 
+            this.pnlExcepciones.Controls.Add(this.label2);
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.sButtonEliminarExcepcion);
             this.pnlExcepciones.Controls.Add(this.AgregarExcepcionManual);
@@ -846,7 +849,7 @@
             this.pnlExcepciones.Controls.Add(this.lblP11ErrorExcepcion);
             this.pnlExcepciones.Location = new System.Drawing.Point(345, 154);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(839, 374);
+            this.pnlExcepciones.Size = new System.Drawing.Size(839, 396);
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlExcepciones_Paint);
             // 
@@ -855,13 +858,13 @@
             this.grdExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdExcepciones.Location = new System.Drawing.Point(32, 38);
+            this.grdExcepciones.Location = new System.Drawing.Point(16, 38);
             this.grdExcepciones.MainView = this.gridView1;
             this.grdExcepciones.Name = "grdExcepciones";
             this.grdExcepciones.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8,
             this.repositoryItemComboBox8});
-            this.grdExcepciones.Size = new System.Drawing.Size(802, 342);
+            this.grdExcepciones.Size = new System.Drawing.Size(818, 339);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -1214,6 +1217,7 @@
             // 
             // PanelExcepMaster
             // 
+            this.PanelExcepMaster.Controls.Add(this.label1);
             this.PanelExcepMaster.Controls.Add(this.BtnEliminarExcepMaster);
             this.PanelExcepMaster.Controls.Add(this.labelControl6);
             this.PanelExcepMaster.Controls.Add(this.BtnAgregarExcepMaster);
@@ -2063,6 +2067,24 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 383);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Utilice el botón (+) para copiar una fila";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 380);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 13);
+            this.label2.TabIndex = 63;
+            this.label2.Text = "Utilice el botón (+) para copiar una fila";
+            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2363,5 +2385,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit4;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

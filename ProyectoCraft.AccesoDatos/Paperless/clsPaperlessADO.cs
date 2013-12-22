@@ -2187,7 +2187,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     excepcion = new PaperlessExcepcion();
                     excepcion.Id = Convert.ToInt64(dreader["Id"]);
                     excepcion.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
-                   
+
                     excepcion.RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]);
                     excepcion.RecargoCollectResuelto = Convert.ToBoolean(dreader["RecargoCollectResuelto"]);
                     excepcion.SobreValorPendiente = Convert.ToBoolean(dreader["SobrevalorPendiente"]);
@@ -2731,7 +2731,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     if (excepcion.IsNew)
                     {
                         resultado = Usuario1MarcaIngresoExcepcion(excepcion, conn, transaction);
-                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
 
                         excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
@@ -3696,7 +3696,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
         public static ResultadoTransaccion Usuario1ActualizaExcepcionV2_Usuario2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
         {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
-            
+
             resTransaccion = new ResultadoTransaccion();
             try
             {
@@ -4584,12 +4584,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
                 objParams[0].Value = excepcion.Id;
                 objParams[1].Value = excepcion.TieneExcepcion;
-                objParams[2].Value = excepcion.TipoExcepcion;
-                objParams[3].Value = excepcion.Tiporesponsabilidad;
-                objParams[4].Value = excepcion.Comentario;
+
+                if (excepcion.TipoExcepcion != null)
+                    objParams[2].Value = excepcion.TipoExcepcion;
+                else
+                    objParams[2].Value = 0;
+
+                if (excepcion.Tiporesponsabilidad != null)
+                    objParams[3].Value = excepcion.Tiporesponsabilidad;
+                else
+                    objParams[3].Value = 0;
+                if (excepcion.Comentario != null)
+                    objParams[4].Value = excepcion.Comentario;
+                else
+                    objParams[4].Value = "";
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                objParams[7].Value = excepcion.AgenteCausador;
+                if (excepcion.AgenteCausador != null)
+                    objParams[7].Value = excepcion.AgenteCausador;
+                else
+                    objParams[7].Value = 0;
                 objParams[8].Value = excepcion.UsuarioCreador;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
@@ -4619,12 +4633,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[0].Value = excepcion.IdAsignacion;
                 objParams[1].Value = 0;//id house bl
                 objParams[2].Value = excepcion.TieneExcepcion;
-                objParams[3].Value = excepcion.TipoExcepcion;
-                objParams[4].Value = excepcion.Tiporesponsabilidad;
-                objParams[5].Value = excepcion.Comentario;
+                if (excepcion.TipoExcepcion != null)
+                    objParams[3].Value = excepcion.TipoExcepcion;
+                else
+                    objParams[3].Value = 0;
+                if (excepcion.Tiporesponsabilidad != null)
+                    objParams[4].Value = excepcion.Tiporesponsabilidad;
+                else
+                    objParams[4].Value = 0;
+
+                if (excepcion.Comentario != null)
+                    objParams[5].Value = excepcion.Comentario;
+                else
+                    objParams[5].Value = "";
+
                 objParams[6].Value = excepcion.Resuelto;
                 objParams[7].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                objParams[8].Value = excepcion.AgenteCausador;
+
+                if (excepcion.AgenteCausador != null)
+                    objParams[8].Value = excepcion.AgenteCausador;
+                else
+                    objParams[8].Value = 0;
                 objParams[9].Value = excepcion.UsuarioCreador;
 
 
@@ -4684,10 +4713,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Registrar excepciones
                 foreach (var excepcion in excepciones)
                 {
-                    resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
+                    if (excepcion.IsNew)
+                    {
+                        resultado = Usuario1MarcaIngresoExcepcionMaster(excepcion, conn, transaction);
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+
+                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                    }
+                    else
+                    {
+                        resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion 
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                            throw new Exception(resultado.Descripcion);
+                    }
+                    //    resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);
+                    //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    //        throw new Exception(resultado.Descripcion);
                 }
+
 
                 //cambiar estado paso
                 resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);

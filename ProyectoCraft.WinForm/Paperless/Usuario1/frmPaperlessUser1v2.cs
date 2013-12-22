@@ -980,15 +980,15 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             pasoSeleccionado.Estado = true;
 
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
-            {
-                lblP11ErrorExcepcion.Visible = true;
-                return;
-            }
-            else
-            {
-                lblP11ErrorExcepcion.Visible = false;
-            }
+            //if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
+            //{
+            //    lblP11ErrorExcepcion.Visible = true;
+            //    return;
+            //}
+            //else
+            //{
+            //    lblP11ErrorExcepcion.Visible = false;
+            //}
 
             PaperlessAsignacionActual.DataUsuario1.Excepciones = excepciones;
 
@@ -1116,7 +1116,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
             if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas))
             {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'crear Excepciones'");
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones'");
+                return false;
+            }
+            var excepcionesMaster = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+            if (!validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepcionesMaster))
+            {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones'");
                 return false;
             }
 
@@ -2052,15 +2058,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             pasoSeleccionado.Estado = true;
             IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepcionMaster.DataSource;
-            if (!validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepciones))
-            {
-                lblP11ErrorExcepcion.Visible = true;
-                return;
-            }
-            else
-            {
-                lblP11ErrorExcepcion.Visible = false;
-            }
+            
             Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
 
             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)

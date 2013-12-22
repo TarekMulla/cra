@@ -535,6 +535,7 @@
             this.gridColumn31.ColumnEdit = this.repositoryItemComboBox8;
             this.gridColumn31.FieldName = "Causador";
             this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.OptionsColumn.AllowEdit = false;
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 6;
             this.gridColumn31.Width = 58;

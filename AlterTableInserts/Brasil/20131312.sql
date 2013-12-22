@@ -87,3 +87,8 @@ Begin
 	update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=11
 	update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=12
 End
+
+
+update PAPERLESS_TIPO_RESPONSABILIDAD set Tipo = '0' where Tipo is not null
+
+

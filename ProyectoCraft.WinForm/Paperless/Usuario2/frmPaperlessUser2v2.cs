@@ -446,8 +446,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         }
 
+
         public void PresentarManifiesto(PaperlessPasosEstado paso)
         {
+
+            if (!validarCicloCompleto())
+                return;
+
             var mail = new EnvioMailObject();
             _pasoEstadoActual = paso;
             if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
@@ -548,11 +553,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
 
-                if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
-                {
-                    MessageBox.Show(@"Falta informacion, debe ingresar al paso 'Excepciones'", @"Paperless");
-                }
-                else if (excepciones != null)
+               if (excepciones != null)
                 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
@@ -1045,6 +1046,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                         return false;
                     //else if (excepcion.ResueltoUser2.Equals(false))
                     //    return false;
+
+                if (excepcion.TieneExcepcion)
+                {
+                    if (!excepcion.ResueltoUser2)
+                           return false;
+                }
             }
             return true;
         }
@@ -1286,6 +1293,47 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
         }
+         private bool validarCicloCompleto()
+        {            
+            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            var excepcionesActualizadas =LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
+            if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas))
+            {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones'");
+                return false;
+            }
+            var excepcionesMaster = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
+            if (!validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepcionesMaster))
+            {
+                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones Master'");
+                return false;
+            }
 
+
+            return true;
+        }
+        private bool validarPasoExcepcionesMaster(List<PaperlessExcepcionMaster> excepciones)
+        {
+            foreach (PaperlessExcepcionMaster excepcion in excepciones)
+            {
+                if (!IsBrasil)
+                {
+                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Tiporesponsabilidad == null))
+                        return false;
+                }
+                else
+                    if (excepcion.TieneExcepcion)
+                    {
+                        //if (excepcion.Tiporesponsabilidad.Nombre.Equals("Usuario 2") && !excepcion.Resuelto)
+                        //{
+                        //    MessageBox.Show(@"Las Excepciones de Responsabilidad Usuario 1 deben quedar Resueltas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    return false;
+                        //}
+                        if (!excepcion.Resuelto)
+                           return false;
+                    }
+            }
+            return true;
+        }
     }
 }

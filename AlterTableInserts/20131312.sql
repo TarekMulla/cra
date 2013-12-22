@@ -13,6 +13,10 @@ Begin
 	 alter table PAPERLESS_USUARIO1_EXCEPCIONES add Causador int
 END
 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES' and name = 'UsuarioCreador')
+Begin
+alter table PAPERLESS_USUARIO1_EXCEPCIONES add UsuarioCreador int
+END
 
 if not exists(select * from sysobjects where object_name(id) = 'PAPERLESS_TIPO_AGENTECAUSADOR')
 begin
@@ -41,3 +45,9 @@ begin
 	 UsuarioUltimaModificacion Bigint ,
 	 AgenteCausador int )
  end
+ 
+ 
+if not exists(select * from syscolumns where object_name(id) = 'PAPERLESS_USUARIO1_EXCEPCIONES_MASTER' and name = 'UsuarioCreador')
+Begin
+alter table PAPERLESS_USUARIO1_EXCEPCIONES_MASTER add UsuarioCreador int
+END

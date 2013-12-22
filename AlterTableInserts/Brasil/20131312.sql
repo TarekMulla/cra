@@ -17,7 +17,17 @@ Begin
 	INSERT INTO PAPERLESS_TIPO_AGENTECAUSADOR VALUES ('SALES (MARCAS)',1)
 End
  
-
+if not exists(select * from PAPERLESS_USUARIO1_EXCEPCIONES where UsuarioCreador = 1)
+Begin
+	update PAPERLESS_USUARIO1_EXCEPCIONES  set UsuarioCreador=1
+End
+ 
+ if not exists(select * from PAPERLESS_USUARIO1_EXCEPCIONES_MASTER where UsuarioCreador = 1)
+Begin
+	update PAPERLESS_USUARIO1_EXCEPCIONES_MASTER  set UsuarioCreador=1
+End
+ 
+--Usuario 1
 if not exists(select * from PAPERLESS_PASOS_USUARIO1_V2 where DESCRIPCION = 'Exceções Entry Master' and idTipoCarga = 2)
 Begin
 	insert into PAPERLESS_PASOS_USUARIO1_V2 values (19,'Exceções Entry Master',1,18,20,2,'RegistrarExcepcionesMaster')
@@ -50,12 +60,30 @@ End
 
 
 --usuario2
+if not exists(select * from PAPERLESS_PASOS_USUARIO2  where DESCRIPCION = 'Exceções Master Entry' and idTipoCarga = 1)
+Begin
+	Insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Master Entry',1,1,3,1,'RegistrarExcepcionesMaster')
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=2
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=3
+End
 
-Insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Master Entry',1,1,3,1,'RegistrarExcepcionesMaster')
-update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=2
-update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=3
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where  idTipoCarga = 2 and  DESCRIPCION = 'Exceções Master Entry')
+Begin
+	Insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Master Entry',1,1,3,2,'RegistrarExcepcionesMaster')
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=5
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=6
+End
 
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where  idTipoCarga = 3 and  DESCRIPCION = 'Exceções Master Entry')
+Begin
+	Insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Master Entry',1,1,3,3,'RegistrarExcepcionesMaster')
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=8
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=9
+End
 
-alter table PAPERLESS_USUARIO1_EXCEPCIONES_MASTER add UsuarioCreador int
-
-alter table PAPERLESS_USUARIO1_EXCEPCIONES add UsuarioCreador int
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where  idTipoCarga = 4 and  DESCRIPCION = 'Exceções Master Entry')
+Begin
+	Insert into PAPERLESS_PASOS_USUARIO2 values (2,'Exceções Master Entry',1,1,3,4,'RegistrarExcepcionesMaster')
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso= 3,PasoAnterior=2,PasoSiguiente=4  where IdPaso=11
+	update PAPERLESS_PASOS_USUARIO2 set NumPaso = 4, PasoAnterior = 3  ,PasoSiguiente=null where IdPaso=12
+End

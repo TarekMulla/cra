@@ -999,7 +999,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 if (pExcep.TieneExcepcion && pExcep.Responsabilidad.ToString().Equals("Usuario 2") && pExcep.Resuelto)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show(@"Usuário 1 não pode ser deixado por resolver uma exceção do Usuário 2", @"Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"El Usuario 1 no puede resolver excepciones del Usuario 2", @"Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -2093,7 +2093,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 if (pExcepcionMaster.TieneExcepcion && pExcepcionMaster.Tiporesponsabilidad.ToString().Equals("Usuario 2") && pExcepcionMaster.Resuelto)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show(@"Usuário 1 não pode ser deixado por resolver uma exceção do Usuário 2", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"El Usuario 1 no puede resolver excepciones del Usuario 2", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

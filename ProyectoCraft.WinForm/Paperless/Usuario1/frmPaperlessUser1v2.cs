@@ -975,9 +975,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
 
             if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
                 return;
-
-            pasoSeleccionado.Estado = true;
-
+            
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
             //if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
             //{
@@ -996,6 +994,16 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             //{
             //    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBLDesdeExcepcion(paperlessExcepcion.HouseBL, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado);
             //}
+            foreach (var pExcep in excepciones)
+            {
+                if (pExcep.TieneExcepcion && pExcep.Responsabilidad.ToString().Equals("Usuario 2") && pExcep.Resuelto)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(@"Usuário 1 não pode ser deixado por resolver uma exceção do Usuário 2", @"Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            pasoSeleccionado.Estado = true;
             IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
             LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado);
 
@@ -2078,9 +2086,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
                 return;
 
-            pasoSeleccionado.Estado = true;
             IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepcionMaster.DataSource;
 
+            foreach (var pExcepcionMaster in excepciones)
+            {
+                if (pExcepcionMaster.TieneExcepcion && pExcepcionMaster.Tiporesponsabilidad.ToString().Equals("Usuario 2") && pExcepcionMaster.Resuelto)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(@"Usuário 1 não pode ser deixado por resolver uma exceção do Usuário 2", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            pasoSeleccionado.Estado = true;
             Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
 
             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -2095,6 +2112,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 MessageBox.Show("Excepciones han sido guardadas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //btnP11Excepciones.Enabled = false;
             }
+         
+            
         }
 
     }

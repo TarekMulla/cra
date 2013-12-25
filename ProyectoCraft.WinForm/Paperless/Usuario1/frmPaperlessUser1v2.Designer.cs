@@ -90,6 +90,7 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.lblErrorPaso2 = new DevExpress.XtraEditors.LabelControl();
             this.pnlExcepciones = new DevExpress.XtraEditors.PanelControl();
+            this.label2 = new System.Windows.Forms.Label();
             this.grdExcepciones = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,6 +129,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblP11ErrorExcepcion = new DevExpress.XtraEditors.LabelControl();
             this.PanelExcepMaster = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnEliminarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.BtnAgregarExcepMaster = new DevExpress.XtraEditors.SimpleButton();
@@ -216,8 +218,6 @@
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
@@ -853,6 +853,15 @@
             this.pnlExcepciones.TabIndex = 5;
             this.pnlExcepciones.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlExcepciones_Paint);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 380);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 13);
+            this.label2.TabIndex = 63;
+            this.label2.Text = "Utilice el botón (+) para copiar una fila";
+            // 
             // grdExcepciones
             // 
             this.grdExcepciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -1229,6 +1238,15 @@
             this.PanelExcepMaster.Size = new System.Drawing.Size(827, 402);
             this.PanelExcepMaster.TabIndex = 0;
             this.PanelExcepMaster.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 383);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Utilice el botón (+) para copiar una fila";
             // 
             // BtnEliminarExcepMaster
             // 
@@ -2067,24 +2085,6 @@
             this.labelControl3.TabIndex = 1;
             this.labelControl3.Text = "Check List Pasos";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 383);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 13);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Utilice el botón (+) para copiar una fila";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 380);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 13);
-            this.label2.TabIndex = 63;
-            this.label2.Text = "Utilice el botón (+) para copiar una fila";
-            // 
             // frmPaperlessUser1v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2094,12 +2094,12 @@
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.PanelExcepMaster);
-            this.Controls.Add(this.pnlExcepciones);
-            this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
+            this.Controls.Add(this.PanelExcepMaster);
+            this.Controls.Add(this.pnlExcepciones);
+            this.Controls.Add(this.pnlPaso1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

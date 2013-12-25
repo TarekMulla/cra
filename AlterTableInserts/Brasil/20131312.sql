@@ -91,4 +91,17 @@ End
 
 update PAPERLESS_TIPO_RESPONSABILIDAD set Tipo = '0' where Tipo is not null
 
+if not exists(select * from PAPERLESS_PASOS_USUARIO1_V2 where  idTipoCarga = 1 and  DESCRIPCION = 'Exceções Entry')
+Begin
+	insert into PAPERLESS_PASOS_USUARIO1_V2  values (10,'Exceções Entry',1,9,11,	1,	'RegistrarExcepciones')
+	update PAPERLESS_PASOS_USUARIO1_V2 set NumPaso=11, PasoAnterior = 10 , PasoSiguiente=12 , pantalla=null where IdPaso= 29
+	update PAPERLESS_PASOS_USUARIO1_V2 set NumPaso=12, PasoAnterior = 11 , PasoSiguiente=null where IdPaso= 30
+END
+
+if not exists(select * from PAPERLESS_PASOS_USUARIO1_V2 where  idTipoCarga = 4 and  DESCRIPCION = 'Exceções Entry')
+Begin
+	insert into PAPERLESS_PASOS_USUARIO1_V2  values (8,'Exceções Entry',1,7,9,	4,	'RegistrarExcepciones')
+	update PAPERLESS_PASOS_USUARIO1_V2 set NumPaso=9, PasoAnterior = 8 , PasoSiguiente=10 , pantalla=null where IdPaso= 37
+	update PAPERLESS_PASOS_USUARIO1_V2 set NumPaso=10, PasoAnterior = 9 , PasoSiguiente=null where IdPaso= 38
+end
 

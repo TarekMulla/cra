@@ -1,0 +1,175 @@
+﻿<XtraSerializer version="1.0" application="IGaugeContainer">
+  <property name="SizeEx">@3,Width=258@3,Height=262</property>
+  <property name="AutoLayout">true</property>
+  <property name="Items" iskey="true" value="7">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Name">lGauge1</property>
+      <property name="ParentCollectionName">Gauges</property>
+      <property name="ParentName" />
+      <property name="TypeNameEx">LinearGauge</property>
+      <property name="Bounds">@1,X=6@1,Y=6@3,Width=246@3,Height=250</property>
+      <property name="Orientation">Vertical</property>
+      <property name="ProportionalStretch">true</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="MajorTickmark" isnull="true" iskey="true">
+        <property name="ShowLast">true</property>
+        <property name="ShapeScale">1, 1</property>
+        <property name="ShapeOffset">6</property>
+        <property name="ShowFirst">true</property>
+        <property name="ShowTick">true</property>
+        <property name="ShapeType">Linear_Style11_2</property>
+        <property name="FormatString">{0:F0}</property>
+        <property name="Multiplier">1</property>
+        <property name="TextOffset">35</property>
+        <property name="Addend">0</property>
+        <property name="ShowText">true</property>
+        <property name="TextOrientation">Default</property>
+        <property name="AllowTickOverlap">false</property>
+      </property>
+      <property name="MinorTickCount">4</property>
+      <property name="Labels" iskey="true" value="0" />
+      <property name="MajorTickCount">6</property>
+      <property name="RescalingThresholdMax">0.05</property>
+      <property name="RescalingThresholdMin">0.05</property>
+      <property name="MinorTickmark" isnull="true" iskey="true">
+        <property name="ShowFirst">true</property>
+        <property name="ShapeOffset">6</property>
+        <property name="ShapeScale">1, 1</property>
+        <property name="ShowTick">true</property>
+        <property name="ShowLast">true</property>
+        <property name="ShapeType">Linear_Style11_1</property>
+      </property>
+      <property name="RescalingBestValues">false</property>
+      <property name="Ranges" iskey="true" value="0" />
+      <property name="BoundElementName" isnull="true" />
+      <property name="ParentCollectionName">Scales</property>
+      <property name="Name">scale1</property>
+      <property name="TypeNameEx">LinearScaleComponent</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="ParentName">lGauge1</property>
+      <property name="ZOrder">0</property>
+      <property name="MaxValue">500</property>
+      <property name="AppearanceTickmarkText" isnull="true" iskey="true">
+        <property name="Format" isnull="true" iskey="true">
+          <property name="Trimming">Character</property>
+          <property name="FormatFlags">NoClip</property>
+          <property name="Alignment">Center</property>
+          <property name="LineAlignment">Center</property>
+        </property>
+        <property name="TextBrush" isnull="true" iskey="true">
+          <property name="Color">Black</property>
+        </property>
+        <property name="Font">Tahoma, 8.25pt</property>
+        <property name="Spacing">0, 0, 0, 0</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Width">0</property>
+        <property name="Brush" isnull="true" iskey="true" />
+      </property>
+      <property name="StartPoint">62.5, 230</property>
+      <property name="AppearanceScale" isnull="true" iskey="true">
+        <property name="Width">0</property>
+        <property name="Brush" isnull="true" iskey="true" />
+      </property>
+      <property name="AppearanceTickmarkTextBackground" isnull="true" iskey="true">
+        <property name="BorderWidth">0</property>
+        <property name="ContentBrush" isnull="true" iskey="true" />
+        <property name="BorderBrush" isnull="true" iskey="true" />
+      </property>
+      <property name="AppearanceMajorTickmark" isnull="true" iskey="true">
+        <property name="BorderWidth">0</property>
+        <property name="ContentBrush" isnull="true" iskey="true" />
+        <property name="BorderBrush" isnull="true" iskey="true" />
+      </property>
+      <property name="AppearanceMinorTickmark" isnull="true" iskey="true">
+        <property name="BorderWidth">0</property>
+        <property name="ContentBrush" isnull="true" iskey="true" />
+        <property name="BorderBrush" isnull="true" iskey="true" />
+      </property>
+      <property name="MinValue">0</property>
+      <property name="EndPoint">62.5, 20</property>
+      <property name="AutoRescaling">false</property>
+      <property name="Value">250</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="BoundElementName">scale1</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="Name">bg1</property>
+      <property name="ParentCollectionName">BackgroundLayers</property>
+      <property name="ParentName">lGauge1</property>
+      <property name="TypeNameEx">LinearScaleBackgroundLayerComponent</property>
+      <property name="ShapeType">Linear_Style11</property>
+      <property name="ScaleEndPos">0.5075, 0.08</property>
+      <property name="ZOrder">1000</property>
+      <property name="ScaleStartPos">0.5075, 0.92</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="ParentName">lGauge1</property>
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="ShapeType">Style11</property>
+      <property name="ZOrder">-50</property>
+      <property name="ParentCollectionName">Levels</property>
+      <property name="BoundElementName">scale1</property>
+      <property name="TypeNameEx">LinearScaleLevelComponent</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="Name">level1</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="ParentName">lGauge1</property>
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="ShapeType">Style11</property>
+      <property name="ZOrder">-50</property>
+      <property name="ParentCollectionName">Levels</property>
+      <property name="BoundElementName">scale1</property>
+      <property name="TypeNameEx">LinearScaleLevelComponent</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="Name">linearScaleLevelComponent1Copy0</property>
+    </property>
+<!--    <property name="Item6" isnull="true" iskey="true">
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="EndOffset">5</property>
+      <property name="StartOffset">0</property>
+      <property name="Name">linearGauge1_RangeBar1</property>
+      <property name="ZOrder">-100</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="AnchorValue">0</property>
+      <property name="ParentCollectionName">RangeBars</property>
+      <property name="BoundElementName">scale1</property>
+      <property name="ParentName">lGauge1</property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="BorderWidth">0</property>
+        <property name="ContentBrush" isnull="true" iskey="true" />
+        <property name="BorderBrush" isnull="true" iskey="true" />
+      </property>
+      <property name="TypeNameEx">LinearScaleRangeBarComponent</property>
+    </property>-->
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="BoundElementName">scale1</property>
+      <property name="Shader" isnull="true" iskey="true">
+        <property name="TypeTag">Empty</property>
+      </property>
+      <property name="Enabled" isnull="true" iskey="true" />
+      <property name="Name">linearGauge1_Marker1</property>
+      <property name="ParentCollectionName">Markers</property>
+      <property name="ParentName">lGauge1</property>
+      <property name="TypeNameEx">LinearScaleMarkerComponent</property>
+      <property name="ShapeOffset">0</property>
+      <property name="ZOrder">-150</property>
+      <property name="ShapeType">Default</property>
+      <property name="ShapeScale">1, 1</property>
+    </property>
+  </property>
+</XtraSerializer>

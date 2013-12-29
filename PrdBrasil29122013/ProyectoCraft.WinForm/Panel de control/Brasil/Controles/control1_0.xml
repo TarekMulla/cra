@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<control type="LinearGauge" refresh="90" title="este es el titulo"  baseControl="termometro_vertical.xml">
+  <description>
+    Control para graficar las diferencias entre x e y
+  </description>
+  <datasource>
+    <![CDATA[SELECT 0 as min,count(*) as value, 10 as max , 5 as overmax
+    from PAPERLESS_ASIGNACION
+    WHERE  AperturaNavieras < GETDATE() 
+     and (select COUNT(*) as cantidad 
+				from PAPERLESS_USUARIO2_PASOS_ESTADO 
+				where NumPaso=4 and PAPERLESS_ASIGNACION.Id=PAPERLESS_USUARIO2_PASOS_ESTADO.IdAsignacion)=0]]>
+  </datasource>
+  <detail>
+    <datasourse>
+      <![CDATA[SELECT NumMaster,B.Descripcion as Naviera, C.Descripcion as Nave,Viaje,AperturaNavieras,D.NombreUsuario,E.NombreUsuario, F.Descripcion
+     FROM PAPERLESS_ASIGNACION a INNER JOIN PAPERLESS_NAVIERA B
+			 ON A.IdNaviera = B.Id
+		  INNER JOIN PAPERLESS_NAVE C
+			 ON A.IdNave = C.Id
+		  LEFT OUTER JOIN USUARIOS D
+			 ON A.Usuario1 = D.Id
+		  LEFT OUTER JOIN USUARIOS E
+			 ON A.Usuario2 = E.Id
+		  INNER JOIN PAPERLESS_ESTADO F
+			 ON F.Id = A.IdEstado
+     WHERE  AperturaNavieras < GETDATE() 
+     and (select COUNT(*) as cantidad 
+				from PAPERLESS_USUARIO2_PASOS_ESTADO 
+				where NumPaso=4 and A.Id=PAPERLESS_USUARIO2_PASOS_ESTADO.IdAsignacion)=0]]>
+    </datasourse>
+  </detail>
+</control>

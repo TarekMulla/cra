@@ -729,7 +729,6 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\Actividades\EMail\FrmNuevoMail.resx">
@@ -784,11 +783,6 @@
       <DependentUpon>FrmOportunidad.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1094,6 +1088,7 @@
     <Content Include="Panel de control\Chile\Panel de control\PanelUsuario2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\graficos 40px.png" />
     <None Include="Resources\iconoPuerto.png" />
     <None Include="Resources\puerto.png" />
     <None Include="Resources\icono_taxi_recogidas_estaciones_puertos.gif" />

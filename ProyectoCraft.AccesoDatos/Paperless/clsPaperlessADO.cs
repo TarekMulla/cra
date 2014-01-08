@@ -4070,7 +4070,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION___");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION_ASIGNACIONES");
                 objParams[0].Value = desde;
                 objParams[1].Value = hasta;
                 objParams[2].Value = usuario;
@@ -4079,7 +4079,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[5].Value = marca;
 
 
-                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION", conn);
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION_ASIGNACIONES", conn);
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();

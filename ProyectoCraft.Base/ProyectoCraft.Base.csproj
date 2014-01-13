@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="BaseDatos\BaseDatos.cs" />
     <Compile Include="BaseDatos\Instancia.cs" />
-    <Compile Include="Configuracion\Configuracion.cs" />
     <Compile Include="Encriptar\Componente.cs" />
     <Compile Include="Encriptar\Comun.cs" />
     <Compile Include="Encriptar\Encriptacion.cs" />

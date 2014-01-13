@@ -11,8 +11,6 @@ namespace ProyectoCraft.LogicaNegocios.Mantenedores
         public bool Activo { get; set; }
         public DateTime FechaCreacion { get; set; }
         public override string ToString(){
-            if (Nombre == null)
-                return string.Empty;
             return Nombre;
         }
     }

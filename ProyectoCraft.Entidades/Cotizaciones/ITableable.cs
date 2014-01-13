@@ -22,6 +22,12 @@ namespace ProyectoCraft.Entidades.Cotizaciones {
         String ProveedorCarga { set; get; }
         String Tipo { get; }
         bool Seleccionado { set; get; }
-        List<ITableableOpcion> OpcionesView { get; }    
+        List<ITableableOpcion> OpcionesView { get; }
+
+        
+        Boolean PermiteEnviarPorCorreo { get; }
+        Boolean PermiteCopiar { get; }
+        Boolean PermiteAceptarUsuarioPricing { get; }
+        Boolean PermiteIngresarTarifa { get; }
     }
 }

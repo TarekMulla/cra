@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using Microsoft.ApplicationBlocks.Data;
-using ProyectoCraft.AccesoDatos.Clientes;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
-using ProyectoCraft.Entidades.Clientes.Direcciones;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
-using ProyectoCraft.Entidades.Log;
-using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
 
 namespace ProyectoCraft.AccesoDatos.Parametros
@@ -22,7 +16,6 @@ namespace ProyectoCraft.AccesoDatos.Parametros
         private static SqlParameter[] objParams = null;
         private static SqlConnection conn = null;
         private static SqlTransaction transaction = null;
-        private static SqlDataReader dreader = null;
         private static ResultadoTransaccion resTransaccion = null;
         public static IList<ClsNaviera> ListarNavieras(bool activo)
         {
@@ -72,7 +65,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             try
             {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL");
-
+                
 
                 objReader = SqlHelper.ExecuteReader(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERAALL", objParams);
                 while (objReader.Read())
@@ -98,60 +91,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
             return lista;
         }
-
-        private static void CreaRelacionPuertos(Int64 id, string relacionPuertos, SqlConnection conn)
-        {
-            resTransaccion = new ResultadoTransaccion();
-            try
-            {
-                //Abrir Conexion
-                //conn = BaseDatos.Conexion();
-
-                //Crear Transaccion
-                transaction = conn.BeginTransaction();
-
-                //Actualizar
-                //objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.Conexion(), "SP_A_CLIENTES_DIRECCION");
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_NAVIERA_PUERTO_RELACION");
-                objParams[0].Value = id;
-                objParams[1].Value = relacionPuertos;
-
-                SqlCommand command = new SqlCommand("SP_N_NAVIERA_PUERTO_RELACION", conn, transaction);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-
-                transaction.Commit();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-                resTransaccion.Accion = Enums.AccionTransaccion.Actualizar;
-                resTransaccion.ObjetoTransaccion = id;
-                resTransaccion.Descripcion = "Se actualizo la relacion de la naviera con los puertos";
-
-                //Registrar Actividad
-                //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
-                //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
-
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                Log.EscribirLog(ex.Message);
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-            }
-            finally
-            {
-                //conn.Close();
-
-            }
-
-            //return resTransaccion;
-
-        }
-
-        public static ResultadoTransaccion NuevaNaviera(string nombre, string relacionPuertos)
+        public static ResultadoTransaccion NuevaNaviera(string nombre)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -178,15 +118,14 @@ namespace ProyectoCraft.AccesoDatos.Parametros
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
-
+                
                 //resTransaccion.ObjetoTransaccion = id;//idMaster = (Int64)resTransaccion.ObjetoTransaccion;
-                var id = (Int64)resTransaccion.ObjetoTransaccion;
-                resTransaccion.Descripcion = "Se Creo Naviera con Id " + id;
+                resTransaccion.Descripcion = "Se Creo Naviera con Id " + (Int64)resTransaccion.ObjetoTransaccion;
 
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
                 //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
-                CreaRelacionPuertos(id, relacionPuertos, conn);
+
             }
             catch (Exception ex)
             {
@@ -205,7 +144,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre, string relacionPuertos)
+        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -237,7 +176,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
                 //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
-                CreaRelacionPuertos(id, relacionPuertos, conn);
+
             }
             catch (Exception ex)
             {
@@ -271,7 +210,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 //objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.Conexion(), "SP_A_CLIENTES_DIRECCION");
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_NAVIERA");
                 objParams[0].Value = id;
-
+                
 
                 SqlCommand command = new SqlCommand("SP_E_PAPERLESS_NAVIERA", conn, transaction);
                 command.Parameters.AddRange(objParams);
@@ -305,42 +244,6 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             }
 
             return resTransaccion;
-        }
-        public static IList<ClsNaviera> BuscarNavieraPorTextoLike(string Naviera)
-        {
-            IList<ClsNaviera> lista = new List<ClsNaviera>();
-            ClsNaviera naviera;
-
-            SqlDataReader objReader = null;
-            SqlParameter[] objParams;
-
-            try
-            {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERA_POR_LIKE");
-                objParams[0].Value = Naviera;
-                objReader = SqlHelper.ExecuteReader(BaseDatos.GetConexion(), "SP_L_PAPERLESS_NAVIERA_POR_LIKE", objParams);
-                
-                while (objReader.Read())
-                {
-                    naviera = new ClsNaviera();
-                    naviera.Id = Convert.ToInt64(objReader["Id"]);
-                    naviera.Nombre = objReader["Descripcion"].ToString();
-                    naviera.Activo = Convert.ToBoolean(objReader["Activo"]);
-                    naviera.FechaCreacion = Convert.ToDateTime(objReader["FechaCreacion"]);
-                    lista.Add(naviera);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.EscribirLog(ex.Message);
-                return null;
-
-            }
-            finally
-            {
-                if (objReader != null) objReader.Close();
-            }
-            return lista;
         }
     }
 }

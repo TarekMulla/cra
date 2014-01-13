@@ -2,7 +2,7 @@
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Usuarios;
 
-namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
+namespace ProyectoCraft.Entidades.Cotizaciones {
     public class Comentario : IdentifiableObject {
         public DateTime Fecha { set; get; }
         public Boolean EsHistorial { set; get; }

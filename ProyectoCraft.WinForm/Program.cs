@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 //using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using ProyectoCraft.Base.Log;
+using ProyectoCraft.Entidades.Log;
+using ProyectoCraft.LogicaNegocios.Log;
 
 
 namespace ProyectoCraft.WinForm {
@@ -27,14 +31,13 @@ namespace ProyectoCraft.WinForm {
 
             MDICraft mdi = MDICraft.Instancia;
             Application.Run(mdi);
-
             //}
             //catch (Exception ex)
             //{
             //    Base.Log.Log.EscribirLog(ex.Message);
 
             //}
-
+            
         }
 
 

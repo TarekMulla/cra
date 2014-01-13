@@ -16,27 +16,26 @@ namespace ProyectoCraft.AccesoDatos.Integracion
         private static SqlDataReader dreader = null;
         private static ResultadoTransaccion resTransaccion = null;
 
-        public static IList<IntegracionNetShip> ObtieneValoresNetShip(string NumMaster, string StoreProcedureName)
+        public static IList<IntegracionNetShip> ObtieneValoresNetShip(string NumMaster)
         {
             List<IntegracionNetShip> lista = new List<IntegracionNetShip>();
             try
             {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, StoreProcedureName);
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "sp_SCC_HouseBLs");
                 objParams[0].Value = NumMaster;
-                SqlCommand command = new SqlCommand(StoreProcedureName, conn);
+                SqlCommand command = new SqlCommand("sp_SCC_HouseBLs", conn);
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
                 IntegracionNetShip netShip = null;
                 while (dreader.Read())
-                {                    
-
+                {
                     netShip = new IntegracionNetShip();
                     netShip.Consolidada = dreader["Consolidada"].ToString();
-                    netShip.HouseBl = dreader["House BL"].ToString();                    
+                    netShip.HouseBl = dreader["House BL"].ToString();
                     netShip.Rut = dreader["RUT"].ToString();
                     netShip.Cliente = dreader["Cliente"].ToString();
                     netShip.TipoCliente = dreader["Tipo Cliente"].ToString();
@@ -44,8 +43,6 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                         netShip.Ruteado = dreader["Ruteado"].ToString().Equals("1");
                     netShip.ShippingInstruction = dreader["Shipping Instruction"].ToString();
                     netShip.Puerto = dreader["Puerto"].ToString();
-                    
-                    Base.Log.Log.EscribirLog(netShip.HouseBl);                    
 
                     lista.Add(netShip);
 
@@ -87,17 +84,6 @@ namespace ProyectoCraft.AccesoDatos.Integracion
                 else
                     objParams[3].Value = null;
 
-                if (_int.Mensaje != null)
-                    try
-                    {
-                        objParams[4].Value = _int.IdPaperlessTipoError;
-                    }
-                    catch (Exception)
-                    {                       
-                    }
-                    
-                else
-                    objParams[4].Value = null;
 
                 SqlCommand command = new SqlCommand("SP_N_Paperless_IntegracionNetship", conn);
                 command.Parameters.AddRange(objParams);

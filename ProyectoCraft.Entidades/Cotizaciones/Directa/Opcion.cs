@@ -13,6 +13,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             FechaValidezInicio = DateTime.Now;
 
             var cotizacionDirectaFechaValidezFinTXT = System.Configuration.ConfigurationSettings.AppSettings.Get("CotizacionDirectaFechaValidezFin");
+ 
             var dias = 0;
             if (String.IsNullOrEmpty(cotizacionDirectaFechaValidezFinTXT))
                 dias = 15;
@@ -38,8 +39,5 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public String EstadoDescripcion { get { return Estado.Nombre; } }
         public bool Seleccionado { set; get; }
         public List<Comentario> Comentarios { set; get; }
-
-        public TiposServicio TiposServicio { set; get; }
-        public TiposVia TipoVia { set; get; }
     }
 }

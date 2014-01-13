@@ -28,7 +28,7 @@ PA.EnDestino,
 PA.MasterConfirmado,
 PA.FechaMasterConfirmado,
 PA.txtCourier,
-PA.FechaMaximaVinculacion
+PA.txtShipping
 FROM PAPERLESS_ASIGNACION PA
 LEFT OUTER JOIN PAPERLESS_AGENTE PAA
 ON PA.IdAgente = PAA.Id
@@ -51,3 +51,5 @@ ON PA.IdImportancia = PAR.Id
 LEFT OUTER JOIN PAPERLESS_TIPO_SERVICIO TS
 ON PA.IdTipoServicio = TS.Id
 WHERE PA.Id = @IdAsignacion
+
+ 

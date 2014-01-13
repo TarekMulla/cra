@@ -21,7 +21,5 @@ namespace ProyectoCraft.Entidades.Integracion
         public string ValorPaperless{ get; set; }
         public string ValorNetShip { get; set; }
         public string Mensaje { get; set; }
-        public bool Activo { get; set; }
-        public Int32 IdPaperlessTipoError { get; set; }
     }
 }

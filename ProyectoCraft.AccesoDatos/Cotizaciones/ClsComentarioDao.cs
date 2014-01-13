@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
+using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Usuarios;
@@ -14,8 +15,8 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
     public class ClsComentarioDao {
         private const String NombreClase = "ClsComentarioDao";
 
-        public static ResultadoTransaccion Guardar(CotizacionDirecta cotizacionDirecta, Comentario comentario) {
-            return Guardar("SP_N_COTIZACION_COMENTARIOS", cotizacionDirecta.Id32, comentario);
+        public static ResultadoTransaccion Guardar(ITableable cotizacion, Comentario comentario) {
+            return Guardar("SP_N_COTIZACION_COMENTARIOS", cotizacion.Id32, comentario);
         }
 
         public static ResultadoTransaccion Guardar(Opcion opcionDirecta, Comentario comentario) {
@@ -71,10 +72,9 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
         /// <summary>
         /// Retorna todos los mensajes incluidos los historiales
         /// </summary>
-        /// <param name="cotizacionDirecta"></param>
         /// <returns></returns>
-        public static ResultadoTransaccion ObtieneTodosLosMensajes(CotizacionDirecta cotizacionDirecta) {
-            return ObtieneTodosLosMensajes("SP_L_COTIZACION_COMENTARIOS", cotizacionDirecta.Id32);
+        public static ResultadoTransaccion ObtieneTodosLosMensajes(ITableable cotizacion) {
+            return ObtieneTodosLosMensajes("SP_L_COTIZACION_COMENTARIOS", cotizacion.Id32);
         }
 
         /// <summary>

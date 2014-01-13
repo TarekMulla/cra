@@ -1,5 +1,0 @@
-select * from usuarios u 
-inner join USUARIOS_PERFILES up on u.id=up.id_usuario
-inner join perfiles p on p.id =up.id_perfil
-where u.id > 64
-order by u.id

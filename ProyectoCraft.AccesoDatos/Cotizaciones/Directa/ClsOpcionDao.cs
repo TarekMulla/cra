@@ -16,6 +16,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
     public class ClsOpcionDao {
         private const String NombreClase = "ClsOpcionDao";
         private static List<ClsNaviera> _navieras;
+
         public static ResultadoTransaccion ObtieneOpciones(Int32 idCotizacion) {
             var res = new ResultadoTransaccion();
             var opciones = new List<Opcion>();
@@ -65,21 +66,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             opcion.FechaValidezInicio = Convert.ToDateTime(reader["fechaValidezInicio"]);
             opcion.FechaValidezFin = Convert.ToDateTime(reader["fechaValidezFin"]);
           
-            if (!String.IsNullOrEmpty(reader["tipo_servicio_id"].ToString())){
-                var servicio = new TiposServicio();
-                servicio.Id = servicio.Id32 = Convert.ToInt32(reader["tipo_servicio_id"].ToString());
-                servicio.Nombre = reader["tipo_servicio_nombre"].ToString();
-                opcion.TiposServicio = servicio;
-            }
-
-            if (!String.IsNullOrEmpty(reader["tipo_via_id"].ToString())) {
-                var via = new TiposVia();
-                via.Id = via.Id32 = Convert.ToInt32(reader["tipo_via_id"].ToString());
-                via.Nombre = reader["tipo_via_nombre"].ToString();
-                opcion.TipoVia = via;
-            }
-
-            opcion.Detalles =  ClsOpcionDetalleDao.ObtieneDetalle(opcion.Id32).ObjetoTransaccion as List<DetalleOpcion>;
+           opcion.Detalles =  ClsOpcionDetalleDao.ObtieneDetalle(opcion.Id32).ObjetoTransaccion as List<DetalleOpcion>;
 
             var idEstado = Convert.ToInt32(reader["COTIZACION_DIRECTA_ESTADOS_id"]);
 

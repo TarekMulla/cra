@@ -18,22 +18,17 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
             return AccesoDatos.Parametros.ClsNavierasDAO.ListarNavieras();
         }
 
-        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre,string relacionPuertos)
+        public static ResultadoTransaccion ActualizarNaviera(Int64 id, string nombre)
         {
-            return AccesoDatos.Parametros.ClsNavierasDAO.ActualizarNaviera(id,nombre,relacionPuertos);
+            return AccesoDatos.Parametros.ClsNavierasDAO.ActualizarNaviera(id,nombre);
         }
-        public static ResultadoTransaccion NuevaNaviera( string nombre,string relacionPuertos)
+        public static ResultadoTransaccion NuevaNaviera( string nombre)
         {
-            return AccesoDatos.Parametros.ClsNavierasDAO.NuevaNaviera(nombre,relacionPuertos);
+            return AccesoDatos.Parametros.ClsNavierasDAO.NuevaNaviera(nombre);
         }
         public static ResultadoTransaccion EliminaNaviera(Int64 id)
         {
             return AccesoDatos.Parametros.ClsNavierasDAO.EliminaNaviera(id);
         }
-        public static IList<ClsNaviera> BuscarNavieraPorTextoLike(string naviera)
-        {
-            return AccesoDatos.Parametros.ClsNavierasDAO.BuscarNavieraPorTextoLike(naviera);                     
-        }
-        
     }
 }

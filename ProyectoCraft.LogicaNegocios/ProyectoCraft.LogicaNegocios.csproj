@@ -65,9 +65,10 @@
     <Compile Include="Cotizaciones\Directa\ClsConceptos.cs" />
     <Compile Include="Cotizaciones\Directa\ClsCotizacionDirecta.cs" />
     <Compile Include="Cotizaciones\Directa\ClsUnidad.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTipoVia.cs" />
-    <Compile Include="Cotizaciones\Directa\CotizacionDirectaEstado.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTipoServicio.cs" />
+    <Compile Include="Cotizaciones\CotizacionDirectaEstado.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsCotizacionIndirecta.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsCotizacionIndirectaItem.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsTipoTransbordo.cs" />
     <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
     <Compile Include="Direccion\Metas\clsMeta.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadNegocio.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Log\ClsLogPerformance.cs" />
     <Compile Include="PanelDeControl\clsPanelDeControl.cs" />
     <Compile Include="Paperless\Paperless.cs" />
-    <Compile Include="Parametros\ClsAgente.cs" />
     <Compile Include="Parametros\clsParametros.cs" />
     <Compile Include="Parametros\clsParametrosClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

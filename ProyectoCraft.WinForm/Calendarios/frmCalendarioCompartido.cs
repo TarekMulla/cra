@@ -458,7 +458,7 @@ namespace ProyectoCraft.WinForm.Calendarios {
                         foreach (var asisCraft in visita.AsistentesCraft) {
                             appointment.ResourceIds.Add(asisCraft.Usuario.Id);
                         }
-                        if (visita.UsuarioOrganizador != null && !appointment.ResourceIds.Contains(visita.UsuarioOrganizador.Id))
+                        if (!appointment.ResourceIds.Contains(visita.UsuarioOrganizador.Id))
                             appointment.ResourceIds.Add(visita.UsuarioOrganizador.Id);
                     }
                 }

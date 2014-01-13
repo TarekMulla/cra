@@ -77,10 +77,14 @@
     <Compile Include="Cotizaciones\Directa\ClsOpcionDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsOpcionDetalleDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsPuertoDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTiposServiciosDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsUnidadDao.cs" />
     <Compile Include="Cotizaciones\Directa\ClsCotizacionDirectaEstadoDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTipoViaDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsCotizacionIndirectaDetalleDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsCotizacionIndirectaDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsCotizacionIndirectaItemDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\ClsTipoTransbordoDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaOpcionDao.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaOpcionDetalleDao.cs" />
     <Compile Include="Direccion\Administracion\clsControlCreditoAdo.cs" />
     <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />
@@ -90,7 +94,6 @@
     <Compile Include="Log\ClsLogPerformanceADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
     <Compile Include="Paperless\clsPaperlessADO.cs" />
-    <Compile Include="Parametros\ClsAgenteDAO.cs" />
     <Compile Include="Parametros\ClsNavierasDAO.cs" />
     <Compile Include="Parametros\clsParametrosClientesDAO.cs" />
     <Compile Include="Parametros\clsParametrosDAO.cs" />

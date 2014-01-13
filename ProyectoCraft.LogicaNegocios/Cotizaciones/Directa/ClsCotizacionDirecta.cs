@@ -13,12 +13,11 @@ namespace ProyectoCraft.LogicaNegocios.Cotizaciones.Directa {
             return ClsCotizacionDao.ListarTodasLasCotizacionesDirectasPorUsuario(usuario);
         }
 
-        public static ResultadoTransaccion Crear(CotizacionDirecta cotizacionDirecta){
+        public static ResultadoTransaccion Crear(CotizacionDirecta cotizacionDirecta) {
             return ClsCotizacionDirectaDao.Crear(cotizacionDirecta);
         }
 
-        public static ResultadoTransaccion Modificar(CotizacionDirecta cotizacionDirecta)
-        {
+        public static ResultadoTransaccion Modificar(CotizacionDirecta cotizacionDirecta) {
             return ClsCotizacionDirectaDao.Modificar(cotizacionDirecta);
         }
 
@@ -26,7 +25,13 @@ namespace ProyectoCraft.LogicaNegocios.Cotizaciones.Directa {
             return ClsCotizacionDirectaDao.ObtieneCotizacionDirecta(id);
         }
 
-    
+        public static IList<ITableable> ListarTodasLasTarifasPorUsuario(clsUsuario usuario) {
+            return ClsCotizacionDao.ListarTodasLasTarifasPorUsuario(usuario);
+        }
+
+        public static void CambioEstado(ITableable tableable, int idEstado, clsUsuario usuario) {
+            ClsCotizacionDirectaEstadoDao.CambioEstado(tableable, idEstado, usuario);
+        }
     }
 
 }

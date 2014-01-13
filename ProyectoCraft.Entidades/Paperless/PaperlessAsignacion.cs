@@ -61,7 +61,5 @@ namespace ProyectoCraft.Entidades.Paperless
         public bool ChkMasterConfirmado { get; set; }
         public DateTime? FechaMasterConfirmado { get; set; }
         public string TxtCourier{ get; set; }
-        public int FechaMaximaVinculacionDiff { get; set; }
-        public DateTime? FechaMaximaVinculacion { get; set; }
     }
 }

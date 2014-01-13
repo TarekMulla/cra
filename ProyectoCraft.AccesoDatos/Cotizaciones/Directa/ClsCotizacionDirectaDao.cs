@@ -5,10 +5,10 @@ using System.Data.SqlClient;
 using System.Reflection;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.AccesoDatos.Clientes;
-using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Clientes;
+using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Parametros;
@@ -214,13 +214,13 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
         }
 
         public static ResultadoTransaccion Crear(CotizacionDirecta cotizacionDirecta) {
-            ResultadoTransaccion res = new ResultadoTransaccion();
+            var res = new ResultadoTransaccion();
             SqlTransaction trans = null;
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
             try {
 
-                SqlCommand command = new SqlCommand("SP_N_COTIZACION_SOLICITUD_COTIZACIONES", conn);
+                var command = new SqlCommand("SP_N_COTIZACION_SOLICITUD_COTIZACIONES", conn);
 
                 command.Transaction = conn.BeginTransaction();
                 trans = command.Transaction;
@@ -255,7 +255,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = cotizacionDirecta;
-                res.Descripcion = "La cotización Directa se guardó Exitosamente";
+                res.Descripcion = "La cotizacion Directa se guardo Exitosamente";
 
             } catch (Exception ex) {
                 cotizacionDirecta.Id = cotizacionDirecta.Id32 = 0;
@@ -296,12 +296,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
                     com.Parameters.AddWithValue("@COTIZACION_SOLICITUD_COTIZACIONES_id", cotizacionDirecta.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
@@ -432,7 +426,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
         {
             ResultadoTransaccion Res = new ResultadoTransaccion();
             SqlTransaction trans = null;
-            //Abrir Conexion
             var conn = BaseDatos.Conexion();
             try
             {
@@ -486,7 +479,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             }
             return Res;
         }
-        
+
         public static ResultadoTransaccion ModificarOpciones(CotizacionDirecta cotizacionDirecta, SqlCommand command)
         {
             var num = 1;
@@ -509,12 +502,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     com.ExecuteScalar();

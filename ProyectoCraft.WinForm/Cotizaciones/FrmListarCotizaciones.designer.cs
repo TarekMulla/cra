@@ -60,9 +60,10 @@
             this.ImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuNuevaTarifa = new System.Windows.Forms.ToolStripButton();
+            this.MenuSolicitarTarifa = new System.Windows.Forms.ToolStripButton();
             this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.MenuCopiar = new System.Windows.Forms.ToolStripButton();
             this.MenuActualizar = new System.Windows.Forms.ToolStripButton();
             this.gridProspectos = new DevExpress.XtraEditors.GroupControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -419,7 +420,7 @@
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click_1);
@@ -427,7 +428,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuExcel
             // 
@@ -435,7 +436,7 @@
             this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
             this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(36, 33);
+            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
             this.MenuExcel.Text = "Excel";
             this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -443,7 +444,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
             // ImageCollection
             // 
@@ -458,44 +459,44 @@
             // 
             this.toolStripBarraLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
-            this.menuNuevaTarifa,
+            this.MenuSolicitarTarifa,
             this.toolStripSeparator3,
             this.MenuEnviarAlCliente,
             this.toolStripButton2,
+            this.MenuCopiar,
             this.MenuActualizar,
             this.toolStripSeparator4,
             this.MenuExcel,
             this.MenuSalir});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 36);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 38);
             this.toolStripBarraLlamada.TabIndex = 85;
             this.toolStripBarraLlamada.Text = "toolStrip1";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
-            // menuNuevaTarifa
+            // MenuSolicitarTarifa
             // 
-            this.menuNuevaTarifa.Enabled = false;
-            this.menuNuevaTarifa.Image = ((System.Drawing.Image)(resources.GetObject("menuNuevaTarifa.Image")));
-            this.menuNuevaTarifa.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menuNuevaTarifa.Name = "menuNuevaTarifa";
-            this.menuNuevaTarifa.Size = new System.Drawing.Size(79, 33);
-            this.menuNuevaTarifa.Text = "Solicitar Tarifa";
-            this.menuNuevaTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.menuNuevaTarifa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.menuNuevaTarifa.ToolTipText = "Solicitar Tarifa";
-            this.menuNuevaTarifa.Click += new System.EventHandler(this.menuNuevaTarifa_Click);
+            this.MenuSolicitarTarifa.Image = ((System.Drawing.Image)(resources.GetObject("MenuSolicitarTarifa.Image")));
+            this.MenuSolicitarTarifa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuSolicitarTarifa.Name = "MenuSolicitarTarifa";
+            this.MenuSolicitarTarifa.Size = new System.Drawing.Size(86, 35);
+            this.MenuSolicitarTarifa.Text = "Solicitar Tarifa";
+            this.MenuSolicitarTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuSolicitarTarifa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuSolicitarTarifa.ToolTipText = "Solicitar Tarifa";
+            this.MenuSolicitarTarifa.Click += new System.EventHandler(this.menuNuevaTarifa_Click);
             // 
             // MenuEnviarAlCliente
             // 
             this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
             this.MenuEnviarAlCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarAlCliente.Name = "MenuEnviarAlCliente";
-            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(86, 33);
+            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(93, 35);
             this.MenuEnviarAlCliente.Text = "Enviar al cliente";
             this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
@@ -505,19 +506,31 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(45, 33);
+            this.toolStripButton2.Size = new System.Drawing.Size(48, 35);
             this.toolStripButton2.Text = "Directa";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.ToolTipText = "Tarifa Directa";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
+            // MenuCopiar
+            // 
+            this.MenuCopiar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCopiar.Image")));
+            this.MenuCopiar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuCopiar.Name = "MenuCopiar";
+            this.MenuCopiar.Size = new System.Drawing.Size(46, 35);
+            this.MenuCopiar.Text = "Copiar";
+            this.MenuCopiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuCopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuCopiar.ToolTipText = "Copiar";
+            this.MenuCopiar.Click += new System.EventHandler(this.MenuCopiar_Click);
+            // 
             // MenuActualizar
             // 
             this.MenuActualizar.Image = ((System.Drawing.Image)(resources.GetObject("MenuActualizar.Image")));
             this.MenuActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuActualizar.Name = "MenuActualizar";
-            this.MenuActualizar.Size = new System.Drawing.Size(58, 33);
+            this.MenuActualizar.Size = new System.Drawing.Size(63, 35);
             this.MenuActualizar.Text = "Actualizar";
             this.MenuActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -883,7 +896,7 @@
         private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.Utils.ImageCollection ImageCollection;
         private System.Windows.Forms.ToolStripButton MenuEnviarAlCliente;
-        public System.Windows.Forms.ToolStripButton menuNuevaTarifa;
+        public System.Windows.Forms.ToolStripButton MenuSolicitarTarifa;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         private DevExpress.XtraEditors.GroupControl gridProspectos;
         private DevExpress.XtraGrid.GridControl gridSLeads;
@@ -936,6 +949,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Estado;
         private DevExpress.XtraEditors.MemoEdit txtComentario;
         private DevExpress.XtraEditors.ComboBoxEdit cboEstado;
+        private System.Windows.Forms.ToolStripButton MenuCopiar;
 
 
 

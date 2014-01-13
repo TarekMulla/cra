@@ -228,21 +228,21 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             MenuVer.Enabled = false;
             MenuComenzar.Enabled = false;
             
-            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2)
+            if (asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2)
             {                
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;
                 MenuComenzar.Text = "En Proceso";
             }
 
-            if(asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2)
+            if(asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2)
             {
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;
                 MenuComenzar.Text = "En Proceso";
             }
 
-            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado)
+            if (asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado)
             {
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;

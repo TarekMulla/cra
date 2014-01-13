@@ -76,13 +76,17 @@
     <Compile Include="Cotizaciones\Directa\Concepto.cs" />
     <Compile Include="Cotizaciones\Directa\CotizacionDirecta.cs" />
     <Compile Include="Cotizaciones\Directa\DetalleOpcion.cs" />
-    <Compile Include="Cotizaciones\Directa\Estado.cs" />
+    <Compile Include="Cotizaciones\Estado.cs" />
     <Compile Include="Cotizaciones\Directa\Moneda.cs" />
     <Compile Include="Cotizaciones\Directa\Opcion.cs" />
-    <Compile Include="Cotizaciones\Directa\Puerto.cs" />
-    <Compile Include="Cotizaciones\Directa\TiposServicios.cs" />
-    <Compile Include="Cotizaciones\Directa\TiposVia.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaOpcion.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaOpcionDetalle.cs" />
+    <Compile Include="Cotizaciones\Puerto.cs" />
     <Compile Include="Cotizaciones\Directa\Unidad.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirecta.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaDetalle.cs" />
+    <Compile Include="Cotizaciones\Indirecta\TipoTransbordo.cs" />
+    <Compile Include="Cotizaciones\Indirecta\CotizacionIndirectaItem.cs" />
     <Compile Include="Cotizaciones\ITableable.cs" />
     <Compile Include="Cotizaciones\ITableableOpcion.cs" />
     <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
@@ -93,7 +97,6 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Integracion\Integracion.cs" />
     <Compile Include="Integracion\PaperlessIntegracionNetShipLog.cs" />
-    <Compile Include="Integracion\PaperlessTipoErrorLog.cs" />
     <Compile Include="Log\LogActividadUsuarios.cs" />
     <Compile Include="GlobalObject\ResultadoTransaccion.cs" />
     <Compile Include="GlobalObject\IdentifiableObject.cs" />
@@ -104,9 +107,6 @@
     <Compile Include="GlobalObject\NamedObject.cs" />
     <Compile Include="Clientes\Target\clsEmpresaCompetencia.cs" />
     <Compile Include="Log\LogPerformance.cs" />
-    <Compile Include="Paperless\PaperlessAgenteCausador.cs" />
-    <Compile Include="Paperless\PaperlessCantUsuarios.cs" />
-    <Compile Include="Paperless\PaperlessExcepcionMaster.cs" />
     <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
     <Compile Include="Paperless\PaperlessAgente.cs" />
     <Compile Include="Paperless\PaperlessAsignacion.cs" />
@@ -131,7 +131,6 @@
     <Compile Include="Paperless\PaperlessUsuario1HousesBL.cs" />
     <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />
     <Compile Include="Paperless\PaperlessTipoTransito.cs" />
-    <Compile Include="Cotizaciones\Directa\Agente.cs" />
     <Compile Include="Parametros\clsCiudad.cs" />
     <Compile Include="Parametros\clsComuna.cs" />
     <Compile Include="Parametros\clsIncoTerm.cs" />

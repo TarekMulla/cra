@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting.Native;
 using ProyectoCraft.AccesoDatos.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
@@ -13,7 +14,7 @@ using SCCMultimodal.Utils;
 
 
 namespace SCCMultimodal.Cotizaciones {
-    public partial class FrmPrintPreviewCotizacoines : DevExpress.XtraEditors.XtraForm {
+    public partial class FrmPrintPreviewCotizacoines : Form {
         public static List<ITableable> ListCotizaciones { set; get; }
         public FrmPrintPreviewCotizacoines(List<ITableable> listCotizaciones) {
             ListCotizaciones = listCotizaciones;
@@ -56,8 +57,10 @@ namespace SCCMultimodal.Cotizaciones {
 
                 var listPath = new List<String> { mailObject.GeneratePdfFromHtml(htmlPDF, cotizacionDirecta.Numero) };
 
+
                 mailObject.EnviarMailCotizacionDirecta(subject, htmlBody, listPath);
-                ClsCotizacionDirectaEstadoDao.CambioEstado(cotizacionDirecta.Id32, 4);
+                ClsCotizacionDirecta.CambioEstado(cotizacionDirecta, 4, ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario);
+                //ClsCotizacionDirectaEstadoDao.CambioEstado(cotizacionDirecta.Id32, 4);
             }
             Instancia = null;
             Close();

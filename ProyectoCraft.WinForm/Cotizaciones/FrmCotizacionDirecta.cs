@@ -4,14 +4,11 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Grid;
 using ProyectoCraft.Entidades.Clientes;
+using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Enums;
-using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.LogicaNegocios.Clientes;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
@@ -29,29 +26,12 @@ namespace SCCMultimodal.Cotizaciones {
         private List<Concepto> _conceptos = new List<Concepto>();
         private List<Unidad> _unidades = new List<Unidad>();
         public CotizacionDirecta CotizacionDirecta = new CotizacionDirecta();
-        private List<TiposServicio> _tiposServicios;
-        private List<TiposVia> _tiposVias;
 
         public String mode = "Nueva";
 
         private void AddDataBindings() {
             bindingSource1.DataSource = CotizacionDirecta.Opciones;
-            CboNaviera.DataBindings.Clear();
-            cboServicio.DataBindings.Clear();
-            cboVia.DataBindings.Clear();
-            TxtTiempoTransito.DataBindings.Clear();
-            txtFechaValidezIni.DataBindings.Clear();
-            txtFechaValidezIni.DataBindings.Clear();
-            txtFechaValidezIni.DataBindings.Clear();
-            txtFechaValidezFin.DataBindings.Clear();
-            txtFechaValidezFin.DataBindings.Clear();
-            txtFechaValidezFin.DataBindings.Clear();
-            GridOpcionDetalle.DataBindings.Clear();
-
             CboNaviera.DataBindings.Add("SelectedItem", bindingSource1, "Naviera");
-            cboServicio.DataBindings.Add("SelectedItem", bindingSource1, "TiposServicio");
-            cboVia.DataBindings.Add("SelectedItem", bindingSource1, "TipoVia");
-
             TxtTiempoTransito.DataBindings.Add("Text", bindingSource1, "TiempoTransito");
 
             txtFechaValidezIni.DataBindings.Add("Text", bindingSource1, "FechaValidezInicio");
@@ -68,40 +48,15 @@ namespace SCCMultimodal.Cotizaciones {
 
 
         public void BeginForm() {
-
-            CboNaviera.Properties.AutoComplete = true;
-
-            /*_clientes = clsClientesMaster.ListarClienteMaster
+            _clientes = clsClientesMaster.ListarClienteMaster
                             (String.Empty, Enums.TipoPersona.Comercial, Enums.Estado.Todos, true) as
-                        List<clsClienteMaster>;*/
-
-            _clientes = clsClientesMaster.ListarCuentasYTarget(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32);
-            /*var target = ProyectoCraft.LogicaNegocios.Direccion.Metas.clsMetaNegocio.ListarProspectosUsuarioEstado(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, "1,2,3,4,5,6,7,8,9").ObjetoTransaccion as  IList<clsMeta>;
-            var cuentas = clsCuentas.ListarCuentas("-1", ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, -1, -1);
-            
-
-            foreach (var c in cuentas){
-                c.ClienteMaster.Tipo = Enums.TipoPersona.Cuenta;
-                _clientes.Add(c.ClienteMaster);
-            }
-
-            foreach (var t in target) {
-                t.ObjClienteMaster.Tipo = Enums.TipoPersona.Target;
-                _clientes.Add(t.ObjClienteMaster);
-            }
-*/
-            _clientes.Sort((foo, bar) => foo.ToString().CompareTo(bar.ToString()));
-
-            //_targets = (List<clsTarget>)ProyectoCraft.LogicaNegocios.Clientes.clsTarget.ListarTarget(String.Empty, 0, 0);
+                        List<clsClienteMaster>;
+            _targets = (List<clsTarget>)ProyectoCraft.LogicaNegocios.Clientes.clsTarget.ListarTarget(String.Empty, 0, 0);
             _monedas = ClsMonedas.ObtieneTodasLasMonedas().ObjetoTransaccion as List<Moneda>;
             _navieras = (List<ClsNaviera>)ClsNavieras.ListarNavieras(true);
             _conceptos = ClsConceptos.ObtieneTodosLosConceptos().ObjetoTransaccion as List<Concepto>;
             _unidades = ClsUnidad.ObtieneTodasLasUnidades().ObjetoTransaccion as List<Unidad>;
-            _tiposServicios = ClsTipoServicio.ObtieneTiposServicios().ObjetoTransaccion as List<TiposServicio>;
 
-            _tiposVias = ClsTipoVia.ObtieneTiposVias().ObjetoTransaccion as List<TiposVia>;
-            _tiposVias.Add(new TiposVia { Nombre = "" });
-            _tiposVias.Sort((foo, bar) => foo.ToString().CompareTo(bar.ToString()));
 
             CboCliente.Properties.Items.Clear();
             foreach (var c in _clientes)
@@ -127,17 +82,6 @@ namespace SCCMultimodal.Cotizaciones {
                 foreach (var m in _monedas)
                     repositoryItemComboBox2.Items.Add(m);
 
-            cboServicio.Properties.Items.Clear();
-
-            cboServicio.Properties.Items.Add(new TiposServicio());
-
-            foreach (var s in _tiposServicios)
-                cboServicio.Properties.Items.Add(s);
-
-            cboVia.Properties.Items.Clear();
-            foreach (var v in _tiposVias)
-                cboVia.Properties.Items.Add(v);
-
 
             if (mode == "Nueva")
                 NuevaCotizacion();
@@ -148,10 +92,19 @@ namespace SCCMultimodal.Cotizaciones {
 
             if ((CotizacionDirecta.Opciones != null && CotizacionDirecta.Opciones.Count > 0))
                 Cargaopcion(CotizacionDirecta.Opciones[0]);
+
         }
 
         private void CargarCotizacionDirecta() {
-            CotizacionDirecta = ClsCotizacionDirecta.ObtieneCotizacionDirecta(CotizacionDirecta.Id32).ObjetoTransaccion as CotizacionDirecta;
+            if (mode != "borrador") {
+                CotizacionDirecta = ClsCotizacionDirecta.ObtieneCotizacionDirecta(CotizacionDirecta.Id32).ObjetoTransaccion as
+                    CotizacionDirecta;
+                Text = "Ingreso de Solicitud de Tarifa";
+            } else {
+                Text = "Copia de Solicitud de Tarifa";
+                LblEstado.Visible = labelControl11.Visible = false;
+            }
+
             txtEjecutivo.Text = CotizacionDirecta.Usuario.NombreCompleto;
             TxtFecha.DateTime = CotizacionDirecta.FechaSolicitud;
             CboCliente.SelectedItem = CotizacionDirecta.Cliente;
@@ -305,9 +258,7 @@ namespace SCCMultimodal.Cotizaciones {
 
             GridOpcionDetalle.DataSource = list;
             GridOpcionDetalle.RefreshDataSource();
-
         }
-
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e) {
             var op = bindingNavigator1.BindingSource.Current as Opcion;
@@ -325,9 +276,6 @@ namespace SCCMultimodal.Cotizaciones {
             if (!CboNaviera.Enabled)
                 ActivarDesactivarDetalle(true);
             CboNaviera.SelectedIndex = 0;
-
-            cboServicio.SelectedIndex = 0;
-            cboVia.SelectedIndex = 0;
 
         }
 
@@ -369,10 +317,6 @@ namespace SCCMultimodal.Cotizaciones {
             ListPol.Enabled = ListPolSeleccionado.Enabled = enabled;
             CboNaviera.SelectedIndex = 0;
             CboNaviera.Enabled = enabled;
-            cboServicio.SelectedIndex = 0;
-            cboServicio.Enabled = enabled;
-            cboVia.SelectedIndex = 0;
-            cboVia.Enabled = enabled;
             txtFechaValidezIni.Enabled = txtFechaValidezFin.Enabled = enabled;
             gridView1.OptionsBehavior.Editable = enabled;
             EliminarDetalle.Enabled = AgregarDetalle.Enabled = enabled;
@@ -397,12 +341,12 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void ActualizarCotizacion() {
             var resultado = ClsCotizacionDirecta.Modificar(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(resultado.Descripcion);
         }
 
         private void CrearCotizacion() {
             var resultado = ClsCotizacionDirecta.Crear(CotizacionDirecta);
-            MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(resultado.Descripcion);
         }
 
         private void CargaDatosDelFormulario() {
@@ -410,9 +354,7 @@ namespace SCCMultimodal.Cotizaciones {
 
             var xmldoc = new XmlDocument();
             xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-            //CotizacionDirecta.ObservacionesFijas = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
-            CotizacionDirecta.ObservacionesFijas =
-                clsParametros.ListarParametrosPorTipo(Enums.TipoParametro.CotizacionDirectaObsertvacionFija).Items[0].Nombre;
+            CotizacionDirecta.ObservacionesFijas = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/observacionFija").InnerText;
 
             var list = (List<clsIncoTerm>)clsParametrosClientes.ListarIncoTerms(true);
             var incoTerm = list.Find(foo => foo.Codigo.ToUpper().Equals("FOB"));
@@ -463,18 +405,6 @@ namespace SCCMultimodal.Cotizaciones {
                     ctrldxError.SetError(CboNaviera, "Debe ingresar una naviera", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
-                if (o.TiposServicio == null || o.TiposServicio.Id32 == 0 ) {
-                    ctrldxError.SetError(cboServicio, "Debe ingresar el tipo de servicio", ErrorType.Critical);
-                    encontroErrorOpcion = true;
-                }
-
-
-
-                if ((o.TiposServicio != null && o.TiposServicio.Id32 == 2) && (o.TipoVia == null || o.TipoVia.Id32 == 0)) {
-                    ctrldxError.SetError(cboVia, "Debe ingresar un valor para Via", ErrorType.Critical);
-                    encontroErrorOpcion = true;
-                }
-
                 if (o.Pol.Count == 0) {
                     ctrldxError.SetError(ListPolSeleccionado, "Debe seleccionar al menos un POL", ErrorType.Critical);
                     errorTexto += "Debe seleccionar al menos un POL" + Environment.NewLine;
@@ -483,7 +413,7 @@ namespace SCCMultimodal.Cotizaciones {
 
                 if (o.Pod.Count == 0) {
                     ctrldxError.SetError(ListPod, "Debe seleccionar al menos un POD", ErrorType.Critical);
-                    errorTexto += "Debe seleccionar al menos un POD" + Environment.NewLine;
+                    errorTexto += "Debe seleccionar al menos un Pod" + Environment.NewLine;
                     encontroErrorOpcion = true;
                 }
 
@@ -512,65 +442,15 @@ namespace SCCMultimodal.Cotizaciones {
                     encontroErrorOpcion = true;
                 }
 
-
-
-                var errorCotizacion = false;
-                GridView view = gridView1 as GridView;
-                for (int j = 0; j < view.RowCount; j++) {
-                    var row = view.GetDataRow(j);
-
-                    foreach (GridColumn column in view.Columns) {
-
-                        var foo = view.GetRowCellValue(j, column) as IIdentifiableObject;
-                        if (foo != null && foo.Id32 == 0) {
-                            errorCotizacion = true;
-                            encontroErrorOpcion = true;
-                        }
-
-
-                    }
-                }
-
-                if (errorCotizacion)
-                    errorTexto += "Debe ingresar todo el detalle de la cotización" + Environment.NewLine;
-
                 if (!String.IsNullOrEmpty(errorTexto))
                     MessageBox.Show("Se han encontrado los siguientes problemas: " + Environment.NewLine + errorTexto,
-                                     "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    "validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (encontroErrorOpcion)
                     return true;
                 bindingNavigator1.BindingSource.MoveNext();
             }
             return ctrldxError.HasErrors;
-        }
-
-        private void CboNaviera_KeyPress(object sender, KeyPressEventArgs e) {
-            var foo = "bar";
-        }
-
-        private void cboServicio_KeyPress(object sender, KeyPressEventArgs e) {
-            var foo = "bar";
-        }
-
-        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
-            /*  var valid = true;
-              GridView view = sender as GridView;
-              foreach (GridColumn column in view.Columns) {
-                  var foo = view.GetRowCellValue(e.RowHandle, column) as IIdentifiableObject;
-                  if (foo != null && foo.Id32 == 0) {
-                      valid = false;
-                      view.SetColumnError(column, "Debe ingresar un valor");
-                  }
-              }
-
-              e.Valid = valid;*/
-        }
-
-        private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e) {
-            /*    //Suppress displaying the error message box
-                e.ExceptionMode = ExceptionMode.NoAction;
-            */
         }
     }
 }

@@ -34,11 +34,5 @@ namespace ProyectoCraft.Entidades.Paperless
         public PaperlessTipoResponsabilidad Responsabilidad { get; set; }
 
         public String Comentario { get; set; }
-        public bool Resuelto { get; set; }
-        public bool ResueltoUser2 { get; set; }
-        public Int64 IdUsuarioUltimaModificacion { get; set; }
-        public PaperlessAgenteCausador Causador { get; set; }
-        public Int32 UsuarioCreador { get; set; }
-        
     }
 }

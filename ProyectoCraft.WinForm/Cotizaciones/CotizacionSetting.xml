@@ -1,40 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <setting>
   <cotizacionDirecta>
-    <notificaciones>
-      <FCL>vhspiceros@gmail.com;victor.saavedra@ultranav.cl;vsaavedra@ultramar.cl;</FCL>
-    </notificaciones>
     <observacionFija>* Sujeto a aceptación de espacio y disponibilidad de equipo por parte de naviera.
-* Carga IMO sujeto a aceptación de la naviera.
-* Carga + unidad no debe sobrepasar peso máximo en origen.-
-* Tiempo de carguío EXW no debe exceder 2 Hrs.
-* Tarifa sujeta a recargos por sobrepeso.
-* No cubre eventual intervención por aduana.
-* Tarifa Sujeta a posibles reajustes de GRI/GRR/Bunker.
+      * Carga IMO sujeto a aceptación de la naviera.
+      * Carga + unidad no debe sobrepasar peso máximo en origen.-
+      * Tiempo de carguío EXW no debe exceder 2 Hrs.
+      * Tarifa sujeta a recargos por sobrepeso.
+      * No cubre eventual intervención por aduana.
+      * Tarifa Sujeta a posibles reajustes de GRI/GRR/Bunker.
     </observacionFija>
     <subjectMail>ACTUALIZACION DE TARIFAS // DESDE ASIA  VIA  CRAFT MULTIMODAL // [nombreCliente]</subjectMail>
-    <comentarios>
-      <subject>Nuevo comentario Cotizacion [numero]</subject>
-      <body>Estimado(a):
-        
-[usuario] ha ingresado el siguiente comentario:
-            
-[comentario]
-            
-Atte.
-      </body>
-    </comentarios>
-    <cambiosDeEstado>
-      <subject>Cambio de estado Cotizacion [numero]</subject>
-      <body>Estimado(a):
-
-[usuario] ha cambiado la solicitud a [estado],ingresando el siguiente comentario:
-
-[comentario]
-
-Atte.
-      </body>
-    </cambiosDeEstado>
-    
   </cotizacionDirecta>
+  <cotizacionIndirecta>
+    <notificaciones>
+      <destinatarios>
+        <destinatario>vhspiceros@gmail.com</destinatario>
+      </destinatarios>
+      <template>
+        <ingreso subject="Se ha ingresado una nueva Cotizacion">
+          Estimados: 
+                  
+                  Se ha Ingresado la siguiente cotizacion [NumeroCotizacion]
+        </ingreso>
+
+        <aceptado subject="Se ha Aceptado una Cotizacion">
+          Estimados:
+
+          El usuario [Usuario] ha Aceptado la cotizacion [NumeroCotizacion]
+        </aceptado>
+        <ingresoTarifa subject="Se ha ingresado una nueva Tarifa">
+          Estimados:
+
+          Se ha ingresado la tarifa [NumeroTarifa] para la cotizacion [NumeroCotizacion]
+
+        </ingresoTarifa>
+        
+      </template>
+    </notificaciones>
+  </cotizacionIndirecta>
 </setting>

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
+using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.GlobalObject;
 

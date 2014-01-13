@@ -92,5 +92,9 @@ namespace ProyectoCraft.LogicaNegocios.Usuarios
         public static ResultadoTransaccion ObtenerPerfilesUsuarios(int idUsuario) {
             return AccesoDatos.Usuarios.clsUsuarioADO.ObtenerPerfilesUsuarios(idUsuario);
         }
+
+        public static ResultadoTransaccion ObtieneUsuariosDeUnPerfil(Int32 idPerfil){
+            return AccesoDatos.Usuarios.clsUsuarioADO.ObtieneUsuariosDeUnPerfil(idPerfil);
+        }
     }
 }

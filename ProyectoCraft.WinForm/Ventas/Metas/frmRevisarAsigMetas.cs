@@ -667,25 +667,5 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                 form.ShowDialog();
             }
         }
-
-        private void gridViewProspectos_ColumnFilterChanged(object sender, EventArgs e)
-        {
-            int fila_sel = 0;
-
-            if (gridViewProspectos.RowCount > 0)
-            {
-                fila_sel = gridViewProspectos.GetSelectedRows()[0];
-                if (fila_sel >= 0)
-                {
-                    ObjProspecto = (clsMeta)gridViewProspectos.GetRow(fila_sel);
-                    CargarGrillaObservaciones(ObjProspecto.Id);
-                }
-            }
-        }
-
-        private void frmRevisarAsigMetas_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Instancia = null;
-        }
     }
 }

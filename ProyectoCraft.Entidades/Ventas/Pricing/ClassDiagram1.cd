@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacion">
+    <Position X="7" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAIACAAAUAAACAAAAAEAAAQBAEAEAEECAJAAw=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Usuario" />
+      <Property Name="IncoTerm" />
+      <Property Name="TipoTransabordo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ComentariosHitoriales" />
+      <Property Name="DetalleSolicitud" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsTipoTransbordo">
+    <Position X="4" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionIndirecta">
+    <Position X="5.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAACAAQ=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Opciones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionDirecta">
+    <Position X="8.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Opciones" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionOpciones">
+    <Position X="14.5" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAIAAAAAEAAAEAAAAAAAAAAAAgAAAAACEJAgg=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionInDirectaOpciones">
+    <Position X="12.5" Y="13.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Detalle" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionDirectaOpciones">
+    <Position X="16.25" Y="13.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionOpcionesDetalle">
+    <Position X="14.75" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Moneda" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionDirectaOpcionesDetalle">
+    <Position X="12.5" Y="7.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionInDirectaOpcionesDetalle">
+    <Position X="16.5" Y="7.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionOpcionesItem">
+    <Position X="7.75" Y="15.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAAAAAADAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionDirectaOpcionesItem">
+    <Position X="9.5" Y="18.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsSolicitudCotizacionInDirectaOpcionesItem">
+    <Position X="5.5" Y="18.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsCometarioHistorial">
+    <Position X="10" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIABAAAAAUAAAAAAAAgAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsSolicitudCotizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsDetalleTarifa">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAAAAAADAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsDetalleTarifa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsMonedas">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsMonedas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsItem" Collapsed="true">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAEEAAAAQAAFAAAAAAAgANgAogYQAAI=</HashCode>
+      <FileName>Ventas\Pricing\ClsItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Usuarios.clsUsuario" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAICAAAAAEAAAAAABAAAFAAAABIIAACAAAAAg=</HashCode>
+      <FileName>Usuarios\clsUsuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Parametros.clsIncoTerm">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAEAAAAAAABAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Parametros\clsIncoTerm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoCraft.Entidades.Ventas.Pricing.ClsDetalleSolicitud">
+    <Position X="4" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ventas\Pricing\ClsDetalleSolicitud.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Item" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

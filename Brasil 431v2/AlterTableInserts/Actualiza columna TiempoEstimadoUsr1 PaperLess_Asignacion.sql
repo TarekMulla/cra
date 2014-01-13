@@ -1,0 +1,9 @@
+update PAPERLESS_ASIGNACION
+set TiempoEstimadoUsr1= ISNULL(PAPERLESS_PROCESOS_DURACION.duracion * PAPERLESS_ASIGNACION.NumHousesBL,0)
+from PAPERLESS_PROCESOS_DURACION
+where paperless_asignacion.IdTipoCarga = PAPERLESS_PROCESOS_DURACION.IdTipoCarga
+
+
+
+
+

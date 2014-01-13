@@ -1,0 +1,168 @@
+ERROR2012-06-22 09:32:29 – Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: Interfaces de red SQL, error: 26 - Error al buscar el servidor o instancia especificado)
+ERROR2013-03-21 02:13:46 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:13:54 – [pbeltran]No existe el procedimiento almacenado 'SP_L_Cotizacion_Cotizaciones'.
+ERROR2013-03-21 02:13:55 – [pbeltran]No existe el procedimiento almacenado 'SP_N_LOG_PERFORMANCE'.
+ERROR2013-03-21 02:17:54 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:18:04 – [pbeltran]No existe el procedimiento almacenado 'SP_N_LOG_PERFORMANCE'.
+ERROR2013-03-21 02:18:08 – [pbeltran]No existe el procedimiento almacenado 'SP_N_LOG_PERFORMANCE'.
+ERROR2013-03-21 02:20:19 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:24:52 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:25:45 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:33:38 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:33:44 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 02:35:40 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:35:46 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 02:52:50 – Iniciando la Aplicacion....
+ERROR2013-03-21 02:52:55 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 02:54:02 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:04:18 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:04:24 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:06:00 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:06:03 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:06:51 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:06:58 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:07:47 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:07:51 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:09:16 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:09:19 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:10:32 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:10:37 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:14:25 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:15:26 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:15:38 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 06:17:00 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:19:27 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:30:22 – Iniciando la Aplicacion....
+ERROR2013-03-21 06:40:41 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:06:48 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:06:53 – [pbeltran]TI_Descripcion
+ERROR2013-03-21 07:08:03 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:08:07 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 07:08:49 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:09:23 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:09:28 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 07:10:04 – [pbeltran]No se puede convertir un objeto DBNull en otros tipos.
+ERROR2013-03-21 07:14:16 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:16:34 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:18:15 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:20:01 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:21:08 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:22:58 – Iniciando la Aplicacion....
+ERROR2013-03-21 07:24:01 – Iniciando la Aplicacion....
+ERROR2013-04-12 10:16:15 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 10:17:34 – [Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: Interfaces de red SQL, error: 26 - Error al buscar el servidor o instancia especificado)]
+ERROR2013-04-12 10:18:04 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 10:19:17 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 10:20:55 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 10:58:38 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:19:43 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:32:00 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:49:06 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:51:54 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:54:26 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:58:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-12 11:58:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 12:00:15 – [Procedure or function 'SP_N_COTIZACION_SOLICITUD_COTIZACIONES' expects parameter '@comentrario', which was not supplied.]
+ERROR2013-04-13 12:06:14 – [Cannot insert the value NULL into column 'fechaEstimadaEmbarque', table 'scc.dbo.COTIZACION_SOLICITUD_COTIZACIONES'; column does not allow nulls. INSERT fails.
+The statement has been terminated.]
+ERROR2013-04-13 12:11:54 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 12:16:08 – [Cannot insert the value NULL into column 'COTIZACION_TIPOS_TRANSBORDOS_id', table 'scc.dbo.COTIZACION_SOLICITUD_COTIZACIONES'; column does not allow nulls. INSERT fails.
+The statement has been terminated.]
+ERROR2013-04-13 12:16:57 – [Cannot insert the value NULL into column 'COTIZACION_TIPOS_TRANSBORDOS_id', table 'scc.dbo.COTIZACION_SOLICITUD_COTIZACIONES'; column does not allow nulls. INSERT fails.
+The statement has been terminated.]
+ERROR2013-04-13 12:24:05 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 12:26:27 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:12:32 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:13:12 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:14:20 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:16:53 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:23:47 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:34:40 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 01:35:24 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:08:14 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 09:49:18 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 09:52:21 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:03:09 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:05:27 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:05:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:17:35 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:18:56 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:19:38 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:20:21 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:20:59 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:29:09 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:33:01 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:36:03 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:37:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:40:37 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:42:25 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 10:58:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:03:42 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:05:03 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:05:51 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:09:56 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:15:27 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:21:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 11:40:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:45:46 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:48:08 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:49:58 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:52:45 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:54:39 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:56:15 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 02:57:37 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:03:44 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:07:50 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:10:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:11:37 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:12:51 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 03:16:06 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 05:58:10 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:10:04 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:11:08 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:12:45 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:13:26 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:33:39 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:34:49 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:52:23 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 06:59:00 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:03:11 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:03:37 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:04:30 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:05:37 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:06:53 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:09:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:12:11 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:13:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:14:03 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:16:33 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:19:10 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:20:02 – [Iniciando la Aplicacion....]
+ERROR2013-04-13 07:23:30 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:40:15 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:45:17 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:49:35 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:53:35 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:53:44 – [Referencia a objeto no establecida como instancia de un objeto.]
+ERROR2013-04-14 11:55:39 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:56:24 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 11:57:41 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:07:39 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:09:06 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:09:53 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:10:40 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:13:48 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:15:46 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:17:49 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:19:21 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:20:19 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:22:45 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:23:46 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:30:35 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:32:22 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:32:40 – [IdIncoterms]
+ERROR2013-04-14 12:33:49 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:34:17 – [IdIncoterms]
+ERROR2013-04-14 12:34:51 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:40:09 – [Iniciando la Aplicacion....]
+ERROR2013-04-14 12:41:08 – [Iniciando la Aplicacion....]

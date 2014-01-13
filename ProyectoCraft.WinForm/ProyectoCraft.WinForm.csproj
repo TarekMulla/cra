@@ -38,7 +38,6 @@
     <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.CodeRush.Common, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeRush.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -47,10 +46,7 @@
       <HintPath>..\DLLs\DevExpress.Data.v9.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.Win.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.OfficeSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
-    <Reference Include="DevExpress.Persistent.Base.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\DevExpress.Utils.v9.1.dll</HintPath>
@@ -119,21 +115,14 @@
     <Reference Include="DevExpress.XtraVerticalGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="itextsharp, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp.pdfa, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.pdfa.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp.xtra, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.xtra.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.3.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLsRelease\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\DLLsRelease\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -296,24 +285,6 @@
     <Compile Include="Controles\EstadoPaperless.Designer.cs">
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cotizaciones\FrmCotizacionDirecta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmCotizacionDirecta.Designer.cs">
-      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmListarCotizaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmListarCotizaciones.designer.cs">
-      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.Designer.cs">
-      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
-    </Compile>
     <Compile Include="Direccion\Administracion\frmConsultarDEuda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,35 +357,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\frmAgentes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\frmAgentes.Designer.cs">
-      <DependentUpon>frmAgentes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Mantenedores\frmComunas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mantenedores\frmComunas.Designer.cs">
       <DependentUpon>frmComunas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\FrmCotizacionesDirectasParametros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\FrmCotizacionesDirectasParametros.Designer.cs">
-      <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
-    </Compile>
     <Compile Include="Mantenedores\frmNavieras.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mantenedores\frmNavieras.Designer.cs">
       <DependentUpon>frmNavieras.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\frmPuertos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\frmPuertos.Designer.cs">
-      <DependentUpon>frmPuertos.cs</DependentUpon>
     </Compile>
     <Compile Include="Panel de control\formDetailPanelDeControl.cs">
       <SubType>Form</SubType>
@@ -453,18 +406,6 @@
     <Compile Include="Paperless\Gestion\frmGestionPaperless.Designer.cs">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
     </Compile>
-    <Compile Include="Paperless\Gestion\frmGestionAsignaciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Paperless\Gestion\frmGestionAsignaciones.Designer.cs">
-      <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.Designer.cs">
-      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Paperless\Usuario1\frmListarUsuario1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -477,11 +418,11 @@
     <Compile Include="Paperless\Usuario1\frmPaperlessUser1.Designer.cs">
       <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.cs">
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.Designer.cs">
-      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.Designer.cs">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
     </Compile>
     <Compile Include="Paperless\Usuario1\frmRechazarAsignacion.cs">
       <SubType>Form</SubType>
@@ -591,25 +532,12 @@
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cotizaciones\FrmCotizacionDirecta.resx">
-      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cotizaciones\FrmListarCotizaciones.resx">
-      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cotizaciones\FrmPrintPreviewCotizacoines.resx">
-      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmConsultarDEuda.resx">
       <DependentUpon>frmConsultarDEuda.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmDefinirAgente.resx">
       <DependentUpon>frmDefinirAgente.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmDefinirLineaCredito.resx">
       <DependentUpon>frmDefinirLineaCredito.cs</DependentUpon>
@@ -621,27 +549,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmDefinirMeta.resx">
       <DependentUpon>frmDefinirMeta.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmDefinirSLead.resx">
       <DependentUpon>frmDefinirSLead.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmEditarSLead.resx">
       <DependentUpon>frmEditarSLead.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmGestionarMetas.resx">
       <DependentUpon>frmGestionarMetas.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmGestionarSLead.resx">
       <DependentUpon>frmGestionarSLead.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Metas\frmUsuarioProspecto.resx">
       <DependentUpon>frmUsuarioProspecto.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Escritorios\FoldersOutlook.resx">
       <DependentUpon>FoldersOutlook.cs</DependentUpon>
@@ -649,32 +571,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mantenedores\frmAgentes.resx">
-      <DependentUpon>frmAgentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mantenedores\FrmCotizacionesDirectasParametros.resx">
-      <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
       <DependentUpon>frmNavieras.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mantenedores\frmPuertos.resx">
-      <DependentUpon>frmPuertos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
       <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formPanelDeControl.resx">
       <DependentUpon>formPanelDeControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MDICraft.resx">
       <DependentUpon>MDICraft.cs</DependentUpon>
@@ -688,15 +596,8 @@
       <DependentUpon>frmPaperlessAsignacion.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Paperless\Gestion\frmGestionAsignaciones.resx">
-      <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperless.resx">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
-      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmListarUsuario1.resx">
@@ -707,8 +608,8 @@
       <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.resx">
-      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
+    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
       <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>
@@ -724,11 +625,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario2\frmPaperlessUser2v2.resx">
       <DependentUpon>frmPaperlessUser2v2.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\Actividades\EMail\FrmNuevoMail.resx">
@@ -783,6 +684,32 @@
       <DependentUpon>FrmOportunidad.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmListarCotizaciones.resx">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmCotizacionDirecta.resx">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmFichaTarifa.resx">
+      <DependentUpon>FrmFichaTarifa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmIngresarFeedBack.resx">
+      <DependentUpon>FrmIngresarFeedBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmIngresarTarifa.resx">
+      <DependentUpon>FrmIngresarTarifa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmListarTarifas.resx">
+      <DependentUpon>FrmListarTarifas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Pricing\FrmSolicitarTarifa.resx">
+      <DependentUpon>FrmSolicitarTarifa.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -892,15 +819,53 @@
     <Compile Include="Ventas\Oportunidades\FrmOportunidad.Designer.cs">
       <DependentUpon>FrmOportunidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\Pricing\FrmListarCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmListarCotizaciones.Designer.cs">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmCotizacionDirecta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmCotizacionDirecta.Designer.cs">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmFichaTarifa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmFichaTarifa.Designer.cs">
+      <DependentUpon>FrmFichaTarifa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmIngresarFeedBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmIngresarFeedBack.Designer.cs">
+      <DependentUpon>FrmIngresarFeedBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmIngresarTarifa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmIngresarTarifa.Designer.cs">
+      <DependentUpon>FrmIngresarTarifa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmListarTarifas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmListarTarifas.Designer.cs">
+      <DependentUpon>FrmListarTarifas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmSolicitarTarifa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Pricing\FrmSolicitarTarifa.Designer.cs">
+      <DependentUpon>FrmSolicitarTarifa.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProyectoCraft.AccesoDatos\ProyectoCraft.AccesoDatos.csproj">
-      <Project>{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}</Project>
-      <Name>ProyectoCraft.AccesoDatos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">
       <Project>{37053216-ACFD-4932-94EF-49F874307A2C}</Project>
       <Name>ProyectoCraft.Base</Name>
@@ -917,57 +882,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cotizaciones\CotizacionSetting.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cAravena.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cYanez.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\dOrtiz.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\general.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\iTorres.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\lriquelme.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\rLagos.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sFuenzalida.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sVeliz.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\image001.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\image002.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\ImagesCotizaciones\image003.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\TemplateCotizacionMailPDF.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Cotizaciones\TemplateCotizacionPreview.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="IconoCraft.ico" />
-    <Content Include="mailSalesLead\Cotizacion.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mailSalesLead\imagesCotizaciones\image001.png" />
-    <Content Include="mailSalesLead\imagesCotizaciones\image002.png" />
     <Content Include="mailSalesLead\templateAsignacion.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -989,110 +904,45 @@
     <Content Include="Panel de control\baseControl\termometro_vertical.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+    <Content Include="Panel de control\Controles\control1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\control1.xml">
+    <Content Include="Panel de control\Controles\control1_0.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\control1_0.xml">
+    <Content Include="Panel de control\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\GraficoPapperlessCargaUsuario1.xml">
+    <Content Include="Panel de control\Controles\SemaforosAceptados.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\Semaforo1dias.xml">
+    <Content Include="Panel de control\Controles\GraficoPapperlessCargaUsuario1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\Semaforo2dias.xml">
+    <Content Include="Panel de control\Controles\SemaforosProceso1Vencidos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\Semaforo5dias.xml">
+    <Content Include="Panel de control\Controles\SemaforosVencidos.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\Semaforo5diasCourier.xml">
+    <Content Include="Panel de control\Controles\Semaforo1dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\SemaforosAceptados.xml">
+    <Content Include="Panel de control\Controles\Semaforo2dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\SemaforosProceso1Vencidos.xml">
+    <Content Include="Panel de control\Controles\Semaforo5dias.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\SemaforosVencidos.xml">
+    <Content Include="Panel de control\Panel de control\PanelUsuario1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\panel1.xml">
+    <Content Include="Panel de control\Panel de control\panel1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\panel1_.xml">
+    <Content Include="Panel de control\Panel de control\PanelPaperLessindicadoresFase1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1_OLD.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2_old.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\control1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\control1_0.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\Semaforo5diasCourier.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\SemaforosAceptados.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\GraficoPapperlessCargaUsuario1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\SemaforosProceso1Vencidos.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\SemaforosVencidos.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\Semaforo1dias.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\Semaforo2dias.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Controles\Semaforo5dias.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Panel de control\panel1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Panel de control\PanelPaperLessindicadoresFase1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Resources\graficos 40px.png" />
-    <None Include="Resources\iconoPuerto.png" />
-    <None Include="Resources\puerto.png" />
-    <None Include="Resources\icono_taxi_recogidas_estaciones_puertos.gif" />
-    <None Include="Resources\Alta Prioridad.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -225,7 +225,6 @@
             this.gridViewProspectos.Name = "gridViewProspectos";
             this.gridViewProspectos.OptionsView.ShowGroupPanel = false;
             this.gridViewProspectos.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewProspectos_FocusedRowChanged);
-            this.gridViewProspectos.ColumnFilterChanged += new System.EventHandler(this.gridViewProspectos_ColumnFilterChanged);
             this.gridViewProspectos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewProspectos_RowStyle);
             // 
             // gridColumn3
@@ -862,7 +861,6 @@
             this.Name = "frmRevisarAsigMetas";
             this.Text = "Mis TARGETS";
             this.Load += new System.EventHandler(this.frmRevisarAsigMetas_Load);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRevisarAsigMetas_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gridProspectos)).EndInit();
             this.gridProspectos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMisProspectos)).EndInit();

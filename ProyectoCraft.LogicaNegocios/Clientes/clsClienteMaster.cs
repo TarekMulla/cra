@@ -25,27 +25,6 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
 
         }
 
-
-        public static List<clsClienteMaster> ListarCuentasYTarget(Int64 idVendedor){
-            var clientesMaster = new List<clsClienteMaster>();
-            var cuentas = clsCuentas.ListarCuentas("-1", Base.Usuario.UsuarioConectado.Usuario.Id32, -1, -1);
-            foreach (var c in cuentas){
-                c.ClienteMaster.Tipo = Enums.TipoPersona.Cuenta;
-                clientesMaster.Add(c.ClienteMaster);
-            }
-
-            var targets = ListarTarget(idVendedor);
-            clientesMaster.AddRange(targets);
-
-            return clientesMaster;
-        }
-
-        public static IList<clsClienteMaster> ListarTarget(Int64 idVendedor){
-
-            return clsClienteMasterADO.ListarTarget(idVendedor);
-            
-        }
-
         //public static IList<clsClienteMaster> ListarClientesMasterCF(string busqueda, Enums.TipoPersona tipo, Enums.Estado estado)
         //{
         //    if (busqueda == "") busqueda = "-1";
@@ -73,10 +52,6 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
         public static bool ValidarExisteRut(string rut, Enums.TipoPersona tipo)
         {
             return clsClienteMasterADO.ValidarExisteRut(rut, tipo);
-        }
-        public static clsClienteMaster ObtenerClienteMasterPorRut(String rut)
-        {
-            return clsClienteMasterADO.ObtenerClienteMasterPorRut(rut);
         }
 
         public static clsClienteMaster ObtenerClienteMasterPorId(Int64 IdCliente)

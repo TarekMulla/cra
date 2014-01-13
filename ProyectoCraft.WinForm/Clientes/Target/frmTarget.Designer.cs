@@ -2212,7 +2212,7 @@
             this.MenuEnviarCotizacion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEnviarCotizacion.Name = "MenuEnviarCotizacion";
             this.MenuEnviarCotizacion.Size = new System.Drawing.Size(102, 35);
-            this.MenuEnviarCotizacion.Text = "Enviar Cotizacion";
+            this.MenuEnviarCotizacion.Text = "Enviar solicitudCotizacionIndirecta";
             this.MenuEnviarCotizacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator6

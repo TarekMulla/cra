@@ -1,0 +1,1133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0357193D-671E-4E4F-BCE9-259E83F72977}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCCMultimodal</RootNamespace>
+    <AssemblyName>SCCMultimodal1.0</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>IconoCraft.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLLs\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\DLLsRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeRush.Common, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeRush.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\DevExpress.Data.v9.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Win.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Persistent.Base.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\DevExpress.Utils.v9.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\DevExpress.XtraBars.v9.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v9.1.UI, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v9.1.Win, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v9.1.Extensions, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v9.1.iCalendarExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v9.1.OutlookExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpellChecker.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpellChecker.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\itextsharp.xtra.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\DLLsRelease\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Design">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calendarios\CalendarioCompartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\CalendarioCompartido.Designer.cs">
+      <DependentUpon>CalendarioCompartido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmCalendario.Designer.cs">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmCalendarioCompartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmCalendarioCompartido.Designer.cs">
+      <DependentUpon>frmCalendarioCompartido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmComentarioVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmComentarioVisita.Designer.cs">
+      <DependentUpon>frmComentarioVisita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmConsultarVisitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmConsultarVisitas.Designer.cs">
+      <DependentUpon>frmConsultarVisitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmInformeVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmInformeVisita.Designer.cs">
+      <DependentUpon>frmInformeVisita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\frmListarComentarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\frmListarComentarios.Designer.cs">
+      <DependentUpon>frmListarComentarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Contacto\frmContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Contacto\frmContacto.Designer.cs">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Contacto\frmListarContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Contacto\frmListarContacto.Designer.cs">
+      <DependentUpon>frmListarContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmSleadFollowUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmSleadFollowUp.Designer.cs">
+      <DependentUpon>frmSleadFollowUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmTargetFollowUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmTargetFollowUp.Designer.cs">
+      <DependentUpon>frmTargetFollowUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Cuenta\frmCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Cuenta\frmCuenta.Designer.cs">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Cuenta\frmListarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Cuenta\frmListarCuenta.Designer.cs">
+      <DependentUpon>frmListarCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmClienteFollowUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmClienteFollowUp.Designer.cs">
+      <DependentUpon>frmClienteFollowUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\TargetAccount\frmTargetAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\TargetAccount\frmTargetAccount.Designer.cs">
+      <DependentUpon>frmTargetAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Target\frmDescalificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Target\frmDescalificar.Designer.cs">
+      <DependentUpon>frmDescalificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Target\frmListarTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Target\frmListarTarget.Designer.cs">
+      <DependentUpon>frmListarTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Target\frmTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Target\frmTarget.Designer.cs">
+      <DependentUpon>frmTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\MiCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\MiCalendario.Designer.cs">
+      <DependentUpon>MiCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\EstadoPaperless.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\EstadoPaperless.Designer.cs">
+      <DependentUpon>EstadoPaperless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.Designer.cs">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmListarCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmListarCotizaciones.designer.cs">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.Designer.cs">
+      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmConsultarDEuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmConsultarDEuda.Designer.cs">
+      <DependentUpon>frmConsultarDEuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmDefinirAgente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmDefinirAgente.designer.cs">
+      <DependentUpon>frmDefinirAgente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmDefinirLineaCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmDefinirLineaCredito.Designer.cs">
+      <DependentUpon>frmDefinirLineaCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmLineaCreditoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Administracion\frmLineaCreditoClientes.Designer.cs">
+      <DependentUpon>frmLineaCreditoClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmDefinirMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmDefinirMeta.designer.cs">
+      <DependentUpon>frmDefinirMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmDefinirSLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmDefinirSLead.designer.cs">
+      <DependentUpon>frmDefinirSLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmEditarSLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmEditarSLead.designer.cs">
+      <DependentUpon>frmEditarSLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmGestionarMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmGestionarMetas.designer.cs">
+      <DependentUpon>frmGestionarMetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmGestionarSLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmGestionarSLead.designer.cs">
+      <DependentUpon>frmGestionarSLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmUsuarioProspecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direccion\Metas\frmUsuarioProspecto.designer.cs">
+      <DependentUpon>frmUsuarioProspecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Escritorios\FoldersOutlook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Escritorios\FoldersOutlook.Designer.cs">
+      <DependentUpon>FoldersOutlook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmAgentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmAgentes.Designer.cs">
+      <DependentUpon>frmAgentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmComunas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmComunas.Designer.cs">
+      <DependentUpon>frmComunas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\FrmCotizacionesDirectasParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\FrmCotizacionesDirectasParametros.Designer.cs">
+      <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmNavieras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmNavieras.Designer.cs">
+      <DependentUpon>frmNavieras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\frmPuertos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\frmPuertos.Designer.cs">
+      <DependentUpon>frmPuertos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel de control\formDetailPanelDeControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panel de control\formDetailPanelDeControl.Designer.cs">
+      <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel de control\formPanelDeControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panel de control\formPanelDeControl.Designer.cs">
+      <DependentUpon>formPanelDeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDICraft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDICraft.Designer.cs">
+      <DependentUpon>MDICraft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel de control\PanelDecontrol.cs" />
+    <Compile Include="Paperless\Asignacion\frmListaAsignaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Asignacion\frmListaAsignaciones.Designer.cs">
+      <DependentUpon>frmListaAsignaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Asignacion\frmPaperlessAsignacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Asignacion\frmPaperlessAsignacion.Designer.cs">
+      <DependentUpon>frmPaperlessAsignacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionPaperless.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionPaperless.Designer.cs">
+      <DependentUpon>frmGestionPaperless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.Designer.cs">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmListarUsuario1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmListarUsuario1.Designer.cs">
+      <DependentUpon>frmListarUsuario1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmPaperlessUser1.Designer.cs">
+      <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.Designer.cs">
+      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmRechazarAsignacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\frmRechazarAsignacion.Designer.cs">
+      <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario1\IfrmPaperlessUser1.cs" />
+    <Compile Include="Paperless\Usuario2\frmListarUsuario2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\frmListarUsuario2.Designer.cs">
+      <DependentUpon>frmListarUsuario2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\frmPaperlessUser2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\frmPaperlessUser2.Designer.cs">
+      <DependentUpon>frmPaperlessUser2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\frmPaperlessUser2v2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\frmPaperlessUser2v2.Designer.cs">
+      <DependentUpon>frmPaperlessUser2v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paperless\Usuario2\IfrmPaperlessUser2.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Calendarios\CalendarioCompartido.resx">
+      <DependentUpon>CalendarioCompartido.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmCalendario.resx">
+      <DependentUpon>frmCalendario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmCalendarioCompartido.resx">
+      <DependentUpon>frmCalendarioCompartido.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmComentarioVisita.resx">
+      <DependentUpon>frmComentarioVisita.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmConsultarVisitas.resx">
+      <DependentUpon>frmConsultarVisitas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmInformeVisita.resx">
+      <DependentUpon>frmInformeVisita.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\frmListarComentarios.resx">
+      <DependentUpon>frmListarComentarios.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Contacto\frmContacto.resx">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Contacto\frmListarContacto.resx">
+      <DependentUpon>frmListarContacto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmSleadFollowUp.resx">
+      <DependentUpon>frmSleadFollowUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmTargetFollowUp.resx">
+      <DependentUpon>frmTargetFollowUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Cuenta\frmCuenta.resx">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Cuenta\frmListarCuenta.resx">
+      <DependentUpon>frmListarCuenta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmClienteFollowUp.resx">
+      <DependentUpon>frmClienteFollowUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\TargetAccount\frmTargetAccount.resx">
+      <DependentUpon>frmTargetAccount.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Target\frmDescalificar.resx">
+      <DependentUpon>frmDescalificar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Target\frmListarTarget.resx">
+      <DependentUpon>frmListarTarget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Target\frmTarget.resx">
+      <DependentUpon>frmTarget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\MiCalendario.resx">
+      <DependentUpon>MiCalendario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\EstadoPaperless.resx">
+      <DependentUpon>EstadoPaperless.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmCotizacionDirecta.resx">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmListarCotizaciones.resx">
+      <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmPrintPreviewCotizacoines.resx">
+      <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Administracion\frmConsultarDEuda.resx">
+      <DependentUpon>frmConsultarDEuda.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Administracion\frmDefinirAgente.resx">
+      <DependentUpon>frmDefinirAgente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Administracion\frmDefinirLineaCredito.resx">
+      <DependentUpon>frmDefinirLineaCredito.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Administracion\frmLineaCreditoClientes.resx">
+      <DependentUpon>frmLineaCreditoClientes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmDefinirMeta.resx">
+      <DependentUpon>frmDefinirMeta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmDefinirSLead.resx">
+      <DependentUpon>frmDefinirSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmEditarSLead.resx">
+      <DependentUpon>frmEditarSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmGestionarMetas.resx">
+      <DependentUpon>frmGestionarMetas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmGestionarSLead.resx">
+      <DependentUpon>frmGestionarSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Direccion\Metas\frmUsuarioProspecto.resx">
+      <DependentUpon>frmUsuarioProspecto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Escritorios\FoldersOutlook.resx">
+      <DependentUpon>FoldersOutlook.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmAgentes.resx">
+      <DependentUpon>frmAgentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmComunas.resx">
+      <DependentUpon>frmComunas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\FrmCotizacionesDirectasParametros.resx">
+      <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
+      <DependentUpon>frmNavieras.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenedores\frmPuertos.resx">
+      <DependentUpon>frmPuertos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
+      <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel de control\formPanelDeControl.resx">
+      <DependentUpon>formPanelDeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDICraft.resx">
+      <DependentUpon>MDICraft.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Asignacion\frmListaAsignaciones.resx">
+      <DependentUpon>frmListaAsignaciones.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Asignacion\frmPaperlessAsignacion.resx">
+      <DependentUpon>frmPaperlessAsignacion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperless.resx">
+      <DependentUpon>frmGestionPaperless.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
+      <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\frmListarUsuario1.resx">
+      <DependentUpon>frmListarUsuario1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1.resx">
+      <DependentUpon>frmPaperlessUser1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.resx">
+      <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
+      <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario2\frmListarUsuario2.resx">
+      <DependentUpon>frmListarUsuario2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario2\frmPaperlessUser2.resx">
+      <DependentUpon>frmPaperlessUser2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Usuario2\frmPaperlessUser2v2.resx">
+      <DependentUpon>frmPaperlessUser2v2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Actividades\EMail\FrmNuevoMail.resx">
+      <DependentUpon>FrmNuevoMail.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Actividades\EMail\FrmNuevoMailOtros.resx">
+      <DependentUpon>FrmNuevoMailOtros.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Actividades\Llamadas Telefonicas\FrmListarLlamadas.resx">
+      <DependentUpon>FrmListarLlamadas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Actividades\Llamadas Telefonicas\FrmLlamadaTelefonica.resx">
+      <DependentUpon>FrmLlamadaTelefonica.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Actividades\Visitas\frmVisita.resx">
+      <DependentUpon>frmVisita.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendarios\FrmNuevaVisita.resx">
+      <DependentUpon>FrmNuevaVisita.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmCancelarSalesLead.resx">
+      <DependentUpon>frmCancelarSalesLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmCerrarSLead.resx">
+      <DependentUpon>frmCerrarSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmRevisarAsigSLead.resx">
+      <DependentUpon>frmRevisarAsigSLead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmCancelarTarget.resx">
+      <DependentUpon>frmCancelarTarget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmCerrarTarget.resx">
+      <DependentUpon>frmCerrarTarget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Metas\frmRevisarAsigMetas.resx">
+      <DependentUpon>frmRevisarAsigMetas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Oportunidades\FrmOportunidad.resx">
+      <DependentUpon>FrmOportunidad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SCCDataSet1.xsc">
+      <DependentUpon>SCCDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SCCDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SCCDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SCCDataSet1.xss">
+      <DependentUpon>SCCDataSet1.xsd</DependentUpon>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SCCDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCCDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SCCVersion.cs" />
+    <Compile Include="Utils\EnvioEmail.cs" />
+    <Compile Include="Utils\EnvioMailObject.cs" />
+    <Compile Include="Utils\Outlook.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Ventas\Actividades\EMail\FrmNuevoMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Actividades\EMail\FrmNuevoMail.Designer.cs">
+      <DependentUpon>FrmNuevoMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Actividades\EMail\FrmNuevoMailOtros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Actividades\EMail\FrmNuevoMailOtros.Designer.cs">
+      <DependentUpon>FrmNuevoMailOtros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\FrmListarLlamadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\FrmListarLlamadas.Designer.cs">
+      <DependentUpon>FrmListarLlamadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\FrmLlamadaTelefonica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\FrmLlamadaTelefonica.Designer.cs">
+      <DependentUpon>FrmLlamadaTelefonica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Visitas\frmVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Actividades\Visitas\frmVisita.Designer.cs">
+      <DependentUpon>frmVisita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calendarios\FrmNuevaVisita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calendarios\FrmNuevaVisita.Designer.cs">
+      <DependentUpon>FrmNuevaVisita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCancelarSalesLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCancelarSalesLead.Designer.cs">
+      <DependentUpon>frmCancelarSalesLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCerrarSLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCerrarSLead.Designer.cs">
+      <DependentUpon>frmCerrarSLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmRevisarAsigSLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmRevisarAsigSLead.Designer.cs">
+      <DependentUpon>frmRevisarAsigSLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCancelarTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCancelarTarget.Designer.cs">
+      <DependentUpon>frmCancelarTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCerrarTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmCerrarTarget.Designer.cs">
+      <DependentUpon>frmCerrarTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmRevisarAsigMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Metas\frmRevisarAsigMetas.Designer.cs">
+      <DependentUpon>frmRevisarAsigMetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Oportunidades\FrmOportunidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Oportunidades\FrmOportunidad.Designer.cs">
+      <DependentUpon>FrmOportunidad.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProyectoCraft.AccesoDatos\ProyectoCraft.AccesoDatos.csproj">
+      <Project>{6DAB7D29-6F59-440B-BF8A-C1D1542B78D7}</Project>
+      <Name>ProyectoCraft.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">
+      <Project>{37053216-ACFD-4932-94EF-49F874307A2C}</Project>
+      <Name>ProyectoCraft.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoCraft.Entidades\ProyectoCraft.Entidades.csproj">
+      <Project>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</Project>
+      <Name>ProyectoCraft.Entidades</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoCraft.LogicaNegocios\ProyectoCraft.LogicaNegocios.csproj">
+      <Project>{C9EF9AB6-0F6C-47B3-B367-69AA455833B6}</Project>
+      <Name>ProyectoCraft.LogicaNegocios</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cotizaciones\CotizacionSetting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cAravena.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\cYanez.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\dOrtiz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\general.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\iTorres.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\lriquelme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\rLagos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sFuenzalida.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\firmas\sVeliz.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image001.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image002.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\ImagesCotizaciones\image003.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\TemplateCotizacionMailPDF.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cotizaciones\TemplateCotizacionPreview.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IconoCraft.ico" />
+    <Content Include="mailSalesLead\Cotizacion.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mailSalesLead\imagesCotizaciones\image001.png" />
+    <Content Include="mailSalesLead\imagesCotizaciones\image002.png" />
+    <Content Include="mailSalesLead\templateAsignacion.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mailSalesLead\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mailSalesLead\template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\baseControl\graficoBarra.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\baseControl\Semaforo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\baseControl\termometro_horizontal.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\baseControl\termometro_vertical.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\control1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\control1_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\GraficoPapperlessCargaUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\Semaforo1dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\Semaforo2dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\Semaforo5dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\Semaforo5diasCourier.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\SemaforosAceptados.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\SemaforosProceso1Vencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Controles\SemaforosVencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\panel1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\panel1_.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelPaperLessindicadoresFase1_OLD.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Brasil\Panel de control\PanelUsuario2_old.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\control1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\control1_0.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\AsignacionesSinFechaDePresentacionApertura.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo5diasCourier.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosAceptados.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\GraficoPapperlessCargaUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosProceso1Vencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\SemaforosVencidos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo1dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo2dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Controles\Semaforo5dias.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\panel1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelPaperLessindicadoresFase1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Panel de control\Chile\Panel de control\PanelUsuario2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\iconoPuerto.png" />
+    <None Include="Resources\puerto.png" />
+    <None Include="Resources\icono_taxi_recogidas_estaciones_puertos.gif" />
+    <None Include="Resources\Alta Prioridad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <Private>True</Private>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ventas\Actividades\Visita\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

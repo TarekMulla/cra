@@ -116,7 +116,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 39);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(842, 52);
+            this.toolStrip1.Size = new System.Drawing.Size(842, 54);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -125,7 +125,7 @@
             this.MenuNuevoTarget.Image = ((System.Drawing.Image)(resources.GetObject("MenuNuevoTarget.Image")));
             this.MenuNuevoTarget.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuNuevoTarget.Name = "MenuNuevoTarget";
-            this.MenuNuevoTarget.Size = new System.Drawing.Size(77, 49);
+            this.MenuNuevoTarget.Size = new System.Drawing.Size(83, 51);
             this.MenuNuevoTarget.Text = "Nuevo Target";
             this.MenuNuevoTarget.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuNuevoTarget.Click += new System.EventHandler(this.MenuNuevoTarget_Click);
@@ -135,7 +135,7 @@
             this.MenuVerDatos.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerDatos.Image")));
             this.MenuVerDatos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerDatos.Name = "MenuVerDatos";
-            this.MenuVerDatos.Size = new System.Drawing.Size(57, 49);
+            this.MenuVerDatos.Size = new System.Drawing.Size(60, 51);
             this.MenuVerDatos.Text = "Ver datos";
             this.MenuVerDatos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuVerDatos.Click += new System.EventHandler(this.MenuVerDatos_Click);
@@ -145,7 +145,7 @@
             this.MenuEliminar.Image = ((System.Drawing.Image)(resources.GetObject("MenuEliminar.Image")));
             this.MenuEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuEliminar.Name = "MenuEliminar";
-            this.MenuEliminar.Size = new System.Drawing.Size(82, 49);
+            this.MenuEliminar.Size = new System.Drawing.Size(91, 51);
             this.MenuEliminar.Text = "Eliminar Target";
             this.MenuEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click);
@@ -153,7 +153,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // MenuImprimir
             // 
@@ -161,21 +161,21 @@
             this.MenuImprimir.Image = ((System.Drawing.Image)(resources.GetObject("MenuImprimir.Image")));
             this.MenuImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuImprimir.Name = "MenuImprimir";
-            this.MenuImprimir.Size = new System.Drawing.Size(83, 49);
+            this.MenuImprimir.Size = new System.Drawing.Size(95, 51);
             this.MenuImprimir.Text = "Imprimir listado";
             this.MenuImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(36, 49);
+            this.MenuSalir.Size = new System.Drawing.Size(36, 51);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
@@ -305,7 +305,7 @@
             this.tableLayoutPanel1.Controls.Add(this.groupControl2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 91);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 93);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -318,9 +318,9 @@
             this.groupControl3.AppearanceCaption.Options.UseFont = true;
             this.groupControl3.Controls.Add(this.grdListaTarget);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(0, 200);
+            this.groupControl3.Location = new System.Drawing.Point(0, 202);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(842, 296);
+            this.groupControl3.Size = new System.Drawing.Size(842, 294);
             this.groupControl3.TabIndex = 5;
             this.groupControl3.Text = "Resultado de busqueda";
             // 
@@ -340,7 +340,7 @@
             this.grdListaTarget.Location = new System.Drawing.Point(2, 20);
             this.grdListaTarget.MainView = this.gridView1;
             this.grdListaTarget.Name = "grdListaTarget";
-            this.grdListaTarget.Size = new System.Drawing.Size(838, 274);
+            this.grdListaTarget.Size = new System.Drawing.Size(838, 272);
             this.grdListaTarget.TabIndex = 0;
             this.grdListaTarget.UseEmbeddedNavigator = true;
             this.grdListaTarget.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {

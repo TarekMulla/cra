@@ -1,0 +1,287 @@
+﻿<html>
+<head>
+    <style type="text/css">
+        body
+        {
+            font-family: Calibri;
+            font-size: 8px;
+            text-align: center;
+        }
+        table
+        {
+            /*width: 100%;*/
+            font-family: Calibri;
+            font-size: 13px;
+            text-align: center;
+        }
+        #principal
+        {
+            width: 600px;
+            text-align: center;
+        }
+        td
+        {
+            text-align: left;
+        }
+        .izq
+        {
+            width: 30%;
+            font-weight: bold;
+            vertical-align: top;
+        }
+        .bordebloque
+        {
+            border: 1px solid black;
+            width: 95%;
+            text-align: center;
+        }
+        .centro
+        {
+            text-align: center;
+        }
+        .fondoAzul
+        {
+            /* background-color: lightblue;*/
+            background-color: lightsteelblue;
+            text-align: center;
+        }
+        #tdConsideraciones
+        {
+            border-right-style: groove;
+            border-right-width: 1px;
+        }
+        #alternativas
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="principal">
+        <table>
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td>
+                                <img src="[baseUrl]imagesCotizaciones/image001.png" alt="Logo" />
+                            </td>
+                            <td style="width: 30%">
+                                <img src="[baseUrl]imagesCotizaciones/image002.png" alt="Logo" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td>
+                                <b>Santiago, [fecha]</b>
+                            </td>
+                            <td style="width: 40%">
+                                <b>N° Cotización:[numCotzacion] </b>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Estimado Cliente,<br />
+                    <br />
+                    Por medio de la presente, informamos a UD. nuestras tarifas actualizadas, las cuales
+                    esperamos<br />
+                    tengan una buena acogida.
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="centro">
+                    <table class="bordebloque">
+                        <tr>
+                            <td class="izq">
+                                Incoterm:
+                            </td>
+                            <td>
+                                [incoterm]
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="izq">
+                                Commodity:
+                            </td>
+                            <td>
+                                [commodity]
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="alternativas">
+                        <tr>
+                            <td class="centro">
+                                <table class="bordebloque centro">
+                                    <tr>
+                                        <td colspan="2" class="fondoAzul bordebloque centro ">
+                                            OPCION [numOpcion]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            Naviera
+                                        </td>
+                                        <td>
+                                            [naviera]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            POL
+                                        </td>
+                                        <td>
+                                            [pol]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            POD
+                                        </td>
+                                        <td>
+                                            [pod]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            Tiempo en transito
+                                        </td>
+                                        <td>
+                                            [TiempoTransito]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            Servicio
+                                        </td>
+                                        <td>
+                                            Directo
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            Validez
+                                        </td>
+                                        <td>
+                                            Desde el [validezIni] al [validezFin]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="izq">
+                                            Tarifa
+                                        </td>
+                                        <td>
+                                            <table width="80%" class="fondoAzul">
+                                                <tr>
+                                                    <td>
+                                                        <b>Unidad </b>
+                                                    </td>
+                                                    <td>
+                                                        <b>Moneda </b>
+                                                    </td>
+                                                    <td>
+                                                        <b>Tarifa </b>
+                                                    </td>
+                                                    <td>
+                                                        <b></b>
+                                                    </td>
+                                                </tr>
+                                                [detalle]
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="centro">
+                    <table class="bordebloque">
+                        <tr>
+                            <td class="izq">
+                                Gastos Locales:
+                            </td>
+                            <td>
+                                [gastosLocales]
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="centro">
+                    <table class="bordebloque">
+                        <tr>
+                            <td class="izq" id="tdConsideraciones">
+                                Considederaciones
+                            </td>
+                            <td>
+                                [observaciones]<br />
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="centro">
+                    <table class="bordebloque" bgcolor="#ffffff">
+                        <tr>
+                            <td class="izq" id="td1" valign="top">
+                                <b>Observaciones</b>
+                            </td>
+                            <td>
+                                [ObservacionesOpcionales]<br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                    <br />
+                    Quedamos atentos a sus requerimientos. Atentamente,
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="[baseUrl]imagesCotizaciones/firmas/[firma]" width="300px" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

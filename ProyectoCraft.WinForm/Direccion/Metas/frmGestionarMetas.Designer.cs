@@ -30,60 +30,60 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionarMetas));
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel5 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint22 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel1 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
             ((object)(18))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint23 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
             ((object)(12))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint24 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
             ((object)(9))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint25 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
             ((object)(15))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint26 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint5 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
             ((object)(21))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint27 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint6 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
             ((object)(8))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint28 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint7 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
             ((object)(13))});
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView5 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel6 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint29 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView1 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel2 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint8 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
             ((object)(8))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint30 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint9 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
             ((object)(5))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint31 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint10 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
             ((object)(8))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint32 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint11 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
             ((object)(12))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint33 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint12 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
             ((object)(23))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint34 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint13 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
             ((object)(6))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint35 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint14 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
             ((object)(9))});
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView6 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel7 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
-            DevExpress.XtraCharts.SeriesPoint seriesPoint36 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView2 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel3 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint15 = new DevExpress.XtraCharts.SeriesPoint("LR", new object[] {
             ((object)(4))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint37 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint16 = new DevExpress.XtraCharts.SeriesPoint("DS", new object[] {
             ((object)(1))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint38 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint17 = new DevExpress.XtraCharts.SeriesPoint("DO", new object[] {
             ((object)(2))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint39 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint18 = new DevExpress.XtraCharts.SeriesPoint("SMC", new object[] {
             ((object)(3))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint40 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint19 = new DevExpress.XtraCharts.SeriesPoint("CY", new object[] {
             ((object)(4))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint41 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint20 = new DevExpress.XtraCharts.SeriesPoint("SF", new object[] {
             ((object)(2))});
-            DevExpress.XtraCharts.SeriesPoint seriesPoint42 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
+            DevExpress.XtraCharts.SeriesPoint seriesPoint21 = new DevExpress.XtraCharts.SeriesPoint("JMW", new object[] {
             ((object)(3))});
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView7 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel8 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView8 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView3 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesLabel stackedBarSeriesLabel4 = new DevExpress.XtraCharts.StackedBarSeriesLabel();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView4 = new DevExpress.XtraCharts.StackedBarSeriesView();
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
             this.MenuNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -161,18 +161,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartProspectos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCommand1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateHasta.Properties.VistaTimeProperties)).BeginInit();
@@ -203,7 +203,7 @@
             this.MenuSalir});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(980, 36);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(980, 38);
             this.toolStripBarraLlamada.TabIndex = 7;
             this.toolStripBarraLlamada.Text = "toolStrip1";
             // 
@@ -212,7 +212,7 @@
             this.MenuNuevo.Image = ((System.Drawing.Image)(resources.GetObject("MenuNuevo.Image")));
             this.MenuNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuNuevo.Name = "MenuNuevo";
-            this.MenuNuevo.Size = new System.Drawing.Size(58, 33);
+            this.MenuNuevo.Size = new System.Drawing.Size(63, 35);
             this.MenuNuevo.Text = "Actualizar";
             this.MenuNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -222,14 +222,14 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuAsignar
             // 
             this.MenuAsignar.Image = ((System.Drawing.Image)(resources.GetObject("MenuAsignar.Image")));
             this.MenuAsignar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuAsignar.Name = "MenuAsignar";
-            this.MenuAsignar.Size = new System.Drawing.Size(47, 33);
+            this.MenuAsignar.Size = new System.Drawing.Size(51, 35);
             this.MenuAsignar.Text = "Asignar";
             this.MenuAsignar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuAsignar.Click += new System.EventHandler(this.MenuAsignar_Click);
@@ -239,7 +239,7 @@
             this.MenuReasignar.Image = ((System.Drawing.Image)(resources.GetObject("MenuReasignar.Image")));
             this.MenuReasignar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuReasignar.Name = "MenuReasignar";
-            this.MenuReasignar.Size = new System.Drawing.Size(60, 33);
+            this.MenuReasignar.Size = new System.Drawing.Size(64, 35);
             this.MenuReasignar.Text = "ReAsignar";
             this.MenuReasignar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuReasignar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -250,7 +250,7 @@
             this.MenuCancelar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCancelar.Image")));
             this.MenuCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuCancelar.Name = "MenuCancelar";
-            this.MenuCancelar.Size = new System.Drawing.Size(53, 33);
+            this.MenuCancelar.Size = new System.Drawing.Size(57, 35);
             this.MenuCancelar.Text = "Cancelar";
             this.MenuCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuCancelar.Click += new System.EventHandler(this.MenuCancelar_Click);
@@ -258,7 +258,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuTodasAsignaciones
             // 
@@ -267,7 +267,7 @@
             this.MenuTodasAsignaciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.MenuTodasAsignaciones.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuTodasAsignaciones.Name = "MenuTodasAsignaciones";
-            this.MenuTodasAsignaciones.Size = new System.Drawing.Size(59, 33);
+            this.MenuTodasAsignaciones.Size = new System.Drawing.Size(63, 35);
             this.MenuTodasAsignaciones.Text = "Ver Todas";
             this.MenuTodasAsignaciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuTodasAsignaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -278,7 +278,7 @@
             this.MenuActividades.Image = ((System.Drawing.Image)(resources.GetObject("MenuActividades.Image")));
             this.MenuActividades.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuActividades.Name = "MenuActividades";
-            this.MenuActividades.Size = new System.Drawing.Size(60, 33);
+            this.MenuActividades.Size = new System.Drawing.Size(64, 35);
             this.MenuActividades.Text = "Ver Visitas";
             this.MenuActividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -288,21 +288,21 @@
             this.MenuLlamadas.Image = ((System.Drawing.Image)(resources.GetObject("MenuLlamadas.Image")));
             this.MenuLlamadas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuLlamadas.Name = "MenuLlamadas";
-            this.MenuLlamadas.Size = new System.Drawing.Size(74, 33);
+            this.MenuLlamadas.Size = new System.Drawing.Size(81, 35);
             this.MenuLlamadas.Text = "Ver Llamadas";
             this.MenuLlamadas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuFichaTarget
             // 
             this.MenuFichaTarget.Image = ((System.Drawing.Image)(resources.GetObject("MenuFichaTarget.Image")));
             this.MenuFichaTarget.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFichaTarget.Name = "MenuFichaTarget";
-            this.MenuFichaTarget.Size = new System.Drawing.Size(71, 33);
+            this.MenuFichaTarget.Size = new System.Drawing.Size(76, 35);
             this.MenuFichaTarget.Text = "Ficha Target";
             this.MenuFichaTarget.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuFichaTarget.Click += new System.EventHandler(this.MenuFichaTarget_Click);
@@ -313,7 +313,7 @@
             this.MenuFollowUp.Image = ((System.Drawing.Image)(resources.GetObject("MenuFollowUp.Image")));
             this.MenuFollowUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuFollowUp.Name = "MenuFollowUp";
-            this.MenuFollowUp.Size = new System.Drawing.Size(54, 33);
+            this.MenuFollowUp.Size = new System.Drawing.Size(61, 35);
             this.MenuFollowUp.Text = "FollowUp";
             this.MenuFollowUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuFollowUp.Click += new System.EventHandler(this.MenuFollowUp_Click);
@@ -324,21 +324,21 @@
             this.MenuCuenta.Image = ((System.Drawing.Image)(resources.GetObject("MenuCuenta.Image")));
             this.MenuCuenta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuCuenta.Name = "MenuCuenta";
-            this.MenuCuenta.Size = new System.Drawing.Size(74, 33);
+            this.MenuCuenta.Size = new System.Drawing.Size(80, 35);
             this.MenuCuenta.Text = "Ficha Cuenta";
             this.MenuCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuExcel
             // 
             this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
             this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(36, 33);
+            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
             this.MenuExcel.Text = "Excel";
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
@@ -346,14 +346,14 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
@@ -410,7 +410,6 @@
             this.gridViewProspectos.Name = "gridViewProspectos";
             this.gridViewProspectos.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewProspectos_FocusedRowChanged);
             this.gridViewProspectos.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridViewProspectos_CustomDrawCell);
-            this.gridViewProspectos.ColumnFilterChanged += new System.EventHandler(this.gridViewProspectos_ColumnFilterChanged);
             this.gridViewProspectos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewProspectos_RowStyle);
             // 
             // gridColNumMeta
@@ -729,58 +728,58 @@
             // 
             this.ChartProspectos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.ChartProspectos.Diagram = xyDiagram2;
+            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.ChartProspectos.Diagram = xyDiagram1;
             this.ChartProspectos.Location = new System.Drawing.Point(5, 435);
             this.ChartProspectos.Name = "ChartProspectos";
-            stackedBarSeriesLabel5.OverlappingOptionsTypeName = "OverlappingOptions";
-            series4.Label = stackedBarSeriesLabel5;
-            series4.Name = "Propuesta";
-            series4.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint22,
-            seriesPoint23,
-            seriesPoint24,
-            seriesPoint25,
-            seriesPoint26,
-            seriesPoint27,
-            seriesPoint28});
-            series4.View = stackedBarSeriesView5;
-            stackedBarSeriesLabel6.OverlappingOptionsTypeName = "OverlappingOptions";
-            series5.Label = stackedBarSeriesLabel6;
-            series5.Name = "Asignada";
-            series5.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint29,
-            seriesPoint30,
-            seriesPoint31,
-            seriesPoint32,
-            seriesPoint33,
-            seriesPoint34,
-            seriesPoint35});
-            series5.View = stackedBarSeriesView6;
-            stackedBarSeriesLabel7.OverlappingOptionsTypeName = "OverlappingOptions";
-            series6.Label = stackedBarSeriesLabel7;
-            series6.Name = "Revisión";
-            series6.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
-            seriesPoint36,
-            seriesPoint37,
-            seriesPoint38,
-            seriesPoint39,
-            seriesPoint40,
-            seriesPoint41,
-            seriesPoint42});
-            series6.View = stackedBarSeriesView7;
+            stackedBarSeriesLabel1.OverlappingOptionsTypeName = "OverlappingOptions";
+            series1.Label = stackedBarSeriesLabel1;
+            series1.Name = "Propuesta";
+            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint1,
+            seriesPoint2,
+            seriesPoint3,
+            seriesPoint4,
+            seriesPoint5,
+            seriesPoint6,
+            seriesPoint7});
+            series1.View = stackedBarSeriesView1;
+            stackedBarSeriesLabel2.OverlappingOptionsTypeName = "OverlappingOptions";
+            series2.Label = stackedBarSeriesLabel2;
+            series2.Name = "Asignada";
+            series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint8,
+            seriesPoint9,
+            seriesPoint10,
+            seriesPoint11,
+            seriesPoint12,
+            seriesPoint13,
+            seriesPoint14});
+            series2.View = stackedBarSeriesView2;
+            stackedBarSeriesLabel3.OverlappingOptionsTypeName = "OverlappingOptions";
+            series3.Label = stackedBarSeriesLabel3;
+            series3.Name = "Revisión";
+            series3.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint15,
+            seriesPoint16,
+            seriesPoint17,
+            seriesPoint18,
+            seriesPoint19,
+            seriesPoint20,
+            seriesPoint21});
+            series3.View = stackedBarSeriesView3;
             this.ChartProspectos.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series4,
-        series5,
-        series6};
-            stackedBarSeriesLabel8.OverlappingOptionsTypeName = "OverlappingOptions";
-            this.ChartProspectos.SeriesTemplate.Label = stackedBarSeriesLabel8;
-            this.ChartProspectos.SeriesTemplate.View = stackedBarSeriesView8;
+        series1,
+        series2,
+        series3};
+            stackedBarSeriesLabel4.OverlappingOptionsTypeName = "OverlappingOptions";
+            this.ChartProspectos.SeriesTemplate.Label = stackedBarSeriesLabel4;
+            this.ChartProspectos.SeriesTemplate.View = stackedBarSeriesView4;
             this.ChartProspectos.Size = new System.Drawing.Size(479, 135);
             this.ChartProspectos.TabIndex = 69;
             // 
@@ -889,18 +888,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartProspectos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCommand1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();

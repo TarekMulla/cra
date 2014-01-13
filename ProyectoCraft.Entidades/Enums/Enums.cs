@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Reflection;
-
-namespace ProyectoCraft.Entidades.Enums {
+﻿namespace ProyectoCraft.Entidades.Enums {
     public class Enums {
         public enum TipoPersona {
             Todos = -1,
@@ -82,8 +75,6 @@ namespace ProyectoCraft.Entidades.Enums {
             PaperlessImportanciaUsuario1 = 29,
             Incoterms = 30,
             TipoCompentencia = 31,
-
-            CotizacionDirectaObsertvacionFija = 32,
             Any = 99
         }
 
@@ -315,17 +306,7 @@ namespace ProyectoCraft.Entidades.Enums {
             Cierre = 4,
             Perdida = 5,
         }
-        public enum EstadosCotizacion
-        {
-            Ingresado = 1,
-            EnProceso = 2,
-            TarifaDisponible = 3,
-            Enviadacliente = 4,
-            Reevaluacion = 5,
-            PerdidoTarifa = 6,
-            PerdidoOtros = 7,
-            Cerrado = 8,
-        }
+
 
     }
 }

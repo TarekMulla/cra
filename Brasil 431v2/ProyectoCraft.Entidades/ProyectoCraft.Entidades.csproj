@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoCraft.Entidades</RootNamespace>
+    <AssemblyName>ProyectoCraft.Entidades</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\DLLs\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\DLLsRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calendario\clsInformeComentario.cs" />
+    <Compile Include="Calendario\clsInformeRespuestaUsuario.cs" />
+    <Compile Include="Calendario\clsLogEmailVisita.cs" />
+    <Compile Include="Calendario\clsVisita.cs" />
+    <Compile Include="Calendario\clsVisitaAsistente.cs" />
+    <Compile Include="Calendario\clsVisitaEstado.cs" />
+    <Compile Include="Calendario\clsVisitaInforme.cs" />
+    <Compile Include="Calendario\clsVisitaInformeProductos.cs" />
+    <Compile Include="Calendario\clsVisitaInformeTrafico.cs" />
+    <Compile Include="Clientes\clsClienteFollowUp.cs" />
+    <Compile Include="Clientes\clsClienteMaster.cs" />
+    <Compile Include="Clientes\clsClientesProductos.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTargetAccount.cs" />
+    <Compile Include="Clientes\CondicionesComerciales\clsCondicionComercial.cs" />
+    <Compile Include="Clientes\CondicionesComerciales\clsTipoCondicionComercial.cs" />
+    <Compile Include="Clientes\Contacto\clsContacto.cs" />
+    <Compile Include="Clientes\Cuenta\clsCuenta.cs" />
+    <Compile Include="Clientes\Cuenta\clsCuentaclasificacion.cs" />
+    <Compile Include="Clientes\Direcciones\clsDireccion.cs" />
+    <Compile Include="Clientes\Direcciones\clsDireccionInfo.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTargetAccountCompetencia.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTargetAccountPersonales.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTargetAccountTomaDesiciones.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTipoAccionesTomar.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTipoObjeciones.cs" />
+    <Compile Include="Clientes\TargetAccount\clsTipoServicioComplementario.cs" />
+    <Compile Include="Clientes\Target\clsTarget.cs" />
+    <Compile Include="Cotizaciones\Comentario.cs" />
+    <Compile Include="Cotizaciones\Directa\Concepto.cs" />
+    <Compile Include="Cotizaciones\Directa\CotizacionDirecta.cs" />
+    <Compile Include="Cotizaciones\Directa\DetalleOpcion.cs" />
+    <Compile Include="Cotizaciones\Directa\Estado.cs" />
+    <Compile Include="Cotizaciones\Directa\Moneda.cs" />
+    <Compile Include="Cotizaciones\Directa\Opcion.cs" />
+    <Compile Include="Cotizaciones\Directa\Puerto.cs" />
+    <Compile Include="Cotizaciones\Directa\Unidad.cs" />
+    <Compile Include="Cotizaciones\ITableable.cs" />
+    <Compile Include="Cotizaciones\ITableableOpcion.cs" />
+    <Compile Include="Direccion\Administracion\clsControlCredito.cs" />
+    <Compile Include="Direccion\Metas\clsMeta.cs" />
+    <Compile Include="Direccion\Metas\SalesLaed.cs" />
+    <Compile Include="Emails\clsEmail.cs" />
+    <Compile Include="Emails\PlantillaEmail.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Integracion\Integracion.cs" />
+    <Compile Include="Integracion\PaperlessIntegracionNetShipLog.cs" />
+    <Compile Include="Integracion\PaperlessTipoErrorLog.cs" />
+    <Compile Include="Log\LogActividadUsuarios.cs" />
+    <Compile Include="GlobalObject\ResultadoTransaccion.cs" />
+    <Compile Include="GlobalObject\IdentifiableObject.cs" />
+    <Compile Include="GlobalObject\IIdentifiableObject.cs" />
+    <Compile Include="GlobalObject\INamedObject.cs" />
+    <Compile Include="GlobalObject\Item.cs" />
+    <Compile Include="GlobalObject\ItemCollection.cs" />
+    <Compile Include="GlobalObject\NamedObject.cs" />
+    <Compile Include="Clientes\Target\clsEmpresaCompetencia.cs" />
+    <Compile Include="Log\LogPerformance.cs" />
+    <Compile Include="Paperless\PaperlessCantUsuarios.cs" />
+    <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
+    <Compile Include="Paperless\PaperlessAgente.cs" />
+    <Compile Include="Paperless\PaperlessAsignacion.cs" />
+    <Compile Include="Paperless\PaperlessEstado.cs" />
+    <Compile Include="Paperless\PaperlessExcepcion.cs" />
+    <Compile Include="Paperless\PaperlessFlujo.cs" />
+    <Compile Include="Paperless\PaperlessLogAperturaNavieras.cs" />
+    <Compile Include="Paperless\PaperlessNave.cs" />
+    <Compile Include="Paperless\PaperlessNaviera.cs" />
+    <Compile Include="Paperless\PaperlessPasos.cs" />
+    <Compile Include="Paperless\PaperlessPasosEstado.cs" />
+    <Compile Include="Paperless\PaperlessProcesoDuracion.cs" />
+    <Compile Include="Paperless\PaperlessProcesoRegistroTiempo.cs" />
+    <Compile Include="Paperless\PaperlessTipoCarga.cs" />
+    <Compile Include="Paperless\PaperlessTipoCliente.cs" />
+    <Compile Include="Paperless\PaperlessTipoDisputa.cs" />
+    <Compile Include="Paperless\PaperlessTipoResponsabilidad.cs" />
+    <Compile Include="Paperless\PaperlessTipoServicio.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1Disputas.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1HouseBLInfo.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1HousesBL.cs" />
+    <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />
+    <Compile Include="Paperless\PaperlessTipoTransito.cs" />
+    <Compile Include="Parametros\clsCiudad.cs" />
+    <Compile Include="Parametros\clsComuna.cs" />
+    <Compile Include="Parametros\clsIncoTerm.cs" />
+    <Compile Include="Parametros\clsItemParametro.cs" />
+    <Compile Include="Clientes\Target\clsOrigenCarga.cs" />
+    <Compile Include="Parametros\clsNaviera.cs" />
+    <Compile Include="Parametros\clsPais.cs" />
+    <Compile Include="Parametros\clsParametrosInfo.cs" />
+    <Compile Include="Parametros\clsTipoDestinoCarga.cs" />
+    <Compile Include="Parametros\clsTipoOrigenCarga.cs" />
+    <Compile Include="Parametros\clsUnidadMedida.cs" />
+    <Compile Include="Perfiles\clsModulo.cs" />
+    <Compile Include="Perfiles\ClsPanelDeControl.cs" />
+    <Compile Include="Perfiles\clsPerfil.cs" />
+    <Compile Include="Perfiles\clsPerfilModulo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\Usuario.cs" />
+    <Compile Include="Tarifado\clsTipoMoneda.cs" />
+    <Compile Include="Usuarios\clsUsuario.cs" />
+    <Compile Include="Usuarios\clsUsuarioCargo.cs" />
+    <Compile Include="Ventas\Actividades\clsAsuntoTipoActividad.cs" />
+    <Compile Include="Ventas\Actividades\clsTipoActividad.cs" />
+    <Compile Include="Ventas\Actividades\Llamadas Telefonicas\ClsLlamadaTelefonica.cs" />
+    <Compile Include="Ventas\Oportunidades\clsOportunidad.cs" />
+    <Compile Include="Ventas\Productos\clsTipoProducto.cs" />
+    <Compile Include="Ventas\Traficos\clsTrafico.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

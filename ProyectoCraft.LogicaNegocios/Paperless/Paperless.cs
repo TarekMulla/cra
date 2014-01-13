@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using ProyectoCraft.Entidades.Enums;
@@ -16,24 +14,21 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerNavieras(estado);
         }
-
+        
         public static IList<PaperlessAgente> ObtenerAgentes(Entidades.Enums.Enums.Estado estado)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerAgentes(estado);
         }
 
-        public static ResultadoTransaccion CrearAgente(PaperlessAgente agente)
-        {
+        public static ResultadoTransaccion CrearAgente(PaperlessAgente agente) {
             return AccesoDatos.Paperless.clsPaperlessADO.CrearAgente(agente);
         }
 
-        public static ResultadoTransaccion EliminarAgente(PaperlessAgente agente)
-        {
+        public static ResultadoTransaccion EliminarAgente(PaperlessAgente agente) {
             return AccesoDatos.Paperless.clsPaperlessADO.EliminarAgente(agente);
         }
 
-        public static ResultadoTransaccion EditarAgente(PaperlessAgente agente)
-        {
+        public static ResultadoTransaccion EditarAgente(PaperlessAgente agente) {
             return AccesoDatos.Paperless.clsPaperlessADO.EditarAgente(agente);
         }
 
@@ -76,7 +71,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
 
         }
 
-
+        
         public static PaperlessAsignacion ObtenerAsignacionPorId(Int64 IdAsignacion)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerAsignacionPorId(IdAsignacion);
@@ -91,7 +86,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         }
 
         public static ResultadoTransaccion GuardaPaso2(PaperlessAsignacion paso2, PaperlessLogAperturaNavieras LogApertura)
-        {
+        {            
             return AccesoDatos.Paperless.clsPaperlessADO.GuardaPaso2(paso2, LogApertura);
         }
 
@@ -110,7 +105,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.CambiaEstadoAsignacion(asignacion);
         }
 
-        public static IList<PaperlessPasos> ListarPasosUsuario1(Enums.Estado activo)
+        public static IList<PaperlessPasos>  ListarPasosUsuario1(Enums.Estado activo)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarPasosUsuario1(activo);
         }
@@ -119,8 +114,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarPasosEstadoUsuario1(IdAsignacion);
         }
-        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1V2(Int64 IdAsignacion)
-        {
+        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1V2(Int64 IdAsignacion) {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarPasosEstadoUsuario1V2(IdAsignacion);
         }
 
@@ -129,8 +123,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.PreparaPasosUsuario1(asignacion, inicio);
         }
 
-        public static ResultadoTransaccion PreparaPasosUsuario1V2(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio)
-        {
+        public static ResultadoTransaccion PreparaPasosUsuario1V2(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio) {
             return AccesoDatos.Paperless.clsPaperlessADO.PreparaPasosUsuario1V2(asignacion, inicio);
         }
 
@@ -144,14 +137,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ObtenerHousesBL(IdAsignacion);
         }
-        public static IList<PaperlessUsuario1HousesBL> ObtenerHousesBLporShippingInstruction(string shipping, string puerto)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerHousesBLporShippingInstruction(shipping, puerto);
-        }
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBL(houses, info, paso);
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBL(houses,info,paso);
         }
 
         public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso)
@@ -169,8 +158,7 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1MarcarHousesRuteados(houses, paso);
         }
 
-        public static ResultadoTransaccion Usuario1GuardarTipoTransito(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso)
-        {
+        public static ResultadoTransaccion Usuario1GuardarTipoTransito(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso) {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardarTipoTransito(houses, paso);
         }
 
@@ -179,26 +167,22 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposCliente(activo);
         }
 
-        public static IList<PaperlessTipoTransito> ListarTiposTransitoTransbordo()
-        {
+        public static IList<PaperlessTipoTransito> ListarTiposTransitoTransbordo() {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposTransitoTransbordo();
         }
 
-        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones(string tipo)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposExcepciones(tipo);
+        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones() {
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposExcepciones();
         }
 
-        public static IList<PaperlessTipoDisputa> ListarTiposDisputa()
-        {
+        public static IList<PaperlessTipoDisputa>  ListarTiposDisputa() {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposDisputas();
         }
 
-        public static IList<PaperlessUsuario1HousesBL> RefrescarTiposTransitoTransbordo(List<PaperlessUsuario1HousesBL> houses)
-        {
+        public static IList<PaperlessUsuario1HousesBL> RefrescarTiposTransitoTransbordo(List<PaperlessUsuario1HousesBL> houses) {
             return AccesoDatos.Paperless.clsPaperlessADO.RefrescarTiposTransitoTransbordo(houses);
         }
-
+        
         public static IList<PaperlessExcepcion> Usuario1ObtenerExcepciones(Int64 IdAsignacion)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ObtenerExcepciones(IdAsignacion);
@@ -214,10 +198,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ActuazarPaso1(houses, paso);
         }
 
-        public static ResultadoTransaccion Usuario1CambiarEstadoPaso_CambiarEstadoAsignacion(Entidades.Paperless.PaperlessPasosEstado paso,
-                                                                                                PaperlessAsignacion asignacion,
+        public static ResultadoTransaccion Usuario1CambiarEstadoPaso_CambiarEstadoAsignacion(Entidades.Paperless.PaperlessPasosEstado paso, 
+                                                                                                PaperlessAsignacion asignacion, 
                                                                                                 PaperlessProcesoRegistroTiempo termino,
-                                                                                                PaperlessProcesoRegistroTiempo iniciousuario2
+                                                                                                PaperlessProcesoRegistroTiempo iniciousuario2    
             )
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1CambiarEstadoPaso_CambiarEstadoAsignacion(paso,
@@ -227,10 +211,6 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static IList<PaperlessTipoCarga> ListarTipoCarga(Enums.Estado activo)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ListarTipoCarga(activo);
-        }
-        public static IList<PaperlessTipoCarga> ListarTipoCargaDescripcionLarga(Enums.Estado activo)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTipoCargaDescripcionLarga(activo);
         }
 
         public static IList<PaperlessTipoServicio> ListarTipoServicios(Enums.Estado activo)
@@ -269,13 +249,13 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxiones(excepciones, paso);
         }
 
-        public static IList<PaperlessUsuario1HousesBL> ObtenerEmbarcadores(IList<PaperlessUsuario1HousesBL> listparaembarcadores)
+        public static IList<PaperlessUsuario1HousesBL> ObtenerEmbarcadores(IList<PaperlessUsuario1HousesBL> listparaembarcadores )
         {
             List<PaperlessUsuario1HousesBL> housesembarcadoressource = new List<PaperlessUsuario1HousesBL>(listparaembarcadores);
 
             listparaembarcadores = housesembarcadoressource.FindAll(delegate(PaperlessUsuario1HousesBL foo)
                                                           {
-                                                              return foo.TipoCliente != null && foo.TipoCliente.Nombre.ToUpper() == "EMBARCADOR";
+                                                              return foo.TipoCliente.Nombre.ToUpper() == "EMBARCADOR";
                                                           });
             return listparaembarcadores;
         }
@@ -290,11 +270,6 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2TerminaProceso(asignacion, paso, termino);
         }
 
-        public static ResultadoTransaccion Usuario2ActualizaPaso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2ActualizaPaso(asignacion, paso);
-        }
-
         public static ResultadoTransaccion Usuario1RechazaAsignacion(PaperlessUsuario1Rechaza rechazo)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1RechazaAsignacion(rechazo);
@@ -305,98 +280,40 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerRechazoAsignacion(IdAsignacion);
         }
 
-        public static IList<PaperlessFlujo> ConsultarGestionPaperless(string nummaster, string numconsolidad, DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string nave, DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras)
+        public static IList<PaperlessFlujo> ConsultarGestionPaperless(string nummaster, string numconsolidad, DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string nave,DateTime desdeEmbarcadores,DateTime hastaEmbarcadores,DateTime desdeNavieras,DateTime hastaNavieras)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ConsultarGestionPaperless(nummaster, numconsolidad, desde,
                                                                                    hasta, usuario1, usuario2, nave,
-                                                                                   desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras);
+                                                                                   desdeEmbarcadores,hastaEmbarcadores,desdeNavieras,hastaNavieras);
         }
-        public static bool ValidaNumMaster(string numMaster)
+        public static bool ValidaNumMaster (string numMaster)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumMaster(numMaster);
+            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumMaster(numMaster);            
         }
-        public static bool ValidaNumConsolidado(string numConsolidado, string idasignacion)
+        public static bool ValidaNumConsolidado(string numConsolidado)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidado(numConsolidado, idasignacion);
-        }
-
-        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad(string resp)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposResponsabilidad(resp);
-
+            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidado(numConsolidado);
         }
 
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado)
-        {
+        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad() {
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposResponsabilidad();
+                
+        }
+
+        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado) {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
         }
 
-        public static IList<PaperlessExcepcion> RefrescarExcepciones(List<PaperlessExcepcion> excepciones)
-        {
+        public static IList<PaperlessExcepcion> RefrescarExcepciones(List<PaperlessExcepcion> excepciones) {
             return AccesoDatos.Paperless.clsPaperlessADO.RefrescarExcepciones(excepciones);
         }
 
-        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaDisputas(disputas, info, pasoSeleccionado);
+        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado) {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaDisputas(disputas,info,pasoSeleccionado);
         }
 
-        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion)
-        {
+        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion) {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtieneDisputas(paperlessAsignacion);
         }
-        public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignaciones(usuario, desde, hasta);
-        }
-        public static  DataTable ObtenerCantidadAsignacionesGrafico(string usuario, DateTime desde, DateTime hasta)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGrafico(usuario, desde, hasta);
-        }
-        public static DataTable ObtenerCantidadAsignacionesGraficoGestionPaperless(DateTime desde, DateTime hasta,
-            string usuario, string tipocarga, string EstadoPaperless, string marca)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGraficoGestionPaperless(desde, hasta, usuario,tipocarga,EstadoPaperless,marca);
-        }
-        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta,
-            string usuario, string tipocarga, string EstadoPaperless, string marca)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ConsultarGestionPaperlessGraficosUsuario1y2(desde,hasta,usuario,tipocarga,EstadoPaperless,marca);
-        }
-        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBLDesdeExcepcion(houses, info, paso);
-        }
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion, Int64 idUsuarioUltimaModificacion)
-        {
-            AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion, idUsuarioUltimaModificacion);
-        }
-        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador()
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposPaperlessAgenteCausador();
-
-        }
-
-        public static IList<PaperlessExcepcionMaster> Usuario1ObtenerExcepcionesMaster(Int64 idAsignacion)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ObtenerExcepcionesMaster(idAsignacion);
-        }
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado pasoSeleccionado)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
-        }
-        public static void Usuario1EliminaExcepxionMaster(PaperlessExcepcionMaster excepcion, Int64 idUsuarioUltimaModificacion)
-        {
-            AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxionMaster(excepcion, idUsuarioUltimaModificacion);
-        }
-        public static ResultadoTransaccion Usuario2IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxionesMaster(excepciones, paso);
-        }
-        public static ResultadoTransaccion Usuario1ActualizaExcepcionV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesV2_Usuario2(excepciones,paso);
-        }
-        
     }
 }

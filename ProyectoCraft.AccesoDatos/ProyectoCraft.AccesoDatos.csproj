@@ -68,29 +68,14 @@
     <Compile Include="Clientes\clsOrigenCargoADO.cs" />
     <Compile Include="Clientes\clsTargetAccountADO.cs" />
     <Compile Include="Clientes\clsTargetDAO.cs" />
-    <Compile Include="Cotizaciones\ClsComentarioDao.cs" />
-    <Compile Include="Cotizaciones\ClsCotizacionDao.cs" />
-    <Compile Include="Cotizaciones\ClsMonedasDao.cs" />
-    <Compile Include="Cotizaciones\ClsPuertosDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsConceptoDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsCotizacionDirectaDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsOpcionDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsOpcionDetalleDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsPuertoDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTiposServiciosDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsUnidadDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsCotizacionDirectaEstadoDao.cs" />
-    <Compile Include="Cotizaciones\Directa\ClsTipoViaDao.cs" />
     <Compile Include="Direccion\Administracion\clsControlCreditoAdo.cs" />
     <Compile Include="Direccion\Metas\clsMetaAdo.cs" />
     <Compile Include="Direccion\Metas\ClsSalesLeadAdo.cs" />
     <Compile Include="Emails\EmailsADO.cs" />
-    <Compile Include="Integracion\IntegracionADO.cs" />
     <Compile Include="Log\clsLogActividadUsuariosADO.cs" />
     <Compile Include="Log\ClsLogPerformanceADO.cs" />
     <Compile Include="PanelDeControl\ClsPanelDeControlDao.cs" />
     <Compile Include="Paperless\clsPaperlessADO.cs" />
-    <Compile Include="Parametros\ClsAgenteDAO.cs" />
     <Compile Include="Parametros\ClsNavierasDAO.cs" />
     <Compile Include="Parametros\clsParametrosClientesDAO.cs" />
     <Compile Include="Parametros\clsParametrosDAO.cs" />
@@ -102,6 +87,8 @@
     <Compile Include="Ventas\Actividades\Llamadas Telefonicas\clsLlamadaTelefonicaAdo.cs" />
     <Compile Include="Ventas\clsTipoProductosADO.cs" />
     <Compile Include="Ventas\Oportunidades\clsOportunidadAdo.cs" />
+    <Compile Include="Ventas\pricing\clsCotizacionADO.cs" />
+    <Compile Include="Ventas\pricing\clsTarifaADO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProyectoCraft.Base\ProyectoCraft.Base.csproj">

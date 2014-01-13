@@ -9,8 +9,6 @@ go
 alter table PAPERLESS_ASIGNACION add txtCourier int
 go
 
-ALTER TABLE PAPERLESS_ASIGNACION ALTER COLUMN txtcourier VARCHAR(30)
-go
 
 ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO2]         
                 @FechaEta datetime,                                              
@@ -22,14 +20,13 @@ ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO2]
                 @EnDestino bit, 
                 @MasterConfirmado bit,
                 @FechaMasterConfirmado datetime,
-                @txtCourier varchar(30),
+                @txtCourier int,
                 @IdResultado INT OUTPUT,
                 @Resultado VARCHAR(255) OUTPUT
 AS                                                               
                                                                   
 IF YEAR(@AperturaNavieras) = 9999 SET @AperturaNavieras = NULL   
 IF YEAR(@PlazoEmbarcadores) = 9999 SET @PlazoEmbarcadores = NULL 
-
 
 DECLARE @IdEstadoActual INT
 
@@ -38,7 +35,6 @@ SELECT @IdResultado=0, @Resultado=''
 SELECT @IdEstadoActual = IdEstado
 FROM paperless_asignacion
 WHERE id=@IdAsignacion
-
 
 -- Valida q la modificación de estados sea consistente con el flujo de proceso.
 /*
@@ -72,8 +68,6 @@ ELSE
             END
         END
 
-IF YEAR(@FechaMasterConfirmado) = 9999 SET @FechaMasterConfirmado = NULL 
-
 UPDATE PAPERLESS_ASIGNACION SET                                  
      FechaEta = @FechaEta,                                            
      AperturaNavieras = @AperturaNavieras,                            
@@ -90,7 +84,7 @@ WHERE Id = @IdAsignacion
 
 RETURN 0
 
-go
+
 
 ALTER PROCEDURE [dbo].[SP_C_PAPERLESS_ASIGNACION_POR_ID]
 @IdAsignacion bigint

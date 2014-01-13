@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml;
 using Microsoft.Office.Interop.Outlook;
 using ProyectoCraft.Entidades.Calendario;
 using ProyectoCraft.Entidades.Clientes;
@@ -16,10 +14,6 @@ using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Entidades.Ventas.Productos;
 using ProyectoCraft.WinForm.Utils;
 using ProyectoCraft.Base.Log;
-using iTextSharp.text;
-using iTextSharp.text.html;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.text.pdf;
 using Exception = System.Exception;
 
 namespace SCCMultimodal.Utils
@@ -30,39 +24,23 @@ namespace SCCMultimodal.Utils
         private static Application oApp;
         private static _NameSpace oNameSpace;
         private static MAPIFolder oOutboxFolder;
-
         public EnvioMailObject()
         {
             emailPersonas = new List<string>();
         }
 
         public ResultadoTransaccion EnviarEmail(string toValue, string subjectValue, string bodyValue)
-        {
+        { 
             if (!emailPersonas.Contains(toValue))
             {
                 emailPersonas.Add(toValue);
                 return EnvioEmail.EnviarEmail(toValue, subjectValue, bodyValue);
-                
             }
             return null;
         }
-
-        public ResultadoTransaccion MailEnBorrador(string toValue, string subjectValue, string bodyValue)
+        public ResultadoTransaccion EnviarEmailComentarioEnInforme(clsVisita visita, clsInformeComentario comentario, bool EsVendedor, clsUsuario usuario)
         {
-            if (!emailPersonas.Contains(toValue))
-            {
-                emailPersonas.Add(toValue);
-                return EnvioEmail.MailEnBorrador(toValue, subjectValue, bodyValue);
-
-            }
-            return null;
-        }
-
-        public ResultadoTransaccion EnviarEmailComentarioEnInforme(clsVisita visita, clsInformeComentario comentario,
-                                                                   bool EsVendedor, clsUsuario usuario)
-        {
-            string EmailAviso =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailComentarioInformeVisita");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailComentarioInformeVisita");
             string espectativas = "";
             string EmailBody = "";
             string productos = "";
@@ -160,9 +138,7 @@ namespace SCCMultimodal.Utils
             return res;
 
         }
-
-        public ResultadoTransaccion LogEnviarEmail(Enums.VisitaTipoEmail tipo, clsVisita Visita, string cuerpo,
-                                                   string asunto)
+        public ResultadoTransaccion LogEnviarEmail(Enums.VisitaTipoEmail tipo, clsVisita Visita, string cuerpo, string asunto)
         {
             ResultadoTransaccion res = new ResultadoTransaccion();
 
@@ -180,17 +156,13 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
-        public ResultadoTransaccion EnviarEmailComentarioRespondidoPorVendedor(clsVisita visita,
-                                                                               clsInformeComentario comentario)
+        public ResultadoTransaccion EnviarEmailComentarioRespondidoPorVendedor(clsVisita visita, clsInformeComentario comentario)
         {
             IList<clsInformeComentario> lista = new List<clsInformeComentario>();
             ResultadoTransaccion res = new ResultadoTransaccion();
             try
             {
-                lista =
-                    ProyectoCraft.LogicaNegocios.Calendarios.clsCalendarios.ListarComentariosVisita(
-                        visita.Informvisita.Id);
+                lista = ProyectoCraft.LogicaNegocios.Calendarios.clsCalendarios.ListarComentariosVisita(visita.Informvisita.Id);
 
                 foreach (var comment in lista)
                 {
@@ -219,14 +191,10 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
-        public ResultadoTransaccion EnviarEmailVendedorRespondeComentarioEnInforme(clsVisita visita,
-                                                                                   clsInformeComentario comentario,
-                                                                                   bool EsVendedor, clsUsuario usuario)
+        public ResultadoTransaccion EnviarEmailVendedorRespondeComentarioEnInforme(clsVisita visita, clsInformeComentario comentario, bool EsVendedor, clsUsuario usuario)
         {
 
-            string EmailAviso =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailComentarioInformeVisita");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailComentarioInformeVisita");
             string espectativas = "";
             string EmailBody = "";
             string productos = "";
@@ -317,7 +285,6 @@ namespace SCCMultimodal.Utils
             return res;
 
         }
-
         public void EnviarEmailInformeVisita(clsVisitaInforme informe, clsVisita VisitaActual)
         {
 
@@ -444,8 +411,7 @@ namespace SCCMultimodal.Utils
                     clsUsuario usuario = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
                     if (usuario != null)
                     {
-                        EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos,
-                                                     Enums.VisitaTipoEmail.InformeVisitaFijos);
+                        EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos, Enums.VisitaTipoEmail.InformeVisitaFijos);
                     }
                 }
 
@@ -470,9 +436,7 @@ namespace SCCMultimodal.Utils
                 if (VisitaActual.Cliente == null)
                     productoscliente = new List<clsClientesProductos>();
                 else
-                    productoscliente =
-                        ProyectoCraft.LogicaNegocios.Clientes.clsClientesMaster.ObtenerProductosPreferidos(
-                            VisitaActual.Cliente.Id);
+                    productoscliente = ProyectoCraft.LogicaNegocios.Clientes.clsClientesMaster.ObtenerProductosPreferidos(VisitaActual.Cliente.Id);
 
                 foreach (var prod in productoscliente)
                 {
@@ -491,12 +455,10 @@ namespace SCCMultimodal.Utils
                 {
                     foreach (var fijo in lcl)
                     {
-                        clsUsuario usuario =
-                            ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
+                        clsUsuario usuario = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
                         if (usuario != null)
                         {
-                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos,
-                                                         Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
+                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos, Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
                         }
                     }
                 }
@@ -505,12 +467,10 @@ namespace SCCMultimodal.Utils
                 {
                     foreach (var fijo in fcl)
                     {
-                        clsUsuario usuario =
-                            ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
+                        clsUsuario usuario = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
                         if (usuario != null)
                         {
-                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos,
-                                                         Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
+                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos, Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
                         }
                     }
                 }
@@ -519,12 +479,10 @@ namespace SCCMultimodal.Utils
                 {
                     foreach (var fijo in aereo)
                     {
-                        clsUsuario usuario =
-                            ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
+                        clsUsuario usuario = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ObtenerUsuarioPorEmail(fijo);
                         if (usuario != null)
                         {
-                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos,
-                                                         Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
+                            EnviarInformeReceptoresFijos(VisitaActual, usuario, productos, traficos, Enums.VisitaTipoEmail.InformeVisitaEncNegocio);
                         }
                     }
                 }
@@ -534,8 +492,7 @@ namespace SCCMultimodal.Utils
                 {
                     if (customer.Customer != null)
                     {
-                        EnviarInformeReceptoresFijos(VisitaActual, customer.Customer, productos, traficos,
-                                                     Enums.VisitaTipoEmail.InformeVisitaCustomerService);
+                        EnviarInformeReceptoresFijos(VisitaActual, customer.Customer, productos, traficos, Enums.VisitaTipoEmail.InformeVisitaCustomerService);
                     }
                 }
 
@@ -545,14 +502,11 @@ namespace SCCMultimodal.Utils
                 Log.EscribirLog(ex.Message);
             }
         }
-
-        private void EnviarInformeReceptoresFijos(clsVisita VisitaActual, clsUsuario usuario, string productos,
-                                                  string traficos, Enums.VisitaTipoEmail tipo)
+        private void EnviarInformeReceptoresFijos(clsVisita VisitaActual, clsUsuario usuario, string productos, string traficos, Enums.VisitaTipoEmail tipo)
         {
 
 
-            string EmailInforme =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeVisitaRecFijos");
+            string EmailInforme = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeVisitaRecFijos");
             string espectativas = "";
             string EmailBody = "";
 
@@ -611,12 +565,10 @@ namespace SCCMultimodal.Utils
             }
 
         }
-
         public ResultadoTransaccion EnviarAvisoInformeRequiereRespuesta(IList<clsUsuario> usuarios, clsVisita visita)
         {
 
-            string EmailAviso =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAvisoInformRequiereRespuesta");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailAvisoInformRequiereRespuesta");
             string espectativas = "";
             string EmailBody = "";
             string productos = "";
@@ -706,14 +658,11 @@ namespace SCCMultimodal.Utils
             return res;
 
         }
-
-        public ResultadoTransaccion EnviarMailPaperlessRechazoAsignacion(
-            ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
+        public ResultadoTransaccion EnviarMailPaperlessRechazoAsignacion(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
         {
 
             ResultadoTransaccion resultado = new ResultadoTransaccion();
-            string EmailAviso =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessRechazoAsignacion");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessRechazoAsignacion");
             string EmailBody = "";
             try
             {
@@ -725,8 +674,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[SALTO]", "\n");
 
                 EmailBody = sb.ToString();
-                EnviarEmail(asignacion.UsuarioCreacion.Email, "Asignacion Rechazada N° Master " + asignacion.NumMaster,
-                            EmailBody);
+                EnviarEmail(asignacion.UsuarioCreacion.Email, "Asignacion Rechazada N° Master " + asignacion.NumMaster, EmailBody);
 
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
             }
@@ -737,13 +685,9 @@ namespace SCCMultimodal.Utils
 
             return resultado;
         }
-
-        public ResultadoTransaccion EnviarMailPaperlessUsuario2TerminaProceso(
-            ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion,
-            ProyectoCraft.Entidades.Paperless.PaperlessUsuario1HouseBLInfo info)
+        public ResultadoTransaccion EnviarMailPaperlessUsuario2TerminaProceso(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion, ProyectoCraft.Entidades.Paperless.PaperlessUsuario1HouseBLInfo info)
         {
-            string EmailAviso =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessConfirmacionTerminoProceso");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessConfirmacionTerminoProceso");
             string EmailBody = "";
             ResultadoTransaccion res = new ResultadoTransaccion();
 
@@ -752,15 +696,11 @@ namespace SCCMultimodal.Utils
                 List<ProyectoCraft.Entidades.Usuarios.clsUsuario> usuarios = new List<clsUsuario>();
 
                 IList<clsUsuario> supdocumental;
-                res = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado,
-                                                                                       Enums.CargosUsuarios.
-                                                                                           SupervisorDocumental);
+                res = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado, Enums.CargosUsuarios.SupervisorDocumental);
                 if (res.Estado == Enums.EstadoTransaccion.Aceptada)
                     usuarios.AddRange((IList<clsUsuario>)res.ObjetoTransaccion);
 
-                res = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado,
-                                                                                       Enums.CargosUsuarios.
-                                                                                           SupervisorDeProcesos);
+                res = ProyectoCraft.LogicaNegocios.Usuarios.clsUsuarios.ListarUsuarios(Enums.Estado.Habilitado, Enums.CargosUsuarios.SupervisorDeProcesos);
                 if (res.Estado == Enums.EstadoTransaccion.Aceptada)
                     usuarios.AddRange((IList<clsUsuario>)res.ObjetoTransaccion);
 
@@ -777,10 +717,7 @@ namespace SCCMultimodal.Utils
                     sb.Replace("[NUMCONSOLIDADO]", info.NumConsolidado);
                     sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
                     sb.Replace("[NUMMASTER]", asignacion.NumMaster);
-                    sb.Replace("[FECHAMASTER]",
-                               asignacion.FechaMaster.ToString(
-                                   System.Configuration.ConfigurationSettings.AppSettings.Get(
-                                       "FechaMasterPaperlessFormato")));
+                    sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
                     //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());
                     sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
                     sb.Replace("[NAVIERA]", asignacion.Naviera.Nombre);
@@ -789,11 +726,7 @@ namespace SCCMultimodal.Utils
                     sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
                     sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
                     if (asignacion.FechaETA != null)
-                        sb.Replace("[FECHAETA]",
-                                   asignacion.FechaETA.Value.ToString(
-                                       System.Configuration.ConfigurationSettings.AppSettings.Get(
-                                           "FechaFormatoEtaPaperless")));
-                    //asignacion.FechaETA.Value.ToShortDateString());
+                        sb.Replace("[FECHAETA]", asignacion.FechaETA.Value.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));//asignacion.FechaETA.Value.ToShortDateString());
 
                     if (asignacion.AperturaNavieras.HasValue)
                         sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
@@ -826,13 +759,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailAvisoNewObservacionSalesLeadGerente(clsUsuario ObjEmisor,
-                                                                                  clsUsuario ObjDestinatario,
-                                                                                  clsUsuario ObjAsignadorTarget,
-                                                                                  string DestinatariosCopia,
-                                                                                  DateTime Fecha, string Observaciones,
-                                                                                  string nombreSalesLead)
+        public ResultadoTransaccion EnviarMailAvisoNewObservacionSalesLeadGerente(clsUsuario ObjEmisor, clsUsuario ObjDestinatario, clsUsuario ObjAsignadorTarget, string DestinatariosCopia, DateTime Fecha, string Observaciones, string nombreSalesLead)
         {
             string Asunto = "";
             string EmailBody = "";
@@ -874,7 +801,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
         public ResultadoTransaccion EnviarMaiSalesLead(ClsSalesLead salesLead)
         {
 
@@ -888,9 +814,8 @@ namespace SCCMultimodal.Utils
                 var mail = (_MailItem)oApp.CreateItem(OlItemType.olMailItem);
 
 
-                var body = CrearCuerpoMailSalesLead(salesLead,
-                                                    Path.Combine(System.Windows.Forms.Application.StartupPath,
-                                                                 @"mailSalesLead\template.html"));
+                var body = CrearCuerpoMailSalesLead(salesLead, Path.Combine(System.Windows.Forms.Application.StartupPath,
+                                                 @"mailSalesLead\template.html"));
                 if (!string.IsNullOrEmpty(mail.HTMLBody) && mail.HTMLBody.ToLower().Contains("</body>"))
                 {
                     var imagePath = Path.Combine(System.Windows.Forms.Application.StartupPath,
@@ -928,7 +853,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
         public String CrearCuerpoMailSalesLead(ClsSalesLead salesLead, String templatePath)
         {
 
@@ -938,7 +862,6 @@ namespace SCCMultimodal.Utils
             var body = ReplaceObjectsMailSalesLead(salesLead, text);
             return body;
         }
-
         public String ReplaceObjectsMailSalesLead(ClsSalesLead salesLead, String template)
         {
             var nombreVendedor = salesLead.Asignacion.VendedorAsignado.NombreCompleto;
@@ -995,18 +918,14 @@ namespace SCCMultimodal.Utils
 
 
 
-            template = template.Replace("[AEREO_QTTY]",
-                                        String.Format("{0} / {1}", salesLead.AereoCantidad, salesLead.AereoMedida.Nombre));
-            template = template.Replace("[FCL_QTTY]",
-                                        String.Format("{0} / {1}", salesLead.FCLCantidad, salesLead.FCLMedida.Nombre));
-            template = template.Replace("[LCL_QTTY]",
-                                        String.Format("{0} / {1}", salesLead.LCLCantidad, salesLead.LCLMedida.Nombre));
+            template = template.Replace("[AEREO_QTTY]", String.Format("{0} / {1}", salesLead.AereoCantidad, salesLead.AereoMedida.Nombre));
+            template = template.Replace("[FCL_QTTY]", String.Format("{0} / {1}", salesLead.FCLCantidad, salesLead.FCLMedida.Nombre));
+            template = template.Replace("[LCL_QTTY]", String.Format("{0} / {1}", salesLead.LCLCantidad, salesLead.LCLMedida.Nombre));
 
 
             template = template.Replace("[LAST SHIPMENT]", salesLead.FechaUltimoEmbarque.ToString("yyyy-MM-dd"));
             return template;
         }
-
         public ResultadoTransaccion ModificarVisitaOutlook(clsVisita VisitaActual, DateTime inicio, DateTime termino)
         {
             Application outlookApp = new Application();
@@ -1090,14 +1009,10 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailPaperlessAsignacionUsuario1(
-            ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
+        public ResultadoTransaccion EnviarMailPaperlessAsignacionUsuario1(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
         {
-            string EmailAvisousuario1 =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessAsignacionUsuario1");
-            string EmailAvisousuario2 =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessAsignacionUsuario2");
+            string EmailAvisousuario1 = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessAsignacionUsuario1");
+            string EmailAvisousuario2 = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessAsignacionUsuario2");
             string EmailBody = "";
             ResultadoTransaccion res = new ResultadoTransaccion();
 
@@ -1108,9 +1023,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
                 sb.Replace("[NUMMASTER]", asignacion.NumMaster);
                 //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());
-                sb.Replace("[FECHAMASTER]",
-                           asignacion.FechaMaster.ToString(
-                               System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
+                sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
                 sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
                 sb.Replace("[NAVIERA]", asignacion.Naviera.Nombre);
                 sb.Replace("[NAVE]", asignacion.Nave.Nombre);
@@ -1118,10 +1031,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
                 sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
                 if (asignacion.FechaETA != null)
-                    sb.Replace("[FECHAETA]",
-                               asignacion.FechaETA.Value.ToString(
-                                   System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));
-                //asignacion.FechaETA.Value.ToShortDateString());
+                    sb.Replace("[FECHAETA]", asignacion.FechaETA.Value.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));//asignacion.FechaETA.Value.ToShortDateString());
 
                 if (asignacion.AperturaNavieras.HasValue)
                     sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
@@ -1151,9 +1061,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[USUARIO1]", asignacion.Usuario2.NombreCompleto);
                 sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
                 sb.Replace("[NUMMASTER]", asignacion.NumMaster);
-                sb.Replace("[FECHAMASTER]",
-                           asignacion.FechaMaster.ToString(
-                               System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
+                sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
                 //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());//
 
                 sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
@@ -1163,10 +1071,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
                 sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
                 if (asignacion.FechaETA != null)
-                    sb.Replace("[FECHAETA]",
-                               asignacion.FechaETA.Value.ToString(
-                                   System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));
-                //asignacion.FechaETA.Value.ToShortDateString());
+                    sb.Replace("[FECHAETA]", asignacion.FechaETA.Value.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));//asignacion.FechaETA.Value.ToShortDateString());
 
                 if (asignacion.AperturaNavieras.HasValue)
                     sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
@@ -1197,9 +1102,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarEmailVisitaPlanificacion(clsVisita VisitaActual, bool confirmada,
-                                                                   bool aNombreDe)
+        public ResultadoTransaccion EnviarEmailVisitaPlanificacion(clsVisita VisitaActual, bool confirmada, bool aNombreDe)
         {
             ResultadoTransaccion resEmail = new ResultadoTransaccion();
             ResultadoTransaccion resLog = new ResultadoTransaccion();
@@ -1220,8 +1123,7 @@ namespace SCCMultimodal.Utils
             else
             {
                 email.TipoEmail = Enums.VisitaTipoEmail.ConfirmacionSinPlanificacion;
-                VisitaActual.Descripcion += "\n" +
-                                            "Esta visita ya ha sido confirmada por el Organizador. Debe aceptarla para agregarla a su calendario Outlook.";
+                VisitaActual.Descripcion += "\n" + "Esta visita ya ha sido confirmada por el Organizador. Debe aceptarla para agregarla a su calendario Outlook.";
             }
 
             //Enviar citacion a asistentes
@@ -1230,9 +1132,7 @@ namespace SCCMultimodal.Utils
 
             return resEmail;
         }
-
-        public ResultadoTransaccion CrearConvocatoriaReunion(clsVisita visita, bool Confirmada, bool aNombreDe,
-                                                             bool AvisoVendedor)
+        public ResultadoTransaccion CrearConvocatoriaReunion(clsVisita visita, bool Confirmada, bool aNombreDe, bool AvisoVendedor)
         {
             Application outlookApp = new Application();
             AppointmentItem agendaMeeting = (AppointmentItem)outlookApp.CreateItem(OlItemType.olAppointmentItem);
@@ -1242,8 +1142,7 @@ namespace SCCMultimodal.Utils
             {
                 if (agendaMeeting != null)
                 {
-                    agendaMeeting.UserProperties.Add("IdVisitaSCC", OlUserPropertyType.olInteger, true,
-                                                     OlFormatInteger.olFormatIntegerPlain);
+                    agendaMeeting.UserProperties.Add("IdVisitaSCC", OlUserPropertyType.olInteger, true, OlFormatInteger.olFormatIntegerPlain);
                     agendaMeeting.UserProperties["IdVisitaSCC"].Value = visita.Id;
                     agendaMeeting.MeetingStatus = OlMeetingStatus.olMeeting;
                     agendaMeeting.Location = visita.Ubicacion;
@@ -1281,7 +1180,7 @@ namespace SCCMultimodal.Utils
                             else
                             {
                                 if (visita.UsuarioOrganizador.Id != asistente.Usuario.Id &&
-                                    visita.Vendedor.Id != asistente.Usuario.Id)
+                                visita.Vendedor.Id != asistente.Usuario.Id)
                                 {
                                     Recipient rec = agendaMeeting.Recipients.Add(asistente.Usuario.Email);
                                     rec.Type = (int)OlMeetingRecipientType.olRequired;
@@ -1317,7 +1216,6 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
         public string BodyAvisoVendedorVisitaOrganizada(clsVisita VisitaActual)
         {
             string EmailOrganizada = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaOrganizada");
@@ -1363,11 +1261,13 @@ namespace SCCMultimodal.Utils
 
 
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+            }
             return EmailBody;
 
         }
-
         public ResultadoTransaccion EnviarEmailVisitaConfirmada(clsVisita VisitaActual)
         {
             string EmailConfirmada = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaConfirmada");
@@ -1408,8 +1308,7 @@ namespace SCCMultimodal.Utils
 
                             EnviarEmail(asistente.Usuario.Email, VisitaActual.Asunto, EmailBody);
 
-                            LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody,
-                                           VisitaActual.Asunto);
+                            LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody, VisitaActual.Asunto);
                         }
 
                     }
@@ -1437,8 +1336,7 @@ namespace SCCMultimodal.Utils
 
                         EnviarEmail(producto.Customer.Email, VisitaActual.Asunto, EmailBody);
 
-                        LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody,
-                                       VisitaActual.Asunto);
+                        LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody, VisitaActual.Asunto);
                     }
                 }
 
@@ -1461,8 +1359,7 @@ namespace SCCMultimodal.Utils
                                 existe = false;
                                 foreach (var asisVisita in VisitaActual.AsistentesCraft)
                                 {
-                                    if (asisEmail.Address == asisVisita.Usuario.Email &&
-                                        asisVisita.Confirmo == Enums.VisitaEstadoAsistente.ConfirmoAsistencia)
+                                    if (asisEmail.Address == asisVisita.Usuario.Email && asisVisita.Confirmo == Enums.VisitaEstadoAsistente.ConfirmoAsistencia)
                                     {
                                         existe = true;
                                         break;
@@ -1496,11 +1393,9 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
         public ResultadoTransaccion EnviarEmailVisitaConfirmadaReunionInterna(clsVisita VisitaActual)
         {
-            string EmailConfirmada =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaConfirmadaReunionInterna");
+            string EmailConfirmada = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaConfirmadaReunionInterna");
 
             string EmailBody = "";
             string asistentes = "";
@@ -1537,8 +1432,7 @@ namespace SCCMultimodal.Utils
 
                             EnviarEmail(asistente.Usuario.Email, VisitaActual.Asunto, EmailBody);
 
-                            LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody,
-                                           VisitaActual.Asunto);
+                            LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCraft, VisitaActual, EmailBody, VisitaActual.Asunto);
                         }
 
                     }
@@ -1563,8 +1457,7 @@ namespace SCCMultimodal.Utils
                                 existe = false;
                                 foreach (var asisVisita in VisitaActual.AsistentesCraft)
                                 {
-                                    if (asisEmail.Address == asisVisita.Usuario.Email &&
-                                        asisVisita.Confirmo == Enums.VisitaEstadoAsistente.ConfirmoAsistencia)
+                                    if (asisEmail.Address == asisVisita.Usuario.Email && asisVisita.Confirmo == Enums.VisitaEstadoAsistente.ConfirmoAsistencia)
                                     {
                                         existe = true;
                                         break;
@@ -1598,11 +1491,9 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
         public ResultadoTransaccion EnviarEmailVisitaConfirmadaCliente(clsVisita VisitaActual)
         {
-            string EmailConfirmada =
-                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaConfirmadaCliente");
+            string EmailConfirmada = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailVisitaConfirmadaCliente");
 
             string EmailBody = "";
             string asistentes = "";
@@ -1637,8 +1528,7 @@ namespace SCCMultimodal.Utils
 
                     EnviarEmail(asistente.Contacto.Email, "Visita de CRAFT MULTIMODAL", EmailBody);
 
-                    LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCliente, VisitaActual, EmailBody,
-                                   VisitaActual.Asunto);
+                    LogEnviarEmail(Enums.VisitaTipoEmail.ConfirmacionAsistentesCliente, VisitaActual, EmailBody, VisitaActual.Asunto);
                 }
 
                 res.Estado = Enums.EstadoTransaccion.Aceptada;
@@ -1653,7 +1543,6 @@ namespace SCCMultimodal.Utils
 
             return res;
         }
-
         public ResultadoTransaccion EnviarEmailVisitaCancelada(clsVisita VisitaActual)
         {
             Application outlookApp = new Application();
@@ -1678,8 +1567,7 @@ namespace SCCMultimodal.Utils
                             ((_AppointmentItem)item).Delete();
 
 
-                            LogEnviarEmail(Enums.VisitaTipoEmail.Cancelacion, VisitaActual, VisitaActual.Descripcion,
-                                           VisitaActual.Asunto);
+                            LogEnviarEmail(Enums.VisitaTipoEmail.Cancelacion, VisitaActual, VisitaActual.Descripcion, VisitaActual.Asunto);
 
                             break;
                         }
@@ -1697,9 +1585,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailPaperlessUsuario2ConfirmacionUsuario1(
-            ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
+        public ResultadoTransaccion EnviarMailPaperlessUsuario2ConfirmacionUsuario1(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
         {
             string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessConfirmacionAUsuario2");
             string EmailBody = "";
@@ -1713,31 +1599,15 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
                 sb.Replace("[NUMMASTER]", asignacion.NumMaster);
                 //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());
-                sb.Replace("[FECHAMASTER]",
-                           asignacion.FechaMaster.ToString(
-                               System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
+                sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
                 sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
                 sb.Replace("[NAVIERA]", asignacion.Naviera.Nombre);
                 sb.Replace("[NAVE]", asignacion.Nave.Nombre);
                 sb.Replace("[VIAJE]", asignacion.Viaje);
                 sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
                 sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
-
-                var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
-                var opcion = configuracion.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-                if (opcion.HasValue && opcion.Value.Equals(true))
-                {
-                    if (asignacion.FechaMaximaVinculacion != null)
-                        sb.Replace("Fecha ETA: [FECHAETA] [SALTO]", "Fecha ETA: [FECHAETA] [SALTO] Plazo Vinculacion: "
-                                                                    + asignacion.FechaMaximaVinculacion.Value.ToShortDateString()
-                                                                    + " [SALTO]");
-                    sb.Replace("Proceso documental", "Proceso Cadastro");
-                }
-
                 if (asignacion.FechaETA != null)
-                    sb.Replace("[FECHAETA]",
-                               asignacion.FechaETA.Value.ToString(
-                                   System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));
+                    sb.Replace("[FECHAETA]", asignacion.FechaETA.Value.ToString(System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));//asignacion.FechaETA.Value.ToShortDateString());
 
                 if (asignacion.AperturaNavieras.HasValue)
                     sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
@@ -1752,25 +1622,8 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[IMPORTANCIA]", asignacion.ImportanciaUsuario1.Nombre);
                 sb.Replace("[OBSERVACION]", asignacion.ObservacionUsuario2);
                 sb.Replace("[SALTO]", "\n");
-                
                 EmailBody = sb.ToString();
                 string asunto = "Confirmacion de Proceso Documental de Usuario 1ra Etapa";
-
-                try
-                {
-                    string mailEnCopia = System.Configuration.ConfigurationSettings.AppSettings.Get("MailEnCopia");
-                    if (!string.IsNullOrEmpty(mailEnCopia))
-                        if (!asignacion.Usuario2.Email.Contains(mailEnCopia.Replace(";", "")))
-                        {
-                            asignacion.Usuario2.Email += mailEnCopia;
-                        }
-                }
-                catch (Exception ex)
-                {
-                    Log.EscribirLog(ex.Message);
-                }
-
-                asignacion = AgregaDestinatariosporTipoCarga(asignacion);
 
                 EnviarEmail(asignacion.Usuario2.Email, asunto, EmailBody);
 
@@ -1785,47 +1638,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-        private ProyectoCraft.Entidades.Paperless.PaperlessAsignacion AgregaDestinatariosporTipoCarga(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
-        {
-            if (asignacion.TipoCarga.Nombre.Equals("LCL"))
-            {
-                //Envio de correo segun Flag de base de datos y app.config
-                var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
-                var opcion = configuracion.GetValue("Paperless_Mail_Finalizacion_Etapa1LCL"); //puede retornar un true, false o null
-                if (opcion.HasValue && opcion.Value.Equals(true))
-                    try
-                    {
-                        string[] mails = System.Configuration.ConfigurationSettings.AppSettings.Get("Paperless_Mail_Finalizacion_Etapa1LCL").Split(';');
-                        foreach (var mail in mails)
-                            if (!asignacion.Usuario2.Email.Contains(mail))
-                                asignacion.Usuario2.Email += ";" + mail;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.EscribirLog(ex.Message);
-                    }
-            }
-            else if (asignacion.TipoCarga.Nombre.Equals("FCL"))
-            {
-                //Envio de correo segun Flag de base de datos y app.config
-                var configuracion = ProyectoCraft.Base.Configuracion.Configuracion.Instance();
-                var opcion = configuracion.GetValue("Paperless_Mail_Finalizacion_Etapa1FCL"); //puede retornar un true, false o null
-                if (opcion.HasValue && opcion.Value.Equals(true))
-                    try
-                    {
-                        string[] mails = System.Configuration.ConfigurationSettings.AppSettings.Get("Paperless_Mail_Finalizacion_Etapa1FCL").Split(';');
-                        foreach (var mail in mails)
-                            if (!asignacion.Usuario2.Email.Contains(mail))
-                                asignacion.Usuario2.Email += ";" + mail;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.EscribirLog(ex.Message);
-                    }
-            }
-            return asignacion;
-        }
-
         public ResultadoTransaccion EnviarAsignacionTargets(IList<clsMeta> ListaProspectos, clsUsuario objUserEmisor)
         {
             string EmailDestinatario = "";
@@ -1942,9 +1754,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarAsignacionSalesLead(IList<ClsSalesLead> ListaProspectos,
-                                                              clsUsuario objUserEmisor)
+        public ResultadoTransaccion EnviarAsignacionSalesLead(IList<ClsSalesLead> ListaProspectos, clsUsuario objUserEmisor)
         {
 
             ResultadoTransaccion res = new ResultadoTransaccion();
@@ -1954,9 +1764,8 @@ namespace SCCMultimodal.Utils
                 foreach (var saleslead in ListaProspectos)
                 {
 
-                    var emailBody = CrearCuerpoMailSalesLead(saleslead,
-                                                             Path.Combine(System.Windows.Forms.Application.StartupPath,
-                                                                          @"mailSalesLead\templateAsignacion.html"));
+                    var emailBody = CrearCuerpoMailSalesLead(saleslead, Path.Combine(System.Windows.Forms.Application.StartupPath,
+                                                 @"mailSalesLead\templateAsignacion.html"));
                     emailBody = emailBody.Replace("[FECHA_ESPANOL]", DateTime.Now.ToString("yyyy-MM-dd"));
                     emailBody = emailBody.Replace("[FECHA_FOLLOWUP]", saleslead.FechaRevision.ToString("yyyy-MM-dd"));
                     emailBody = emailBody.Replace("[USUARIO_ENVIA]", saleslead.UsuarioAsignador.NombreCompleto);
@@ -1974,7 +1783,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
         public ResultadoTransaccion EnviarHTmlEmail(string toValue, string subjectValue, string bodyValue)
         {
             ResultadoTransaccion res = new ResultadoTransaccion();
@@ -2007,12 +1815,7 @@ namespace SCCMultimodal.Utils
             return res;
 
         }
-
-        public ResultadoTransaccion EnviarMailAvisoNewObservacionGerente(clsUsuario ObjEmisor,
-                                                                         clsUsuario ObjDestinatario,
-                                                                         clsUsuario ObjAsignadorTarget,
-                                                                         string DestinatariosCopia, DateTime Fecha,
-                                                                         string Observaciones, string NombreTarget)
+        public ResultadoTransaccion EnviarMailAvisoNewObservacionGerente(clsUsuario ObjEmisor, clsUsuario ObjDestinatario, clsUsuario ObjAsignadorTarget, string DestinatariosCopia, DateTime Fecha, string Observaciones, string NombreTarget)
         {
             string Asunto = "";
             string EmailBody = "";
@@ -2026,10 +1829,8 @@ namespace SCCMultimodal.Utils
             {
                 EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailNewObservacion");
                 Asunto = System.Configuration.ConfigurationSettings.AppSettings.Get("AsuntoEmailNewObservacion");
-                MailCopiaAsignadorObs =
-                    System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaAsignadorObs");
-                MailCopiaOtrosUsuariosObs =
-                    System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaOtrosUsuariosObs");
+                MailCopiaAsignadorObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaAsignadorObs");
+                MailCopiaOtrosUsuariosObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaOtrosUsuariosObs");
 
                 StringBuilder sb = new StringBuilder(Asunto);
                 sb.Replace("[USUARIO_ENVIA]", ObjEmisor.Nombre);
@@ -2070,9 +1871,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailAvisoCancelacionTarget(clsUsuario UsuarioAsigna, clsMeta Target,
-                                                                     string Observacion)
+        public ResultadoTransaccion EnviarMailAvisoCancelacionTarget(clsUsuario UsuarioAsigna, clsMeta Target, string Observacion)
         {
             string EmailDestinatario = "";
             string Asunto = "";
@@ -2145,9 +1944,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailAvisoCierreTarget(clsUsuario UsuarioAsigna, clsMeta Target,
-                                                                string Observacion)
+        public ResultadoTransaccion EnviarMailAvisoCierreTarget(clsUsuario UsuarioAsigna, clsMeta Target, string Observacion)
         {
             string EmailDestinatario = "";
             string Asunto = "";
@@ -2206,11 +2003,7 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-        public ResultadoTransaccion EnviarMailAvisoNewObservacionVendedor(clsUsuario ObjEmisor,
-                                                                          clsUsuario ObjDestinatario, DateTime Fecha,
-                                                                          string Observaciones, string NombreTarget,
-                                                                          string DestinatariosCopia)
+        public ResultadoTransaccion EnviarMailAvisoNewObservacionVendedor(clsUsuario ObjEmisor, clsUsuario ObjDestinatario, DateTime Fecha, string Observaciones, string NombreTarget, string DestinatariosCopia)
         {
             string Asunto = "";
             string EmailBody = "";
@@ -2226,10 +2019,8 @@ namespace SCCMultimodal.Utils
             {
                 EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailNewObservacion");
                 Asunto = System.Configuration.ConfigurationSettings.AppSettings.Get("AsuntoEmailNewObservacion");
-                MailCopiaAsignadorObs =
-                    System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaAsignadorObs");
-                MailCopiaOtrosUsuariosObs =
-                    System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaOtrosUsuariosObs");
+                MailCopiaAsignadorObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaAsignadorObs");
+                MailCopiaOtrosUsuariosObs = System.Configuration.ConfigurationSettings.AppSettings.Get("MailCopiaOtrosUsuariosObs");
 
 
 
@@ -2253,13 +2044,11 @@ namespace SCCMultimodal.Utils
                 {
                     Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
                 }
-                if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "" &&
-                    !Destinatarios.Contains(ObjDestinatario.Email))
+                if (MailCopiaOtrosUsuariosObs == "S" && DestinatariosCopia.Trim() != "" && !Destinatarios.Contains(ObjDestinatario.Email))
                 {
                     Destinatarios = Destinatarios + ";" + DestinatariosCopia;
                 }
-                if (MailCopiaAsignadorObs == "S" && ObjDestinatario.Email != "" &&
-                    !Destinatarios.Contains(ObjDestinatario.Email))
+                if (MailCopiaAsignadorObs == "S" && ObjDestinatario.Email != "" && !Destinatarios.Contains(ObjDestinatario.Email))
                 {
                     Destinatarios = Destinatarios + ";" + ObjDestinatario.Email;
                 }
@@ -2274,73 +2063,6 @@ namespace SCCMultimodal.Utils
             }
             return res;
         }
-
-
-        public ResultadoTransaccion EnviarMailCotizacionDirecta(String subject, String html, List<String> pathAdjuntos)
-        {
-            var res = new ResultadoTransaccion();
-            try
-            {
-                oApp = new Application();
-                oNameSpace = oApp.GetNamespace("MAPI");
-                oOutboxFolder = oNameSpace.GetDefaultFolder(OlDefaultFolders.olFolderSentMail);
-                var mail = (_MailItem)oApp.CreateItem(OlItemType.olMailItem);
-                mail.Subject = subject;
-                mail.HTMLBody = html;
-
-                //mail.Attachments.Add(foo, OlAttachmentType.olByValue, mail.HTMLBody.Length, Type.Missing);
-                if (pathAdjuntos != null)
-                    foreach (var adj in pathAdjuntos)
-                        mail.Attachments.Add((object)adj, OlAttachmentType.olEmbeddeditem, 1, (object)"Attachment");
-
-                mail.Save();
-                mail.Display(false);
-
-            }
-            catch (Exception e)
-            {
-                res.Descripcion = e.Message;
-                res.Estado = Enums.EstadoTransaccion.Rechazada;
-                Log.EscribirLog(e.Message);
-            }
-            return res;
-        }
-
-        public String GeneratePdfFromHtml(String html, String numero)
-        {
-
-            //var document = new Document(PageSize.A4, 5, 5, 5, 5);
-            var document = new Document(PageSize.A4, 50, 25, 15, 10);
-            var output = new MemoryStream();
-            var writer = PdfWriter.GetInstance(document, output);
-            document.Open();
-            var contents = html;
-            contents = contents.Replace("<hr />", "____________________________________________________________________________________________________________________");
-
-            var styles = new StyleSheet();
-            styles.LoadTagStyle("body", "face", "Arial");
-            styles.LoadTagStyle("body", "size", "7px");
-            styles.LoadTagStyle("body", "background-color", "#000000");
-
-            var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(contents), styles);
-
-            foreach (var parsedHtmlElement in parsedHtmlElements)
-                document.Add(parsedHtmlElement);
-
-            document.Close();
-
-
-            byte[] content = output.ToArray();
-
-            var pathPDf = Path.GetTempPath() + "cotizacion_" + numero + ".pdf";
-            using (FileStream fs = File.Create(pathPDf))
-            {
-                fs.Write(content, 0, (int)content.Length);
-            }
-
-            return pathPDf;
-        }
-
 
     }
 }

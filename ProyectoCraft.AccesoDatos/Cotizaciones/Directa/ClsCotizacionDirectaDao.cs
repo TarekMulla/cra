@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Reflection;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.AccesoDatos.Clientes;
-using ProyectoCraft.AccesoDatos.Parametros;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Clientes;
@@ -84,10 +83,9 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 command.Parameters.AddRange(objParams);
 
                 var reader = command.ExecuteReader();
-                while (reader.Read()){
-                    var i = GetOpcionFromDataReader(reader);
-                    list.Add(i);
-                }
+                while (reader.Read()) {
+                    list.Add(GetOpcionFromDataReader(reader));
+                 }
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = list;
@@ -112,11 +110,15 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 i.FechaValidezInicio = Convert.ToDateTime(reader["fechavalidezinicio"]);
                 i.Naviera = new ClsNaviera();
                 i.Naviera.Nombre = reader["naviera"].ToString();
+                /* i.Pod = new Puerto();
+                 i.Pod.Nombre = reader["pod"].ToString();
+                 i.Pol = new Puerto();
+                 i.Pol.Nombre = reader["pol"].ToString();*/
                 i.TiempoTransito = reader["tiempotransito"].ToString();
                 i.FechaCreacion = Convert.ToDateTime(reader["createDate"]);
                 i.Estado = new Estado();
-                i.Estado.Id32 = Convert.ToInt32(reader["Estado"]);
-                i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
+                i.Estado.Id32 = Convert.ToInt32(reader["cotizacion_directa_estados_id"]);
+                //i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
                 //idusuario,createdate,cotizacion_solicitud_cotizaciones_id,cotizacion_indirecta_estados_id
 
                 return i;
@@ -192,11 +194,11 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 cot.IncoTerm = Parametros.clsParametrosClientesDAO.ObtenerIncoTermPorId(Convert.ToInt16(reader["idincoterms"]));
 
                 cot.Commodity = reader["commodity"].ToString();
-                if (!String.IsNullOrEmpty(reader["gastosLocales"].ToString()))
-                    cot.GastosLocales = Convert.ToDecimal(reader["gastosLocales"]);
+                cot.GastosLocales = Convert.ToDecimal(reader["gastosLocales"]);
 
                 cot.Observaciones = reader["Observaciones"].ToString();
                 cot.ObservacionesFijas = reader["ObservacionesFijas"].ToString();
+
                 
                 var listEstados= (List<Estado>)ClsCotizacionDirectaEstadoDao.ListarEstadosCotizacionDirecta().ObjetoTransaccion;
                 cot.Estado =  listEstados.Find(estado => estado.Id == Convert.ToInt32(reader["COTIZACION_Directa_ESTADOS_id"]));
@@ -255,7 +257,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = cotizacionDirecta;
-                res.Descripcion = "La cotización Directa se guardó Exitosamente";
+                res.Descripcion = "La cotizacion Directa se guardo Exitosamente";
 
             } catch (Exception ex) {
                 cotizacionDirecta.Id = cotizacionDirecta.Id32 = 0;
@@ -296,12 +298,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
                     com.Parameters.AddWithValue("@COTIZACION_SOLICITUD_COTIZACIONES_id", cotizacionDirecta.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
@@ -486,7 +482,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             }
             return Res;
         }
-        
         public static ResultadoTransaccion ModificarOpciones(CotizacionDirecta cotizacionDirecta, SqlCommand command)
         {
             var num = 1;
@@ -509,12 +504,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
                     com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
                     com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
                     com.CommandType = CommandType.StoredProcedure;
 
                     com.ExecuteScalar();
@@ -531,7 +520,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 throw e;
             }
         }
-        
         public static ResultadoTransaccion ModificarDeatlle(Opcion opcion, SqlCommand command)
         {
             try
@@ -561,7 +549,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 throw e;
             }
         }
-        
         public static ResultadoTransaccion ModificarRelacionPuertos(Opcion opcion, SqlCommand command)
         {
             try

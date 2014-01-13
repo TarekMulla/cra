@@ -16,7 +16,5 @@ namespace ProyectoCraft.Entidades.Paperless
         public PaperlessPasos Paso { get; set; }
         public Int64 IdPasoEstado { get; set; }
         public bool Estado { get; set; }
-        public String Pantalla { set; get; }
     }
-
 }

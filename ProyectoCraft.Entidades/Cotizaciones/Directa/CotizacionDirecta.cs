@@ -62,15 +62,15 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         }
 
         public String GenerateHtmlPreviewAndBody(String startupPath) {
-            return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
+            return renderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
             //return renderHtml(Path.Combine(startupPath, @"cotizaciones\Copy of TemplateCotizacionPreview.html"));
         }
 
         public String GenerateHTMLforPDF(String startupPath) {
-            return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionMailPDF.html"));
+            return renderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionMailPDF.html"));
         }
 
-        private String RenderHtml(String path) {
+        private String renderHtml(String path) {
             var xmldoc = new XmlDocument();
             xmldoc.Load(path);
 
@@ -87,13 +87,10 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[commodity]", Commodity);
             stringXml = stringXml.Replace("[incoterm]", IncoTerm.Codigo);
 
-            var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
-
+            var gastosLocales = GastosLocales == 0 ? "Sin Gastos Locales" : GastosLocales.Value.ToString("N2") + "  + IVA";
 
             stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);
             stringXml = stringXml.Replace("[observaciones]", ObservacionesFijas.Replace(Environment.NewLine, "<br/>"));
-
-            stringXml = stringXml.Replace("[ObservacionesOpcionales]", Observaciones.Replace(Environment.NewLine, "<br/>"));
 
             stringXml = stringXml.Replace("[vendedor]", Usuario.NombreCompleto);
             stringXml = stringXml.Replace("[cargo]", Usuario.Cargo.Nombre);
@@ -107,15 +104,9 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                 var templateAlternativaXml = originalAlternativa;
                 templateAlternativaXml = templateAlternativaXml.Replace("[numOpcion]", i.ToString());
                 templateAlternativaXml = templateAlternativaXml.Replace("[naviera]", opcion.Naviera.Nombre);
-                templateAlternativaXml = templateAlternativaXml.Replace("[validezIni]", opcion.FechaValidezInicio.ToString("d \\de MMMM ", cl));
-                templateAlternativaXml = templateAlternativaXml.Replace("[validezFin]", opcion.FechaValidezFin.ToString("d \\de MMMM \\de yyyy ", cl));
+                templateAlternativaXml = templateAlternativaXml.Replace("[validezIni]", opcion.FechaValidezInicio.ToString("D", cl));
+                templateAlternativaXml = templateAlternativaXml.Replace("[validezFin]", opcion.FechaValidezFin.ToString("D", cl));
                 templateAlternativaXml = templateAlternativaXml.Replace("[TiempoTransito]", opcion.TiempoTransito);
-
-                var text = opcion.TiposServicio.Nombre;
-                if (opcion.TipoVia != null && !String.IsNullOrEmpty(opcion.TipoVia.Nombre))
-                    text += "    / <b>Vía</b> " + opcion.TipoVia.Nombre;
-                templateAlternativaXml = templateAlternativaXml.Replace("[servicio]", text);
-
 
                 var pod = opcion.Pod.Aggregate(string.Empty, (current, puerto) => current + puerto.Nombre + Environment.NewLine);
                 var pol = opcion.Pol.Aggregate(string.Empty, (current, puerto) => current + puerto.Nombre + Environment.NewLine);
@@ -131,19 +122,13 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                                                   detalle.Unidad.Nombre, detalle.Moneda.Codigo,
                                                   detalle.Venta.ToString("N2"), detalle.Concepto.Nombre);
 
-
+                   
                 }
                 templateAlternativaXml = templateAlternativaXml.Replace("[detalle]", detalleString);
                 alternativasXml += templateAlternativaXml;
                 i++;
             }
             alternativaNode.InnerXml = alternativasXml;
-
-            if (File.Exists(String.Format("{0}/imagesCotizaciones/firmas/{1}.png", path, Usuario.NombreUsuario)))
-                xmldoc.InnerXml = xmldoc.InnerXml.Replace("[firma]", Usuario.NombreUsuario + ".png");
-            else
-                xmldoc.InnerXml = xmldoc.InnerXml.Replace("[firma]", "general.png");
-
             return xmldoc.InnerXml;
         }
 

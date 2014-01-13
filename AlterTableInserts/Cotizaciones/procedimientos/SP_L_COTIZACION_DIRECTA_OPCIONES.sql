@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[SP_L_COTIZACION_DIRECTA_OPCIONES]                                                                  
+create PROCEDURE [dbo].[SP_L_COTIZACION_DIRECTA_OPCIONES]                                                                  
      @IdCotizacion bigint                                                                                                       
 AS  
                                                                                                                         

@@ -49,7 +49,6 @@ namespace SCCMultimodal.Cotizaciones {
                 var xmldoc = new XmlDocument();
                 xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
                 var subject = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/subjectMail").InnerText;
-                subject = subject.Replace("[nombreCliente]", cotizacionDirecta.Cliente.NombreCliente);
 
                 var htmlBody = cotizacionDirecta.GenerateHtmlPreviewAndBody(Application.StartupPath);
                 var htmlPDF = cotizacionDirecta.GenerateHTMLforPDF(Application.StartupPath);

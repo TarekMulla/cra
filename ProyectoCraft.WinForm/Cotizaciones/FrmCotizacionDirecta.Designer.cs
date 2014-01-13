@@ -1,8 +1,6 @@
-﻿using System.Globalization;
-
-
-namespace SCCMultimodal.Cotizaciones {
-    partial class FrmCotizacionDirecta {
+﻿namespace SCCMultimodal.Cotizaciones {
+    partial class FrmCotizacionDirecta
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -31,17 +29,11 @@ namespace SCCMultimodal.Cotizaciones {
             this.repositoryItemComboBox23 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemMemoExEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.grpOportunidad = new System.Windows.Forms.GroupBox();
-            this.LblEstado = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.TxtObservaciones = new DevExpress.XtraEditors.MemoEdit();
             this.LblGastosLocales = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboVia = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cboServicio = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.RemovePod = new DevExpress.XtraEditors.SimpleButton();
             this.AddPod = new DevExpress.XtraEditors.SimpleButton();
             this.ListPodSeleccionado = new DevExpress.XtraEditors.ListBoxControl();
@@ -87,6 +79,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.TxtGastosLocales = new DevExpress.XtraEditors.TextEdit();
             this.chkincoterm = new System.Windows.Forms.RadioButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
@@ -99,20 +92,19 @@ namespace SCCMultimodal.Cotizaciones {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.TxtGastosLocales = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.LblEstado = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit2)).BeginInit();
             this.grpOportunidad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtObservaciones.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPodSeleccionado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPolSeleccionado)).BeginInit();
@@ -133,12 +125,12 @@ namespace SCCMultimodal.Cotizaciones {
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboCliente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCommodity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEjecutivo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             this.SuspendLayout();
@@ -168,6 +160,7 @@ namespace SCCMultimodal.Cotizaciones {
             this.grpOportunidad.Controls.Add(this.comboBoxEdit1);
             this.grpOportunidad.Controls.Add(this.labelControl16);
             this.grpOportunidad.Controls.Add(this.groupBox1);
+            this.grpOportunidad.Controls.Add(this.TxtGastosLocales);
             this.grpOportunidad.Controls.Add(this.chkincoterm);
             this.grpOportunidad.Controls.Add(this.labelControl12);
             this.grpOportunidad.Controls.Add(this.labelControl13);
@@ -180,34 +173,12 @@ namespace SCCMultimodal.Cotizaciones {
             this.grpOportunidad.Controls.Add(this.labelControl1);
             this.grpOportunidad.Controls.Add(this.labelControl2);
             this.grpOportunidad.Controls.Add(this.labelControl4);
-            this.grpOportunidad.Controls.Add(this.TxtGastosLocales);
             this.grpOportunidad.Location = new System.Drawing.Point(3, 43);
             this.grpOportunidad.Name = "grpOportunidad";
             this.grpOportunidad.Size = new System.Drawing.Size(711, 614);
             this.grpOportunidad.TabIndex = 34;
             this.grpOportunidad.TabStop = false;
             this.grpOportunidad.Text = "General";
-            // 
-            // LblEstado
-            // 
-            this.LblEstado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LblEstado.Appearance.Options.UseBorderColor = true;
-            this.LblEstado.Appearance.Options.UseFont = true;
-            this.LblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.LblEstado.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.LblEstado.Location = new System.Drawing.Point(125, 182);
-            this.LblEstado.Name = "LblEstado";
-            this.LblEstado.Size = new System.Drawing.Size(117, 25);
-            this.LblEstado.TabIndex = 117;
-            this.LblEstado.Text = "labelControl17";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(9, 188);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(33, 13);
-            this.labelControl11.TabIndex = 116;
-            this.labelControl11.Text = "Estado";
             // 
             // TxtObservaciones
             // 
@@ -251,10 +222,6 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboVia);
-            this.groupBox1.Controls.Add(this.cboServicio);
-            this.groupBox1.Controls.Add(this.labelControl17);
-            this.groupBox1.Controls.Add(this.labelControl18);
             this.groupBox1.Controls.Add(this.RemovePod);
             this.groupBox1.Controls.Add(this.AddPod);
             this.groupBox1.Controls.Add(this.ListPodSeleccionado);
@@ -285,48 +252,9 @@ namespace SCCMultimodal.Cotizaciones {
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
             // 
-            // cboVia
-            // 
-            this.cboVia.EditValue = "";
-            this.cboVia.Location = new System.Drawing.Point(425, 184);
-            this.cboVia.Name = "cboVia";
-            this.cboVia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboVia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboVia.Size = new System.Drawing.Size(158, 20);
-            this.cboVia.TabIndex = 133;
-            // 
-            // cboServicio
-            // 
-            this.cboServicio.EditValue = "";
-            this.cboServicio.Location = new System.Drawing.Point(140, 184);
-            this.cboServicio.Name = "cboServicio";
-            this.cboServicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboServicio.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboServicio.Size = new System.Drawing.Size(158, 20);
-            this.cboServicio.TabIndex = 132;
-            this.cboServicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboServicio_KeyPress);
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(326, 191);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(14, 13);
-            this.labelControl17.TabIndex = 131;
-            this.labelControl17.Text = "Via";
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(16, 191);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(37, 13);
-            this.labelControl18.TabIndex = 129;
-            this.labelControl18.Text = "Servicio";
-            // 
             // RemovePod
             // 
-            this.RemovePod.Location = new System.Drawing.Point(503, 141);
+            this.RemovePod.Location = new System.Drawing.Point(470, 166);
             this.RemovePod.Name = "RemovePod";
             this.RemovePod.Size = new System.Drawing.Size(40, 23);
             this.RemovePod.TabIndex = 127;
@@ -335,7 +263,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // AddPod
             // 
-            this.AddPod.Location = new System.Drawing.Point(503, 97);
+            this.AddPod.Location = new System.Drawing.Point(470, 122);
             this.AddPod.Name = "AddPod";
             this.AddPod.Size = new System.Drawing.Size(40, 23);
             this.AddPod.TabIndex = 126;
@@ -344,7 +272,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // ListPodSeleccionado
             // 
-            this.ListPodSeleccionado.Location = new System.Drawing.Point(569, 80);
+            this.ListPodSeleccionado.Location = new System.Drawing.Point(536, 105);
             this.ListPodSeleccionado.Name = "ListPodSeleccionado";
             this.ListPodSeleccionado.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListPodSeleccionado.Size = new System.Drawing.Size(104, 95);
@@ -352,7 +280,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // ListPod
             // 
-            this.ListPod.Location = new System.Drawing.Point(382, 83);
+            this.ListPod.Location = new System.Drawing.Point(349, 105);
             this.ListPod.Name = "ListPod";
             this.ListPod.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListPod.Size = new System.Drawing.Size(104, 95);
@@ -360,7 +288,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // ListPolSeleccionado
             // 
-            this.ListPolSeleccionado.Location = new System.Drawing.Point(228, 83);
+            this.ListPolSeleccionado.Location = new System.Drawing.Point(208, 108);
             this.ListPolSeleccionado.Name = "ListPolSeleccionado";
             this.ListPolSeleccionado.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListPolSeleccionado.Size = new System.Drawing.Size(104, 95);
@@ -368,7 +296,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // RemovePol
             // 
-            this.RemovePol.Location = new System.Drawing.Point(172, 139);
+            this.RemovePol.Location = new System.Drawing.Point(152, 164);
             this.RemovePol.Name = "RemovePol";
             this.RemovePol.Size = new System.Drawing.Size(40, 23);
             this.RemovePol.TabIndex = 120;
@@ -377,7 +305,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // AddPol
             // 
-            this.AddPol.Location = new System.Drawing.Point(172, 95);
+            this.AddPol.Location = new System.Drawing.Point(152, 120);
             this.AddPol.Name = "AddPol";
             this.AddPol.Size = new System.Drawing.Size(40, 23);
             this.AddPol.TabIndex = 119;
@@ -388,7 +316,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             this.ListPol.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ListPol.Appearance.Options.UseForeColor = true;
-            this.ListPol.Location = new System.Drawing.Point(58, 83);
+            this.ListPol.Location = new System.Drawing.Point(38, 108);
             this.ListPol.Name = "ListPol";
             this.ListPol.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListPol.Size = new System.Drawing.Size(104, 95);
@@ -583,7 +511,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.CboNaviera.Size = new System.Drawing.Size(158, 20);
             this.CboNaviera.TabIndex = 17;
             this.CboNaviera.SelectedIndexChanged += new System.EventHandler(this.CboNaviera_SelectedIndexChanged);
-            this.CboNaviera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CboNaviera_KeyPress);
             // 
             // labelControl14
             // 
@@ -616,7 +543,7 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(343, 82);
+            this.labelControl6.Location = new System.Drawing.Point(326, 82);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(21, 13);
             this.labelControl6.TabIndex = 6;
@@ -656,8 +583,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.gridView1.OptionsBehavior.CacheValuesOnRowUpdating = DevExpress.Data.CacheRowValuesMode.Disabled;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gridView1_InvalidRowException);
-            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
             // gridColumn2
             // 
@@ -749,6 +674,16 @@ namespace SCCMultimodal.Cotizaciones {
             this.labelControl5.Size = new System.Drawing.Size(19, 13);
             this.labelControl5.TabIndex = 15;
             this.labelControl5.Text = "POL";
+            // 
+            // TxtGastosLocales
+            // 
+            this.TxtGastosLocales.Location = new System.Drawing.Point(435, 26);
+            this.TxtGastosLocales.Name = "TxtGastosLocales";
+            this.TxtGastosLocales.Properties.Mask.EditMask = "f";
+            this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);
+            this.TxtGastosLocales.TabIndex = 10;
+            this.TxtGastosLocales.EditValueChanged += new System.EventHandler(this.TxtGastosLocales_EditValueChanged);
             // 
             // chkincoterm
             // 
@@ -857,20 +792,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.labelControl4.TabIndex = 13;
             this.labelControl4.Text = "Incoterm";
             // 
-            // TxtGastosLocales
-            // 
-            this.TxtGastosLocales.EditValue = "";
-            this.TxtGastosLocales.Location = new System.Drawing.Point(436, 26);
-            this.TxtGastosLocales.Name = "TxtGastosLocales";
-            this.TxtGastosLocales.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TxtGastosLocales.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TxtGastosLocales.Properties.Mask.EditMask = "c0";
-            this.TxtGastosLocales.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.TxtGastosLocales.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.TxtGastosLocales.Size = new System.Drawing.Size(152, 20);
-            this.TxtGastosLocales.TabIndex = 10;
-            this.TxtGastosLocales.EditValueChanged += new System.EventHandler(this.TxtGastosLocales_EditValueChanged);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -912,6 +833,27 @@ namespace SCCMultimodal.Cotizaciones {
             // 
             this.ctrldxError.ContainerControl = this;
             // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(9, 188);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(33, 13);
+            this.labelControl11.TabIndex = 116;
+            this.labelControl11.Text = "Estado";
+            // 
+            // LblEstado
+            // 
+            this.LblEstado.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.LblEstado.Appearance.Options.UseBorderColor = true;
+            this.LblEstado.Appearance.Options.UseFont = true;
+            this.LblEstado.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblEstado.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.LblEstado.Location = new System.Drawing.Point(125, 182);
+            this.LblEstado.Name = "LblEstado";
+            this.LblEstado.Size = new System.Drawing.Size(117, 25);
+            this.LblEstado.TabIndex = 117;
+            this.LblEstado.Text = "labelControl17";
+            // 
             // FrmCotizacionDirecta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,7 +861,6 @@ namespace SCCMultimodal.Cotizaciones {
             this.ClientSize = new System.Drawing.Size(721, 669);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.grpOportunidad);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCotizacionDirecta";
             this.Text = "Ingreso de Cotizacion Directa";
             this.Load += new System.EventHandler(this.SolicitarTarifa_Load);
@@ -932,8 +873,6 @@ namespace SCCMultimodal.Cotizaciones {
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboServicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPodSeleccionado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListPolSeleccionado)).EndInit();
@@ -955,12 +894,12 @@ namespace SCCMultimodal.Cotizaciones {
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboCliente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFecha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCommodity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEjecutivo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtGastosLocales.Properties)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
@@ -1044,9 +983,5 @@ namespace SCCMultimodal.Cotizaciones {
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
         private DevExpress.XtraEditors.LabelControl LblEstado;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.ComboBoxEdit cboVia;
-        private DevExpress.XtraEditors.ComboBoxEdit cboServicio;
     }
 }

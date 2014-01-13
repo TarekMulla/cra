@@ -10,22 +10,30 @@ using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
 
 
-namespace ProyectoCraft.AccesoDatos.Cotizaciones {
-    public class ClsPuertosDao {
+namespace ProyectoCraft.AccesoDatos.Cotizaciones
+{
+    public class ClsPuertosDao
+    {
 
         private const String NombreClase = "ClsPuertosDao";
 
-        public static ResultadoTransaccion ObtieneTodosLosPuertos() {
+        public static ResultadoTransaccion ObtieneTodosLosPuertos()
+        {
             ResultadoTransaccion res = new ResultadoTransaccion();
             IList<Puerto> puertos = new List<Puerto>();
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
-            try {
+            try
+            {
 
-                var command = new SqlCommand("SP_L_Puertos", conn);
+                SqlCommand command = new SqlCommand("SP_L_Puertos", conn);
+
+                //command.Transaction = conn.BeginTransaction();
+
                 command.CommandType = CommandType.StoredProcedure;
                 var reader = command.ExecuteReader();
-                while (reader.Read()) {
+                while (reader.Read())
+                {
                     puertos.Add(GetFromDataReader(reader));
                 }
 
@@ -33,56 +41,75 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
                 res.ObjetoTransaccion = puertos;
                 res.Descripcion = "Se creo la cotizacion Exitosamente";
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
 
                 res.Descripcion = ex.Message;
                 res.ArchivoError = NombreClase;
                 res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return res;
         }
 
-        public static ResultadoTransaccion ObtienePuertoPorCodigo(String codigo) {
-            var res = new ResultadoTransaccion();
+        public static ResultadoTransaccion ObtienePuertoPorCodigo(String codigo)
+        {
+            ResultadoTransaccion res = new ResultadoTransaccion();
             Puerto puerto = null;
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
-            try {
+            try
+            {
 
-                var command = new SqlCommand("SP_L_Puertos_por_codigo", conn);
+                SqlCommand command = new SqlCommand("SP_L_Puertos_por_codigo", conn);
+
+                //command.Transaction = conn.BeginTransaction();
+
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@codigo", codigo);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                     puerto = GetFromDataReader(reader);
+                
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = puerto;
                 res.Descripcion = "Se creo la cotizacion Exitosamente";
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
 
                 res.Descripcion = ex.Message;
                 res.ArchivoError = NombreClase;
                 res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return res;
         }
 
-        public static ResultadoTransaccion ObtienePuertosPorNaviera(ClsNaviera naviera) {
-            var res = new ResultadoTransaccion();
-            var puertos = new List<Puerto>();
+        public static ResultadoTransaccion ObtienePuertosPorNaviera(ClsNaviera naviera)
+        {
+            ResultadoTransaccion res = new ResultadoTransaccion();
+            List<Puerto> puertos = new List<Puerto>();
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
-            try {
+            try
+            {
 
-                var command = new SqlCommand("SP_L_Puertos_por_naviera", conn);
+                SqlCommand command = new SqlCommand("SP_L_Puertos_por_naviera", conn);
+
+                //command.Transaction = conn.BeginTransaction();
+
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@idNaviera", naviera.Id32);
                 var reader = command.ExecuteReader();
@@ -94,134 +121,29 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones {
                 res.ObjetoTransaccion = puertos;
                 res.Descripcion = "Se creo la cotizacion Exitosamente";
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
 
                 res.Descripcion = ex.Message;
                 res.ArchivoError = NombreClase;
                 res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return res;
         }
 
-        public static ResultadoTransaccion ActualizaPuerto(Puerto puerto) {
-            var res = new ResultadoTransaccion();
-            //Abrir Conexion
-            var conn = BaseDatos.Conexion();
-            try {
-
-                var command = new SqlCommand("SP_A_PUERTOS", conn);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@codigo", puerto.Codigo);
-                command.Parameters.AddWithValue("@nombre", puerto.Nombre);
-                command.Parameters.AddWithValue("@pais", puerto.Pais);
-                var foo = command.ExecuteNonQuery();
-
-                res.ObjetoTransaccion = puerto;
-                res.Descripcion = "Se actualizo el Puerto Exitosamente";
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-
-                res.Descripcion = ex.Message;
-                res.ArchivoError = NombreClase;
-                res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
-                conn.Close();
-            }
-            return res;
-        }
-
-        public static ResultadoTransaccion CreaPuerto(Puerto puerto) {
-            var res = new ResultadoTransaccion();
-            //Abrir Conexion
-            var conn = BaseDatos.Conexion();
-            try {
-                var command = new SqlCommand("SP_N_PUERTOS", conn);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@codigo", puerto.Codigo);
-                command.Parameters.AddWithValue("@nombre", puerto.Nombre);
-                command.Parameters.AddWithValue("@pais", puerto.Pais);
-                var foo = command.ExecuteNonQuery();
-
-                res.ObjetoTransaccion = puerto;
-                res.Descripcion = "Se creo el Puerto Exitosamente";
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-
-                res.Descripcion = ex.Message;
-                res.ArchivoError = NombreClase;
-                res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
-                conn.Close();
-            }
-            return res;
-        }
-
-        public static ResultadoTransaccion EliminaPuerto(Puerto puerto) {
-            var res = new ResultadoTransaccion();
-            //Abrir Conexion
-            var conn = BaseDatos.Conexion();
-            try {
-                var command = new SqlCommand("SP_E_PUERTOS", conn);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@codigo", puerto.Codigo);
-                var foo = command.ExecuteNonQuery();
-
-                res.ObjetoTransaccion = puerto;
-                res.Descripcion = "Se Elimino el Puerto Exitosamente";
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-
-                res.Descripcion = ex.Message;
-                res.ArchivoError = NombreClase;
-                res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
-                conn.Close();
-            }
-            return res;
-        }
-
-        private static Puerto GetFromDataReader(SqlDataReader reader) {
+        private static Puerto GetFromDataReader(SqlDataReader reader)
+        {
             var p = new Puerto();
             p.Codigo = reader["puerto"].ToString();
             p.Nombre = reader["nombre"].ToString();
-            p.Pais = reader["pais"].ToString();
             return p;
         }
-
-        public static ResultadoTransaccion ObtieneLosPaisesConPuertos(){
-            var res = new ResultadoTransaccion();
-            var paises = new List<String>();
-            //Abrir Conexion
-            var conn = BaseDatos.Conexion();
-            try {
-
-                var command = new SqlCommand("SP_L_Puertos_Paises", conn);
-                command.CommandType = CommandType.StoredProcedure;
-                var reader = command.ExecuteReader();
-                while (reader.Read()) 
-                    paises.Add(reader["pais"].ToString());
-
-                res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
-                res.ObjetoTransaccion = paises;
-                res.Descripcion = "Se creo la cotizacion Exitosamente";
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-
-                res.Descripcion = ex.Message;
-                res.ArchivoError = NombreClase;
-                res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            } finally {
-                conn.Close();
-            }
-            return res;
-        } 
 
     }
 }

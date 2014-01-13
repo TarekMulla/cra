@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]
+alter PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]   				   
 @NumMaster nvarchar(50),   
 @FechaMaster datetime,   
 @IdAgente bigint,   
@@ -10,9 +10,7 @@ ALTER PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]
 @IdAsignacion bigint,  
 @IdTipoServicio int, 
 @IdNaveTransbordo bigint,
-@motivoModificacion varchar(50),
-@txtShipping varchar(100)    
-AS      IF @IdTipoServicio = -1 SET @IdTipoServicio = NULL
+@motivoModificacion varchar(50)    AS      IF @IdTipoServicio = -1 SET @IdTipoServicio = NULL
 
 
 UPDATE PAPERLESS_ASIGNACION SET   NumMaster = @NumMaster,
@@ -26,7 +24,6 @@ UPDATE PAPERLESS_ASIGNACION SET   NumMaster = @NumMaster,
  FechaPaso1 = GETDATE(),   
  IdTipoServicio = @IdTipoServicio,   
  MotivoModificacion = @motivoModificacion ,
- IdNaveTransbordo=  @IdNaveTransbordo,
- txtShipping = @txtShipping 
+ IdNaveTransbordo=  @IdNaveTransbordo
 WHERE Id = @IdAsignacion
 

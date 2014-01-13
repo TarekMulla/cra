@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]                                                                     
+ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]                                                                      
  --DECLARE                                                                                                               
  @desde datetime,                                                                                                        
  @hasta datetime,                                                                                                        
@@ -38,13 +38,13 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
                                                                                                                          
  declare @username1 nvarchar(50)                                                                                         
  set @username1 = null                                                                                                   
- if(@usuario1 > 0)                                                                 
-    SET @username1 = (select NombreUsuario from USUARIOS where Id = @usuario1)                                             
-                                                                                                                                    
+ if(@usuario1 > 0)		                                                           
+ 	SET @username1 = (select NombreUsuario from USUARIOS where Id = @usuario1)                                             
+ 				                                                                                                                    
  declare @username2 nvarchar(50)                                                                                         
  set @username2 = null                                                                                                   
  if(@usuario2 > 0)                                                                                                       
-    select @username2 = NombreUsuario from USUARIOS where Id = @usuario2                                                   
+ 	select @username2 = NombreUsuario from USUARIOS where Id = @usuario2                                                   
                                                                                                                          
                                                                                                                          
                                                                                                                          
@@ -67,9 +67,7 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  set @sql += ' PA.ObservacionUsuario1,PA.ObservacionUsuario2,'                                                           
  set @sql += ' PHINFO.NumConsolidado,'                                                                                   
  set @sql += ' PA.IdUsuarioCreacion, UC.ApellidoPaterno UCAP, UC.ApellidoMaterno UCAM, UC.Nombres UCN, UC.Email EmailUC, '
- set @sql += ' isnull(PA.IdNaveTransbordo,0) as IdNaveTransbordo ,isnull(PNAVET.Descripcion ,'''') as NaveTransbordo,'
- set @sql += ' PA.versionUsuario1'
- set @sql += ' ,PA.FechaMaximaVinculacion'
+ set @sql += ' isnull(PA.IdNaveTransbordo,0) as IdNaveTransbordo ,isnull(PNAVET.Descripcion ,'''') as NaveTransbordo'
  set @sql += ' FROM PAPERLESS_ASIGNACION PA'                                                                             
  set @sql += ' LEFT OUTER JOIN USUARIOS U1'                                                                              
  set @sql += ' ON PA.Usuario1 = U1.Id'                                                                                   
@@ -85,7 +83,7 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  set @sql += ' ON PA.IdNaviera = PN.Id'                                                                                  
  set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVE'                                                                     
  set @sql += ' ON PA.IdNave = PNAVE.Id'
- set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVET'                                                                     
+set @sql += ' LEFT OUTER JOIN PAPERLESS_NAVE PNAVET'                                                                     
  set @sql += ' ON PA.IdNaveTransbordo = PNAVET.Id'                                                                                   
  set @sql += ' INNER JOIN PAPERLESS_TIPO_CARGA TP'                                                                       
  set @sql += ' ON PA.IdTipoCarga = TP.Id'                                                                                
@@ -96,39 +94,39 @@ ALTER PROCEDURE [dbo].[SP_L_PAPERLESS_ASIGNACION]
  set @sql += ' WHERE PA.Id>0'                                                                                            
                                                                                                                          
  if(@desde is not null)                                                                                                  
-    set @sql += ' AND convert(varchar(20),PA.FechaCreacion,112) >= ISNULL(''' + CONVERT(NVARCHAR(20),@desde,112) + ''',PA.FechaCreacion)'             
+ 	set @sql += ' AND convert(varchar(20),PA.FechaCreacion,112) >= ISNULL(''' + CONVERT(NVARCHAR(20),@desde,112) + ''',PA.FechaCreacion)'	          
                                                                                                                          
- if(@hasta is not null)                                                                                                  
-    set @sql += ' AND convert(varchar(20),PA.FechaCreacion,112) <= ISNULL(''' + CONVERT(NVARCHAR(20),@hasta,112) + ''',PA.FechaCreacion)'           
-                                                                                                                           
- if(@usuario1 > 0)                                                                                                        
-    set @sql += ' AND U1.NombreUsuario = ISNULL(''' + @username1 + ''',U1.NombreUsuario)'                                  
-                                                                                                                           
+ if(@hasta is not null)	                                                                                                 
+ 	set @sql += ' AND convert(varchar(20),PA.FechaCreacion,112) <= ISNULL(''' + CONVERT(NVARCHAR(20),@hasta,112) + ''',PA.FechaCreacion)'           
+ 	                                                                                                                       
+ if(@usuario1 > 0)	                                                                                                      
+ 	set @sql += ' AND U1.NombreUsuario = ISNULL(''' + @username1 + ''',U1.NombreUsuario)'                                  
+ 	                                                                                                                       
  if(@usuario2 > 0)                                                                                                       
-    set @sql += ' AND U2.NombreUsuario = ISNULL(''' + @username2 + ''',U2.NombreUsuario)'                                  
+ 	set @sql += ' AND U2.NombreUsuario = ISNULL(''' + @username2 + ''',U2.NombreUsuario)'                                  
                                                                                                                          
  if(@estado is not null)                                                                                                 
-    set @sql += ' AND PA.IdEstado in (' + @estado + ' )'
-  --    set @sql += ' AND PA.IdEstado in ( ISNULL(' + CONVERT(NVARCHAR(1),CAST(@estado AS INT)) + ',PA.IdEstado))'
-                                                                                                                           
- if (@nave is not null and @nave <> '')                                                                                  
-    set @sql += ' AND PNAVE.Descripcion like ISNULL(''%' + @nave + '%'',PNAVE.Descripcion)'    
-    
- if (@DesdeEmbarcadores is not null and @DesdeEmbarcadores <> '')   
-    set @sql += 'AND convert(varchar(20),PlazoEmbarcadores,112) >= ISNULL('''+CONVERT(NVARCHAR(20),@DesdeEmbarcadores,112)+''',PlazoEmbarcadores)'
-    
-if (@HastaEmbarcadores  is not null and @HastaEmbarcadores <> '')   
-    set @sql += 'AND convert(varchar(20),PlazoEmbarcadores,112) <= ISNULL('''+CONVERT(NVARCHAR(20),@HastaEmbarcadores,112)+''',PlazoEmbarcadores)'
+ 	set @sql += ' AND PA.IdEstado in (' + @estado + ' )'
+  --	set @sql += ' AND PA.IdEstado in ( ISNULL(' + CONVERT(NVARCHAR(1),CAST(@estado AS INT)) + ',PA.IdEstado))'
+ 	                                                                                                                       
+ if (@nave is not null and @nave <> '')	                                                                                 
+ 	set @sql += ' AND PNAVE.Descripcion like ISNULL(''%' + @nave + '%'',PNAVE.Descripcion)'    
+ 	
+ if (@DesdeEmbarcadores is not null and @DesdeEmbarcadores <> '')	
+	set @sql += 'AND convert(varchar(20),PlazoEmbarcadores,112) >= ISNULL('''+CONVERT(NVARCHAR(20),@DesdeEmbarcadores,112)+''',PlazoEmbarcadores)'
+	
+if (@HastaEmbarcadores  is not null and @HastaEmbarcadores <> '')	
+	set @sql += 'AND convert(varchar(20),PlazoEmbarcadores,112) <= ISNULL('''+CONVERT(NVARCHAR(20),@HastaEmbarcadores,112)+''',PlazoEmbarcadores)'
 
-if (@DesdeNavieras is not null and @DesdeNavieras <> '')    
-    set @sql += 'AND convert(varchar(20),PA.AperturaNavieras,112) >= ISNULL('''+CONVERT(NVARCHAR(20),@DesdeNavieras,112)+''',PA.AperturaNavieras)'
-    
-if (@HastaNavieras is not null and @HastaNavieras <> '')    
-    set @sql += 'AND convert(varchar(20),PA.AperturaNavieras,112) <= ISNULL('''+CONVERT(NVARCHAR(20),@HastaNavieras,112)+''',PA.AperturaNavieras)'                            
-                                                    
+if (@DesdeNavieras is not null and @DesdeNavieras <> '')	
+	set @sql += 'AND convert(varchar(20),PA.AperturaNavieras,112) >= ISNULL('''+CONVERT(NVARCHAR(20),@DesdeNavieras,112)+''',PA.AperturaNavieras)'
+	
+if (@HastaNavieras is not null and @HastaNavieras <> '')	
+	set @sql += 'AND convert(varchar(20),PA.AperturaNavieras,112) <= ISNULL('''+CONVERT(NVARCHAR(20),@HastaNavieras,112)+''',PA.AperturaNavieras)'                            
+ 	                                                
 if(@nummaster is not null and  @nummaster <> '')                                                                                                       
-    set @sql += ' AND PA.NumMaster = ISNULL(''' + @nummaster + ''',PA.NumMaster)' 
-                                                                                                                               
+ 	set @sql += ' AND PA.NumMaster = ISNULL(''' + @nummaster + ''',PA.NumMaster)' 
+ 	 	                                                                                                                       
  set @sql += ' ORDER BY PA.Id desc'                                                                                      
  execute(@sql)                                                                                                           
                                                                                                                          

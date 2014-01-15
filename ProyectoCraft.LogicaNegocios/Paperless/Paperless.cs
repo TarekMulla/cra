@@ -397,6 +397,10 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesV2_Usuario2(excepciones,paso);
         }
-        
+
+        public static ResultadoTransaccion Usuario1GuardaEmpresa(string empresa, long asignacion)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaEmpresa(empresa, asignacion);
+        }
     }
 }

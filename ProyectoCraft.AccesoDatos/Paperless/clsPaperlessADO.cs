@@ -4756,7 +4756,41 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
             return resultado;
         }
+        public static ResultadoTransaccion Usuario1GuardaEmpresa(string empresa, long asignacion)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
 
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_EMPRESA");
+
+                objParams[0].Value = empresa;
+
+                objParams[1].Value = asignacion;
+
+                var command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_EMPRESA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return resultado;
+        }
     }
 }
 

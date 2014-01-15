@@ -132,12 +132,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
 
             IList<PaperlessFlujo> asignaciones =
                 LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperlessGraficosUsuario1y2(desde, hasta,
-            ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
+            ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
             grdAsignaciones.DataSource = asignaciones;
             grdAsignaciones.RefreshDataSource();
 
             DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGraficoGestionPaperless(
-               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
+               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";

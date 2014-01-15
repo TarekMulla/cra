@@ -723,6 +723,17 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = listhouses;
 
+            try
+            {
+                LogicaNegocios.Paperless.Paperless.Usuario1GuardaEmpresa(DdlEmpresa.SelectedText, PaperlessAsignacionActual.Id);
+            }
+            catch (Exception ex)
+            {
+                Log.log.Error(ex);
+            }
+
+            
+
             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
             {
                 Cursor.Current = Cursors.Default;
@@ -1510,7 +1521,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             {
                 Int32 regVarios = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings.Get("regVarios"));
 
-                if (netShips == null)
+                if (netShips == null || netShips.Equals(0))
                     netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(PaperlessAsignacionActual.NumMaster, storeProcedureName);
                 //clsClienteMaster clienteNuevo = null;
 

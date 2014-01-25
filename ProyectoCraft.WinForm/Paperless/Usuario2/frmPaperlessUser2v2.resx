@@ -268,6 +268,24 @@
         dAaJikqnkkoiI++QiIgUapZ0mKCgOEKjnaYS6/QB/x7Q/gA9pc/hzjsdvAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnP3GuardarAperturaEmbarcadores.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALVSURBVDhPpdBrSNNRGAbwOdTEQpeCINKniqSCzC5i
+        UWpqMhJEsJsDCbEyxBWsoqGis0xDdClsXpmuDbecbG6RF6Y23AS3yXTK5lAbc4oXNDkqI0XY0x8/bBB+
+        qg/PgcPL8+O8hwbgv3J4SKR6Z4/SSCQSPRF3/iACQR+pquomXG4nYbObSUEBn+TmVpPs7AqSlPyaME4y
+        F2m02DQfoFSZPTt7Xni9Xgi7xpBT1IZxq/vw/ndszl/glMlxLDhhxQeIv+iJe2Mfnn0v8t6IcTWrCmOW
+        xSMB3YQLhe+kCA9P2fUBwqZBYnNtY4PsQfZ9Cu3KCZDdgyOBAYMDmY+rERp6k/iA2jo1Mds3YJ3bwNK6
+        B66VHcy7CezOTczMr8PqWMOEfQU64zx4fBVu3+MiJCTRD5Tz5MQwtYoe7SzEaiuav5pQLzagqmUEJfx+
+        FL9XgMVuBZNVg9ScSiSmcRAcfN0PcN52kH6DEwqtHaphB7r6ptHWbUJd2whK69Rgl0qR/6oFrMJGpN+v
+        xIWEpwgMvOIHXhQJiazfBuPMkm/XgwMvtrYOsLy8izlqNYtliYobL7kixJx7ADo9zg/kPaknIqUFo2YX
+        1lZ/Y2FhGzMzmzAZl6HT/URfnw0KhQUq5SQKioWIPJWJgIBLfiDn4UfCF+vxbdiG5aU9TE6uY2xsEUND
+        c9BopiGXmyAS6SHuNOBxfi1ORKVSzYt+gJlZRkqoXcUKE+YcWzAYXNBqHVBTHyqTGanyKASCQTQJtch6
+        VIHg8ESqed4P3ErmkKIyKYQdOphNq9STZ9HTMwWJZBytrTo0NAyguroXn2o0SM/ign48nmrG+oHL8c89
+        rGefUf5BBoN+Fr29RnR16dDePojGRg1qa7vB40nAq5Di2o0C0OhnqOZZjw8IC8twMsLvEgYjhcTEMEl0
+        dAaJikqnkkoiI++QiIgUapZ0mKCgOEKjnaYS6/QB/x7Q/gA9pc/hzjsdvAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnReenviarCorreoTermino.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -286,24 +304,6 @@
         FR5+8SBjDA8XEBbA599hlZlZR3e77nZX1wwFrLHG9vZpnD3b+JXOvIXDKQyLihISCqHG/F+AjIyagLhc
         WXRJiep7T48BIpHCn5RU1kVnnRgTIyKHDxeRQ4cu/Q3g8W4ERH+S3WlpVeqjRyvf0pDSjxy5EhQff4XE
         xor/AyggPwCJ/XcE5joGMwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnP3GuardarAperturaEmbarcadores.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALVSURBVDhPpdBrSNNRGAbwOdTEQpeCINKniqSCzC5i
-        UWpqMhJEsJsDCbEyxBWsoqGis0xDdClsXpmuDbecbG6RF6Y23AS3yXTK5lAbc4oXNDkqI0XY0x8/bBB+
-        qg/PgcPL8+O8hwbgv3J4SKR6Z4/SSCQSPRF3/iACQR+pquomXG4nYbObSUEBn+TmVpPs7AqSlPyaME4y
-        F2m02DQfoFSZPTt7Xni9Xgi7xpBT1IZxq/vw/ndszl/glMlxLDhhxQeIv+iJe2Mfnn0v8t6IcTWrCmOW
-        xSMB3YQLhe+kCA9P2fUBwqZBYnNtY4PsQfZ9Cu3KCZDdgyOBAYMDmY+rERp6k/iA2jo1Mds3YJ3bwNK6
-        B66VHcy7CezOTczMr8PqWMOEfQU64zx4fBVu3+MiJCTRD5Tz5MQwtYoe7SzEaiuav5pQLzagqmUEJfx+
-        FL9XgMVuBZNVg9ScSiSmcRAcfN0PcN52kH6DEwqtHaphB7r6ptHWbUJd2whK69Rgl0qR/6oFrMJGpN+v
-        xIWEpwgMvOIHXhQJiazfBuPMkm/XgwMvtrYOsLy8izlqNYtliYobL7kixJx7ADo9zg/kPaknIqUFo2YX
-        1lZ/Y2FhGzMzmzAZl6HT/URfnw0KhQUq5SQKioWIPJWJgIBLfiDn4UfCF+vxbdiG5aU9TE6uY2xsEUND
-        c9BopiGXmyAS6SHuNOBxfi1ORKVSzYt+gJlZRkqoXcUKE+YcWzAYXNBqHVBTHyqTGanyKASCQTQJtch6
-        VIHg8ESqed4P3ErmkKIyKYQdOphNq9STZ9HTMwWJZBytrTo0NAyguroXn2o0SM/ign48nmrG+oHL8c89
-        rGefUf5BBoN+Fr29RnR16dDePojGRg1qa7vB40nAq5Di2o0C0OhnqOZZjw8IC8twMsLvEgYjhcTEMEl0
-        dAaJikqnkkoiI++QiIgUapZ0mKCgOEKjnaYS6/QB/x7Q/gA9pc/hzjsdvAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

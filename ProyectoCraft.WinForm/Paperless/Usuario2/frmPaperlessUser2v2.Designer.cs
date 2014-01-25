@@ -979,9 +979,9 @@
             this.pnlRecibirAperturaEmb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlRecibirAperturaEmb.Controls.Add(this.pnlReenviarCorreo);
             this.pnlRecibirAperturaEmb.Controls.Add(this.grdRecibirAperturaEmb);
             this.pnlRecibirAperturaEmb.Controls.Add(this.btnP3GuardarAperturaEmbarcadores);
+            this.pnlRecibirAperturaEmb.Controls.Add(this.pnlReenviarCorreo);
             this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(471, 89);
             this.pnlRecibirAperturaEmb.Name = "pnlRecibirAperturaEmb";
             this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(684, 386);
@@ -993,7 +993,7 @@
             this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl3);
-            this.pnlReenviarCorreo.Location = new System.Drawing.Point(1, 0);
+            this.pnlReenviarCorreo.Location = new System.Drawing.Point(16, 0);
             this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
             this.pnlReenviarCorreo.Size = new System.Drawing.Size(671, 384);
             this.pnlReenviarCorreo.TabIndex = 10;
@@ -1193,14 +1193,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 487);
-            this.Controls.Add(this.pnlExcepciones);
+            this.Controls.Add(this.pnlExcepMaster);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlRecibirAperturaEmb);
             this.Controls.Add(this.pnlContactarembarcador);
-            this.Controls.Add(this.pnlExcepMaster);
+            this.Controls.Add(this.pnlExcepciones);
             this.Name = "frmPaperlessUser2v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso Paperless Usuario 2";

@@ -59,7 +59,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         private PaperlessPasosEstado _pasoEstadoActual;
         private List<PaperlessTipoExcepcion> TiposDeExcepciones;
         private List<PaperlessTipoResponsabilidad> TiposResponsabilidad;
-        private List<PaperlessAgenteCausador> TiposAgenteCausador;
 
         private bool IsBrasil { get; set; }
 
@@ -279,90 +278,83 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
         private void MarcarCambioEstadoPasoBrasil(object sender, EventArgs e)
         {
-            //DevExpress.XtraEditors.CheckEdit check = sender as DevExpress.XtraEditors.CheckEdit;
-            //if (check == null) return;
-
-            //PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-            //if (!ValidarPermiteCambiarPasoEstado(paso))
-            //{
-            //    paso.Estado = false;
-            //    CargarPasos();//debe ir para que el checkbox se marque solo por el valor de la BBDD
-            //    return;
-            //}
-
-            //var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
-            //QuitaTodosPaneles();
-            //CallDinamicMethod(paso);
-
-            //return;
-
-            //PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-            //if (paso.Paso.NumPaso == 1)
-            //{
-            //    PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
-            //    pasoSeleccionado.Estado = true;
-            //    LogicaNegocios.Paperless.Paperless.Usuario2ActualizaPaso(PaperlessAsignacionActual, paso);
-
-            //    CargarPasos();
-            //    paso.Estado = check.Checked;
-
-            //    return;
-            //}
-
-            var check = sender as DevExpress.XtraEditors.CheckEdit;
+            var mail = new EnvioMailObject();
+            DevExpress.XtraEditors.CheckEdit check = sender as DevExpress.XtraEditors.CheckEdit;
             if (check == null) return;
 
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-
-            if (!ValidarPermiteCambiarPasoEstado(paso))
+            if (paso.Paso.NumPaso == 1)
             {
-                paso.Estado = false;
+                PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
+                pasoSeleccionado.Estado = true;
+                LogicaNegocios.Paperless.Paperless.Usuario2ActualizaPaso(PaperlessAsignacionActual, paso);
+
                 CargarPasos();
+                paso.Estado = check.Checked;
+
                 return;
             }
 
-            if (!String.IsNullOrEmpty(paso.Pantalla))
+            if (paso.Paso.NumPaso == 3)
             {
-                paso.Estado = false;
-                CargarPasos();
-                return;
+
+
+                paso.Estado = check.Checked;
+
+                if (paso != null)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.ProcesoTerminado;
+
+                    PaperlessProcesoRegistroTiempo termino = new PaperlessProcesoRegistroTiempo();
+                    termino.IdAsignacion = PaperlessAsignacionActual.Id;
+                    termino.TerminoUsuario2 = DateTime.Now;
+
+                    Entidades.GlobalObject.ResultadoTransaccion resultado =
+                        LogicaNegocios.Paperless.Paperless.Usuario2TerminaProceso(PaperlessAsignacionActual, paso, termino);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        PaperlessUsuario1HouseBLInfo info =
+                            LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+                        resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
+                        //resultado = Utils.EnvioEmail.EnviarMailPaperlessUsuario2erminaProceso(PaperlessAsignacionActual,info);
+
+                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        {
+                            Cursor.Current = Cursors.Default;
+                            MessageBox.Show("Error al enviar email de termino de proceso. \n" + resultado.Descripcion, "Paperless",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            frmListarUsuario2 form = frmListarUsuario2.Instancia;
+                            form.ObtenerAsignaciones();
+
+                            Cursor.Current = Cursors.Default;
+                            MessageBox.Show("Proceso ha sido finalizado con exito", "Paperless", MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+
+                            this.Close();
+                        }
+                        Cursor.Current = Cursors.Default;
+                        //CargarPasos();
+                    }
+                }
             }
-
-
-            if (paso.Estado)
-            {
-                CargarPasos();
-                return;
-            }
-
-            paso.Estado = check.Checked;
-            ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2ActualizaPaso(PaperlessAsignacionActual, paso);
-            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-            {
-                MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                CargarPasos();
-            }
-          
-            QuitaTodosPaneles();
-            CallDinamicMethod(paso);
-
-            return;
-
         }
 
         protected void MarcarCambioEstadoPaso(object sender, EventArgs e)
         {
-
             if (IsBrasil)
                 MarcarCambioEstadoPasoBrasil(sender, e);
             else
                 MarcarCambioEstadoPasoChile(sender, e);
-
-
 
             //Codigo antes del merge
             //var check = sender as DevExpress.XtraEditors.CheckEdit;
@@ -395,10 +387,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             //    MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
             //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             //} else {
-            //CargarPasos();
+            //    CargarPasos();
             //}
-
-
         }
 
         private bool ValidarPermiteCambiarPasoEstado(PaperlessPasosEstado pasoactual)
@@ -407,8 +397,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             foreach (var paso in pasos)
             {
-                //if (paso.IdPasoEstado < pasoactual.IdPasoEstado && !paso.Estado)
-                if (paso.Paso.NumPaso < pasoactual.Paso.NumPaso && !paso.Estado)
+                if (paso.IdPasoEstado < pasoactual.IdPasoEstado && !paso.Estado)
                 {
                     MessageBox.Show("Hay pasos previos pendientes de realizar. Debe marcarlos como realizados para continuar", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
@@ -417,7 +406,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             return true;
         }
 
-        public ResultadoTransaccion PrepararPasos()
+        public Entidades.GlobalObject.ResultadoTransaccion PrepararPasos()
         {
             PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.EnProcesoUsuario2;
 
@@ -506,14 +495,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         }
 
-
         public void PresentarManifiesto(PaperlessPasosEstado paso)
         {
-
-            if (!validarCicloCompleto())
-                return;
-
-            var mail = new EnvioMailObject();
             _pasoEstadoActual = paso;
             if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
             {
@@ -521,53 +504,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 pnlReenviarCorreo.Visible = true;
                 btnReenviarCorreoTermino.Visible = true;
             }
-            //paso.Estado = check.Checked;
 
-            if (paso != null)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.ProcesoTerminado;
-
-                PaperlessProcesoRegistroTiempo termino = new PaperlessProcesoRegistroTiempo();
-                termino.IdAsignacion = PaperlessAsignacionActual.Id;
-                termino.TerminoUsuario2 = DateTime.Now;
-
-                Entidades.GlobalObject.ResultadoTransaccion resultado =
-                    LogicaNegocios.Paperless.Paperless.Usuario2TerminaProceso(PaperlessAsignacionActual, paso, termino);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                {
-                    Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    PaperlessUsuario1HouseBLInfo info =
-                        LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
-                    resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
-                    //resultado = Utils.EnvioEmail.EnviarMailPaperlessUsuario2erminaProceso(PaperlessAsignacionActual,info);
-
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Error al enviar email de termino de proceso. \n" + resultado.Descripcion, "Paperless",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        frmListarUsuario2 form = frmListarUsuario2.Instancia;
-                        form.ObtenerAsignaciones();
-
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Proceso ha sido finalizado con exito", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
-
-                        this.Close();
-                    }
-                    Cursor.Current = Cursors.Default;
-                    //CargarPasos();
-                }
-            }
 
         }
 
@@ -592,7 +529,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             pnlContactarembarcador.Visible = false;
             pnlRecibirAperturaEmb.Visible = false;
             pnlReenviarCorreo.Visible = false;
-            pnlExcepMaster.Visible = false;
         }
 
         private PaperlessPasosEstado ObtenerPasoSelccionadoDesdeGrilla()
@@ -614,49 +550,22 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
 
-                foreach (var pExcepcionMaster in excepciones)
+                if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepciones))
                 {
-                    if (pExcepcionMaster.TieneExcepcion)
-                    {
-
-                        if (pExcepcionMaster.TipoExcepcion == null ||
-                            pExcepcionMaster.TipoExcepcion.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione tipo Excepcion", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (pExcepcionMaster.Causador == null || pExcepcionMaster.Causador.Nombre==null || pExcepcionMaster.Causador.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione Agente Causador", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (pExcepcionMaster.Responsabilidad== null ||
-                            pExcepcionMaster.Responsabilidad.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione tipo Responsabilidad", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-
-                    }
+                    MessageBox.Show(@"Falta informacion, debe ingresar al paso 'Excepciones'", @"Paperless");
                 }
-                if (excepciones != null)
+                else if (excepciones != null)
                 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
                     pasoSeleccionado.Estado = true;
                     IdAsignacion = pasoSeleccionado.IdAsignacion;
                     ResultadoTransaccion resultado;
-                    //if (IsBrasil)
-                    //    resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
-                    //else
-                    resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
-                    LogicaNegocios.Paperless.Paperless.Usuario1ActualizaExcepcionV2(excepciones, pasoSeleccionado);
-
+                    if (IsBrasil)
+                        resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
+                    else
+                        resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxiones(excepciones, pasoSeleccionado);
+                    
+                    
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                     {
@@ -951,10 +860,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 if (IsBrasil)
                     e.Cancel = false;
                 else
-                    if (!itemSelecccionado.TipoExcepcion.Id.Equals(6))
-                    {
-                        e.Cancel = true;
-                    }
+                if (!itemSelecccionado.TipoExcepcion.Id.Equals(6))
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
@@ -988,16 +897,14 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             pnlExcepciones.Visible = true;
             var excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             excepciones = (List<PaperlessExcepcion>)LogicaNegocios.Paperless.Paperless.RefrescarExcepciones(excepciones);
-            //var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
-            //PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
-            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepciones;
+            var excepcionesUsuario2 = excepciones.FindAll(foo => foo.Responsabilidad.Id.Equals(2));
+
+            PaperlessAsignacionActual.DataUsuario1.Excepciones = excepcionesUsuario2;
             grdExcepciones.DataSource = PaperlessAsignacionActual.DataUsuario1.Excepciones;
             grdExcepciones.RefreshDataSource();
 
 
         }
-
-
         private void grdExcepciones_ShownEditor(object sender, EventArgs e)
         {
             try
@@ -1010,9 +917,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                     TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
 
                     TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
-
-                    if (TiposAgenteCausador == null)
-                        TiposAgenteCausador = LogicaNegocios.Paperless.Paperless.ListarTiposPaperlessAgenteCausador();
 
                     DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
 
@@ -1068,8 +972,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                                 cbo.Properties.Items.Clear();
                                 foreach (var tipos in TiposResponsabilidad)
                                 {
-                                    //    if (!tipos.Nombre.Equals("Usuario 1"))
-                                    cbo.Properties.Items.Add(tipos);
+                                    if (!tipos.Nombre.Equals("Usuario 1"))
+                                        cbo.Properties.Items.Add(tipos);
                                 }
                             }
                             else
@@ -1079,23 +983,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                                 cbo.EditValue = null;
                                 cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
                             }
-                    }
-                }
-                if (foo.FocusedColumn.FieldName.Equals("Causador"))
-                {
-                    if (itemSelecccionado.TieneExcepcion)
-                    {
-                        var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                        cbo.Properties.Items.Clear();
-                        foreach (var tipos in TiposAgenteCausador)
-                            cbo.Properties.Items.Add(tipos);
-                    }
-                    else
-                    {
-                        var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                        cbo.Properties.Items.Clear();
-                        cbo.EditValue = null;
-                        cbo.Properties.Items.Add(new PaperlessAgenteCausador());
                     }
                 }
             }
@@ -1125,6 +1012,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
         }
         private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones)
         {
+             
+
             foreach (PaperlessExcepcion excepcion in excepciones)
             {
                 if (!IsBrasil)
@@ -1136,344 +1025,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 else
                     if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))//!excepcion.Resuelto
                         return false;
-                //else if (excepcion.ResueltoUser2.Equals(false))
-                //    return false;
-
-                if (excepcion.TieneExcepcion)
-                {
-                    if (!excepcion.Resuelto)
+                    else if (excepcion.Responsabilidad.Nombre.Equals("Usuario 2") || excepcion.ResueltoUser2.Equals(false))
                         return false;
-                }
             }
             return true;
         }
 
         private void AgregarExcepcionManual_Click(object sender, EventArgs e)
         {
-
             IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            var excep = new PaperlessExcepcion();
-            excep.IdAsignacion = _asignacion.Id;
-            excep.HouseBL.Index = excepciones.Count + 1;
-            var excepSeleccionada = Obtiene_Excepcion();
+            var item = new PaperlessExcepcion() { RecargoCollect = false };
 
-            if (excepSeleccionada != null)
-            {
-                excep.HouseBL.Cliente = excepSeleccionada.HouseBL.Cliente;
-                excep.HouseBL.TipoCliente = excepSeleccionada.HouseBL.TipoCliente;
-                excep.HouseBL.HouseBL = excepSeleccionada.HouseBL.HouseBL;
-                excep.HouseBL.Id = excepSeleccionada.HouseBL.Id;
-            }
-            else
-            {
-                IList<PaperlessUsuario1HousesBL> houses = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBL(PaperlessAsignacionActual.Id);
-                if (houses.Count > 0)
-                {
-                    excep.HouseBL.Id = houses[0].Id;
-                }
-            }
-            excep.UsuarioCreador = 2;
-            excepciones.Add(excep);
+            PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
+            house.Index = excepciones.Count + 1;
+            house.IdAsignacion = PaperlessAsignacionActual.Id;
+            house.Freehand = false;
+            house.HouseBL = (excepciones.Count + 1).ToString();
+            house.ExcepcionRecargoCollect = new PaperlessExcepcion {RecargoCollect = false, TieneExcepcion = true};
 
-            GrdExcepMaster.DataSource = excepciones;
-            GrdExcepMaster.RefreshDataSource();
-            //IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
-            //var item = new PaperlessExcepcion() { RecargoCollect = false };
-
-            //PaperlessUsuario1HousesBL house = new PaperlessUsuario1HousesBL();
-            //house.Index = excepciones.Count + 1;
-            //house.IdAsignacion = PaperlessAsignacionActual.Id;
-            //house.Freehand = false;
-            //house.HouseBL = (excepciones.Count + 1).ToString();            
-            //house.ExcepcionRecargoCollect = new PaperlessExcepcion { RecargoCollect = false, TieneExcepcion = true };
-
-
-
-            //item.HouseBL = house;
-            //item.UsuarioCreador = 2;
-            //excepciones.Add(item);
-            //PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-            //ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
-
-            //grdExcepciones.DataSource = excepciones;
-            //grdExcepciones.RefreshDataSource();
-        }
-
-        private void panelControl1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnAgregarExcepMaster_Click(object sender, EventArgs e)
-        {
-            IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepMaster.DataSource;
-            var excepMaster = new PaperlessExcepcionMaster();
-            excepMaster.IdAsignacion = _asignacion.Id;
-            excepMaster.Index = excepciones.Count + 1;
-            excepMaster.UsuarioCreador = 2;
-            excepciones.Add(excepMaster);
-
-            GrdExcepMaster.DataSource = excepciones;
-            GrdExcepMaster.RefreshDataSource();
-        }
-
-        public void RegistrarExcepcionesMaster(PaperlessPasosEstado paso)
-        {
-
-            _pasoEstadoActual = paso;
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
-            //var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
-
-            if (excepciones.Count.Equals(0))
-            {
-                var excepMaster = new PaperlessExcepcionMaster();
-                excepMaster.IdAsignacion = _asignacion.Id;
-                excepMaster.Index = 1;
-                excepciones.Add(excepMaster);
-            }
-
-            GrdExcepMaster.DataSource = excepciones;
-            GrdExcepMaster.RefreshDataSource();
-
-            pnlExcepMaster.Visible = true;
-            BtnEliminarExcepMaster.Visible = true;
-            btnAgregarExcepMaster.Visible = true;
-        }
-
-        private void btnGuardarExcepMaster_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
-
-            if (!ValidarPermiteCambiarPasoEstado(pasoSeleccionado))
-                return;
-
-            pasoSeleccionado.Estado = true;
-            IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepMaster.DataSource;
-            foreach (var pExcepcionMaster in excepciones)
-            {
-                if (pExcepcionMaster.TieneExcepcion)
-                {
-
-                    if (pExcepcionMaster.TipoExcepcion == null ||
-                        pExcepcionMaster.TipoExcepcion.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione tipo Excepcion", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (pExcepcionMaster.AgenteCausador == null ||
-                        pExcepcionMaster.AgenteCausador.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione Agente Causador", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (pExcepcionMaster.Tiporesponsabilidad == null ||
-                        pExcepcionMaster.Tiporesponsabilidad.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione tipo Responsabilidad", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-            }
-
-            //if (! validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepciones))
-            //{
-            //    lblP11ErrorExcepcion.Visible = true;
-            //    return;
-            //}
-            //else
-            //{
-            //    lblP11ErrorExcepcion.Visible = false;
-            //}
-            ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
-
-
-            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-            {
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show(resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                CargarPasos();
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show("Excepciones han sido guardadas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //btnP11Excepciones.Enabled = false;
-            }
-        }
-
-        private void grdExcepcionesMaster_ShownEditor(object sender, EventArgs e)
-        {
-            if (TiposDeExcepciones == null)
-                TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
-            else
-                if (TiposDeExcepciones.Count.Equals(0))
-                    TiposDeExcepciones = (List<PaperlessTipoExcepcion>)LogicaNegocios.Paperless.Paperless.ListarTiposExcepciones(PaperlessAsignacionActual.TipoCarga.Nombre);
-            if (TiposResponsabilidad == null)
-                TiposResponsabilidad = LogicaNegocios.Paperless.Paperless.ListarTiposResponsabilidad(PaperlessAsignacionActual.TipoCarga.Nombre);
-
-            if (TiposAgenteCausador == null)
-                TiposAgenteCausador = LogicaNegocios.Paperless.Paperless.ListarTiposPaperlessAgenteCausador();
-
-
-            var foo = sender as GridView;
-            DataRow row = foo.GetDataRow(foo.FocusedRowHandle);
-            var lista = foo.DataSource as IList<PaperlessExcepcionMaster>;
-            var itemSelecccionado = lista[foo.FocusedRowHandle];
-            if (!itemSelecccionado.TieneExcepcion)
-            {
-                itemSelecccionado.TipoExcepcion = null;
-                itemSelecccionado.Tiporesponsabilidad = null;
-                itemSelecccionado.Comentario = String.Empty;
-            }
-
-            if (foo.FocusedColumn.FieldName.Equals("TipoExcepcion"))
-            {
-                if (itemSelecccionado.TieneExcepcion)
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    foreach (var tipos in TiposDeExcepciones)
-                    {
-                        cbo.Properties.Items.Add(tipos);
-                    }
-                }
-                else
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    cbo.EditValue = null;
-                    cbo.Properties.Items.Add(new PaperlessTipoExcepcion());
-                }
-            }
-
-            if (foo.FocusedColumn.FieldName.Equals("Tiporesponsabilidad"))
-            {
-                if (itemSelecccionado.TieneExcepcion)
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    foreach (var tipos in TiposResponsabilidad)
-                        cbo.Properties.Items.Add(tipos);
-                }
-                else
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    cbo.EditValue = null;
-                    cbo.Properties.Items.Add(new PaperlessTipoResponsabilidad());
-                }
-            }
-            if (foo.FocusedColumn.FieldName.Equals("AgenteCausador"))
-            {
-                if (itemSelecccionado.TieneExcepcion)
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    foreach (var tipos in TiposAgenteCausador)
-                        cbo.Properties.Items.Add(tipos);
-                }
-                else
-                {
-                    var cbo = foo.ActiveEditor as DevExpress.XtraEditors.ComboBoxEdit;
-                    cbo.Properties.Items.Clear();
-                    cbo.EditValue = null;
-                    cbo.Properties.Items.Add(new PaperlessAgenteCausador());
-                }
-            }
-
-        }
-
-        private void BtnEliminarExcepMaster_Click(object sender, EventArgs e)
-        {
-
-            var excepAEliminar = Obtiene_ExcepcionMaster();
-            //if (excepAEliminar.UsuarioCreador.Equals(2))
-            if (excepAEliminar != null)
-                LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxionMaster(excepAEliminar, Base.Usuario.UsuarioConectado.Usuario.Id);
-
-            //else
-            //    MessageBox.Show("El usuario 2 no puede eliminar Excepciones del usuario 1", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
-
-            GrdExcepMaster.DataSource = excepciones;
-            GrdExcepMaster.RefreshDataSource();
-        }
-        private PaperlessExcepcionMaster Obtiene_ExcepcionMaster()
-        {
-            var paso = (PaperlessExcepcionMaster)gridView6.GetRow(gridView6.FocusedRowHandle);//grdExcepciones
-            return paso;
-        }
-        private PaperlessExcepcion Obtiene_Excepcion()
-        {
-            var paso = (PaperlessExcepcion)gridView1.GetRow(gridView1.FocusedRowHandle);//grdExcepciones
-            return paso;
-        }
-
-        private void btnEliminarExcepcion_Click(object sender, EventArgs e)
-        {
-
-            var excepAEliminar = Obtiene_Excepcion();
-            //if (excepAEliminar.UsuarioCreador.Equals(2))
-
-            if (excepAEliminar != null)
-                LogicaNegocios.Paperless.Paperless.Usuario1EliminaExcepxion(excepAEliminar, Base.Usuario.UsuarioConectado.Usuario.Id);
-            //else
-            //    MessageBox.Show("El usuario 2 no puede eliminar Excepciones del usuario 1", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
+            item.HouseBL = house;
+            excepciones.Add(item);
+            PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
+            ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxiones(excepciones, paso);
 
             grdExcepciones.DataSource = excepciones;
             grdExcepciones.RefreshDataSource();
-        }
-        private bool validarCicloCompleto()
-        {
-            var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
-            var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
-            if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas))
-            {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones'");
-                return false;
-            }
-            var excepcionesMaster = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
-            if (!validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepcionesMaster))
-            {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones Master'");
-                return false;
-            }
-
-
-            return true;
-        }
-        private bool validarPasoExcepcionesMaster(List<PaperlessExcepcionMaster> excepciones)
-        {
-            foreach (PaperlessExcepcionMaster excepcion in excepciones)
-            {
-                if (!IsBrasil)
-                {
-                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Tiporesponsabilidad == null))
-                        return false;
-                }
-                else
-                    if (excepcion.TieneExcepcion)
-                    {
-                        //if (excepcion.Tiporesponsabilidad.Nombre.Equals("Usuario 2") && !excepcion.Resuelto)
-                        //{
-                        //    MessageBox.Show(@"Las Excepciones de Responsabilidad Usuario 1 deben quedar Resueltas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    return false;
-                        //}
-                        if (!excepcion.Resuelto)
-                            return false;
-                    }
-            }
-            return true;
         }
     }
 }

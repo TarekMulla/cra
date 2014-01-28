@@ -682,10 +682,5 @@ namespace ProyectoCraft.WinForm.Ventas.Metas
                 }
             }
         }
-
-        private void frmRevisarAsigMetas_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Instancia = null;
-        }
     }
 }

@@ -28,12 +28,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel7 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel8 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel9 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionAsignaciones));
             this.TabGestionPaperless = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -83,12 +83,6 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.DdlEmpresa = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ddlTipoCargaDescLarga = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.MENUEXCEL = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuSalir = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TabGestionPaperless.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -97,12 +91,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgrupadoPor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlEstadoPaperless.Properties)).BeginInit();
@@ -112,17 +106,16 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabGestionPaperless
             // 
             this.TabGestionPaperless.Controls.Add(this.tabPage1);
             this.TabGestionPaperless.Controls.Add(this.tabPage2);
-            this.TabGestionPaperless.Location = new System.Drawing.Point(12, 68);
+            this.TabGestionPaperless.Location = new System.Drawing.Point(12, 92);
             this.TabGestionPaperless.Name = "TabGestionPaperless";
             this.TabGestionPaperless.SelectedIndex = 0;
-            this.TabGestionPaperless.Size = new System.Drawing.Size(1119, 541);
+            this.TabGestionPaperless.Size = new System.Drawing.Size(1119, 517);
             this.TabGestionPaperless.TabIndex = 4;
             // 
             // tabPage1
@@ -131,7 +124,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1111, 515);
+            this.tabPage1.Size = new System.Drawing.Size(1111, 491);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Detalle";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -144,7 +137,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.groupControl2.Controls.Add(this.grdAsignaciones);
             this.groupControl2.Location = new System.Drawing.Point(6, 6);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1099, 497);
+            this.groupControl2.Size = new System.Drawing.Size(1099, 473);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Resultado";
             // 
@@ -154,7 +147,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.grdAsignaciones.Location = new System.Drawing.Point(2, 20);
             this.grdAsignaciones.MainView = this.gridView1;
             this.grdAsignaciones.Name = "grdAsignaciones";
-            this.grdAsignaciones.Size = new System.Drawing.Size(1095, 475);
+            this.grdAsignaciones.Size = new System.Drawing.Size(1095, 451);
             this.grdAsignaciones.TabIndex = 0;
             this.grdAsignaciones.UseEmbeddedNavigator = true;
             this.grdAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -418,7 +411,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1111, 515);
+            this.tabPage2.Size = new System.Drawing.Size(1111, 491);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Graficos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -427,35 +420,35 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             this.Chartusuario2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            xyDiagram3.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisX.Range.SideMarginsEnabled = true;
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisY.Range.SideMarginsEnabled = true;
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            this.Chartusuario2.Diagram = xyDiagram3;
+            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.Chartusuario2.Diagram = xyDiagram1;
             this.Chartusuario2.Location = new System.Drawing.Point(373, 6);
             this.Chartusuario2.Name = "Chartusuario2";
-            sideBySideBarSeriesLabel7.LineVisible = true;
-            sideBySideBarSeriesLabel7.OverlappingOptionsTypeName = "OverlappingOptions";
-            series5.Label = sideBySideBarSeriesLabel7;
-            series5.Name = "Series 1";
-            sideBySideBarSeriesLabel8.LineVisible = true;
-            sideBySideBarSeriesLabel8.OverlappingOptionsTypeName = "OverlappingOptions";
-            series6.Label = sideBySideBarSeriesLabel8;
-            series6.Name = "Series 2";
+            sideBySideBarSeriesLabel1.LineVisible = true;
+            sideBySideBarSeriesLabel1.OverlappingOptionsTypeName = "OverlappingOptions";
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.Name = "Series 1";
+            sideBySideBarSeriesLabel2.LineVisible = true;
+            sideBySideBarSeriesLabel2.OverlappingOptionsTypeName = "OverlappingOptions";
+            series2.Label = sideBySideBarSeriesLabel2;
+            series2.Name = "Series 2";
             this.Chartusuario2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series5,
-        series6};
-            sideBySideBarSeriesLabel9.LineVisible = true;
-            sideBySideBarSeriesLabel9.OverlappingOptionsTypeName = "OverlappingOptions";
-            this.Chartusuario2.SeriesTemplate.Label = sideBySideBarSeriesLabel9;
+        series1,
+        series2};
+            sideBySideBarSeriesLabel3.LineVisible = true;
+            sideBySideBarSeriesLabel3.OverlappingOptionsTypeName = "OverlappingOptions";
+            this.Chartusuario2.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
             this.Chartusuario2.Size = new System.Drawing.Size(364, 479);
             this.Chartusuario2.TabIndex = 74;
             // 
             // lblEstadoPaperless
             // 
-            this.lblEstadoPaperless.Location = new System.Drawing.Point(120, 7);
+            this.lblEstadoPaperless.Location = new System.Drawing.Point(12, 50);
             this.lblEstadoPaperless.Name = "lblEstadoPaperless";
             this.lblEstadoPaperless.Size = new System.Drawing.Size(82, 13);
             this.lblEstadoPaperless.TabIndex = 112;
@@ -464,16 +457,16 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // btnBuscar
             // 
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(906, 12);
+            this.btnBuscar.Location = new System.Drawing.Point(424, 50);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(73, 25);
+            this.btnBuscar.Size = new System.Drawing.Size(114, 23);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // ddlAgrupadoPor
             // 
-            this.ddlAgrupadoPor.Location = new System.Drawing.Point(483, 26);
+            this.ddlAgrupadoPor.Location = new System.Drawing.Point(103, 25);
             this.ddlAgrupadoPor.Name = "ddlAgrupadoPor";
             this.ddlAgrupadoPor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -482,7 +475,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // ddlTipoCarga
             // 
-            this.ddlTipoCarga.Location = new System.Drawing.Point(483, 4);
+            this.ddlTipoCarga.Location = new System.Drawing.Point(102, 2);
             this.ddlTipoCarga.Name = "ddlTipoCarga";
             this.ddlTipoCarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -492,8 +485,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // ddlEstadoPaperless
             // 
-            this.ddlEstadoPaperless.AllowDrop = true;
-            this.ddlEstadoPaperless.Location = new System.Drawing.Point(203, 5);
+            this.ddlEstadoPaperless.Location = new System.Drawing.Point(103, 47);
             this.ddlEstadoPaperless.Name = "ddlEstadoPaperless";
             this.ddlEstadoPaperless.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -502,7 +494,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(410, 7);
+            this.labelControl8.Location = new System.Drawing.Point(12, 5);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(67, 13);
             this.labelControl8.TabIndex = 114;
@@ -510,7 +502,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(411, 29);
+            this.labelControl9.Location = new System.Drawing.Point(13, 28);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(66, 13);
             this.labelControl9.TabIndex = 115;
@@ -519,7 +511,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // txtFechaDesde
             // 
             this.txtFechaDesde.EditValue = null;
-            this.txtFechaDesde.Location = new System.Drawing.Point(786, 4);
+            this.txtFechaDesde.Location = new System.Drawing.Point(424, 2);
             this.txtFechaDesde.Name = "txtFechaDesde";
             this.txtFechaDesde.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -531,7 +523,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // txtFechaHasta
             // 
             this.txtFechaHasta.EditValue = null;
-            this.txtFechaHasta.Location = new System.Drawing.Point(786, 26);
+            this.txtFechaHasta.Location = new System.Drawing.Point(424, 28);
             this.txtFechaHasta.Name = "txtFechaHasta";
             this.txtFechaHasta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -543,7 +535,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(709, 8);
+            this.labelControl10.Location = new System.Drawing.Point(328, 7);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(62, 13);
             this.labelControl10.TabIndex = 118;
@@ -551,7 +543,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(709, 27);
+            this.labelControl11.Location = new System.Drawing.Point(328, 33);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(60, 13);
             this.labelControl11.TabIndex = 119;
@@ -559,7 +551,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // DdlEmpresa
             // 
-            this.DdlEmpresa.Location = new System.Drawing.Point(203, 26);
+            this.DdlEmpresa.Location = new System.Drawing.Point(103, 70);
             this.DdlEmpresa.Name = "DdlEmpresa";
             this.DdlEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -568,7 +560,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(120, 29);
+            this.labelControl1.Location = new System.Drawing.Point(12, 73);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(29, 13);
             this.labelControl1.TabIndex = 121;
@@ -576,63 +568,13 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             // ddlTipoCargaDescLarga
             // 
-            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(619, 4);
+            this.ddlTipoCargaDescLarga.Location = new System.Drawing.Point(240, 2);
             this.ddlTipoCargaDescLarga.Name = "ddlTipoCargaDescLarga";
             this.ddlTipoCargaDescLarga.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlTipoCargaDescLarga.Size = new System.Drawing.Size(64, 20);
             this.ddlTipoCargaDescLarga.TabIndex = 123;
             this.ddlTipoCargaDescLarga.Visible = false;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator2,
-            this.MENUEXCEL,
-            this.toolStripSeparator3,
-            this.MenuSalir,
-            this.toolStripSeparator1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1143, 54);
-            this.toolStrip1.TabIndex = 124;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
-            // 
-            // MENUEXCEL
-            // 
-            this.MENUEXCEL.Image = ((System.Drawing.Image)(resources.GetObject("MENUEXCEL.Image")));
-            this.MENUEXCEL.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MENUEXCEL.Name = "MENUEXCEL";
-            this.MENUEXCEL.Size = new System.Drawing.Size(54, 51);
-            this.MENUEXCEL.Text = "Exportar";
-            this.MENUEXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MENUEXCEL.Click += new System.EventHandler(this.MENUEXCEL_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
-            // 
-            // MenuSalir
-            // 
-            this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
-            this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(36, 51);
-            this.MenuSalir.Text = "Salir";
-            this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // frmGestionAsignaciones
             // 
@@ -654,7 +596,6 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.ddlTipoCarga);
             this.Controls.Add(this.ddlAgrupadoPor);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "frmGestionAsignaciones";
             this.Text = "GestionAsignaciones";
             this.Load += new System.EventHandler(this.frmGestionAsignaciones_Load);
@@ -666,12 +607,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgrupadoPor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).EndInit();
@@ -682,8 +623,6 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaHasta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DdlEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCargaDescLarga.Properties)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -739,12 +678,6 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         private DevExpress.XtraEditors.ComboBoxEdit DdlEmpresa;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ComboBoxEdit ddlTipoCargaDescLarga;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton MENUEXCEL;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton MenuSalir;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 
     }
 }

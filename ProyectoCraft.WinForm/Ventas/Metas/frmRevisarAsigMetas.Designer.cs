@@ -862,7 +862,6 @@
             this.Name = "frmRevisarAsigMetas";
             this.Text = "Mis TARGETS";
             this.Load += new System.EventHandler(this.frmRevisarAsigMetas_Load);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRevisarAsigMetas_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gridProspectos)).EndInit();
             this.gridProspectos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMisProspectos)).EndInit();

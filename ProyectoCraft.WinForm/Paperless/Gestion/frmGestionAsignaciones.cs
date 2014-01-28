@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.LogicaNegocios;
@@ -78,46 +77,9 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         {
 
         }
-        private bool ValidaFiltrosIngresados ()
-        {
-            if (string.IsNullOrEmpty(ddlEstadoPaperless.SelectedText))
-            {
-                MessageBox.Show("Seleccione Estado Paperless", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(DdlEmpresa.SelectedText))
-            {
-                MessageBox.Show("Seleccione Marca", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(ddlTipoCarga.SelectedText) || ddlTipoCarga.SelectedText.Equals("Seleccione..."))
-            {
-                MessageBox.Show("Seleccione Tipo de Carga", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(ddlAgrupadoPor.SelectedText))
-            {
-                MessageBox.Show("Seleccione Agrupado por", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtFechaDesde.Text))
-            {
-                MessageBox.Show("Seleccione fecha desde", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtFechaHasta.Text))
-            {
-                MessageBox.Show("Seleccione fecha hasta", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            
-            return true;
-        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (!ValidaFiltrosIngresados())
-                return;
             DateTime desde = new DateTime(9999, 1, 1);
             DateTime hasta = new DateTime(9999, 1, 1);
             string status = "";
@@ -130,14 +92,14 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             if (!string.IsNullOrEmpty(txtFechaHasta.Text))
                 hasta = Convert.ToDateTime(txtFechaHasta.Text);
 
-            IList<PaperlessFlujo> asignaciones =
-                LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperlessGraficosUsuario1y2(desde, hasta,
-            ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
-            grdAsignaciones.DataSource = asignaciones;
-            grdAsignaciones.RefreshDataSource();
+           // IList<PaperlessFlujo> asignaciones =
+           //     LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperlessGraficosUsuario1y2(desde, hasta, 
+           // ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
+           // grdAsignaciones.DataSource = asignaciones;
+           // grdAsignaciones.RefreshDataSource();
 
             DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGraficoGestionPaperless(
-               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
+               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, "");
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";
@@ -186,40 +148,6 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         }
 
         private void frmGestionAsignaciones_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Instancia = null;
-            Close();
-        }
-
-        private void MENUEXCEL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SaveFileDialog GrabarArchivo = new SaveFileDialog();
-                GrabarArchivo.Filter = "Excel(xls)|*.xls";
-                GrabarArchivo.Title = "Exportar Excel";
-                GrabarArchivo.DefaultExt = "xls";
-                GrabarArchivo.FileName = "Gestion Paperless Asignaciones";
-                GrabarArchivo.OverwritePrompt = true;
-                GrabarArchivo.ShowDialog();
-
-                if (GrabarArchivo.FileName != "")
-                {
-                    System.IO.FileStream fs =
-                       (System.IO.FileStream)GrabarArchivo.OpenFile();
-                    this.grdAsignaciones.ExportToXls(fs, true);
-
-                    fs.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.EscribirLog(ex.Message);
-                MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void MenuSalir_Click(object sender, EventArgs e)
         {
             Instancia = null;
             Close();

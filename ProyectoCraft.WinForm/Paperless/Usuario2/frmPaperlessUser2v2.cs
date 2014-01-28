@@ -614,37 +614,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 IList<PaperlessExcepcion> excepciones = (IList<PaperlessExcepcion>)grdExcepciones.DataSource;
 
-                foreach (var pExcepcionMaster in excepciones)
-                {
-                    if (pExcepcionMaster.TieneExcepcion)
-                    {
-
-                        if (pExcepcionMaster.TipoExcepcion == null ||
-                            pExcepcionMaster.TipoExcepcion.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione tipo Excepcion", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (pExcepcionMaster.Causador == null || pExcepcionMaster.Causador.Nombre==null || pExcepcionMaster.Causador.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione Agente Causador", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-                        if (pExcepcionMaster.Responsabilidad== null ||
-                            pExcepcionMaster.Responsabilidad.ToString().Equals(""))
-                        {
-                            Cursor.Current = Cursors.Default;
-                            MessageBox.Show(@"Seleccione tipo Responsabilidad", "Paperless", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-
-                    }
-                }
                 if (excepciones != null)
                 {
                     PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
@@ -1250,38 +1219,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             pasoSeleccionado.Estado = true;
             IList<PaperlessExcepcionMaster> excepciones = (IList<PaperlessExcepcionMaster>)GrdExcepMaster.DataSource;
-            foreach (var pExcepcionMaster in excepciones)
-            {
-                if (pExcepcionMaster.TieneExcepcion)
-                {
-
-                    if (pExcepcionMaster.TipoExcepcion == null ||
-                        pExcepcionMaster.TipoExcepcion.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione tipo Excepcion", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (pExcepcionMaster.AgenteCausador == null ||
-                        pExcepcionMaster.AgenteCausador.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione Agente Causador", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (pExcepcionMaster.Tiporesponsabilidad == null ||
-                        pExcepcionMaster.Tiporesponsabilidad.ToString().Equals(""))
-                    {
-                        Cursor.Current = Cursors.Default;
-                        MessageBox.Show(@"Seleccione tipo Responsabilidad", "Paperless", MessageBoxButtons.OK,
-                                        MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-            }
-
             //if (! validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepciones))
             //{
             //    lblP11ErrorExcepcion.Visible = true;

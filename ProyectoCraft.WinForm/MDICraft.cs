@@ -789,13 +789,6 @@ namespace ProyectoCraft.WinForm
 
         private void MenuPaperlessGestionAsignaciones_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            
-        }
-
-       
-
-        private void navBarItem5_LinkClicked_1(object sender, NavBarLinkEventArgs e)
-        {
             var timer = System.Diagnostics.Stopwatch.StartNew();
             var form = frmGestionAsignaciones.Instancia;
             form.MdiParent = this;

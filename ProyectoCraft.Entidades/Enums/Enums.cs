@@ -325,6 +325,7 @@ namespace ProyectoCraft.Entidades.Enums {
             PerdidoTarifa = 6,
             PerdidoOtros = 7,
             Cerrado = 8,
+            CerradoLCL = 9,
         }
 
     }

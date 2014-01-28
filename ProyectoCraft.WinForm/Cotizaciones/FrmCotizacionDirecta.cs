@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
-using DevExpress.XtraEditors.Controls;
+using DevExpress.Utils;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
@@ -18,12 +18,11 @@ using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.LogicaNegocios.Cotizaciones.Directa;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
 using ProyectoCraft.LogicaNegocios.Parametros;
-using clsTarget = ProyectoCraft.Entidades.Clientes.Target.clsTarget;
+
 
 namespace SCCMultimodal.Cotizaciones {
     public partial class FrmCotizacionDirecta : Form {
         private List<clsClienteMaster> _clientes = new List<clsClienteMaster>();
-        private List<clsTarget> _targets = new List<clsTarget>();
         private List<Moneda> _monedas = new List<Moneda>();
         private List<ClsNaviera> _navieras = new List<ClsNaviera>();
         private List<Concepto> _conceptos = new List<Concepto>();
@@ -57,42 +56,18 @@ namespace SCCMultimodal.Cotizaciones {
             txtFechaValidezIni.DataBindings.Add("Text", bindingSource1, "FechaValidezInicio");
             txtFechaValidezIni.DataBindings.Add("DateTime", bindingSource1, "FechaValidezInicio");
             txtFechaValidezIni.DataBindings.Add("EditValue", bindingSource1, "FechaValidezInicio");
-
             txtFechaValidezFin.DataBindings.Add("Text", bindingSource1, "FechaValidezFin");
             txtFechaValidezFin.DataBindings.Add("DateTime", bindingSource1, "FechaValidezFin");
             txtFechaValidezFin.DataBindings.Add("EditValue", bindingSource1, "FechaValidezFin");
             GridOpcionDetalle.DataBindings.Add("DataSource", bindingSource1, "Detalles");
-
-
         }
 
 
         public void BeginForm() {
 
             CboNaviera.Properties.AutoComplete = true;
-
-            /*_clientes = clsClientesMaster.ListarClienteMaster
-                            (String.Empty, Enums.TipoPersona.Comercial, Enums.Estado.Todos, true) as
-                        List<clsClienteMaster>;*/
-
             _clientes = clsClientesMaster.ListarCuentasYTarget(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32);
-            /*var target = ProyectoCraft.LogicaNegocios.Direccion.Metas.clsMetaNegocio.ListarProspectosUsuarioEstado(ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, "1,2,3,4,5,6,7,8,9").ObjetoTransaccion as  IList<clsMeta>;
-            var cuentas = clsCuentas.ListarCuentas("-1", ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Id32, -1, -1);
-            
-
-            foreach (var c in cuentas){
-                c.ClienteMaster.Tipo = Enums.TipoPersona.Cuenta;
-                _clientes.Add(c.ClienteMaster);
-            }
-
-            foreach (var t in target) {
-                t.ObjClienteMaster.Tipo = Enums.TipoPersona.Target;
-                _clientes.Add(t.ObjClienteMaster);
-            }
-*/
             _clientes.Sort((foo, bar) => foo.ToString().CompareTo(bar.ToString()));
-
-            //_targets = (List<clsTarget>)ProyectoCraft.LogicaNegocios.Clientes.clsTarget.ListarTarget(String.Empty, 0, 0);
             _monedas = ClsMonedas.ObtieneTodasLasMonedas().ObjetoTransaccion as List<Moneda>;
             _navieras = (List<ClsNaviera>)ClsNavieras.ListarNavieras(true);
             _conceptos = ClsConceptos.ObtieneTodosLosConceptos().ObjetoTransaccion as List<Concepto>;
@@ -151,22 +126,31 @@ namespace SCCMultimodal.Cotizaciones {
         }
 
         private void CargarCotizacionDirecta() {
-            CotizacionDirecta = ClsCotizacionDirecta.ObtieneCotizacionDirecta(CotizacionDirecta.Id32).ObjetoTransaccion as CotizacionDirecta;
+            if (mode != "borrador") {
+                CotizacionDirecta = ClsCotizacionDirecta.ObtieneCotizacionDirecta(CotizacionDirecta.Id32).ObjetoTransaccion as
+                    CotizacionDirecta;
+                Text = "Ingreso de cotización Directa";
+            } else {
+                Text = "Copia de cotización Directa";
+                LblEstado.Visible = labelControl11.Visible = false;
+            }
             txtEjecutivo.Text = CotizacionDirecta.Usuario.NombreCompleto;
             TxtFecha.DateTime = CotizacionDirecta.FechaSolicitud;
             CboCliente.SelectedItem = CotizacionDirecta.Cliente;
 
             txtCommodity.Text = CotizacionDirecta.Commodity;
-            TxtGastosLocales.Text = CotizacionDirecta.GastosLocales.ToString();
             TxtObservaciones.Text = CotizacionDirecta.Observaciones;
             LblEstado.Text = CotizacionDirecta.EstadoDescripcion;
-            if (CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Cerrado ||
-                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoOtros ||
-                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoTarifa ||
-                CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Enviadacliente) {
-                toolStripButton1.Enabled = false;
-                toolStripButton1.ToolTipText = "Imposible modificar cotización en el Estado actual";
-            }
+            GridGastosLocales.DataSource = CotizacionDirecta.GastosLocalesList;
+
+            if (mode != "borrador")
+                if (CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.Cerrado ||
+                    CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoOtros ||
+                    CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.PerdidoTarifa ||
+                    CotizacionDirecta.Estado.Id32 == (Int32)Enums.EstadosCotizacion.CerradoLCL) {
+                    toolStripButton1.Enabled = false;
+                    toolStripButton1.ToolTipText = "Imposible modificar cotización en el Estado actual";
+                }
         }
 
         private void NuevaCotizacion() {
@@ -193,7 +177,23 @@ namespace SCCMultimodal.Cotizaciones {
         }
 
         private void SolicitarTarifa_Load(object sender, EventArgs e) {
-            TxtGastosLocales.Properties.Mask.Culture = new CultureInfo("es-CL");
+            GridColumnGastoLocal.DisplayFormat.Format = new CultureInfo("es-CL");
+            repositoryItemTextEdit2.Mask.Culture = new CultureInfo("es-CL");
+            repositoryItemTextEdit2.DisplayFormat.FormatType = FormatType.Custom;
+            repositoryItemTextEdit2.DisplayFormat.Format = new CultureInfo("es-CL").NumberFormat;
+            repositoryItemTextEdit2.DisplayFormat.FormatString = "c0";
+            GridColumnGastoLocal.DisplayFormat.FormatType = FormatType.Custom;
+            GridColumnGastoLocal.DisplayFormat.Format = new CultureInfo("es-CL").NumberFormat;
+            GridColumnGastoLocal.DisplayFormat.FormatString = "c0";
+
+            //GridGastosLocales.s
+            /*GridColumnGastoLocal.DisplayFormat.FormatType = FormatType.Numeric;
+            GridColumnGastoLocal.DisplayFormat.FormatString = "c0";
+
+            DevExpress.Utils.FormatInfo fi = new DevExpress.Utils.FormatInfo();
+            fi.FormatType = DevExpress.Utils.FormatType.Numeric;
+            fi.FormatString = "c0";
+            */
             BeginForm();
         }
 
@@ -208,18 +208,6 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void sButtonEliminarUnidad_Click(object sender, EventArgs e) {
             gridView1.DeleteSelectedRows();
-        }
-
-        private void TxtGastosLocales_EditValueChanged(object sender, EventArgs e) {
-            if (!String.IsNullOrEmpty(TxtGastosLocales.Text)) {
-                if (Convert.ToDecimal(TxtGastosLocales.EditValue) == 0)
-                    LblGastosLocales.Text = "Sin Gastos Locales";
-                else
-                    LblGastosLocales.Text = "+ IVA";
-
-            } else {
-                LblGastosLocales.Text = String.Empty;
-            }
         }
 
         private void CboNaviera_SelectedIndexChanged(object sender, EventArgs e) {
@@ -397,12 +385,26 @@ namespace SCCMultimodal.Cotizaciones {
 
         private void ActualizarCotizacion() {
             var resultado = ClsCotizacionDirecta.Modificar(CotizacionDirecta);
+            var logCot = CreaLog(CotizacionDirecta, EnumTipoLogCotizacionDirecta.Modificacion);
+            ClsLogCotizacionesDirecta.Guardar(logCot);
             MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CrearCotizacion() {
             var resultado = ClsCotizacionDirecta.Crear(CotizacionDirecta);
+            var logCot = CreaLog(CotizacionDirecta, EnumTipoLogCotizacionDirecta.IngresoCotizacion);
+            ClsLogCotizacionesDirecta.Guardar(logCot);
             MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private static LogCotizacionesDirecta CreaLog(CotizacionDirecta cotizacionDirecta, EnumTipoLogCotizacionDirecta tipo) {
+            var logCot = new LogCotizacionesDirecta {
+                CotizacionDirecta = cotizacionDirecta,
+                Usuario = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario,
+                Fecha = DateTime.Now,
+                Tipo = tipo
+            };
+            return logCot;
         }
 
         private void CargaDatosDelFormulario() {
@@ -420,13 +422,13 @@ namespace SCCMultimodal.Cotizaciones {
                 CotizacionDirecta.FechaSolicitud = TxtFecha.DateTime;
                 CotizacionDirecta.Usuario = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario;
             }
+
             CotizacionDirecta.IncoTerm = incoTerm;
             CotizacionDirecta.Cliente = CboCliente.SelectedItem as clsClienteMaster;
             CotizacionDirecta.NombreCliente = CotizacionDirecta.Cliente.ToString();
             CotizacionDirecta.Commodity = txtCommodity.Text;
-            if (!String.IsNullOrEmpty(TxtGastosLocales.EditValue.ToString()))
-                CotizacionDirecta.GastosLocales = Convert.ToDecimal(TxtGastosLocales.EditValue);
             CotizacionDirecta.Observaciones = TxtObservaciones.Text;
+            CotizacionDirecta.GastosLocalesList = GridGastosLocales.DataSource as List<GastoLocal>;
 
             foreach (var o in CotizacionDirecta.Opciones) {
                 if (o.IsNew) {
@@ -444,8 +446,6 @@ namespace SCCMultimodal.Cotizaciones {
                 ctrldxError.SetError(CboCliente, "Debe seleccionar un cliente", ErrorType.Critical);
             if (String.IsNullOrEmpty(txtCommodity.Text))
                 ctrldxError.SetError(txtCommodity, "Debe ingresar Commodity", ErrorType.Critical);
-            if (String.IsNullOrEmpty(TxtGastosLocales.Text))
-                ctrldxError.SetError(TxtGastosLocales, "Debe ingresar los gastos locales", ErrorType.Critical);
             if (String.IsNullOrEmpty(TxtObservaciones.Text))
                 ctrldxError.SetError(TxtObservaciones, "Debe ingresar las observaciones", ErrorType.Critical);
             if (String.IsNullOrEmpty(TxtObservaciones.Text))
@@ -463,7 +463,7 @@ namespace SCCMultimodal.Cotizaciones {
                     ctrldxError.SetError(CboNaviera, "Debe ingresar una naviera", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
-                if (o.TiposServicio == null || o.TiposServicio.Id32 == 0 ) {
+                if (o.TiposServicio == null || o.TiposServicio.Id32 == 0) {
                     ctrldxError.SetError(cboServicio, "Debe ingresar el tipo de servicio", ErrorType.Critical);
                     encontroErrorOpcion = true;
                 }
@@ -546,32 +546,36 @@ namespace SCCMultimodal.Cotizaciones {
         }
 
         private void CboNaviera_KeyPress(object sender, KeyPressEventArgs e) {
-            var foo = "bar";
+
         }
 
         private void cboServicio_KeyPress(object sender, KeyPressEventArgs e) {
-            var foo = "bar";
+
         }
 
         private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
-            /*  var valid = true;
-              GridView view = sender as GridView;
-              foreach (GridColumn column in view.Columns) {
-                  var foo = view.GetRowCellValue(e.RowHandle, column) as IIdentifiableObject;
-                  if (foo != null && foo.Id32 == 0) {
-                      valid = false;
-                      view.SetColumnError(column, "Debe ingresar un valor");
-                  }
-              }
 
-              e.Valid = valid;*/
         }
 
         private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e) {
-            /*    //Suppress displaying the error message box
-                e.ExceptionMode = ExceptionMode.NoAction;
-            */
+
         }
+
+        private void AddGastosLocales_Click(object sender, EventArgs e) {
+            var list = GridGastosLocales.DataSource as List<GastoLocal>;
+            if (list == null)
+                list = new List<GastoLocal>();
+            list.Add(new GastoLocal());
+
+            GridGastosLocales.DataSource = list;
+            GridGastosLocales.RefreshDataSource();
+
+        }
+
+        private void DeleteGastosLocales_Click(object sender, EventArgs e) {
+            gridView3.DeleteSelectedRows();
+        }
+
     }
 }
 

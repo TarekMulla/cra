@@ -84,7 +84,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 command.Parameters.AddRange(objParams);
 
                 var reader = command.ExecuteReader();
-                while (reader.Read()){
+                while (reader.Read()) {
                     var i = GetOpcionFromDataReader(reader);
                     list.Add(i);
                 }
@@ -116,7 +116,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 i.FechaCreacion = Convert.ToDateTime(reader["createDate"]);
                 i.Estado = new Estado();
                 i.Estado.Id32 = Convert.ToInt32(reader["Estado"]);
-                i.Estado.Nombre = reader["EstadoDescripcion"].ToString(); 
+                i.Estado.Nombre = reader["EstadoDescripcion"].ToString();
                 //idusuario,createdate,cotizacion_solicitud_cotizaciones_id,cotizacion_indirecta_estados_id
 
                 return i;
@@ -151,7 +151,6 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                         i.Estado.Nombre = estado.Nombre;
                         i.Estado.Activo = estado.Activo;
                     }
-
                 }
                 //(List<CotizacionDirecta>)LogicaNegocios.Cotizaciones.Directa.ClsCotizacionDirecta.ListarTodasLasCotizaciones().ObjetoTransaccion;
                 //traer de la base de datos.
@@ -179,9 +178,9 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 var cot = new CotizacionDirecta();
                 cot.Id = cot.Id32 = Convert.ToInt32(reader["id"]);
                 cot.Producto = reader["producto"].ToString();
-                
+
                 cot.Usuario = Usuarios.clsUsuarioADO.ObtenerTransaccionUsuarioPorId(Convert.ToInt32(reader["idUsuario"])).ObjetoTransaccion as clsUsuario;
-                
+
                 cot.Cliente = new clsClienteMaster(true);
                 cot.Cliente = clsClienteMasterADO.ObtenerClienteMasterPorId(Convert.ToInt64(reader["idcliente"]));
 
@@ -192,15 +191,21 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 cot.IncoTerm = Parametros.clsParametrosClientesDAO.ObtenerIncoTermPorId(Convert.ToInt16(reader["idincoterms"]));
 
                 cot.Commodity = reader["commodity"].ToString();
+                cot.GastosLocales = 0;
+
                 if (!String.IsNullOrEmpty(reader["gastosLocales"].ToString()))
                     cot.GastosLocales = Convert.ToDecimal(reader["gastosLocales"]);
 
                 cot.Observaciones = reader["Observaciones"].ToString();
                 cot.ObservacionesFijas = reader["ObservacionesFijas"].ToString();
-                
-                var listEstados= (List<Estado>)ClsCotizacionDirectaEstadoDao.ListarEstadosCotizacionDirecta().ObjetoTransaccion;
-                cot.Estado =  listEstados.Find(estado => estado.Id == Convert.ToInt32(reader["COTIZACION_Directa_ESTADOS_id"]));
 
+                if (!string.IsNullOrEmpty(reader["copiadode"].ToString()))
+                    cot.CopiadoDe = Convert.ToInt32(reader["copiadode"]);
+
+                var listEstados = (List<Estado>)ClsCotizacionDirectaEstadoDao.ListarEstadosCotizacionDirecta().ObjetoTransaccion;
+                cot.Estado = listEstados.Find(estado => estado.Id == Convert.ToInt32(reader["COTIZACION_Directa_ESTADOS_id"]));
+
+                cot.GastosLocalesList = ClsGastosLocalesDao.ObtieneGastosLocales(cot.Id32).ObjetoTransaccion as List<GastoLocal>;
 
                 cot.Opciones = ClsOpcionDao.ObtieneOpciones(cot.Id32).ObjetoTransaccion as List<Opcion>;
 
@@ -240,6 +245,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 command.Parameters.AddWithValue("@COTIZACION_TIPOS_id", 1);
                 command.Parameters.AddWithValue("@COTIZACION_Directa_ESTADOS_id", 1);
                 command.Parameters.AddWithValue("@conAgenciamento", false);
+                command.Parameters.AddWithValue("@CopiadoDe", cotizacionDirecta.CopiadoDe);
 
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -251,6 +257,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 cotizacionDirecta.Id32 = Convert.ToInt32(outParam.Value);
 
                 CrearOpcion(cotizacionDirecta, command);
+                ClsGastosLocalesDao.CrearGastosLocales(cotizacionDirecta, command);
                 command.Transaction.Commit();
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
@@ -278,40 +285,44 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             return res;
         }
 
+        private static void CrearOpcion(CotizacionDirecta cotizacionDirecta, Opcion o, SqlCommand command) {
+            var com = command.Connection.CreateCommand();
+            com.Transaction = command.Transaction;
+
+            com.CommandText = "SP_N_COTIZACION_DIRECTA_OPCIONES";
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@numero", o.Numero);
+            com.Parameters.AddWithValue("@fechaValidezInicio", o.FechaValidezInicio);
+            com.Parameters.AddWithValue("@fechaValidezFin", o.FechaValidezFin);
+            com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
+            com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
+            com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_SOLICITUD_COTIZACIONES_id", cotizacionDirecta.Id32);
+            com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
+            if (o.TipoVia != null)
+                com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
+            else
+                com.Parameters.AddWithValue("@idTipoVia", null);
+
+            com.CommandType = CommandType.StoredProcedure;
+
+            var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
+            outParam.Direction = ParameterDirection.Output;
+            com.ExecuteScalar();
+
+            o.Id = Convert.ToInt16(outParam.Value);
+            o.Id32 = Convert.ToInt32(outParam.Value);
+            CrearRelacionPuertos(o, com);
+            CrearOpcionDetalles(o, com);
+        }
+
         public static ResultadoTransaccion CrearOpcion(CotizacionDirecta cotizacionDirecta, SqlCommand command) {
             var num = 1;
             try {
                 foreach (var o in cotizacionDirecta.Opciones) {
                     o.Numero = String.Format("{0:d4}-{1:d4}", cotizacionDirecta.Id32, num);
-                    var com = command.Connection.CreateCommand();
-                    com.Transaction = command.Transaction;
-
-                    com.CommandText = "SP_N_COTIZACION_DIRECTA_OPCIONES";
-
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@numero", o.Numero);
-                    com.Parameters.AddWithValue("@fechaValidezInicio", o.FechaValidezInicio);
-                    com.Parameters.AddWithValue("@fechaValidezFin", o.FechaValidezFin);
-                    com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
-                    com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
-                    com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_SOLICITUD_COTIZACIONES_id", cotizacionDirecta.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
-                    com.CommandType = CommandType.StoredProcedure;
-
-                    var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
-                    outParam.Direction = ParameterDirection.Output;
-                    com.ExecuteScalar();
-
-                    o.Id = Convert.ToInt16(outParam.Value);
-                    o.Id32 = Convert.ToInt32(outParam.Value);
-                    CrearRelacionPuertos(o, com);
-                    CrearOpcionDetalles(o, com);
+                    CrearOpcion(cotizacionDirecta, o, command);
                     num++;
                 }
                 return new ResultadoTransaccion();
@@ -366,52 +377,56 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             }
         }
 
+        private static void CrearOpcionDetalle (Opcion opcion, DetalleOpcion detalle, SqlCommand command){
+            var com = command.Connection.CreateCommand();
+            com.Transaction = command.Transaction;
+
+            com.CommandText = "SP_N_COTIZACION_DIRECTA_OPCIONES_DETALLES";
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@cantidad", detalle.Cantidad);
+            com.Parameters.AddWithValue("@costo", detalle.Costo);
+            com.Parameters.AddWithValue("@venta", detalle.Venta);
+            com.Parameters.AddWithValue("@COTIZACION_MONEDAS_id", detalle.Moneda.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_DIRECTA_ITEMS_id", detalle.Unidad.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_DIRECTA_CONCEPTO_ID", detalle.Concepto.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_DIRECTA_OPCIONES_id", opcion.Id32);
+            com.CommandType = CommandType.StoredProcedure;
+            var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
+            outParam.Direction = ParameterDirection.Output;
+            com.ExecuteScalar();
+
+            detalle.Id = Convert.ToInt16(outParam.Value);
+            detalle.Id32 = Convert.ToInt32(outParam.Value);
+            
+        }
         public static ResultadoTransaccion CrearOpcionDetalles(Opcion opcion, SqlCommand command) {
 
             try {
-                foreach (var detalle in opcion.Detalles) {
-                    var com = command.Connection.CreateCommand();
-                    com.Transaction = command.Transaction;
-
-                    com.CommandText = "SP_N_COTIZACION_DIRECTA_OPCIONES_DETALLES";
-
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@cantidad", detalle.Cantidad);
-                    com.Parameters.AddWithValue("@costo", detalle.Costo);
-                    com.Parameters.AddWithValue("@venta", detalle.Venta);
-                    com.Parameters.AddWithValue("@COTIZACION_MONEDAS_id", detalle.Moneda.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_DIRECTA_ITEMS_id", detalle.Unidad.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_DIRECTA_CONCEPTO_ID", detalle.Concepto.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_DIRECTA_OPCIONES_id", opcion.Id32);
-                    com.CommandType = CommandType.StoredProcedure;
-                    var outParam = com.Parameters.Add("@Id", SqlDbType.BigInt);
-                    outParam.Direction = ParameterDirection.Output;
-                    com.ExecuteScalar();
-
-                    detalle.Id = Convert.ToInt16(outParam.Value);
-                    detalle.Id32 = Convert.ToInt32(outParam.Value);
+                foreach (var detalle in opcion.Detalles){
+                    CrearOpcionDetalle(opcion, detalle, command);
                 }
+
                 return new ResultadoTransaccion();
             } catch (Exception e) {
                 throw e;
             }
         }
 
-        public  static ResultadoTransaccion ObtieneCotizacionDirecta(Int32 id) {
+        public static ResultadoTransaccion ObtieneCotizacionDirecta(Int32 id) {
             var res = new ResultadoTransaccion();
             CotizacionDirecta cotizacion = null;
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
             try {
 
-                var command = new SqlCommand("SP_L_COTIZACION_SOLICITUD_COTIZACIONES_POR_ID", conn)
-                              {CommandType = CommandType.StoredProcedure};
+                var command = new SqlCommand("SP_L_COTIZACION_SOLICITUD_COTIZACIONES_POR_ID", conn) { CommandType = CommandType.StoredProcedure };
 
                 command.Parameters.AddWithValue("@id", id);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                     cotizacion = GetFromComnpleteDataReader(reader);
-                
+
 
                 res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = cotizacion;
@@ -428,14 +443,12 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
             return res;
         }
 
-        public static ResultadoTransaccion Modificar(CotizacionDirecta cotizacionDirecta)
-        {
+        public static ResultadoTransaccion Modificar(CotizacionDirecta cotizacionDirecta) {
             ResultadoTransaccion Res = new ResultadoTransaccion();
             SqlTransaction trans = null;
             //Abrir Conexion
             var conn = BaseDatos.Conexion();
-            try
-            {
+            try {
                 SqlCommand command = new SqlCommand("SP_A_COTIZACION_SOLICITUD_COTIZACIONES", conn);
 
                 command.Transaction = conn.BeginTransaction();
@@ -465,109 +478,108 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 command.CommandType = CommandType.StoredProcedure;
                 command.ExecuteScalar();
 
-                ModificarOpciones(cotizacionDirecta,command);
+                ModificarOpciones(cotizacionDirecta, command);
+                ClsGastosLocalesDao.Eliminar(cotizacionDirecta, command);
+                ClsGastosLocalesDao.CrearGastosLocales(cotizacionDirecta, command);
+
                 //Ejecutar transaccion
                 trans.Commit();
                 Res.Estado = Entidades.Enums.Enums.EstadoTransaccion.Aceptada;
                 Res.Descripcion = "Se modificó la cotización correctamente";
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 if (trans != null)
                     trans.Rollback();
                 Log.EscribirLog(ex.Message);
                 Res.Descripcion = ex.Message;
                 Res.ArchivoError = NombreClase;
                 Res.MetodoError = MethodBase.GetCurrentMethod().Name;
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
             return Res;
         }
-        
-        public static ResultadoTransaccion ModificarOpciones(CotizacionDirecta cotizacionDirecta, SqlCommand command)
-        {
+
+        private static void ModificarOpcion(CotizacionDirecta cotizacionDirecta, Opcion o, SqlCommand command) {
+
+            var com = command.Connection.CreateCommand();
+            com.Transaction = command.Transaction;
+
+            com.CommandText = "SP_A_COTIZACION_DIRECTA_OPCIONES";
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@id", o.Id32);
+            com.Parameters.AddWithValue("@numero", o.Numero);
+            com.Parameters.AddWithValue("@fechaValidezInicio", o.FechaValidezInicio);
+            com.Parameters.AddWithValue("@fechaValidezFin", o.FechaValidezFin);
+            com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
+            com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
+            com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
+            com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
+            if (o.TipoVia != null)
+                com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
+            else
+                com.Parameters.AddWithValue("@idTipoVia", DBNull.Value);
+
+            com.CommandType = CommandType.StoredProcedure;
+
+            com.ExecuteScalar();
+            ModificarDetalle(o, command);
+            ModificarRelacionPuertos(o, command);
+        }
+        public static ResultadoTransaccion ModificarOpciones(CotizacionDirecta cotizacionDirecta, SqlCommand command) {
             var num = 1;
-            try
-            {
-                foreach (var o in cotizacionDirecta.Opciones)
-                {
+            try {
+                foreach (var o in cotizacionDirecta.Opciones) {
                     o.Numero = String.Format("{0:d4}-{1:d4}", cotizacionDirecta.Id32, num);
-
-                    var com = command.Connection.CreateCommand();
-                    com.Transaction = command.Transaction;
-
-                    com.CommandText = "SP_A_COTIZACION_DIRECTA_OPCIONES";
-
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@id", o.Id32);
-                    com.Parameters.AddWithValue("@numero", o.Numero);
-                    com.Parameters.AddWithValue("@fechaValidezInicio", o.FechaValidezInicio);
-                    com.Parameters.AddWithValue("@fechaValidezFin", o.FechaValidezFin);
-                    com.Parameters.AddWithValue("@Naviera", o.Naviera.Id32);
-                    com.Parameters.AddWithValue("@TiempoTransito", o.TiempoTransito);
-                    com.Parameters.AddWithValue("@idUsuario", o.Usuario.Id32);
-                    com.Parameters.AddWithValue("@idTipoServicio", o.TiposServicio.Id32);
-                    if (o.TipoVia != null)
-                        com.Parameters.AddWithValue("@idTipoVia", o.TipoVia.Id32);
-                    else
-                        com.Parameters.AddWithValue("@idTipoVia", null);
-                    
-                    com.CommandType = CommandType.StoredProcedure;
-
-                    com.ExecuteScalar();
-                    ModificarDeatlle(o, command);
-                    ModificarRelacionPuertos(o, command);
-
+                    if (o.IsNew == false) {
+                        ModificarOpcion(cotizacionDirecta, o, command);
+                    } else {
+                        CrearOpcion(cotizacionDirecta, o, command);
+                    }
                     num++;
                 }
-
                 return new ResultadoTransaccion();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 throw e;
             }
         }
-        
-        public static ResultadoTransaccion ModificarDeatlle(Opcion opcion, SqlCommand command)
-        {
-            try
-            {
-                foreach (var detalle in opcion.Detalles)
-                {
-                    var com = command.Connection.CreateCommand();
-                    com.Transaction = command.Transaction;
 
-                    com.CommandText = "SP_A_COTIZACION_DIRECTA_OPCIONES_DETALLES";
+        private static void ModificarDetalle(Opcion opcion, DetalleOpcion detalle, SqlCommand command) {
+            var com = command.Connection.CreateCommand();
+            com.Transaction = command.Transaction;
 
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@id", detalle.Id);
-                    com.Parameters.AddWithValue("@cantidad", detalle.Cantidad);
-                    com.Parameters.AddWithValue("@costo", detalle.Costo);
-                    com.Parameters.AddWithValue("@venta", detalle.Venta);
-                    com.Parameters.AddWithValue("@COTIZACION_MONEDAS_id", detalle.Moneda.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_DIRECTA_ITEMS_id", detalle.Unidad.Id32);
-                    com.Parameters.AddWithValue("@COTIZACION_DIRECTA_CONCEPTO_ID", detalle.Concepto.Id32);
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.ExecuteScalar();
+            com.CommandText = "SP_A_COTIZACION_DIRECTA_OPCIONES_DETALLES";
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@id", detalle.Id);
+            com.Parameters.AddWithValue("@cantidad", detalle.Cantidad);
+            com.Parameters.AddWithValue("@costo", detalle.Costo);
+            com.Parameters.AddWithValue("@venta", detalle.Venta);
+            com.Parameters.AddWithValue("@COTIZACION_MONEDAS_id", detalle.Moneda.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_DIRECTA_ITEMS_id", detalle.Unidad.Id32);
+            com.Parameters.AddWithValue("@COTIZACION_DIRECTA_CONCEPTO_ID", detalle.Concepto.Id32);
+            com.CommandType = CommandType.StoredProcedure;
+            com.ExecuteScalar();
+        }
+
+        public static ResultadoTransaccion ModificarDetalle(Opcion opcion, SqlCommand command) {
+            try {
+                foreach (var detalle in opcion.Detalles) {
+                    if (detalle.IsNew)
+                        CrearOpcionDetalle(opcion, detalle, command);
+                    else
+                        ModificarDetalle(opcion, detalle, command);
+            
                 }
                 return new ResultadoTransaccion();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 throw e;
             }
         }
-        
-        public static ResultadoTransaccion ModificarRelacionPuertos(Opcion opcion, SqlCommand command)
-        {
-            try
-            {
-                foreach (var o in opcion.Pod)
-                {
+
+        public static ResultadoTransaccion ModificarRelacionPuertos(Opcion opcion, SqlCommand command) {
+            try {
+                foreach (var o in opcion.Pod) {
                     var com = command.Connection.CreateCommand();
                     com.Transaction = command.Transaction;
 
@@ -582,8 +594,7 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                     com.ExecuteScalar();
 
                 }
-                foreach (var o in opcion.Pol)
-                {
+                foreach (var o in opcion.Pol) {
                     var com = command.Connection.CreateCommand();
                     com.Transaction = command.Transaction;
 
@@ -599,11 +610,9 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
 
                 }
                 return new ResultadoTransaccion();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 throw e;
             }
-         }
+        }
     }
 }

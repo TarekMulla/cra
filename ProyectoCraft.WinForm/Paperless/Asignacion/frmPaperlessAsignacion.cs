@@ -4,7 +4,6 @@ using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
-using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Log;
@@ -150,36 +149,33 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                          * la fecha de apertura se oculta para brasil.*/
                     int dif = 0; //(txtFechaETA.DateTime - DateTime.Now).Days;
 
-                   if(!string.IsNullOrEmpty( txtFechaETA.Text))
+                    if (txtFechaETA.DateTime.AddDays(-10) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
                     {
-                        if (txtFechaETA.DateTime.AddDays(-10) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
-                            dif = 10;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-7) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-7).ToShortDateString();
-                            dif = 7;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-7) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            lblAvisoFechaMaximaVinculacion.Visible = true;
-                            dif = (txtFechaETA.DateTime - DateTime.Now).Days;
-                            txtFechaMaximaVinculacion.Text = "";
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-10) > DateTime.Now)
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
-                            dif = (txtFechaETA.DateTime - DateTime.Now).Days;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        PaperlessAsignacionActual.FechaMaximaVinculacionDiff = dif;
-                        if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
-                            PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
-                    }                    
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = 10;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-7).ToShortDateString();
+                        dif = 7;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        lblAvisoFechaMaximaVinculacion.Visible = true;
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        txtFechaMaximaVinculacion.Text = "";
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-10) > DateTime.Now)
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    PaperlessAsignacionActual.FechaMaximaVinculacionDiff = dif;
+                    if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
+                        PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
                 }
                 else
                 {
@@ -190,7 +186,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             }
             catch (Exception e)
             {
-                Log.log.Error(e);
+                throw;
             }
         }
 

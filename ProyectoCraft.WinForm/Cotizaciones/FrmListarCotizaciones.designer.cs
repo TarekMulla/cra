@@ -37,8 +37,6 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.Col_Fecha_Creacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Fecha_Estado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Col_Seleccionado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridSLeads = new DevExpress.XtraGrid.GridControl();
             this.gridViewSLeads = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,6 +50,7 @@
             this.Checkbox = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -60,9 +59,9 @@
             this.ImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuNuevaTarifa = new System.Windows.Forms.ToolStripButton();
-            this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
+            this.MenuCopiar = new System.Windows.Forms.ToolStripButton();
             this.MenuActualizar = new System.Windows.Forms.ToolStripButton();
             this.gridProspectos = new DevExpress.XtraEditors.GroupControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,11 +93,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSLeads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSLeads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection)).BeginInit();
             this.toolStripBarraLlamada.SuspendLayout();
@@ -126,8 +125,7 @@
             this.Col_Fecha_Termino,
             this.Col_Naviera,
             this.Col_Fecha_Creacion,
-            this.Col_Fecha_Estado,
-            this.Col_Seleccionado});
+            this.Col_Fecha_Estado});
             this.gridViewOpciones.GridControl = this.gridSLeads;
             this.gridViewOpciones.Name = "gridViewOpciones";
             this.gridViewOpciones.OptionsBehavior.AutoSelectAllInEditor = false;
@@ -224,21 +222,6 @@
             this.Col_Fecha_Estado.Visible = true;
             this.Col_Fecha_Estado.VisibleIndex = 5;
             // 
-            // Col_Seleccionado
-            // 
-            this.Col_Seleccionado.Caption = "Seleccionado";
-            this.Col_Seleccionado.ColumnEdit = this.repositoryItemCheckEdit4;
-            this.Col_Seleccionado.FieldName = "Seleccionado";
-            this.Col_Seleccionado.Name = "Col_Seleccionado";
-            this.Col_Seleccionado.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
-            this.Col_Seleccionado.Visible = true;
-            this.Col_Seleccionado.VisibleIndex = 6;
-            // 
-            // repositoryItemCheckEdit4
-            // 
-            this.repositoryItemCheckEdit4.AutoHeight = false;
-            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
-            // 
             // gridSLeads
             // 
             this.gridSLeads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -261,7 +244,6 @@
             this.gridSLeads.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSLeads,
             this.gridViewOpciones});
-            this.gridSLeads.DoubleClick += new System.EventHandler(this.gridSLeads_DoubleClick);
             // 
             // gridViewSLeads
             // 
@@ -314,7 +296,7 @@
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn7.Caption = "Cliente";
-            this.gridColumn7.FieldName = "Cliente.NombreCliente";
+            this.gridColumn7.FieldName = "Cliente";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
@@ -410,6 +392,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
+            // repositoryItemCheckEdit4
+            // 
+            this.repositoryItemCheckEdit4.AutoHeight = false;
+            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            // 
             // ctrldxError
             // 
             this.ctrldxError.ContainerControl = this;
@@ -419,7 +406,7 @@
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click_1);
@@ -427,7 +414,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuExcel
             // 
@@ -435,7 +422,7 @@
             this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
             this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(36, 33);
+            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
             this.MenuExcel.Text = "Excel";
             this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -443,7 +430,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
             // ImageCollection
             // 
@@ -458,66 +445,65 @@
             // 
             this.toolStripBarraLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
-            this.menuNuevaTarifa,
+            this.toolStripButton2,
             this.toolStripSeparator3,
             this.MenuEnviarAlCliente,
-            this.toolStripButton2,
+            this.MenuCopiar,
             this.MenuActualizar,
             this.toolStripSeparator4,
             this.MenuExcel,
             this.MenuSalir});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 36);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 38);
             this.toolStripBarraLlamada.TabIndex = 85;
             this.toolStripBarraLlamada.Text = "toolStrip1";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
-            // 
-            // menuNuevaTarifa
-            // 
-            this.menuNuevaTarifa.Enabled = false;
-            this.menuNuevaTarifa.Image = ((System.Drawing.Image)(resources.GetObject("menuNuevaTarifa.Image")));
-            this.menuNuevaTarifa.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menuNuevaTarifa.Name = "menuNuevaTarifa";
-            this.menuNuevaTarifa.Size = new System.Drawing.Size(79, 33);
-            this.menuNuevaTarifa.Text = "Solicitar Tarifa";
-            this.menuNuevaTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.menuNuevaTarifa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.menuNuevaTarifa.ToolTipText = "Solicitar Tarifa";
-            this.menuNuevaTarifa.Click += new System.EventHandler(this.menuNuevaTarifa_Click);
-            // 
-            // MenuEnviarAlCliente
-            // 
-            this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
-            this.MenuEnviarAlCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuEnviarAlCliente.Name = "MenuEnviarAlCliente";
-            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(86, 33);
-            this.MenuEnviarAlCliente.Text = "Enviar al cliente";
-            this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(45, 33);
-            this.toolStripButton2.Text = "Directa";
+            this.toolStripButton2.Size = new System.Drawing.Size(45, 35);
+            this.toolStripButton2.Text = "Nueva";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.ToolTipText = "Tarifa Directa";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
+            // 
+            // MenuEnviarAlCliente
+            // 
+            this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
+            this.MenuEnviarAlCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuEnviarAlCliente.Name = "MenuEnviarAlCliente";
+            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(93, 35);
+            this.MenuEnviarAlCliente.Text = "Enviar al cliente";
+            this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
+            // 
+            // MenuCopiar
+            // 
+            this.MenuCopiar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCopiar.Image")));
+            this.MenuCopiar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuCopiar.Name = "MenuCopiar";
+            this.MenuCopiar.Size = new System.Drawing.Size(46, 35);
+            this.MenuCopiar.Text = "Copiar";
+            this.MenuCopiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuCopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuCopiar.ToolTipText = "Copiar";
+            this.MenuCopiar.Click += new System.EventHandler(this.MenuCopiar_Click);
             // 
             // MenuActualizar
             // 
             this.MenuActualizar.Image = ((System.Drawing.Image)(resources.GetObject("MenuActualizar.Image")));
             this.MenuActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuActualizar.Name = "MenuActualizar";
-            this.MenuActualizar.Size = new System.Drawing.Size(58, 33);
+            this.MenuActualizar.Size = new System.Drawing.Size(63, 35);
             this.MenuActualizar.Text = "Actualizar";
             this.MenuActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -843,11 +829,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSLeads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSLeads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection)).EndInit();
             this.toolStripBarraLlamada.ResumeLayout(false);
@@ -883,7 +869,6 @@
         private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.Utils.ImageCollection ImageCollection;
         private System.Windows.Forms.ToolStripButton MenuEnviarAlCliente;
-        public System.Windows.Forms.ToolStripButton menuNuevaTarifa;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         private DevExpress.XtraEditors.GroupControl gridProspectos;
         private DevExpress.XtraGrid.GridControl gridSLeads;
@@ -893,7 +878,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Termino;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Naviera;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Creacion;
-        private DevExpress.XtraGrid.Columns.GridColumn Col_Seleccionado;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSLeads;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -936,6 +920,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Estado;
         private DevExpress.XtraEditors.MemoEdit txtComentario;
         private DevExpress.XtraEditors.ComboBoxEdit cboEstado;
+        private System.Windows.Forms.ToolStripButton MenuCopiar;
 
 
 

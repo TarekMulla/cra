@@ -1586,7 +1586,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     }
                     else
                     {
-                        if (house.Cliente != null && house.Cliente.IsNew)
+                        if (house.Cliente.IsNew)
                         {
                             resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -2081,8 +2081,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[0].Value = house.HouseBL;
                 objParams[1].Value = house.Freehand;
                 objParams[2].Value = house.Id;
-                objParams[3].Value = house.Cliente != null ? house.Cliente.Id : 0;
-                objParams[4].Value = house.TipoCliente != null ? house.TipoCliente.Id : 0;
+                objParams[3].Value = house.Cliente.Id;
+                objParams[4].Value = house.TipoCliente.Id;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_HOUSESBL_P1", connparam);
                 command.Parameters.AddRange(objParams);
@@ -2187,7 +2187,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     excepcion = new PaperlessExcepcion();
                     excepcion.Id = Convert.ToInt64(dreader["Id"]);
                     excepcion.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
-
+                    excepcion.HouseBL.Id = Convert.ToInt64(dreader["IdHouseBL"]);
                     excepcion.RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]);
                     excepcion.RecargoCollectResuelto = Convert.ToBoolean(dreader["RecargoCollectResuelto"]);
                     excepcion.SobreValorPendiente = Convert.ToBoolean(dreader["SobrevalorPendiente"]);
@@ -2196,7 +2196,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     excepcion.AvisoNoEnviadoResuelto = Convert.ToBoolean(dreader["AvisoNoEnviadoResuelto"]);
 
                     excepcion.HouseBL = new PaperlessUsuario1HousesBL();
-                    excepcion.HouseBL.Id = Convert.ToInt64(dreader["IdHouseBL"]);
                     excepcion.HouseBL.Cliente = Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(Convert.ToInt64(dreader["IdCliente"]));
                     excepcion.HouseBL.TipoCliente = new PaperlessTipoCliente()
                     {
@@ -2206,20 +2205,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     excepcion.HouseBL.Freehand = Convert.ToBoolean(dreader["Freehand"]);
                     excepcion.HouseBL.HouseBL = dreader["HouseBL"].ToString();
                     excepcion.HouseBL.Index = Convert.ToInt32(dreader["IndexHouse"].ToString());
-
-                    if (dreader["UsuarioUltimaMod"] is DBNull)
-                        excepcion.IdUsuarioUltimaModificacion = 0;
-                    else
-                        excepcion.IdUsuarioUltimaModificacion = Convert.ToInt64(dreader["UsuarioUltimaMod"]);
-
-                    //if (dreader["Causador"] is DBNull)
-                    //    excepcion.Causador = null;
-                    //else
-                    //{excepcion.Causador = new PaperlessAgenteCausador( );
-                    // Convert.ToInt32(dreader["Causador"]
-                    //}
-
-
                     try
                     {
                         excepcion.Comentario = dreader["Comentario"].ToString();
@@ -2319,8 +2304,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[5].Value = excepcion.SobreValorPendienteResuelto;
                 objParams[6].Value = excepcion.AvisoNoEnviado;
                 objParams[7].Value = excepcion.AvisoNoEnviadoResuelto;
-                objParams[8].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                objParams[9].Value = excepcion.UsuarioCreador;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES", connparam);
                 command.Parameters.AddRange(objParams);
@@ -2394,7 +2377,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipo.Activo = Convert.ToBoolean(dreader["Activo"]);
-
+                 
                     tipos.Add(tipo);
                 }
             }
@@ -2719,31 +2702,14 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
             try
             {
-                ////Registrar excepciones
-                //foreach (var excepcion in excepciones)
-                //{
-                //    resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
-                //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //        throw new Exception(resultado.Descripcion);
-                //}
+                //Registrar excepciones
                 foreach (var excepcion in excepciones)
                 {
-                    if (excepcion.IsNew)
-                    {
-                        resultado = Usuario1MarcaIngresoExcepcion(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    }
-                    else
-                    {
-                        resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
-                        //   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
+                    resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
                 }
+
                 //cambiar estado paso
                 resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -2768,7 +2734,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return resultado;
         }
 
-        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
+        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -3589,7 +3555,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_RESPONSABILIDAD");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_EXCEPCIONES");
                 objParams[0].Value = resp;
 
                 var command = new SqlCommand("SP_L_PAPERLESS_TIPO_RESPONSABILIDAD", conn);
@@ -3626,7 +3592,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 //Registrar excepciones
                 foreach (var excepcion in excepciones)
                 {
-                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion
+                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
                 }
@@ -3654,90 +3620,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
 
             return resultado;
         }
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2_Usuario2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            try
-            {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones)
-                {
-                    resultado = Usuario1ActualizaExcepcionV2_Usuario2(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-                ////cambiar estado paso
-                //resultado = Usuario1CambiarEstadoPaso(pasoSeleccionado, conn, transaction);
-                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-        public static ResultadoTransaccion Usuario1ActualizaExcepcionV2_Usuario2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-
-            resTransaccion = new ResultadoTransaccion();
-            try
-            {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2");
-                objParams[0].Value = excepcion.TieneExcepcion;
-                if (excepcion.TipoExcepcion != null)
-                    objParams[1].Value = excepcion.TipoExcepcion.Id;
-                else
-                    objParams[1].Value = -1;
-                if (excepcion.Responsabilidad != null)
-                    objParams[2].Value = excepcion.Responsabilidad.Id;
-                else
-                    objParams[2].Value = -1;
-                objParams[3].Value = excepcion.Id;
-
-                objParams[4].Value = excepcion.Comentario ?? "";
-                objParams[5].Value = excepcion.Resuelto;
-                objParams[6].Value = excepcion.ResueltoUser2;
-                if (excepcion.Causador != null)
-                    objParams[7].Value = excepcion.Causador;
-                else
-                    objParams[7].Value = 0;
-
-                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                command.ExecuteNonQuery();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            }
-            catch (Exception ex)
-            {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-
-
         private static ResultadoTransaccion Usuario1ActualizaExcepcionV2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
         {
             resTransaccion = new ResultadoTransaccion();
@@ -3758,10 +3640,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                 objParams[4].Value = excepcion.Comentario ?? "";
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = excepcion.ResueltoUser2;
-                if (excepcion.Causador != null)
-                    objParams[7].Value = excepcion.Causador;
-                else
-                    objParams[7].Value = 0;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
                 command.Parameters.AddRange(objParams);
@@ -3825,18 +3703,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                         if (!String.IsNullOrEmpty(dreader["Resuelto_User2"].ToString()))
                             excepcion.ResueltoUser2 = Convert.ToBoolean(dreader["Resuelto_User2"]);
 
-
-                        var AgenteCausador = new PaperlessAgenteCausador();
-                        if (!String.IsNullOrEmpty(dreader["Causador"].ToString()) && dreader["Causador"].ToString() != "0")
-                        {
-                            AgenteCausador.Id = Convert.ToInt64(dreader["Causador"]);
-                            AgenteCausador.Nombre = dreader["Descripcion"].ToString();
-                        }
-
-
                         excepcion.TipoExcepcion = tipoExcepcion;
                         excepcion.Responsabilidad = tipoResponsabilidad;
-                        excepcion.Causador = AgenteCausador;
 
 
                     }
@@ -4061,7 +3929,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return lista;
         }
 
-        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta,
+        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta, 
             string usuario, string tipocarga, string EstadoPaperless, string marca)
         {
             PaperlessFlujo asignaciones = null;
@@ -4070,16 +3938,16 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION_ASIGNACIONES");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION___");
                 objParams[0].Value = desde;
                 objParams[1].Value = hasta;
                 objParams[2].Value = usuario;
                 objParams[3].Value = tipocarga;
                 objParams[4].Value = EstadoPaperless;
                 objParams[5].Value = marca;
+                
 
-
-                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION_ASIGNACIONES", conn);
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION", conn);
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
@@ -4269,528 +4137,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             return Grafica;
         }
 
-
-
-        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL h,
-                                                                  PaperlessUsuario1HouseBLInfo info,
-                                                                  PaperlessPasosEstado paso)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            bool esupdate = false;
-            IList<PaperlessUsuario1HousesBL> houses = new List<PaperlessUsuario1HousesBL>();
-            houses.Add(h);
-
-
-            try
-            {
-                //Eliminar Info anterior
-                //resultado = Usuario1EliminarHousesBLFull(houses[0].IdAsignacion, conn, transaction);
-                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //    throw new Exception(resultado.Descripcion);
-
-                //Registrar houses
-                foreach (var house in houses)
-                {
-                    if (house.IsNew)
-                    {
-                        if (house.Cliente != null && house.Cliente.IsNew)
-                        {
-                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
-                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                                throw new Exception(resultado.Descripcion);
-                            else
-                            {
-                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                            }
-                        }
-
-
-                        resultado = Usuario1AgregarHouseBL(house, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                        else
-                        {
-                            house.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                        }
-
-                        //verificar si tiene recargo collect
-
-                        if (house.ExcepcionRecargoCollect != null)
-                        {
-                            house.ExcepcionRecargoCollect.IdAsignacion = house.IdAsignacion;
-                            house.ExcepcionRecargoCollect.HouseBL.Id = house.Id;
-
-
-                            resultado = Usuario1MarcaIngresoExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
-                        }
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                    }
-                    else
-                    {
-                        if (house.Cliente != null && house.Cliente.IsNew)
-                        {
-                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
-                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                                throw new Exception(resultado.Descripcion);
-                            else
-                            {
-                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                            }
-                        }
-
-                        resultado = Usuario1ActualizaPaso1(house, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                        esupdate = true;
-
-                        if (house.ExcepcionRecargoCollect != null)
-                            resultado = Usuario1ActualizaExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-
-                }
-
-                //cambiar estado paso
-                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion, Int64 IdusuarioUltimaModificacion)
-        {
-
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            try
-            {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES");
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = IdusuarioUltimaModificacion;
-
-
-                SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador()
-        {
-            var tipos = new List<PaperlessAgenteCausador>();
-            try
-            {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_AGENTECAUSADOR");
-                //objParams[0].Value = resp;
-
-                var command = new SqlCommand("SP_L_PAPERLESS_TIPO_AGENTECAUSADOR", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                dreader = command.ExecuteReader();
-
-                while (dreader.Read())
-                {
-                    var tipo = new PaperlessAgenteCausador();
-                    tipo.Id = Convert.ToInt64(dreader["Id"]);
-                    tipo.Nombre = dreader["Descripcion"].ToString();
-                    tipos.Add(tipo);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return tipos;
-        }
-
-        public static IList<PaperlessExcepcionMaster> Usuario1ObtenerExcepcionesMaster(Int64 IdAsignacion)
-        {
-            PaperlessExcepcionMaster excepcion = null;
-            IList<PaperlessExcepcionMaster> excepciones = new List<PaperlessExcepcionMaster>();
-            try
-            {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = IdAsignacion;
-
-                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                dreader = command.ExecuteReader();
-                int cont = 0;
-                while (dreader.Read())
-                {
-                    excepcion = new PaperlessExcepcionMaster();
-                    cont++;
-                    excepcion.Index = cont;
-
-                    excepcion.Id = Convert.ToInt64(dreader["Id"]);
-                    excepcion.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
-                    excepcion.TieneExcepcion = !(dreader["tieneExcepcion"] is DBNull) && Convert.ToBoolean(dreader["tieneExcepcion"]);
-
-                    var tipoExcepcion = new PaperlessTipoExcepcion();//hacer el Join para la descripcion
-                    if (!String.IsNullOrEmpty(dreader["tipoexcepcion"].ToString()))
-                    {
-                        tipoExcepcion.Id = Convert.ToInt64(dreader["tipoexcepcion"]);
-                        tipoExcepcion.Nombre = dreader["descripcion_tipo_excepcion"].ToString();
-                        excepcion.TipoExcepcion = tipoExcepcion;
-                    }
-
-
-                    var tipoResponsabilidad = new PaperlessTipoResponsabilidad();
-                    if (!String.IsNullOrEmpty(dreader["tiporesponsabilidad"].ToString()))
-                    {
-                        tipoResponsabilidad.Id = Convert.ToInt64(dreader["tiporesponsabilidad"]);
-                        tipoResponsabilidad.Nombre = dreader["descripcion_tipo_responsabilidad"].ToString();
-                        excepcion.Tiporesponsabilidad = tipoResponsabilidad;
-                    }
-
-
-                    excepcion.Comentario = dreader["comentario"] is DBNull ? "" : dreader["comentario"].ToString();
-
-                    if (!String.IsNullOrEmpty(dreader["resuelto"].ToString()))
-                        excepcion.Resuelto = Convert.ToBoolean(dreader["resuelto"]);
-
-                    excepcion.Estado = !(dreader["estado"] is DBNull) && Convert.ToBoolean(dreader["estado"]);
-
-                    excepcion.IdUsuarioUltimaModificacion = dreader["usuarioUltimaModificacion"] is DBNull ? 0 : Convert.ToInt64(dreader["usuarioUltimaModificacion"]);
-
-                    var AgenteCausador = new PaperlessAgenteCausador();
-                    if (!String.IsNullOrEmpty(dreader["AgenteCausador"].ToString()) && dreader["AgenteCausador"].ToString() != "0")
-                    {
-                        AgenteCausador.Id = Convert.ToInt64(dreader["AgenteCausador"]);
-                        AgenteCausador.Nombre = dreader["Descripcion"].ToString();
-                        excepcion.AgenteCausador = AgenteCausador;
-                    }
-
-                    excepcion.UsuarioCreador = Convert.ToInt32(dreader["UsuarioCreador"]);
-
-                    excepciones.Add(excepcion);
-                }
-            }
-            catch (Exception ex)
-            {
-                Base.Log.Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return excepciones;
-        }
-
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado pasoSeleccionado)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            try
-            {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones)
-                {
-
-                    if (excepcion.IsNew)
-                    {
-                        resultado = Usuario1MarcaIngresoExcepcionMaster(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    }
-                    else
-                    {
-                        resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-
-
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-                //cambiar estado paso
-                resultado = Usuario1CambiarEstadoPaso(pasoSeleccionado, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-        private static ResultadoTransaccion Usuario1ActualizaExcepcionMaster(PaperlessExcepcionMaster excepcion, SqlConnection connparam, SqlTransaction tranparam)
-        {
-            resTransaccion = new ResultadoTransaccion();
-            try
-            {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = excepcion.TieneExcepcion;
-
-                if (excepcion.TipoExcepcion != null)
-                    objParams[2].Value = excepcion.TipoExcepcion;
-                else
-                    objParams[2].Value = 0;
-
-                if (excepcion.Tiporesponsabilidad != null)
-                    objParams[3].Value = excepcion.Tiporesponsabilidad;
-                else
-                    objParams[3].Value = 0;
-                if (excepcion.Comentario != null)
-                    objParams[4].Value = excepcion.Comentario;
-                else
-                    objParams[4].Value = "";
-                objParams[5].Value = excepcion.Resuelto;
-                objParams[6].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                if (excepcion.AgenteCausador != null)
-                    objParams[7].Value = excepcion.AgenteCausador;
-                else
-                    objParams[7].Value = 0;
-                objParams[8].Value = excepcion.UsuarioCreador;
-
-                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                command.ExecuteNonQuery();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            }
-            catch (Exception ex)
-            {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-
-        private static ResultadoTransaccion Usuario1MarcaIngresoExcepcionMaster(PaperlessExcepcionMaster excepcion, SqlConnection connparam, SqlTransaction tranparam)
-        {
-            resTransaccion = new ResultadoTransaccion();
-            Int64 IdExcepcion = 0;
-            try
-            {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = excepcion.IdAsignacion;
-                objParams[1].Value = 0;//id house bl
-                objParams[2].Value = excepcion.TieneExcepcion;
-                if (excepcion.TipoExcepcion != null)
-                    objParams[3].Value = excepcion.TipoExcepcion;
-                else
-                    objParams[3].Value = 0;
-                if (excepcion.Tiporesponsabilidad != null)
-                    objParams[4].Value = excepcion.Tiporesponsabilidad;
-                else
-                    objParams[4].Value = 0;
-
-                if (excepcion.Comentario != null)
-                    objParams[5].Value = excepcion.Comentario;
-                else
-                    objParams[5].Value = "";
-
-                objParams[6].Value = excepcion.Resuelto;
-                objParams[7].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-
-                if (excepcion.AgenteCausador != null)
-                    objParams[8].Value = excepcion.AgenteCausador;
-                else
-                    objParams[8].Value = 0;
-                objParams[9].Value = excepcion.UsuarioCreador;
-
-
-                SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                IdExcepcion = Convert.ToInt64(command.ExecuteScalar());
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-                resTransaccion.ObjetoTransaccion = IdExcepcion;
-            }
-            catch (Exception ex)
-            {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-        public static void Usuario1EliminaExcepxionMaster(PaperlessExcepcionMaster excepcion, Int64 IdusuarioUltimaModificacion)
-        {
-
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            try
-            {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = IdusuarioUltimaModificacion;
-
-
-                SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        public static ResultadoTransaccion Usuario2IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado paso)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-
-            try
-            {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones)
-                {
-                    if (excepcion.IsNew)
-                    {
-                        resultado = Usuario1MarcaIngresoExcepcionMaster(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    }
-                    else
-                    {
-                        resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-                    //    resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);
-                    //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    //        throw new Exception(resultado.Descripcion);
-                }
-
-
-                //cambiar estado paso
-                resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-        public static ResultadoTransaccion Usuario1GuardaEmpresa(string empresa, long asignacion)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-
-            try
-            {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_EMPRESA");
-
-                objParams[0].Value = empresa;
-
-                objParams[1].Value = asignacion;
-
-                var command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_EMPRESA", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return resultado;
-        }
     }
 }
 

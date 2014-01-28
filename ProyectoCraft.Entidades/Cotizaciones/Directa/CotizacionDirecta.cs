@@ -11,17 +11,23 @@ using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
 
 
-namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
+namespace ProyectoCraft.Entidades.Cotizaciones.Directa
+{
 
-    public class CotizacionDirecta : IdentifiableObject, ITableable {
-        public CotizacionDirecta() {
+    public class CotizacionDirecta : IdentifiableObject, ITableable
+    {
+        public CotizacionDirecta()
+        {
             Opciones = new List<Opcion>();
             Comentarios = new List<Comentario>();
+            GastosLocalesList = new List<GastoLocal>();
         }
 
         public String Producto { set; get; }
-        public String Numero {
-            get {
+        public String Numero
+        {
+            get
+            {
                 return String.Format("{0:d4}", Id32);
             }
         }
@@ -32,6 +38,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public DateTime FechaSolicitud { set; get; }
         public clsIncoTerm IncoTerm { set; get; }
         public String Commodity { set; get; }
+        [Obsolete("no usar")]
         public Decimal? GastosLocales { set; get; }
         public String CondicionFija { set; get; }
         public String CondicionVariable { set; get; }
@@ -42,35 +49,48 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public String Observaciones { set; get; }
         public String ObservacionesFijas { set; get; }
         public List<Comentario> Comentarios { set; get; }
+        public List<GastoLocal> GastosLocalesList { set; get; }
 
-        public string Tipo {
+        public string Tipo
+        {
             get { return "Directa"; }
         }
 
         public bool Seleccionado { set; get; }
 
-        public List<ITableableOpcion> OpcionesView {
-            get {
+        public List<ITableableOpcion> OpcionesView
+        {
+            get
+            {
                 return Opciones.Cast<ITableableOpcion>().ToList();
             }
         }
 
-        public int CantidadOpciones {
-            get {
+        public int CantidadOpciones
+        {
+            get
+            {
                 return Opciones == null ? 0 : Opciones.Count;
             }
         }
 
-        public String GenerateHtmlPreviewAndBody(String startupPath) {
+        public bool PermiteCopiar { get { return true; } }
+
+        public Int32 CopiadoDe { get; set; }
+
+        public String GenerateHtmlPreviewAndBody(String startupPath)
+        {
             return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
             //return renderHtml(Path.Combine(startupPath, @"cotizaciones\Copy of TemplateCotizacionPreview.html"));
         }
 
-        public String GenerateHTMLforPDF(String startupPath) {
+        public String GenerateHTMLforPDF(String startupPath)
+        {
             return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionMailPDF.html"));
         }
 
-        private String RenderHtml(String path) {
+        private String RenderHtml(String path)
+        {
             var xmldoc = new XmlDocument();
             xmldoc.Load(path);
 
@@ -87,10 +107,22 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[commodity]", Commodity);
             stringXml = stringXml.Replace("[incoterm]", IncoTerm.Codigo);
 
-            var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
+            var glString = string.Empty;
+            foreach (var gl in GastosLocalesList)
+            {
+                glString += String.Format(@"<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>",
+                    gl.Descripcion, gl.Monto.ToString("c0", new CultureInfo("es-CL")),
+                                            "+ IVA");
+            }
+            if (GastosLocalesList.Count == 0)
+                glString = String.Format(@"<tr><td>Sin Gastos Locales</td></tr>");
+
+            glString = "<table>" + glString + "</table>";
+
+            // var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
 
 
-            stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);
+            stringXml = stringXml.Replace("[gastosLocales]", glString);
             stringXml = stringXml.Replace("[observaciones]", ObservacionesFijas.Replace(Environment.NewLine, "<br/>"));
 
             stringXml = stringXml.Replace("[ObservacionesOpcionales]", Observaciones.Replace(Environment.NewLine, "<br/>"));
@@ -103,7 +135,8 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             var originalAlternativa = alternativaNode.InnerXml;
             var alternativasXml = String.Empty;
             var i = 1;
-            foreach (var opcion in Opciones) {
+            foreach (var opcion in Opciones)
+            {
                 var templateAlternativaXml = originalAlternativa;
                 templateAlternativaXml = templateAlternativaXml.Replace("[numOpcion]", i.ToString());
                 templateAlternativaXml = templateAlternativaXml.Replace("[naviera]", opcion.Naviera.Nombre);
@@ -126,7 +159,8 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
                 templateAlternativaXml = templateAlternativaXml.Replace("[pod]", pod.Replace(Environment.NewLine, " / "));
                 templateAlternativaXml = templateAlternativaXml.Replace("[pol]", pol.Replace(Environment.NewLine, " / "));
                 var detalleString = String.Empty;
-                foreach (var detalle in opcion.Detalles) {
+                foreach (var detalle in opcion.Detalles)
+                {
                     detalleString += String.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>",
                                                   detalle.Unidad.Nombre, detalle.Moneda.Codigo,
                                                   detalle.Venta.ToString("N2"), detalle.Concepto.Nombre);

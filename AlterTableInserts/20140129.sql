@@ -1,0 +1,1 @@
+alter table paperless_asignacion add empresa varchar(20)

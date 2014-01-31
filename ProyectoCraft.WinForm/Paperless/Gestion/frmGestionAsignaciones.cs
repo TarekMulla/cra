@@ -41,9 +41,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         }
         private void frmGestionAsignaciones_Load(object sender, EventArgs e)
         {
+
+            ddlAgrupadoPor.Properties.Items.Add("ALL");
             ddlAgrupadoPor.Properties.Items.Add("Usuario1");
             ddlAgrupadoPor.Properties.Items.Add("Usuario2");
 
+            ddlEstadoPaperless.Properties.Items.Add("ALL");
             ddlEstadoPaperless.Properties.Items.Add(Enums.EstadoPaperless.Nuevo);
             ddlEstadoPaperless.Properties.Items.Add(Enums.EstadoPaperless.EnAsignacion);
             ddlEstadoPaperless.Properties.Items.Add(Enums.EstadoPaperless.AsignadoUsuario1);
@@ -63,7 +66,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             //ddlTipoCarga.Properties.Items.Add("FCL");
             //ddlTipoCarga.Properties.Items.Add("FAK");
             //ddlTipoCarga.Properties.Items.Add("LCL");
-
+            DdlEmpresa.Properties.Items.Add("ALL");
             DdlEmpresa.Properties.Items.Add("Craft");
             DdlEmpresa.Properties.Items.Add("Contact");
             DdlEmpresa.Properties.Items.Add("Slotlog");
@@ -122,7 +125,9 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             DateTime hasta = new DateTime(9999, 1, 1);
             string status = "";
             if (ddlEstadoPaperless.SelectedItem != null)
-                status = Convert.ToInt32((Enums.EstadoPaperless)ddlEstadoPaperless.SelectedItem).ToString();
+                status = ddlEstadoPaperless.SelectedItem.Equals("ALL") ? "ALL" : Convert.ToInt32((Enums.EstadoPaperless)ddlEstadoPaperless.SelectedItem).ToString();
+
+             string tipocarga = ddlTipoCarga.SelectedItem.Equals("ALL") ? "ALL" : ddlTipoCarga.SelectedIndex.ToString();
 
             if (!string.IsNullOrEmpty(txtFechaDesde.Text))
                 desde = Convert.ToDateTime(txtFechaDesde.Text);
@@ -132,12 +137,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
 
             IList<PaperlessFlujo> asignaciones =
                 LogicaNegocios.Paperless.Paperless.ConsultarGestionPaperlessGraficosUsuario1y2(desde, hasta,
-            ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
+            ddlAgrupadoPor.Text, tipocarga, status, DdlEmpresa.SelectedText);
             grdAsignaciones.DataSource = asignaciones;
             grdAsignaciones.RefreshDataSource();
 
             DataTable resUsuario2 = LogicaNegocios.Paperless.Paperless.ObtenerCantidadAsignacionesGraficoGestionPaperless(
-               desde, hasta, ddlAgrupadoPor.Text, ddlTipoCarga.SelectedIndex.ToString(), status, DdlEmpresa.SelectedText);
+               desde, hasta, ddlAgrupadoPor.Text, tipocarga, status, DdlEmpresa.SelectedText);
             Chartusuario2.Series.Clear();
             Chartusuario2.SeriesDataMember = "Estado";
             Chartusuario2.SeriesTemplate.ArgumentDataMember = "Vendedor";
@@ -152,6 +157,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
 
             ComboBoxItemCollection coll = ddlTipoCarga.Properties.Items;
             coll.Add(Utils.Utils.ObtenerPrimerItem());
+            coll.Add("ALL");
             foreach (var list in Cargas)
             {
                 if (cargofcl.Equals(false))

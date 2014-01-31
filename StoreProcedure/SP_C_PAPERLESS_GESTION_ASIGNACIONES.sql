@@ -1,4 +1,4 @@
-CREATE PROCEDURE SP_C_PAPERLESS_GESTION_ASIGNACIONES      
+ALTER PROCEDURE SP_C_PAPERLESS_GESTION_ASIGNACIONES      
 @Desde datetime,      
 @Hasta datetime,    
 @Usuario varchar(20) ,     
@@ -11,7 +11,7 @@ AS
 IF YEAR(@Desde) = 9999 set @Desde = NULL      
 IF YEAR(@Hasta) = 9999 set @Hasta = NULL      
     
-    
+  -- SP_C_PAPERLESS_GESTION_ASIGNACIONES  '11-11-2013','01-30-2014' ,'usuario2','ALL','ALL','ALL'   
       
 declare @sql varchar(4000)      
       
@@ -60,14 +60,17 @@ IF (@DESDE IS NOT NULL AND @DESDE <> '')
 IF (@HASTA IS NOT NULL AND @HASTA <> '')              
     SET @SQL += ' AND CONVERT(VARCHAR(20),PA.FECHACREACION,112) <= ISNULL('''+CONVERT(NVARCHAR(20),@HASTA,112)+''',PA.FECHACREACION) '          
         
-IF (@TIPOCARGA IS NOT NULL AND @TIPOCARGA <> '')        
-  SET @SQL += ' AND  IdTipoCarga  = ' + @TIPOCARGA + ' '          
+IF (@TIPOCARGA IS NOT NULL AND @TIPOCARGA <> '')    
+     IF (@TIPOCARGA <> 'ALL')    
+		SET @SQL += ' AND  IdTipoCarga  = ' + @TIPOCARGA + ' '          
           
-IF (@ESTADOPAPERLESS IS NOT NULL AND @ESTADOPAPERLESS <> '')        
-  SET @SQL += ' AND  IdEstado  =' + @ESTADOPAPERLESS + ' '         
+IF (@ESTADOPAPERLESS IS NOT NULL AND @ESTADOPAPERLESS <> '') 
+       IF (@ESTADOPAPERLESS <> 'ALL')
+		 SET @SQL += ' AND  IdEstado  =' + @ESTADOPAPERLESS + ' '         
       
- IF (@marca IS NOT NULL AND @marca <> '')      
- SET @SQL += ' AND  Pa.empresa  = ''' + @marca + ''' '   
+ IF (@marca IS NOT NULL AND @marca <> '')    
+	if   (@marca <> 'ALL')
+		SET @SQL += ' AND  Pa.empresa  = ''' + @marca + ''' '   
       
 print @sql      
 execute(@sql) 

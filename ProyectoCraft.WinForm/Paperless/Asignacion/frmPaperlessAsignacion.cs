@@ -1111,6 +1111,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 dxErrorProvider1.SetError(ddlUsuario2, "Debe seleccionar Usuario 2", ErrorType.Critical);
                 valida = false;
             }
+
+            if (PaperlessAsignacionActual.Usuario1.Id == PaperlessAsignacionActual.Usuario2.Id)
+            {
+                dxErrorProvider1.SetError(ddlUsuario2, "Usuario2 debe ser distinto del Usuario1", ErrorType.Critical);
+                valida = false;
+            }
+
             return valida;
         }
 

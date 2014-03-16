@@ -802,5 +802,12 @@ namespace ProyectoCraft.WinForm
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
         }
+
+        private void MenuReAsignaciones_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var form = frmReAsignar.Instancia;
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }

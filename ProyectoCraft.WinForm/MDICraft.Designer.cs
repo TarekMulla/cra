@@ -73,6 +73,7 @@
             this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
             this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
             this.GestionAsignacionesPaperless = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuReAsignaciones = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuTarget = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -456,7 +457,8 @@
             this.MantPuertos,
             this.manCotDirectas,
             this.MantAgentes,
-            this.GestionAsignacionesPaperless});
+            this.GestionAsignacionesPaperless,
+            this.MenuReAsignaciones});
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -476,9 +478,11 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.GestionAsignacionesPaperless)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.GestionAsignacionesPaperless),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuReAsignaciones)});
             this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
             this.navBarGroup8.Name = "navBarGroup8";
+            this.navBarGroup8.TopVisibleLinkIndex = 3;
             // 
             // MenuPaperlessAsignacion
             // 
@@ -517,10 +521,16 @@
             // 
             // GestionAsignacionesPaperless
             // 
-            this.GestionAsignacionesPaperless.Caption = "Gestion Asignaciones Paperless";
+            this.GestionAsignacionesPaperless.Caption = "Gestion Asignaciones";
             this.GestionAsignacionesPaperless.Name = "GestionAsignacionesPaperless";
             this.GestionAsignacionesPaperless.SmallImage = ((System.Drawing.Image)(resources.GetObject("GestionAsignacionesPaperless.SmallImage")));
             this.GestionAsignacionesPaperless.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem5_LinkClicked_1);
+            // 
+            // MenuReAsignaciones
+            // 
+            this.MenuReAsignaciones.Caption = "Re-Asignaciones";
+            this.MenuReAsignaciones.Name = "MenuReAsignaciones";
+            this.MenuReAsignaciones.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuReAsignaciones_LinkClicked);
             // 
             // navBarGroup1
             // 
@@ -904,6 +914,7 @@
         private DevExpress.XtraNavBar.NavBarItem manCotDirectas;
         private DevExpress.XtraNavBar.NavBarItem MantAgentes;
         private DevExpress.XtraNavBar.NavBarItem GestionAsignacionesPaperless;
+        private DevExpress.XtraNavBar.NavBarItem MenuReAsignaciones;
     }
 }
 

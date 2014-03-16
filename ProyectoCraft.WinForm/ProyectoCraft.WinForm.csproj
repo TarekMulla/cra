@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0357193D-671E-4E4F-BCE9-259E83F72977}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -47,10 +47,19 @@
       <HintPath>..\DLLs\DevExpress.Data.v9.1.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.Win.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLsRelease\DevExpress.ExpressApp.v9.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Win.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLsRelease\DevExpress.ExpressApp.Win.v9.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.OfficeSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
-    <Reference Include="DevExpress.Persistent.Base.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Persistent.Base.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLsRelease\DevExpress.Persistent.Base.v9.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Utils.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\DevExpress.Utils.v9.1.dll</HintPath>
@@ -435,6 +444,12 @@
       <DependentUpon>MDICraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Panel de control\PanelDecontrol.cs" />
+    <Compile Include="Paperless\Asignacion\frmReAsignar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Asignacion\frmReAsignar.Designer.cs">
+      <DependentUpon>frmReAsignar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paperless\Asignacion\frmListaAsignaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -653,6 +668,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmAgentes.resx">
       <DependentUpon>frmAgentes.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>
@@ -660,6 +676,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\FrmCotizacionesDirectasParametros.resx">
       <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
       <DependentUpon>frmNavieras.cs</DependentUpon>
@@ -667,6 +684,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmPuertos.resx">
       <DependentUpon>frmPuertos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
       <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
@@ -680,6 +698,10 @@
       <DependentUpon>MDICraft.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Asignacion\frmReAsignar.resx">
+      <DependentUpon>frmReAsignar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Asignacion\frmListaAsignaciones.resx">
       <DependentUpon>frmListaAsignaciones.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -690,6 +712,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionAsignaciones.resx">
       <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperless.resx">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
@@ -709,6 +732,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.resx">
       <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
       <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>

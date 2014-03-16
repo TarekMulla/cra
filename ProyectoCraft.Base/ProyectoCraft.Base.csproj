@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\output\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\output\</OutputPath>
+    <OutputPath>bin\release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,7 +34,6 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\Libs\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="ProyectoCraft.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -60,6 +59,10 @@
     <Compile Include="Usuario\UsuarioConectado.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProyectoCraft.Entidades\ProyectoCraft.Entidades.csproj">
+      <Project>{1BAF497E-851C-4BF6-8290-E53F1CA5B1A1}</Project>
+      <Name>ProyectoCraft.Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProyectoCraft.Seguridad\ProyectoCraft.Seguridad.csproj">
       <Project>{591E25AD-3235-4B37-9F1B-2B04D0DF82A2}</Project>
       <Name>ProyectoCraft.Seguridad</Name>

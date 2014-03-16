@@ -1044,9 +1044,25 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         private void GuardarPaso3()
         {
             var mail = new EnvioMailObject();
-            if (!ValidarPaso3()) return;
+            string mensaje="";
+            bool validacionOk;
 
             Cursor.Current = Cursors.WaitCursor;
+
+            validacionOk = ValidarPaso3(ref mensaje) ;
+
+            if (!validacionOk) 
+                
+            {
+                if (mensaje != "")
+                {
+                    MessageBox.Show("Usuario1 y Usuario2 no deben ser iguales", "Paperless", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                    return;
+            }
 
             VistaADominioPaso3();
 
@@ -1090,10 +1106,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool ValidarPaso3()
+        private bool ValidarPaso3(ref string mensaje)
         {
             bool valida = true;
-
+            var Usuario1 = new clsUsuario();
+            var Usuario2 = new clsUsuario();
+ 
+            dxErrorProvider1.ClearErrors();
             if (ddlUsuario1.SelectedIndex == 0)
             {
                 dxErrorProvider1.SetError(ddlUsuario1, "Debe seleccionar Usuario 1", ErrorType.Critical);
@@ -1112,9 +1131,12 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 valida = false;
             }
 
-            if (PaperlessAsignacionActual.Usuario1.Id == PaperlessAsignacionActual.Usuario2.Id)
+            Usuario1 = (clsUsuario) ddlUsuario1.SelectedItem;
+            Usuario2 = (clsUsuario) ddlUsuario2.SelectedItem;
+            if ( Usuario1.Id == Usuario2.Id)
             {
                 dxErrorProvider1.SetError(ddlUsuario2, "Usuario2 debe ser distinto del Usuario1", ErrorType.Critical);
+                mensaje = "Usuario2 debe ser distinto del Usuario1";
                 valida = false;
             }
 

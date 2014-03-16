@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\DLLs\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\DLLsRelease\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,16 +33,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
-      <HintPath>..\DLLsRelease\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>..\Libs\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.1418.18525, Culture=neutral">
-      <HintPath>..\DLLsRelease\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
+      <HintPath>..\Libs\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\DLLsRelease\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\Libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\DLLsRelease\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\Libs\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

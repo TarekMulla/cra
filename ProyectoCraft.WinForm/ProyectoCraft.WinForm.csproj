@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0357193D-671E-4E4F-BCE9-259E83F72977}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\DLLs\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,119 +27,105 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\DLLsRelease\</OutputPath>
+    <OutputPath>..\output\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
     <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.Charts.v9.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeRush.Common, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeRush.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.CodeRush.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLs\DevExpress.Data.v9.1.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLsRelease\DevExpress.ExpressApp.v9.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Win.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLsRelease\DevExpress.ExpressApp.Win.v9.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.OfficeSkins.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
-    <Reference Include="DevExpress.Persistent.Base.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLsRelease\DevExpress.Persistent.Base.v9.1.dll</HintPath>
+      <HintPath>..\Libs\DevExpress.Data.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLs\DevExpress.Utils.v9.1.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\Libs\DevExpress.Utils.v9.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.Xpo.v9.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.XtraBars.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLs\DevExpress.XtraBars.v9.1.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\Libs\DevExpress.XtraBars.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraCharts.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v9.1.UI, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraCharts.v9.1.UI.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraEditors.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraEditors.v9.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraGauges.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraGauges.v9.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v9.1.Win, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraGauges.v9.1.Win.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraLayout.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraGrid.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraNavBar.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraNavBar.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraRichEdit.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraPrinting.v9.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1.Extensions, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1.iCalendarExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.iCalendarExchange.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1.OutlookExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.OutlookExchange.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraSpellChecker.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraSpellChecker.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraVerticalGrid.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
+    <Reference Include="Interop.Microsoft.Office.Interop.Outlook, Version=9.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Interop.Microsoft.Office.Interop.Outlook.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.dll</HintPath>
+      <HintPath>..\Libs\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.pdfa.dll</HintPath>
+      <HintPath>..\Libs\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra, Version=5.4.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\DLLs\itextsharp.xtra.dll</HintPath>
+      <HintPath>..\Libs\itextsharp.xtra.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\DLLsRelease\log4net.dll</HintPath>
+      <HintPath>..\Libs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -1125,15 +1111,6 @@
       <VersionMinor>4</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <Private>True</Private>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Outlook">
-      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>9</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <Private>True</Private>
     </COMReference>

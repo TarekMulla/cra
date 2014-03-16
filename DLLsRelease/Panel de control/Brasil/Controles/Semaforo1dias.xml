@@ -22,9 +22,8 @@
                 COUNT(a.id) as 'cantidad'
         FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
              ON A.id=B.idAsignacion
-        WHERE   convert(varchar(20),A.aperturanavieras,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
-        AND     B.NumPaso=4
-        AND     B.fechamarca IS NULL
+        WHERE   convert(varchar(20),A.plazoembarcadores,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
+        AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
         AND A.IdEstado not in (8,9)        
         UNION
         SELECT CASE
@@ -34,7 +33,7 @@
                 COUNT(a.id) as 'cantidad'
         FROM PAPERLESS_ASIGNACION A
         WHERE  A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-        AND convert(varchar(20),A.aperturanavieras,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
+        AND convert(varchar(20),A.plazoembarcadores,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
         AND A.IdEstado not in (8,9)
         
         SELECT max(color) as 'color',sum(cantidad) as 'cantidad'
@@ -81,9 +80,8 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
-          WHERE   CONVERT(VARCHAR(20),A.aperturanavieras,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112)
-          AND     B.NumPaso=4
-          AND     B.fechamarca IS NULL
+          WHERE   CONVERT(VARCHAR(20),A.plazoembarcadores,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112)
+          AND     (B.NumPaso=4  AND     B.fechamarca IS NULL)
           AND A.IdEstado not in (8,9)          
           UNION
           SELECT  I.NumConsolidado,
@@ -115,9 +113,9 @@
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
         WHERE  A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-        AND convert(varchar(20),A.aperturanavieras,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
+        AND convert(varchar(20),A.plazoembarcadores,112) between convert(varchar(20),@f_hoy,112) and convert(varchar(20),@f_desde,112) 
         AND A.IdEstado not in (8,9)
-        ORDER BY AperturaNavieras ASC
+        ORDER BY plazoembarcadores ASC
      ]]>
     </datasourse>
   </detail>

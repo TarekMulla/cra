@@ -13,7 +13,7 @@
             FROM PAPERLESS_ASIGNACION A 
             WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
                 DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
-            AND IdEstado NOT IN (8)
+            AND IdEstado NOT IN (8,9)
             AND (AperturaNavieras ='' or AperturaNavieras is null)
     ]]>
   </datasource>
@@ -51,7 +51,7 @@
                                                 ON A.Id = I.IdAsignacion
             WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
                 DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
-            AND IdEstado NOT IN (8)
+            AND IdEstado NOT IN (8,9)
             AND (AperturaNavieras ='' or AperturaNavieras is null)
             ORDER BY DATEDIFF(DAY,GETDATE(),FechaETA) DESC      
 	]]>

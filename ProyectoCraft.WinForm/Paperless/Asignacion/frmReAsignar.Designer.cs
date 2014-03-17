@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReAsignar));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStripBarraMantenedor = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MenuGuardar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnSalir = new System.Windows.Forms.ToolStripButton();
             this.grpReAsignar = new DevExpress.XtraEditors.GroupControl();
             this.grdAsignaciones = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ViewAsignaciones = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,23 +46,22 @@
             this.txtMaster = new DevExpress.XtraEditors.TextEdit();
             this.lblMaster = new DevExpress.XtraEditors.LabelControl();
             this.grpReAsignacion = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtObsercacionU1 = new DevExpress.XtraEditors.MemoEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.ddlUsuario1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtObsercacion = new DevExpress.XtraEditors.MemoEdit();
+            this.CboUsuario2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.CboUsuario1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toolStripBarraMantenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpReAsignar)).BeginInit();
             this.grpReAsignar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewAsignaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaster.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpReAsignacion)).BeginInit();
             this.grpReAsignacion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtObsercacionU1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlUsuario1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObsercacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboUsuario2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboUsuario1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripBarraMantenedor
@@ -72,7 +70,7 @@
             this.toolStripButton2,
             this.MenuGuardar,
             this.toolStripSeparator2,
-            this.toolStripButton1});
+            this.toolStripBtnSalir});
             this.toolStripBarraMantenedor.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraMantenedor.Name = "toolStripBarraMantenedor";
             this.toolStripBarraMantenedor.Size = new System.Drawing.Size(690, 38);
@@ -103,14 +101,15 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
-            // toolStripButton1
+            // toolStripBtnSalir
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(33, 35);
-            this.toolStripButton1.Text = "Salir";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnSalir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnSalir.Image")));
+            this.toolStripBtnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnSalir.Name = "toolStripBtnSalir";
+            this.toolStripBtnSalir.Size = new System.Drawing.Size(33, 35);
+            this.toolStripBtnSalir.Text = "Salir";
+            this.toolStripBtnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnSalir.Click += new System.EventHandler(this.toolStripBtnSalir_Click);
             // 
             // grpReAsignar
             // 
@@ -149,39 +148,39 @@
             this.grdAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdAsignaciones.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.grdAsignaciones.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode2.RelationName = "Level1";
-            this.grdAsignaciones.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
             this.grdAsignaciones.Location = new System.Drawing.Point(8, 76);
-            this.grdAsignaciones.MainView = this.gridView1;
+            this.grdAsignaciones.MainView = this.ViewAsignaciones;
             this.grdAsignaciones.Name = "grdAsignaciones";
             this.grdAsignaciones.Size = new System.Drawing.Size(673, 153);
             this.grdAsignaciones.TabIndex = 82;
             this.grdAsignaciones.UseEmbeddedNavigator = true;
             this.grdAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.ViewAsignaciones});
             // 
-            // gridView1
+            // ViewAsignaciones
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ViewAsignaciones.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.ViewAsignaciones.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn5,
             this.gridColumn7,
             this.gridColumn2,
             this.gridColumn3});
-            this.gridView1.GridControl = this.grdAsignaciones;
-            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.ViewAsignaciones.GridControl = this.grdAsignaciones;
+            this.ViewAsignaciones.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", this.gridColumn1, "")});
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
-            this.gridView1.OptionsView.ShowGroupedColumns = true;
+            this.ViewAsignaciones.Name = "ViewAsignaciones";
+            this.ViewAsignaciones.OptionsBehavior.Editable = false;
+            this.ViewAsignaciones.OptionsView.ShowAutoFilterRow = true;
+            this.ViewAsignaciones.OptionsView.ShowGroupedColumns = true;
+            this.ViewAsignaciones.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "ID";
             this.gridColumn1.FieldName = "Id";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn1.Width = 49;
             // 
             // gridColumn5
@@ -257,10 +256,9 @@
             this.grpReAsignacion.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReAsignacion.AppearanceCaption.Options.UseBackColor = true;
             this.grpReAsignacion.AppearanceCaption.Options.UseFont = true;
-            this.grpReAsignacion.Controls.Add(this.labelControl3);
-            this.grpReAsignacion.Controls.Add(this.txtObsercacionU1);
-            this.grpReAsignacion.Controls.Add(this.comboBoxEdit1);
-            this.grpReAsignacion.Controls.Add(this.ddlUsuario1);
+            this.grpReAsignacion.Controls.Add(this.txtObsercacion);
+            this.grpReAsignacion.Controls.Add(this.CboUsuario2);
+            this.grpReAsignacion.Controls.Add(this.CboUsuario1);
             this.grpReAsignacion.Controls.Add(this.labelControl2);
             this.grpReAsignacion.Controls.Add(this.labelControl1);
             this.grpReAsignacion.Location = new System.Drawing.Point(2, 281);
@@ -270,41 +268,32 @@
             this.grpReAsignacion.Size = new System.Drawing.Size(686, 159);
             this.grpReAsignacion.TabIndex = 84;
             this.grpReAsignacion.Text = "Re-Asignar";
+            this.grpReAsignacion.Paint += new System.Windows.Forms.PaintEventHandler(this.grpReAsignacion_Paint);
             // 
-            // labelControl3
+            // txtObsercacion
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(5, 84);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(78, 13);
-            this.labelControl3.TabIndex = 15;
-            this.labelControl3.Text = "Comentarios:";
+            this.txtObsercacion.Location = new System.Drawing.Point(89, 82);
+            this.txtObsercacion.Name = "txtObsercacion";
+            this.txtObsercacion.Size = new System.Drawing.Size(360, 70);
+            this.txtObsercacion.TabIndex = 14;
             // 
-            // txtObsercacionU1
+            // CboUsuario2
             // 
-            this.txtObsercacionU1.Location = new System.Drawing.Point(89, 82);
-            this.txtObsercacionU1.Name = "txtObsercacionU1";
-            this.txtObsercacionU1.Size = new System.Drawing.Size(360, 70);
-            this.txtObsercacionU1.TabIndex = 14;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(89, 56);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.CboUsuario2.Location = new System.Drawing.Point(89, 56);
+            this.CboUsuario2.Name = "CboUsuario2";
+            this.CboUsuario2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(235, 20);
-            this.comboBoxEdit1.TabIndex = 13;
+            this.CboUsuario2.Size = new System.Drawing.Size(235, 20);
+            this.CboUsuario2.TabIndex = 13;
             // 
-            // ddlUsuario1
+            // CboUsuario1
             // 
-            this.ddlUsuario1.Location = new System.Drawing.Point(89, 30);
-            this.ddlUsuario1.Name = "ddlUsuario1";
-            this.ddlUsuario1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.CboUsuario1.Location = new System.Drawing.Point(89, 30);
+            this.CboUsuario1.Name = "CboUsuario1";
+            this.CboUsuario1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlUsuario1.Size = new System.Drawing.Size(235, 20);
-            this.ddlUsuario1.TabIndex = 12;
+            this.CboUsuario1.Size = new System.Drawing.Size(235, 20);
+            this.CboUsuario1.TabIndex = 12;
             // 
             // labelControl2
             // 
@@ -337,20 +326,21 @@
             this.Name = "frmReAsignar";
             this.Text = "Re-Asignar";
             this.Load += new System.EventHandler(this.frmReAsignar_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmReAsignar_FormClosed);
             this.toolStripBarraMantenedor.ResumeLayout(false);
             this.toolStripBarraMantenedor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpReAsignar)).EndInit();
             this.grpReAsignar.ResumeLayout(false);
             this.grpReAsignar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaster.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpReAsignacion)).EndInit();
             this.grpReAsignacion.ResumeLayout(false);
             this.grpReAsignacion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtObsercacionU1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlUsuario1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObsercacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboUsuario2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboUsuario1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,13 +352,13 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton MenuGuardar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripBtnSalir;
         private DevExpress.XtraEditors.GroupControl grpReAsignar;
         private DevExpress.XtraEditors.TextEdit txtMaster;
         private DevExpress.XtraEditors.LabelControl lblMaster;
         private DevExpress.XtraEditors.SimpleButton sBActualizar;
         private DevExpress.XtraGrid.GridControl grdAsignaciones;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView ViewAsignaciones;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
@@ -377,9 +367,8 @@
         private DevExpress.XtraEditors.GroupControl grpReAsignacion;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.ComboBoxEdit ddlUsuario1;
-        private DevExpress.XtraEditors.MemoEdit txtObsercacionU1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.ComboBoxEdit CboUsuario2;
+        private DevExpress.XtraEditors.ComboBoxEdit CboUsuario1;
+        private DevExpress.XtraEditors.MemoEdit txtObsercacion;
     }
 }

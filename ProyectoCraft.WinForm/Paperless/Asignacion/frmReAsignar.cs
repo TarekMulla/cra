@@ -45,5 +45,22 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         {
 
         }
+
+        private void toolStripBtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+        private void grpReAsignacion_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmReAsignar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Instancia = null;
+        }
     }
 }

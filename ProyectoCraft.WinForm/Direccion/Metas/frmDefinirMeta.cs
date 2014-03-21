@@ -319,7 +319,8 @@ namespace ProyectoCraft.WinForm.Direccion.Metas
                 ctrldxError.SetError(this.DateApertura, "", ErrorType.None);
             }
             // Prioridad
-            if (this.cboPrioridad.Text  == "")
+            // LK 20-03-2014 Se incorpora linea para incorporar el selectedindex en la validacion
+            if (this.cboPrioridad.Text  == "" || this.cboPrioridad.SelectedIndex<=0)
             {
                 ctrldxError.SetError(this.cboPrioridad, "Debe seleccionar una prioridad para el Target", ErrorType.Critical);
                 return false;

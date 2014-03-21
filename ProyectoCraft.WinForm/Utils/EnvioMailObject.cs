@@ -1881,49 +1881,58 @@ namespace SCCMultimodal.Utils
                         EmailDestinatario = EmailDestinatario + ";" + CopiaFijo;
                     }
 
-                    foreach (clsTipoProducto Producto in Target.ObjTipoProducto)
+                    if (Target.ObjTipoProducto != null)
                     {
-                        if (Producto.EsAereo)
+                        foreach (clsTipoProducto Producto in Target.ObjTipoProducto)
                         {
-                            EmailDestinatario = EmailDestinatario + ";" + CopiaAereo;
-                        }
-                        if (Producto.EsFCL)
-                        {
-                            EmailDestinatario = EmailDestinatario + ";" + CopiaFCL;
-                        }
-                        if (Producto.EsLCL)
-                        {
-                            EmailDestinatario = EmailDestinatario + ";" + CopiaLCL;
-                        }
-                        if (ListaProductos == "")
-                        {
-                            ListaProductos = ListaProductos + " " + Producto.Nombre;
-                        }
-                        else
-                        {
-                            ListaProductos = ListaProductos + Environment.NewLine + " " + Producto.Nombre;
+                            if (Producto.EsAereo)
+                            {
+                                EmailDestinatario = EmailDestinatario + ";" + CopiaAereo;
+                            }
+                            if (Producto.EsFCL)
+                            {
+                                EmailDestinatario = EmailDestinatario + ";" + CopiaFCL;
+                            }
+                            if (Producto.EsLCL)
+                            {
+                                EmailDestinatario = EmailDestinatario + ";" + CopiaLCL;
+                            }
+                            if (ListaProductos == "")
+                            {
+                                ListaProductos = ListaProductos + " " + Producto.Nombre;
+                            }
+                            else
+                            {
+                                ListaProductos = ListaProductos + Environment.NewLine + " " + Producto.Nombre;
+                            }
                         }
                     }
-                    foreach (clsMetaGlosasTrafico Trafico in Target.ObjMetaGlosasTrafico)
+                    if (Target.ObjMetaGlosasTrafico != null)
                     {
-                        if (ListaTraficos == "")
+                        foreach (clsMetaGlosasTrafico Trafico in Target.ObjMetaGlosasTrafico)
                         {
-                            ListaTraficos = ListaTraficos + " " + Trafico.Glosa;
-                        }
-                        else
-                        {
-                            ListaTraficos = ListaTraficos + Environment.NewLine + " " + Trafico.Glosa;
+                            if (ListaTraficos == "")
+                            {
+                                ListaTraficos = ListaTraficos + " " + Trafico.Glosa;
+                            }
+                            else
+                            {
+                                ListaTraficos = ListaTraficos + Environment.NewLine + " " + Trafico.Glosa;
+                            }
                         }
                     }
-                    foreach (clsMetaCompetencia Competencia in Target.ObjMetaCompetencia)
+                    if (Target.ObjMetaCompetencia != null)
                     {
-                        if (ListaCompetencia == "")
+                        foreach (clsMetaCompetencia Competencia in Target.ObjMetaCompetencia)
                         {
-                            ListaCompetencia = ListaCompetencia + " " + Competencia.Descripcion;
-                        }
-                        else
-                        {
-                            ListaCompetencia = ListaCompetencia + Environment.NewLine + " " + Competencia.Descripcion;
+                            if (ListaCompetencia == "")
+                            {
+                                ListaCompetencia = ListaCompetencia + " " + Competencia.Descripcion;
+                            }
+                            else
+                            {
+                                ListaCompetencia = ListaCompetencia + Environment.NewLine + " " + Competencia.Descripcion;
+                            }
                         }
                     }
                     sb.Replace("[PRODUCTOS]", ListaProductos);

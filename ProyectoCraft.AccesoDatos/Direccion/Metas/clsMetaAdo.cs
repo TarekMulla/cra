@@ -169,7 +169,7 @@ namespace ProyectoCraft.AccesoDatos.Direccion.Metas
                     ObjProspecto.IdNumMeta = dreader[2].ToString().Trim();
                     ObjProspecto.Id = Convert.ToInt32(dreader[0]);
 
-                    ObjProspecto.FollowUps = clsClienteMasterADO.ObtenerFollowUpActivosClientePorTarget(ObjProspecto.Id);
+                    //ObjProspecto.FollowUps = clsClienteMasterADO.ObtenerFollowUpActivosClientePorTarget(ObjProspecto.Id);
 
                     ObjProspecto.Prioridad = new clsItemParametro();
                     ObjProspecto.Prioridad.Codigo = dreader[1].ToString();
@@ -193,12 +193,12 @@ namespace ProyectoCraft.AccesoDatos.Direccion.Metas
                     ObjProspecto.ObjMetaAsignacion.ObjVendedorAsignado.Email = dreader[17].ToString().Trim();
                     ObjProspecto.ObjMetaAsignacion.ObjVendedorAsignado.Nombre = dreader[18].ToString().Trim();
 
-                    ObjProspecto.FollowUps = clsClienteMasterADO.ObtenerFollowUpActivosClientePorTarget(ObjProspecto.Id);
+                    //ObjProspecto.FollowUps = clsClienteMasterADO.ObtenerFollowUpActivosClientePorTarget(ObjProspecto.Id);
                     //ObjProspecto.FechaRevision = Convert.ToDateTime(dreader[11]);
 
                     Prospectos.Add(ObjProspecto);
                 }
-                res.Accion = Entidades.Enums.Enums.AccionTransaccion.Consultar;
+                res.Accion = Enums.AccionTransaccion.Consultar;
                 res.ObjetoTransaccion = Prospectos;
             }
             catch (Exception ex)

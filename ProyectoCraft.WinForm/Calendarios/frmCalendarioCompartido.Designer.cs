@@ -343,7 +343,7 @@
             this.schedulerControl1.OptionsCustomization.AllowAppointmentMultiSelect = false;
             this.schedulerControl1.OptionsCustomization.AllowInplaceEditor = DevExpress.XtraScheduler.UsedAppointmentType.None;
             this.schedulerControl1.PaintStyleName = "WindowsXP";
-            this.schedulerControl1.Size = new System.Drawing.Size(1155, 460);
+            this.schedulerControl1.Size = new System.Drawing.Size(1069, 460);
             this.schedulerControl1.Start = new System.DateTime(2011, 5, 2, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 4;
@@ -378,7 +378,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.popupControlContainer1);
             this.splitContainerControl1.Panel2.Controls.Add(this.schedulerControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1386, 460);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1300, 460);
             this.splitContainerControl1.SplitterPosition = 225;
             this.splitContainerControl1.TabIndex = 5;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -470,7 +470,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 508);
+            this.ClientSize = new System.Drawing.Size(1300, 508);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

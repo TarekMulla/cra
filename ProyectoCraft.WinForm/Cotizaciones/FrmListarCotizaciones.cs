@@ -11,7 +11,6 @@ using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
-using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.LogicaNegocios.Cotizaciones.Directa;
 using SCCMultimodal.Cotizaciones;
@@ -52,28 +51,39 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             InitializeComponent();
         }
 
-        private void FrmListarTarifas_Load(object sender, System.EventArgs e) {
+        private void CargarSemanas() {
+            ListSemanas.Items.Clear();
+            for (var i = 1; i < 51; i++)
+                ListSemanas.Items.Add(i.ToString());
+            ListSemanas.SelectedText = "5";
+        }
 
+        private void FrmListarTarifas_Load(object sender, System.EventArgs e) {
+            Cursor.Current = Cursors.WaitCursor;
             Dock = DockStyle.Fill;
+            CargarSemanas();
             var toolTip1 = new ToolTip();
             toolTip1.SetToolTip(gridSLeads, "Presione doble click para ver información detallada");
-
             EstadosCotizaciones = new List<Estado>();
             EstadosOpciones = new List<Estado>();
-
 
             var estadosDB = CotizacionDirectaEstado.ListarEstadosCotizacionDirecta().ObjetoTransaccion as List<Estado>;
             estadosDB = estadosDB.FindAll(foo => foo.Id32 >= 5);
             var estados = new List<Estado> { new Estado { Activo = false, Id = 0, Id32 = 0, Nombre = "Mensaje" } };
-
 
             EstadosCotizaciones.AddRange(estados);
             EstadosCotizaciones.AddRange(estadosDB);
             EstadosOpciones.AddRange(estados);
             EstadosOpciones.AddRange(estadosDB);
 
+            //Eliminamos la opcion de eliminar, esta es solo una opcion para el modulo de gestion de cotizaciones.
+            EstadosCotizaciones.RemoveAll(foo => foo.Id32 == 10);
+            EstadosOpciones.RemoveAll(foo => foo.Id32 == 10);
             CargarGrillaCotizaciones();
+            MenuFollowup.Enabled = true;
+            Cursor.Current = Cursors.Default;
         }
+
 
         private void CargarEstado() {
             cboEstado.Properties.Items.Clear();
@@ -89,31 +99,29 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         }
 
         public void CargarGrillaCotizaciones() {
+            var fechaInicio = DateTime.Now.AddDays(Convert.ToInt32(ListSemanas.Text) * -7);
+            
             ListCotizaciones =
                 ClsCotizacionDirecta.ListarTodasLasCotizacionesPorUsuario(
-                    Base.Usuario.UsuarioConectado.Usuario);
+                    Base.Usuario.UsuarioConectado.Usuario,fechaInicio);
             foreach (var cotizacion in ListCotizaciones) {
                 cotizacion.Seleccionado = false;
-                foreach (var op in cotizacion.OpcionesView) {
-                    if (op != null)
-                        op.Seleccionado = false;
-                }
+
             }
             gridSLeads.DataSource = ListCotizaciones;
         }
 
         private void toolStripButton2_Click_1(object sender, EventArgs e) {
-            try{
+            try {
                 var formulario = FrmCotizacionDirecta.Instancia;
                 //formulario.FrmListarCotizaciones = this;
                 formulario.ShowDialog();
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 Console.Write(ex.InnerException);
             }
         }
 
         private void MenuEnviarAlCliente_Click(object sender, EventArgs e) {
-
             ListCotizacionesSeleccionadas = new List<ITableable>();
             HijosSeleccionados = new List<ITableableOpcion>();
             ActiveControl = txtComentario;
@@ -130,14 +138,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
                 } else //debo seleccionar los hijos por separado
                 {
                     string hijos = "";
-                    foreach (var op in reg.OpcionesView) {
-                        if (op != null)
-                            if (op.Seleccionado.Equals(true)) {
-                                hijos += "," + op.Id;
-                                HijosSeleccionados.Add(op);
-                            }
-
-                    }
                     if (!string.IsNullOrEmpty(hijos)) {
                         Log.EscribirLog("padre ID:" + reg.Id + ", Hijos ID:" + hijos);
                         ListCotizacionesSeleccionadas.Add(CreaPadreDesdeUnHijo((List<ITableableOpcion>)HijosSeleccionados, reg));
@@ -145,16 +145,13 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
                 }
             }
 
-            FrmPrintPreviewCotizacoines frm = new FrmPrintPreviewCotizacoines((List<ITableable>)ListCotizacionesSeleccionadas);
+            var frm = new FrmPrintPreviewCotizacoines((List<ITableable>)ListCotizacionesSeleccionadas);
             frm.ShowDialog();
-            //var form = FrmPrintPreviewCotizacoines.Instancia ;
-            //FrmPrintPreviewCotizacoines.ListCotizaciones = (List<ITableable>) ListCotizacionesSeleccionadas;
-            //form.ShowDialog();
+
 
         }
 
         private ITableable CreaPadreDesdeUnHijo(List<ITableableOpcion> op, ITableable padre) {
-            //ListCotizacionesSeleccionadas.Add(padre);
             var papa = new CotizacionDirecta();
             papa.Id = papa.Id32 = padre.Id32;
             papa.Usuario = padre.Usuario;
@@ -163,23 +160,14 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             papa.FechaSolicitud = padre.FechaSolicitud;
             papa.IncoTerm = padre.IncoTerm;
             papa.Estado = padre.Estado;
-            //papa.EstadoDescripcion = padre.EstadoDescripcion;
-            //papa.CantidadOpciones = padre.CantidadOpciones;
-            papa.ProveedorCarga = padre.ProveedorCarga;
-            //papa.Tipo = padre.Tipo;
             papa.Seleccionado = padre.Seleccionado;
-            //llenado de opciones o opcionesview
-            foreach (var tableableOpcion in op) {
+            foreach (var tableableOpcion in op)
                 papa.Opciones.Add((Opcion)tableableOpcion);
-            }
+
+
             return papa;
         }
 
-        private void menuNuevaTarifa_Click(object sender, EventArgs e) {
-            //var formulario = FrmSolicitarTarifa.Instancia;
-            //formulario.FrmListarCotizaciones = this;
-            //formulario.ShowDialog();
-        }
 
         private void FrmListarCotizaciones_FormClosed(object sender, FormClosedEventArgs e) {
             Instancia = null;
@@ -190,8 +178,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             Close();
         }
 
-        private void gridSLeads_DoubleClick(object sender, EventArgs e) {
-        }
 
         private void GridViewOpcionesCellValueChanging(object sender,
                                                        DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e) {
@@ -226,6 +212,7 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         private void MenuActualizar_Click(object sender, EventArgs e) {
             Cursor.Current = Cursors.WaitCursor;
             CargarGrillaCotizaciones();
+            MenuFollowup.Enabled = true;
             Cursor.Current = Cursors.Default;
         }
 
@@ -235,7 +222,7 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         }
 
         private void btnGuardarComentario_Click(object sender, EventArgs e) {
-
+            var exito = true;
             Estado Estado = new Estado();
 
             //Valida Datos Obligatorios
@@ -254,97 +241,165 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             }
 
             Cursor.Current = Cursors.WaitCursor;
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            if (!ctrldxError.HasErrors) {
+                ResultadoTransaccion resultado = new ResultadoTransaccion();
 
-            var comentario = new Comentario {
-                EsHistorial = false,
-                Observacion = txtComentario.Text,
-                Usuario = Base.Usuario.UsuarioConectado.Usuario
-            };
-            var cotizacion = GetSelectedRow(gridViewSLeads);
-            resultado = ClsComentario.GuardarMensaje(cotizacion, comentario);
+                var comentario = new Comentario
+                {
+                    EsHistorial = false,
+                    Observacion = txtComentario.Text,
+                    Usuario = Base.Usuario.UsuarioConectado.Usuario
+                };
+                var cotizacion = GetSelectedRow(gridViewSLeads);
+                resultado = ClsComentario.GuardarMensaje(cotizacion, comentario);
 
-            var comentarios = gridComentarios.DataSource as List<Comentario>;
+                var comentarios = gridComentarios.DataSource as List<Comentario>;
 
-            /*emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
-            emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
-            */
-            var mailFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
-            
-            
-            var xmldoc = new XmlDocument();
-            xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
-            var mailFCL = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/notificaciones/FCL").InnerText;
-            
-            mailFijo = mailFijo + ";" + mailFCL;
-            var listMail = new List<String>();
-            foreach (var mail in mailFijo.Split(';')) {
-                if (!listMail.Contains(mail))
-                    listMail.Add(mail);
-            }
-            foreach (var c in comentarios) {
-                if (!listMail.Contains(c.Usuario.Email))
-                    listMail.Add(c.Usuario.Email);
-            }
-            var cot =  ClsCotizacionDirecta.ObtieneCotizacionDirecta(cotizacion.Id32).ObjetoTransaccion as CotizacionDirecta;
-            
-            if (!listMail.Contains(cot.Usuario.Email))
-                listMail.Add(cot.Usuario.Email);
-
-            var subjectComenterio = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/subject").InnerText;
-            var bodyComentario = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/body").InnerText;
-
-            var subjectCambioEstado = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/subject").InnerText;
-            var bodyCambioEstado = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/body").InnerText;
-            var body = String.Empty;
-            var subject = String.Empty;
-
-            if (cboEstado.SelectedIndex != 0) {
-                body = bodyCambioEstado;
-                subject = subjectCambioEstado;
-            } else{
-                body = bodyComentario;
-                subject = subjectComenterio;
-            }
-
-            subject = subject.Replace("[numero]", cotizacion.Numero);
-            body = body.Replace("[usuario]", comentario.Usuario.NombreCompleto);
-            body = body.Replace("[estado]", ((Estado)cboEstado.SelectedItem).Nombre);
-            body = body.Replace("[comentario]", comentario.Observacion);
+                /*emailInformeFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
+                emailInformeFcl = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFCL");
+                */
+                var mailFijo = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailInformeFijo");
 
 
-            var destinatarios = String.Join(";", listMail.ToArray());
-            new EnvioMailObject().EnviarEmail(destinatarios, subject, body);
-            
+                var xmldoc = new XmlDocument();
+                xmldoc.Load(Path.Combine(Application.StartupPath, @"Cotizaciones\CotizacionSetting.xml"));
+                var mailFCL = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/notificaciones/FCL").InnerText;
 
-            if (cboEstado.SelectedIndex != 0) {
-                Estado = (Estado)cboEstado.SelectedItem;
-                resultado = CotizacionDirectaEstado.ModificarEstado(cotizacion.Id32, Estado.Id32);
-                if (resultado.Estado == Enums.EstadoTransaccion.Aceptada) {
-                    LimpiarFormularioMensaje();
-                    CargarGrillaCotizaciones();
-                    MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
-                    MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mailFijo = mailFijo + ";" + mailFCL;
+                var listMail = new List<String>();
+                foreach (var mail in mailFijo.Split(';')) {
+                    if (!listMail.Contains(mail))
+                        listMail.Add(mail);
                 }
+                foreach (var c in comentarios) {
+                    if (!listMail.Contains(c.Usuario.Email))
+                        listMail.Add(c.Usuario.Email);
+                }
+                var cot =
+                    ClsCotizacionDirecta.ObtieneCotizacionDirecta(cotizacion.Id32).ObjetoTransaccion as
+                    CotizacionDirecta;
+
+                if (!listMail.Contains(cot.Usuario.Email))
+                    listMail.Add(cot.Usuario.Email);
+
+                var subjectComenterio =
+                    xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/subject").InnerText;
+                var bodyComentario = xmldoc.SelectSingleNode("/setting/cotizacionDirecta/comentarios/body").InnerText;
+
+                var subjectCambioEstado =
+                    xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/subject").InnerText;
+                var bodyCambioEstado =
+                    xmldoc.SelectSingleNode("/setting/cotizacionDirecta/cambiosDeEstado/body").InnerText;
+                var body = String.Empty;
+                var subject = String.Empty;
+
+                if (cboEstado.SelectedIndex != 0) {
+                    body = bodyCambioEstado;
+                    subject = subjectCambioEstado;
+                } else {
+                    body = bodyComentario;
+                    subject = subjectComenterio;
+                }
+
+                subject = subject.Replace("[numero]", cotizacion.Numero + " - " + cotizacion.Cliente);
+                body = body.Replace("[usuario]", comentario.Usuario.NombreCompleto);
+                body = body.Replace("[estado]", ((Estado)cboEstado.SelectedItem).Nombre);
+                body = body.Replace("[comentario]", comentario.Observacion);
+
+
+                var destinatarios = String.Join(";", listMail.ToArray());
+                new EnvioMailObject().EnviarEmail(destinatarios, subject, body);
+
+
+                if (cboEstado.SelectedIndex != 0) {
+                    Estado = (Estado)cboEstado.SelectedItem;
+                    resultado = CotizacionDirectaEstado.ModificarEstado(cotizacion.Id32, Estado.Id32);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Aceptada) {
+                        LimpiarFormularioMensaje();
+                        CargarGrillaCotizaciones();
+                        MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    } else {
+                        MessageBox.Show(resultado.Descripcion, "Sistema Comercial Craft", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                } else {
+                    LimpiarFormularioMensaje();
+                }
+                Cursor.Current = Cursors.Default;
+                if (Seleccion == "cot")
+                    FocusCotizacion();
             }
-            Cursor.Current = Cursors.Default;
-            if (Seleccion == "cot")
-                FocusCotizacion();
-            if (Seleccion == "op")
-                FocusOpcion(OpcionSeleccionada);
         }
 
-        private void FocusOpcion(Opcion opcion) {
-            OpcionSeleccionada = opcion;
+
+
+        private void gridViewSLeads_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+            FocusCotizacion();
+        }
+
+        private void FocusCotizacion() {
             var cotizacion = GetSelectedRow(gridViewSLeads);
-            //var comentarios = ClsComentario.ObtieneTodosLosMensajes(opcion).ObjetoTransaccion as List<Comentario>;
             var comentarios = ClsComentario.ObtieneTodosLosMensajes(cotizacion).ObjetoTransaccion as List<Comentario>;
             gridComentarios.DataSource = comentarios;
             gridComentarios.RefreshDataSource();
-            Seleccion = "op";
-            CargarEstado();
 
+            MenuCopiar.Enabled = cotizacion.PermiteCopiar;
+
+            Seleccion = "cot";
+            CargarEstado();
+            if (cotizacion.Estado.Id32 > 5) {
+                cboEstado.Properties.Items.Clear();
+                cboEstado.Properties.Items.Add(EstadosCotizaciones[0]);
+            }
+
+        }
+
+        private void gridViewOpciones_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+            FocusCotizacion();
+        }
+
+        private void MenuCopiar_Click(object sender, EventArgs e) {
+
+            var tableable = GetSelectedRow((GridView)gridViewSLeads);
+
+            DialogResult res = MessageBox.Show(String.Format("¿Esta Ud. seguro de copiar la Cotización {0}?.{1} Se creará una nueva cotización con la información copiada.", tableable.Numero, Environment.NewLine),
+                "Sistema Comercial Craft", MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question);
+            if (res == DialogResult.Yes) {
+                Cursor.Current = Cursors.WaitCursor;
+                if (tableable is CotizacionDirecta) {
+                    var cot =
+                        ClsCotizacionDirecta.ObtieneCotizacionDirecta(tableable.Id32).ObjetoTransaccion as
+                        CotizacionDirecta;
+                    cot.CopiadoDe = tableable.Id32;
+                    cot.Id = cot.Id32 = 0;
+                    foreach (var gl in cot.GastosLocalesList) {
+                        gl.Id = gl.Id32 = 0;
+                    }
+
+                    foreach (var opcion in cot.Opciones) {
+                        opcion.Id = opcion.Id32 = 0;
+                        foreach (var puerto in opcion.Pod)
+                            puerto.Id = puerto.Id32 = 0;
+
+                        foreach (var puerto in opcion.Pol)
+                            puerto.Id = puerto.Id32 = 0;
+
+
+                        foreach (var det in opcion.Detalles)
+                            det.Id = det.Id32 = 0;
+
+                    }
+
+                    var formulario = FrmCotizacionDirecta.Instancia;
+                    formulario.mode = "borrador";
+                    formulario.CotizacionDirecta = cot;
+                    formulario.ShowDialog();
+
+                }
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void gridViewSLeads_MasterRowExpanded(object sender, CustomMasterRowEventArgs e) {
@@ -367,29 +422,39 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             detail.Focus();
             detail.SelectRow(0);
             detail.FocusedRowHandle = 0;
-            var opcion = detail.GetRow(detail.FocusedRowHandle) as Opcion;
-
-            FocusOpcion(opcion);
         }
 
-        private void gridViewSLeads_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
-            FocusCotizacion();
-        }
-        private void FocusCotizacion() {
-            var cotizacion = GetSelectedRow(gridViewSLeads);
-            var comentarios = ClsComentario.ObtieneTodosLosMensajes(cotizacion).ObjetoTransaccion as List<Comentario>;
-            gridComentarios.DataSource = comentarios;
-            gridComentarios.RefreshDataSource();
-            Seleccion = "cot";
-            CargarEstado();
+        private void MenuExcel_Click(object sender, EventArgs e) {
+            try {
+                SaveFileDialog GrabarArchivo = new SaveFileDialog();
+                GrabarArchivo.Filter = "Excel(xls)|*.xls";
+                GrabarArchivo.Title = "Exportar Excel";
+                GrabarArchivo.DefaultExt = "xls";
+                GrabarArchivo.FileName = "";
+                GrabarArchivo.OverwritePrompt = true;
+                GrabarArchivo.ShowDialog();
 
+                if (GrabarArchivo.FileName != "") {
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    FileStream fs =
+                       (FileStream)GrabarArchivo.OpenFile();
+                    gridViewSLeads.ExportToXls(fs, true);
+
+                    fs.Close();
+                }
+            } catch (Exception ex) {
+                Log.EscribirLog(ex.Message);
+                MessageBox.Show("Error al generar archivo Excel: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void gridViewOpciones_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
-            var grid = sender as GridView;
-            var opcion = grid.GetRow(e.FocusedRowHandle) as Opcion;
-            OpcionSeleccionada = opcion;
-            FocusOpcion(opcion);
+        private void MenuFollowup_Click(object sender, EventArgs e) {
+            if (gridViewSLeads.SelectedRowsCount == 1) {
+                var cotizacionDirecta = (CotizacionDirecta)gridViewSLeads.GetRow(gridViewSLeads.GetSelectedRows()[0]);
+                var form = FrmFollowUpCotizaciones.Instancia;
+                form.CotizacionDirecta = cotizacionDirecta;
+                form.ShowDialog();
+            }
         }
     }
 }

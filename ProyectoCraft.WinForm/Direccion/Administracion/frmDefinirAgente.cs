@@ -4,7 +4,7 @@ using DevExpress.XtraEditors.DXErrorProvider;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.Entidades.Enums;
-using ProyectoCraft.Entidades.Direccion.Administracion;
+
 
 namespace ProyectoCraft.WinForm.Direccion.Administracion
 {

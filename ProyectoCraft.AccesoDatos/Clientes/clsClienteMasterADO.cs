@@ -173,7 +173,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                             master.EstadoTarget = (Enums.Estado)dreader[5];
                         else if (master.Tipo == Enums.TipoPersona.Cuenta) {
                             if (dreader[6] != null && !string.IsNullOrEmpty(dreader[6].ToString()))
-                            master.EstadoCuenta = (Enums.Estado)dreader[6];
+                                master.EstadoCuenta = (Enums.Estado)dreader[6];
                             master.Cuenta = new clsCuenta();
                             master.NombreFantasia = dreader["NombreFantasia"].ToString();
                         }
@@ -192,7 +192,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                     }
                 }
 
-                ClsLogPerformanceADO.SaveFromADO(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds, "llenando objetos del resultado de SP_C_CLIENTE_MASTER"));    
+                ClsLogPerformanceADO.SaveFromADO(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds, "llenando objetos del resultado de SP_C_CLIENTE_MASTER"));
 
             } catch (Exception ex) {
                 Base.Log.Log.EscribirLog(ex.Message);
@@ -202,7 +202,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                 conn.Close();
             }
 
-            
+
             return listMaster;
         }
 
@@ -281,12 +281,10 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
 
             return master;
         }
-        public static clsClienteMaster ObtenerClienteMasterPorRut(string Rut)
-        {
+        public static clsClienteMaster ObtenerClienteMasterPorRut(string Rut) {
             clsClienteMaster master = null;
             SqlDataReader readercliente = null;
-            try
-            {
+            try {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -298,8 +296,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                 command.CommandType = CommandType.StoredProcedure;
                 readercliente = command.ExecuteReader();
 
-                while (readercliente.Read())
-                {
+                while (readercliente.Read()) {
                     master = new clsClienteMaster(true);
                     master.Id = Convert.ToInt64(readercliente["Id"]);
                     master.NombreCompañia = readercliente["NombreCompania"].ToString();
@@ -324,13 +321,9 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
 
                 }
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Base.Log.Log.EscribirLog(ex.Message);
-            }
-            finally
-            {
+            } finally {
                 if (!readercliente.IsClosed)
                     readercliente.Close();
             }
@@ -362,7 +355,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
             } finally {
                 conn.Close();
             }
-                
+
             return existe;
         }
 
@@ -794,31 +787,38 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
 
         #region "Follow Up"
 
-        public static ResultadoTransaccion AgregarFollowUpClienteMaster(clsClienteFollowUp FollowUp, SqlTransaction transaction) {
+        public static ResultadoTransaccion AgregarFollowUpClienteMaster(clsClienteFollowUp followUp, SqlTransaction transaction) {
             resTransaccion = new ResultadoTransaccion();
             try {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(BaseDatos.Conexion(), "SP_N_CLIENTES_FOLLOW_UP");
-                objParams[0].Value = FollowUp.IdInformeVisita ?? -1;
-                objParams[1].Value = FollowUp.IdLlamadaTelefonica ?? -1;
-                objParams[2].Value = FollowUp.FechaFollowUp;
-                if (FollowUp.TipoActividad == null)
+                objParams[0].Value = followUp.IdInformeVisita ?? -1;
+                objParams[1].Value = followUp.IdLlamadaTelefonica ?? -1;
+                objParams[2].Value = followUp.FechaFollowUp;
+                if (followUp.TipoActividad == null)
                     objParams[3].Value = -1;
                 else
-                    objParams[3].Value = FollowUp.TipoActividad.Id;
+                    objParams[3].Value = followUp.TipoActividad.Id;
 
-                objParams[4].Value = FollowUp.Cliente.Id;
-                objParams[5].Value = FollowUp.Descripcion;
+                objParams[4].Value = followUp.Cliente.Id;
+                objParams[5].Value = followUp.Descripcion;
                 objParams[6].Value = DateTime.Now;
-                objParams[7].Value = FollowUp.Usuario.Id;
-                objParams[8].Value = FollowUp.IdTarget ?? -1;
-                objParams[9].Value = FollowUp.Activo;
-                objParams[10].Value = FollowUp.IdSalesLead ?? -1;
+                objParams[7].Value = followUp.Usuario.Id;
+                objParams[8].Value = followUp.IdTarget ?? -1;
+                objParams[9].Value = followUp.Activo;
+                objParams[10].Value = followUp.IdSalesLead ?? -1;
+                objParams[11].Value = followUp.IdCotizacion ?? -1;
+                objParams[12].Direction = ParameterDirection.Output;
 
                 SqlCommand command = new SqlCommand("SP_N_CLIENTES_FOLLOW_UP", BaseDatos.Conexion());
                 command.Transaction = transaction;
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
+                //command.ExecuteNonQuery();
+
+                    command.ExecuteScalar();
+
+                followUp.Id = Convert.ToInt16(objParams[12].Value);
+                followUp.Id32 = Convert.ToInt32(objParams[12].Value);
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
 
@@ -1087,6 +1087,13 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                     Console.Write(e.Message);
                 }
 
+                try {
+                    if (!String.IsNullOrEmpty(dataReader["idCotizacion"].ToString()))
+                        followup.IdCotizacion = Convert.ToInt64(dataReader["idCotizacion"].ToString());
+                } catch (Exception e) {
+                    Console.Write(e.Message);
+                }
+
                 retorno.Add(followup);
             }
             return retorno;
@@ -1094,8 +1101,8 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
         }
         #endregion
 
-        public static IList<clsClienteMaster> ListarTarget(long idVendedor){
-            var  listMaster = new List<clsClienteMaster>();
+        public static IList<clsClienteMaster> ListarTarget(long idVendedor) {
+            var listMaster = new List<clsClienteMaster>();
             SqlDataReader readercliente = null;
             try {
                 //Abrir Conexion
@@ -1110,7 +1117,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
                 readercliente = command.ExecuteReader();
 
                 while (readercliente.Read()) {
-                    
+
                     var master = new clsClienteMaster(true);
                     master.Id = Convert.ToInt64(readercliente["Id"]);
                     master.NombreCompañia = readercliente["NombreCompania"].ToString();
@@ -1143,6 +1150,32 @@ namespace ProyectoCraft.AccesoDatos.Clientes {
             }
 
             return listMaster;
+        }
+
+
+        public static IList<clsClienteFollowUp> ObtenerFollowUpClientePorIDCotizacion(long idCotizacion) {
+            IList<clsClienteFollowUp> followUps = new List<clsClienteFollowUp>();
+            //Abrir Conexion
+            conn = BaseDatos.NuevaConexion();
+            try {
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_CLIENTES_FOLLOW_UP_POR_IDCOTIZACION");
+                objParams[0].Value = idCotizacion;
+
+                SqlCommand command = new SqlCommand("SP_C_CLIENTES_FOLLOW_UP_POR_IDCOTIZACION", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+                followUps = ObtenerfollowUp(dreader);
+
+            } catch (Exception ex) {
+                Base.Log.Log.EscribirLog(ex.Message);
+                resTransaccion.MetodoError = MethodBase.GetCurrentMethod().Name;
+                resTransaccion.ArchivoError = MethodBase.GetCurrentMethod().ToString();
+            } finally {
+                conn.Close();
+            }
+
+            return followUps;
         }
     }
 }

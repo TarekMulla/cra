@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public CotizacionDirecta() {
             Opciones = new List<Opcion>();
             Comentarios = new List<Comentario>();
+            GastosLocalesList = new List<GastoLocal>();
+            FollowUps = new List<clsClienteFollowUp>();
         }
 
         public String Producto { set; get; }
@@ -32,6 +35,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public DateTime FechaSolicitud { set; get; }
         public clsIncoTerm IncoTerm { set; get; }
         public String Commodity { set; get; }
+        [Obsolete("no usar")]
         public Decimal? GastosLocales { set; get; }
         public String CondicionFija { set; get; }
         public String CondicionVariable { set; get; }
@@ -42,6 +46,7 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
         public String Observaciones { set; get; }
         public String ObservacionesFijas { set; get; }
         public List<Comentario> Comentarios { set; get; }
+        public List<GastoLocal> GastosLocalesList { set; get; }
 
         public string Tipo {
             get { return "Directa"; }
@@ -55,11 +60,45 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             }
         }
 
+        public DateTime? NextFollowup { get; set; }
+
+        public int FollowUpIcon {
+            get {
+                if (NextFollowup == null)
+                    return 100;
+
+                var rojo = 10;
+                var foo = ConfigurationManager.AppSettings["indicardorCotizacionesRojo"];
+                if (foo != null)
+                    rojo = (int)Convert.ToInt64(foo);
+
+                var amarillo = 5;
+                foo = ConfigurationManager.AppSettings["indicardorCotizacionesAmarillo"];
+                if (foo != null)
+                    amarillo = (int)Convert.ToInt64(foo);
+
+                //COLOR ROJO
+                if (NextFollowup.Value > DateTime.Now.AddDays(rojo))
+                    return 3;
+                //COLOR AMARILLO
+                if (NextFollowup.Value > DateTime.Now.AddDays(amarillo))
+                    return 2;
+                //COLOR VERDE
+                return 1;
+            }
+        }
+
         public int CantidadOpciones {
             get {
                 return Opciones == null ? 0 : Opciones.Count;
             }
         }
+
+        public bool PermiteCopiar { get { return true; } }
+
+        public Int32 CopiadoDe { get; set; }
+        public IList<clsClienteFollowUp> FollowUps { get; set; }
+
 
         public String GenerateHtmlPreviewAndBody(String startupPath) {
             return RenderHtml(Path.Combine(startupPath, @"cotizaciones\TemplateCotizacionPreview.html"));
@@ -87,10 +126,21 @@ namespace ProyectoCraft.Entidades.Cotizaciones.Directa {
             stringXml = stringXml.Replace("[commodity]", Commodity);
             stringXml = stringXml.Replace("[incoterm]", IncoTerm.Codigo);
 
-            var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
+            var glString = string.Empty;
+            foreach (var gl in GastosLocalesList) {
+                glString += String.Format(@"<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>",
+                    gl.Descripcion, gl.Monto.ToString("c0", new CultureInfo("es-CL")),
+                                            "+ IVA");
+            }
+            if (GastosLocalesList.Count == 0)
+                glString = String.Format(@"<tr><td>Sin Gastos Locales</td></tr>");
+
+            glString = "<table>" + glString + "</table>";
+
+            // var gastosLocales = (GastosLocales == 0 || GastosLocales == null) ? "Sin Gastos Locales" : GastosLocales.Value.ToString("c0", new CultureInfo("es-CL")) + "  + IVA";
 
 
-            stringXml = stringXml.Replace("[gastosLocales]", gastosLocales);
+            stringXml = stringXml.Replace("[gastosLocales]", glString);
             stringXml = stringXml.Replace("[observaciones]", ObservacionesFijas.Replace(Environment.NewLine, "<br/>"));
 
             stringXml = stringXml.Replace("[ObservacionesOpcionales]", Observaciones.Replace(Environment.NewLine, "<br/>"));

@@ -1,5 +1,4 @@
 ﻿using System;
-using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.GlobalObject;
 
 namespace ProyectoCraft.Entidades.Cotizaciones
@@ -12,6 +11,6 @@ namespace ProyectoCraft.Entidades.Cotizaciones
         String NavieraDescripcion { get; }
         DateTime FechaCreacion { set; get; }
         String EstadoDescripcion { get; }
-        bool Seleccionado { set; get; }
+        //bool Seleccionado { set; get; }
     }
 }

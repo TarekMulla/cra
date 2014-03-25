@@ -37,33 +37,37 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.Col_Fecha_Creacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Fecha_Estado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Col_Seleccionado = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridSLeads = new DevExpress.XtraGrid.GridControl();
             this.gridViewSLeads = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColContacto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColCuenta = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ProveedorCarga = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Checkbox = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.GridColumnFollowup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.ImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuExcel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuNuevaTarifa = new System.Windows.Forms.ToolStripButton();
-            this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
+            this.MenuCopiar = new System.Windows.Forms.ToolStripButton();
             this.MenuActualizar = new System.Windows.Forms.ToolStripButton();
+            this.MenuFollowup = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.ListSemanas = new System.Windows.Forms.ToolStripComboBox();
             this.gridProspectos = new DevExpress.XtraEditors.GroupControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboEstado = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -90,17 +94,24 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewOpciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSLeads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSLeads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             this.toolStripBarraLlamada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProspectos)).BeginInit();
             this.gridProspectos.SuspendLayout();
@@ -116,6 +127,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewOpciones
@@ -126,8 +140,7 @@
             this.Col_Fecha_Termino,
             this.Col_Naviera,
             this.Col_Fecha_Creacion,
-            this.Col_Fecha_Estado,
-            this.Col_Seleccionado});
+            this.Col_Fecha_Estado});
             this.gridViewOpciones.GridControl = this.gridSLeads;
             this.gridViewOpciones.Name = "gridViewOpciones";
             this.gridViewOpciones.OptionsBehavior.AutoSelectAllInEditor = false;
@@ -224,21 +237,6 @@
             this.Col_Fecha_Estado.Visible = true;
             this.Col_Fecha_Estado.VisibleIndex = 5;
             // 
-            // Col_Seleccionado
-            // 
-            this.Col_Seleccionado.Caption = "Seleccionado";
-            this.Col_Seleccionado.ColumnEdit = this.repositoryItemCheckEdit4;
-            this.Col_Seleccionado.FieldName = "Seleccionado";
-            this.Col_Seleccionado.Name = "Col_Seleccionado";
-            this.Col_Seleccionado.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
-            this.Col_Seleccionado.Visible = true;
-            this.Col_Seleccionado.VisibleIndex = 6;
-            // 
-            // repositoryItemCheckEdit4
-            // 
-            this.repositoryItemCheckEdit4.AutoHeight = false;
-            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
-            // 
             // gridSLeads
             // 
             this.gridSLeads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -255,13 +253,13 @@
             this.repositoryItemComboBox1,
             this.repositoryItemCheckEdit4,
             this.repositoryItemTextEdit1,
-            this.repositoryItemDateEdit1});
+            this.repositoryItemDateEdit1,
+            this.repositoryItemImageComboBox1});
             this.gridSLeads.Size = new System.Drawing.Size(1215, 305);
             this.gridSLeads.TabIndex = 3;
             this.gridSLeads.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSLeads,
             this.gridViewOpciones});
-            this.gridSLeads.DoubleClick += new System.EventHandler(this.gridSLeads_DoubleClick);
             // 
             // gridViewSLeads
             // 
@@ -270,11 +268,11 @@
             this.gridColumn7,
             this.gridColContacto,
             this.gridColCuenta,
-            this.ProveedorCarga,
             this.gridColumn4,
             this.gridColumn2,
-            this.gridColumn12,
-            this.Checkbox});
+            this.Checkbox,
+            this.GridColumnFollowup,
+            this.gridColumn6});
             this.gridViewSLeads.CustomizationFormBounds = new System.Drawing.Rectangle(1054, 496, 216, 178);
             this.gridViewSLeads.GridControl = this.gridSLeads;
             this.gridViewSLeads.Name = "gridViewSLeads";
@@ -305,7 +303,7 @@
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 113;
+            this.gridColumn3.Width = 112;
             // 
             // gridColumn7
             // 
@@ -314,24 +312,24 @@
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn7.Caption = "Cliente";
-            this.gridColumn7.FieldName = "Cliente.NombreCliente";
+            this.gridColumn7.FieldName = "Cliente";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 296;
+            this.gridColumn7.Width = 312;
             // 
             // gridColContacto
             // 
-            this.gridColContacto.Caption = "Fecha de solicitud";
+            this.gridColContacto.Caption = "Fecha de Cotización";
             this.gridColContacto.FieldName = "FechaSolicitud";
             this.gridColContacto.Name = "gridColContacto";
             this.gridColContacto.OptionsColumn.AllowEdit = false;
             this.gridColContacto.OptionsColumn.ReadOnly = true;
             this.gridColContacto.Visible = true;
             this.gridColContacto.VisibleIndex = 1;
-            this.gridColContacto.Width = 168;
+            this.gridColContacto.Width = 111;
             // 
             // gridColCuenta
             // 
@@ -342,18 +340,7 @@
             this.gridColCuenta.OptionsColumn.ReadOnly = true;
             this.gridColCuenta.Visible = true;
             this.gridColCuenta.VisibleIndex = 3;
-            this.gridColCuenta.Width = 154;
-            // 
-            // ProveedorCarga
-            // 
-            this.ProveedorCarga.Caption = "Proveedor Carga";
-            this.ProveedorCarga.FieldName = "ProveedorCarga";
-            this.ProveedorCarga.Name = "ProveedorCarga";
-            this.ProveedorCarga.OptionsColumn.AllowEdit = false;
-            this.ProveedorCarga.OptionsColumn.ReadOnly = true;
-            this.ProveedorCarga.Visible = true;
-            this.ProveedorCarga.VisibleIndex = 4;
-            this.ProveedorCarga.Width = 210;
+            this.gridColCuenta.Width = 64;
             // 
             // gridColumn4
             // 
@@ -363,8 +350,8 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 117;
+            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.Width = 143;
             // 
             // gridColumn2
             // 
@@ -374,19 +361,8 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 6;
-            this.gridColumn2.Width = 104;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "C. Tarifas";
-            this.gridColumn12.FieldName = "CantidadOpciones";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.OptionsColumn.AllowEdit = false;
-            this.gridColumn12.OptionsColumn.ReadOnly = true;
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 7;
-            this.gridColumn12.Width = 80;
+            this.gridColumn2.VisibleIndex = 5;
+            this.gridColumn2.Width = 93;
             // 
             // Checkbox
             // 
@@ -397,53 +373,34 @@
             this.Checkbox.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.Checkbox.Visible = true;
             this.Checkbox.VisibleIndex = 8;
+            this.Checkbox.Width = 95;
             // 
             // repositoryItemCheckEdit3
             // 
             this.repositoryItemCheckEdit3.AutoHeight = false;
             this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
             // 
-            // repositoryItemComboBox1
+            // GridColumnFollowup
             // 
-            this.repositoryItemComboBox1.AutoHeight = false;
-            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.GridColumnFollowup.Caption = "Followup";
+            this.GridColumnFollowup.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.GridColumnFollowup.FieldName = "FollowUpIcon";
+            this.GridColumnFollowup.Name = "GridColumnFollowup";
+            this.GridColumnFollowup.Visible = true;
+            this.GridColumnFollowup.VisibleIndex = 6;
+            this.GridColumnFollowup.Width = 58;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
-            // 
-            // ctrldxError
-            // 
-            this.ctrldxError.ContainerControl = this;
-            // 
-            // MenuSalir
-            // 
-            this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
-            this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(31, 33);
-            this.MenuSalir.Text = "Salir";
-            this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click_1);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 36);
-            // 
-            // MenuExcel
-            // 
-            this.MenuExcel.Enabled = false;
-            this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
-            this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(36, 33);
-            this.MenuExcel.Text = "Excel";
-            this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 0)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.ImageCollection;
             // 
             // ImageCollection
             // 
@@ -454,75 +411,162 @@
             this.ImageCollection.Images.SetKeyName(3, "mail_get.png");
             this.ImageCollection.Images.SetKeyName(4, "mail_get.png");
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Prox. FollowUp";
+            this.gridColumn6.FieldName = "NextFollowup";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 7;
+            this.gridColumn6.Width = 206;
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // repositoryItemCheckEdit4
+            // 
+            this.repositoryItemCheckEdit4.AutoHeight = false;
+            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            // 
+            // ctrldxError
+            // 
+            this.ctrldxError.ContainerControl = this;
+            // 
+            // MenuSalir
+            // 
+            this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
+            this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuSalir.Name = "MenuSalir";
+            this.MenuSalir.Size = new System.Drawing.Size(33, 35);
+            this.MenuSalir.Text = "Salir";
+            this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click_1);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
+            // 
+            // MenuExcel
+            // 
+            this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
+            this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuExcel.Name = "MenuExcel";
+            this.MenuExcel.Size = new System.Drawing.Size(37, 35);
+            this.MenuExcel.Text = "Excel";
+            this.MenuExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
+            // 
             // toolStripBarraLlamada
             // 
             this.toolStripBarraLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
-            this.menuNuevaTarifa,
+            this.toolStripButton2,
             this.toolStripSeparator3,
             this.MenuEnviarAlCliente,
-            this.toolStripButton2,
+            this.MenuCopiar,
             this.MenuActualizar,
+            this.MenuFollowup,
             this.toolStripSeparator4,
             this.MenuExcel,
-            this.MenuSalir});
+            this.MenuSalir,
+            this.toolStripSeparator1,
+            this.toolStripLabel1,
+            this.ListSemanas});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 36);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1228, 38);
             this.toolStripBarraLlamada.TabIndex = 85;
             this.toolStripBarraLlamada.Text = "toolStrip1";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 36);
-            // 
-            // menuNuevaTarifa
-            // 
-            this.menuNuevaTarifa.Enabled = false;
-            this.menuNuevaTarifa.Image = ((System.Drawing.Image)(resources.GetObject("menuNuevaTarifa.Image")));
-            this.menuNuevaTarifa.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menuNuevaTarifa.Name = "menuNuevaTarifa";
-            this.menuNuevaTarifa.Size = new System.Drawing.Size(79, 33);
-            this.menuNuevaTarifa.Text = "Solicitar Tarifa";
-            this.menuNuevaTarifa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.menuNuevaTarifa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.menuNuevaTarifa.ToolTipText = "Solicitar Tarifa";
-            this.menuNuevaTarifa.Click += new System.EventHandler(this.menuNuevaTarifa_Click);
-            // 
-            // MenuEnviarAlCliente
-            // 
-            this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
-            this.MenuEnviarAlCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuEnviarAlCliente.Name = "MenuEnviarAlCliente";
-            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(86, 33);
-            this.MenuEnviarAlCliente.Text = "Enviar al cliente";
-            this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(45, 33);
-            this.toolStripButton2.Text = "Directa";
+            this.toolStripButton2.Size = new System.Drawing.Size(45, 35);
+            this.toolStripButton2.Text = "Nueva";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.ToolTipText = "Tarifa Directa";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
+            // 
+            // MenuEnviarAlCliente
+            // 
+            this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
+            this.MenuEnviarAlCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuEnviarAlCliente.Name = "MenuEnviarAlCliente";
+            this.MenuEnviarAlCliente.Size = new System.Drawing.Size(93, 35);
+            this.MenuEnviarAlCliente.Text = "Enviar al cliente";
+            this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
+            // 
+            // MenuCopiar
+            // 
+            this.MenuCopiar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCopiar.Image")));
+            this.MenuCopiar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuCopiar.Name = "MenuCopiar";
+            this.MenuCopiar.Size = new System.Drawing.Size(46, 35);
+            this.MenuCopiar.Text = "Copiar";
+            this.MenuCopiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.MenuCopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuCopiar.ToolTipText = "Copiar";
+            this.MenuCopiar.Click += new System.EventHandler(this.MenuCopiar_Click);
             // 
             // MenuActualizar
             // 
             this.MenuActualizar.Image = ((System.Drawing.Image)(resources.GetObject("MenuActualizar.Image")));
             this.MenuActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuActualizar.Name = "MenuActualizar";
-            this.MenuActualizar.Size = new System.Drawing.Size(58, 33);
+            this.MenuActualizar.Size = new System.Drawing.Size(63, 35);
             this.MenuActualizar.Text = "Actualizar";
             this.MenuActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.MenuActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuActualizar.ToolTipText = "Actualizar";
             this.MenuActualizar.Click += new System.EventHandler(this.MenuActualizar_Click);
+            // 
+            // MenuFollowup
+            // 
+            this.MenuFollowup.Enabled = false;
+            this.MenuFollowup.Image = ((System.Drawing.Image)(resources.GetObject("MenuFollowup.Image")));
+            this.MenuFollowup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuFollowup.Name = "MenuFollowup";
+            this.MenuFollowup.Size = new System.Drawing.Size(61, 35);
+            this.MenuFollowup.Text = "FollowUp";
+            this.MenuFollowup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuFollowup.Click += new System.EventHandler(this.MenuFollowup_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(54, 35);
+            this.toolStripLabel1.Text = "Semanas";
+            // 
+            // ListSemanas
+            // 
+            this.ListSemanas.IntegralHeight = false;
+            this.ListSemanas.Name = "ListSemanas";
+            this.ListSemanas.Size = new System.Drawing.Size(121, 38);
             // 
             // gridProspectos
             // 
@@ -825,11 +869,71 @@
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 6;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SCCMultimodal.Properties.Resources.Alta_Prioridad;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 592);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox1.TabIndex = 91;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 592);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 92;
+            this.label3.Text = "Menor a 5 dias";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SCCMultimodal.Properties.Resources.Media_Prioridad;
+            this.pictureBox2.Location = new System.Drawing.Point(153, 592);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox2.TabIndex = 93;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(176, 592);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 94;
+            this.label4.Text = "Mayor a 5 dias";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::SCCMultimodal.Properties.Resources.Baja_Prioridad;
+            this.pictureBox3.Location = new System.Drawing.Point(293, 592);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox3.TabIndex = 95;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(315, 592);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 96;
+            this.label5.Text = "Mayor a 10 dias";
+            // 
             // FrmListarCotizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 598);
+            this.ClientSize = new System.Drawing.Size(1228, 614);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gridComentarios);
             this.Controls.Add(this.gridProspectos);
             this.Controls.Add(this.toolStripBarraLlamada);
@@ -843,13 +947,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSLeads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSLeads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
             this.toolStripBarraLlamada.ResumeLayout(false);
             this.toolStripBarraLlamada.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProspectos)).EndInit();
@@ -867,6 +972,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -883,7 +991,6 @@
         private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.Utils.ImageCollection ImageCollection;
         private System.Windows.Forms.ToolStripButton MenuEnviarAlCliente;
-        public System.Windows.Forms.ToolStripButton menuNuevaTarifa;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         private DevExpress.XtraEditors.GroupControl gridProspectos;
         private DevExpress.XtraGrid.GridControl gridSLeads;
@@ -893,17 +1000,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Termino;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Naviera;
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Creacion;
-        private DevExpress.XtraGrid.Columns.GridColumn Col_Seleccionado;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSLeads;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColContacto;
         private DevExpress.XtraGrid.Columns.GridColumn gridColCuenta;
-        private DevExpress.XtraGrid.Columns.GridColumn ProveedorCarga;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn Checkbox;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
@@ -936,6 +1040,20 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Estado;
         private DevExpress.XtraEditors.MemoEdit txtComentario;
         private DevExpress.XtraEditors.ComboBoxEdit cboEstado;
+        private System.Windows.Forms.ToolStripButton MenuCopiar;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripComboBox ListSemanas;
+        private System.Windows.Forms.ToolStripButton MenuFollowup;
+        private DevExpress.XtraGrid.Columns.GridColumn GridColumnFollowup;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
 
 
 

@@ -358,49 +358,6 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerCantidadAsignacionesGraficoGestionPaperless(desde, hasta, usuario,tipocarga,EstadoPaperless,marca);
         }
-        public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta,
-            string usuario, string tipocarga, string EstadoPaperless, string marca)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ConsultarGestionPaperlessGraficosUsuario1y2(desde,hasta,usuario,tipocarga,EstadoPaperless,marca);
-        }
-        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBLDesdeExcepcion(houses, info, paso);
-        }
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion, Int64 idUsuarioUltimaModificacion)
-        {
-            AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxion(excepcion, idUsuarioUltimaModificacion);
-        }
-        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador()
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.ListarTiposPaperlessAgenteCausador();
-
-        }
-
-        public static IList<PaperlessExcepcionMaster> Usuario1ObtenerExcepcionesMaster(Int64 idAsignacion)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1ObtenerExcepcionesMaster(idAsignacion);
-        }
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado pasoSeleccionado)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesMaster(excepciones, pasoSeleccionado);
-        }
-        public static void Usuario1EliminaExcepxionMaster(PaperlessExcepcionMaster excepcion, Int64 idUsuarioUltimaModificacion)
-        {
-            AccesoDatos.Paperless.clsPaperlessADO.Usuario1EliminaExcepxionMaster(excepcion, idUsuarioUltimaModificacion);
-        }
-        public static ResultadoTransaccion Usuario2IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2IngresarExcepxionesMaster(excepciones, paso);
-        }
-        public static ResultadoTransaccion Usuario1ActualizaExcepcionV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1IngresarExcepxionesV2_Usuario2(excepciones,paso);
-        }
-
-        public static ResultadoTransaccion Usuario1GuardaEmpresa(string empresa, long asignacion)
-        {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaEmpresa(empresa, asignacion);
-        }
+        
     }
 }

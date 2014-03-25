@@ -60,31 +60,24 @@ namespace SCCMultimodal.Properties {
             }
         }
         
-        internal static System.Resources.ResXFileRef Alta_Prioridad {
+        internal static System.Drawing.Bitmap Alta_Prioridad {
             get {
                 object obj = ResourceManager.GetObject("Alta Prioridad", resourceCulture);
-                return ((System.Resources.ResXFileRef)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Resources.ResXFileRef icono_taxi_recogidas_estaciones_puertos {
+        internal static System.Drawing.Bitmap Baja_Prioridad {
             get {
-                object obj = ResourceManager.GetObject("icono_taxi_recogidas_estaciones_puertos", resourceCulture);
-                return ((System.Resources.ResXFileRef)(obj));
+                object obj = ResourceManager.GetObject("Baja Prioridad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Resources.ResXFileRef iconoPuerto {
+        internal static System.Drawing.Bitmap Media_Prioridad {
             get {
-                object obj = ResourceManager.GetObject("iconoPuerto", resourceCulture);
-                return ((System.Resources.ResXFileRef)(obj));
-            }
-        }
-        
-        internal static System.Resources.ResXFileRef puerto {
-            get {
-                object obj = ResourceManager.GetObject("puerto", resourceCulture);
-                return ((System.Resources.ResXFileRef)(obj));
+                object obj = ResourceManager.GetObject("Media Prioridad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -137,7 +137,6 @@
             this.ChartProspectos = new DevExpress.XtraCharts.ChartControl();
             this.sButtonEliminarObservacion = new DevExpress.XtraEditors.SimpleButton();
             this.sButtonAgregarObservacion = new DevExpress.XtraEditors.SimpleButton();
-            this.textCommand1 = new DevExpress.CodeRush.Core.TextCommand(this.components);
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.DateHasta = new DevExpress.XtraEditors.DateEdit();
             this.DateDesde = new DevExpress.XtraEditors.DateEdit();
@@ -173,7 +172,6 @@
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textCommand1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateHasta.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateHasta.Properties)).BeginInit();
@@ -804,11 +802,7 @@
             this.sButtonAgregarObservacion.Size = new System.Drawing.Size(32, 24);
             this.sButtonAgregarObservacion.TabIndex = 71;
             this.sButtonAgregarObservacion.Click += new System.EventHandler(this.sButtonAgregarObservacion_Click);
-            // 
-            // textCommand1
-            // 
-            this.textCommand1.CommandName = null;
-            this.textCommand1.Description = null;
+            
             // 
             // ctrldxError
             // 
@@ -902,7 +896,6 @@
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesLabel8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChartProspectos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textCommand1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrldxError)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateHasta.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateHasta.Properties)).EndInit();
@@ -955,7 +948,7 @@
         private System.Windows.Forms.ToolStripButton MenuCuenta;
         private DevExpress.XtraEditors.SimpleButton sButtonEliminarObservacion;
         private DevExpress.XtraEditors.SimpleButton sButtonAgregarObservacion;
-        private DevExpress.CodeRush.Core.TextCommand textCommand1;
+        //private DevExpress.CodeRush.Core.TextCommand textCommand1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider ctrldxError;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;

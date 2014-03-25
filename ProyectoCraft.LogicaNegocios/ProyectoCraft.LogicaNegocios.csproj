@@ -61,6 +61,7 @@
     <Compile Include="Cotizaciones\ClsPuertos.cs" />
     <Compile Include="Cotizaciones\Directa\ClsConceptos.cs" />
     <Compile Include="Cotizaciones\Directa\ClsCotizacionDirecta.cs" />
+    <Compile Include="Cotizaciones\Directa\ClsLogCotizacionesDirecta.cs" />
     <Compile Include="Cotizaciones\Directa\ClsUnidad.cs" />
     <Compile Include="Cotizaciones\Directa\ClsTipoVia.cs" />
     <Compile Include="Cotizaciones\Directa\CotizacionDirectaEstado.cs" />

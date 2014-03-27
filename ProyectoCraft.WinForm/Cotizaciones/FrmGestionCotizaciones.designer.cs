@@ -1,6 +1,6 @@
 ﻿namespace ProyectoCraft.WinForm.Cotizaciones
 {
-    partial class FrmListarCotizaciones
+    partial class FrmGestionCotizaciones
     {
         /// <summary>
         /// Required designer variable.
@@ -27,7 +27,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListarCotizaciones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionCotizaciones));
             this.gridViewOpciones = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Col_Numero = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Col_Fecha_Inicio = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,22 +47,19 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Checkbox = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.GridColumnFollowup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.ImageCollection = new DevExpress.Utils.ImageCollection(this.components);
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ctrldxError = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuExcel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.MenuEnviarAlCliente = new System.Windows.Forms.ToolStripButton();
-            this.MenuCopiar = new System.Windows.Forms.ToolStripButton();
             this.MenuActualizar = new System.Windows.Forms.ToolStripButton();
             this.MenuFollowup = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -94,12 +91,14 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewOpciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
@@ -127,9 +126,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewOpciones
@@ -271,23 +270,27 @@
             this.gridColumn4,
             this.gridColumn2,
             this.Checkbox,
-            this.GridColumnFollowup,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn8});
             this.gridViewSLeads.CustomizationFormBounds = new System.Drawing.Rectangle(1054, 496, 216, 178);
             this.gridViewSLeads.GridControl = this.gridSLeads;
+            this.gridViewSLeads.GroupCount = 2;
             this.gridViewSLeads.Name = "gridViewSLeads";
             this.gridViewSLeads.OptionsBehavior.AutoSelectAllInEditor = false;
             this.gridViewSLeads.OptionsBehavior.KeepGroupExpandedOnSorting = false;
-            this.gridViewSLeads.OptionsCustomization.AllowGroup = false;
             this.gridViewSLeads.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewSLeads.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridViewSLeads.OptionsView.GroupDrawMode = DevExpress.XtraGrid.Views.Grid.GroupDrawMode.Office2003;
             this.gridViewSLeads.OptionsView.ShowChildrenInGroupPanel = true;
-            this.gridViewSLeads.OptionsView.ShowGroupPanel = false;
             this.gridViewSLeads.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.Default;
+            this.gridViewSLeads.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridViewSLeads.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewSLeads_FocusedRowChanged);
+            this.gridViewSLeads.CustomDrawGroupRow += new DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventHandler(this.gridViewSLeads_CustomDrawGroupRow);
             this.gridViewSLeads.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GridViewSLeadsCellValueChanging);
             this.gridViewSLeads.MasterRowExpanded += new DevExpress.XtraGrid.Views.Grid.CustomMasterRowEventHandler(this.gridViewSLeads_MasterRowExpanded);
+            this.gridViewSLeads.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewSLeads_ShowingEditor);
             this.gridViewSLeads.DoubleClick += new System.EventHandler(this.gridViewSLeads_DoubleClick);
             // 
             // gridColumn3
@@ -303,7 +306,7 @@
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 112;
+            this.gridColumn3.Width = 113;
             // 
             // gridColumn7
             // 
@@ -317,19 +320,19 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 312;
+            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.Width = 296;
             // 
             // gridColContacto
             // 
-            this.gridColContacto.Caption = "Fecha de Cotización";
+            this.gridColContacto.Caption = "Fecha de solicitud";
             this.gridColContacto.FieldName = "FechaSolicitud";
             this.gridColContacto.Name = "gridColContacto";
             this.gridColContacto.OptionsColumn.AllowEdit = false;
             this.gridColContacto.OptionsColumn.ReadOnly = true;
             this.gridColContacto.Visible = true;
-            this.gridColContacto.VisibleIndex = 1;
-            this.gridColContacto.Width = 111;
+            this.gridColContacto.VisibleIndex = 2;
+            this.gridColContacto.Width = 168;
             // 
             // gridColCuenta
             // 
@@ -340,18 +343,16 @@
             this.gridColCuenta.OptionsColumn.ReadOnly = true;
             this.gridColCuenta.Visible = true;
             this.gridColCuenta.VisibleIndex = 3;
-            this.gridColCuenta.Width = 64;
+            this.gridColCuenta.Width = 154;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "Tipo";
-            this.gridColumn4.FieldName = "Tipo";
+            this.gridColumn4.Caption = "Vendedor";
+            this.gridColumn4.FieldName = "Usuario.NombreUsuario";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.ReadOnly = true;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 143;
+            this.gridColumn4.Width = 117;
             // 
             // gridColumn2
             // 
@@ -359,10 +360,9 @@
             this.gridColumn2.FieldName = "EstadoDescripcion";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 93;
+            this.gridColumn2.Width = 104;
             // 
             // Checkbox
             // 
@@ -372,23 +372,21 @@
             this.Checkbox.Name = "Checkbox";
             this.Checkbox.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.Checkbox.Visible = true;
-            this.Checkbox.VisibleIndex = 8;
-            this.Checkbox.Width = 95;
+            this.Checkbox.VisibleIndex = 6;
             // 
             // repositoryItemCheckEdit3
             // 
             this.repositoryItemCheckEdit3.AutoHeight = false;
             this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
             // 
-            // GridColumnFollowup
+            // gridColumn6
             // 
-            this.GridColumnFollowup.Caption = "Followup";
-            this.GridColumnFollowup.ColumnEdit = this.repositoryItemImageComboBox1;
-            this.GridColumnFollowup.FieldName = "FollowUpIcon";
-            this.GridColumnFollowup.Name = "GridColumnFollowup";
-            this.GridColumnFollowup.Visible = true;
-            this.GridColumnFollowup.VisibleIndex = 6;
-            this.GridColumnFollowup.Width = 58;
+            this.gridColumn6.Caption = "Followup";
+            this.gridColumn6.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.gridColumn6.FieldName = "FollowUpIcon";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 4;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -411,14 +409,13 @@
             this.ImageCollection.Images.SetKeyName(3, "mail_get.png");
             this.ImageCollection.Images.SetKeyName(4, "mail_get.png");
             // 
-            // gridColumn6
+            // gridColumn8
             // 
-            this.gridColumn6.Caption = "Prox. FollowUp";
-            this.gridColumn6.FieldName = "NextFollowup";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 206;
+            this.gridColumn8.Caption = "Prox. FollowUp";
+            this.gridColumn8.FieldName = "NextFollowup";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
             // 
             // repositoryItemComboBox1
             // 
@@ -431,6 +428,8 @@
             // 
             this.repositoryItemCheckEdit4.AutoHeight = false;
             this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            this.repositoryItemCheckEdit4.CheckedChanged += new System.EventHandler(this.repositoryItemCheckEdit4_CheckedChanged);
+            this.repositoryItemCheckEdit4.CheckStateChanged += new System.EventHandler(this.repositoryItemCheckEdit4_CheckStateChanged);
             // 
             // ctrldxError
             // 
@@ -462,25 +461,17 @@
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
-            // 
             // toolStripBarraLlamada
             // 
             this.toolStripBarraLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
-            this.toolStripButton2,
-            this.toolStripSeparator3,
             this.MenuEnviarAlCliente,
-            this.MenuCopiar,
             this.MenuActualizar,
             this.MenuFollowup,
-            this.toolStripSeparator4,
+            this.toolStripSeparator1,
             this.MenuExcel,
             this.MenuSalir,
-            this.toolStripSeparator1,
+            this.toolStripSeparator4,
             this.toolStripLabel1,
             this.ListSemanas});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
@@ -494,18 +485,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(45, 35);
-            this.toolStripButton2.Text = "Nueva";
-            this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.ToolTipText = "Tarifa Directa";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
-            // 
             // MenuEnviarAlCliente
             // 
             this.MenuEnviarAlCliente.Image = ((System.Drawing.Image)(resources.GetObject("MenuEnviarAlCliente.Image")));
@@ -515,18 +494,6 @@
             this.MenuEnviarAlCliente.Text = "Enviar al cliente";
             this.MenuEnviarAlCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuEnviarAlCliente.Click += new System.EventHandler(this.MenuEnviarAlCliente_Click);
-            // 
-            // MenuCopiar
-            // 
-            this.MenuCopiar.Image = ((System.Drawing.Image)(resources.GetObject("MenuCopiar.Image")));
-            this.MenuCopiar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MenuCopiar.Name = "MenuCopiar";
-            this.MenuCopiar.Size = new System.Drawing.Size(46, 35);
-            this.MenuCopiar.Text = "Copiar";
-            this.MenuCopiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.MenuCopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.MenuCopiar.ToolTipText = "Copiar";
-            this.MenuCopiar.Click += new System.EventHandler(this.MenuCopiar_Click);
             // 
             // MenuActualizar
             // 
@@ -577,7 +544,7 @@
             this.gridProspectos.AppearanceCaption.Options.UseFont = true;
             this.gridProspectos.AppearanceCaption.Options.UseForeColor = true;
             this.gridProspectos.Controls.Add(this.gridSLeads);
-            this.gridProspectos.Location = new System.Drawing.Point(4, 46);
+            this.gridProspectos.Location = new System.Drawing.Point(4, 38);
             this.gridProspectos.Name = "gridProspectos";
             this.gridProspectos.Size = new System.Drawing.Size(1224, 333);
             this.gridProspectos.TabIndex = 84;
@@ -592,7 +559,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(4, 385);
+            this.groupBox1.Location = new System.Drawing.Point(4, 378);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(435, 201);
             this.groupBox1.TabIndex = 90;
@@ -652,7 +619,7 @@
             // 
             this.gridComentarios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridComentarios.Location = new System.Drawing.Point(445, 385);
+            this.gridComentarios.Location = new System.Drawing.Point(445, 379);
             this.gridComentarios.MainView = this.gridViewComentario;
             this.gridComentarios.Name = "gridComentarios";
             this.gridComentarios.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -869,65 +836,79 @@
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 6;
             // 
-            // pictureBox1
+            // barStaticItem4
             // 
-            this.pictureBox1.Image = global::SCCMultimodal.Properties.Resources.Alta_Prioridad;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 592);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(17, 16);
-            this.pictureBox1.TabIndex = 91;
-            this.pictureBox1.TabStop = false;
+            this.barStaticItem4.Caption = "Semanas";
+            this.barStaticItem4.Id = 24;
+            this.barStaticItem4.Name = "barStaticItem4";
+            this.barStaticItem4.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // label3
+            // barStaticItem1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 592);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 92;
-            this.label3.Text = "Menor a 5 dias";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::SCCMultimodal.Properties.Resources.Media_Prioridad;
-            this.pictureBox2.Location = new System.Drawing.Point(153, 592);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(17, 16);
-            this.pictureBox2.TabIndex = 93;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(176, 592);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 94;
-            this.label4.Text = "Mayor a 5 dias";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::SCCMultimodal.Properties.Resources.Baja_Prioridad;
-            this.pictureBox3.Location = new System.Drawing.Point(293, 592);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(17, 16);
-            this.pictureBox3.TabIndex = 95;
-            this.pictureBox3.TabStop = false;
+            this.barStaticItem1.Caption = "Semanas";
+            this.barStaticItem1.Id = 24;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(315, 592);
+            this.label5.Location = new System.Drawing.Point(311, 582);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
-            this.label5.TabIndex = 96;
+            this.label5.TabIndex = 102;
             this.label5.Text = "Mayor a 10 dias";
             // 
-            // FrmListarCotizaciones
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::SCCMultimodal.Properties.Resources.Baja_Prioridad;
+            this.pictureBox3.Location = new System.Drawing.Point(289, 582);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox3.TabIndex = 101;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(172, 582);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 100;
+            this.label4.Text = "Mayor a 5 dias";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SCCMultimodal.Properties.Resources.Media_Prioridad;
+            this.pictureBox2.Location = new System.Drawing.Point(149, 582);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox2.TabIndex = 99;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 582);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 98;
+            this.label3.Text = "Menor a 5 dias";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SCCMultimodal.Properties.Resources.Alta_Prioridad;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 582);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(17, 16);
+            this.pictureBox1.TabIndex = 97;
+            this.pictureBox1.TabStop = false;
+            // 
+            // FrmGestionCotizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 614);
+            this.ClientSize = new System.Drawing.Size(1228, 598);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label4);
@@ -939,8 +920,8 @@
             this.Controls.Add(this.toolStripBarraLlamada);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmListarCotizaciones";
-            this.Text = "Mis Cotizaciones";
+            this.Name = "FrmGestionCotizaciones";
+            this.Text = "Gestion de Cotizaciones";
             this.Load += new System.EventHandler(this.FrmListarTarifas_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmListarCotizaciones_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewOpciones)).EndInit();
@@ -972,9 +953,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -985,13 +966,11 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider ctrldxError;
         private System.Windows.Forms.ToolStrip toolStripBarraLlamada;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton MenuExcel;
         private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.Utils.ImageCollection ImageCollection;
         private System.Windows.Forms.ToolStripButton MenuEnviarAlCliente;
-        public System.Windows.Forms.ToolStripButton toolStripButton2;
         private DevExpress.XtraEditors.GroupControl gridProspectos;
         private DevExpress.XtraGrid.GridControl gridSLeads;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewOpciones;
@@ -1040,22 +1019,20 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_Fecha_Estado;
         private DevExpress.XtraEditors.MemoEdit txtComentario;
         private DevExpress.XtraEditors.ComboBoxEdit cboEstado;
-        private System.Windows.Forms.ToolStripButton MenuCopiar;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem4;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private System.Windows.Forms.ToolStripComboBox ListSemanas;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton MenuFollowup;
-        private DevExpress.XtraGrid.Columns.GridColumn GridColumnFollowup;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-
-
-
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

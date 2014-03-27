@@ -13,16 +13,32 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>IconoCraft.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\output\</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,10 +53,6 @@
     <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DevExpress.Charts.v9.1.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.CodeRush.Core, Version=9.1.3.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\DevExpress.CodeRush.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -86,10 +98,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DevExpress.XtraNavBar.v9.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\DevExpress.XtraPrinting.v9.1.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.dll</HintPath>
@@ -101,10 +109,6 @@
     <Reference Include="DevExpress.XtraScheduler.v9.1.Extensions, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v9.1.iCalendarExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\DevExpress.XtraScheduler.v9.1.iCalendarExchange.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v9.1.OutlookExchange, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -145,6 +149,9 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -291,23 +298,35 @@
     <Compile Include="Controles\EstadoPaperless.Designer.cs">
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cotizaciones\FrmCotizacionDirecta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cotizaciones\FrmCotizacionDirecta.Designer.cs">
-      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cotizaciones\FrmListarCotizaciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cotizaciones\FrmListarCotizaciones.designer.cs">
       <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmCotizacionDirecta.Designer.cs">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmGestionCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\FrmGestionCotizaciones.designer.cs">
+      <DependentUpon>FrmGestionCotizaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cotizaciones\FrmPrintPreviewCotizacoines.Designer.cs">
       <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotizaciones\frmFollowUpCotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizaciones\frmFollowUpCotizaciones.Designer.cs">
+      <DependentUpon>frmFollowUpCotizaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Direccion\Administracion\frmConsultarDEuda.cs">
       <SubType>Form</SubType>
@@ -430,12 +449,6 @@
       <DependentUpon>MDICraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Panel de control\PanelDecontrol.cs" />
-    <Compile Include="Paperless\Asignacion\frmReAsignar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Paperless\Asignacion\frmReAsignar.Designer.cs">
-      <DependentUpon>frmReAsignar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Paperless\Asignacion\frmListaAsignaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -592,16 +605,24 @@
       <DependentUpon>EstadoPaperless.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cotizaciones\FrmCotizacionDirecta.resx">
-      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cotizaciones\FrmListarCotizaciones.resx">
       <DependentUpon>FrmListarCotizaciones.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmCotizacionDirecta.resx">
+      <DependentUpon>FrmCotizacionDirecta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\FrmGestionCotizaciones.resx">
+      <DependentUpon>FrmGestionCotizaciones.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cotizaciones\FrmPrintPreviewCotizacoines.resx">
       <DependentUpon>FrmPrintPreviewCotizacoines.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotizaciones\frmFollowUpCotizaciones.resx">
+      <DependentUpon>frmFollowUpCotizaciones.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Direccion\Administracion\frmConsultarDEuda.resx">
@@ -654,7 +675,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmAgentes.resx">
       <DependentUpon>frmAgentes.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmComunas.resx">
       <DependentUpon>frmComunas.cs</DependentUpon>
@@ -662,7 +682,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\FrmCotizacionesDirectasParametros.resx">
       <DependentUpon>FrmCotizacionesDirectasParametros.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmNavieras.resx">
       <DependentUpon>frmNavieras.cs</DependentUpon>
@@ -670,7 +689,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenedores\frmPuertos.resx">
       <DependentUpon>frmPuertos.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel de control\formDetailPanelDeControl.resx">
       <DependentUpon>formDetailPanelDeControl.cs</DependentUpon>
@@ -684,10 +702,6 @@
       <DependentUpon>MDICraft.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Paperless\Asignacion\frmReAsignar.resx">
-      <DependentUpon>frmReAsignar.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Asignacion\frmListaAsignaciones.resx">
       <DependentUpon>frmListaAsignaciones.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -698,7 +712,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionAsignaciones.resx">
       <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperless.resx">
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
@@ -718,7 +731,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\FrmPopupLogPaperlessIntegracion.resx">
       <DependentUpon>FrmPopupLogPaperlessIntegracion.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmRechazarAsignacion.resx">
       <DependentUpon>frmRechazarAsignacion.cs</DependentUpon>
@@ -737,9 +749,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\Actividades\EMail\FrmNuevoMail.resx">
       <DependentUpon>FrmNuevoMail.cs</DependentUpon>
@@ -813,6 +825,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Properties\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="SCCDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1098,7 +1115,11 @@
     <Content Include="Panel de control\Chile\Panel de control\PanelUsuario2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\graficos 40px.png" />
+    <None Include="Resources\Media Prioridad1.png" />
+    <None Include="Resources\Baja Prioridad1.png" />
+    <None Include="Resources\Alta Prioridad1.png" />
+    <None Include="Resources\Baja Prioridad.png" />
+    <None Include="Resources\Media Prioridad.png" />
     <None Include="Resources\iconoPuerto.png" />
     <None Include="Resources\puerto.png" />
     <None Include="Resources\icono_taxi_recogidas_estaciones_puertos.gif" />
@@ -1123,6 +1144,38 @@
       <Isolated>False</Isolated>
       <Private>True</Private>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventas\Actividades\Visita\" />

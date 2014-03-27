@@ -6,28 +6,30 @@ using System.Xml;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Cotizaciones;
 using ProyectoCraft.Entidades.Cotizaciones.Directa;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
+using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.LogicaNegocios.Cotizaciones.Directa;
+using ProyectoCraft.LogicaNegocios.Log;
 using SCCMultimodal.Cotizaciones;
 using SCCMultimodal.Utils;
 
-
 namespace ProyectoCraft.WinForm.Cotizaciones {
-    public partial class FrmListarCotizaciones : Form {
+    public partial class FrmGestionCotizaciones : Form {
 
         private List<Estado> EstadosCotizaciones { set; get; }
+
         private List<Estado> EstadosOpciones { set; get; }
+
         /// <summary>
         /// Sirva para determinar si se esta seleccionando la grilla de Cotizaciones o opciones
         /// </summary>
         private String Seleccion { set; get; }
-
-        private Opcion OpcionSeleccionada { set; get; }
 
         public IList<ITableable> ListCotizaciones { set; get; }
 
@@ -35,23 +37,24 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
 
         private IList<ITableableOpcion> HijosSeleccionados { set; get; }
 
-        private static FrmListarCotizaciones _form = null;
+        private static FrmGestionCotizaciones _form = null;
 
-        public static FrmListarCotizaciones Instancia {
+        public static FrmGestionCotizaciones Instancia {
             get {
                 if (_form == null)
-                    _form = new FrmListarCotizaciones();
+                    _form = new FrmGestionCotizaciones();
 
                 return _form;
             }
             set { _form = value; }
         }
 
-        public FrmListarCotizaciones() {
+        public FrmGestionCotizaciones() {
             InitializeComponent();
         }
 
         private void CargarSemanas() {
+
             ListSemanas.Items.Clear();
             for (var i = 1; i < 51; i++)
                 ListSemanas.Items.Add(i.ToString());
@@ -64,26 +67,25 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             CargarSemanas();
             var toolTip1 = new ToolTip();
             toolTip1.SetToolTip(gridSLeads, "Presione doble click para ver información detallada");
+
             EstadosCotizaciones = new List<Estado>();
             EstadosOpciones = new List<Estado>();
+
 
             var estadosDB = CotizacionDirectaEstado.ListarEstadosCotizacionDirecta().ObjetoTransaccion as List<Estado>;
             estadosDB = estadosDB.FindAll(foo => foo.Id32 >= 5);
             var estados = new List<Estado> { new Estado { Activo = false, Id = 0, Id32 = 0, Nombre = "Mensaje" } };
+
 
             EstadosCotizaciones.AddRange(estados);
             EstadosCotizaciones.AddRange(estadosDB);
             EstadosOpciones.AddRange(estados);
             EstadosOpciones.AddRange(estadosDB);
 
-            //Eliminamos la opcion de eliminar, esta es solo una opcion para el modulo de gestion de cotizaciones.
-            EstadosCotizaciones.RemoveAll(foo => foo.Id32 == 10);
-            EstadosOpciones.RemoveAll(foo => foo.Id32 == 10);
             CargarGrillaCotizaciones();
             MenuFollowup.Enabled = true;
             Cursor.Current = Cursors.Default;
         }
-
 
         private void CargarEstado() {
             cboEstado.Properties.Items.Clear();
@@ -99,26 +101,17 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         }
 
         public void CargarGrillaCotizaciones() {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
             var fechaInicio = DateTime.Now.AddDays(Convert.ToInt32(ListSemanas.Text) * -7);
-            
             ListCotizaciones =
-                ClsCotizacionDirecta.ListarTodasLasCotizacionesPorUsuario(
-                    Base.Usuario.UsuarioConectado.Usuario,fechaInicio);
+                ClsCotizacionDirecta.ListarTodasLasCotizaciones(fechaInicio);
             foreach (var cotizacion in ListCotizaciones) {
                 cotizacion.Seleccionado = false;
-
             }
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+
             gridSLeads.DataSource = ListCotizaciones;
-        }
 
-        private void toolStripButton2_Click_1(object sender, EventArgs e) {
-            try {
-                var formulario = FrmCotizacionDirecta.Instancia;
-                //formulario.FrmListarCotizaciones = this;
-                formulario.ShowDialog();
-            } catch (Exception ex) {
-                Console.Write(ex.InnerException);
-            }
         }
 
         private void MenuEnviarAlCliente_Click(object sender, EventArgs e) {
@@ -147,11 +140,10 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
 
             var frm = new FrmPrintPreviewCotizacoines((List<ITableable>)ListCotizacionesSeleccionadas);
             frm.ShowDialog();
-
-
         }
 
         private ITableable CreaPadreDesdeUnHijo(List<ITableableOpcion> op, ITableable padre) {
+            //ListCotizacionesSeleccionadas.Add(padre);
             var papa = new CotizacionDirecta();
             papa.Id = papa.Id32 = padre.Id32;
             papa.Usuario = padre.Usuario;
@@ -161,13 +153,12 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             papa.IncoTerm = padre.IncoTerm;
             papa.Estado = padre.Estado;
             papa.Seleccionado = padre.Seleccionado;
-            foreach (var tableableOpcion in op)
+
+            foreach (var tableableOpcion in op) {
                 papa.Opciones.Add((Opcion)tableableOpcion);
-
-
+            }
             return papa;
         }
-
 
         private void FrmListarCotizaciones_FormClosed(object sender, FormClosedEventArgs e) {
             Instancia = null;
@@ -200,7 +191,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             formulario.mode = "Ver/Editar";
             formulario.CotizacionDirecta = cotizacionDirecta;
 
-            //formulario.FrmListarCotizaciones = this;
             formulario.ShowDialog();
             Cursor.Current = Cursors.Default;
         }
@@ -212,7 +202,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
         private void MenuActualizar_Click(object sender, EventArgs e) {
             Cursor.Current = Cursors.WaitCursor;
             CargarGrillaCotizaciones();
-            MenuFollowup.Enabled = true;
             Cursor.Current = Cursors.Default;
         }
 
@@ -231,10 +220,10 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
                                      ErrorType.Critical);
                 return;
             } else {
-                ctrldxError.SetError(this.cboEstado, "", ErrorType.None);
+                ctrldxError.SetError(cboEstado, "", ErrorType.None);
             }
-            if (this.txtComentario.Text == "") {
-                ctrldxError.SetError(this.txtComentario, "Debe Ingresar un Comentario", ErrorType.Critical);
+            if (txtComentario.Text == "") {
+                ctrldxError.SetError(txtComentario, "Debe Ingresar un Comentario", ErrorType.Critical);
                 return;
             } else {
                 ctrldxError.SetError(this.txtComentario, "", ErrorType.None);
@@ -244,8 +233,7 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             if (!ctrldxError.HasErrors) {
                 ResultadoTransaccion resultado = new ResultadoTransaccion();
 
-                var comentario = new Comentario
-                {
+                var comentario = new Comentario {
                     EsHistorial = false,
                     Observacion = txtComentario.Text,
                     Usuario = Base.Usuario.UsuarioConectado.Usuario
@@ -332,8 +320,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             }
         }
 
-
-
         private void gridViewSLeads_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
             FocusCotizacion();
         }
@@ -343,63 +329,21 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             var comentarios = ClsComentario.ObtieneTodosLosMensajes(cotizacion).ObjetoTransaccion as List<Comentario>;
             gridComentarios.DataSource = comentarios;
             gridComentarios.RefreshDataSource();
-
-            MenuCopiar.Enabled = cotizacion.PermiteCopiar;
-
             Seleccion = "cot";
             CargarEstado();
             if (cotizacion.Estado.Id32 > 5) {
                 cboEstado.Properties.Items.Clear();
                 cboEstado.Properties.Items.Add(EstadosCotizaciones[0]);
+                cboEstado.Properties.Items.Add(EstadosCotizaciones.Find(foo => foo.Id32 == 10));
             }
-
+            if (cotizacion.Estado.Id32 == 10) {
+                cboEstado.Properties.Items.Clear();
+                cboEstado.Properties.Items.Add(EstadosCotizaciones[0]);
+            }
         }
 
         private void gridViewOpciones_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
             FocusCotizacion();
-        }
-
-        private void MenuCopiar_Click(object sender, EventArgs e) {
-
-            var tableable = GetSelectedRow((GridView)gridViewSLeads);
-
-            DialogResult res = MessageBox.Show(String.Format("¿Esta Ud. seguro de copiar la Cotización {0}?.{1} Se creará una nueva cotización con la información copiada.", tableable.Numero, Environment.NewLine),
-                "Sistema Comercial Craft", MessageBoxButtons.YesNo,
-                                        MessageBoxIcon.Question);
-            if (res == DialogResult.Yes) {
-                Cursor.Current = Cursors.WaitCursor;
-                if (tableable is CotizacionDirecta) {
-                    var cot =
-                        ClsCotizacionDirecta.ObtieneCotizacionDirecta(tableable.Id32).ObjetoTransaccion as
-                        CotizacionDirecta;
-                    cot.CopiadoDe = tableable.Id32;
-                    cot.Id = cot.Id32 = 0;
-                    foreach (var gl in cot.GastosLocalesList) {
-                        gl.Id = gl.Id32 = 0;
-                    }
-
-                    foreach (var opcion in cot.Opciones) {
-                        opcion.Id = opcion.Id32 = 0;
-                        foreach (var puerto in opcion.Pod)
-                            puerto.Id = puerto.Id32 = 0;
-
-                        foreach (var puerto in opcion.Pol)
-                            puerto.Id = puerto.Id32 = 0;
-
-
-                        foreach (var det in opcion.Detalles)
-                            det.Id = det.Id32 = 0;
-
-                    }
-
-                    var formulario = FrmCotizacionDirecta.Instancia;
-                    formulario.mode = "borrador";
-                    formulario.CotizacionDirecta = cot;
-                    formulario.ShowDialog();
-
-                }
-                Cursor.Current = Cursors.Default;
-            }
         }
 
         private void gridViewSLeads_MasterRowExpanded(object sender, CustomMasterRowEventArgs e) {
@@ -422,6 +366,15 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             detail.Focus();
             detail.SelectRow(0);
             detail.FocusedRowHandle = 0;
+        }
+
+        private void gridViewSLeads_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e) {
+            GridView view = sender as GridView;
+            GridGroupRowInfo info = e.Info as GridGroupRowInfo;
+            string caption = info.Column.Caption;
+            if (info.Column.Caption == string.Empty)
+                caption = info.Column.ToString();
+            info.GroupText = string.Format("{0} : {1} ({2})", caption, info.EditValue, view.GetChildRowCount(e.RowHandle));
         }
 
         private void MenuExcel_Click(object sender, EventArgs e) {
@@ -448,6 +401,25 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
             }
         }
 
+        private void gridViewSLeads_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e) {
+            var view = sender as GridView;
+            if (view.FocusedColumn.FieldName.Equals("Seleccionado")) {
+                var c = (CotizacionDirecta)view.GetRow(view.FocusedRowHandle);
+                if (c.Estado.Id32 == 10)
+                    e.Cancel = true;
+            }
+
+        }
+
+        private void repositoryItemCheckEdit4_CheckedChanged(object sender, EventArgs e) {
+            var foo = string.Empty;
+        }
+
+        private void repositoryItemCheckEdit4_CheckStateChanged(object sender, EventArgs e) {
+            var foo = string.Empty;
+
+        }
+
         private void MenuFollowup_Click(object sender, EventArgs e) {
             if (gridViewSLeads.SelectedRowsCount == 1) {
                 var cotizacionDirecta = (CotizacionDirecta)gridViewSLeads.GetRow(gridViewSLeads.GetSelectedRows()[0]);
@@ -456,5 +428,6 @@ namespace ProyectoCraft.WinForm.Cotizaciones {
                 form.ShowDialog();
             }
         }
+
     }
 }

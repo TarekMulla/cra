@@ -11,7 +11,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Base.Log;
-//using DevExpress.XtraPrinting;
+using DevExpress.XtraPrinting;
 using ProyectoCraft.Entidades.Usuarios;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.GlobalObject;

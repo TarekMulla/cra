@@ -19,9 +19,11 @@ namespace ProyectoCraft.Entidades.Cotizaciones {
         Estado Estado { set; get; }
         String EstadoDescripcion { get; }
         int CantidadOpciones { get; }
-        String ProveedorCarga { set; get; }
+        //String ProveedorCarga { set; get; }
         String Tipo { get; }
         bool Seleccionado { set; get; }
-        List<ITableableOpcion> OpcionesView { get; }    
+        List<ITableableOpcion> OpcionesView { get; }
+        DateTime? NextFollowup { set; get; }
+        Int32 FollowUpIcon { get; }
     }
 }

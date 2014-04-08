@@ -402,5 +402,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaEmpresa(empresa, asignacion);
         }
+
+        public static List<PaperlessEmpresa> ListarEmpresas(){
+            return AccesoDatos.Paperless.clsPaperlessADO.ListarEmpresas();
+        }
     }
 }

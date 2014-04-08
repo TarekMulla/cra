@@ -131,6 +131,10 @@
       <Private>True</Private>
       <HintPath>..\Libs\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System">
@@ -473,6 +477,12 @@
     <Compile Include="Paperless\Gestion\frmGestionAsignaciones.Designer.cs">
       <DependentUpon>frmGestionAsignaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionPaperlessInformes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paperless\Gestion\frmGestionPaperlessInformes.Designer.cs">
+      <DependentUpon>frmGestionPaperlessInformes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paperless\Usuario1\frmPaperlessUser1v2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -717,6 +727,9 @@
       <DependentUpon>frmGestionPaperless.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paperless\Gestion\frmGestionPaperlessInformes.resx">
+      <DependentUpon>frmGestionPaperlessInformes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Usuario1\frmPaperlessUser1v2.resx">
       <DependentUpon>frmPaperlessUser1v2.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -839,6 +852,7 @@
     <Compile Include="SCCVersion.cs" />
     <Compile Include="Utils\EnvioEmail.cs" />
     <Compile Include="Utils\EnvioMailObject.cs" />
+    <Compile Include="Utils\GenericQueryUtil.cs" />
     <Compile Include="Utils\Outlook.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="Ventas\Actividades\EMail\FrmNuevoMail.cs">

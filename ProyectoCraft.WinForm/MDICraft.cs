@@ -20,6 +20,7 @@ using ProyectoCraft.WinForm.Paperless.Usuario2;
 using SCCMultimodal.Mantenedores;
 using SCCMultimodal.Panel_de_control;
 using ProyectoCraft.WinForm.Paperless.GestionAsignacion;
+using SCCMultimodal.Paperless.Gestion;
 
 
 namespace ProyectoCraft.WinForm {
@@ -167,6 +168,7 @@ namespace ProyectoCraft.WinForm {
                     Console.Write(ex);
                 }
             }
+            
 
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
@@ -669,6 +671,14 @@ namespace ProyectoCraft.WinForm {
         private void MenuGestionCotizaciones_LinkClicked_1(object sender, NavBarLinkEventArgs e) {
             var timer = Stopwatch.StartNew();
             var form = FrmGestionCotizaciones.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void NavPaperlessInformes_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            var timer = Stopwatch.StartNew();
+            var form = frmGestionPaperlessInformes.Instancia;
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));

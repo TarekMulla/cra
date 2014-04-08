@@ -109,6 +109,7 @@
     <Compile Include="Log\LogPerformance.cs" />
     <Compile Include="Paperless\PaperlessAgenteCausador.cs" />
     <Compile Include="Paperless\PaperlessCantUsuarios.cs" />
+    <Compile Include="Paperless\PaperlessEmpresa.cs" />
     <Compile Include="Paperless\PaperlessExcepcionMaster.cs" />
     <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
     <Compile Include="Paperless\PaperlessAgente.cs" />

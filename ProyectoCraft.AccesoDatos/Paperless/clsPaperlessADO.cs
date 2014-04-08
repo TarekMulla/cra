@@ -2393,6 +2393,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless
                     tipo = new PaperlessTipoCarga();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
+                    //tipo.Nombre = dreader["DescripcionLarga"].ToString();
                     tipo.Activo = Convert.ToBoolean(dreader["Activo"]);
 
                     tipos.Add(tipo);
@@ -4790,6 +4791,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless
             }
 
             return resultado;
+        }
+
+        public static List<PaperlessEmpresa> ListarEmpresas(){
+            var empresas = new List<PaperlessEmpresa>();
+            try {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_EMPRESAS");
+                //objParams[0].Value = resp;
+
+                var command = new SqlCommand("SP_L_PAPERLESS_EMPRESAS", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read()) {
+                    var empresa = new PaperlessEmpresa();
+                    empresa.Codigo = dreader["Codigo"].ToString();
+                    empresa.Nombre = dreader["Nombre"].ToString();
+                    empresas.Add(empresa);
+                }
+            } catch (Exception ex) {
+                Log.EscribirLog(ex.Message);
+            } finally {
+                conn.Close();
+            }
+            return empresas;
         }
     }
 }

@@ -45,6 +45,8 @@ namespace SCCMultimodal.Paperless.Gestion {
             CargarEstados();
             CargarEmpresas();
             CargarFechasDefault();
+            gridControl1.DataSource = null;
+            gridView1.Columns.Clear();
         }
 
         public void CargarTipoCargas() {

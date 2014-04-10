@@ -12,7 +12,6 @@ using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Paperless;
-using ProyectoCraft.LogicaNegocios.PanelDeControl;
 using SCCMultimodal.Utils;
 
 
@@ -37,9 +36,13 @@ namespace SCCMultimodal.Paperless.Gestion {
         }
 
         private void frmGestionPaperlessInformes_Load(object sender, EventArgs e) {
+            CargarTiposDeInforme();
+            CargarValoresIniciales();
+        }
+
+        private void CargarValoresIniciales() {
             CargarTipoCargas();
             CargarEstados();
-            CargarTiposDeInforme();
             CargarEmpresas();
             CargarFechasDefault();
         }
@@ -84,11 +87,12 @@ namespace SCCMultimodal.Paperless.Gestion {
         }
 
         private void CargarFechasDefault() {
-            TxtDesdeCreacion.EditValue = TxtDesdeEmbarcador.EditValue = DateTime.Now.AddDays(-30);
-            TxtHastaCreacion.EditValue = TxtHastaEmbarcador.EditValue = DateTime.Now;
+            /*TxtDesdeCreacion.EditValue = TxtDesdeEmbarcador.EditValue = DateTime.Now.AddDays(-30);
+            TxtHastaCreacion.EditValue = TxtHastaEmbarcador.EditValue = DateTime.Now;*/
         }
 
         private void CargarTiposDeInforme() {
+            ddlInforme.Properties.Items.Clear();
             ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 1, Id = 1, Nombre = "Informe de Asignaciones" });
             ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 2, Id = 2, Nombre = "Informe de Excepciones de HBL" });
             ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 3, Id = 3, Nombre = "Informe de Excepciones Master" });
@@ -116,46 +120,65 @@ namespace SCCMultimodal.Paperless.Gestion {
             var cargasToSP = String.Join(",", chkListTipoCarga.CheckedItems.Cast<CheckedListBoxItem>().ToList().Select(foo => foo.Value.ToString()).ToArray());
             var marcaToSP = String.Join(",", ChkListMarca.CheckedItems.Cast<CheckedListBoxItem>().ToList().Select(foo => foo.Value.ToString()).ToArray());
 
-            var fechaCreacionIni = ((DateTime)TxtDesdeCreacion.EditValue);
-            var fechaCreacionFin = ((DateTime)TxtHastaCreacion.EditValue);
 
-            var fechaEmbarcadorIni = (DateTime)TxtDesdeEmbarcador.EditValue;
-            var fechaEmbarcadorFin = (DateTime)TxtHastaEmbarcador.EditValue;
+            DateTime fechaCreacionIni, fechaCreacionFin, fechaEmbarcadorIni, fechaEmbarcadorFin;
 
-            fechaCreacionIni = new DateTime(fechaCreacionIni.Year,fechaCreacionIni.Month,fechaCreacionIni.Day,00,01,00);
+            if (TxtDesdeCreacion.EditValue != null)
+                fechaCreacionIni = ((DateTime)TxtDesdeCreacion.EditValue);
+            else
+                fechaCreacionIni = new DateTime(1990, 1, 1);
+
+            if (TxtHastaCreacion.EditValue != null)
+                fechaCreacionFin = ((DateTime)TxtHastaCreacion.EditValue);
+            else
+                fechaCreacionFin = DateTime.Now.AddYears(500);
+
+
+            if (TxtDesdeEmbarcador.EditValue != null)
+                fechaEmbarcadorIni = ((DateTime)TxtDesdeEmbarcador.EditValue);
+            else
+                fechaEmbarcadorIni = new DateTime(1990, 1, 1);
+
+            if (TxtHastaEmbarcador.EditValue != null)
+                fechaEmbarcadorFin = ((DateTime)TxtHastaEmbarcador.EditValue);
+            else
+                fechaEmbarcadorFin = DateTime.Now.AddYears(500);
+
+            fechaCreacionIni = new DateTime(fechaCreacionIni.Year, fechaCreacionIni.Month, fechaCreacionIni.Day, 00, 01, 00);
             fechaEmbarcadorIni = new DateTime(fechaEmbarcadorIni.Year, fechaEmbarcadorIni.Month, fechaEmbarcadorIni.Day, 00, 01, 00);
 
             fechaCreacionFin = new DateTime(fechaCreacionFin.Year, fechaCreacionFin.Month, fechaCreacionFin.Day, 23, 59, 59);
             fechaEmbarcadorFin = new DateTime(fechaEmbarcadorFin.Year, fechaEmbarcadorFin.Month, fechaEmbarcadorFin.Day, 23, 59, 59);
 
-            //marcaToSP = "'" + marcaToSP + "'";
-            //marcaToSP = marcaToSP.Replace("''", "'");
-
-
-
-
             sqlCommand.CommandText = nombreProcedure;
 
             sqlCommand.Parameters.AddWithValue("estados", estadosToSP);
             sqlCommand.Parameters.AddWithValue("cargas", cargasToSP);
-            sqlCommand.Parameters.AddWithValue("empresas",marcaToSP);
+            sqlCommand.Parameters.AddWithValue("empresas", marcaToSP);
             sqlCommand.Parameters.AddWithValue("fechaCreacionIni", fechaCreacionIni);
             sqlCommand.Parameters.AddWithValue("fechaCreacionFin", fechaCreacionFin);
             sqlCommand.Parameters.AddWithValue("fechaEmbarcadorIni", fechaEmbarcadorIni);
             sqlCommand.Parameters.AddWithValue("fechaEmbarcadorFin", fechaEmbarcadorFin);
 
             var dt = GenericQueryUtil.ExecuteGenericQueryDataSet(sqlCommand);
-            
+
             gridView1.BeginUpdate();
             gridView1.Columns.Clear();
             gridControl1.DataSource = dt.Tables[0];
+            //Logica para que muestra todos los datos de tipo fecha con su hora.
+            foreach (DataColumn column in dt.Tables[0].Columns) {
+                if (column.DataType == typeof(DateTime))
+                    if (column.ColumnName != "FechaMaster" && column.ColumnName != "FechaETA" && column.ColumnName != "PlazoEmbarcadores")
+                        gridView1.Columns[column.ColumnName].DisplayFormat.FormatString = "G";
+
+            }
             gridView1.BestFitColumns();
             gridView1.HorzScrollVisibility = ScrollVisibility.Always;
             gridView1.EndUpdate();
             Cursor.Current = Cursors.Default;
         }
 
-      
+
         private void chkListTipoCarga_SelectedIndexChanged(object sender, EventArgs e) {
 
         }
@@ -192,8 +215,12 @@ namespace SCCMultimodal.Paperless.Gestion {
             }
         }
 
-        private void frmGestionPaperlessInformes_FormClosed(object sender, FormClosedEventArgs e){
+        private void frmGestionPaperlessInformes_FormClosed(object sender, FormClosedEventArgs e) {
             Instancia = null;
+        }
+
+        private void ddlInforme_SelectedIndexChanged(object sender, EventArgs e) {
+            CargarValoresIniciales();
         }
     }
 

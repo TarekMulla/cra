@@ -54,8 +54,8 @@ AS
 BEGIN 
 	SELECT 
 	PA.Id  as IdAsignacion
-	,NumMaster, 
-	FechaMaster, 
+	,NumMaster
+	,FechaMaster, 
 	PAG.Descripcion  as Agente, 
 	PN.Descripcion as Naviera, 
 	PNA.Descripcion as Nave, Viaje, 
@@ -63,6 +63,7 @@ BEGIN
 	PTC.Descripcion as TipoCarga, 
 	FechaETA, 
 	PlazoEmbarcadores, 
+	pa.empresa as Marca,
 	U1.NombreUsuario Usuario1, 
 	PARA.Descripcion Importancia, 
 	U2.NombreUsuario Usuario2, 
@@ -117,8 +118,8 @@ CREATE PROCEDURE SP_PAPERLESS_INFORME_EXCEPCIONES_HBL
 AS 
 BEGIN
 	select
-	PUH.HouseBL,
-	PA.Id as IdAsignacion, 
+	PUH.HouseBL
+	,PA.Id as IdAsignacion, 
 	NumMaster, 
 	FechaMaster, 
 	PAG.Descripcion as Agente, 
@@ -127,6 +128,7 @@ BEGIN
 	PTC.Descripcion as TipoCarga, 
 	FechaETA, 
 	PlazoEmbarcadores, 
+	pa.empresa as Marca,
 	U1.NombreUsuario Usuario1, 
 	U2.NombreUsuario Usuario2,	
 	PE.Descripcion Estado, 
@@ -189,8 +191,8 @@ CREATE PROCEDURE SP_PAPERLESS_INFORME_EXCEPCIONES_MASTER
 AS 
 BEGIN
 	select
-	PA.Id as IdAsignacion,
-	NumMaster, 
+	PA.Id as IdAsignacion
+	,NumMaster, 
 	FechaMaster, 
 	PAG.Descripcion as Agente, 
 	PN.Descripcion as Naviera, 
@@ -198,6 +200,7 @@ BEGIN
 	PTC.Descripcion as TipoCarga, 
 	FechaETA, 
 	PlazoEmbarcadores, 
+	pa.empresa as Marca,
 	U1.NombreUsuario Usuario1, 
 	U2.NombreUsuario Usuario2,
 	PE.Descripcion Estado, 

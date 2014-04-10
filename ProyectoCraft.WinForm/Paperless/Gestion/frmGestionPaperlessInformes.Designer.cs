@@ -226,6 +226,7 @@
             this.ddlInforme.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.ddlInforme.Size = new System.Drawing.Size(201, 20);
             this.ddlInforme.TabIndex = 0;
+            this.ddlInforme.SelectedIndexChanged += new System.EventHandler(this.ddlInforme_SelectedIndexChanged);
             // 
             // TxtHastaEmbarcador
             // 

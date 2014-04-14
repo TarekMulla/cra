@@ -168,7 +168,7 @@ namespace ProyectoCraft.WinForm {
                     Console.Write(ex);
                 }
             }
-            
+
 
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
@@ -682,6 +682,10 @@ namespace ProyectoCraft.WinForm {
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+        }
+
+        private void NavPaperlessInformes2_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            NavPaperlessInformes_LinkClicked(sender, e);
         }
     }
 }

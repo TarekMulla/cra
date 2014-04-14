@@ -66,15 +66,22 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MenuTargets = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuSalesLead = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuCotizaciones = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MenuPaperlessAsignacion = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessUsuario1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessUsuario2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
+            this.NavPaperlessInformes = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuTarget = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MenuTargets = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuSalesLead = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuCotizaciones = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup10 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuMiCalendario = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
@@ -92,12 +99,6 @@
             this.MenuGestionCotizaciones = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroup7 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MenuPaperlessAsignacion = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessUsuario1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessUsuario2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
             this.menuAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
             this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
             this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
@@ -113,7 +114,8 @@
             this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem6 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
-            this.NavPaperlessInformes = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup9 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.NavPaperlessInformes2 = new DevExpress.XtraNavBar.NavBarItem();
             MenuRegistrarLlamada = new DevExpress.XtraNavBar.NavBarItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -412,7 +414,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup8;
+            this.navBarControl1.ActiveGroup = this.navBarGroup6;
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -425,7 +427,8 @@
             this.navBarGroup6,
             this.navBarGroup7,
             this.navBarGroup8,
-            this.menuAdministracion});
+            this.menuAdministracion,
+            this.navBarGroup9});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.MenuTarget,
             this.navBarItem2,
@@ -459,7 +462,8 @@
             this.manCotDirectas,
             this.MantAgentes,
             this.MenuGestionCotizaciones,
-            this.NavPaperlessInformes});
+            this.NavPaperlessInformes,
+            this.NavPaperlessInformes2});
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
@@ -469,38 +473,61 @@
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
             // 
-            // navBarGroup2
+            // navBarGroup8
             // 
-            this.navBarGroup2.Caption = "Ventas";
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuTargets),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuSalesLead),
-            new DevExpress.XtraNavBar.NavBarItemLink(MenuRegistrarLlamada),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuCotizaciones)});
-            this.navBarGroup2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup2.LargeImage")));
-            this.navBarGroup2.Name = "navBarGroup2";
-            this.navBarGroup2.TopVisibleLinkIndex = 1;
+            this.navBarGroup8.Caption = "Paperless";
+            this.navBarGroup8.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignacion),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes)});
+            this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
+            this.navBarGroup8.Name = "navBarGroup8";
+            this.navBarGroup8.TopVisibleLinkIndex = 1;
             // 
-            // MenuTargets
+            // MenuPaperlessAsignacion
             // 
-            this.MenuTargets.Caption = "Mis Targets";
-            this.MenuTargets.Name = "MenuTargets";
-            this.MenuTargets.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuTargets.SmallImage")));
-            this.MenuTargets.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargets_LinkClicked);
+            this.MenuPaperlessAsignacion.Caption = "Paperless Asignacion";
+            this.MenuPaperlessAsignacion.Name = "MenuPaperlessAsignacion";
+            this.MenuPaperlessAsignacion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignacion.SmallImage")));
+            this.MenuPaperlessAsignacion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarAsignaciones_LinkClicked);
             // 
-            // MenuSalesLead
+            // MenuPaperlessUsuario1
             // 
-            this.MenuSalesLead.Caption = "Mis Sales Leads";
-            this.MenuSalesLead.Name = "MenuSalesLead";
-            this.MenuSalesLead.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuSalesLead.SmallImage")));
-            this.MenuSalesLead.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuAsignacionSLead_LinkClicked);
+            this.MenuPaperlessUsuario1.Caption = "Usuario 1";
+            this.MenuPaperlessUsuario1.Name = "MenuPaperlessUsuario1";
+            this.MenuPaperlessUsuario1.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario1.SmallImage")));
+            this.MenuPaperlessUsuario1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario1_LinkClicked);
             // 
-            // MenuCotizaciones
+            // MenuPaperlessUsuario2
             // 
-            this.MenuCotizaciones.Caption = "Mis Cotizaciones";
-            this.MenuCotizaciones.Name = "MenuCotizaciones";
-            this.MenuCotizaciones.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuCotizaciones.SmallImage")));
-            this.MenuCotizaciones.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CotizacionesLinkClicked);
+            this.MenuPaperlessUsuario2.Caption = "Usuario 2";
+            this.MenuPaperlessUsuario2.Name = "MenuPaperlessUsuario2";
+            this.MenuPaperlessUsuario2.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario2.SmallImage")));
+            this.MenuPaperlessUsuario2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario2_LinkClicked);
+            // 
+            // MenuPaperlessAsignar
+            // 
+            this.MenuPaperlessAsignar.Caption = "Nueva Asignación";
+            this.MenuPaperlessAsignar.Name = "MenuPaperlessAsignar";
+            this.MenuPaperlessAsignar.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignar.SmallImage")));
+            this.MenuPaperlessAsignar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessAsignar_LinkClicked);
+            // 
+            // MenuPaperlessGestion
+            // 
+            this.MenuPaperlessGestion.Caption = "Gestión Paperless";
+            this.MenuPaperlessGestion.Name = "MenuPaperlessGestion";
+            this.MenuPaperlessGestion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessGestion.SmallImage")));
+            this.MenuPaperlessGestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessGestion_LinkClicked);
+            // 
+            // NavPaperlessInformes
+            // 
+            this.NavPaperlessInformes.Caption = "Informes";
+            this.NavPaperlessInformes.Name = "NavPaperlessInformes";
+            this.NavPaperlessInformes.SmallImage = ((System.Drawing.Image)(resources.GetObject("NavPaperlessInformes.SmallImage")));
+            this.NavPaperlessInformes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.NavPaperlessInformes_LinkClicked);
             // 
             // navBarGroup1
             // 
@@ -542,6 +569,39 @@
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.Visible = false;
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargetAccount_LinkClicked);
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Ventas";
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuTargets),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuSalesLead),
+            new DevExpress.XtraNavBar.NavBarItemLink(MenuRegistrarLlamada),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuCotizaciones)});
+            this.navBarGroup2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup2.LargeImage")));
+            this.navBarGroup2.Name = "navBarGroup2";
+            this.navBarGroup2.TopVisibleLinkIndex = 1;
+            // 
+            // MenuTargets
+            // 
+            this.MenuTargets.Caption = "Mis Targets";
+            this.MenuTargets.Name = "MenuTargets";
+            this.MenuTargets.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuTargets.SmallImage")));
+            this.MenuTargets.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuTargets_LinkClicked);
+            // 
+            // MenuSalesLead
+            // 
+            this.MenuSalesLead.Caption = "Mis Sales Leads";
+            this.MenuSalesLead.Name = "MenuSalesLead";
+            this.MenuSalesLead.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuSalesLead.SmallImage")));
+            this.MenuSalesLead.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuAsignacionSLead_LinkClicked);
+            // 
+            // MenuCotizaciones
+            // 
+            this.MenuCotizaciones.Caption = "Mis Cotizaciones";
+            this.MenuCotizaciones.Name = "MenuCotizaciones";
+            this.MenuCotizaciones.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuCotizaciones.SmallImage")));
+            this.MenuCotizaciones.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.CotizacionesLinkClicked);
             // 
             // navBarGroup10
             // 
@@ -659,6 +719,9 @@
             // navBarGroup6
             // 
             this.navBarGroup6.Caption = "Reportes";
+            this.navBarGroup6.Expanded = true;
+            this.navBarGroup6.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes2)});
             this.navBarGroup6.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup6.LargeImage")));
             this.navBarGroup6.Name = "navBarGroup6";
             // 
@@ -667,55 +730,6 @@
             this.navBarGroup7.Caption = "Confirguración";
             this.navBarGroup7.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup7.LargeImage")));
             this.navBarGroup7.Name = "navBarGroup7";
-            // 
-            // navBarGroup8
-            // 
-            this.navBarGroup8.Caption = "Paperless";
-            this.navBarGroup8.Expanded = true;
-            this.navBarGroup8.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignacion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes)});
-            this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
-            this.navBarGroup8.Name = "navBarGroup8";
-            // 
-            // MenuPaperlessAsignacion
-            // 
-            this.MenuPaperlessAsignacion.Caption = "Paperless Asignacion";
-            this.MenuPaperlessAsignacion.Name = "MenuPaperlessAsignacion";
-            this.MenuPaperlessAsignacion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignacion.SmallImage")));
-            this.MenuPaperlessAsignacion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarAsignaciones_LinkClicked);
-            // 
-            // MenuPaperlessUsuario1
-            // 
-            this.MenuPaperlessUsuario1.Caption = "Usuario 1";
-            this.MenuPaperlessUsuario1.Name = "MenuPaperlessUsuario1";
-            this.MenuPaperlessUsuario1.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario1.SmallImage")));
-            this.MenuPaperlessUsuario1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario1_LinkClicked);
-            // 
-            // MenuPaperlessUsuario2
-            // 
-            this.MenuPaperlessUsuario2.Caption = "Usuario 2";
-            this.MenuPaperlessUsuario2.Name = "MenuPaperlessUsuario2";
-            this.MenuPaperlessUsuario2.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario2.SmallImage")));
-            this.MenuPaperlessUsuario2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario2_LinkClicked);
-            // 
-            // MenuPaperlessAsignar
-            // 
-            this.MenuPaperlessAsignar.Caption = "Nueva Asignación";
-            this.MenuPaperlessAsignar.Name = "MenuPaperlessAsignar";
-            this.MenuPaperlessAsignar.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignar.SmallImage")));
-            this.MenuPaperlessAsignar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessAsignar_LinkClicked);
-            // 
-            // MenuPaperlessGestion
-            // 
-            this.MenuPaperlessGestion.Caption = "Gestión Paperless";
-            this.MenuPaperlessGestion.Name = "MenuPaperlessGestion";
-            this.MenuPaperlessGestion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessGestion.SmallImage")));
-            this.MenuPaperlessGestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessGestion_LinkClicked);
             // 
             // menuAdministracion
             // 
@@ -808,11 +822,17 @@
             this.navBarItem8.Name = "navBarItem8";
             this.navBarItem8.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem8.SmallImage")));
             // 
-            // NavPaperlessInformes
+            // navBarGroup9
             // 
-            this.NavPaperlessInformes.Caption = "Informes";
-            this.NavPaperlessInformes.Name = "NavPaperlessInformes";
-            this.NavPaperlessInformes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.NavPaperlessInformes_LinkClicked);
+            this.navBarGroup9.Caption = "navBarGroup9";
+            this.navBarGroup9.Name = "navBarGroup9";
+            // 
+            // NavPaperlessInformes2
+            // 
+            this.NavPaperlessInformes2.Caption = "Paperless Informes";
+            this.NavPaperlessInformes2.Name = "NavPaperlessInformes2";
+            this.NavPaperlessInformes2.SmallImage = ((System.Drawing.Image)(resources.GetObject("NavPaperlessInformes2.SmallImage")));
+            this.NavPaperlessInformes2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.NavPaperlessInformes2_LinkClicked);
             // 
             // MDICraft
             // 
@@ -929,6 +949,8 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem8;
         private DevExpress.XtraNavBar.NavBarItem MenuGestionCotizaciones;
         private DevExpress.XtraNavBar.NavBarItem NavPaperlessInformes;
+        private DevExpress.XtraNavBar.NavBarItem NavPaperlessInformes2;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup9;
     }
 }
 

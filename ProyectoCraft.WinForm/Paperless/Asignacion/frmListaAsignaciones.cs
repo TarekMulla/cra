@@ -244,7 +244,8 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
         {
-            frmPaperlessAsignacion form = new frmPaperlessAsignacion();
+            //frmPaperlessAsignacion form = new frmPaperlessAsignacion();
+            frmPaperlessAsignacion form = Paperless.Asignacion.frmPaperlessAsignacion.Instancia;
             form.Accion = Enums.TipoAccionFormulario.Nuevo;
             form.ShowDialog();
         }

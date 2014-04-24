@@ -505,9 +505,28 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             pnlRecibirAperturaEmb.Visible = true;
 
         }
+        public void Vinculacion(PaperlessPasosEstado paso) {
+            Cursor.Current = Cursors.WaitCursor;
+            if (PaperlessAsignacionActual.Estado != Enums.EstadoPaperless.EnviadoMercante){
+                _pasoEstadoActual = paso;
+                var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
+
+                PaperlessAsignacionActual.Estado = Enums.EstadoPaperless.EnviadoMercante;
+
+                var result = LogicaNegocios.Paperless.Paperless.CambiaEstadoAsignacion(PaperlessAsignacionActual);
+                pasoSeleccionado.Estado = true;
+                paso.Estado = true;
+                ResultadoTransaccion resultado =
+                    LogicaNegocios.Paperless.Paperless.Usuario2ActualizaPaso(PaperlessAsignacionActual, paso);
+                CargarPasos();
+                paso.Estado = true;
+            }
+            Cursor.Current = Cursors.Default;
 
 
-        public void PresentarManifiesto(PaperlessPasosEstado paso)
+        }
+
+        public void Finalizar(PaperlessPasosEstado paso)
         {
 
             if (!validarCicloCompleto())

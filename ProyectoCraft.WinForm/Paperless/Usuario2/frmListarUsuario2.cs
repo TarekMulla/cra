@@ -249,6 +249,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 MenuComenzar.Text = "Ver Proceso";
             }
 
+            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoMercante) {
+                MenuVer.Enabled = true;
+                MenuComenzar.Enabled = true;
+                MenuComenzar.Text = "Ver Proceso";
+            }
         }
 
         private void MenuComenzar_Click(object sender, EventArgs e)

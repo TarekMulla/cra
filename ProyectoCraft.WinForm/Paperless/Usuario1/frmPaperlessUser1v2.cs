@@ -829,17 +829,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
         private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones) {
             foreach (PaperlessExcepcion excepcion in excepciones) {
-                if (!IsBrasil) {
+                
                     if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))
                         return false;
-                } else
-                    if (excepcion.TieneExcepcion) {
-                        if (excepcion.Responsabilidad.Nombre.Equals("Usuario 1") && !excepcion.Resuelto) {
-                            MessageBox.Show(@"Las Excepciones de Responsabilidad Usuario 1 deben quedar Resueltas", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }
+                
 
-                    }
             }
             return true;
         }

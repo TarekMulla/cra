@@ -236,6 +236,8 @@ namespace ProyectoCraft.WinForm {
             MenuCotizaciones.Visible = false;
             menuAdministracion.Visible = false;
             MenuGestionCotizaciones.Visible = false;
+
+            NavPaperlessInformes.Visible= NavPaperlessInformes2.Visible = false;
         }
 
         private void HabilitarFuncionalidades() {
@@ -265,7 +267,7 @@ namespace ProyectoCraft.WinForm {
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Supervisor_Documental) {
                     MenuPaperlessAsignacion.Visible = true;
                     MenuPaperlessAsignar.Visible = true;
-                    //MenuGestionAsignaciones.Visible = true;
+                    NavPaperlessInformes.Visible = NavPaperlessInformes2.Visible = true;
                 }
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Encargado_Documental_1ra_Etapa) {
                     MenuPaperlessUsuario1.Visible = true;

@@ -406,5 +406,8 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static List<PaperlessEmpresa> ListarEmpresas(){
             return AccesoDatos.Paperless.clsPaperlessADO.ListarEmpresas();
         }
+        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso){
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2CambiarEstadoPaso(paso);
+        }
     }
 }

@@ -110,5 +110,5 @@ go
 
 
 
-update PAPERLESS_USUARIO2_PASOS_ESTADO  set estado=1  where IdAsignacion in (select id from PAPERLESS_ASIGNACION where IdEstado=8) and NumPaso in (4,5) order by IdAsignacion
+update PAPERLESS_USUARIO2_PASOS_ESTADO  set estado=1  where IdAsignacion in (select id from PAPERLESS_ASIGNACION where IdEstado=8) and NumPaso in (4,5) 
 GO

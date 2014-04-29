@@ -540,7 +540,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 pnlReenviarCorreo.Visible = true;
                 btnReenviarCorreoTermino.Visible = true;
             }
-            //paso.Estado = check.Checked;
+            paso.Estado = true;
 
             if (paso != null)
             {

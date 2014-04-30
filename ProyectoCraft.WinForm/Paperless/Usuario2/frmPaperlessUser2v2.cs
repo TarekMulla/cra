@@ -506,6 +506,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
         }
         public void Vinculacion(PaperlessPasosEstado paso) {
+            if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
+                return;
+
             Cursor.Current = Cursors.WaitCursor;
             if (PaperlessAsignacionActual.Estado != Enums.EstadoPaperless.EnviadoMercante){
                 _pasoEstadoActual = paso;

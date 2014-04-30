@@ -59,7 +59,7 @@ SELECT @IdResultado=0, @Resultado=''
 */
 
 
-IF (@IdEstado=9 or @idEstado=10)
+IF (@IdEstado=9 or @idEstado=10 or @idEstado=8)
 BEGIN
     UPDATE PAPERLESS_ASIGNACION                       
 SET IdEstado = @IdEstado                   

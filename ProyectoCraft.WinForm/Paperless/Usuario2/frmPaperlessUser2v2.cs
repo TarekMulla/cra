@@ -536,9 +536,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             _pasoEstadoActual = paso;
             if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
             {
-                pnlRecibirAperturaEmb.Visible = true;
                 pnlReenviarCorreo.Visible = true;
                 btnReenviarCorreoTermino.Visible = true;
+                return;
             }
             paso.Estado = true;
 
@@ -1493,6 +1493,33 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                     }
             }
             return true;
+        }
+
+        private void btnReenviarCorreoTermino_Click_1(object sender, EventArgs e) {
+            long IdAsignacion = 0;
+            try {
+                var mail = new EnvioMailObject();
+                PaperlessUsuario1HouseBLInfo info =
+                            LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+                ResultadoTransaccion resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
+                //Entidades.GlobalObject.ResultadoTransaccion resultado = Utils.EnvioEmail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
+                IdAsignacion = info.IdAsignacion;
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    Log.Info("btnReenviarCorreoTermino_Click Rechazada");
+                    MessageBox.Show("Error al enviar email de termino de proceso. \n" + resultado.Descripcion, "Paperless",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else {
+                    Log.Info("btnReenviarCorreoTermino_Click Aceptada");
+                    MessageBox.Show("Se ha renviado el mail de termino de proceso", "Paperless", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                    Close();
+                }
+            } catch (Exception ex) {
+                Log.Error("IdAsignacion " + IdAsignacion);
+                Log.Error(ex);
+                throw;
+            }
         }
     }
 }

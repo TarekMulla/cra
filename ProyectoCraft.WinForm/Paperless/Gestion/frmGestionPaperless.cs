@@ -207,7 +207,9 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
             }
 
             if (asignacion != null && (asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado)) {
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado ||
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoMercante
+                                      )) {
                 Menu2daEtapa.Enabled = true;
             }
 

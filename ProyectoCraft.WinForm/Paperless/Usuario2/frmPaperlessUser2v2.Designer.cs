@@ -900,16 +900,16 @@
             this.pnlContactarembarcador.Controls.Add(this.btnP2ContactarEmbarcador);
             this.pnlContactarembarcador.Controls.Add(this.labelControl2);
             this.pnlContactarembarcador.Controls.Add(this.grdContactarembarcador);
-            this.pnlContactarembarcador.Location = new System.Drawing.Point(473, 98);
+            this.pnlContactarembarcador.Location = new System.Drawing.Point(471, 72);
             this.pnlContactarembarcador.Name = "pnlContactarembarcador";
-            this.pnlContactarembarcador.Size = new System.Drawing.Size(602, 377);
+            this.pnlContactarembarcador.Size = new System.Drawing.Size(699, 398);
             this.pnlContactarembarcador.TabIndex = 7;
             this.pnlContactarembarcador.Visible = false;
             // 
             // btnP2ContactarEmbarcador
             // 
             this.btnP2ContactarEmbarcador.Image = ((System.Drawing.Image)(resources.GetObject("btnP2ContactarEmbarcador.Image")));
-            this.btnP2ContactarEmbarcador.Location = new System.Drawing.Point(476, 11);
+            this.btnP2ContactarEmbarcador.Location = new System.Drawing.Point(573, 9);
             this.btnP2ContactarEmbarcador.Name = "btnP2ContactarEmbarcador";
             this.btnP2ContactarEmbarcador.Size = new System.Drawing.Size(114, 31);
             this.btnP2ContactarEmbarcador.TabIndex = 2;
@@ -936,7 +936,7 @@
             this.grdContactarembarcador.Name = "grdContactarembarcador";
             this.grdContactarembarcador.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.grdContactarembarcador.Size = new System.Drawing.Size(582, 317);
+            this.grdContactarembarcador.Size = new System.Drawing.Size(679, 338);
             this.grdContactarembarcador.TabIndex = 0;
             this.grdContactarembarcador.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -981,10 +981,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlRecibirAperturaEmb.Controls.Add(this.grdRecibirAperturaEmb);
             this.pnlRecibirAperturaEmb.Controls.Add(this.btnP3GuardarAperturaEmbarcadores);
-            this.pnlRecibirAperturaEmb.Controls.Add(this.pnlReenviarCorreo);
-            this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(471, 89);
+            this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(472, 74);
             this.pnlRecibirAperturaEmb.Name = "pnlRecibirAperturaEmb";
-            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(684, 386);
+            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(699, 388);
             this.pnlRecibirAperturaEmb.TabIndex = 7;
             this.pnlRecibirAperturaEmb.Visible = false;
             // 
@@ -1002,7 +1001,7 @@
             this.repositoryViaReciboApertura,
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2});
-            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(674, 343);
+            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(689, 345);
             this.grdRecibirAperturaEmb.TabIndex = 3;
             this.grdRecibirAperturaEmb.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1121,9 +1120,9 @@
             this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl3);
-            this.pnlReenviarCorreo.Location = new System.Drawing.Point(16, 0);
+            this.pnlReenviarCorreo.Location = new System.Drawing.Point(473, 70);
             this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
-            this.pnlReenviarCorreo.Size = new System.Drawing.Size(671, 384);
+            this.pnlReenviarCorreo.Size = new System.Drawing.Size(698, 384);
             this.pnlReenviarCorreo.TabIndex = 10;
             this.pnlReenviarCorreo.Visible = false;
             this.pnlReenviarCorreo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReenviarCorreo_Paint);
@@ -1137,6 +1136,7 @@
             this.btnReenviarCorreoTermino.TabIndex = 3;
             this.btnReenviarCorreoTermino.Text = "Reenviar Email";
             this.btnReenviarCorreoTermino.Visible = false;
+            this.btnReenviarCorreoTermino.Click += new System.EventHandler(this.btnReenviarCorreoTermino_Click_1);
             // 
             // labelControl5
             // 
@@ -1193,14 +1193,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 487);
-            this.Controls.Add(this.pnlExcepMaster);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlReenviarCorreo);
             this.Controls.Add(this.pnlRecibirAperturaEmb);
             this.Controls.Add(this.pnlContactarembarcador);
             this.Controls.Add(this.pnlExcepciones);
+            this.Controls.Add(this.pnlExcepMaster);
             this.Name = "frmPaperlessUser2v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso Paperless Usuario 2";

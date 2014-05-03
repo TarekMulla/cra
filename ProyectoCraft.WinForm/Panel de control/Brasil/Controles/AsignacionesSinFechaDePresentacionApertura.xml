@@ -22,7 +22,7 @@
       <![CDATA[
            SELECT  
 	   a.id as id_asignacion_hidden,
-	     a.numMaster,	
+	     a.NumMaster,	
 	   I.NumConsolidado,
               FechaMaster,
               C.Descripcion as 'Agente',

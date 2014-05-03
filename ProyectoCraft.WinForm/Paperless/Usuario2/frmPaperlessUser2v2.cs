@@ -987,8 +987,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                 } else
                     if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))//!excepcion.Resuelto
                         return false;
-                    else if (excepcion.ResueltoUser2.Equals(false))
-                        return false;
 
                 if (excepcion.TieneExcepcion) {
                     if (!excepcion.Resuelto)

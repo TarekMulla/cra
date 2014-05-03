@@ -1146,7 +1146,7 @@
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(204, 13);
             this.labelControl5.TabIndex = 2;
-            this.labelControl5.Text = "Reenviar correo termino de proceso";
+            this.labelControl5.Text = "Reenviar correo término de proceso.";
             // 
             // labelControl3
             // 

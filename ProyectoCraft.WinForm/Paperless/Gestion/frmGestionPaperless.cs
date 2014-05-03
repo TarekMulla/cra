@@ -244,8 +244,10 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
                 form.ShowDialog();
 
 
-            } else
-                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else {
+                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
         }
 
         private void Menu1raEtapa_Click(object sender, EventArgs e) {
@@ -324,15 +326,12 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
 
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
+        private void tabPage2_Click(object sender, EventArgs e) {
 
         }
 
-        private void BtnBuscatTab2_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtPuerto.Text) || !string.IsNullOrEmpty(txtShipping.Text) )
-            {
+        private void BtnBuscatTab2_Click(object sender, EventArgs e) {
+            if (!string.IsNullOrEmpty(txtPuerto.Text) || !string.IsNullOrEmpty(txtShipping.Text)) {
                 IList<PaperlessUsuario1HousesBL> houses =
                 LogicaNegocios.Paperless.Paperless.ObtenerHousesBLporShippingInstruction(txtShipping.Text, txtPuerto.Text);
                 //houses[0].IdAsignacion
@@ -340,15 +339,14 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
 
                 grdHbls.DataSource = houses;
                 grdHbls.RefreshDataSource();
-            }                        
+            }
         }
 
-        private void groupControl3_Paint(object sender, PaintEventArgs e)
-        {
+        private void groupControl3_Paint(object sender, PaintEventArgs e) {
 
         }
 
-       
-       
+
+
     }
 }

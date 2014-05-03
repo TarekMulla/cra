@@ -20,7 +20,9 @@
   <detail>
     <datasourse>
       <![CDATA[
-           SELECT  I.NumConsolidado,
+           SELECT  
+              a.id  as ID_ASIGNACION_HIDE,
+              I.NumConsolidado,
               FechaMaster,
               C.Descripcion as 'Agente',
               D.Descripcion as 'Naviera',

@@ -68,7 +68,8 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
                            foo.EstadoFlujo != Enums.EstadoPaperless.AsignadoUsuario1 &&
                            foo.EstadoFlujo != Enums.EstadoPaperless.AceptadoUsuario1 &&
                            foo.EstadoFlujo != Enums.EstadoPaperless.EnProcesoUsuario1 &&
-                           foo.EstadoFlujo != Enums.EstadoPaperless.RechazadaUsuario1;
+                           foo.EstadoFlujo != Enums.EstadoPaperless.RechazadaUsuario1 &&
+                           foo.EstadoFlujo != Enums.EstadoPaperless.EnviadoMercante;
                 });
             }
 

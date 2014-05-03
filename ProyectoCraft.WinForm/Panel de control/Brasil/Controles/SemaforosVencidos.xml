@@ -5,6 +5,9 @@
   </description>
   <datasource>
     <![CDATA[
+              CREATE TABLE #tabla_paso (color varchar(20), cantidad int)
+              INSERT INTO #tabla_paso
+
               SELECT CASE
                   WHEN COUNT(a.id) =0 THEN ''
                   WHEN COUNT(a.id) >0 THEN 'red'
@@ -12,9 +15,8 @@
               COUNT(a.id) as 'cantidad'
               FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
                    ON A.id=B.idAsignacion
-              WHERE   convert(varchar(20),A.aperturanavieras,112) < convert(varchar(20),GETDATE(),112)
-              AND     B.NumPaso=4
-              AND     B.fechamarca IS NULL
+              WHERE   convert(varchar(20),A.PlazoEmbarcadores,112) < convert(varchar(20),GETDATE(),112)
+              AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
               AND A.IdEstado not in (8,9)
               UNION
               SELECT CASE
@@ -24,8 +26,12 @@
               COUNT(a.id) as 'cantidad'
               FROM PAPERLESS_ASIGNACION A
               WHERE A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-              AND convert(varchar(20),A.aperturanavieras,112) < convert(varchar(20),GETDATE(),112)
+              AND convert(varchar(20),A.PlazoEmbarcadores,112) < convert(varchar(20),GETDATE(),112)
               AND A.IdEstado not in (8,9)
+
+              SELECT max(color) as 'color',sum(cantidad) as 'cantidad'
+              FROM #tabla_paso
+              DROP TABLE #tabla_paso  
     ]]>
   </datasource>
   <detail>
@@ -61,9 +67,8 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
-          WHERE   CONVERT(VARCHAR(20),A.aperturanavieras,112) < CONVERT(VARCHAR(20),GETDATE(),112)
-          AND     B.NumPaso=4
-          AND     B.fechamarca IS NULL
+          WHERE   CONVERT(VARCHAR(20),A.PlazoEmbarcadores,112) < CONVERT(VARCHAR(20),GETDATE(),112)
+          AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
           AND A.IdEstado not in (8,9)
           UNION
         SELECT  I.NumConsolidado,
@@ -95,9 +100,9 @@
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
           WHERE A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-          AND convert(varchar(20),A.aperturanavieras,112) < convert(varchar(20),GETDATE(),112)
+          AND convert(varchar(20),A.PlazoEmbarcadores,112) < convert(varchar(20),GETDATE(),112)
           AND A.IdEstado not in (8,9)
-          ORDER BY AperturaNavieras ASC
+          ORDER BY PlazoEmbarcadores ASC
       ]]>
     </datasourse>
   </detail>

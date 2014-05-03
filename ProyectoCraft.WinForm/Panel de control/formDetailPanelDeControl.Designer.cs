@@ -35,9 +35,12 @@
             this.MENUEXCEL = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -117,12 +120,18 @@
             this.MenuSalir.Name = "MenuSalir";
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.gridControl1);
+            resources.ApplyResources(this.panelControl1, "panelControl1");
+            this.panelControl1.Name = "panelControl1";
+            // 
             // formDetailPanelDeControl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.gridControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "formDetailPanelDeControl";
             this.Load += new System.EventHandler(this.formDetailPanelDeControl_Load);
@@ -131,6 +140,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,6 +160,7 @@
         private System.Windows.Forms.ToolStripButton MENUEXCEL;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton MenuSalir;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
 
     }
 }

@@ -27,7 +27,9 @@
     <datasourse>
       <![CDATA[
         
-        SELECT  NumMaster,
+        SELECT  
+	a.id as id_asignacion_hidden,
+	NumMaster,
           FechaMaster,
           C.Descripcion as 'agente',
           D.Descripcion as 'naviera',

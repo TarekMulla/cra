@@ -38,13 +38,14 @@
     <datasourse>
       <![CDATA[
         
-        SELECT  I.NumConsolidado,
+        SELECT   a.id as id_asignacion_hidden,	        a.NumMaster,I.NumConsolidado,
           FechaMaster,
           C.Descripcion as 'agente',
           D.Descripcion as 'naviera',
           E.Descripcion as 'nave',
           Viaje,
-          NumHousesBL,
+          NumHousesBL,Carga.DescripcionLarga as Carga,
+	  empresa as Marca,
           FechaETA,
           AperturaNavieras as AperturaNavieras_GREEN,
           PlazoEmbarcadores,
@@ -67,17 +68,20 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
+					    	LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
+						ON A.IdTipoCarga = CARGA.id   
           WHERE   CONVERT(VARCHAR(20),A.PlazoEmbarcadores,112) < CONVERT(VARCHAR(20),GETDATE(),112)
           AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
           AND A.IdEstado not in (8,9)
           UNION
-        SELECT  I.NumConsolidado,
+        SELECT   a.id as id_asignacion_hidden, 	        a.NumMaster, I.NumConsolidado,
           FechaMaster,
           C.Descripcion as 'agente',
           D.Descripcion as 'naviera',
           E.Descripcion as 'nave',
           Viaje,
-          NumHousesBL,
+          NumHousesBL,Carga.DescripcionLarga as Carga,
+	  empresa as Marca,
           FechaETA,
           AperturaNavieras as AperturaNavieras_GREEN,
           PlazoEmbarcadores,
@@ -99,6 +103,8 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
+					    	LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
+						ON A.IdTipoCarga = CARGA.id   
           WHERE A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
           AND convert(varchar(20),A.PlazoEmbarcadores,112) < convert(varchar(20),GETDATE(),112)
           AND A.IdEstado not in (8,9)

@@ -254,6 +254,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 while (dreader.Read()) {
                     Asignacion = new PaperlessAsignacion();
+                    Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
 
                     Asignacion.Id = Convert.ToInt64(dreader["Id"]);
                     Asignacion.NumMaster = dreader["NumMaster"].ToString();

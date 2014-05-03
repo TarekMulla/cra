@@ -32,6 +32,8 @@ namespace SCCMultimodal.Panel_de_control {
             }
         }
 
+        public Boolean IsPaperless { set; get; }
+
         private void formDetailPanelDeControl_Load(object sender, EventArgs e) {
             var resultado = ClsPanelDeControl.ExecuteGenericqueryDataset(query);
 
@@ -52,10 +54,10 @@ namespace SCCMultimodal.Panel_de_control {
                     column.ColumnName = column.ColumnName.Replace("_RED", "");
                     column.ColumnName = column.ColumnName.Replace("_red", "");
                 }
-                if (column.ColumnName.Trim().ToUpper().Contains("_HIDE")) {
+                if (column.ColumnName.Trim().ToUpper().Contains("_HIDDEN")) {
                     hide.Add(i);
-                    column.ColumnName = column.ColumnName.Replace("_HIDE", "");
-                    column.ColumnName = column.ColumnName.Replace("_hide", "");
+                    column.ColumnName = column.ColumnName.Replace("_HIDDEN", "");
+                    column.ColumnName = column.ColumnName.Replace("_hidden", "");
                 }
                 i++;
             }
@@ -76,7 +78,9 @@ namespace SCCMultimodal.Panel_de_control {
                 gridView1.Columns[i1].Visible = false;
             }
 
-            if (!query.ToUpper().Contains("PAPERLESS")) {
+            IsPaperless = query.ToUpper().Contains("PAPERLESS");
+
+            if (!IsPaperless) {
                 MenuAsignacion.Visible = Menu1raEtapa.Visible = Menu2daEtapa.Visible = false;
             }
             //gridView1.BestFitColumns();
@@ -144,9 +148,10 @@ namespace SCCMultimodal.Panel_de_control {
                 form.ShowDialog();
 
 
-            } else
-                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+            } else{
+                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
         }
 
         private void Menu1raEtapa_Click(object sender, EventArgs e) {
@@ -158,10 +163,10 @@ namespace SCCMultimodal.Panel_de_control {
             if (asignacion != null) {
                 if (asignacion.VersionUsuario1 == 1)
                     form = ProyectoCraft.WinForm.Paperless.Usuario1.FrmPaperlessUser1.Instancia;
+                
                 if (asignacion.VersionUsuario1 == 2)
                     form = ProyectoCraft.WinForm.Paperless.Usuario1.frmPaperlessUser1v2.Instancia;
-
-
+                
                 form.PaperlessAsignacionActual = asignacion;
                 form.LimpiarFormulario();
                 form.CargarInformacionAsignacionInicial();
@@ -171,7 +176,7 @@ namespace SCCMultimodal.Panel_de_control {
 
             } else {
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar una asignación", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -179,11 +184,14 @@ namespace SCCMultimodal.Panel_de_control {
             var asignacion = ObtenerAsignacion();
             IFrmPaperlessUser2 form = null;
 
-            if (asignacion.VersionUsuario1 == 1)
+            if (asignacion.VersionUsuario1 == 1){
                 form = ProyectoCraft.WinForm.Paperless.Usuario2.frmPaperlessUser2.Instancia;
-            if (asignacion.VersionUsuario1 == 2)
+                form.Accion = Enums.TipoAccionFormulario.Consultar;
+            }
+            if (asignacion.VersionUsuario1 == 2){
                 form = ProyectoCraft.WinForm.Paperless.Usuario2.frmPaperlessUser2v2.Instancia;
-
+                form.Accion = Enums.TipoAccionFormulario.Consultar;
+            }
             if (asignacion != null) {
                 form.PaperlessAsignacionActual = asignacion;
                 form.Accion = Enums.TipoAccionFormulario.Consultar;
@@ -192,36 +200,37 @@ namespace SCCMultimodal.Panel_de_control {
         }
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
-            var asignacion = ObtenerAsignacion();
+            if (IsPaperless) {
+                var asignacion = ObtenerAsignacion();
+                MenuAsignacion.Enabled = false;
+                Menu1raEtapa.Enabled = false;
+                Menu2daEtapa.Enabled = false;
 
-            MenuAsignacion.Enabled = false;
-            Menu1raEtapa.Enabled = false;
-            Menu2daEtapa.Enabled = false;
+                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.AceptadoUsuario1 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.AsignadoUsuario1 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
+                                           asignacion.Estado == Enums.EstadoPaperless.RechazadaUsuario1)) {
+                    MenuAsignacion.Enabled = true;
+                }
 
-            if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.AceptadoUsuario1 ||
-                                       asignacion.Estado == Enums.EstadoPaperless.AsignadoUsuario1 ||
-                                       asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
-                                       asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                       asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
-                                       asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
-                                       asignacion.Estado == Enums.EstadoPaperless.RechazadaUsuario1)) {
-                MenuAsignacion.Enabled = true;
+                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado)) {
+                    Menu1raEtapa.Enabled = true;
+                }
+
+                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
+                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoMercante
+                                          )) {
+                    Menu2daEtapa.Enabled = true;
+                }
+
             }
-
-            if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
-                                      asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                      asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
-                                      asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado)) {
-                Menu1raEtapa.Enabled = true;
-            }
-
-            if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                      asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
-                                      asignacion.Estado == Enums.EstadoPaperless.EnviadoMercante
-                                      )) {
-                Menu2daEtapa.Enabled = true;
-            }
-
         }
 
     }

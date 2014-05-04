@@ -1109,13 +1109,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
             var excepciones = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepciones(PaperlessAsignacionActual.Id);
             var excepcionesActualizadas = LogicaNegocios.Paperless.Paperless.RefrescarExcepciones((List<PaperlessExcepcion>)excepciones);
             if (!validarPasoExcepciones((List<PaperlessExcepcion>)excepcionesActualizadas)) {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones'", "Paperless",
+                MessageBox.Show("Falta información, debe ingresar al paso 'Excepciones'", "Paperless",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             var excepcionesMaster = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerExcepcionesMaster(PaperlessAsignacionActual.Id);
             if (!validarPasoExcepcionesMaster((List<PaperlessExcepcionMaster>)excepcionesMaster)) {
-                MessageBox.Show("Falta informacion, debe ingresar al paso 'Excepciones Master'", "Paperless",
+                MessageBox.Show("Falta información, debe ingresar al paso 'Excepciones Master'", "Paperless",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

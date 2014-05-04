@@ -434,7 +434,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                         form.ObtenerAsignaciones();
 
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Proceso ha sido finalizado con exito", "Paperless", MessageBoxButtons.OK,
+                        MessageBox.Show("Proceso ha sido finalizado con éxito", "Paperless", MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
 
                         this.Close();

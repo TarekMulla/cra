@@ -42,6 +42,9 @@ namespace SCCMultimodal.Panel_de_control {
             var hide = new List<int>();
             var dt = resultado.ObjetoTransaccion as DataSet;
 
+            IsPaperless = query.ToUpper().Contains("PAPERLESS");
+
+
             var i = 0;
             foreach (DataColumn column in dt.Tables[0].Columns) {
                 if (column.ColumnName.Trim().ToUpper().Contains("_GREEN")) {
@@ -78,11 +81,11 @@ namespace SCCMultimodal.Panel_de_control {
                 gridView1.Columns[i1].Visible = false;
             }
 
-            IsPaperless = query.ToUpper().Contains("PAPERLESS");
-
+            
             if (!IsPaperless) {
                 MenuAsignacion.Visible = Menu1raEtapa.Visible = Menu2daEtapa.Visible = false;
             }
+            gridControl1.RefreshDataSource();
             //gridView1.BestFitColumns();
         }
 
@@ -232,6 +235,5 @@ namespace SCCMultimodal.Panel_de_control {
 
             }
         }
-
     }
 }

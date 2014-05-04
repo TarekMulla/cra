@@ -28,12 +28,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel7 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel8 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel9 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionAsignaciones));
             this.TabGestionPaperless = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -97,12 +97,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgrupadoPor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlEstadoPaperless.Properties)).BeginInit();
@@ -159,6 +159,7 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             this.grdAsignaciones.UseEmbeddedNavigator = true;
             this.grdAsignaciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grdAsignaciones.Click += new System.EventHandler(this.grdAsignaciones_Click);
             // 
             // gridView1
             // 
@@ -427,29 +428,29 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             // 
             this.Chartusuario2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            xyDiagram3.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisX.Range.SideMarginsEnabled = true;
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisY.Range.SideMarginsEnabled = true;
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            this.Chartusuario2.Diagram = xyDiagram3;
+            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.Chartusuario2.Diagram = xyDiagram1;
             this.Chartusuario2.Location = new System.Drawing.Point(373, 6);
             this.Chartusuario2.Name = "Chartusuario2";
-            sideBySideBarSeriesLabel7.LineVisible = true;
-            sideBySideBarSeriesLabel7.OverlappingOptionsTypeName = "OverlappingOptions";
-            series5.Label = sideBySideBarSeriesLabel7;
-            series5.Name = "Series 1";
-            sideBySideBarSeriesLabel8.LineVisible = true;
-            sideBySideBarSeriesLabel8.OverlappingOptionsTypeName = "OverlappingOptions";
-            series6.Label = sideBySideBarSeriesLabel8;
-            series6.Name = "Series 2";
+            sideBySideBarSeriesLabel1.LineVisible = true;
+            sideBySideBarSeriesLabel1.OverlappingOptionsTypeName = "OverlappingOptions";
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.Name = "Series 1";
+            sideBySideBarSeriesLabel2.LineVisible = true;
+            sideBySideBarSeriesLabel2.OverlappingOptionsTypeName = "OverlappingOptions";
+            series2.Label = sideBySideBarSeriesLabel2;
+            series2.Name = "Series 2";
             this.Chartusuario2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series5,
-        series6};
-            sideBySideBarSeriesLabel9.LineVisible = true;
-            sideBySideBarSeriesLabel9.OverlappingOptionsTypeName = "OverlappingOptions";
-            this.Chartusuario2.SeriesTemplate.Label = sideBySideBarSeriesLabel9;
+        series1,
+        series2};
+            sideBySideBarSeriesLabel3.LineVisible = true;
+            sideBySideBarSeriesLabel3.OverlappingOptionsTypeName = "OverlappingOptions";
+            this.Chartusuario2.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
             this.Chartusuario2.Size = new System.Drawing.Size(364, 479);
             this.Chartusuario2.TabIndex = 74;
             // 
@@ -666,12 +667,12 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             ((System.ComponentModel.ISupportInitialize)(this.grdAsignaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chartusuario2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgrupadoPor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).EndInit();

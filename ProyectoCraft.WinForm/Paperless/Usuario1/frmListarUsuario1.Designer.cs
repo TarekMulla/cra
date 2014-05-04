@@ -72,6 +72,7 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -446,7 +447,8 @@
             this.gridColumn6,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn11});
             this.gridView1.GridControl = this.gridAsignaciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -550,6 +552,14 @@
             this.labelControl6.TabIndex = 4;
             this.labelControl6.Text = "Usuario 1ra Etapa";
             // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Marca";
+            this.gridColumn11.FieldName = "Asignacion.Marca";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 10;
+            // 
             // frmListarUsuario1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,5 +646,6 @@
         private DevExpress.XtraEditors.DateEdit txtHasta;
         private DevExpress.XtraEditors.DateEdit txtDesde;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEstados;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

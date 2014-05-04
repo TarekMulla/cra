@@ -414,10 +414,16 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                     MessageBox.Show("Error al cambiar estado del paso. \n" + resultado.Descripcion, "Paperless",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    PaperlessUsuario1HouseBLInfo info =
-                        LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
-                    resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
-                    //resultado = Utils.EnvioEmail.EnviarMailPaperlessUsuario2erminaProceso(PaperlessAsignacionActual,info);
+                    PaperlessUsuario1HouseBLInfo info =LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
+                    //LK 03-05 Diferencia la rutina de envia de correo de proceso finalizado dependiendo si es Brasil o Chile
+                    if (IsBrasil)
+                    {
+                        resultado = mail.EnviarMailPaperlessUsuario2TerminaProcesoBrasil(PaperlessAsignacionActual, info);
+                    }
+                    else
+                    {
+                        resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
+                    }
 
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
                         Cursor.Current = Cursors.Default;
@@ -434,7 +440,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                         this.Close();
                     }
                     Cursor.Current = Cursors.Default;
-                    //CargarPasos();
                 }
             }
 
@@ -1136,9 +1141,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
             long IdAsignacion = 0;
             try {
                 var mail = new EnvioMailObject();
+                ResultadoTransaccion resultado;
                 var info = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(PaperlessAsignacionActual.Id);
-                var resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
                 IdAsignacion = info.IdAsignacion;
+                //LK 03-05 Diferencia la rutina de envia de correo de proceso finalizado dependiendo si es Brasil o Chile
+                if (IsBrasil)
+                {
+                    resultado = mail.EnviarMailPaperlessUsuario2TerminaProcesoBrasil(PaperlessAsignacionActual, info);
+                }
+                else
+                {
+                    resultado = mail.EnviarMailPaperlessUsuario2TerminaProceso(PaperlessAsignacionActual, info);
+                }
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
                     Log.Info("btnReenviarCorreoTermino_Click Rechazada");
                     MessageBox.Show("Error al enviar email de termino de proceso. \n" + resultado.Descripcion, "Paperless",

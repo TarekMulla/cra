@@ -1071,16 +1071,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {
                 resultado = mail.EnviarMailPaperlessAsignacionUsuario1(PaperlessAsignacionActual);
-                //resultado = Utils.EnvioEmail.EnviarMailPaperlessAsignacionUsuario1(PaperlessAsignacionActual);
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Ocurrio un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrió un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 Cursor.Current = Cursors.Default;
-                //ValidarEstados();
-                //tabAsignacion.SelectedTabPage = tabPrealerta;
                 MessageBox.Show("Asignación realizada correctamente", "Paperless", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
 

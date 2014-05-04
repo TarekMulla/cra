@@ -141,11 +141,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             else
                 estados = "-1";
 
-            //if (ddlEstado.SelectedIndex <= 0)
-            //    estado = -1;
-            //else
-            //    estado = ((ProyectoCraft.Entidades.Paperless.PaperlessEstado)ddlEstado.SelectedItem).Id;
-
             if (txtNumConsolidado.Text.Length.Equals(0))
                 numconsolidado = "-1";
             else

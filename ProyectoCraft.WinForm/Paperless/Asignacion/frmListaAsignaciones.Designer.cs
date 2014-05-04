@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaAsignaciones));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Menu_Nuevo = new System.Windows.Forms.ToolStripButton();
             this.Menu_Ver = new System.Windows.Forms.ToolStripButton();
@@ -116,6 +116,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtShipping = new System.Windows.Forms.TextBox();
             this.txtPuerto = new System.Windows.Forms.TextBox();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -586,7 +587,8 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn9,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.gridColumn12});
             this.gridView1.GridControl = this.gridAsignaciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -738,9 +740,9 @@
             this.grdHbls.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdHbls.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.grdHbls.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.grdHbls.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode1});
             this.grdHbls.Location = new System.Drawing.Point(3, 120);
             this.grdHbls.MainView = this.gridView3;
             this.grdHbls.Name = "grdHbls";
@@ -883,9 +885,9 @@
             this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.GrdCantAsignaciones.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.GrdCantAsignaciones.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.GrdCantAsignaciones.Location = new System.Drawing.Point(3, 100);
             this.GrdCantAsignaciones.MainView = this.gridView4;
             this.GrdCantAsignaciones.Name = "GrdCantAsignaciones";
@@ -1055,6 +1057,14 @@
             this.txtPuerto.Size = new System.Drawing.Size(100, 20);
             this.txtPuerto.TabIndex = 3;
             // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Marca";
+            this.gridColumn12.FieldName = "Asignacion.Marca";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 11;
+            // 
             // frmListaAsignaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1203,5 +1213,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

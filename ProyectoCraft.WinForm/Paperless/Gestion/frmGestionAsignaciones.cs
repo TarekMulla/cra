@@ -230,5 +230,10 @@ namespace ProyectoCraft.WinForm.Paperless.GestionAsignacion
             Instancia = null;
             Close();
         }
+
+        private void grdAsignaciones_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

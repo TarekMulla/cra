@@ -38,7 +38,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public Enums.Enums.EstadoPaperless Estado { get; set; }
         public string EstadoDescripcion { get; set; }
 
-
         public clsUsuario UsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaPaso1 { get; set; }
@@ -63,5 +62,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public string TxtCourier{ get; set; }
         public int FechaMaximaVinculacionDiff { get; set; }
         public DateTime? FechaMaximaVinculacion { get; set; }
+        public string Marca { get; set; }
     }
 }

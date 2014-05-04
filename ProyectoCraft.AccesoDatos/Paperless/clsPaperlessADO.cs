@@ -227,6 +227,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.Asignacion.ObservacionUsuario1 = dreader["ObservacionUsuario1"].ToString();
                     flujopaperless.Asignacion.ObservacionUsuario2 = dreader["ObservacionUsuario2"].ToString();
                     flujopaperless.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();
+                    flujopaperless.Asignacion.Marca = dreader["Empresa"].ToString();
 
                     listasignaciones.Add(flujopaperless);
                 }
@@ -2775,6 +2776,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     asignaciones.Asignacion.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
 
                     asignaciones.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
+                    asignaciones.Asignacion.Marca = dreader["Empresa"].ToString();
                     listasignaciones.Add(asignaciones);
                 }
             } catch (Exception ex) {

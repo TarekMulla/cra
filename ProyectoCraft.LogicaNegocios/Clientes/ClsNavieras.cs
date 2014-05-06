@@ -26,9 +26,9 @@ namespace ProyectoCraft.LogicaNegocios.Clientes
         {
             return AccesoDatos.Parametros.ClsNavierasDAO.NuevaNaviera(nombre,relacionPuertos);
         }
-        public static ResultadoTransaccion EliminaNaviera(Int64 id)
+        public static ResultadoTransaccion EliminaNaviera(Int64 id, string nombre)
         {
-            return AccesoDatos.Parametros.ClsNavierasDAO.EliminaNaviera(id);
+            return AccesoDatos.Parametros.ClsNavierasDAO.EliminaNaviera(id,nombre);
         }
         public static IList<ClsNaviera> BuscarNavieraPorTextoLike(string naviera)
         {

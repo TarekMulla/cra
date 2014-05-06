@@ -10,6 +10,7 @@ using ProyectoCraft.LogicaNegocios.Clientes;
 using ProyectoCraft.LogicaNegocios.Cotizaciones;
 using ProyectoCraft.LogicaNegocios.Mantenedores;
 using ProyectoCraft.WinForm.Paperless.Asignacion;
+using System.Xml;
 
 //namespace SCCMultimodal.Mantenedores
 namespace ProyectoCraft.WinForm.Clientes
@@ -74,6 +75,7 @@ namespace ProyectoCraft.WinForm.Clientes
         public void ListarNavieras()
         {
             IList<ClsNaviera> listNavieras = ClsNavieras.ListarNavieras();
+            gridView1.ActiveFilter.Clear();
             grdNavieras.DataSource = listNavieras;
             grdNavieras.RefreshDataSource();
         }
@@ -116,6 +118,7 @@ namespace ProyectoCraft.WinForm.Clientes
         {
             txtNombre.Text = "";
             txtId.Text = "";
+            txtNombre.Focus();
             ListaPuertos.Items.Clear();
             ListPuertoSeleccionado.Items.Clear();
         }
@@ -137,7 +140,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
         private void frmNavieras_Load(object sender, EventArgs e)
         {
-
+            ListarNavieras();
         }
 
         private void MenuSalir_Click_1(object sender, EventArgs e)
@@ -159,7 +162,7 @@ namespace ProyectoCraft.WinForm.Clientes
 
             if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtId.Text))
             {
-                var res = ClsNavieras.EliminaNaviera(Convert.ToInt64(txtId.Text));
+                var res = ClsNavieras.EliminaNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text);
                 MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
                 ListarNavieras();
@@ -240,6 +243,8 @@ namespace ProyectoCraft.WinForm.Clientes
                 var res = ClsNavieras.ActualizarNaviera(Convert.ToInt64(txtId.Text), txtNombre.Text, ObtienePuertosSeleccionados());
                 MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
+                CargaPuertos();
+                ListarNavieras();
                 if (fromPaperless.Equals(true))
                 {
                     InstanciaPaperless.CargarNavierasExistentes();
@@ -250,15 +255,16 @@ namespace ProyectoCraft.WinForm.Clientes
                 var res = ClsNavieras.NuevaNaviera(txtNombre.Text.Trim(), ObtienePuertosSeleccionados());
                 MessageBox.Show(res.Descripcion, "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarDatos();
+                CargaPuertos();
+                ListarNavieras();
                 if (fromPaperless.Equals(true))
                 {
                     InstanciaPaperless.CargarNavierasExistentes();                    
-                    CargaPuertos();
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un registro para Editar", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar un registro para Editar.", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -282,6 +288,7 @@ namespace ProyectoCraft.WinForm.Clientes
         {
             LimpiarDatos();
             CargaPuertos();
+            ListarNavieras();
         }
 
         private void MenuExcel_Click(object sender, EventArgs e)
@@ -347,6 +354,68 @@ namespace ProyectoCraft.WinForm.Clientes
         private void frmNavieras_FormClosed(object sender, FormClosedEventArgs e)
         {
             Instancia = null;
+        }
+
+        private void MenuEditar_Click(object sender, EventArgs e)
+        {
+            this.LblNombre.Enabled = true;
+            this.txtNombre.Enabled = true;
+            this.Puertos.Enabled = true;
+        }
+
+        private void grdNavieras_Click_1(object sender, EventArgs e)
+        {
+            ClsNaviera naviera = ObtenerNaviera();
+            if (naviera != null)
+            {
+                frmNavieras form = frmNavieras.Instancia;
+                CargaPuertosPorNaviera(naviera);
+
+                if (naviera != null)
+                {
+                    form.NavieraActual = naviera;
+                    txtNombre.Text = naviera.Nombre;
+                    txtId.Text = naviera.Id.ToString();
+
+                }
+                else
+                    MessageBox.Show("Debe seleccionar una Naviera", "Naviera", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+
+        }
+
+        private void AddPuertoSeleccionado_Click(object sender, EventArgs e)
+        {
+            var seleccionados = ListaPuertos.SelectedItems;
+            var list = new List<int>();
+            ResultadoTransaccion trxAllPort = ClsPuertos.ObtieneTodosLosPuertos();
+            foreach (var seleccionado in seleccionados)
+            {
+                ListPuertoSeleccionado.Items.Add(seleccionado);
+                list.Add(ListaPuertos.Items.IndexOf(seleccionado));
+            }
+            list.Reverse();
+            foreach (var i in list)
+                if (i != -1)
+                    ListaPuertos.Items.RemoveAt(i);
+            ListPuertoSeleccionado.Refresh();
+
+        }
+
+        private void RemovePol_Click(object sender, EventArgs e)
+        {
+            var seleccionados = ListPuertoSeleccionado.SelectedItems;
+            var list = new List<int>();
+            foreach (var seleccionado in seleccionados)
+            {
+                ListaPuertos.Items.Add(seleccionado);
+                list.Add(ListPuertoSeleccionado.Items.IndexOf(seleccionado));
+            }
+            list.Reverse();
+            foreach (var i in list)
+                ListPuertoSeleccionado.Items.RemoveAt(i);
+
         }
     }
 }

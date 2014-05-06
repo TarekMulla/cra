@@ -1426,18 +1426,19 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 }
 
-                //guardar info
-                if (!esupdate) {
-                    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                    else
-                        info.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                } else {
+                //Solo se debe actualizar HBL Info, por  que la consolidada se graba en la asignación.
+                ////guardar info
+                //if (!esupdate) {
+                //    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
+                //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                //        throw new Exception(resultado.Descripcion);
+                //    else
+                //        info.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                //} else {
                     resultado = Usuario1ActualizaPaso1Info(info, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
-                }
+                //}
 
 
                 //cambiar estado paso

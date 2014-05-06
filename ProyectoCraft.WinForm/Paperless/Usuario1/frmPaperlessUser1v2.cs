@@ -559,19 +559,25 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             dxErrorProvider1.ClearErrors();
             if (txtP1CantHouses.Text.Length.Equals(0)) {
-                dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses.", ErrorType.Critical);
+                valida = false;
+            }
+            if (DdlEmpresa.SelectedIndex <=0)
+            
+            {
+                dxErrorProvider1.SetError(DdlEmpresa, "Debe ingresar Marca.", ErrorType.Critical);
                 valida = false;
             }
 
             if (txtP1NumConsolidado.Text.Length.Equals(0)) {
-                dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar numero de consolidado", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar numero de consolidado.", ErrorType.Critical);
                 valida = false;
             } else {
                 var configuracion = Base.Configuracion.Configuracion.Instance();
                 var opcion = configuracion.GetValue("Paperless_Usuario1_Valida_Num_Consolidado"); //puede retornar un true, false o null
                 if (opcion.HasValue && opcion.Value.Equals(true)) {
                     if (LogicaNegocios.Paperless.Paperless.ValidaNumConsolidado(txtP1NumConsolidado.Text, PaperlessAsignacionActual.Id32.ToString()).Equals(true)) {
-                        dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el numero de consolidado",
+                        dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el numero de consolidado.",
                                                   ErrorType.Critical);
                         return false;
                     }

@@ -286,3 +286,27 @@ if (@HastaNavieras is not null and @HastaNavieras <> '')
 
 print @sql
 execute(@sql)
+
+
+
+DROP PROCEDURE [dbo].[SP_N_PAPERLESS_NAVIERAV2]  
+GO
+CREATE  PROCEDURE [dbo].[SP_N_PAPERLESS_NAVIERAV2]  
+@Descripcion nvarchar(1000),  
+@Activo bit,
+@Existe int output   
+  
+AS  
+ 
+SELECT @Existe=1
+SELECT @Existe = (SELECT TOP 1 id FROM PAPERLESS_NAVIERA  WHERE descripcion =  rtrim(ltrim (@Descripcion))) 
+
+IF (@Existe IS NULL)  
+BEGIN   
+	SELECT @Existe=0
+	
+	INSERT INTO PAPERLESS_NAVIERA(Descripcion,Activo,FechaCreacion)  
+	VALUES(rtrim(ltrim(@Descripcion)),@Activo,GETDATE())  
+	SELECT SCOPE_IDENTITY()
+	select @Existe  
+END  

@@ -45,8 +45,6 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.toolStripBarraLlamada = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -77,6 +75,8 @@
             this.groupControl1.Appearance.ForeColor = System.Drawing.Color.Transparent;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Appearance.Options.UseForeColor = true;
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.chkListEstado);
             this.groupControl1.Controls.Add(this.ChkListMarca);
@@ -94,17 +94,19 @@
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(0, 51);
+            this.groupControl1.Location = new System.Drawing.Point(12, 41);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1043, 157);
+            this.groupControl1.Size = new System.Drawing.Size(1044, 157);
             this.groupControl1.TabIndex = 127;
             this.groupControl1.Text = "Filtros";
             // 
             // labelControl5
             // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Location = new System.Drawing.Point(607, 19);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(29, 13);
+            this.labelControl5.Size = new System.Drawing.Size(35, 13);
             this.labelControl5.TabIndex = 119;
             this.labelControl5.Text = "Marca";
             // 
@@ -153,9 +155,11 @@
             // 
             // labelControl2
             // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(393, 19);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(67, 13);
+            this.labelControl2.Size = new System.Drawing.Size(77, 13);
             this.labelControl2.TabIndex = 116;
             this.labelControl2.Text = "Tipo de Carga";
             // 
@@ -171,17 +175,19 @@
             // 
             this.labelControl8.Location = new System.Drawing.Point(6, 74);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(91, 13);
+            this.labelControl8.Size = new System.Drawing.Size(103, 13);
             this.labelControl8.TabIndex = 113;
-            this.labelControl8.Text = "Creación Paperless";
+            this.labelControl8.Text = "Creación Consolidada";
             // 
             // lblEstadoPaperless
             // 
+            this.lblEstadoPaperless.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblEstadoPaperless.Appearance.Options.UseFont = true;
             this.lblEstadoPaperless.Location = new System.Drawing.Point(821, 19);
             this.lblEstadoPaperless.Name = "lblEstadoPaperless";
-            this.lblEstadoPaperless.Size = new System.Drawing.Size(82, 13);
+            this.lblEstadoPaperless.Size = new System.Drawing.Size(38, 13);
             this.lblEstadoPaperless.TabIndex = 112;
-            this.lblEstadoPaperless.Text = "Estado Paperless";
+            this.lblEstadoPaperless.Text = "Estado";
             // 
             // TxtHastaCreacion
             // 
@@ -278,10 +284,10 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(0, 213);
+            this.gridControl1.Location = new System.Drawing.Point(12, 213);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1043, 289);
+            this.gridControl1.Size = new System.Drawing.Size(1044, 341);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -298,31 +304,18 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsMenu.ShowGroupSortSummaryItems = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // toolStripBarraLlamada
             // 
             this.toolStripBarraLlamada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator4,
-            this.toolStripSeparator5,
             this.MenuExportar,
             this.toolStripButton2,
             this.toolStripSeparator6});
             this.toolStripBarraLlamada.Location = new System.Drawing.Point(0, 0);
             this.toolStripBarraLlamada.Name = "toolStripBarraLlamada";
-            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1043, 38);
+            this.toolStripBarraLlamada.Size = new System.Drawing.Size(1062, 38);
             this.toolStripBarraLlamada.TabIndex = 128;
             this.toolStripBarraLlamada.Text = "toolStrip1";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 38);
             // 
             // MenuExportar
             // 
@@ -355,12 +348,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 514);
+            this.ClientSize = new System.Drawing.Size(1062, 560);
             this.Controls.Add(this.toolStripBarraLlamada);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.groupControl1);
             this.Name = "frmGestionPaperlessInformes";
-            this.Text = "Informes de Gestión Paperless";
+            this.Text = "Informes Calidad y Productividad";
             this.Load += new System.EventHandler(this.frmGestionPaperlessInformes_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGestionPaperlessInformes_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -410,8 +403,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.ToolStrip toolStripBarraLlamada;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton MenuExportar;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;

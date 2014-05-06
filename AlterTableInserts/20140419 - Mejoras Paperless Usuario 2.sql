@@ -145,7 +145,9 @@ PA.MasterConfirmado,
 PA.FechaMasterConfirmado,
 PA.txtCourier,
 PA.FechaMaximaVinculacion,
-PA.versionUsuario1
+PA.versionUsuario1,
+PA.empresa,
+PA.numContenedor
 FROM PAPERLESS_ASIGNACION PA
 LEFT OUTER JOIN PAPERLESS_AGENTE PAA
 ON PA.IdAgente = PAA.Id

@@ -555,7 +555,7 @@
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Marca";
-            this.gridColumn11.FieldName = "Asignacion.Marca";
+            this.gridColumn11.FieldName = "Asignacion.Marca.Codigo";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;

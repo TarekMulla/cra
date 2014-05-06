@@ -11,8 +11,11 @@ using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
+using ProyectoCraft.Entidades.Integracion;
 using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Parametros;
+using ProyectoCraft.LogicaNegocios.Paperless;
+using ProyectoCraft.LogicaNegocios.Integracion;
 using SCCMultimodal.Utils;
 
 namespace ProyectoCraft.WinForm.Paperless.Asignacion
@@ -98,10 +101,37 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             txtfechaMasterConfirmado.Properties.ReadOnly = true;
             txtfechaMasterConfirmado.Enabled = true;
             txtCourier.Enabled = false;
+            if (!IsBrasil)
+            {
+                lblMarca.Visible = false;
+                ddlMarca.Visible = false;
+                lblNumConsolidada.Visible = false;
+                txtNumConsolidada.Visible = false;
+                lblNumContenedores.Visible = false;
+                txtNumContenedores.Visible = false;
+                btnRecuperaNumConsolidado.Visible = false;
+            }
+            else
+            {
+                lblMarca.Enabled = false;
+                ddlMarca.Enabled = false;
+                lblNumConsolidada.Enabled = false;
+                txtNumConsolidada.Enabled = false;
+                lblNumContenedores.Enabled = false;
+                txtNumContenedores.Enabled = false;
+                btnRecuperaNumConsolidado.Enabled = false;
+            }
         }
 
         public void FormLoad()
         {
+
+            var conf = Base.Configuracion.Configuracion.Instance();
+            var op = conf.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (op.HasValue && op.Value.Equals(true))
+                IsBrasil = true;
+
+
             CargarProductos();
             CargarTipoServicios();
             CargarUsuarios();
@@ -111,6 +141,29 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             CargarImportancia();
             HabilitarOpcionesPorFlags();
             ValidarEstados();
+            if (IsBrasil)
+            {
+                lblMarca.Visible = true;
+                ddlMarca.Visible = true;
+                lblNumConsolidada.Visible = true;
+                txtNumConsolidada.Visible = true;
+                lblNumContenedores.Visible = true;
+                txtNumContenedores.Visible = true;
+                btnRecuperaNumConsolidado.Visible = true;
+                CargarEmpresas();
+                              
+                
+            }
+            else
+            {
+                lblMarca.Visible = false;
+                ddlMarca.Visible = false;
+                lblNumConsolidada.Visible = false;
+                txtNumConsolidada.Visible = false;
+                lblNumContenedores.Visible = false;
+                txtNumContenedores.Visible = false;
+                btnRecuperaNumConsolidado.Visible = false;
+            }
         }
         private void HabilitarOpcionesPorFlags()
         {
@@ -204,7 +257,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (Asignacion != null)
             {
                 PaperlessAsignacionActual = Asignacion;
-
+                
                 txtNumMaster.Text = Asignacion.NumMaster;
                 txtFechaMaster.Text = Asignacion.FechaMaster.ToShortDateString();
                 ddlAgente.SelectedItem = Asignacion.Agente;
@@ -325,6 +378,27 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     txtNaveTransbordo.Text = String.Empty;
                     ddlNaveTransbordo.SelectedItem = null;
                 }
+                if (IsBrasil)
+                {
+
+                    if (Asignacion.Marca == null)
+                        ddlMarca.SelectedIndex = 0;
+                    else
+                    {
+                        for (int i = 0; i < ddlMarca.Properties.Items.Count; i++)
+                        {
+                            if (ddlMarca.Properties.Items[i].ToString() == Asignacion.Marca.Codigo)
+                            {
+                                ddlMarca.SelectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                    txtNumContenedores.Text = Asignacion.NumContenedor;
+                    CargarConsolidado(Asignacion.Id);
+                    
+                }
+
                 CargaMasterConfirmado();
                 CargaShippingPuerto();
                 ValidarEstados();
@@ -552,6 +626,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             {
                 coll.Add(list);
             }
+
             ddlTipoServicio.SelectedIndex = 0;
         }
 
@@ -622,6 +697,39 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         }
 
 
+        public void CargarEmpresas()
+        {
+            List<PaperlessEmpresa> empresas = ProyectoCraft.LogicaNegocios.Paperless.Paperless.ListarEmpresas();
+            ddlMarca.Properties.Items.Clear();
+            ComboBoxItemCollection coll = ddlMarca.Properties.Items;
+            coll.Add(Utils.Utils.ObtenerPrimerItem());
+            foreach (var list in empresas)
+            {
+                PaperlessEmpresa item = new PaperlessEmpresa();
+                item.Codigo = list.Codigo;
+                item.Nombre = list.Nombre;
+                coll.Add(item);
+            }
+            ddlMarca.SelectedIndex = 0;
+        }
+
+        public void CargarConsolidado(long Id)
+        {
+
+            //Cargar Info Houses BL
+            PaperlessUsuario1HouseBLInfo info = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(Id);
+            if (info != null)
+                txtNumConsolidada.Text = info.NumConsolidado;
+            else
+                txtNumConsolidada.Text = "";
+
+        }
+
+
+
+
+
+
 
         private void frmPaperlessAsignacion_Leave(object sender, EventArgs e)
         {
@@ -636,14 +744,32 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void GuardarPaso1()
         {
-            if (!ValidarPaso1()) return;
-
+            if (!ValidarPaso1())
+            {
+                return;
+            }
             VistaADominioPaso1();
-
+            
             ResultadoTransaccion resultado = new ResultadoTransaccion();
+
+            var Nuevo = PaperlessAsignacionActual.IsNew;        
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso1(PaperlessAsignacionActual);
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {
+                if (IsBrasil)
+                {
+                    
+                   PaperlessUsuario1HouseBLInfo HouseBLInfo = new PaperlessUsuario1HouseBLInfo();
+                   HouseBLInfo.IdAsignacion = Convert.ToInt64(resultado.ObjetoTransaccion);
+                   HouseBLInfo.NumConsolidado = txtNumConsolidada.Text;
+                   HouseBLInfo.CantHouses = Convert.ToInt64(txtNumHousesBL.Text);
+
+                   var resultado1 = LogicaNegocios.Paperless.Paperless.AsignacionGuardaHousesBLInfo(HouseBLInfo, Nuevo);
+                   
+                    if (resultado1.Estado != Enums.EstadoTransaccion.Aceptada)
+                        MessageBox.Show(resultado1.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
                 ValidarEstados();
                 PaperlessAsignacionActual.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 tabAsignacion.SelectedTabPage = tabFechas;
@@ -665,7 +791,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
             if (txtNumMaster.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtNumMaster, "Debe ingresar Número de Master", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtNumMaster, "Debe ingresar Número de Master.", ErrorType.Critical);
                 valida = false;
             }
             else
@@ -679,20 +805,20 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
             if (txtFechaMaster.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtFechaMaster, "Debe selecionar Fecha de Master", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtFechaMaster, "Debe selecionar Fecha de Master.", ErrorType.Critical);
                 valida = false;
             }
 
             if (txtNumHousesBL.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtNumHousesBL, "Debe ingresar número de Houses", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtNumHousesBL, "Debe ingresar número de Houses.", ErrorType.Critical);
                 valida = false;
             }
 
             lblAlertaPlazoembarcadores.Visible = true;
             if (ddlTipoCarga.SelectedIndex == 0)
             {
-                dxErrorProvider1.SetError(ddlTipoCarga, "Debe seleccionar Tipo de Carga", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlTipoCarga, "Debe seleccionar Tipo de Carga.", ErrorType.Critical);
                 valida = false;
             }
             else
@@ -710,7 +836,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     lblAlertaPlazoembarcadores.Visible = false;
                     if ((String.IsNullOrEmpty(txtNaveTransbordo.Text)))
                     {
-                        dxErrorProvider1.SetError(txtNave, "Debe seleccionar una nave de transbordo", ErrorType.Critical);
+                        dxErrorProvider1.SetError(txtNave, "Debe seleccionar una nave de transbordo.", ErrorType.Critical);
                         valida = false;
                         return false;
                     }
@@ -718,15 +844,29 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 }
             }
 
-            if (ddlAgente.SelectedIndex == -1)
+            if (ddlAgente.SelectedIndex <=0)
             {
-                dxErrorProvider1.SetError(ddlAgente, "Debe seleccionar un Agente valido", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlAgente, "Debe seleccionar un Agente válido.", ErrorType.Critical);
                 valida = false;
             }
-            if (ddlNaviera.SelectedIndex == -1)
+            if (ddlNaviera.SelectedIndex <=0)
             {
-                dxErrorProvider1.SetError(ddlNaviera, "Debe seleccionar una Naviera valida", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlNaviera, "Debe seleccionar una Naviera válida.", ErrorType.Critical);
                 valida = false;
+            }
+            if (IsBrasil)
+            {
+                if (txtNumConsolidada.Text.Length.Equals(0))
+                {
+                    dxErrorProvider1.SetError(txtNumConsolidada, "Debe ingresar número de Consolidada.", ErrorType.Critical);
+                    valida = false;
+                }
+                if (ddlMarca.SelectedIndex <=0)
+                {
+                    dxErrorProvider1.SetError(ddlMarca, "Debe seleccionar marca.", ErrorType.Critical);
+                    valida = false;
+                }
+
             }
 
             return valida;
@@ -789,6 +929,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         }
 
+
         private void VistaADominioPaso1()
         {
             PaperlessAsignacionActual.NumMaster = txtNumMaster.Text;
@@ -841,7 +982,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             }
 
 
-
+            
             PaperlessAsignacionActual.Viaje = txtViaje.Text;
             PaperlessAsignacionActual.NumHousesBL = Convert.ToInt16(txtNumHousesBL.Text);
             PaperlessAsignacionActual.TipoCarga = (PaperlessTipoCarga)ddlTipoCarga.SelectedItem;
@@ -855,7 +996,19 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             else
                 PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
 
+            if (IsBrasil)
+            {
+                if (ddlMarca.SelectedIndex <= 0)
+                    PaperlessAsignacionActual.Marca = null;
+                else
+                  PaperlessAsignacionActual.Marca = (PaperlessEmpresa)ddlMarca.SelectedItem;
+                
+                PaperlessAsignacionActual.NumContenedor = txtNumContenedores.Text;
+                
+                
 
+
+            }
         }
 
         private void btnSiguienteP3_Click(object sender, EventArgs e)
@@ -1184,9 +1337,31 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             ddlUsuario1.SelectedIndex = 0;
             ddlUsuario2.SelectedIndex = 0;
             PaperlessAsignacionActual = null;
+            
         }
 
         private void txtNumHousesBL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+        private void txtNumContenedores_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1205,6 +1380,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 e.Handled = true;
             }
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -1479,5 +1655,79 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (IsBrasil)
                 ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
         }
-    }
+
+        private void tabAsignacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
+        private void txtNumHousesBL_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumContenedores_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private string ObtieneNumConsolidadNetShip(string NumMaster,string storeProcedureName) 
+        {
+            string numConsolidada="";
+            IList<IntegracionNetShip> netShips;
+            netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(NumMaster, storeProcedureName);
+            
+            if (netShips.Count > 0) {
+               numConsolidada = netShips[0].Consolidada;
+            }
+            return numConsolidada;
+         }
+
+
+
+        private void GuardaRegLogCarga(Int32 idPaperless, string valorPaperless, string valorNetShip, string mensaje, Int32 idPaperlessTipoError)
+        {
+            IntegracionNetShip logCarga = new IntegracionNetShip();
+            logCarga.IdPaperless = idPaperless;
+            logCarga.ValorPaperless = valorPaperless;
+            logCarga.ValorNetShip = valorNetShip;
+            logCarga.Mensaje = mensaje;
+            logCarga.IdPaperlessTipoError = idPaperlessTipoError;
+            LogicaNegocios.Integracion.Integracion.GuardaLogProceso(logCarga);
+        }
+
+        private void btnRecuperaNumConsolidado_Click(object sender, EventArgs e)
+        {
+            
+        
+        }
+
+        private void btnRecuperaNumConsolidado_Click_1(object sender, EventArgs e)
+        {
+            if (IsBrasil)
+            {
+                if (txtNumMaster.Text != "")
+                {
+                    var numMaster = txtNumMaster.Text;
+                    if (ddlMarca.SelectedIndex > 0)
+                    {
+                        var NumConsolidadaNS = ObtieneNumConsolidadNetShip(numMaster, "sp_SCC_HouseBLs" + "_" + ddlMarca.SelectedText);
+                        if (!NumConsolidadaNS.Length.Equals(0))
+                            txtNumConsolidada.Text = NumConsolidadaNS;
+                        else
+                        {
+                            txtNumConsolidada.Text = "";
+                            txtNumConsolidada.Focus();
+                            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Numero de Consolidada", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.SinNumeroConsolidada);
+
+                        }
+                    }
+                }
+            }
+        }
+
+       
+               
+    } 
 }

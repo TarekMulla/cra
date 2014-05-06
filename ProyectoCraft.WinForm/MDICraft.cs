@@ -27,6 +27,7 @@ namespace ProyectoCraft.WinForm {
 
     public partial class MDICraft : Form {
         public bool? MostrarPanel = null;
+        public bool IsBrasil { get; set; }
         private int childFormNumber = 0;
         private List<ClsPanelDeControl> panelDecontrols;
         private ClsPanelDeControl panelDeControlSeleccionado;
@@ -173,6 +174,13 @@ namespace ProyectoCraft.WinForm {
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, TimerMDI.Elapsed.TotalSeconds, "Carga Inicial de SCC"));
+
+
+            //verifica Pais
+            var conf = Base.Configuracion.Configuracion.Instance();
+            var op = conf.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
+            if (op.HasValue && op.Value.Equals(true))
+                IsBrasil = true;
 
         }
 

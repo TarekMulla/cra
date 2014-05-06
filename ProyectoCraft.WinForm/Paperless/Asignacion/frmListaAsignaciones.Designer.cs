@@ -82,6 +82,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -116,7 +117,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtShipping = new System.Windows.Forms.TextBox();
             this.txtPuerto = new System.Windows.Forms.TextBox();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -681,6 +681,14 @@
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;
             // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Marca";
+            this.gridColumn12.FieldName = "Asignacion.Marca.Codigo";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 11;
+            // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
@@ -1056,14 +1064,6 @@
             this.txtPuerto.Name = "txtPuerto";
             this.txtPuerto.Size = new System.Drawing.Size(100, 20);
             this.txtPuerto.TabIndex = 3;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Marca";
-            this.gridColumn12.FieldName = "Asignacion.Marca";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
             // 
             // frmListaAsignaciones
             // 

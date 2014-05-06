@@ -828,7 +828,7 @@ namespace SCCMultimodal.Utils
                 //Marca
                 if (asignacion.Marca!=null)
                 {
-                    Marca = asignacion.Marca;
+                    Marca = asignacion.Marca.Codigo;
                     string EmailGestoresMarca = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailGestores" + Marca.ToUpper().ToString());
                     if (!string.IsNullOrEmpty(EmailGestoresMarca))
                     {

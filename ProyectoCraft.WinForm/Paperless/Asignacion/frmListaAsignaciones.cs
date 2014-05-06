@@ -47,6 +47,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             CargarUsuarios();
             ListarAsignaciones();
             CargarNavesExistentes();
+            
         }
         private void CargarNavesExistentes()
         {

@@ -227,8 +227,10 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.Asignacion.ObservacionUsuario1 = dreader["ObservacionUsuario1"].ToString();
                     flujopaperless.Asignacion.ObservacionUsuario2 = dreader["ObservacionUsuario2"].ToString();
                     flujopaperless.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();
-                    flujopaperless.Asignacion.Marca = dreader["Empresa"].ToString();
-
+                    flujopaperless.Asignacion.Marca = new PaperlessEmpresa();
+                    flujopaperless.Asignacion.Marca.Codigo = dreader["Empresa"].ToString();
+                    flujopaperless.Asignacion.Marca.Nombre = dreader["Empresa"].ToString();
+                    
                     listasignaciones.Add(flujopaperless);
                 }
             } catch (Exception ex) {
@@ -378,6 +380,17 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (!(dreader["txtCourier"] is DBNull))
                         Asignacion.TxtCourier = dreader["txtCourier"].ToString();
 
+                    //PU
+                    if (dreader["Empresa"] is DBNull)
+                        Asignacion.Marca = null;
+                    else
+                        Asignacion.Marca = new PaperlessEmpresa() { Codigo = dreader["empresa"].ToString(), Nombre = dreader["empresa"].ToString()};
+
+
+                    if (!(dreader["numContenedor"] is DBNull))
+                        Asignacion.NumContenedor = dreader["numContenedor"].ToString();
+
+
                 }
             } catch (Exception ex) {
                 Base.Log.Log.EscribirLog(ex.Message);
@@ -443,6 +456,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     paso1.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 }
 
+
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
@@ -456,6 +470,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
             return resultado;
         }
+
 
         public static ResultadoTransaccion AsignacionActualizarPaso1(PaperlessAsignacion paso1) {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
@@ -632,6 +647,17 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     objParams[11].Value = AsignacionPaso1.NaveTransbordo.Id;
                 else
                     objParams[11].Value = -1;
+                
+                //falta poner validacion IsBrasil PU
+
+                if (AsignacionPaso1.Marca != null)
+                    objParams[12].Value = AsignacionPaso1.Marca.Codigo;
+                else
+                    objParams[12].Value = -1;
+
+                objParams[13].Value=AsignacionPaso1.NumContenedor;
+
+
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;
@@ -685,11 +711,18 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
 
                 if (AsignacionPaso1.NaveTransbordo != null) objParams[10].Value = AsignacionPaso1.NaveTransbordo.Id32;
-                if (!string.IsNullOrEmpty(AsignacionPaso1.MotivoModificacion))
-                    objParams[11].Value = AsignacionPaso1.MotivoModificacion;
-                //else
-                //  objParams[10].Value = null;
+                
+                if (AsignacionPaso1.Marca == null)
+                    objParams[11].Value = -1;
+                else
+                    objParams[11].Value = AsignacionPaso1.Marca.Codigo;
 
+                objParams[12].Value = AsignacionPaso1.NumContenedor;
+
+                if (!string.IsNullOrEmpty(AsignacionPaso1.MotivoModificacion))
+                    objParams[13].Value = AsignacionPaso1.MotivoModificacion;
+
+               
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;
                 command.Parameters.AddRange(objParams);
@@ -1426,6 +1459,49 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
             return resultado;
         }
+
+        public static ResultadoTransaccion AsignacionGuardaHousesBLInfo1(PaperlessUsuario1HouseBLInfo info, Boolean IsNew)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+            
+            try
+            {
+                if (IsNew)
+                {
+                    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                    else
+                        info.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
+                }
+                else
+                {
+                    resultado = Usuario1ActualizaPaso1Info(info, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                }
+                transaction.Commit();
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return resultado;
+        }
+
+
+
 
         private static ResultadoTransaccion Usuario1AgregarHouseBL(PaperlessUsuario1HousesBL housebl, SqlConnection connparam, SqlTransaction tranparam) {
             resTransaccion = new ResultadoTransaccion();
@@ -2776,7 +2852,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     asignaciones.Asignacion.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
 
                     asignaciones.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
-                    asignaciones.Asignacion.Marca = dreader["Empresa"].ToString();
+                    asignaciones.Asignacion.Marca = new PaperlessEmpresa();
+                    asignaciones.Asignacion.Marca.Codigo = dreader["Empresa"].ToString();
+                    asignaciones.Asignacion.Marca.Nombre = dreader["Empresa"].ToString();
                     listasignaciones.Add(asignaciones);
                 }
             } catch (Exception ex) {

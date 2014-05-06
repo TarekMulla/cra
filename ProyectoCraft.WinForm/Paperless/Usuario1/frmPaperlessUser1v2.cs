@@ -475,7 +475,9 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                     housesnew.Add(house);
                 }
             }
-
+            if (IsBrasil)
+                DdlEmpresa.SelectedItem = PaperlessAsignacionActual.Marca.Codigo;
+    
             grdP1DigitarHousesBL.DataSource = housesnew;
             grdP1DigitarHousesBL.RefreshDataSource();
 
@@ -489,6 +491,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             }
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = housesnew;
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
+
 
         }
 

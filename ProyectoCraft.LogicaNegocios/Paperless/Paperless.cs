@@ -83,6 +83,12 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerAsignacionPorId(IdAsignacion);
         }
 
+        public static ResultadoTransaccion AsignacionGuardaHousesBLInfo(PaperlessUsuario1HouseBLInfo info, Boolean IsNew)
+        {
+              return AccesoDatos.Paperless.clsPaperlessADO.AsignacionGuardaHousesBLInfo1(info, IsNew);
+        }
+        
+
         public static Entidades.GlobalObject.ResultadoTransaccion GuardaPaso1(PaperlessAsignacion Paso1)
         {
             if (Paso1.IsNew)

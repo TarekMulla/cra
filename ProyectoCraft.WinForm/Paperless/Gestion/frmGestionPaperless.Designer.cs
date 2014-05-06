@@ -95,6 +95,7 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TabGestionPaperless = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -147,7 +148,6 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -856,6 +856,14 @@
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 26;
             // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Marca";
+            this.gridColumn43.FieldName = "Asignacion.Marca.Codigo";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 27;
+            // 
             // TabGestionPaperless
             // 
             this.TabGestionPaperless.Controls.Add(this.tabPage1);
@@ -1380,14 +1388,6 @@
             this.labelControl15.Size = new System.Drawing.Size(48, 13);
             this.labelControl15.TabIndex = 0;
             this.labelControl15.Text = "N° Master";
-            // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Marca";
-            this.gridColumn43.FieldName = "Asignacion.Marca";
-            this.gridColumn43.Name = "gridColumn43";
-            this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 27;
             // 
             // frmGestionPaperless
             // 

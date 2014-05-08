@@ -6,17 +6,11 @@ END
 GO
 
 
-
-USE [scc_brasil]
-GO
-
-/****** Object:  StoredProcedure [dbo].[SP_N_PAPERLESS_ASIGNACION_PASO1]    Script Date: 05/04/2014 02:51:18 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SP_N_PAPERLESS_ASIGNACION_PASO1]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[SP_N_PAPERLESS_ASIGNACION_PASO1]
 GO
 
-USE [scc_brasil]
-GO
+
 
 /****** Object:  StoredProcedure [dbo].[SP_N_PAPERLESS_ASIGNACION_PASO1]    Script Date: 05/04/2014 02:51:18 ******/
 SET ANSI_NULLS ON
@@ -65,16 +59,12 @@ GO
 
 
 
-USE [scc_brasil]
-GO
-
 /****** Object:  StoredProcedure [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]    Script Date: 05/04/2014 03:09:34 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]
 GO
 
-USE [scc_brasil]
-GO
+
 
 /****** Object:  StoredProcedure [dbo].[SP_U_PAPERLESS_ASIGNACION_PASO1]    Script Date: 05/04/2014 03:09:34 ******/
 SET ANSI_NULLS ON

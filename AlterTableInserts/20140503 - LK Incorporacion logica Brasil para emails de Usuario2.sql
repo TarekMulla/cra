@@ -287,7 +287,7 @@ if (@HastaNavieras is not null and @HastaNavieras <> '')
 print @sql
 execute(@sql)
 
-
+GO
 
 DROP PROCEDURE [dbo].[SP_N_PAPERLESS_NAVIERAV2]  
 GO

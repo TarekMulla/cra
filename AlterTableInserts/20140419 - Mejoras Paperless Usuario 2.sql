@@ -1,6 +1,9 @@
 
 update PAPERLESS_PASOS_USUARIO2 set PasoSiguiente=5, pantalla='Vinculacion' where idPaso in (3,6,9,12)
 GO
+update PAPERLESS_PASOS_USUARIO2 set Descripcion='Vinculação' where idPaso in (3,6,9,12)
+GO
+
 insert PAPERLESS_PASOS_USUARIO2   (NumPaso,Descripcion,Activo,PasoAnterior,PasoSiguiente,idTipoCarga,pantalla) 
 values(5,'Finalizar',1,4,null,1,'Finalizar')
 Go

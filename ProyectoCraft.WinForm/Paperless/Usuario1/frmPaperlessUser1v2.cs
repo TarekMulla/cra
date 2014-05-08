@@ -562,7 +562,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses.", ErrorType.Critical);
                 valida = false;
             }
-            if (DdlEmpresa.SelectedIndex <=0)
+            if (DdlEmpresa.SelectedIndex <0)
             
             {
                 dxErrorProvider1.SetError(DdlEmpresa, "Debe ingresar Marca.", ErrorType.Critical);

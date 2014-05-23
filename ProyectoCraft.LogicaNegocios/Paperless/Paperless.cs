@@ -156,9 +156,9 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerHousesBLporShippingInstruction(shipping, puerto);
         }
 
-        public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso)
+        public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses, PaperlessUsuario1HouseBLInfo info, PaperlessPasosEstado paso, Boolean existeConsolidada)
         {
-            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBL(houses, info, paso);
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario1GuardaHousesBL(houses, info, paso,existeConsolidada);
         }
 
         public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso)

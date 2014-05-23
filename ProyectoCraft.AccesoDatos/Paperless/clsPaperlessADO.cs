@@ -12,6 +12,7 @@ using System.Data;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
 
+
 namespace ProyectoCraft.AccesoDatos.Paperless {
     public class clsPaperlessADO {
         private static SqlParameter[] objParams = null;
@@ -1362,7 +1363,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses,
                                                                   PaperlessUsuario1HouseBLInfo info,
-                                                                  PaperlessPasosEstado paso) {
+
+                                                                  PaperlessPasosEstado paso, Boolean existeConsolidada) {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
@@ -1425,20 +1427,21 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     }
 
                 }
+                              
 
-                //Solo se debe actualizar HBL Info, por  que la consolidada se graba en la asignación.
-                ////guardar info
-                //if (!esupdate) {
-                //    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
-                //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //        throw new Exception(resultado.Descripcion);
-                //    else
-                //        info.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                //} else {
+               if (!existeConsolidada)
+                {
+                    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
+                   
+                } 
+                else 
+               {
                     resultado = Usuario1ActualizaPaso1Info(info, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
-                //}
+                }
 
 
                 //cambiar estado paso
@@ -1748,6 +1751,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
             return info;
         }
+
+        
+     
 
         public static ResultadoTransaccion Usuario1MarcarHousesRuteados(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso) {
             ResultadoTransaccion resultado = new ResultadoTransaccion();

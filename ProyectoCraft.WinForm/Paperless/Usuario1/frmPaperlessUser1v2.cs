@@ -630,6 +630,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         }
 
         private void btnP1GuardarHousesBL_Click(object sender, EventArgs e) {
+            Boolean existeConsolidada = false;
             if (!ValidarHousesBLInfo()) return;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -637,13 +638,25 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             //PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
             var pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla();
             pasoSeleccionado.Estado = true;
+
             PaperlessUsuario1HouseBLInfo info = Usuario1ObtenerHousesBLInfo();
-            var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado);
+
+            if (IsBrasil)
+            {
+                PaperlessUsuario1HouseBLInfo infoHousesBL = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(info.IdAsignacion);
+                if (infoHousesBL == null)
+                    existeConsolidada = false;
+                else
+                    existeConsolidada = true;
+            }
+           
+            var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado,existeConsolidada);
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = listhouses;
-
+            
             try {
-                LogicaNegocios.Paperless.Paperless.Usuario1GuardaEmpresa(DdlEmpresa.SelectedText, PaperlessAsignacionActual.Id);
+                var itemEmpresa = DdlEmpresa.Properties.Items[DdlEmpresa.SelectedIndex].ToString();
+                LogicaNegocios.Paperless.Paperless.Usuario1GuardaEmpresa(itemEmpresa, PaperlessAsignacionActual.Id);
             } catch (Exception ex) {
                 Log.log.Error(ex);
             }
@@ -886,8 +899,19 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
                 }
                 pasoSeleccionado.Estado = true;
+                Boolean existeConsolidada=false;
                 IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
-                LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado);
+            
+                
+                if (IsBrasil)
+                {
+                    PaperlessUsuario1HouseBLInfo infoHousesBL = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(pasoSeleccionado.IdAsignacion);
+                    if (infoHousesBL == null)
+                        existeConsolidada = false;
+                    else
+                        existeConsolidada = true;
+                }
+                LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado, existeConsolidada); 
 
                 Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
 
@@ -1468,8 +1492,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                             house.IdAsignacion = PaperlessAsignacionActual.Id;
                             house.Freehand = false;
                             house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
-                            house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.SelectedText);
-
+                            house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.Properties.Items[DdlEmpresa.SelectedIndex].ToString());
                             housesnew.Add(house);
                         }
                     } else {
@@ -1517,7 +1540,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                         house.Freehand = false;
                         house.ExcepcionRecargoCollect = new PaperlessExcepcion() { RecargoCollect = false };
                         //house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs");
-                        house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.SelectedText);
+                        house = IntegracionNetShip(house, i, "sp_SCC_HouseBLs" + "_" + DdlEmpresa.Properties.Items[DdlEmpresa.SelectedIndex].ToString());
 
                         housesnew.Add(house);
                     }

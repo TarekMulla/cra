@@ -927,6 +927,18 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             else
                 PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
 
+            if (IsBrasil)
+            {
+                if (ddlMarca.SelectedIndex <= 0)
+                    PaperlessAsignacionActual.Marca = null;
+                else
+                    PaperlessAsignacionActual.Marca = (PaperlessEmpresa)ddlMarca.SelectedItem;
+
+                PaperlessAsignacionActual.NumContenedor = txtNumContenedores.Text;
+                
+            }
+            
+
         }
 
 

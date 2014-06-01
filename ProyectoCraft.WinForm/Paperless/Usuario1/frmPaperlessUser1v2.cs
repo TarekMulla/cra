@@ -337,6 +337,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         #endregion
 
         public void CallDinamicMethod(PaperlessPasosEstado paso) {
+
             if (String.IsNullOrEmpty(paso.Pantalla))
                 return;
 
@@ -351,11 +352,21 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
         protected void MarcarPaso(object sender, CustomRowCellEditEventArgs e) {
             var paso = (PaperlessPasosEstado)((GridView)sender).GetRow(e.RowHandle);
+            var pasos = grdPasos.DataSource as List<PaperlessPasosEstado>;
+
             if (!ValidarPermiteCambiarPasoEstado(paso))
                 return;
 
-            var foo = LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
+            LogicaNegocios.Paperless.Paperless.ListarPasosEstadoUsuario1V2(PaperlessAsignacionActual.Id);
             QuitaTodosPaneles();
+            if (paso.Paso.NumPaso != 1 && paso.Paso.NumPaso != pasos.Count)
+                if (!String.IsNullOrEmpty(paso.Pantalla)) {
+                    var primerPaso = pasos.Find(foo => foo.Paso.NumPaso == 1);
+                    if (primerPaso.Estado == false) {
+                        MessageBox.Show(@"Debe primero terminar el paso 1.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
             CallDinamicMethod(paso);
             return;
         }
@@ -393,6 +404,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         }
 
         private bool ValidarPermiteCambiarPasoEstado(PaperlessPasosEstado pasoactual) {
+            return true;
             IList<PaperlessPasosEstado> pasos = (IList<PaperlessPasosEstado>)grdPasos.DataSource;
 
             foreach (var paso in pasos) {
@@ -477,7 +489,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             }
             if (IsBrasil)
                 DdlEmpresa.SelectedItem = PaperlessAsignacionActual.Marca.Codigo;
-    
+
             grdP1DigitarHousesBL.DataSource = housesnew;
             grdP1DigitarHousesBL.RefreshDataSource();
 
@@ -562,9 +574,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses.", ErrorType.Critical);
                 valida = false;
             }
-            if (DdlEmpresa.SelectedIndex <0)
-            
-            {
+            if (DdlEmpresa.SelectedIndex < 0) {
                 dxErrorProvider1.SetError(DdlEmpresa, "Debe ingresar Marca.", ErrorType.Critical);
                 valida = false;
             }
@@ -641,19 +651,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
             PaperlessUsuario1HouseBLInfo info = Usuario1ObtenerHousesBLInfo();
 
-            if (IsBrasil)
-            {
+            if (IsBrasil) {
                 PaperlessUsuario1HouseBLInfo infoHousesBL = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(info.IdAsignacion);
                 if (infoHousesBL == null)
                     existeConsolidada = false;
                 else
                     existeConsolidada = true;
             }
-           
-            var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado,existeConsolidada);
+
+            var resultado = LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado, existeConsolidada);
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
             PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = listhouses;
-            
+
             try {
                 var itemEmpresa = DdlEmpresa.Properties.Items[DdlEmpresa.SelectedIndex].ToString();
                 LogicaNegocios.Paperless.Paperless.Usuario1GuardaEmpresa(itemEmpresa, PaperlessAsignacionActual.Id);
@@ -851,10 +860,10 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
         private bool validarPasoExcepciones(List<PaperlessExcepcion> excepciones) {
             foreach (PaperlessExcepcion excepcion in excepciones) {
-                
-                    if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))
-                        return false;
-                
+
+                if (excepcion.TieneExcepcion && (excepcion.TipoExcepcion == null || excepcion.Responsabilidad == null))
+                    return false;
+
 
             }
             return true;
@@ -899,19 +908,18 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
                 }
                 pasoSeleccionado.Estado = true;
-                Boolean existeConsolidada=false;
+                Boolean existeConsolidada = false;
                 IList<PaperlessUsuario1HousesBL> listhouses = (IList<PaperlessUsuario1HousesBL>)grdP1DigitarHousesBL.DataSource;
-            
-                
-                if (IsBrasil)
-                {
+
+
+                if (IsBrasil) {
                     PaperlessUsuario1HouseBLInfo infoHousesBL = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(pasoSeleccionado.IdAsignacion);
                     if (infoHousesBL == null)
                         existeConsolidada = false;
                     else
                         existeConsolidada = true;
                 }
-                LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado, existeConsolidada); 
+                LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, Usuario1ObtenerHousesBLInfo(), pasoSeleccionado, existeConsolidada);
 
                 Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario1IngresarExcepxionesV2(excepciones, pasoSeleccionado);
 
@@ -943,6 +951,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         }
 
         private void btnP13EnviarAviso_Click(object sender, EventArgs e) {
+            var pasos = grdPasos.DataSource as List<PaperlessPasosEstado>;
+            var pasosPorHacer = pasos.FindAll(foo => foo.Estado == false && foo.Paso.NumPaso != pasos.Count);
+            if (pasosPorHacer.Count > 0) {
+                MessageBox.Show(@"Debe terminar todos los pasos antes de enviar el proceso al Usuario 2.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!validarCicloCompleto())
                 return;
             var mail = new EnvioMailObject();

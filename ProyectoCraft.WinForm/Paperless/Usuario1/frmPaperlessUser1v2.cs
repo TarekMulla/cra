@@ -156,7 +156,8 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
 
         protected void RecargarPasos(object sender, EventArgs e) {
             PaperlessPasosEstado paso = ObtenerPasoSeleccionado();
-            if (paso.Paso.NumPaso == 11) {
+            var pasos = grdPasos.DataSource as List<PaperlessPasosEstado>;
+            if (paso.Paso.NumPaso == pasos.Count) {
                 if (PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
                     PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
                     PaperlessAsignacionActual.Estado == Enums.EstadoPaperless.ProcesoTerminado)
@@ -363,7 +364,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 if (!String.IsNullOrEmpty(paso.Pantalla)) {
                     var primerPaso = pasos.Find(foo => foo.Paso.NumPaso == 1);
                     if (primerPaso.Estado == false) {
-                        MessageBox.Show(@"Debe primero terminar el paso 1.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(@"Debe terminar paso 1 para continuar.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -954,7 +955,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             var pasos = grdPasos.DataSource as List<PaperlessPasosEstado>;
             var pasosPorHacer = pasos.FindAll(foo => foo.Estado == false && foo.Paso.NumPaso != pasos.Count);
             if (pasosPorHacer.Count > 0) {
-                MessageBox.Show(@"Debe terminar todos los pasos antes de enviar el proceso al Usuario 2.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Hay pasos pendientes de realizar, debe marcarlos para poder terminar el proceso.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!validarCicloCompleto())

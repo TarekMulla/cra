@@ -67,7 +67,6 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -412,8 +411,7 @@
             this.gridColumn6,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn5,
-            this.gridColumn10});
+            this.gridColumn5});
             this.gridView1.GridControl = this.gridAsignaciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -497,14 +495,6 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "Marca";
-            this.gridColumn10.FieldName = "Asignacion.Marca.Codigo";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
             // 
             // labelControl6
             // 
@@ -598,6 +588,5 @@
         private DevExpress.XtraEditors.DateEdit txtHasta;
         private DevExpress.XtraEditors.DateEdit txtDesde;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEstados;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }

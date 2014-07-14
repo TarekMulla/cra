@@ -13,24 +13,19 @@
             FROM PAPERLESS_ASIGNACION A 
             WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
                 DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
-            AND IdEstado NOT IN (8,9)
+            AND IdEstado NOT IN (8)
             AND (AperturaNavieras ='' or AperturaNavieras is null)
     ]]>
   </datasource>
   <detail>
     <datasourse>
       <![CDATA[
-           SELECT  
-	   a.id as id_asignacion_hidden,
-	     a.NumMaster,	
-	   I.NumConsolidado,
+           SELECT  I.NumConsolidado,
               FechaMaster,
               C.Descripcion as 'Agente',
               D.Descripcion as 'Naviera',
               E.Descripcion as 'Nave',
               A.NumHousesBL as 'Cant. Houses/BLs',
-	    Carga.DescripcionLarga as Carga,
-	    empresa as Marca,
               Viaje,
               convert(varchar(20),getdate(),113) as 'Actual',
               convert(varchar(20),FechaEta,113) as 'ETA',
@@ -54,11 +49,9 @@
                                             ON A.Usuario2 = H.Id
                                                 LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                                 ON A.Id = I.IdAsignacion
-						LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
-						ON A.IdTipoCarga = CARGA.id   
             WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
                 DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
-            AND IdEstado NOT IN (8,9)
+            AND IdEstado NOT IN (8)
             AND (AperturaNavieras ='' or AperturaNavieras is null)
             ORDER BY DATEDIFF(DAY,GETDATE(),FechaETA) DESC      
 	]]>

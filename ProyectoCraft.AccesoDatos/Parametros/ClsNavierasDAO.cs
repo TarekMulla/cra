@@ -126,7 +126,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.Accion = Enums.AccionTransaccion.Actualizar;
                 resTransaccion.ObjetoTransaccion = id;
-                //resTransaccion.Descripcion = "Se actualizó la relación de la naviera con los puertos.";
+                resTransaccion.Descripcion = "Se actualizo la relacion de la naviera con los puertos";
 
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
@@ -156,7 +156,6 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             resTransaccion = new ResultadoTransaccion();
             try
             {
-                var Existe=0; 
                 //Abrir Conexion
                 conn = BaseDatos.Conexion();
 
@@ -168,7 +167,6 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_NAVIERAV2");
                 objParams[0].Value = nombre;
                 objParams[1].Value = 1;
-                objParams[2].Direction = ParameterDirection.Output;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_NAVIERAV2", conn, transaction);
                 command.Parameters.AddRange(objParams);
@@ -177,26 +175,18 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 //command.ExecuteNonQuery();
 
                 transaction.Commit();
-                
-                // Variable de salida para determinar si el nombre de la naviera ya existia en la BD
-                // NULL significa que es nuevo
-                Existe = Convert.ToInt16(objParams[2].Value);
-                if (Existe.Equals(0))
-                {
-                    resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-                    resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
 
-                    var id = (Int64)resTransaccion.ObjetoTransaccion;
-                    CreaRelacionPuertos(id, relacionPuertos, conn);
-                    resTransaccion.Descripcion = "Se creó naviera '" + nombre + "'.";
-                }
-                //Significa que la glosa ya existia por lo tanto no la creò
-                else
-                {
-                    resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                    resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
-                    resTransaccion.Descripcion = "Ya existe una naviera con el mismo Nombre, registro no fue insertado.";
-                }
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                resTransaccion.Accion = Enums.AccionTransaccion.Insertar;
+
+                //resTransaccion.ObjetoTransaccion = id;//idMaster = (Int64)resTransaccion.ObjetoTransaccion;
+                var id = (Int64)resTransaccion.ObjetoTransaccion;
+                resTransaccion.Descripcion = "Se Creo Naviera con Id " + id;
+
+                //Registrar Actividad
+                //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
+                //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
+                CreaRelacionPuertos(id, relacionPuertos, conn);
             }
             catch (Exception ex)
             {
@@ -242,11 +232,12 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.Accion = Enums.AccionTransaccion.Actualizar;
                 resTransaccion.ObjetoTransaccion = id;
+                resTransaccion.Descripcion = "Se actualizo Naviera con Id " + id.ToString();
+
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);
                 //LogActividades.clsLogActividadUsuariosADO.GuardaActividad(log);
                 CreaRelacionPuertos(id, relacionPuertos, conn);
-                resTransaccion.Descripcion = "Se actualizó naviera '" + nombre + "'.";
             }
             catch (Exception ex)
             {
@@ -265,7 +256,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion EliminaNaviera(Int64 id, string nombre)
+        public static ResultadoTransaccion EliminaNaviera(Int64 id)
         {
             resTransaccion = new ResultadoTransaccion();
             try
@@ -292,7 +283,7 @@ namespace ProyectoCraft.AccesoDatos.Parametros
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.Accion = Enums.AccionTransaccion.Eliminar;
                 resTransaccion.ObjetoTransaccion = id;
-                resTransaccion.Descripcion = "Se eliminó naviera '" + nombre + "'.";
+                resTransaccion.Descripcion = "Se Elimino Naviera con Id " + id.ToString();
 
                 //Registrar Actividad
                 //LogActividadUsuarios log = new LogActividadUsuarios(cuenta.GetType().ToString(), cuenta.Id, Enums.TipoActividadUsuario.Edito, Base.Usuario.UsuarioConectado.Usuario);

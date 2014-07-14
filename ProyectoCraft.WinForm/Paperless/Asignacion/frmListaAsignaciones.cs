@@ -47,7 +47,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             CargarUsuarios();
             ListarAsignaciones();
             CargarNavesExistentes();
-            
         }
         private void CargarNavesExistentes()
         {
@@ -245,8 +244,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void Menu_Nuevo_Click(object sender, EventArgs e)
         {
-            //frmPaperlessAsignacion form = new frmPaperlessAsignacion();
-            frmPaperlessAsignacion form = Paperless.Asignacion.frmPaperlessAsignacion.Instancia;
+            frmPaperlessAsignacion form = new frmPaperlessAsignacion();
             form.Accion = Enums.TipoAccionFormulario.Nuevo;
             form.ShowDialog();
         }

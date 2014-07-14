@@ -185,8 +185,8 @@ namespace ProyectoCraft.AccesoDatos.Cotizaciones.Directa {
                 master.NombreFantasia = "";
             else
                 master.NombreFantasia = readercliente["cliente_NombreFantasia"].ToString();
-            if (!String.IsNullOrEmpty(readercliente["cliente_CodTipo"].ToString()))
-                master.Tipo = (Enums.TipoPersona)readercliente["cliente_CodTipo"];
+
+            master.Tipo = (Enums.TipoPersona)readercliente["cliente_CodTipo"];
             return master;
         }
 

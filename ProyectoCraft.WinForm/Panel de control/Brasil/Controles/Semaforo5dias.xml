@@ -22,8 +22,9 @@
                   COUNT(a.id) as 'cantidad'
           FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
                ON A.id=B.idAsignacion
-          WHERE   convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
-          AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
+          WHERE   convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
+          AND     B.NumPaso=4
+          AND     B.fechamarca IS NULL
           AND A.IdEstado not in (8,9)                  
           UNION
           SELECT CASE
@@ -33,7 +34,7 @@
                   COUNT(a.id) as 'cantidad'
           FROM PAPERLESS_ASIGNACION A 
           WHERE  A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-          AND convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
+          AND convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
           AND A.IdEstado not in (8,9)                  
        
       SELECT max(color) as 'color',sum(cantidad) as 'cantidad'
@@ -50,17 +51,13 @@
           SELECT @f_hoy = GETDATE()
           EXEC  sp_f_proximo_dia_habil 5,@f_hoy,@f_desde OUT
 
-          SELECT  a.id as id_asignacion_hidden,
-	       a.NumMaster,	
-	        I.NumConsolidado,
+          SELECT  I.NumConsolidado,
                   FechaMaster,
                   C.Descripcion as 'agente',
                   D.Descripcion as 'naviera',
                   E.Descripcion as 'nave',
                   Viaje,
                   NumHousesBL,
-	        Carga.DescripcionLarga as Carga,
-	        empresa as Marca,
                   FechaETA,
                   AperturaNavieras as AperturaNavieras_GREEN,
                   PlazoEmbarcadores,
@@ -83,23 +80,18 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
-					    LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
-					    ON A.IdTipoCarga = CARGA.id    
-          WHERE   convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
-          AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
+          WHERE   convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
+          AND     B.NumPaso=4
+          AND     B.fechamarca IS NULL
           AND A.IdEstado not in (8,9)                  
           UNION
-          SELECT  a.id as id_asignacion_hidden, 
-	         a.NumMaster,	
-		I.NumConsolidado,
+          SELECT  I.NumConsolidado,
                   FechaMaster,
                   C.Descripcion as 'agente',
                   D.Descripcion as 'naviera',
                   E.Descripcion as 'nave',
                   Viaje,
                   NumHousesBL,
-	        Carga.DescripcionLarga as Carga,
-	        empresa as Marca,
                   FechaETA,
                   AperturaNavieras as AperturaNavieras_GREEN,
                   PlazoEmbarcadores,
@@ -121,12 +113,10 @@
                                           ON A.Usuario2 = H.Id
                                             LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                             ON A.Id = I.IdAsignacion
-					    LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
-					    ON A.IdTipoCarga = CARGA.id    
           WHERE A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-          AND  convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
+          AND  convert(varchar(20),A.aperturanavieras,112) >= convert(varchar(20),@f_desde,112)
           AND A.IdEstado not in (8,9)        
-          ORDER BY PlazoEmbarcadores ASC
+          ORDER BY AperturaNavieras ASC
       ]]>
     </datasourse>
   </detail>

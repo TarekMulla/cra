@@ -17,18 +17,20 @@ and convert(varchar(20),A.FechaETA,112) >= (GETDATE()-20)
   <detail>
     <datasourse>
       <![CDATA[
-         
-SELECT distinct a.Id, I.NumConsolidado, 
-FechaMaster, 
-C.Descripcion as 'agente', 
-D.Descripcion as 'naviera',
-E.Descripcion as 'nave', 
-Viaje, 
-NumHousesBL, 
-FechaMasterConfirmado,
-FechaETA,
-AperturaNavieras as AperturaNavieras_RED, PlazoEmbarcadores, g.NombreUsuario as 'usuario1',
-h.NombreUsuario as 'usuario2', F.Descripcion as 'Estado' ,a.txtCourier as NumeroCourier
+	SELECT distinct 
+	        A.id as 'id_asignacion_HIDDEN',	
+		I.NumConsolidado, 
+		FechaMaster, 
+   	        A.NumMaster,
+		C.Descripcion as 'agente', 
+		D.Descripcion as 'naviera',
+		E.Descripcion as 'nave', 
+		Viaje, 
+		NumHousesBL, 
+		FechaMasterConfirmado,
+		FechaETA,
+		AperturaNavieras as AperturaNavieras_RED, PlazoEmbarcadores, g.NombreUsuario as 'usuario1',
+		h.NombreUsuario as 'usuario2', F.Descripcion as 'Estado' ,a.txtCourier as NumeroCourier
 FROM PAPERLESS_ASIGNACION A 
 LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B ON A.id=B.idAsignacion LEFT OUTER JOIN PAPERLESS_AGENTE C ON A.IdAgente=C.Id LEFT OUTER JOIN PAPERLESS_NAVIERA D ON A.IdNaviera = D.Id LEFT OUTER JOIN PAPERLESS_NAVE E ON A.IdNave = E.Id LEFT OUTER JOIN PAPERLESS_ESTADO F ON A.IdEstado = F.Id LEFT OUTER JOIN USUARIOS G ON A.Usuario1 = G.Id LEFT OUTER JOIN USUARIOS H ON A.Usuario2 = H.Id LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I ON A.Id = I.IdAsignacion 
 where FechaMasterConfirmado is not null and MasterConfirmado =0

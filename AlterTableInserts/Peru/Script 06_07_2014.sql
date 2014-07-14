@@ -147,3 +147,20 @@ End
 
 
 --delete from PAPERLESS_ASIGNACION where Id > 5120
+
+
+
+
+ALTER TABLE dbo.configuracion
+ALTER COLUMN value VARCHAR(100) NOT NULL
+
+go
+
+
+insert into configuracion values ('Pless_Asig_Fecha_Apertura_Naviera_nombre_String','Transmisión','label asignado a la fecha de apertura navieras',GETDATE())
+insert into configuracion values ('Pless_Asig_Fecha_Apertura_Naviera_Validacion_Bool','1','Se agrega la validacion de los -4 dias de la fecha ETA',GETDATE())
+insert into configuracion values ('Pless_Asig_Plazo_Embarcadores_String','Plazo Desglose','label asignado a Plazo embarcadores',GETDATE())
+insert into configuracion values ('Pless_User2_Contactar_Embarcador_String','Contactar Cliente','cambio label Contactar Embarcador',GETDATE())
+insert into configuracion values ('Pless_User2_GridView_Embarcador_String','Cliente','cambio label grilla Embarcador por Cliente',GETDATE())
+
+go

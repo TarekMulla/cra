@@ -49,6 +49,7 @@ namespace ProyectoCraft.AccesoDatos.Clientes
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
+                dreader.NextResult();
                 while (dreader.Read())
                 {
                     cuenta = new clsCuenta();

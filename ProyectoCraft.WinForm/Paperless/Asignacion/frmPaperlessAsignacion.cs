@@ -4,18 +4,14 @@ using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.DXErrorProvider;
-using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Log;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
-using ProyectoCraft.Entidades.Integracion;
 using ProyectoCraft.LogicaNegocios.Log;
 using ProyectoCraft.LogicaNegocios.Parametros;
-using ProyectoCraft.LogicaNegocios.Paperless;
-using ProyectoCraft.LogicaNegocios.Integracion;
 using SCCMultimodal.Utils;
 
 namespace ProyectoCraft.WinForm.Paperless.Asignacion
@@ -84,6 +80,14 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                         MenuMantNavieras.Visible = true;
                 }
 
+            string lblApertuNaviera = conf.GetValueString("Pless_Asig_Fecha_Apertura_Naviera_nombre_String");
+            if (!string.IsNullOrEmpty(lblApertuNaviera))
+                lblAperturaNaviera.Text = lblApertuNaviera;
+
+            string lblPlazoEmb = conf.GetValueString("Pless_Asig_Plazo_Embarcadores_String");
+            if (!string.IsNullOrEmpty(lblPlazoEmb))
+                lblPlazoEmbarcadores.Text = lblPlazoEmb;            
+
             if (Accion == Enums.TipoAccionFormulario.Nuevo)
                 FormLoad();
 
@@ -101,37 +105,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             txtfechaMasterConfirmado.Properties.ReadOnly = true;
             txtfechaMasterConfirmado.Enabled = true;
             txtCourier.Enabled = false;
-            if (!IsBrasil)
-            {
-                lblMarca.Visible = false;
-                ddlMarca.Visible = false;
-                lblNumConsolidada.Visible = false;
-                txtNumConsolidada.Visible = false;
-                lblNumContenedores.Visible = false;
-                txtNumContenedores.Visible = false;
-                btnRecuperaNumConsolidado.Visible = false;
-            }
-            else
-            {
-                lblMarca.Enabled = false;
-                ddlMarca.Enabled = false;
-                lblNumConsolidada.Enabled = false;
-                txtNumConsolidada.Enabled = false;
-                lblNumContenedores.Enabled = false;
-                txtNumContenedores.Enabled = false;
-                btnRecuperaNumConsolidado.Enabled = false;
-            }
         }
 
         public void FormLoad()
         {
-
-            var conf = Base.Configuracion.Configuracion.Instance();
-            var op = conf.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-            if (op.HasValue && op.Value.Equals(true))
-                IsBrasil = true;
-
-
             CargarProductos();
             CargarTipoServicios();
             CargarUsuarios();
@@ -141,29 +118,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             CargarImportancia();
             HabilitarOpcionesPorFlags();
             ValidarEstados();
-            if (IsBrasil)
-            {
-                lblMarca.Visible = true;
-                ddlMarca.Visible = true;
-                lblNumConsolidada.Visible = true;
-                txtNumConsolidada.Visible = true;
-                lblNumContenedores.Visible = true;
-                txtNumContenedores.Visible = true;
-                btnRecuperaNumConsolidado.Visible = true;
-                CargarEmpresas();
-                              
-                
-            }
-            else
-            {
-                lblMarca.Visible = false;
-                ddlMarca.Visible = false;
-                lblNumConsolidada.Visible = false;
-                txtNumConsolidada.Visible = false;
-                lblNumContenedores.Visible = false;
-                txtNumContenedores.Visible = false;
-                btnRecuperaNumConsolidado.Visible = false;
-            }
         }
         private void HabilitarOpcionesPorFlags()
         {
@@ -203,36 +157,33 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                          * la fecha de apertura se oculta para brasil.*/
                     int dif = 0; //(txtFechaETA.DateTime - DateTime.Now).Days;
 
-                   if(!string.IsNullOrEmpty( txtFechaETA.Text))
+                    if (txtFechaETA.DateTime.AddDays(-10) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
                     {
-                        if (txtFechaETA.DateTime.AddDays(-10) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
-                            dif = 10;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-7) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-7).ToShortDateString();
-                            dif = 7;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-7) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
-                        {
-                            lblAvisoFechaMaximaVinculacion.Visible = true;
-                            dif = (txtFechaETA.DateTime - DateTime.Now).Days;
-                            txtFechaMaximaVinculacion.Text = "";
-                        }
-                        else if (txtFechaETA.DateTime.AddDays(-10) > DateTime.Now)
-                        {
-                            txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
-                            dif = (txtFechaETA.DateTime - DateTime.Now).Days;
-                            lblAvisoFechaMaximaVinculacion.Visible = false;
-                        }
-                        PaperlessAsignacionActual.FechaMaximaVinculacionDiff = dif;
-                        if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
-                            PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
-                    }                    
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = 10;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) >= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-7).ToShortDateString();
+                        dif = 7;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-7) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                    {
+                        lblAvisoFechaMaximaVinculacion.Visible = true;
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        txtFechaMaximaVinculacion.Text = "";
+                    }
+                    else if (txtFechaETA.DateTime.AddDays(-10) > DateTime.Now)
+                    {
+                        txtFechaMaximaVinculacion.Text = txtFechaETA.DateTime.AddDays(-10).ToShortDateString();
+                        dif = (txtFechaETA.DateTime - DateTime.Now).Days;
+                        lblAvisoFechaMaximaVinculacion.Visible = false;
+                    }
+                    PaperlessAsignacionActual.FechaMaximaVinculacionDiff = dif;
+                    if (!txtFechaMaximaVinculacion.Text.Length.Equals(0))
+                        PaperlessAsignacionActual.FechaMaximaVinculacion = Convert.ToDateTime(txtFechaMaximaVinculacion.Text);
                 }
                 else
                 {
@@ -243,7 +194,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             }
             catch (Exception e)
             {
-                Log.log.Error(e);
+                throw;
             }
         }
 
@@ -257,22 +208,26 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (Asignacion != null)
             {
                 PaperlessAsignacionActual = Asignacion;
-                
+
                 txtNumMaster.Text = Asignacion.NumMaster;
                 txtFechaMaster.Text = Asignacion.FechaMaster.ToShortDateString();
                 ddlAgente.SelectedItem = Asignacion.Agente;
-                txtAgente.Text = Asignacion.Agente.Nombre;
+                if (Asignacion.Agente != null)
+                    txtAgente.Text = Asignacion.Agente.Nombre;
                 ddlNaviera.SelectedItem = Asignacion.Naviera;
-                txtNaviera.Text = Asignacion.Nave.Nombre;
+                if (Asignacion.Nave != null)
+                    txtNaviera.Text = Asignacion.Nave.Nombre;
                 ddlNave.SelectedItem = Asignacion.Nave;
                 ddlNaveTransbordo.SelectedItem = Asignacion.NaveTransbordo;
-                txtNave.Text = Asignacion.Nave.Nombre;
+                if (Asignacion.Nave != null)
+                    txtNave.Text = Asignacion.Nave.Nombre;
                 if (Asignacion.NaveTransbordo != null)
                     txtNaveTransbordo.Text = Asignacion.NaveTransbordo.Nombre;
                 txtViaje.Text = Asignacion.Viaje;
                 txtNumHousesBL.Text = Asignacion.NumHousesBL.ToString();
                 if (IsBrasil)
-                {try
+                {
+                    try
                     {
                         if (Asignacion.TipoCarga.Nombre.Equals("FCL"))
                         {
@@ -326,13 +281,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 }
                 else
                     ddlTipoCarga.SelectedItem = Asignacion.TipoCarga;
-     
 
 
-                if (!Asignacion.TipoCarga.EsFAK && (Asignacion.TipoServicio != null && Asignacion.TipoServicio.Nombre.Equals("Transbordo")))
-                {
-                    lblAlertaPlazoembarcadores.Visible = false;
-                }
+                if (Asignacion.TipoCarga != null)
+                    if (!Asignacion.TipoCarga.EsFAK && (Asignacion.TipoServicio != null && Asignacion.TipoServicio.Nombre.Equals("Transbordo")))
+                    {
+                        lblAlertaPlazoembarcadores.Visible = false;
+                    }
 
                 if (Asignacion.TipoServicio == null)
                     ddlTipoServicio.SelectedIndex = 0;
@@ -378,27 +333,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     txtNaveTransbordo.Text = String.Empty;
                     ddlNaveTransbordo.SelectedItem = null;
                 }
-                if (IsBrasil)
-                {
-
-                    if (Asignacion.Marca == null)
-                        ddlMarca.SelectedIndex = 0;
-                    else
-                    {
-                        for (int i = 0; i < ddlMarca.Properties.Items.Count; i++)
-                        {
-                            if (ddlMarca.Properties.Items[i].ToString() == Asignacion.Marca.Codigo)
-                            {
-                                ddlMarca.SelectedIndex = i;
-                                break;
-                            }
-                        }
-                    }
-                    txtNumContenedores.Text = Asignacion.NumContenedor;
-                    CargarConsolidado(Asignacion.Id);
-                    
-                }
-
                 CargaMasterConfirmado();
                 CargaShippingPuerto();
                 ValidarEstados();
@@ -626,7 +560,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             {
                 coll.Add(list);
             }
-
             ddlTipoServicio.SelectedIndex = 0;
         }
 
@@ -697,39 +630,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         }
 
 
-        public void CargarEmpresas()
-        {
-            List<PaperlessEmpresa> empresas = ProyectoCraft.LogicaNegocios.Paperless.Paperless.ListarEmpresas();
-            ddlMarca.Properties.Items.Clear();
-            ComboBoxItemCollection coll = ddlMarca.Properties.Items;
-            coll.Add(Utils.Utils.ObtenerPrimerItem());
-            foreach (var list in empresas)
-            {
-                PaperlessEmpresa item = new PaperlessEmpresa();
-                item.Codigo = list.Codigo;
-                item.Nombre = list.Nombre;
-                coll.Add(item);
-            }
-            ddlMarca.SelectedIndex = 0;
-        }
-
-        public void CargarConsolidado(long Id)
-        {
-
-            //Cargar Info Houses BL
-            PaperlessUsuario1HouseBLInfo info = LogicaNegocios.Paperless.Paperless.Usuario1ObtenerHousesBLInfo(Id);
-            if (info != null)
-                txtNumConsolidada.Text = info.NumConsolidado;
-            else
-                txtNumConsolidada.Text = "";
-
-        }
-
-
-
-
-
-
 
         private void frmPaperlessAsignacion_Leave(object sender, EventArgs e)
         {
@@ -744,32 +644,14 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
         private void GuardarPaso1()
         {
-            if (!ValidarPaso1())
-            {
-                return;
-            }
-            VistaADominioPaso1();
-            
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            if (!ValidarPaso1()) return;
 
-            var Nuevo = PaperlessAsignacionActual.IsNew;        
+            VistaADominioPaso1();
+
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
             resultado = LogicaNegocios.Paperless.Paperless.GuardaPaso1(PaperlessAsignacionActual);
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {
-                if (IsBrasil)
-                {
-                    
-                   PaperlessUsuario1HouseBLInfo HouseBLInfo = new PaperlessUsuario1HouseBLInfo();
-                   HouseBLInfo.IdAsignacion = Convert.ToInt64(resultado.ObjetoTransaccion);
-                   HouseBLInfo.NumConsolidado = txtNumConsolidada.Text;
-                   HouseBLInfo.CantHouses = Convert.ToInt64(txtNumHousesBL.Text);
-
-                   var resultado1 = LogicaNegocios.Paperless.Paperless.AsignacionGuardaHousesBLInfo(HouseBLInfo, Nuevo);
-                   
-                    if (resultado1.Estado != Enums.EstadoTransaccion.Aceptada)
-                        MessageBox.Show(resultado1.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                }
                 ValidarEstados();
                 PaperlessAsignacionActual.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 tabAsignacion.SelectedTabPage = tabFechas;
@@ -791,7 +673,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
             if (txtNumMaster.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtNumMaster, "Debe ingresar Número de Master.", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtNumMaster, "Debe ingresar Número de Master", ErrorType.Critical);
                 valida = false;
             }
             else
@@ -805,20 +687,20 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
             if (txtFechaMaster.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtFechaMaster, "Debe selecionar Fecha de Master.", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtFechaMaster, "Debe selecionar Fecha de Master", ErrorType.Critical);
                 valida = false;
             }
 
             if (txtNumHousesBL.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtNumHousesBL, "Debe ingresar número de Houses.", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtNumHousesBL, "Debe ingresar número de Houses", ErrorType.Critical);
                 valida = false;
             }
 
             lblAlertaPlazoembarcadores.Visible = true;
             if (ddlTipoCarga.SelectedIndex == 0)
             {
-                dxErrorProvider1.SetError(ddlTipoCarga, "Debe seleccionar Tipo de Carga.", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlTipoCarga, "Debe seleccionar Tipo de Carga", ErrorType.Critical);
                 valida = false;
             }
             else
@@ -836,7 +718,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                     lblAlertaPlazoembarcadores.Visible = false;
                     if ((String.IsNullOrEmpty(txtNaveTransbordo.Text)))
                     {
-                        dxErrorProvider1.SetError(txtNave, "Debe seleccionar una nave de transbordo.", ErrorType.Critical);
+                        dxErrorProvider1.SetError(txtNave, "Debe seleccionar una nave de transbordo", ErrorType.Critical);
                         valida = false;
                         return false;
                     }
@@ -844,29 +726,15 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 }
             }
 
-            if (ddlAgente.SelectedIndex <=0)
+            if (ddlAgente.SelectedIndex == 0)
             {
-                dxErrorProvider1.SetError(ddlAgente, "Debe seleccionar un Agente válido.", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlAgente, "Debe seleccionar un Agente valido", ErrorType.Critical);
                 valida = false;
             }
-            if (ddlNaviera.SelectedIndex <=0)
+            if (ddlNaviera.SelectedIndex == 0)
             {
-                dxErrorProvider1.SetError(ddlNaviera, "Debe seleccionar una Naviera válida.", ErrorType.Critical);
+                dxErrorProvider1.SetError(ddlNaviera, "Debe seleccionar una Naviera valida", ErrorType.Critical);
                 valida = false;
-            }
-            if (IsBrasil)
-            {
-                if (txtNumConsolidada.Text.Length.Equals(0))
-                {
-                    dxErrorProvider1.SetError(txtNumConsolidada, "Debe ingresar número de Consolidada.", ErrorType.Critical);
-                    valida = false;
-                }
-                if (ddlMarca.SelectedIndex <=0)
-                {
-                    dxErrorProvider1.SetError(ddlMarca, "Debe seleccionar marca.", ErrorType.Critical);
-                    valida = false;
-                }
-
             }
 
             return valida;
@@ -927,20 +795,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             else
                 PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
 
-            if (IsBrasil)
-            {
-                if (ddlMarca.SelectedIndex <= 0)
-                    PaperlessAsignacionActual.Marca = null;
-                else
-                    PaperlessAsignacionActual.Marca = (PaperlessEmpresa)ddlMarca.SelectedItem;
-
-                PaperlessAsignacionActual.NumContenedor = txtNumContenedores.Text;
-                
-            }
-            
-
         }
-
 
         private void VistaADominioPaso1()
         {
@@ -994,7 +849,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             }
 
 
-            
+
             PaperlessAsignacionActual.Viaje = txtViaje.Text;
             PaperlessAsignacionActual.NumHousesBL = Convert.ToInt16(txtNumHousesBL.Text);
             PaperlessAsignacionActual.TipoCarga = (PaperlessTipoCarga)ddlTipoCarga.SelectedItem;
@@ -1008,19 +863,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             else
                 PaperlessAsignacionActual.TipoServicio = (PaperlessTipoServicio)ddlTipoServicio.SelectedItem;
 
-            if (IsBrasil)
-            {
-                if (ddlMarca.SelectedIndex <= 0)
-                    PaperlessAsignacionActual.Marca = null;
-                else
-                  PaperlessAsignacionActual.Marca = (PaperlessEmpresa)ddlMarca.SelectedItem;
-                
-                PaperlessAsignacionActual.NumContenedor = txtNumContenedores.Text;
-                
-                
 
-
-            }
         }
 
         private void btnSiguienteP3_Click(object sender, EventArgs e)
@@ -1131,11 +974,34 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 dxErrorProvider1.SetError(txtFechaETA, "Debe seleccionar fecha ETA", ErrorType.Critical);
             }
 
-            //if(txtAperturaNavieras.Text.Length.Equals(0))
-            //{
-            //    valida = false;
-            //    dxErrorProvider1.SetError(txtAperturaNavieras, "Debe seleccionar fecha apertua navieras", ErrorType.Critical);
-            //}
+
+
+            if (txtAperturaNavieras.Text.Length.Equals(0))
+            {
+                //    valida = false;
+                //    dxErrorProvider1.SetError(txtAperturaNavieras, "Debe seleccionar fecha apertua navieras", ErrorType.Critical);
+            }
+            else
+            {
+                DateTime fApertura = Convert.ToDateTime(txtAperturaNavieras.Text);
+                DateTime fETA = Convert.ToDateTime(txtFechaETA.Text);
+                int DiasAntesFechaApertura;
+
+                if (System.Configuration.ConfigurationSettings.AppSettings.Get("DiasAntesFechaApertura").Trim() != "")
+                {
+                    DiasAntesFechaApertura = Convert.ToInt16(System.Configuration.ConfigurationSettings.AppSettings.Get("DiasAntesFechaApertura"));
+                    if (fApertura > fETA.AddDays(-DiasAntesFechaApertura))
+                    {
+                        if (MessageBox.Show("Esta ingresando una Fecha de Apertura menor a " + DiasAntesFechaApertura + " días de anterioridad que la Fecha ETA.\n ¿Esta seguro de ingresar esta fecha? \n", "Paperless", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            txtAperturaNavieras.Text = "";
+                            //txtAperturaNavieras.Focus();
+                            valida = false;
+                            dxErrorProvider1.SetError(txtAperturaNavieras, "Debe seleccionar fecha apertua navieras", ErrorType.Critical);
+                        }
+                    }
+                }
+            }
 
             if (((PaperlessTipoCarga)ddlTipoCarga.SelectedItem).EsFAK && (ddlTipoServicio.SelectedIndex > 0 && !((PaperlessTipoServicio)ddlTipoServicio.SelectedItem).Nombre.Equals("Transbordo")))
             {
@@ -1209,25 +1075,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
         private void GuardarPaso3()
         {
             var mail = new EnvioMailObject();
-            string mensaje="";
-            bool validacionOk;
+            if (!ValidarPaso3()) return;
 
             Cursor.Current = Cursors.WaitCursor;
-
-            validacionOk = ValidarPaso3(ref mensaje) ;
-
-            if (!validacionOk) 
-                
-            {
-                if (mensaje != "")
-                {
-                    MessageBox.Show("Usuario1 y Usuario2 no deben ser iguales", "Paperless", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
-                    return;
-                }
-                else
-                    return;
-            }
 
             VistaADominioPaso3();
 
@@ -1236,13 +1086,16 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
             {
                 resultado = mail.EnviarMailPaperlessAsignacionUsuario1(PaperlessAsignacionActual);
+                //resultado = Utils.EnvioEmail.EnviarMailPaperlessAsignacionUsuario1(PaperlessAsignacionActual);
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Ocurrió un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrio un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 Cursor.Current = Cursors.Default;
+                //ValidarEstados();
+                //tabAsignacion.SelectedTabPage = tabPrealerta;
                 MessageBox.Show("Asignación realizada correctamente", "Paperless", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
 
@@ -1268,13 +1121,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 MessageBox.Show(PaperlessAsignacionActual.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool ValidarPaso3(ref string mensaje)
+        private bool ValidarPaso3()
         {
             bool valida = true;
-            var Usuario1 = new clsUsuario();
-            var Usuario2 = new clsUsuario();
- 
-            dxErrorProvider1.ClearErrors();
+
             if (ddlUsuario1.SelectedIndex == 0)
             {
                 dxErrorProvider1.SetError(ddlUsuario1, "Debe seleccionar Usuario 1", ErrorType.Critical);
@@ -1292,16 +1142,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 dxErrorProvider1.SetError(ddlUsuario2, "Debe seleccionar Usuario 2", ErrorType.Critical);
                 valida = false;
             }
-
-            Usuario1 = (clsUsuario) ddlUsuario1.SelectedItem;
-            Usuario2 = (clsUsuario) ddlUsuario2.SelectedItem;
-            if ( Usuario1.Id == Usuario2.Id)
-            {
-                dxErrorProvider1.SetError(ddlUsuario2, "Usuario2 debe ser distinto del Usuario1", ErrorType.Critical);
-                mensaje = "Usuario2 debe ser distinto del Usuario1";
-                valida = false;
-            }
-
             return valida;
         }
 
@@ -1349,31 +1189,9 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             ddlUsuario1.SelectedIndex = 0;
             ddlUsuario2.SelectedIndex = 0;
             PaperlessAsignacionActual = null;
-            
         }
 
         private void txtNumHousesBL_KeyPress(object sender, KeyPressEventArgs e)
-        {
-             if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        
-        private void txtNumContenedores_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -1392,7 +1210,6 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 e.Handled = true;
             }
         }
-
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -1417,6 +1234,10 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             txtfechaMasterConfirmado.Properties.ReadOnly = false;
             txtfechaMasterConfirmado.Enabled = true;
             txtCourier.Enabled = true;
+            if (IsBrasil)
+            {
+                txtAperturaNavieras.Enabled = false;
+            }
 
         }
 
@@ -1507,6 +1328,34 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 dxErrorProvider1.SetError(txtFechaETA, "Debe seleccionar fecha ETA", ErrorType.Critical);
             }
 
+            if (txtAperturaNavieras.Text.Length.Equals(0))
+            {
+                //    valida = false;
+                //    dxErrorProvider1.SetError(txtAperturaNavieras, "Debe seleccionar fecha apertua navieras", ErrorType.Critical);
+            }
+            else
+            {
+                DateTime fApertura = Convert.ToDateTime(txtAperturaNavieras.Text);
+                DateTime fETA = Convert.ToDateTime(txtFechaETA.Text);
+                int DiasAntesFechaApertura;
+
+                if (System.Configuration.ConfigurationSettings.AppSettings.Get("DiasAntesFechaApertura").Trim() != "")
+                {
+                    DiasAntesFechaApertura = Convert.ToInt16(System.Configuration.ConfigurationSettings.AppSettings.Get("DiasAntesFechaApertura"));
+                    if (fApertura > fETA.AddDays(-DiasAntesFechaApertura))
+                    {
+                        if (MessageBox.Show("Esta ingresando una Fecha de Apertura menor a " + DiasAntesFechaApertura + " días de anterioridad que la Fecha ETA.\n ¿Esta seguro de ingresar esta fecha? \n", "Paperless", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            txtAperturaNavieras.Text = "";
+                            //txtAperturaNavieras.Focus();
+                            valida = false;
+                            dxErrorProvider1.SetError(txtAperturaNavieras, "Debe seleccionar fecha apertua navieras", ErrorType.Critical);
+                        }
+                    }
+                }
+            }
+
+
             if (((PaperlessTipoCarga)ddlTipoCarga.SelectedItem).EsFAK &&
                 (ddlTipoServicio.SelectedIndex > 0 && !((PaperlessTipoServicio)ddlTipoServicio.SelectedItem).Nombre.Equals("Transbordo")))
             {
@@ -1588,7 +1437,13 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
             if (!string.IsNullOrEmpty(txtFechaETA.Text))
                 txtfechaMasterConfirmado.Text = Convert.ToDateTime(txtFechaETA.Text).AddDays(-15).ToString();
 
-            CargaFechaMaximaVinculacion();
+            var conf = Base.Configuracion.Configuracion.Instance();
+            var valorconfiguracion = conf.GetValue("Pless_Asig_Fecha_Apertura_Naviera_Validacion_Bool");
+            if (valorconfiguracion.HasValue && valorconfiguracion.Value.Equals(true))
+                if (string.IsNullOrEmpty(txtAperturaNavieras.Text))
+                    txtAperturaNavieras.Text = Convert.ToDateTime(txtFechaETA.Text).AddDays(-4).ToString();
+                else
+                    CargaFechaMaximaVinculacion();
 
         }
 
@@ -1668,78 +1523,35 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 ddlTipoCargaDescLarga.Visible = ddlTipoCarga.SelectedItem.ToString().Equals("FCL");
         }
 
-        private void tabAsignacion_Click(object sender, EventArgs e)
+        private void txtAperturaNavieras_EditValueChanged(object sender, EventArgs e)
         {
-
-        }
-
-      
-        private void txtNumHousesBL_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNumContenedores_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private string ObtieneNumConsolidadNetShip(string NumMaster,string storeProcedureName) 
-        {
-            string numConsolidada="";
-            IList<IntegracionNetShip> netShips;
-            netShips = LogicaNegocios.Integracion.Integracion.ObtenerHousesBlDesdeNetShip(NumMaster, storeProcedureName);
-            
-            if (netShips.Count > 0) {
-               numConsolidada = netShips[0].Consolidada;
-            }
-            return numConsolidada;
-         }
-
-
-
-        private void GuardaRegLogCarga(Int32 idPaperless, string valorPaperless, string valorNetShip, string mensaje, Int32 idPaperlessTipoError)
-        {
-            IntegracionNetShip logCarga = new IntegracionNetShip();
-            logCarga.IdPaperless = idPaperless;
-            logCarga.ValorPaperless = valorPaperless;
-            logCarga.ValorNetShip = valorNetShip;
-            logCarga.Mensaje = mensaje;
-            logCarga.IdPaperlessTipoError = idPaperlessTipoError;
-            LogicaNegocios.Integracion.Integracion.GuardaLogProceso(logCarga);
-        }
-
-        private void btnRecuperaNumConsolidado_Click(object sender, EventArgs e)
-        {
-            
-        
-        }
-
-        private void btnRecuperaNumConsolidado_Click_1(object sender, EventArgs e)
-        {
-            if (IsBrasil)
+            if (!string.IsNullOrEmpty(txtAperturaNavieras.Text))
             {
-                if (txtNumMaster.Text != "")
-                {
-                    var numMaster = txtNumMaster.Text;
-                    if (ddlMarca.SelectedIndex > 0)
+                var conf = Base.Configuracion.Configuracion.Instance();
+                var valorconfiguracion = conf.GetValue("Pless_Asig_Fecha_Apertura_Naviera_Validacion_Bool");
+                if (valorconfiguracion.HasValue && valorconfiguracion.Value.Equals(true))
+                    if (!string.IsNullOrEmpty(txtAperturaNavieras.Text) && !string.IsNullOrEmpty(txtFechaETA.Text))
                     {
-                        var NumConsolidadaNS = ObtieneNumConsolidadNetShip(numMaster, "sp_SCC_HouseBLs" + "_" + ddlMarca.SelectedText);
-                        if (!NumConsolidadaNS.Length.Equals(0))
-                            txtNumConsolidada.Text = NumConsolidadaNS;
-                        else
+
+                        var fechaAValidar = Convert.ToDateTime(txtAperturaNavieras.Text);
+                        var fechaEta = Convert.ToDateTime(txtFechaETA.Text);
+                        if (fechaAValidar < fechaEta)
                         {
-                            txtNumConsolidada.Text = "";
-                            txtNumConsolidada.Focus();
-                            GuardaRegLogCarga(PaperlessAsignacionActual.Id32, "", "", "No viene Numero de Consolidada", (Int32)PaperlessTipoErrorLog.PaperlessTipoError.SinNumeroConsolidada);
+                            TimeSpan time =fechaEta- fechaAValidar  ;
+                            if (time.TotalDays < 4)
+                                MessageBox.Show(@"La fecha Ingresada no puede ser menor a 4 dias de la fecha ETA", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                     }
-                }
             }
+
+
         }
 
-       
-               
-    } 
+        private void txtPlazoEmbarcadores_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    }
 }

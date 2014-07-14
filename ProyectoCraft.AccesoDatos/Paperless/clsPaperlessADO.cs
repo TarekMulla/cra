@@ -12,9 +12,10 @@ using System.Data;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
 
-
-namespace ProyectoCraft.AccesoDatos.Paperless {
-    public class clsPaperlessADO {
+namespace ProyectoCraft.AccesoDatos.Paperless
+{
+    public class clsPaperlessADO
+    {
         private static SqlParameter[] objParams = null;
         private static SqlConnection conn = null;
         private static SqlDataReader dreader = null;
@@ -22,10 +23,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
 
 
-        public static IList<PaperlessNaviera> ObtenerNavieras(Enums.Estado estado) {
+        public static IList<PaperlessNaviera> ObtenerNavieras(Enums.Estado estado)
+        {
             PaperlessNaviera naviera = null;
             IList<PaperlessNaviera> listNavieras = new List<PaperlessNaviera>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_NAVIERA");
@@ -35,26 +38,33 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     naviera = new PaperlessNaviera();
                     naviera.Id = Convert.ToInt64(dreader["Id"]);
                     naviera.Nombre = dreader["Descripcion"].ToString();
                     //naviera.Activo = (Entidades.Enums.Enums.Estado)(Convert.ToInt16(dreader["Activo"]));
                     listNavieras.Add(naviera);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listNavieras;
         }
 
-        public static IList<PaperlessAgente> ObtenerAgentes(Enums.Estado estado) {
+        public static IList<PaperlessAgente> ObtenerAgentes(Enums.Estado estado)
+        {
             PaperlessAgente agente = null;
             IList<PaperlessAgente> listagentes = new List<PaperlessAgente>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_AGENTE");
@@ -64,7 +74,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     agente = new PaperlessAgente();
                     agente.Id = Convert.ToInt64(dreader["Id"]);
                     agente.Nombre = dreader["Descripcion"].ToString();
@@ -75,19 +86,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     //agente.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
                     listagentes.Add(agente);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listagentes;
         }
 
-        public static IList<PaperlessNave> ObtenerNaves(Enums.Estado estado) {
+        public static IList<PaperlessNave> ObtenerNaves(Enums.Estado estado)
+        {
             PaperlessNave nave = null;
             IList<PaperlessNave> listnaves = new List<PaperlessNave>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_NAVE");
@@ -97,16 +114,21 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     nave = new PaperlessNave();
                     nave.Id = Convert.ToInt64(dreader["Id"]);
                     nave.Nombre = dreader["Descripcion"].ToString();
                     // nave.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
                     listnaves.Add(nave);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -115,10 +137,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         public static IList<PaperlessFlujo> ObtenerAsignaciones(DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string estado,
             string numconsolidado, string nave, DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras,
-            string nummaster) {
+            string nummaster)
+        {
             PaperlessFlujo flujopaperless = null;
             IList<PaperlessFlujo> listasignaciones = new List<PaperlessFlujo>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_ASIGNACION");
@@ -140,21 +164,24 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     flujopaperless = new PaperlessFlujo();
                     flujopaperless.Asignacion.Id = Convert.ToInt64(dreader["Id"]);
                     flujopaperless.Asignacion.NumMaster = dreader["NumMaster"].ToString();
                     flujopaperless.Asignacion.NumHousesBL = Convert.ToInt16(dreader["NumHousesBL"]);
                     flujopaperless.Asignacion.FechaMaster = Convert.ToDateTime(dreader["FechaMaster"]);
 
-                    flujopaperless.Asignacion.UsuarioCreacion = new clsUsuario() {
+                    flujopaperless.Asignacion.UsuarioCreacion = new clsUsuario()
+                    {
                         ApellidoPaterno = dreader["UCAP"].ToString(),
                         ApellidoMaterno = dreader["UCAM"].ToString(),
                         Nombre = dreader["UCN"].ToString(),
                         Email = dreader["EmailUC"].ToString()
                     };
 
-                    flujopaperless.Asignacion.Usuario1 = new clsUsuario() {
+                    flujopaperless.Asignacion.Usuario1 = new clsUsuario()
+                    {
                         ApellidoPaterno = dreader["APU1"].ToString(),
                         ApellidoMaterno = dreader["AMU1"].ToString(),
                         Nombre = dreader["NU1"].ToString(),
@@ -165,7 +192,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     else
                         flujopaperless.Asignacion.ImportanciaUsuario1 = new clsItemParametro() { Id = Convert.ToInt64(dreader["IdImportancia"].ToString()), Nombre = dreader["Importancia"].ToString() };
 
-                    flujopaperless.Asignacion.Usuario2 = new clsUsuario() {
+                    flujopaperless.Asignacion.Usuario2 = new clsUsuario()
+                    {
                         ApellidoPaterno = dreader["APU2"].ToString(),
                         ApellidoMaterno = dreader["AMU2"].ToString(),
                         Nombre = dreader["NU2"].ToString(),
@@ -176,20 +204,24 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.EstadoFlujoDescripcion = dreader["Estado"].ToString();
                     flujopaperless.Asignacion.Estado = (Enums.EstadoPaperless)(int.Parse(dreader["IdEstado"].ToString()));
                     flujopaperless.Asignacion.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
-                    flujopaperless.Asignacion.Agente = new PaperlessAgente() {
+                    flujopaperless.Asignacion.Agente = new PaperlessAgente()
+                    {
                         Id = Convert.ToInt64(dreader["IdAgente"]),
                         Nombre = dreader["Agente"].ToString()
                     };
-                    flujopaperless.Asignacion.Naviera = new PaperlessNaviera() {
+                    flujopaperless.Asignacion.Naviera = new PaperlessNaviera()
+                    {
                         Id = Convert.ToInt64(dreader["IdNaviera"]),
                         Nombre = dreader["Naviera"].ToString()
                     };
-                    flujopaperless.Asignacion.Nave = new PaperlessNave() {
+                    flujopaperless.Asignacion.Nave = new PaperlessNave()
+                    {
                         Id = Convert.ToInt64(dreader["IdNave"]),
                         Nombre = dreader["Nave"].ToString()
                     };
 
-                    flujopaperless.Asignacion.NaveTransbordo = new PaperlessNave() {
+                    flujopaperless.Asignacion.NaveTransbordo = new PaperlessNave()
+                    {
                         Id = Convert.ToInt64(dreader["IdNaveTransbordo"]),
                         Nombre = dreader["NaveTransbordo"].ToString()
                     };
@@ -197,7 +229,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
 
                     flujopaperless.Asignacion.Viaje = dreader["Viaje"].ToString();
-                    flujopaperless.Asignacion.TipoCarga = new PaperlessTipoCarga() {
+                    flujopaperless.Asignacion.TipoCarga = new PaperlessTipoCarga()
+                    {
                         Id = Convert.ToInt64(dreader["IdTipoCarga"]),
                         Nombre = dreader["TipoCarga"].ToString()
                     };
@@ -228,24 +261,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.Asignacion.ObservacionUsuario1 = dreader["ObservacionUsuario1"].ToString();
                     flujopaperless.Asignacion.ObservacionUsuario2 = dreader["ObservacionUsuario2"].ToString();
                     flujopaperless.Asignacion.DataUsuario1.Paso1HousesBLInfo.NumConsolidado = dreader["NumConsolidado"].ToString();
-                    flujopaperless.Asignacion.Marca = new PaperlessEmpresa();
-                    flujopaperless.Asignacion.Marca.Codigo = dreader["Empresa"].ToString();
-                    flujopaperless.Asignacion.Marca.Nombre = dreader["Empresa"].ToString();
-                    
+
                     listasignaciones.Add(flujopaperless);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listasignaciones;
         }
 
-        public static PaperlessAsignacion ObtenerAsignacionPorId(Int64 IdAsignacion) {
+        public static PaperlessAsignacion ObtenerAsignacionPorId(Int64 IdAsignacion)
+        {
             PaperlessAsignacion Asignacion = null;
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_ASIGNACION_POR_ID");
@@ -256,10 +292,14 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     Asignacion = new PaperlessAsignacion();
-                    Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
 
+                    //if (dreader["versionUsuario1"] is DBNull)
+                    //    Asignacion.VersionUsuario1 = 0;
+                    //else
+                    //    Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
                     Asignacion.Id = Convert.ToInt64(dreader["Id"]);
                     Asignacion.NumMaster = dreader["NumMaster"].ToString();
                     Asignacion.FechaMaster = Convert.ToDateTime(dreader["FechaMaster"]);
@@ -322,7 +362,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["Usuario1"] is DBNull)
                         Asignacion.Usuario1 = null;
                     else
-                        Asignacion.Usuario1 = new clsUsuario() {
+                        Asignacion.Usuario1 = new clsUsuario()
+                        {
                             Id = Convert.ToInt64(dreader["Usuario1"].ToString()),
                             ApellidoPaterno = dreader["APU1"].ToString(),
                             ApellidoMaterno = dreader["AMU1"].ToString(),
@@ -343,7 +384,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["Usuario2"] is DBNull)
                         Asignacion.Usuario2 = null;
                     else
-                        Asignacion.Usuario2 = new clsUsuario() {
+                        Asignacion.Usuario2 = new clsUsuario()
+                        {
                             Id = Convert.ToInt64(dreader["Usuario2"].ToString()),
                             ApellidoPaterno = dreader["APU2"].ToString(),
                             ApellidoMaterno = dreader["AMU2"].ToString(),
@@ -381,131 +423,161 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (!(dreader["txtCourier"] is DBNull))
                         Asignacion.TxtCourier = dreader["txtCourier"].ToString();
 
-                    //PU
-                    if (dreader["Empresa"] is DBNull)
-                        Asignacion.Marca = null;
-                    else
-                        Asignacion.Marca = new PaperlessEmpresa() { Codigo = dreader["empresa"].ToString(), Nombre = dreader["empresa"].ToString()};
-
-
-                    if (!(dreader["numContenedor"] is DBNull))
-                        Asignacion.NumContenedor = dreader["numContenedor"].ToString();
-
-
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return Asignacion;
         }
 
-        public static ResultadoTransaccion GuardaPaso1(PaperlessAsignacion paso1) {
+        public static ResultadoTransaccion GuardaPaso1(PaperlessAsignacion paso1)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
 
-            try {
-                if (paso1.Agente != null && paso1.Agente.IsNew) {
+            try
+            {
+                if (paso1.Agente != null && paso1.Agente.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevoAgente(paso1.Agente, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Agente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
-                if (paso1.Naviera != null && paso1.Naviera.IsNew) {
+                if (paso1.Naviera != null && paso1.Naviera.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevaNaviera(paso1.Naviera, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Naviera.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
-                if (paso1.Nave != null && paso1.Nave.IsNew) {
+                if (paso1.Nave != null && paso1.Nave.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevaNave(paso1.Nave, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Nave.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
-                if (paso1.NaveTransbordo != null && paso1.NaveTransbordo.IsNew) {
+                if (paso1.NaveTransbordo != null && paso1.NaveTransbordo.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevaNave(paso1.NaveTransbordo, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.NaveTransbordo.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
                 resultado = new ResultadoTransaccion();
                 resultado = AsignacionPaso1(paso1, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                {
                     throw new Exception(resultado.Descripcion);
-                } else {
+                }
+                else
+                {
                     paso1.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 }
-
 
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 BaseDatos.CerrarConexion();
             }
 
             return resultado;
         }
 
-
-        public static ResultadoTransaccion AsignacionActualizarPaso1(PaperlessAsignacion paso1) {
+        public static ResultadoTransaccion AsignacionActualizarPaso1(PaperlessAsignacion paso1)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
 
-            try {
-                if (paso1.Agente != null && paso1.Agente.IsNew) {
+            try
+            {
+                if (paso1.Agente != null && paso1.Agente.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevoAgente(paso1.Agente, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Agente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
-                if (paso1.Naviera != null && paso1.Naviera.IsNew) {
+                if (paso1.Naviera != null && paso1.Naviera.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevaNaviera(paso1.Naviera, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Naviera.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
 
-                if (paso1.Nave != null && paso1.Nave.IsNew) {
+                if (paso1.Nave != null && paso1.Nave.IsNew)
+                {
                     resultado = new ResultadoTransaccion();
                     resultado = GuardaNuevaNave(paso1.Nave, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada) {
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    {
                         throw new Exception(resultado.Descripcion);
-                    } else {
+                    }
+                    else
+                    {
                         paso1.Nave.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                     }
                 }
@@ -520,21 +592,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 BaseDatos.CerrarConexion();
             }
 
             return resultado;
         }
 
-        private static ResultadoTransaccion GuardaNuevoAgente(PaperlessAgente agente, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion GuardaNuevoAgente(PaperlessAgente agente, SqlConnection connparam, SqlTransaction tranparam)
+        {
             Int64 idagente = 0;
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_AGENTEV2");
                 objParams[0].Value = agente.Nombre;
@@ -549,7 +627,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = idagente;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -557,10 +637,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion GuardaNuevaNaviera(PaperlessNaviera naviera, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion GuardaNuevaNaviera(PaperlessNaviera naviera, SqlConnection connparam, SqlTransaction tranparam)
+        {
             Int64 idnaviera = 0;
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_NAVIERA");
                 objParams[0].Value = naviera.Nombre;
@@ -575,7 +657,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = idnaviera;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -583,10 +667,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion GuardaNuevaNave(PaperlessNave nave, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion GuardaNuevaNave(PaperlessNave nave, SqlConnection connparam, SqlTransaction tranparam)
+        {
             Int64 idnave = 0;
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_NAVE");
                 objParams[0].Value = nave.Nombre;
@@ -601,7 +687,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = idnave;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -609,10 +697,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion AsignacionPaso1(PaperlessAsignacion AsignacionPaso1, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion AsignacionPaso1(PaperlessAsignacion AsignacionPaso1, SqlConnection connparam, SqlTransaction tranparam)
+        {
             Int64 idAsignacion = 0;
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_ASIGNACION_PASO1");
                 objParams[0].Value = AsignacionPaso1.NumMaster;
@@ -648,17 +738,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     objParams[11].Value = AsignacionPaso1.NaveTransbordo.Id;
                 else
                     objParams[11].Value = -1;
-                
-                //falta poner validacion IsBrasil PU
-
-                if (AsignacionPaso1.Marca != null)
-                    objParams[12].Value = AsignacionPaso1.Marca.Codigo;
-                else
-                    objParams[12].Value = -1;
-
-                objParams[13].Value=AsignacionPaso1.NumContenedor;
-
-
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;
@@ -669,7 +748,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = idAsignacion;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -677,10 +758,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion ActualizaAsignacionPaso1(PaperlessAsignacion AsignacionPaso1, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion ActualizaAsignacionPaso1(PaperlessAsignacion AsignacionPaso1, SqlConnection connparam, SqlTransaction tranparam)
+        {
             Int64 idAsignacion = 0;
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
 
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_ASIGNACION_PASO1");
                 objParams[0].Value = AsignacionPaso1.NumMaster;
@@ -712,18 +795,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
 
                 if (AsignacionPaso1.NaveTransbordo != null) objParams[10].Value = AsignacionPaso1.NaveTransbordo.Id32;
-                
-                if (AsignacionPaso1.Marca == null)
-                    objParams[11].Value = -1;
-                else
-                    objParams[11].Value = AsignacionPaso1.Marca.Codigo;
-
-                objParams[12].Value = AsignacionPaso1.NumContenedor;
-
                 if (!string.IsNullOrEmpty(AsignacionPaso1.MotivoModificacion))
-                    objParams[13].Value = AsignacionPaso1.MotivoModificacion;
+                    objParams[11].Value = AsignacionPaso1.MotivoModificacion;
+                //else
+                //  objParams[10].Value = null;
 
-               
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO1", connparam);
                 command.Transaction = tranparam;
                 command.Parameters.AddRange(objParams);
@@ -732,18 +808,68 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
             }
             return resTransaccion;
         }
-
-        public static ResultadoTransaccion GuardaPaso2(PaperlessAsignacion paso2, PaperlessLogAperturaNavieras LogApertura) {
+        public static ResultadoTransaccion GuardarConfirmarMaster(PaperlessAsignacion asignacion)
+        {
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                transaction = conn.BeginTransaction();
+
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_PASO2_GuardarConfirmarMaster");
+               
+                objParams[0].Value = asignacion.Id;
+                objParams[1].Value = asignacion.Estado;
+                objParams[2].Value = asignacion.ChkCourier;
+                objParams[3].Value = asignacion.ChkEnDestino;
+                objParams[4].Value = asignacion.ChkMasterConfirmado;
+                objParams[5].Value = asignacion.FechaMasterConfirmado.HasValue ? asignacion.FechaMasterConfirmado : new DateTime(9999, 1, 1);
+
+                objParams[6].Value = !string.IsNullOrEmpty(asignacion.TxtCourier) ? asignacion.TxtCourier : "";
+
+
+                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_PASO2_GuardarConfirmarMaster", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+                transaction.Commit();
+
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return resTransaccion;
+        }
+
+        public static ResultadoTransaccion GuardaPaso2(PaperlessAsignacion paso2, PaperlessLogAperturaNavieras LogApertura)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            SqlTransaction transaction = null;
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
 
@@ -779,7 +905,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
 
 
-                if (!(!LogApertura.ValorNuevo.HasValue && LogApertura.Accion == Enums.TipoActividadUsuario.Creo)) {
+                if (!(!LogApertura.ValorNuevo.HasValue && LogApertura.Accion == Enums.TipoActividadUsuario.Creo))
+                {
                     resTransaccion = AgregarLogAperturaNavieras(LogApertura, conn, transaction);
                     if (resTransaccion.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resTransaccion.Descripcion);
@@ -788,21 +915,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
 
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion GuardaPaso3(PaperlessAsignacion paso3) {
+        public static ResultadoTransaccion GuardaPaso3(PaperlessAsignacion paso3)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_PASO3");
                 objParams[0].Value = paso3.Usuario1.Id;
@@ -819,7 +952,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -827,10 +962,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessEstado> ObtenerEstadosPaperless(Enums.Estado activo) {
+        public static IList<PaperlessEstado> ObtenerEstadosPaperless(Enums.Estado activo)
+        {
             PaperlessEstado estado = null;
             IList<PaperlessEstado> listestados = new List<PaperlessEstado>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_ESTADO");
@@ -841,14 +978,16 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     estado = new PaperlessEstado();
                     estado.Id = Convert.ToInt64(dreader["Id"]);
                     estado.Nombre = dreader["Descripcion"].ToString();
                     if (dreader["PasoAnterior"] is DBNull)
                         estado.EstadoAnterior = null;
                     else
-                        estado.EstadoAnterior = new PaperlessEstado() {
+                        estado.EstadoAnterior = new PaperlessEstado()
+                        {
                             Id = Convert.ToInt64(dreader["PasoAnterior"].ToString()),
                             Nombre = dreader["Anterior"].ToString()
                         };
@@ -856,7 +995,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["PasoSiguiente"] is DBNull)
                         estado.EstadoSiguiente = null;
                     else
-                        estado.EstadoSiguiente = new PaperlessEstado() {
+                        estado.EstadoSiguiente = new PaperlessEstado()
+                        {
                             Id = Convert.ToInt64(dreader["PasoSiguiente"].ToString()),
                             Nombre = dreader["Siguiente"].ToString()
                         };
@@ -864,9 +1004,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     listestados.Add(estado);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -874,9 +1018,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
 
-        public static ResultadoTransaccion CambiaEstadoAsignacion(PaperlessAsignacion asignacion) {
+        public static ResultadoTransaccion CambiaEstadoAsignacion(PaperlessAsignacion asignacion)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_ESTADo");
                 objParams[0].Value = asignacion.Estado;
@@ -888,19 +1034,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion CambiaEstadoAsignacion(PaperlessAsignacion asignacion, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion CambiaEstadoAsignacion(PaperlessAsignacion asignacion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_ASIGNACION_ESTADo");
                 objParams[0].Value = asignacion.Estado;
                 objParams[1].Value = asignacion.Id;
@@ -912,7 +1064,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -920,11 +1074,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessPasos> ListarPasosUsuario1(Enums.Estado activo) {
+        public static IList<PaperlessPasos> ListarPasosUsuario1(Enums.Estado activo)
+        {
             PaperlessPasos paso = null;
             IList<PaperlessPasos> pasos = new List<PaperlessPasos>();
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_PASOS_USUARIO1");
@@ -935,7 +1091,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     paso = new PaperlessPasos();
                     paso.Id = Convert.ToInt64(dreader["IdPaso"]);
                     paso.NumPaso = Convert.ToInt16(dreader["NumPaso"]);
@@ -945,7 +1102,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["PasoAnterior"] is DBNull)
                         paso.PasoAnterior = null;
                     else
-                        paso.PasoAnterior = new PaperlessPasos() {
+                        paso.PasoAnterior = new PaperlessPasos()
+                        {
                             Id = Convert.ToInt64(dreader["PasoAnterior"].ToString()),
                             Nombre = dreader["Anterior"].ToString()
                         };
@@ -953,7 +1111,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["PasoSiguiente"] is DBNull)
                         paso.PasoSiguiente = null;
                     else
-                        paso.PasoSiguiente = new PaperlessPasos() {
+                        paso.PasoSiguiente = new PaperlessPasos()
+                        {
                             Id = Convert.ToInt64(dreader["PasoSiguiente"].ToString()),
                             Nombre = dreader["Siguiente"].ToString()
                         };
@@ -962,9 +1121,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     pasos.Add(paso);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -972,12 +1135,14 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         }
 
-        private static ResultadoTransaccion PreparaPasosUsuario1(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio, String sp) {
+        private static ResultadoTransaccion PreparaPasosUsuario1(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio, String sp)
+        {
 
             //aqui trabajar --  vhspiceros
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, sp);
@@ -998,31 +1163,39 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
 
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion PreparaPasosUsuario1(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio) {
+        public static ResultadoTransaccion PreparaPasosUsuario1(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio)
+        {
             return PreparaPasosUsuario1(asignacion, inicio, "SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS");
         }
 
-        public static ResultadoTransaccion PreparaPasosUsuario1V2(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio) {
+        public static ResultadoTransaccion PreparaPasosUsuario1V2(PaperlessAsignacion asignacion, PaperlessProcesoRegistroTiempo inicio)
+        {
             return PreparaPasosUsuario1(asignacion, inicio, "SP_N_PAPERLESS_USUARIO1_PREPARA_PASOS_V2");
         }
 
 
-        public static ResultadoTransaccion PreparaPasosUsuario2(PaperlessAsignacion asignacion) {
+        public static ResultadoTransaccion PreparaPasosUsuario2(PaperlessAsignacion asignacion)
+        {
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_USUARIO2_PREPARA_PASOS");
@@ -1048,24 +1221,30 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
 
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return resTransaccion;
         }
 
 
-        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1(Int64 IdAsignacion, String sp) {
+        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1(Int64 IdAsignacion, String sp)
+        {
             PaperlessPasosEstado paso = null;
             IList<PaperlessPasosEstado> pasos = new List<PaperlessPasosEstado>();
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, sp);
@@ -1076,7 +1255,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     paso = new PaperlessPasosEstado();
                     paso.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
                     paso.Paso.NumPaso = Convert.ToInt16(dreader["NumPaso"]);
@@ -1087,27 +1267,35 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     paso.Pantalla = dreader["pantalla"].ToString();
                     pasos.Add(paso);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return pasos;
         }
-        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1(Int64 IdAsignacion) {
+        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1(Int64 IdAsignacion)
+        {
             return ListarPasosEstadoUsuario1(IdAsignacion, "SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO");
         }
 
-        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1V2(Int64 IdAsignacion) {
+        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario1V2(Int64 IdAsignacion)
+        {
             return ListarPasosEstadoUsuario1(IdAsignacion, "SP_C_PAPERLESS_USUARIO1_PASOS_ESTADO_v2");
         }
 
-        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario2(Int64 IdAsignacion) {
+        public static IList<PaperlessPasosEstado> ListarPasosEstadoUsuario2(Int64 IdAsignacion)
+        {
             PaperlessPasosEstado paso = null;
             IList<PaperlessPasosEstado> pasos = new List<PaperlessPasosEstado>();
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO2_PASOS_ESTADO");
@@ -1118,7 +1306,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     paso = new PaperlessPasosEstado();
                     paso.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
                     paso.Paso.NumPaso = Convert.ToInt16(dreader["NumPaso"]);
@@ -1129,20 +1318,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     paso.Pantalla = dreader["pantalla"].ToString();
                     pasos.Add(paso);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return pasos;
         }
 
-        public static IList<PaperlessUsuario1HousesBL> Usuario1ObtenerHousesBL(Int64 IdAsignacion) {
+        public static IList<PaperlessUsuario1HousesBL> Usuario1ObtenerHousesBL(Int64 IdAsignacion)
+        {
             PaperlessUsuario1HousesBL house = null;
             IList<PaperlessUsuario1HousesBL> houses = new List<PaperlessUsuario1HousesBL>();
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_HOUSEBL");
@@ -1153,7 +1348,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     house = new PaperlessUsuario1HousesBL();
                     house.Id = Convert.ToInt64(dreader["Id"]);
                     house.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
@@ -1200,22 +1396,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["RecargoCollect"] is DBNull)
                         house.ExcepcionRecargoCollect = null;
                     else
-                        house.ExcepcionRecargoCollect = new PaperlessExcepcion() {
+                        house.ExcepcionRecargoCollect = new PaperlessExcepcion()
+                        {
                             RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]),
                             Id = Convert.ToInt64(dreader["IdExcepcion"])
                         };
 
-                    try {
+                    try
+                    {
                         if (dreader["Observacion"] is DBNull)
                             house.Observacion = "";
                         else
                             house.Observacion = dreader["Observacion"].ToString();
 
 
-                        if (dreader["PaperlessTipoRecibo"] is DBNull) {
+                        if (dreader["PaperlessTipoRecibo"] is DBNull)
+                        {
                             if (house.Cliente != null && house.Cliente.Cuenta != null)
                                 house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido;
-                        } else if (house.Cliente != null && house.Cliente.Cuenta != null) {
+                        }
+                        else if (house.Cliente != null && house.Cliente.Cuenta != null)
+                        {
 
                             //LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente);
                             house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = (Enums.PaperlessTipoReciboAperturaEmbarcador)Convert.ToInt16(dreader["PaperlessTipoRecibo"]);
@@ -1231,25 +1432,33 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         else
                             house.Puerto = dreader["puerto"].ToString();
 
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         Log.EscribirLog(ex.Message);
                     }
 
                     houses.Add(house);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return houses;
         }
-        public static IList<PaperlessUsuario1HousesBL> ObtenerHousesBLporShippingInstruction(string ShippingInstruction, string puerto) {
+        public static IList<PaperlessUsuario1HousesBL> ObtenerHousesBLporShippingInstruction(string ShippingInstruction, string puerto)
+        {
             PaperlessUsuario1HousesBL house = null;
             IList<PaperlessUsuario1HousesBL> houses = new List<PaperlessUsuario1HousesBL>();
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_HOUSEBL_SHIPPING");
@@ -1261,7 +1470,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     house = new PaperlessUsuario1HousesBL();
                     house.Id = Convert.ToInt64(dreader["Id"]);
                     house.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
@@ -1308,22 +1518,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (dreader["RecargoCollect"] is DBNull)
                         house.ExcepcionRecargoCollect = null;
                     else
-                        house.ExcepcionRecargoCollect = new PaperlessExcepcion() {
+                        house.ExcepcionRecargoCollect = new PaperlessExcepcion()
+                        {
                             RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]),
                             Id = Convert.ToInt64(dreader["IdExcepcion"])
                         };
 
-                    try {
+                    try
+                    {
                         if (dreader["Observacion"] is DBNull)
                             house.Observacion = "";
                         else
                             house.Observacion = dreader["Observacion"].ToString();
 
 
-                        if (dreader["PaperlessTipoRecibo"] is DBNull) {
+                        if (dreader["PaperlessTipoRecibo"] is DBNull)
+                        {
                             if (house.Cliente != null && house.Cliente.Cuenta != null)
                                 house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido;
-                        } else if (house.Cliente != null && house.Cliente.Cuenta != null) {
+                        }
+                        else if (house.Cliente != null && house.Cliente.Cuenta != null)
+                        {
 
                             //LogicaNegocios.Clientes.clsCuentas.BuscarCuentaPorId(house.Cliente);
                             house.Cliente.Cuenta.TipoReciboAperturaEmbarcador = (Enums.PaperlessTipoReciboAperturaEmbarcador)Convert.ToInt16(dreader["PaperlessTipoRecibo"]);
@@ -1344,15 +1559,21 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         else
                             house.NumMaster = dreader["NumMaster"].ToString();
 
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         Log.EscribirLog(ex.Message);
                     }
 
                     houses.Add(house);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -1363,27 +1584,32 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         public static ResultadoTransaccion Usuario1GuardaHousesBL(IList<PaperlessUsuario1HousesBL> houses,
                                                                   PaperlessUsuario1HouseBLInfo info,
-
-                                                                  PaperlessPasosEstado paso, Boolean existeConsolidada) {
+                                                                  PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
             bool esupdate = false;
 
-            try {
+            try
+            {
                 //Eliminar Info anterior
                 //resultado = Usuario1EliminarHousesBLFull(houses[0].IdAsignacion, conn, transaction);
                 //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 //    throw new Exception(resultado.Descripcion);
 
                 //Registrar houses
-                foreach (var house in houses) {
-                    if (house.IsNew) {
-                        if (house.Cliente != null && house.Cliente.IsNew) {
+                foreach (var house in houses)
+                {
+                    if (house.IsNew)
+                    {
+                        if (house.Cliente != null && house.Cliente.IsNew)
+                        {
                             resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                                 throw new Exception(resultado.Descripcion);
-                            else {
+                            else
+                            {
                                 house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                             }
                         }
@@ -1392,7 +1618,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         resultado = Usuario1AgregarHouseBL(house, conn, transaction);
                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
-                        else {
+                        else
+                        {
                             house.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                         }
 
@@ -1406,12 +1633,16 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
 
-                    } else {
-                        if (house.Cliente != null && house.Cliente.IsNew) {
+                    }
+                    else
+                    {
+                        if (house.Cliente.IsNew)
+                        {
                             resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                                 throw new Exception(resultado.Descripcion);
-                            else {
+                            else
+                            {
                                 house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                             }
                         }
@@ -1427,52 +1658,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     }
 
                 }
-                              
 
-               if (!existeConsolidada)
-                {
-                    resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                   
-                } 
-                else 
-               {
-                    resultado = Usuario1ActualizaPaso1Info(info, conn, transaction);
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-
-                //cambiar estado paso
-                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-        public static ResultadoTransaccion AsignacionGuardaHousesBLInfo1(PaperlessUsuario1HouseBLInfo info, Boolean IsNew)
-        {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            
-            try
-            {
-                if (IsNew)
+                //guardar info
+                if (!esupdate)
                 {
                     resultado = Usuario1GuardaHouseBLInfo(info, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -1486,6 +1674,14 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
                 }
+
+
+                //cambiar estado paso
+                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
+                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resultado.Descripcion);
+
+
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
@@ -1504,13 +1700,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resultado;
         }
 
-
-
-
-        private static ResultadoTransaccion Usuario1AgregarHouseBL(PaperlessUsuario1HousesBL housebl, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1AgregarHouseBL(PaperlessUsuario1HousesBL housebl, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
             Int64 IdHouse = 0;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_USUARIO1_HOUSESBL");
                 objParams[0].Value = housebl.IdAsignacion;
                 objParams[1].Value = housebl.Index;
@@ -1534,7 +1729,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = IdHouse;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1542,10 +1739,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion Usuario1GuardaHouseBLInfo(PaperlessUsuario1HouseBLInfo infohousesbl, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1GuardaHouseBLInfo(PaperlessUsuario1HouseBLInfo infohousesbl, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
             Int64 IdHouseInfo = 0;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_USUARIO1_HOUSESBL_INFO");
                 objParams[0].Value = infohousesbl.IdAsignacion;
                 objParams[1].Value = infohousesbl.NumConsolidado;
@@ -1560,7 +1759,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = IdHouseInfo;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1568,9 +1769,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_PASOS_ESTADO");
                 objParams[0].Value = paso.Estado;
                 objParams[1].Value = paso.IdPasoEstado;
@@ -1582,7 +1785,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1590,9 +1795,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario1CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_USUARIO1_PASOS_ESTADO");
                 objParams[0].Value = paso.Estado;
@@ -1604,7 +1811,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1616,10 +1825,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                                                                                              PaperlessAsignacion asignacion,
                                                                                              PaperlessProcesoRegistroTiempo termino,
                                                                                             PaperlessProcesoRegistroTiempo iniciousuario2
-            ) {
+            )
+        {
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
 
@@ -1662,22 +1873,28 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
 
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
                 if (transaction != null)
                     transaction.Rollback();
-            } finally {
+            }
+            finally
+            {
                 if (conn != null)
                     conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1EliminarHousesBLFull(Int64 IdAsignacion, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario1EliminarHousesBLFull(Int64 IdAsignacion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_E_PAPERLESS_USUARIO1_HOUSESBL");
                 objParams[0].Value = IdAsignacion;
 
@@ -1688,7 +1905,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1696,9 +1915,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1EliminarHousesBL(Int64 IdAsignacion, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario1EliminarHousesBL(Int64 IdAsignacion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_E_PAPERLESS_USUARIO1_HOUSESBL_POR_ASIGNACION");
                 objParams[0].Value = IdAsignacion;
 
@@ -1709,7 +1930,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1717,10 +1940,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static PaperlessUsuario1HouseBLInfo Usuario1ObtenerHousesBLInfo(Int64 IdAsignacion) {
+        public static PaperlessUsuario1HouseBLInfo Usuario1ObtenerHousesBLInfo(Int64 IdAsignacion)
+        {
             PaperlessUsuario1HouseBLInfo info = null;
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_HOUSESBL_INFO");
@@ -1731,7 +1956,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     info = new PaperlessUsuario1HouseBLInfo();
                     info.Id = Convert.ToInt64(dreader["Id"]);
                     info.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
@@ -1743,31 +1969,35 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     //info.Cliente = new clsClienteMaster(true) { NombreCompañia = dreader["NombreCompania"].ToString() };
 
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return info;
         }
 
-        
-     
-
-        public static ResultadoTransaccion Usuario1MarcarHousesRuteados(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario1MarcarHousesRuteados(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
+            try
+            {
                 //Eliminar Info anterior
                 //resultado = Usuario1EliminarHousesBL(houses[0].IdAsignacion, conn, transaction);
                 //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 //    throw new Exception(resultado.Descripcion);
 
                 //Registrar houses
-                foreach (var house in houses) {
+                foreach (var house in houses)
+                {
                     resultado = Usuario1MarcaHouseRuteado(house, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
@@ -1782,20 +2012,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return resultado;
         }
 
-        private static ResultadoTransaccion Usuario1GuardarTipoTransito(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1GuardarTipoTransito(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_TRANSBORDOTRANSITO");
                 if (house.TransbordoTransito != null)
                     objParams[0].Value = house.TransbordoTransito.Id;
@@ -1810,16 +2046,20 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
             }
             return resTransaccion;
         }
-        private static ResultadoTransaccion Usuario1MarcaHouseRuteado(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1MarcaHouseRuteado(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_HOUSESBL");
                 objParams[0].Value = house.Ruteado;
                 objParams[1].Value = house.Id;
@@ -1831,7 +2071,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1839,15 +2081,18 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1ActuazarPaso1(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario1ActuazarPaso1(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
+            try
+            {
 
                 //Registrar houses
-                foreach (var house in houses) {
+                foreach (var house in houses)
+                {
                     resultado = Usuario1ActualizaPaso1(house, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
@@ -1862,26 +2107,32 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return resultado;
         }
 
-        private static ResultadoTransaccion Usuario1ActualizaPaso1(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1ActualizaPaso1(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_HOUSESBL_P1");
                 objParams[0].Value = house.HouseBL;
                 objParams[1].Value = house.Freehand;
                 objParams[2].Value = house.Id;
-                objParams[3].Value = house.Cliente != null ? house.Cliente.Id : 0;
-                objParams[4].Value = house.TipoCliente != null ? house.TipoCliente.Id : 0;
+                objParams[3].Value = house.Cliente.Id;
+                objParams[4].Value = house.TipoCliente.Id;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_HOUSESBL_P1", connparam);
                 command.Parameters.AddRange(objParams);
@@ -1890,7 +2141,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1898,9 +2151,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion Usuario1ActualizaPaso1Info(PaperlessUsuario1HouseBLInfo house, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1ActualizaPaso1Info(PaperlessUsuario1HouseBLInfo house, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_HOUSESBL_INFO");
                 objParams[0].Value = house.IdAsignacion;
                 objParams[1].Value = house.NumConsolidado;
@@ -1913,7 +2168,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -1921,10 +2178,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessTipoCliente> ListarTiposCliente(Enums.Estado activo) {
+        public static IList<PaperlessTipoCliente> ListarTiposCliente(Enums.Estado activo)
+        {
             PaperlessTipoCliente tipo = null;
             IList<PaperlessTipoCliente> tipos = new List<PaperlessTipoCliente>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_CLIENTE");
@@ -1935,7 +2194,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessTipoCliente();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
@@ -1943,19 +2203,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
 
-        public static IList<PaperlessExcepcion> Usuario1ObtenerExcepciones(Int64 IdAsignacion) {
+        public static IList<PaperlessExcepcion> Usuario1ObtenerExcepciones(Int64 IdAsignacion)
+        {
             PaperlessExcepcion excepcion = null;
             IList<PaperlessExcepcion> excepciones = new List<PaperlessExcepcion>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_EXCEPCIONES");
@@ -1966,11 +2232,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     excepcion = new PaperlessExcepcion();
                     excepcion.Id = Convert.ToInt64(dreader["Id"]);
                     excepcion.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
-
+                    excepcion.HouseBL.Id = Convert.ToInt64(dreader["IdHouseBL"]);
                     excepcion.RecargoCollect = Convert.ToBoolean(dreader["RecargoCollect"]);
                     excepcion.RecargoCollectResuelto = Convert.ToBoolean(dreader["RecargoCollectResuelto"]);
                     excepcion.SobreValorPendiente = Convert.ToBoolean(dreader["SobrevalorPendiente"]);
@@ -1979,41 +2246,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     excepcion.AvisoNoEnviadoResuelto = Convert.ToBoolean(dreader["AvisoNoEnviadoResuelto"]);
 
                     excepcion.HouseBL = new PaperlessUsuario1HousesBL();
-                    excepcion.HouseBL.Id = Convert.ToInt64(dreader["IdHouseBL"]);
                     excepcion.HouseBL.Cliente = Clientes.clsClienteMasterADO.ObtenerClienteMasterPorId(Convert.ToInt64(dreader["IdCliente"]));
-                    excepcion.HouseBL.TipoCliente = new PaperlessTipoCliente() {
+                    excepcion.HouseBL.TipoCliente = new PaperlessTipoCliente()
+                    {
                         Id = Convert.ToInt64(dreader["IdTipoCliente"]),
                         Nombre = dreader["TipoCliente"].ToString()
                     };
                     excepcion.HouseBL.Freehand = Convert.ToBoolean(dreader["Freehand"]);
                     excepcion.HouseBL.HouseBL = dreader["HouseBL"].ToString();
                     excepcion.HouseBL.Index = Convert.ToInt32(dreader["IndexHouse"].ToString());
-
-                    if (dreader["UsuarioUltimaMod"] is DBNull)
-                        excepcion.IdUsuarioUltimaModificacion = 0;
-                    else
-                        excepcion.IdUsuarioUltimaModificacion = Convert.ToInt64(dreader["UsuarioUltimaMod"]);
-
-                    //if (dreader["Causador"] is DBNull)
-                    //    excepcion.Causador = null;
-                    //else
-                    //{excepcion.Causador = new PaperlessAgenteCausador( );
-                    // Convert.ToInt32(dreader["Causador"]
-                    //}
-
-
-                    try {
+                    try
+                    {
                         excepcion.Comentario = dreader["Comentario"].ToString();
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e)
+                    {
                         //Log.EscribirLog(e);
                         Console.Write(e.Message);
                     }
 
                     excepciones.Add(excepcion);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -2021,26 +2281,32 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
 
-        public static ResultadoTransaccion Usuario1IngresarExcepxiones(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario1IngresarExcepxiones(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
+            try
+            {
                 //Eliminar Info anterior
                 //resultado = Usuario1EliminarHousesBL(houses[0].IdAsignacion, conn, transaction);
                 //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 //    throw new Exception(resultado.Descripcion);
 
                 //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-                    if (excepcion.IsNew) {
+                foreach (var excepcion in excepciones)
+                {
+                    if (excepcion.IsNew)
+                    {
                         resultado = Usuario1MarcaIngresoExcepcion(excepcion, conn, transaction);
                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
 
                         excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    } else {
+                    }
+                    else
+                    {
                         resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
@@ -2057,11 +2323,15 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -2069,10 +2339,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
 
-        private static ResultadoTransaccion Usuario1MarcaIngresoExcepcion(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1MarcaIngresoExcepcion(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
             Int64 IdExcepcion = 0;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_USUARIO1_EXCEPCIONES");
                 objParams[0].Value = excepcion.IdAsignacion;
                 objParams[1].Value = excepcion.HouseBL.Id;
@@ -2082,8 +2354,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[5].Value = excepcion.SobreValorPendienteResuelto;
                 objParams[6].Value = excepcion.AvisoNoEnviado;
                 objParams[7].Value = excepcion.AvisoNoEnviadoResuelto;
-                objParams[8].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                objParams[9].Value = excepcion.UsuarioCreador;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES", connparam);
                 command.Parameters.AddRange(objParams);
@@ -2093,7 +2363,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 resTransaccion.ObjetoTransaccion = IdExcepcion;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -2101,9 +2373,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        private static ResultadoTransaccion Usuario1ActualizaExcepcion(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam) {
+        private static ResultadoTransaccion Usuario1ActualizaExcepcion(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES");
                 objParams[0].Value = excepcion.RecargoCollect;
                 objParams[1].Value = excepcion.RecargoCollectResuelto;
@@ -2121,7 +2395,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -2129,10 +2405,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessTipoCarga> ListarTipoCarga(Enums.Estado activo) {
+        public static IList<PaperlessTipoCarga> ListarTipoCarga(Enums.Estado activo)
+        {
             PaperlessTipoCarga tipo = null;
             IList<PaperlessTipoCarga> tipos = new List<PaperlessTipoCarga>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_CARGA");
@@ -2143,27 +2421,33 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessTipoCarga();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
-                    //tipo.Nombre = dreader["DescripcionLarga"].ToString();
                     tipo.Activo = Convert.ToBoolean(dreader["Activo"]);
 
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
-        public static IList<PaperlessTipoCarga> ListarTipoCargaDescripcionLarga(Enums.Estado activo) {
+        public static IList<PaperlessTipoCarga> ListarTipoCargaDescripcionLarga(Enums.Estado activo)
+        {
             PaperlessTipoCarga tipo = null;
             IList<PaperlessTipoCarga> tipos = new List<PaperlessTipoCarga>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_CARGA_DESCRIPCION_LARGA");
@@ -2174,7 +2458,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessTipoCarga();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
@@ -2182,19 +2467,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     tipo.DescripcionLarga = dreader["DescripcionLarga"].ToString();
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
 
-        public static IList<PaperlessTipoServicio> ListarTipoServicios(Enums.Estado activo) {
+        public static IList<PaperlessTipoServicio> ListarTipoServicios(Enums.Estado activo)
+        {
             PaperlessTipoServicio tipo = null;
             IList<PaperlessTipoServicio> tipos = new List<PaperlessTipoServicio>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_SERVICIO");
@@ -2205,7 +2496,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessTipoServicio();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
@@ -2213,9 +2505,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -2223,10 +2519,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
 
-        public static PaperlessProcesoDuracion ObtenerDuracionProcesoPaperless(PaperlessTipoCarga tipocarga) {
+        public static PaperlessProcesoDuracion ObtenerDuracionProcesoPaperless(PaperlessTipoCarga tipocarga)
+        {
             PaperlessProcesoDuracion tipo = null;
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_PROCESO_DURACION");
@@ -2237,10 +2535,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessProcesoDuracion();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
-                    tipo.TipoCarga = new PaperlessTipoCarga() {
+                    tipo.TipoCarga = new PaperlessTipoCarga()
+                    {
                         Id = Convert.ToInt64(dreader["IdTipoCarga"]),
                         Nombre = dreader["TipoCarga"].ToString()
                     };
@@ -2249,9 +2549,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     tipo.TiempoAlerta = Convert.ToDecimal(dreader["TiempoAlerta"]);
 
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -2260,9 +2564,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
 
         //PROCESO TIEMPOS
-        public static ResultadoTransaccion Usuario1RegistraComienzo(PaperlessProcesoRegistroTiempo inicio, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario1RegistraComienzo(PaperlessProcesoRegistroTiempo inicio, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_PROCESOS_REGISTRO_COMIENZO_USUARIO1");
                 objParams[0].Value = inicio.IdAsignacion;
                 objParams[1].Value = inicio.ComienzoUsuario1;
@@ -2274,19 +2580,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 //conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario2RegistraComienzo(PaperlessProcesoRegistroTiempo inicio, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario2RegistraComienzo(PaperlessProcesoRegistroTiempo inicio, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_PROCESOS_REGISTRO_INICIO_USUARIO2");
                 objParams[0].Value = inicio.IdAsignacion;
                 objParams[1].Value = inicio.ComienzoUsuario2;
@@ -2298,19 +2610,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 //conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1RegistraTermino(PaperlessProcesoRegistroTiempo termino, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario1RegistraTermino(PaperlessProcesoRegistroTiempo termino, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 //conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_PROCESOS_REGISTRO_TERMINO_USUARIO1");
                 objParams[0].Value = termino.IdAsignacion;
@@ -2323,20 +2641,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 //conn.Close();
             }
             return resTransaccion;
         }
 
 
-        public static ResultadoTransaccion Usuario2RegistraTermino(PaperlessProcesoRegistroTiempo termino, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario2RegistraTermino(PaperlessProcesoRegistroTiempo termino, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 //conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_PROCESOS_REGISTRO_TERMINO_USUARIO2");
                 objParams[0].Value = termino.IdAsignacion;
@@ -2349,11 +2673,15 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 //conn.Close();
             }
             return resTransaccion;
@@ -2361,10 +2689,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
 
 
-        public static PaperlessProcesoRegistroTiempo ObtenerTiemposProceso(Int64 IdAsignacion) {
+        public static PaperlessProcesoRegistroTiempo ObtenerTiemposProceso(Int64 IdAsignacion)
+        {
             PaperlessProcesoRegistroTiempo tipo = null;
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_PROCESOS_REGISTRO_TIEMPOS");
@@ -2375,7 +2705,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     tipo = new PaperlessProcesoRegistroTiempo();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.IdAsignacion = IdAsignacion;
@@ -2400,42 +2731,60 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     else
                         tipo.TerminoUsuario2 = Convert.ToDateTime(dreader["TerminoUsaurio2"]);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipo;
         }
+        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso)
+        {
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+            try
+            {
+                transaction.Commit();
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-        public static ResultadoTransaccion Usuario2IngresarExcepxiones(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso) {
+                resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
+
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+                resultado.Descripcion = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return resultado;
+        }
+
+        public static ResultadoTransaccion Usuario2IngresarExcepxiones(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
-                ////Registrar excepciones
-                //foreach (var excepcion in excepciones)
-                //{
-                //    resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
-                //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //        throw new Exception(resultado.Descripcion);
-                //}
-                foreach (var excepcion in excepciones) {
-                    if (excepcion.IsNew) {
-                        resultado = Usuario1MarcaIngresoExcepcion(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    } else {
-                        resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
-                        //   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
+            try
+            {
+                //Registrar excepciones
+                foreach (var excepcion in excepciones)
+                {
+                    resultado = Usuario1ActualizaExcepcion(excepcion, conn, transaction);
+                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                        throw new Exception(resultado.Descripcion);
                 }
+
                 //cambiar estado paso
                 resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
                 if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -2445,39 +2794,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return resultado;
         }
 
-        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso) {
-            var resultado = new ResultadoTransaccion();
-            var conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            try {
-                Usuario2CambiarEstadoPaso(paso, conn, transaction);
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                if (conn.State != ConnectionState.Closed)
-                    conn.Close();
-            }
-            return resultado;
-        }
-
-        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario2CambiarEstadoPaso(Entidades.Paperless.PaperlessPasosEstado paso, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO2_PASOS_ESTADO");
                 objParams[0].Value = paso.Estado;
                 objParams[1].Value = paso.IdPasoEstado;
@@ -2489,7 +2825,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -2497,25 +2835,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario2ActualizarHouseBL(IList<PaperlessUsuario1HousesBL> housesbl, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario2ActualizarHouseBL(IList<PaperlessUsuario1HousesBL> housesbl, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
+            try
+            {
                 //Actualiza house BL
-                foreach (var house in housesbl) {
-                    if (paso.Paso.NumPaso == 3) {
-                        if (house.ReciboAperturaEmbarcador && house.TipoReciboAperturaEmbarcador != Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido) {
-                            resultado = Usuario2ActualizaHouseBL(house, conn, transaction);
-                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                                throw new Exception(resultado.Descripcion);
-                        } else if (!house.ReciboAperturaEmbarcador && house.TipoReciboAperturaEmbarcador.Equals(Enums.PaperlessTipoReciboAperturaEmbarcador.NoRecibida)) {
+                foreach (var house in housesbl)
+                {
+                    if (paso.Paso.NumPaso == 3)
+                    {
+                        if (house.ReciboAperturaEmbarcador && house.TipoReciboAperturaEmbarcador != Enums.PaperlessTipoReciboAperturaEmbarcador.NoDefinido)
+                        {
                             resultado = Usuario2ActualizaHouseBL(house, conn, transaction);
                             if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                                 throw new Exception(resultado.Descripcion);
                         }
-                    } else {
+                        else if (!house.ReciboAperturaEmbarcador && house.TipoReciboAperturaEmbarcador.Equals(Enums.PaperlessTipoReciboAperturaEmbarcador.NoRecibida))
+                        {
+                            resultado = Usuario2ActualizaHouseBL(house, conn, transaction);
+                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
+                                throw new Exception(resultado.Descripcion);
+                        }
+                    }
+                    else
+                    {
                         resultado = Usuario2ActualizaHouseBL(house, conn, transaction);
                         if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                             throw new Exception(resultado.Descripcion);
@@ -2532,20 +2879,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return resultado;
         }
 
-        public static ResultadoTransaccion Usuario2ActualizaHouseBL(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion Usuario2ActualizaHouseBL(PaperlessUsuario1HousesBL house, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_USUARIO2_HOUSESBL");
                 objParams[0].Value = house.EmbarcadorContactado;
                 objParams[1].Value = house.ReciboAperturaEmbarcador;
@@ -2562,17 +2915,21 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
             }
             return resTransaccion;
         }
-        public static ResultadoTransaccion Usuario2ActualizaPaso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario2ActualizaPaso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso)
+        {
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
 
@@ -2583,23 +2940,29 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                 transaction.Commit();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
                 if (transaction != null)
                     transaction.Rollback();
-            } finally {
+            }
+            finally
+            {
                 if (conn != null)
                     conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario2TerminaProceso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso, PaperlessProcesoRegistroTiempo termino) {
+        public static ResultadoTransaccion Usuario2TerminaProceso(PaperlessAsignacion asignacion, PaperlessPasosEstado paso, PaperlessProcesoRegistroTiempo termino)
+        {
             resTransaccion = new ResultadoTransaccion();
             SqlTransaction transaction = null;
-            try {
+            try
+            {
                 conn = BaseDatos.NuevaConexion();
                 transaction = conn.BeginTransaction();
 
@@ -2622,13 +2985,17 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
 
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
                 if (transaction != null)
                     transaction.Rollback();
-            } finally {
+            }
+            finally
+            {
                 if (conn != null)
                     conn.Close();
             }
@@ -2636,9 +3003,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
 
-        public static ResultadoTransaccion AgregarLogAperturaNavieras(PaperlessLogAperturaNavieras LogApertura, SqlConnection connparam, SqlTransaction tranparam) {
+        public static ResultadoTransaccion AgregarLogAperturaNavieras(PaperlessLogAperturaNavieras LogApertura, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_LOG_FECHA_APERTURA_NAVIERAS");
                 objParams[0].Value = LogApertura.IdAsignacion;
                 objParams[1].Value = LogApertura.Accion;
@@ -2654,19 +3023,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 //conn.Close();
             }
             return resTransaccion;
         }
 
-        public static ResultadoTransaccion Usuario1RechazaAsignacion(PaperlessUsuario1Rechaza rechazo) {
+        public static ResultadoTransaccion Usuario1RechazaAsignacion(PaperlessUsuario1Rechaza rechazo)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 conn = Base.BaseDatos.BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_ASIGNACION_RECHAZO");
                 objParams[0].Value = rechazo.IdAsignacion;
@@ -2679,20 +3054,26 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return resTransaccion;
         }
 
-        public static PaperlessUsuario1Rechaza ObtenerRechazoAsignacion(Int64 IdAsignacion) {
+        public static PaperlessUsuario1Rechaza ObtenerRechazoAsignacion(Int64 IdAsignacion)
+        {
             PaperlessUsuario1Rechaza rechazo = null;
 
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_ASIGNACION_RECHAZO");
@@ -2703,21 +3084,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     rechazo = new PaperlessUsuario1Rechaza();
                     rechazo.Id = Convert.ToInt64(dreader["Id"]);
                     rechazo.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
                     rechazo.FechaRechazo = Convert.ToDateTime(dreader["FechaRechazo"]);
-                    rechazo.Usuario = new clsUsuario() {
+                    rechazo.Usuario = new clsUsuario()
+                    {
                         ApellidoPaterno = dreader["ApellidoPaterno"].ToString(),
                         ApellidoMaterno = dreader["ApellidoMaterno"].ToString(),
                         Nombre = dreader["Nombres"].ToString()
                     };
                     rechazo.Motivo = dreader["Motivo"].ToString();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -2725,10 +3112,12 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
         public static IList<PaperlessFlujo> ConsultarGestionPaperless(string nummaster, string numconsolidad, DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string nave
-            , DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras) {
+            , DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras)
+        {
             PaperlessFlujo asignaciones = null;
             IList<PaperlessFlujo> listasignaciones = new List<PaperlessFlujo>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION");
@@ -2748,7 +3137,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     asignaciones = new PaperlessFlujo();
                     asignaciones.Asignacion.Id = Convert.ToInt64(dreader["Id"]);
                     asignaciones.Asignacion.NumMaster = dreader["NumMaster"].ToString();
@@ -2859,21 +3249,23 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     asignaciones.Asignacion.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
 
                     asignaciones.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
-                    asignaciones.Asignacion.Marca = new PaperlessEmpresa();
-                    asignaciones.Asignacion.Marca.Codigo = dreader["Empresa"].ToString();
-                    asignaciones.Asignacion.Marca.Nombre = dreader["Empresa"].ToString();
                     listasignaciones.Add(asignaciones);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listasignaciones;
         }
 
-        public static ResultadoTransaccion CrearAgente(PaperlessAgente agente) {
+        public static ResultadoTransaccion CrearAgente(PaperlessAgente agente)
+        {
             ResultadoTransaccion res = new ResultadoTransaccion();
 
             conn = BaseDatos.Conexion();
@@ -2881,7 +3273,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             var transaction = conn.BeginTransaction();
 
             long Id;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_AGENTE");
                 objParams[0].Value = agente.Nombre;
                 objParams[1].Value = agente.Contacto;
@@ -2898,7 +3291,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 res.Estado = Enums.EstadoTransaccion.Aceptada;
                 res.Descripcion = "Se registró la información del agente correctamente";
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 Log.EscribirLog(ex.Message);
 
@@ -2906,13 +3301,16 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 res.ArchivoError = "clsPaperlessADO.cs";
                 res.MetodoError = "CrearAgente";
                 res.Estado = Enums.EstadoTransaccion.Rechazada;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return res;
         }
 
-        public static ResultadoTransaccion EliminarAgente(PaperlessAgente agente) {
+        public static ResultadoTransaccion EliminarAgente(PaperlessAgente agente)
+        {
             agente.Activo = false;
             var foo = EditarAgente(agente);
             if (foo.Estado.Equals(Enums.EstadoTransaccion.Aceptada))
@@ -2921,7 +3319,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         }
 
-        public static ResultadoTransaccion EditarAgente(PaperlessAgente agente) {
+        public static ResultadoTransaccion EditarAgente(PaperlessAgente agente)
+        {
             ResultadoTransaccion res = new ResultadoTransaccion();
 
             conn = BaseDatos.Conexion();
@@ -2929,7 +3328,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             var transaction = conn.BeginTransaction();
 
             long Id;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_A_PAPERLESS_AGENTE");
                 objParams[0].Value = agente.Id;
                 objParams[1].Value = agente.Nombre;
@@ -2948,7 +3348,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 res.Estado = Enums.EstadoTransaccion.Aceptada;
                 res.Descripcion = "Se actualizo la información del agente correctamente";
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 Log.EscribirLog(ex.Message);
 
@@ -2956,14 +3358,18 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 res.ArchivoError = "clsPaperlessADO.cs";
                 res.MetodoError = "CrearAgente";
                 res.Estado = Enums.EstadoTransaccion.Rechazada;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return res;
         }
 
-        public static bool ValidaNumMaster(string numMaster) {
-            try {
+        public static bool ValidaNumMaster(string numMaster)
+        {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_NUMMASTER");
@@ -2974,21 +3380,28 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     string num = dreader["nummaster"].ToString();
                     if (!string.IsNullOrEmpty(num))
                         return true;
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return false;
         }
 
-        public static bool ValidaNumConsolidado(string numMaster, string idAsignacion) {
-            try {
+        public static bool ValidaNumConsolidado(string numMaster, string idAsignacion)
+        {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_NUMCONSOLIDADO");
@@ -2999,7 +3412,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     string num = dreader["NumConsolidado"].ToString();
                     string idasignacionquery = dreader["idasignacion"].ToString();
 
@@ -3008,27 +3422,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     else if (!string.IsNullOrEmpty(num))
                         return true;
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return false;
         }
 
-        public static ResultadoTransaccion Usuario1GuardarTipoTransito(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso) {
+        public static ResultadoTransaccion Usuario1GuardarTipoTransito(IList<PaperlessUsuario1HousesBL> houses, PaperlessPasosEstado paso)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = Base.BaseDatos.BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
 
-            try {
+            try
+            {
                 //Eliminar Info anterior
                 //resultado = Usuario1EliminarHousesBL(houses[0].IdAsignacion, conn, transaction);
                 //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                 //    throw new Exception(resultado.Descripcion);
 
                 //Registrar houses
-                foreach (var house in houses) {
+                foreach (var house in houses)
+                {
                     resultado = Usuario1GuardarTipoTransito(house, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
@@ -3043,11 +3464,15 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -3055,9 +3480,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         }
 
-        public static IList<PaperlessTipoTransito> ListarTiposTransitoTransbordo() {
+        public static IList<PaperlessTipoTransito> ListarTiposTransitoTransbordo()
+        {
             IList<PaperlessTipoTransito> tipos = new List<PaperlessTipoTransito>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -3065,27 +3492,35 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var tipo = new PaperlessTipoTransito();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
 
-        public static IList<PaperlessUsuario1HousesBL> RefrescarTiposTransitoTransbordo(List<PaperlessUsuario1HousesBL> houses) {
+        public static IList<PaperlessUsuario1HousesBL> RefrescarTiposTransitoTransbordo(List<PaperlessUsuario1HousesBL> houses)
+        {
             IList<PaperlessTipoTransito> tipos = new List<PaperlessTipoTransito>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                foreach (var house in houses) {
+                foreach (var house in houses)
+                {
 
 
                     objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_TRANSBORDOTRANSITO");
@@ -3096,7 +3531,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     command.CommandType = CommandType.StoredProcedure;
                     dreader = command.ExecuteReader();
 
-                    while (dreader.Read()) {
+                    while (dreader.Read())
+                    {
                         var tipo = new PaperlessTipoTransito();
                         tipo.Id = Convert.ToInt64(dreader["Id"]);
                         tipo.Nombre = dreader["Descripcion"].ToString();
@@ -3104,18 +3540,24 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     }
                     dreader.Close();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return houses;
         }
 
-        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones(string tipoE) {
+        public static IList<PaperlessTipoExcepcion> ListarTiposExcepciones(string tipoE)
+        {
             var tipos = new List<PaperlessTipoExcepcion>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -3128,24 +3570,31 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var tipo = new PaperlessTipoExcepcion();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
 
-        public static IList<PaperlessTipoDisputa> ListarTiposDisputas() {
+        public static IList<PaperlessTipoDisputa> ListarTiposDisputas()
+        {
             var tipos = new List<PaperlessTipoDisputa>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
@@ -3153,28 +3602,35 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var tipo = new PaperlessTipoDisputa();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return tipos;
         }
 
-        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad(string resp) {
+        public static List<PaperlessTipoResponsabilidad> ListarTiposResponsabilidad(string resp)
+        {
             var tipos = new List<PaperlessTipoResponsabilidad>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
 
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_RESPONSABILIDAD");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_EXCEPCIONES");
                 objParams[0].Value = resp;
 
                 var command = new SqlCommand("SP_L_PAPERLESS_TIPO_RESPONSABILIDAD", conn);
@@ -3182,28 +3638,36 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var tipo = new PaperlessTipoResponsabilidad();
                     tipo.Id = Convert.ToInt64(dreader["Id"]);
                     tipo.Nombre = dreader["Descripcion"].ToString();
                     tipos.Add(tipo);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return tipos;
         }
 
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado) {
+        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado)
+        {
             ResultadoTransaccion resultado = new ResultadoTransaccion();
             conn = BaseDatos.NuevaConexion();
             SqlTransaction transaction = conn.BeginTransaction();
-            try {
+            try
+            {
                 //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion
+                foreach (var excepcion in excepciones)
+                {
+                    resultado = Usuario1ActualizaExcepcionV2(excepcion, conn, transaction);
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
                         throw new Exception(resultado.Descripcion);
                 }
@@ -3217,53 +3681,25 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 transaction.Rollback();
                 resultado.Estado = Enums.EstadoTransaccion.Rechazada;
                 resultado.Descripcion = ex.Message;
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return resultado;
         }
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesV2_Usuario2(IList<PaperlessExcepcion> excepciones, PaperlessPasosEstado pasoSeleccionado) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            try {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-                    resultado = Usuario1ActualizaExcepcionV2_Usuario2(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-                ////cambiar estado paso
-                //resultado = Usuario1CambiarEstadoPaso(pasoSeleccionado, conn, transaction);
-                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-        public static ResultadoTransaccion Usuario1ActualizaExcepcionV2_Usuario2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-
+        private static ResultadoTransaccion Usuario1ActualizaExcepcionV2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2");
                 objParams[0].Value = excepcion.TieneExcepcion;
                 if (excepcion.TipoExcepcion != null)
@@ -3279,10 +3715,6 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[4].Value = excepcion.Comentario ?? "";
                 objParams[5].Value = excepcion.Resuelto;
                 objParams[6].Value = excepcion.ResueltoUser2;
-                if (excepcion.Causador != null)
-                    objParams[7].Value = excepcion.Causador;
-                else
-                    objParams[7].Value = 0;
 
                 SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
                 command.Parameters.AddRange(objParams);
@@ -3291,7 +3723,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -3299,51 +3733,15 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-
-        private static ResultadoTransaccion Usuario1ActualizaExcepcionV2(PaperlessExcepcion excepcion, SqlConnection connparam, SqlTransaction tranparam) {
-            resTransaccion = new ResultadoTransaccion();
-            try {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2");
-                objParams[0].Value = excepcion.TieneExcepcion;
-                if (excepcion.TipoExcepcion != null)
-                    objParams[1].Value = excepcion.TipoExcepcion.Id;
-                else
-                    objParams[1].Value = -1;
-                if (excepcion.Responsabilidad != null)
-                    objParams[2].Value = excepcion.Responsabilidad.Id;
-                else
-                    objParams[2].Value = -1;
-                objParams[3].Value = excepcion.Id;
-
-                objParams[4].Value = excepcion.Comentario ?? "";
-                objParams[5].Value = excepcion.Resuelto;
-                objParams[6].Value = excepcion.ResueltoUser2;
-                if (excepcion.Causador != null)
-                    objParams[7].Value = excepcion.Causador;
-                else
-                    objParams[7].Value = 0;
-
-                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_V2", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                command.ExecuteNonQuery();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-
-        public static IList<PaperlessExcepcion> RefrescarExcepciones(List<PaperlessExcepcion> excepciones) {
+        public static IList<PaperlessExcepcion> RefrescarExcepciones(List<PaperlessExcepcion> excepciones)
+        {
             IList<PaperlessTipoTransito> tipos = new List<PaperlessTipoTransito>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                foreach (var excepcion in excepciones) {
+                foreach (var excepcion in excepciones)
+                {
 
 
                     objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_V2");
@@ -3354,19 +3752,22 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     command.CommandType = CommandType.StoredProcedure;
                     dreader = command.ExecuteReader();
 
-                    while (dreader.Read()) {
+                    while (dreader.Read())
+                    {
                         if (!String.IsNullOrEmpty(dreader["TieneExcepciones"].ToString()))
                             excepcion.TieneExcepcion = Convert.ToBoolean(dreader["TieneExcepciones"]);
 
 
                         var tipoExcepcion = new PaperlessTipoExcepcion();
-                        if (!String.IsNullOrEmpty(dreader["id_tipo_excepcion"].ToString())) {
+                        if (!String.IsNullOrEmpty(dreader["id_tipo_excepcion"].ToString()))
+                        {
                             tipoExcepcion.Id = Convert.ToInt64(dreader["id_tipo_excepcion"]);
                             tipoExcepcion.Nombre = dreader["descripcion_tipo_excepcion"].ToString();
                         }
 
                         var tipoResponsabilidad = new PaperlessTipoResponsabilidad();
-                        if (!String.IsNullOrEmpty(dreader["id_tipo_responsabilidad"].ToString())) {
+                        if (!String.IsNullOrEmpty(dreader["id_tipo_responsabilidad"].ToString()))
+                        {
                             tipoResponsabilidad.Id = Convert.ToInt64(dreader["id_tipo_responsabilidad"]);
                             tipoResponsabilidad.Nombre = dreader["descripcion_tipo_responsabilidad"].ToString();
                         }
@@ -3377,37 +3778,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         if (!String.IsNullOrEmpty(dreader["Resuelto_User2"].ToString()))
                             excepcion.ResueltoUser2 = Convert.ToBoolean(dreader["Resuelto_User2"]);
 
-
-                        var AgenteCausador = new PaperlessAgenteCausador();
-                        if (!String.IsNullOrEmpty(dreader["Causador"].ToString()) && dreader["Causador"].ToString() != "0") {
-                            AgenteCausador.Id = Convert.ToInt64(dreader["Causador"]);
-                            AgenteCausador.Nombre = dreader["Descripcion"].ToString();
-                        }
-
-
                         excepcion.TipoExcepcion = tipoExcepcion;
                         excepcion.Responsabilidad = tipoResponsabilidad;
-                        excepcion.Causador = AgenteCausador;
 
 
                     }
                     dreader.Close();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return excepciones;
         }
 
-        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado) {
+        public static ResultadoTransaccion Usuario1GuardaDisputas(IList<PaperlessUsuario1Disputas> disputas, PaperlessAsignacion info, PaperlessPasosEstado pasoSeleccionado)
+        {
             resTransaccion = new ResultadoTransaccion();
             conn = BaseDatos.NuevaConexion();
             var trans = conn.BeginTransaction();
             Int64 IdHouseInfo = 0;
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_D_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION");
                 objParams[0].Value = info.Id;
 
@@ -3418,7 +3816,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.ExecuteNonQuery();
 
                 var error = false;
-                foreach (var paperlessUsuario1Disputase in disputas) {
+                foreach (var paperlessUsuario1Disputase in disputas)
+                {
                     var res = GuardarDisputra(paperlessUsuario1Disputase, conn, trans, info);
                     if (res.Estado == Enums.EstadoTransaccion.Rechazada)
                         error = true;
@@ -3430,15 +3829,20 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     throw new Exception(resultado.Descripcion);
 
 
-                if (error) {
+                if (error)
+                {
                     resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                     trans.Rollback();
-                } else {
+                }
+                else
+                {
                     resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
                     trans.Commit();
                 }
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -3447,9 +3851,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
 
         }
 
-        private static ResultadoTransaccion GuardarDisputra(PaperlessUsuario1Disputas disputa, SqlConnection connparam, SqlTransaction tranparam, PaperlessAsignacion asignacion) {
+        private static ResultadoTransaccion GuardarDisputra(PaperlessUsuario1Disputas disputa, SqlConnection connparam, SqlTransaction tranparam, PaperlessAsignacion asignacion)
+        {
             resTransaccion = new ResultadoTransaccion();
-            try {
+            try
+            {
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_USUARIO1_DISPUTAS");
                 objParams[0].Value = asignacion.Id;
                 objParams[1].Value = disputa.Numero;
@@ -3464,7 +3870,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 command.ExecuteNonQuery();
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
                 resTransaccion.Descripcion = ex.Message;
                 Log.EscribirLog(ex.Message);
@@ -3472,9 +3880,11 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
-        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion) {
+        public static IList<PaperlessUsuario1Disputas> ObtieneDisputas(PaperlessAsignacion paperlessAsignacion)
+        {
             var listDisputas = new List<PaperlessUsuario1Disputas>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_USUARIO1_DISPUTAS_POR_ASIGNACION");
@@ -3484,7 +3894,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var disputa = new PaperlessUsuario1Disputas();
                     disputa.Id = Convert.ToInt64(dreader["Id"]);
                     if (!string.IsNullOrEmpty(dreader["Numero"].ToString()))
@@ -3496,21 +3907,27 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     disputa.TipoDisputa.Nombre = dreader["tipoDescripcion"].ToString();
                     listDisputas.Add(disputa);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listDisputas;
         }
 
-        public static DataTable ObtenerCantidadAsignacionesGrafico(string usuario, DateTime desde, DateTime hasta) {
+        public static DataTable ObtenerCantidadAsignacionesGrafico(string usuario, DateTime desde, DateTime hasta)
+        {
             DataTable Grafica = new DataTable("Grafico");
             string Estado;
             string Vendedor;
             Int32 Value;
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES");
@@ -3532,23 +3949,30 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 //Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
 
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     Estado = dreader["NOMBREUSUARIO"].ToString();
                     Vendedor = usuario;
                     Value = Convert.ToInt32(dreader["CANT"]);
                     Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return Grafica;
         }
 
-        public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta) {
+        public static IList<PaperlessCantUsuarios> ObtenerCantidadAsignaciones(string usuario, DateTime desde, DateTime hasta)
+        {
             var lista = new List<PaperlessCantUsuarios>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES");
@@ -3560,15 +3984,20 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     var ht = new PaperlessCantUsuarios();
                     ht.NombreUsuario = dreader["NOMBREUSUARIO"].ToString();
                     ht.Cantidad = Convert.ToInt32(dreader["CANT"]);
                     lista.Add(ht);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
@@ -3576,13 +4005,15 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         }
 
         public static IList<PaperlessFlujo> ConsultarGestionPaperlessGraficosUsuario1y2(DateTime desde, DateTime hasta,
-            string usuario, string tipocarga, string EstadoPaperless, string marca) {
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
             PaperlessFlujo asignaciones = null;
             IList<PaperlessFlujo> listasignaciones = new List<PaperlessFlujo>();
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION_ASIGNACIONES");
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_GESTION___");
                 objParams[0].Value = desde;
                 objParams[1].Value = hasta;
                 objParams[2].Value = usuario;
@@ -3591,12 +4022,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[5].Value = marca;
 
 
-                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION_ASIGNACIONES", conn);
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_GESTION", conn);
                 command.Parameters.AddRange(objParams);
                 command.CommandType = CommandType.StoredProcedure;
                 dreader = command.ExecuteReader();
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     asignaciones = new PaperlessFlujo();
                     asignaciones.Asignacion.Id = Convert.ToInt64(dreader["Id"]);
                     asignaciones.Asignacion.NumMaster = dreader["NumMaster"].ToString();
@@ -3709,16 +4141,21 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     asignaciones.Asignacion.VersionUsuario1 = Convert.ToInt16(dreader["versionUsuario1"]);
                     listasignaciones.Add(asignaciones);
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
 
             return listasignaciones;
         }
         public static DataTable ObtenerCantidadAsignacionesGraficoGestionPaperless(DateTime desde, DateTime hasta,
-            string usuario, string tipocarga, string EstadoPaperless, string marca) {
+            string usuario, string tipocarga, string EstadoPaperless, string marca)
+        {
             DataTable Grafica = new DataTable("Grafico");
             string Estado;
             string Vendedor;
@@ -3730,7 +4167,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             @TIPOCARGA VARCHAR(10) ,  
             @ESTADOPAPERLESS VARCHAR(10),  
             @MARCA VARCHAR (20)  */
-            try {
+            try
+            {
                 //Abrir Conexion
                 conn = BaseDatos.NuevaConexion();
                 objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_CANTIDAD_ASIGNACIONES_GESTION_PAPERLESS");
@@ -3755,462 +4193,23 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 //Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
 
 
-                while (dreader.Read()) {
+                while (dreader.Read())
+                {
                     Estado = dreader["NOMBREUSUARIO"].ToString();
                     Vendedor = usuario;
                     Value = Convert.ToInt32(dreader["CANT"]);
                     Grafica.Rows.Add(new object[] { Estado, Vendedor, Value });
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Log.EscribirLog(ex.Message);
-            } finally {
+            }
+            finally
+            {
                 conn.Close();
             }
             return Grafica;
-        }
-
-
-
-        public static ResultadoTransaccion Usuario1GuardaHousesBLDesdeExcepcion(PaperlessUsuario1HousesBL h,
-                                                                  PaperlessUsuario1HouseBLInfo info,
-                                                                  PaperlessPasosEstado paso) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            bool esupdate = false;
-            IList<PaperlessUsuario1HousesBL> houses = new List<PaperlessUsuario1HousesBL>();
-            houses.Add(h);
-
-
-            try {
-                //Eliminar Info anterior
-                //resultado = Usuario1EliminarHousesBLFull(houses[0].IdAsignacion, conn, transaction);
-                //if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                //    throw new Exception(resultado.Descripcion);
-
-                //Registrar houses
-                foreach (var house in houses) {
-                    if (house.IsNew) {
-                        if (house.Cliente != null && house.Cliente.IsNew) {
-                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
-                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                                throw new Exception(resultado.Descripcion);
-                            else {
-                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                            }
-                        }
-
-
-                        resultado = Usuario1AgregarHouseBL(house, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                        else {
-                            house.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                        }
-
-                        //verificar si tiene recargo collect
-
-                        if (house.ExcepcionRecargoCollect != null) {
-                            house.ExcepcionRecargoCollect.IdAsignacion = house.IdAsignacion;
-                            house.ExcepcionRecargoCollect.HouseBL.Id = house.Id;
-
-
-                            resultado = Usuario1MarcaIngresoExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
-                        }
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                    } else {
-                        if (house.Cliente != null && house.Cliente.IsNew) {
-                            resultado = Clientes.clsClienteMasterADO.GuardarClienteMaster(house.Cliente, conn, transaction);
-                            if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                                throw new Exception(resultado.Descripcion);
-                            else {
-                                house.Cliente.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                            }
-                        }
-
-                        resultado = Usuario1ActualizaPaso1(house, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                        esupdate = true;
-
-                        if (house.ExcepcionRecargoCollect != null)
-                            resultado = Usuario1ActualizaExcepcion(house.ExcepcionRecargoCollect, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-
-                }
-
-                //cambiar estado paso
-                resultado = Usuario1CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-
-
-        public static void Usuario1EliminaExcepxion(PaperlessExcepcion excepcion, Int64 IdusuarioUltimaModificacion) {
-
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES");
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = IdusuarioUltimaModificacion;
-
-
-                SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        public static List<PaperlessAgenteCausador> ListarTiposPaperlessAgenteCausador() {
-            var tipos = new List<PaperlessAgenteCausador>();
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_TIPO_AGENTECAUSADOR");
-                //objParams[0].Value = resp;
-
-                var command = new SqlCommand("SP_L_PAPERLESS_TIPO_AGENTECAUSADOR", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                dreader = command.ExecuteReader();
-
-                while (dreader.Read()) {
-                    var tipo = new PaperlessAgenteCausador();
-                    tipo.Id = Convert.ToInt64(dreader["Id"]);
-                    tipo.Nombre = dreader["Descripcion"].ToString();
-                    tipos.Add(tipo);
-                }
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return tipos;
-        }
-
-        public static IList<PaperlessExcepcionMaster> Usuario1ObtenerExcepcionesMaster(Int64 IdAsignacion) {
-            PaperlessExcepcionMaster excepcion = null;
-            IList<PaperlessExcepcionMaster> excepciones = new List<PaperlessExcepcionMaster>();
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = IdAsignacion;
-
-                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                dreader = command.ExecuteReader();
-                int cont = 0;
-                while (dreader.Read()) {
-                    excepcion = new PaperlessExcepcionMaster();
-                    cont++;
-                    excepcion.Index = cont;
-
-                    excepcion.Id = Convert.ToInt64(dreader["Id"]);
-                    excepcion.IdAsignacion = Convert.ToInt64(dreader["IdAsignacion"]);
-                    excepcion.TieneExcepcion = !(dreader["tieneExcepcion"] is DBNull) && Convert.ToBoolean(dreader["tieneExcepcion"]);
-
-                    var tipoExcepcion = new PaperlessTipoExcepcion();//hacer el Join para la descripcion
-                    if (!String.IsNullOrEmpty(dreader["tipoexcepcion"].ToString())) {
-                        tipoExcepcion.Id = Convert.ToInt64(dreader["tipoexcepcion"]);
-                        tipoExcepcion.Nombre = dreader["descripcion_tipo_excepcion"].ToString();
-                        excepcion.TipoExcepcion = tipoExcepcion;
-                    }
-
-
-                    var tipoResponsabilidad = new PaperlessTipoResponsabilidad();
-                    if (!String.IsNullOrEmpty(dreader["tiporesponsabilidad"].ToString())) {
-                        tipoResponsabilidad.Id = Convert.ToInt64(dreader["tiporesponsabilidad"]);
-                        tipoResponsabilidad.Nombre = dreader["descripcion_tipo_responsabilidad"].ToString();
-                        excepcion.Tiporesponsabilidad = tipoResponsabilidad;
-                    }
-
-
-                    excepcion.Comentario = dreader["comentario"] is DBNull ? "" : dreader["comentario"].ToString();
-
-                    if (!String.IsNullOrEmpty(dreader["resuelto"].ToString()))
-                        excepcion.Resuelto = Convert.ToBoolean(dreader["resuelto"]);
-
-                    excepcion.Estado = !(dreader["estado"] is DBNull) && Convert.ToBoolean(dreader["estado"]);
-
-                    excepcion.IdUsuarioUltimaModificacion = dreader["usuarioUltimaModificacion"] is DBNull ? 0 : Convert.ToInt64(dreader["usuarioUltimaModificacion"]);
-
-                    var AgenteCausador = new PaperlessAgenteCausador();
-                    if (!String.IsNullOrEmpty(dreader["AgenteCausador"].ToString()) && dreader["AgenteCausador"].ToString() != "0") {
-                        AgenteCausador.Id = Convert.ToInt64(dreader["AgenteCausador"]);
-                        AgenteCausador.Nombre = dreader["Descripcion"].ToString();
-                        excepcion.AgenteCausador = AgenteCausador;
-                    }
-
-                    excepcion.UsuarioCreador = Convert.ToInt32(dreader["UsuarioCreador"]);
-
-                    excepciones.Add(excepcion);
-                }
-            } catch (Exception ex) {
-                Base.Log.Log.EscribirLog(ex.Message);
-            } finally {
-                conn.Close();
-            }
-
-            return excepciones;
-        }
-
-        public static ResultadoTransaccion Usuario1IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado pasoSeleccionado) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-            try {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-
-                    if (excepcion.IsNew) {
-                        resultado = Usuario1MarcaIngresoExcepcionMaster(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    } else {
-                        resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-
-
-                    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                        throw new Exception(resultado.Descripcion);
-                }
-
-                //cambiar estado paso
-                resultado = Usuario1CambiarEstadoPaso(pasoSeleccionado, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-        private static ResultadoTransaccion Usuario1ActualizaExcepcionMaster(PaperlessExcepcionMaster excepcion, SqlConnection connparam, SqlTransaction tranparam) {
-            resTransaccion = new ResultadoTransaccion();
-            try {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = excepcion.TieneExcepcion;
-
-                if (excepcion.TipoExcepcion != null)
-                    objParams[2].Value = excepcion.TipoExcepcion;
-                else
-                    objParams[2].Value = 0;
-
-                if (excepcion.Tiporesponsabilidad != null)
-                    objParams[3].Value = excepcion.Tiporesponsabilidad;
-                else
-                    objParams[3].Value = 0;
-                if (excepcion.Comentario != null)
-                    objParams[4].Value = excepcion.Comentario;
-                else
-                    objParams[4].Value = "";
-                objParams[5].Value = excepcion.Resuelto;
-                objParams[6].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-                if (excepcion.AgenteCausador != null)
-                    objParams[7].Value = excepcion.AgenteCausador;
-                else
-                    objParams[7].Value = 0;
-                objParams[8].Value = excepcion.UsuarioCreador;
-
-                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                command.ExecuteNonQuery();
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-            } catch (Exception ex) {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-
-        private static ResultadoTransaccion Usuario1MarcaIngresoExcepcionMaster(PaperlessExcepcionMaster excepcion, SqlConnection connparam, SqlTransaction tranparam) {
-            resTransaccion = new ResultadoTransaccion();
-            Int64 IdExcepcion = 0;
-            try {
-                objParams = SqlHelperParameterCache.GetSpParameterSet(connparam, "SP_N_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = excepcion.IdAsignacion;
-                objParams[1].Value = 0;//id house bl
-                objParams[2].Value = excepcion.TieneExcepcion;
-                if (excepcion.TipoExcepcion != null)
-                    objParams[3].Value = excepcion.TipoExcepcion;
-                else
-                    objParams[3].Value = 0;
-                if (excepcion.Tiporesponsabilidad != null)
-                    objParams[4].Value = excepcion.Tiporesponsabilidad;
-                else
-                    objParams[4].Value = 0;
-
-                if (excepcion.Comentario != null)
-                    objParams[5].Value = excepcion.Comentario;
-                else
-                    objParams[5].Value = "";
-
-                objParams[6].Value = excepcion.Resuelto;
-                objParams[7].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
-
-                if (excepcion.AgenteCausador != null)
-                    objParams[8].Value = excepcion.AgenteCausador;
-                else
-                    objParams[8].Value = 0;
-                objParams[9].Value = excepcion.UsuarioCreador;
-
-
-                SqlCommand command = new SqlCommand("SP_N_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", connparam);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Transaction = tranparam;
-                IdExcepcion = Convert.ToInt64(command.ExecuteScalar());
-
-                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-                resTransaccion.ObjetoTransaccion = IdExcepcion;
-            } catch (Exception ex) {
-                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
-                resTransaccion.Descripcion = ex.Message;
-                Log.EscribirLog(ex.Message);
-            }
-            return resTransaccion;
-        }
-        public static void Usuario1EliminaExcepxionMaster(PaperlessExcepcionMaster excepcion, Int64 IdusuarioUltimaModificacion) {
-
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_E_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER");
-                objParams[0].Value = excepcion.Id;
-                objParams[1].Value = IdusuarioUltimaModificacion;
-
-
-                SqlCommand command = new SqlCommand("SP_E_PAPERLESS_USUARIO1_EXCEPCIONES_MASTER", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-
-            } catch (Exception ex) {
-                Log.EscribirLog(ex.Message);
-            } finally {
-                conn.Close();
-            }
-        }
-        public static ResultadoTransaccion Usuario2IngresarExcepxionesMaster(IList<PaperlessExcepcionMaster> excepciones, PaperlessPasosEstado paso) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-
-            try {
-                //Registrar excepciones
-                foreach (var excepcion in excepciones) {
-                    if (excepcion.IsNew) {
-                        resultado = Usuario1MarcaIngresoExcepcionMaster(excepcion, conn, transaction);
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-
-                        excepcion.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
-                    } else {
-                        resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);//   Usuario1MarcaIngresoExcepcion 
-                        if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                            throw new Exception(resultado.Descripcion);
-                    }
-                    //    resultado = Usuario1ActualizaExcepcionMaster(excepcion, conn, transaction);
-                    //    if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    //        throw new Exception(resultado.Descripcion);
-                }
-
-
-                //cambiar estado paso
-                resultado = Usuario2CambiarEstadoPaso(paso, conn, transaction);
-                if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
-                    throw new Exception(resultado.Descripcion);
-
-
-                transaction.Commit();
-                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
-
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
-        }
-        public static ResultadoTransaccion Usuario1GuardaEmpresa(string empresa, long asignacion) {
-            ResultadoTransaccion resultado = new ResultadoTransaccion();
-            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
-            SqlTransaction transaction = conn.BeginTransaction();
-
-            try {
-                //Abrir Conexion
-                conn = BaseDatos.NuevaConexion();
-
-                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_EMPRESA");
-
-                objParams[0].Value = empresa;
-
-                objParams[1].Value = asignacion;
-
-                var command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_EMPRESA", conn);
-                command.Parameters.AddRange(objParams);
-                command.CommandType = CommandType.StoredProcedure;
-                command.ExecuteNonQuery();
-            } catch (Exception ex) {
-                transaction.Rollback();
-                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
-                resultado.Descripcion = ex.Message;
-            } finally {
-                conn.Close();
-            }
-
-            return resultado;
         }
 
         public static List<PaperlessEmpresa> ListarEmpresas() {
@@ -4240,6 +4239,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             }
             return empresas;
         }
+
     }
 }
 

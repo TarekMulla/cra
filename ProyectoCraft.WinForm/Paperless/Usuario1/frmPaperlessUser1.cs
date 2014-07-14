@@ -684,12 +684,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
 
                 pasoSeleccionado.Estado = true;
-                var existeConsolidada = false;
 
                 PaperlessUsuario1HouseBLInfo info = Usuario1ObtenerHousesBLInfo();
-                
+
                 Entidades.GlobalObject.ResultadoTransaccion resultado =
-                    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado, existeConsolidada);
+                    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado);
 
                 PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
                 PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = listhouses;

@@ -272,7 +272,6 @@ namespace ProyectoCraft.Entidades.Enums {
             EnviadoUsuario2 = 6,
             EnProcesoUsuario2 = 7,
             ProcesoTerminado = 8,
-            EnviadoMercante=10,
             RechazadaUsuario1 = 9
         }
 

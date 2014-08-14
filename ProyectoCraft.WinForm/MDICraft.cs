@@ -27,7 +27,6 @@ namespace ProyectoCraft.WinForm {
 
     public partial class MDICraft : Form {
         public bool? MostrarPanel = null;
-        public bool IsBrasil { get; set; }
         private int childFormNumber = 0;
         private List<ClsPanelDeControl> panelDecontrols;
         private ClsPanelDeControl panelDeControlSeleccionado;
@@ -170,17 +169,9 @@ namespace ProyectoCraft.WinForm {
                 }
             }
 
-
             //Cargamos la configuracion
             var configuracion = Base.Configuracion.Configuracion.Instance();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, TimerMDI.Elapsed.TotalSeconds, "Carga Inicial de SCC"));
-
-
-            //verifica Pais
-            var conf = Base.Configuracion.Configuracion.Instance();
-            var op = conf.GetValue("Paperless_ParcialBrasil"); //puede retornar un true, false o null
-            if (op.HasValue && op.Value.Equals(true))
-                IsBrasil = true;
 
         }
 
@@ -244,8 +235,7 @@ namespace ProyectoCraft.WinForm {
             MenuCotizaciones.Visible = false;
             menuAdministracion.Visible = false;
             MenuGestionCotizaciones.Visible = false;
-
-            NavPaperlessInformes.Visible= NavPaperlessInformes2.Visible = false;
+            NavPaperlessInformes.Visible = NavPaperlessInformes3.Visible = false;
         }
 
         private void HabilitarFuncionalidades() {
@@ -275,7 +265,8 @@ namespace ProyectoCraft.WinForm {
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Supervisor_Documental) {
                     MenuPaperlessAsignacion.Visible = true;
                     MenuPaperlessAsignar.Visible = true;
-                    NavPaperlessInformes.Visible = NavPaperlessInformes2.Visible = true;
+                    //MenuGestionAsignaciones.Visible = true;
+                    NavPaperlessInformes.Visible = NavPaperlessInformes3.Visible = true;
                 }
                 if (clsPerfil.Id == (int)Enums.UsuariosCargo.Encargado_Documental_1ra_Etapa) {
                     MenuPaperlessUsuario1.Visible = true;
@@ -692,9 +683,14 @@ namespace ProyectoCraft.WinForm {
             form.MdiParent = this;
             form.Show();
             ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+       
         }
 
         private void NavPaperlessInformes2_LinkClicked(object sender, NavBarLinkEventArgs e) {
+            NavPaperlessInformes_LinkClicked(sender, e);
+        }
+
+        private void NavPaperlessInformes3_LinkClicked(object sender, NavBarLinkEventArgs e) {
             NavPaperlessInformes_LinkClicked(sender, e);
         }
     }

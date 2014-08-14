@@ -21,6 +21,7 @@
       <![CDATA[
         
           SELECT  
+	      A.id as 'id_asignacion_HIDDEN',	
 	      I.NumConsolidado,
 	      FechaMaster,
               C.Descripcion as 'Agente',

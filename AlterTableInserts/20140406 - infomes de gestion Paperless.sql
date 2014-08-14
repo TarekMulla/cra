@@ -1,3 +1,45 @@
+Alter table paperless_asignacion add empresa varchar(20)
+GO
+
+Update PAPERLESS_ASIGNACION set empresa='Craft'
+GO
+
+update PAPERLESS_TIPO_CARGA set DescripcionLarga =Descripcion
+GO
+
+
+if  exists(select * from syscolumns where object_name(id) = 'PAPERLESS_EMPRESAS' )
+Begin
+	DROP TABLE [dbo].[PAPERLESS_EMPRESAS]
+END
+GO
+
+
+
+CREATE TABLE [dbo].[PAPERLESS_EMPRESAS](
+		[CODIGO] [varchar](70) NOT NULL,
+		[NOMBRE] [varchar](70)NOT NULL,
+		[createDate] [datetime] NOT NULL default getdate(),
+		CONSTRAINT [PK_PAPERLESS_EMPRESAS] PRIMARY KEY CLUSTERED ([CODIGO] ASC)
+		WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+GO
+
+INSERT PAPERLESS_EMPRESAS (CODIGO,NOMBRE) VALUES ('Craft','Craft');
+GO
+
+if  exists(SELECT * FROM sys.objects WHERE name = 'SP_L_PAPERLESS_EMPRESAS' )
+Begin
+	DROP PROCEDURE[dbo].[SP_L_PAPERLESS_EMPRESAS]
+END
+GO
+CREATE PROCEDURE SP_L_PAPERLESS_EMPRESAS
+AS 
+BEGIN
+	SELECT * FROM PAPERLESS_EMPRESAS
+END
+GO
+
 if  exists(SELECT * FROM sys.objects WHERE name = 'fn_Split' )
 Begin
 	DROP FUNCTION [dbo].[fn_Split]
@@ -132,8 +174,8 @@ BEGIN
 	U1.NombreUsuario Usuario1, 
 	U2.NombreUsuario Usuario2,	
 	PE.Descripcion Estado, 
-	u.NombreUsuario UsuarioUltimaMod,
-	Pta.Descripcion as AgenteCausador,
+	--u.NombreUsuario UsuarioUltimaMod,
+	--Pta.Descripcion as AgenteCausador,
 	PTE.Descripcion as TipoExcepcion,
 	PUE.comentario,
 	PTR.Descripcion as ResponsableExcepcion
@@ -154,7 +196,7 @@ BEGIN
 	inner join PAPERLESS_USUARIO1_EXCEPCIONES PUE on PA.Id=PUE.IdAsignacion
 	inner join PAPERLESS_USUARIO1_HOUSESBL PUH on PUE.IdHouseBL=PUH.Id
 	inner join PAPERLESS_TIPO_EXCEPCIONES PTE on PUE.TipoExcepcion=PTE.Id
-	inner join USUARIOS u on PUE.UsuarioUltimaMod =u.Id
+	--inner join USUARIOS u on PUE.UsuarioUltimaMod =u.Id
 	INNER JOIN PAPERLESS_NAVIERA PN ON PA.IdNaviera = PN.Id 
 	INNER JOIN PAPERLESS_NAVE PNA ON PA.IdNave = PNA.Id 
 	INNER JOIN PAPERLESS_TIPO_CARGA PTC ON PA.IdTipoCarga = PTC.Id 
@@ -162,7 +204,7 @@ BEGIN
 	INNER JOIN USUARIOS U2 ON PA.Usuario2 = U2.Id 
 	INNER JOIN PAPERLESS_ESTADO PE ON PA.IdEstado = PE.Id  
 	INNER JOIN PAPERLESS_AGENTE PAG ON PA.IdAgente = PAG.Id 
-	inner join PAPERLESS_TIPO_AGENTECAUSADOR PTA on PTA.ID=PUE.Causador
+	--inner join PAPERLESS_TIPO_AGENTECAUSADOR PTA on PTA.ID=PUE.Causador
 	inner join PAPERLESS_TIPO_RESPONSABILIDAD PTR on PTR.Id=PUE.TipoResponsabilidad
 	WHERE PA.Id > 0  
 	and pa.idEstado in (SELECT Value FROM fn_Split(@estados, ','))
@@ -204,28 +246,28 @@ BEGIN
 	U1.NombreUsuario Usuario1, 
 	U2.NombreUsuario Usuario2,
 	PE.Descripcion Estado, 
-	u.NombreUsuario UsuarioUltimaMod,
-	Pta.Descripcion as AgenteCausador,
-	PTE.Descripcion as TipoExcepcion,
-	PUM.comentario,
-	PTR.Descripcion as ResponsableExcepcion
-	, CASE 
-	      WHEN PUm.Resuelto = 1 THEN 'True'
-	      else 'False' 
-	  end as Resuelto
-	,
-	CASE 
-	      WHEN PUM.TieneExcepcion = 1 THEN 'True'
-	      else 'False' 
-	  end as TieneExcepcion,
+	--u.NombreUsuario UsuarioUltimaMod,
+	--Pta.Descripcion as AgenteCausador,
+	--PTE.Descripcion as TipoExcepcion,
+	--PUM.comentario,
+	--PTR.Descripcion as ResponsableExcepcion
+	--, CASE 
+	--      WHEN PUm.Resuelto = 1 THEN 'True'
+	--      else 'False' 
+	--  end as Resuelto
+	--,
+	--CASE 
+	--      WHEN PUM.TieneExcepcion = 1 THEN 'True'
+	--      else 'False' 
+	--  end as TieneExcepcion,
 	  PA.FechaCreacion
 	--,PUE.*
 	--,PTE.*
 	--,PTA.*
 	 from PAPERLESS_ASIGNACION PA 
-	inner join PAPERLESS_USUARIO1_EXCEPCIONES_MASTER PUM on PA.Id=PUM.IdAsignacion
-	inner join PAPERLESS_TIPO_EXCEPCIONES PTE on PUm.TipoExcepcion=PTE.Id
-	inner join USUARIOS u on PUm.UsuarioUltimaModificacion =u.Id
+	--inner join PAPERLESS_USUARIO1_EXCEPCIONES_MASTER PUM on PA.Id=PUM.IdAsignacion
+	--inner join PAPERLESS_TIPO_EXCEPCIONES PTE on PUm.TipoExcepcion=PTE.Id
+	--inner join USUARIOS u on PUm.UsuarioUltimaModificacion =u.Id
 	INNER JOIN PAPERLESS_NAVIERA PN ON PA.IdNaviera = PN.Id 
 	INNER JOIN PAPERLESS_NAVE PNA ON PA.IdNave = PNA.Id 
 	INNER JOIN PAPERLESS_TIPO_CARGA PTC ON PA.IdTipoCarga = PTC.Id 
@@ -233,8 +275,8 @@ BEGIN
 	INNER JOIN USUARIOS U2 ON PA.Usuario2 = U2.Id 
 	INNER JOIN PAPERLESS_ESTADO PE ON PA.IdEstado = PE.Id  
 	INNER JOIN PAPERLESS_AGENTE PAG ON PA.IdAgente = PAG.Id 
-	inner join PAPERLESS_TIPO_AGENTECAUSADOR PTA on PTA.ID=PUm.AgenteCausador
-	inner join PAPERLESS_TIPO_RESPONSABILIDAD PTR on PTR.Id=PUm.TipoResponsabilidad
+	--inner join PAPERLESS_TIPO_AGENTECAUSADOR PTA on PTA.ID=PUm.AgenteCausador
+	--inner join PAPERLESS_TIPO_RESPONSABILIDAD PTR on PTR.Id=PUm.TipoResponsabilidad
 	WHERE PA.Id > 0  
 	and pa.idEstado in (SELECT Value FROM fn_Split(@estados, ','))
 	and pa.idTipoCarga in (SELECT Value FROM fn_Split(@cargas, ','))
@@ -247,34 +289,38 @@ GO
 
 
 
-if  exists(select * from syscolumns where object_name(id) = 'PAPERLESS_EMPRESAS' )
-Begin
-	DROP TABLE [dbo].[PAPERLESS_EMPRESAS]
-END
-GO
 
-CREATE TABLE [dbo].[PAPERLESS_EMPRESAS](
-		[CODIGO] [varchar](70) NOT NULL,
-		[NOMBRE] [varchar](70)NOT NULL,
-		[createDate] [datetime] NOT NULL default getdate(),
-		CONSTRAINT [PK_PAPERLESS_EMPRESAS] PRIMARY KEY CLUSTERED ([CODIGO] ASC)
-		WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-	) ON [PRIMARY]
-GO
 
-INSERT PAPERLESS_EMPRESAS (CODIGO,NOMBRE) VALUES ('Craft','Craft');
-INSERT PAPERLESS_EMPRESAS (CODIGO,NOMBRE) VALUES ('Neutral','Neutral');
-INSERT PAPERLESS_EMPRESAS (CODIGO,NOMBRE) VALUES ('Slotlog','Slotlog');
-INSERT PAPERLESS_EMPRESAS (CODIGO,NOMBRE) VALUES ('Contact','Contact');
-GO
+ALTER PROCEDURE [dbo].[SP_N_PAPERLESS_ASIGNACION_PASO1]
+@NumMaster nvarchar(100),
+@FechaMaster datetime,
+@IdAgente bigint,
+@IdNaviera bigint,
+@IdNave bigint,
+@Viaje nvarchar(100),
+@NumHousesBL int,
+@IdTipoCarga int,
+@IdEstado int,
+@IdUsuarioCreo int,
+@IdTipoServicio int,
+@IdNaveTransbordo int
 
-if  exists(SELECT * FROM sys.objects WHERE name = 'SP_L_PAPERLESS_EMPRESAS' )
-Begin
-	DROP PROCEDURE[dbo].[SP_L_PAPERLESS_EMPRESAS]
-END
+AS
+
+IF @IdAgente = -1 SET @IdAgente = NULL
+IF @IdNaviera = -1 SET @IdNaviera = NULL
+IF @IdNave = -1 SET @IdNave = NULL
+IF @IdNaveTransbordo = -1 SET @IdNaveTransbordo = NULL
+IF @IdTipoServicio = -1 SET @IdTipoServicio = NULL
+
+INSERT INTO PAPERLESS_ASIGNACION(
+	NumMaster,FechaMaster,IdAgente,IdNaviera,IdNave,Viaje,NumHousesBL,IdTipoCarga, IdTipoServicio, 
+	IdEstado,FechaCreacion, FechaPaso1,IdUsuarioCreacion, Usuario1, Usuario2,IdNaveTransbordo,empresa
+	)
+VALUES(
+	@NumMaster,@FechaMaster,@IdAgente,@IdNaviera,@IdNave,@Viaje,@NumHousesBL,@IdTipoCarga, @IdTipoServicio,
+	@IdEstado,GETDATE(), GETDATE(),@IdUsuarioCreo, -1, -1,@IdNaveTransbordo,'Craft'
+)
+
+SELECT SCOPE_IDENTITY()
 GO
-CREATE PROCEDURE SP_L_PAPERLESS_EMPRESAS
-AS 
-BEGIN
-	SELECT * FROM PAPERLESS_EMPRESAS
-END

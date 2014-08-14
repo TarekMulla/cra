@@ -21,11 +21,7 @@
       <![CDATA[
         
           SELECT  
-	  a.id as id_asignacion_hidden,
-	  a.NumMaster,		
 	      I.NumConsolidado,
-	      Carga.DescripcionLarga as Carga,
-	        empresa as Marca,
 	      FechaMaster,
               C.Descripcion as 'Agente',
               D.Descripcion as 'Naviera',
@@ -53,8 +49,6 @@
                                             ON A.Usuario2 = H.Id
                                                 LEFT OUTER JOIN PAPERLESS_USUARIO1_HOUSESBL_INFO I
                                                 ON A.Id = I.IdAsignacion
-						LEFT OUTER JOIN PAPERLESS_TIPO_CARGA  CARGA
-						ON A.IdTipoCarga = CARGA.id    
             WHERE   A.FechaAceptacionUsr1 is null
             AND     A.IdEstado =3
             AND     datediff(minute,FechaPaso3,getdate())>30

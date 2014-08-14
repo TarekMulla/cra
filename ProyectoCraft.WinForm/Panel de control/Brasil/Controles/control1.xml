@@ -10,7 +10,7 @@
   </datasource>
   <detail>
     <datasourse>
-      SELECT PAPERLESS_ASIGNACION.id as id_asignacion_hidden, NumMaster, PAPERLESS_NAVIERA.Descripcion as Naviera, PAPERLESS_NAVE.Descripcion as Nave,Viaje,AperturaNavieras,usuarios.NombreUsuario,us2.NombreUsuario
+      SELECT NumMaster, PAPERLESS_NAVIERA.Descripcion as Naviera, PAPERLESS_NAVE.Descripcion as Nave,Viaje,AperturaNavieras,usuarios.NombreUsuario,us2.NombreUsuario
       FROM PAPERLESS_ASIGNACION,PAPERLESS_NAVIERA,PAPERLESS_NAVE,USUARIOS , USUARIOS as us2
       WHERE  AperturaNavieras between  GETDATE() and dateadd(day,7,getdate())
       and PAPERLESS_NAVIERA.Id=PAPERLESS_ASIGNACION.IdNaviera

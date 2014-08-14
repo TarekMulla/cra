@@ -13,7 +13,7 @@
   </datasource>
   <detail>
     <datasourse>
-      <![CDATA[SELECT a.id as id_asignacion_hidden,NumMaster,B.Descripcion as Naviera, C.Descripcion as Nave,Viaje,AperturaNavieras,D.NombreUsuario,E.NombreUsuario, F.Descripcion
+      <![CDATA[SELECT NumMaster,B.Descripcion as Naviera, C.Descripcion as Nave,Viaje,AperturaNavieras,D.NombreUsuario,E.NombreUsuario, F.Descripcion
      FROM PAPERLESS_ASIGNACION a INNER JOIN PAPERLESS_NAVIERA B
 			 ON A.IdNaviera = B.Id
 		  INNER JOIN PAPERLESS_NAVE C

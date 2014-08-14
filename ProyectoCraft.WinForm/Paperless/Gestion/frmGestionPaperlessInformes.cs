@@ -97,7 +97,7 @@ namespace SCCMultimodal.Paperless.Gestion {
             ddlInforme.Properties.Items.Clear();
             ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 1, Id = 1, Nombre = "Informe de Asignaciones" });
             ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 2, Id = 2, Nombre = "Informe de Excepciones de HBL" });
-            ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 3, Id = 3, Nombre = "Informe de Excepciones Master" });
+            //ddlInforme.Properties.Items.Add(new InformeTypes { Id32 = 3, Id = 3, Nombre = "Informe de Excepciones Master" });//
             ddlInforme.SelectedIndex = 0;
         }
 

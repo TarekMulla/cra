@@ -95,7 +95,6 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TabGestionPaperless = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -632,8 +631,7 @@
             this.gridColumn24,
             this.gridColumn25,
             this.gridColumn26,
-            this.gridColumn27,
-            this.gridColumn43});
+            this.gridColumn27});
             this.gridView1.GridControl = this.grdAsignaciones;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -855,14 +853,6 @@
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 26;
-            // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Marca";
-            this.gridColumn43.FieldName = "Asignacion.Marca.Codigo";
-            this.gridColumn43.Name = "gridColumn43";
-            this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 27;
             // 
             // TabGestionPaperless
             // 
@@ -1577,6 +1567,5 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
     }
 }

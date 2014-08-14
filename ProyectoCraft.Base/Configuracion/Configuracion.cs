@@ -25,7 +25,18 @@ namespace ProyectoCraft.Base.Configuracion {
                 command.CommandType = CommandType.StoredProcedure;
                 var reader = command.ExecuteReader();
                 while (reader.Read())
-                    Configs.Add(reader["key"], Convert.ToBoolean(reader["value"]));
+                {
+                    if (reader["key"].ToString().ToUpper().Contains("_STRING"))
+                        Configs.Add(reader["key"], reader["value"].ToString());
+                    if (reader["key"].ToString().ToUpper().Contains("_INTEGER"))
+                        Configs.Add(reader["key"], Convert.ToInt64(reader["value"]));
+                    if ((!reader["key"].ToString().ToUpper().Contains("_INTEGER")) && (!reader["key"].ToString().ToUpper().Contains("_STRING")))
+                    {
+                        Configs.Add(reader["key"], reader["value"].ToString().Equals("1"));
+                    }
+                    
+                }
+                    //Configs.Add(reader["key"], Convert.ToBoolean(reader["value"]));
 
 
             } catch (Exception ex) {
@@ -41,6 +52,23 @@ namespace ProyectoCraft.Base.Configuracion {
 
             var value = Configs[key];
             return Convert.ToBoolean(value);
+        }
+
+        public string GetValueString(string key)
+        {
+            if (!Configs.ContainsKey(key))
+                return null;
+
+            var value = Configs[key];
+            return Convert.ToString(value);
+        }
+        public Int64 GetValueInteger(string key)
+        {
+            if (!Configs.ContainsKey(key))
+                return 0;
+
+            var value = Configs[key];
+            return Convert.ToInt64(value);
         }
 
         private Hashtable Configs { set; get; }

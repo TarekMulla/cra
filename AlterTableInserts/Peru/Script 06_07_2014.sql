@@ -1,10 +1,4 @@
 
---select * from sysobjects where XTYPE='u' and name like '%pasos%'
-
---select * from PAPERLESS_PASOS_USUARIO2
---select * from PAPERLESS_USUARIO2_PASOS_ESTADO --marca
---select * from PAPERLESS_TIPO_CARGA
-
 --15:34 -16:04  --terminado el script de pasos sin validacion
 /*'Resolver Excepciones'--1
 'Revisar costos'--2
@@ -12,24 +6,25 @@
 'Confirmar Máster'--4
 'Contactar Cliente'--5
 'Recibir Desgloce'--6
-'Transmisión Previa'--7
-'Envío Carta de Desglose'--8
-'Transmisión Complementaria'--9
-'Confirmacion Naviera'--10
+'Envío Desglose a Chiel'--7
+'Transmisión Previa'--8
+'Envío Carta de Desglose'--9
+'Transmisión Complementaria'--10
+'Confirmacion Naviera'--11
 */
 
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Revisar costos')
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Revisar Costos')
 Begin
-	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar costos',1,1,3,1,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar costos',1,1,3,2,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar costos',1,1,3,3,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar Costos',1,1,3,1,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar Costos',1,1,3,2,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (2,'Revisar Costos',1,1,3,3,'')
 End
 
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Generación y envío de avisos')
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Generación y Envío de Avisos')
 Begin
-	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y envío de avisos',1,2,4,1,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y envío de avisos',1,2,4,2,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y envío de avisos',1,2,4,3,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y Envío de Avisos',1,2,4,1,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y Envío de Avisos',1,2,4,2,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (3,'Generación y Envío de Avisos',1,2,4,3,'')
 End
 
 if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmar Máster')
@@ -47,11 +42,11 @@ Begin
 	insert into PAPERLESS_PASOS_USUARIO2 values (5,'Contactar Cliente',1,4,6,3,'')
 End
 
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Recibir Desgloce')
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Recibir Desglose')
 Begin
-	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desgloce',1,5,7,1,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desgloce',1,5,7,2,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desgloce',1,5,7,3,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desglose',1,5,7,1,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desglose',1,5,7,2,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (6,'Recibir Desglose',1,5,7,3,'')
 End
 
 if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Transmisión Previa')
@@ -75,11 +70,11 @@ Begin
 	insert into PAPERLESS_PASOS_USUARIO2 values (9,'Transmisión Complementaria',1,8,10,3,'')
 End
 
-if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmacion Naviera')
+if not exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmación Naviera')
 Begin
-	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmacion Naviera',1,9,null,1,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmacion Naviera',1,9,null,2,'')
-	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmacion Naviera',1,9,null,3,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmación Naviera',1,9,null,1,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmación Naviera',1,9,null,2,'')
+	insert into PAPERLESS_PASOS_USUARIO2 values (10,'Confirmación Naviera',1,9,null,3,'')
 End
 
 if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Contactar Embarcador')
@@ -104,8 +99,9 @@ End
 
 if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='PresentarManifiesto')
 Begin
-	delete from PAPERLESS_PASOS_USUARIO2 where Descripcion='PresentarManifiesto'
+      delete from PAPERLESS_PASOS_USUARIO2 where Descripcion='PresentarManifiesto'
 End
+
 
 if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmar Máster' and pantalla ='')
 Begin
@@ -118,14 +114,14 @@ Begin
 	update PAPERLESS_PASOS_USUARIO2 set pantalla = 'ContactarEnbarcador' where  Descripcion='Contactar Cliente'
 End
 
-if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Recibir Desgloce' and pantalla ='')
+if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Recibir Desglose' and pantalla ='')
 Begin
-	update PAPERLESS_PASOS_USUARIO2 set pantalla = 'AperturaEmbarcadores' where  Descripcion='Recibir Desgloce'
+	update PAPERLESS_PASOS_USUARIO2 set pantalla = 'AperturaEmbarcadores' where  Descripcion='Recibir Desglose'
 End
 
-if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmacion Naviera' and pantalla ='')
+if exists(select * from PAPERLESS_PASOS_USUARIO2 where Descripcion='Confirmación Naviera' and pantalla ='')
 Begin
-	update PAPERLESS_PASOS_USUARIO2 set pantalla = 'PresentarManifiesto' where  Descripcion='Confirmacion Naviera'
+	update PAPERLESS_PASOS_USUARIO2 set pantalla = 'PresentarManifiesto' where  Descripcion='Confirmación Naviera'
 End
 
 
@@ -147,3 +143,52 @@ End
 
 
 --delete from PAPERLESS_ASIGNACION where Id > 5120
+
+
+
+
+ALTER TABLE dbo.configuracion
+ALTER COLUMN value VARCHAR(100) NOT NULL
+
+go
+
+
+insert into configuracion values ('Pless_Asig_Fecha_Apertura_Naviera_nombre_String','Transmisión','label asignado a la fecha de apertura navieras',GETDATE())
+insert into configuracion values ('Pless_Asig_Fecha_Apertura_Naviera_Validacion_Bool','1','Se agrega la validacion de los -4 dias de la fecha ETA',GETDATE())
+insert into configuracion values ('Pless_Asig_Plazo_Embarcadores_String','Plazo Desglose','label asignado a Plazo embarcadores',GETDATE())
+insert into configuracion values ('Pless_User2_Contactar_Embarcador_String','Contactar Cliente','cambio label Contactar Embarcador',GETDATE())
+insert into configuracion values ('Pless_User2_GridView_Embarcador_String','Cliente','cambio label grilla Embarcador por Cliente',GETDATE())
+
+go
+
+
+delete from PAPERLESS_PASOS_USUARIO1_V2 where NumPaso = 5
+go
+
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 5,PasoAnterior=4, PasoSiguiente=6 where NumPaso = 6
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 6,PasoAnterior=5, PasoSiguiente=7 where NumPaso = 7
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 7,PasoAnterior=6, PasoSiguiente=8 where NumPaso = 8
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 8,PasoAnterior=7, PasoSiguiente=9 where NumPaso = 9
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 9,PasoAnterior=8, PasoSiguiente=10 where NumPaso = 10
+update  PAPERLESS_PASOS_USUARIO1_V2 set NumPaso = 10,PasoAnterior=9, PasoSiguiente=null where NumPaso = 11
+go
+
+
+
+
+update  PAPERLESS_PASOS_USUARIO2 set NumPaso = 11,PasoAnterior=10, PasoSiguiente=null where NumPaso = 10
+go
+update  PAPERLESS_PASOS_USUARIO2 set NumPaso = 10,PasoAnterior=9, PasoSiguiente=11 where NumPaso = 9
+go
+update  PAPERLESS_PASOS_USUARIO2 set NumPaso = 9,PasoAnterior=8, PasoSiguiente=10 where NumPaso = 8
+go
+update  PAPERLESS_PASOS_USUARIO2 set NumPaso = 8,PasoAnterior=7, PasoSiguiente=9 where NumPaso = 7
+go
+
+ insert into PAPERLESS_PASOS_USUARIO2 values (7,'Envío Desglose a Chile',1,6,8,1,'')
+ insert into PAPERLESS_PASOS_USUARIO2 values (7,'Envío Desglose a Chile',1,6,8,2,'')
+ insert into PAPERLESS_PASOS_USUARIO2 values (7,'Envío Desglose a Chile',1,6,8,3,'')
+ go
+
+insert into configuracion values ('DiasAntesFechaApertura',0,'sólo para version de chile',GETDATE())
+go

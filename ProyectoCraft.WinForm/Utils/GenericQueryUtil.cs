@@ -3,7 +3,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
-using ProyectoCraft.Entidades.GlobalObject;
 
 
 namespace SCCMultimodal.Utils {

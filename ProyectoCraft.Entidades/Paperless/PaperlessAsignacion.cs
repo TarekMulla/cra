@@ -1,7 +1,6 @@
 ﻿using System;
 using ProyectoCraft.Entidades.Usuarios;
 
-
 namespace ProyectoCraft.Entidades.Paperless
 {
     public class PaperlessAsignacion: GlobalObject.IdentifiableObject
@@ -39,6 +38,7 @@ namespace ProyectoCraft.Entidades.Paperless
         public Enums.Enums.EstadoPaperless Estado { get; set; }
         public string EstadoDescripcion { get; set; }
 
+
         public clsUsuario UsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaPaso1 { get; set; }
@@ -63,7 +63,5 @@ namespace ProyectoCraft.Entidades.Paperless
         public string TxtCourier{ get; set; }
         public int FechaMaximaVinculacionDiff { get; set; }
         public DateTime? FechaMaximaVinculacion { get; set; }
-        public PaperlessEmpresa Marca { get; set; }
-        public string NumContenedor { get; set; }
-      }
+    }
 }

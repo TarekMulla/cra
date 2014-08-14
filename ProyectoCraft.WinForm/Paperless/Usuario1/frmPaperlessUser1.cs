@@ -436,7 +436,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             {
                 if (paso.IdPasoEstado < pasoactual.IdPasoEstado && !paso.Estado)
                 {
-                    MessageBox.Show("Hay pasos previos pendientes de realizar. Debe marcarlos como realizados para continuar", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Hay pasos previos pendientes de realizar. Debe marcarlos como realizados para continuar.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -596,20 +596,20 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             dxErrorProvider1.ClearErrors();
             if (txtP1CantHouses.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtP1CantHouses, "Debe ingresar Cantidad de Houses.", ErrorType.Critical);
                 valida = false;
             }
 
             if (txtP1NumConsolidado.Text.Length.Equals(0))
             {
-                dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar numero de consolidado", ErrorType.Critical);
+                dxErrorProvider1.SetError(txtP1NumConsolidado, "Debe ingresar número de consolidado.", ErrorType.Critical);
                 valida = false;
             }
             else
             {
                 if (LogicaNegocios.Paperless.Paperless.ValidaNumConsolidado(txtP1NumConsolidado.Text, PaperlessAsignacionActual.Id32.ToString()).Equals(true))
                 {
-                    dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el numero de consolidado", ErrorType.Critical);
+                    dxErrorProvider1.SetError(txtP1NumConsolidado, "Ya existe el número de consolidado.", ErrorType.Critical);
                     return false;
                 }
                 dxErrorProvider1.ClearErrors();
@@ -684,12 +684,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 PaperlessPasosEstado pasoSeleccionado = ObtenerPasoSelccionadoDesdeGrilla(1);
 
                 pasoSeleccionado.Estado = true;
-                var existeConsolidada = false;
 
                 PaperlessUsuario1HouseBLInfo info = Usuario1ObtenerHousesBLInfo();
-                
+
                 Entidades.GlobalObject.ResultadoTransaccion resultado =
-                    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado, existeConsolidada);
+                    LogicaNegocios.Paperless.Paperless.Usuario1GuardaHousesBL(listhouses, info, pasoSeleccionado);
 
                 PaperlessAsignacionActual.DataUsuario1.Paso1HousesBLInfo = info;
                 PaperlessAsignacionActual.DataUsuario1.Paso1HousesBL = listhouses;
@@ -706,7 +705,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     CargarPasos();
                     Cursor.Current = Cursors.Default;
                     lblP1errorHouses.Visible = false;
-                    MessageBox.Show("Houses han sido guardados", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Houses han sido guardados.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -750,7 +749,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     Log.Info("btnP2GuardarHousesRuteados_Click Aceptada");
                     CargarPasos();
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Houses Ruteados han sido guardados", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Houses Ruteados han sido guardados.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -1063,13 +1062,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                     {
                         Log.Info("btnP13EnviarAviso_Click Rechazada");
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Ocurrio un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrió un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         Log.Info("btnP13EnviarAviso_Click Aceptada");
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show("Se ha enviado la confirmacion al Usuario de la segunda Etapa", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Se ha enviado la confirmación al Usuario de la segunda Etapa.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                         frmListarUsuario1 form = frmListarUsuario1.Instancia;
                         form.ObtenerAsignaciones();
@@ -1106,13 +1105,13 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
                 {
                     Log.Info("btnReenviarAvisoUsuario2_Click Rechazada");
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Ocurrio un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrió un problema al intentar enviar el email. \n" + resultado.Descripcion, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     Log.Info("btnReenviarAvisoUsuario2_Click Aceptada");
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Se ha enviado la confirmacion al Usuario de la segunda Etapa", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se ha enviado la confirmación al Usuario de la segunda Etapa.", "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     frmListarUsuario1 form = frmListarUsuario1.Instancia;
                     form.ObtenerAsignaciones();

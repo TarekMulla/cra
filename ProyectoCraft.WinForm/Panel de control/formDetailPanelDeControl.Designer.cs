@@ -26,7 +26,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formDetailPanelDeControl));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripBarraMenu = new System.Windows.Forms.ToolStrip();
             this.MenuAsignacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu1raEtapa = new System.Windows.Forms.ToolStripButton();
@@ -35,12 +35,9 @@
             this.MENUEXCEL = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuSalir = new System.Windows.Forms.ToolStripButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            this.toolStripBarraMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -50,6 +47,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -60,10 +58,10 @@
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
-            // toolStrip1
+            // toolStripBarraMenu
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripBarraMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStripBarraMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuAsignacion,
             this.toolStripSeparator1,
             this.Menu1raEtapa,
@@ -72,8 +70,8 @@
             this.MENUEXCEL,
             this.toolStripSeparator3,
             this.MenuSalir});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
+            resources.ApplyResources(this.toolStripBarraMenu, "toolStripBarraMenu");
+            this.toolStripBarraMenu.Name = "toolStripBarraMenu";
             // 
             // MenuAsignacion
             // 
@@ -120,28 +118,20 @@
             this.MenuSalir.Name = "MenuSalir";
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.gridControl1);
-            resources.ApplyResources(this.panelControl1, "panelControl1");
-            this.panelControl1.Name = "panelControl1";
-            // 
             // formDetailPanelDeControl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.toolStripBarraMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "formDetailPanelDeControl";
             this.Load += new System.EventHandler(this.formDetailPanelDeControl_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formDetailPanelDeControl_closed);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            this.toolStripBarraMenu.ResumeLayout(false);
+            this.toolStripBarraMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,7 +141,7 @@
 
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolStripBarraMenu;
         private System.Windows.Forms.ToolStripButton MenuAsignacion;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton Menu1raEtapa;
@@ -160,7 +150,6 @@
         private System.Windows.Forms.ToolStripButton MENUEXCEL;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton MenuSalir;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
 
     }
 }

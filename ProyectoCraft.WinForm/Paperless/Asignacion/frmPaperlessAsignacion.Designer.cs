@@ -44,6 +44,8 @@
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel6 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.tabAsignacion = new DevExpress.XtraTab.XtraTabControl();
             this.tabInfGeneral = new DevExpress.XtraTab.XtraTabPage();
+            this.txtNumCon = new System.Windows.Forms.TextBox();
+            this.ddlNumConsolidada = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnRecuperaNumConsolidado = new DevExpress.XtraEditors.SimpleButton();
             this.ddlMarca = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtNumContenedores = new DevExpress.XtraEditors.TextEdit();
@@ -66,7 +68,6 @@
             this.txtNaviera = new System.Windows.Forms.TextBox();
             this.txtAgente = new System.Windows.Forms.TextBox();
             this.ddlNave = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.ddlNaviera = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ddlAgente = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ddlTipoServicio = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ddlTipoCarga = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -84,6 +85,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.ddlNaviera = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tabFechas = new DevExpress.XtraTab.XtraTabPage();
             this.lblasteriscofechaMaximaVinculacion = new System.Windows.Forms.Label();
             this.lblAvisoFechaMaximaVinculacion = new DevExpress.XtraEditors.LabelControl();
@@ -131,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabAsignacion)).BeginInit();
             this.tabAsignacion.SuspendLayout();
             this.tabInfGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlNumConsolidada.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlMarca.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumContenedores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumConsolidada.Properties)).BeginInit();
@@ -138,7 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlNaveTransbordo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNave.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlNaviera.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoServicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).BeginInit();
@@ -147,6 +149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlNaviera.Properties)).BeginInit();
             this.tabFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties)).BeginInit();
@@ -194,10 +197,11 @@
             this.tabInfGeneral,
             this.tabFechas,
             this.tabPrealerta});
-            this.tabAsignacion.Click += new System.EventHandler(this.tabAsignacion_Click);
             // 
             // tabInfGeneral
             // 
+            this.tabInfGeneral.Controls.Add(this.txtNumCon);
+            this.tabInfGeneral.Controls.Add(this.ddlNumConsolidada);
             this.tabInfGeneral.Controls.Add(this.btnRecuperaNumConsolidado);
             this.tabInfGeneral.Controls.Add(this.ddlMarca);
             this.tabInfGeneral.Controls.Add(this.txtNumContenedores);
@@ -220,7 +224,6 @@
             this.tabInfGeneral.Controls.Add(this.txtNaviera);
             this.tabInfGeneral.Controls.Add(this.txtAgente);
             this.tabInfGeneral.Controls.Add(this.ddlNave);
-            this.tabInfGeneral.Controls.Add(this.ddlNaviera);
             this.tabInfGeneral.Controls.Add(this.ddlAgente);
             this.tabInfGeneral.Controls.Add(this.ddlTipoServicio);
             this.tabInfGeneral.Controls.Add(this.ddlTipoCarga);
@@ -238,10 +241,31 @@
             this.tabInfGeneral.Controls.Add(this.labelControl3);
             this.tabInfGeneral.Controls.Add(this.labelControl2);
             this.tabInfGeneral.Controls.Add(this.labelControl1);
+            this.tabInfGeneral.Controls.Add(this.ddlNaviera);
             this.tabInfGeneral.Name = "tabInfGeneral";
             this.tabInfGeneral.Size = new System.Drawing.Size(831, 578);
             this.tabInfGeneral.Text = "Información General";
             this.tabInfGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.tabInfGeneral_Paint);
+            // 
+            // txtNumCon
+            // 
+            this.txtNumCon.Location = new System.Drawing.Point(612, 59);
+            this.txtNumCon.Name = "txtNumCon";
+            this.txtNumCon.Size = new System.Drawing.Size(168, 20);
+            this.txtNumCon.TabIndex = 117;
+            this.txtNumCon.Visible = false;
+            // 
+            // ddlNumConsolidada
+            // 
+            this.ddlNumConsolidada.Location = new System.Drawing.Point(390, 42);
+            this.ddlNumConsolidada.Name = "ddlNumConsolidada";
+            this.ddlNumConsolidada.Properties.AutoComplete = false;
+            this.ddlNumConsolidada.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlNumConsolidada.Size = new System.Drawing.Size(174, 20);
+            this.ddlNumConsolidada.TabIndex = 4;
+            this.ddlNumConsolidada.SelectedIndexChanged += new System.EventHandler(this.ddlNumConsolidada_SelectedIndexChanged);
+            this.ddlNumConsolidada.Click += new System.EventHandler(this.ddlNumConsolidada_Click);
             // 
             // btnRecuperaNumConsolidado
             // 
@@ -268,23 +292,23 @@
             this.txtNumContenedores.Name = "txtNumContenedores";
             this.txtNumContenedores.Size = new System.Drawing.Size(129, 20);
             this.txtNumContenedores.TabIndex = 14;
-            this.txtNumContenedores.EditValueChanged += new System.EventHandler(this.txtNumContenedores_EditValueChanged);
             this.txtNumContenedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumContenedores_KeyPress);
             // 
             // txtNumConsolidada
             // 
             this.txtNumConsolidada.AllowDrop = true;
-            this.txtNumConsolidada.Location = new System.Drawing.Point(392, 44);
+            this.txtNumConsolidada.Location = new System.Drawing.Point(390, 42);
             this.txtNumConsolidada.Name = "txtNumConsolidada";
             this.txtNumConsolidada.Size = new System.Drawing.Size(164, 20);
-            this.txtNumConsolidada.TabIndex = 4;
+            this.txtNumConsolidada.TabIndex = 0;
+            this.txtNumConsolidada.Visible = false;
             // 
             // lblNumConsolidada
             // 
             this.lblNumConsolidada.Location = new System.Drawing.Point(313, 47);
             this.lblNumConsolidada.Name = "lblNumConsolidada";
             this.lblNumConsolidada.Size = new System.Drawing.Size(73, 13);
-            this.lblNumConsolidada.TabIndex = 115;
+            this.lblNumConsolidada.TabIndex = 0;
             this.lblNumConsolidada.Text = "N° Consolidada";
             // 
             // lblNumContenedores
@@ -355,7 +379,7 @@
             // 
             // txtNaveTransbordo
             // 
-            this.txtNaveTransbordo.Location = new System.Drawing.Point(108, 187);
+            this.txtNaveTransbordo.Location = new System.Drawing.Point(108, 181);
             this.txtNaveTransbordo.Name = "txtNaveTransbordo";
             this.txtNaveTransbordo.Size = new System.Drawing.Size(328, 20);
             this.txtNaveTransbordo.TabIndex = 10;
@@ -373,7 +397,7 @@
             this.lvlMotivo.Location = new System.Drawing.Point(571, 204);
             this.lvlMotivo.Name = "lvlMotivo";
             this.lvlMotivo.Size = new System.Drawing.Size(93, 13);
-            this.lvlMotivo.TabIndex = 106;
+            this.lvlMotivo.TabIndex = 0;
             this.lvlMotivo.Text = "Motivo Modificación";
             this.lvlMotivo.Visible = false;
             // 
@@ -407,10 +431,11 @@
             // 
             // txtNave
             // 
-            this.txtNave.Location = new System.Drawing.Point(108, 161);
+            this.txtNave.Location = new System.Drawing.Point(108, 158);
             this.txtNave.Name = "txtNave";
             this.txtNave.Size = new System.Drawing.Size(328, 20);
             this.txtNave.TabIndex = 9;
+            this.txtNave.TextChanged += new System.EventHandler(this.txtNave_TextChanged);
             // 
             // txtNaviera
             // 
@@ -438,15 +463,6 @@
             this.ddlNave.TabIndex = 102;
             this.ddlNave.Visible = false;
             // 
-            // ddlNaviera
-            // 
-            this.ddlNaviera.Location = new System.Drawing.Point(108, 112);
-            this.ddlNaviera.Name = "ddlNaviera";
-            this.ddlNaviera.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlNaviera.Size = new System.Drawing.Size(328, 20);
-            this.ddlNaviera.TabIndex = 7;
-            // 
             // ddlAgente
             // 
             this.ddlAgente.Location = new System.Drawing.Point(108, 89);
@@ -455,6 +471,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlAgente.Size = new System.Drawing.Size(328, 20);
             this.ddlAgente.TabIndex = 6;
+            this.ddlAgente.SelectedIndexChanged += new System.EventHandler(this.ddlAgente_SelectedIndexChanged);
             // 
             // ddlTipoServicio
             // 
@@ -495,7 +512,6 @@
             this.txtNumHousesBL.Name = "txtNumHousesBL";
             this.txtNumHousesBL.Size = new System.Drawing.Size(129, 20);
             this.txtNumHousesBL.TabIndex = 12;
-            this.txtNumHousesBL.EditValueChanged += new System.EventHandler(this.txtNumHousesBL_EditValueChanged);
             this.txtNumHousesBL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumHousesBL_KeyPress);
             // 
             // txtViaje
@@ -595,6 +611,16 @@
             this.labelControl1.Size = new System.Drawing.Size(65, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Fecha Master";
+            // 
+            // ddlNaviera
+            // 
+            this.ddlNaviera.Location = new System.Drawing.Point(108, 112);
+            this.ddlNaviera.Name = "ddlNaviera";
+            this.ddlNaviera.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlNaviera.Size = new System.Drawing.Size(328, 20);
+            this.ddlNaviera.TabIndex = 7;
+            this.ddlNaviera.SelectedIndexChanged += new System.EventHandler(this.ddlNaviera_SelectedIndexChanged);
             // 
             // tabFechas
             // 
@@ -1088,7 +1114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 652);
+            this.ClientSize = new System.Drawing.Size(880, 637);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabAsignacion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1104,6 +1130,7 @@
             this.tabAsignacion.ResumeLayout(false);
             this.tabInfGeneral.ResumeLayout(false);
             this.tabInfGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlNumConsolidada.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlMarca.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumContenedores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumConsolidada.Properties)).EndInit();
@@ -1111,7 +1138,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlNaveTransbordo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotivo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlNave.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlNaviera.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlAgente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoServicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlTipoCarga.Properties)).EndInit();
@@ -1120,6 +1146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNumMaster.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaster.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlNaviera.Properties)).EndInit();
             this.tabFechas.ResumeLayout(false);
             this.tabFechas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFechaMaximaVinculacion.Properties.VistaTimeProperties)).EndInit();
@@ -1250,6 +1277,8 @@
         private DevExpress.XtraEditors.LabelControl lblNumContenedores;
         private DevExpress.XtraEditors.LabelControl lblMarca;
         private DevExpress.XtraEditors.SimpleButton btnRecuperaNumConsolidado;
+        private System.Windows.Forms.TextBox txtNumCon;
+        private DevExpress.XtraEditors.ComboBoxEdit ddlNumConsolidada;
 
     }
 }

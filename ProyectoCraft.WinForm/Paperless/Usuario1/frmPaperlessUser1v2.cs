@@ -72,9 +72,6 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
         private void loadGeneralInfo() {
             TiposTransitoTransbordo =
                 (List<PaperlessTipoTransito>)LogicaNegocios.Paperless.Paperless.ListarTiposTransitoTransbordo();
-
-
-
         }
 
         private void frmPaperlessUser1_Load(object sender, EventArgs e) {
@@ -113,6 +110,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
             control.ConfigurarIniciarTiempo(false);
             control.ObtenerTiemposProcesoUsuario1();
         }
+
         private void LoadConfBrasil() {
             ValidaBtnNetShip();
             gridView1.Columns.View.Columns[6].Visible = true;
@@ -977,6 +975,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 TerminoUsuario1 = DateTime.Now
             };
 
+            
             PaperlessProcesoRegistroTiempo iniciousuario2 = new PaperlessProcesoRegistroTiempo() {
                 IdAsignacion = PaperlessAsignacionActual.Id,
                 ComienzoUsuario2 = DateTime.Now
@@ -1895,6 +1894,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1 {
                 Log.log.Error(ex);
                 throw ex;
             }
+        }
+
+        private void toobar_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

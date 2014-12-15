@@ -103,15 +103,19 @@ namespace ProyectoCraft.WinForm.Controles
 
         public void ObtenerTiempoEstimadoProcesoUsuario2()
         {
-            PlazoUsuario2 = AsignacionActual.AperturaNavieras.Value;
+            PlazoUsuario2 = AsignacionActual.PlazoEmbarcadores.Value;
 
             TiempoEstimado = PlazoUsuario2 - FechaInicio.Value;
 
-            lblTiempoEstimadoUnidad.Visible = false;
-            
-            TimeSpan ts = new TimeSpan(TiempoEstimado.Days,TiempoEstimado.Hours,TiempoEstimado.Minutes,TiempoEstimado.Seconds);
-            lblTiempoEstimado.Text = "Tiempo Estimado Total: " + ts.ToString();
-
+            lblTiempoEstimadoUnidad.Text = "F.Embarcador: " + PlazoUsuario2.ToString();
+            //lblTiempoEstimadoUnidad.Visible = true ;
+            if (Convert.ToInt16(TiempoEstimado.TotalHours) >= -100)
+            {
+                TimeSpan ts = new TimeSpan(TiempoEstimado.Days, TiempoEstimado.Hours, TiempoEstimado.Minutes, TiempoEstimado.Seconds);
+                lblTiempoEstimado.Text = "Tiempo Estimado Total: " + ts.ToString();
+            }
+            else
+                lblTiempoEstimado.Text = "Tiempo Estimado Total: " + "Fuera de Rango";
 
         }
 
@@ -153,7 +157,7 @@ namespace ProyectoCraft.WinForm.Controles
                 DateTime comienzo = tiempo.ComienzoUsuario1.Value;
                 
                 TimeSpan diff = ahora - comienzo;
-
+                //16/09 - 17/05 = 121.09:33:15.99999
                 _TiempoCurrent = diff;
 
                 if(_TiempoCurrent > TiempoEstimado)
@@ -226,7 +230,10 @@ namespace ProyectoCraft.WinForm.Controles
                 _TiempoCurrent = diff;
 
                 if (_TiempoCurrent > TiempoEstimado)
-                    progressBar1.Value = Convert.ToInt32(TiempoEstimado.TotalSeconds);
+                    if (Convert.ToInt32(TiempoEstimado.TotalSeconds)>0)
+                        progressBar1.Value = Convert.ToInt32(TiempoEstimado.TotalSeconds);
+                    else
+                        progressBar1.Value = Convert.ToInt32(TiempoEstimado.TotalSeconds)*-1;
                 else
                     progressBar1.Value = Convert.ToInt32(_TiempoCurrent.TotalSeconds);
 
@@ -264,7 +271,10 @@ namespace ProyectoCraft.WinForm.Controles
             timer1.Start();
 
             progressBar1.Minimum = 0;
-            progressBar1.Maximum = Convert.ToInt32(TiempoEstimado.TotalSeconds);
+            if (Convert.ToInt32(TiempoEstimado.TotalSeconds)>=0)
+                progressBar1.Maximum = Convert.ToInt32(TiempoEstimado.TotalSeconds);
+            else
+                progressBar1.Maximum = Convert.ToInt32(TiempoEstimado.TotalSeconds)*-1;
             //progressBar1.Maximum = int.Parse(TiempoEstimado.TotalSeconds.ToString());
 
 
@@ -332,6 +342,7 @@ namespace ProyectoCraft.WinForm.Controles
             string hora;
             string minuto;
             string segundo;
+            string dia;
 
             if (_TiempoCurrent.Hours > 10)
                 hora = _TiempoCurrent.Hours.ToString();
@@ -348,7 +359,12 @@ namespace ProyectoCraft.WinForm.Controles
             else
                 segundo = "0" + _TiempoCurrent.Seconds.ToString();
 
-            return hora + ":" + minuto + ":" + segundo;
+            dia=_TiempoCurrent.Days.ToString();
+
+            if (Convert.ToInt32(dia)>0) 
+                return dia + "." + hora + ":" + minuto + ":" + segundo;
+            else
+               return hora + ":" + minuto + ":" + segundo;
         }       
     }
 }

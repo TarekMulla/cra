@@ -92,7 +92,7 @@
             this.MenuSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(941, 52);
+            this.toolStrip1.Size = new System.Drawing.Size(941, 54);
             this.toolStrip1.TabIndex = 0;
             // 
             // MenuVerVisita
@@ -100,7 +100,7 @@
             this.MenuVerVisita.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerVisita.Image")));
             this.MenuVerVisita.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerVisita.Name = "MenuVerVisita";
-            this.MenuVerVisita.Size = new System.Drawing.Size(55, 49);
+            this.MenuVerVisita.Size = new System.Drawing.Size(59, 51);
             this.MenuVerVisita.Text = "Ver Visita";
             this.MenuVerVisita.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuVerVisita.Click += new System.EventHandler(this.MenuVerVisita_Click);
@@ -110,7 +110,7 @@
             this.MenuVerInforme.Image = ((System.Drawing.Image)(resources.GetObject("MenuVerInforme.Image")));
             this.MenuVerInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuVerInforme.Name = "MenuVerInforme";
-            this.MenuVerInforme.Size = new System.Drawing.Size(68, 49);
+            this.MenuVerInforme.Size = new System.Drawing.Size(73, 51);
             this.MenuVerInforme.Text = "Ver Informe";
             this.MenuVerInforme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuVerInforme.Click += new System.EventHandler(this.MenuVerInforme_Click);
@@ -118,14 +118,14 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // MenuExcel
             // 
             this.MenuExcel.Image = ((System.Drawing.Image)(resources.GetObject("MenuExcel.Image")));
             this.MenuExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuExcel.Name = "MenuExcel";
-            this.MenuExcel.Size = new System.Drawing.Size(36, 49);
+            this.MenuExcel.Size = new System.Drawing.Size(37, 51);
             this.MenuExcel.Text = "Excel";
             this.MenuExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuExcel.Click += new System.EventHandler(this.MenuExcel_Click);
@@ -133,14 +133,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // MenuSalir
             // 
             this.MenuSalir.Image = ((System.Drawing.Image)(resources.GetObject("MenuSalir.Image")));
             this.MenuSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MenuSalir.Name = "MenuSalir";
-            this.MenuSalir.Size = new System.Drawing.Size(36, 49);
+            this.MenuSalir.Size = new System.Drawing.Size(36, 51);
             this.MenuSalir.Text = "Salir";
             this.MenuSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
@@ -161,11 +161,12 @@
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 52);
+            this.groupControl1.Location = new System.Drawing.Point(0, 54);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(941, 125);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Busqueda";
+            this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // cboCliente
             // 
@@ -292,10 +293,10 @@
             this.grdVisitas.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.grdVisitas.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.grdVisitas.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.grdVisitas.Location = new System.Drawing.Point(0, 177);
+            this.grdVisitas.Location = new System.Drawing.Point(0, 179);
             this.grdVisitas.MainView = this.gridView1;
             this.grdVisitas.Name = "grdVisitas";
-            this.grdVisitas.Size = new System.Drawing.Size(941, 269);
+            this.grdVisitas.Size = new System.Drawing.Size(941, 267);
             this.grdVisitas.TabIndex = 2;
             this.grdVisitas.UseEmbeddedNavigator = true;
             this.grdVisitas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {

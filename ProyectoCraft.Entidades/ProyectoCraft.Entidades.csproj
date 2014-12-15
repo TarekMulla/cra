@@ -107,10 +107,13 @@
     <Compile Include="GlobalObject\NamedObject.cs" />
     <Compile Include="Clientes\Target\clsEmpresaCompetencia.cs" />
     <Compile Include="Log\LogPerformance.cs" />
+    <Compile Include="Paperless\PaperlessPuerto.cs" />
     <Compile Include="Paperless\PaperlessAgenteCausador.cs" />
     <Compile Include="Paperless\PaperlessCantUsuarios.cs" />
     <Compile Include="Paperless\PaperlessEmpresa.cs" />
+    <Compile Include="Paperless\PaperlessEstadoPreAlerta.cs" />
     <Compile Include="Paperless\PaperlessExcepcionMaster.cs" />
+    <Compile Include="Paperless\PaperlessPreAlerta.cs" />
     <Compile Include="Paperless\PaperlessTipoExcepcion.cs" />
     <Compile Include="Paperless\PaperlessAgente.cs" />
     <Compile Include="Paperless\PaperlessAsignacion.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Paperless\PaperlessUsuario1Rechaza.cs" />
     <Compile Include="Paperless\PaperlessTipoTransito.cs" />
     <Compile Include="Cotizaciones\Directa\Agente.cs" />
+    <Compile Include="Paperless\PaperlessUsuario2Rechaza.cs" />
     <Compile Include="Parametros\clsCiudad.cs" />
     <Compile Include="Parametros\clsComuna.cs" />
     <Compile Include="Parametros\clsIncoTerm.cs" />

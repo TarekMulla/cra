@@ -62,6 +62,38 @@ namespace ProyectoCraft.AccesoDatos.Integracion
             return lista;
         }
 
+        public static string ObtieneNumConsolidadaNetShip(string NumMaster, string StoreProcedureName)
+        {
+            string NumConsolidadaNetship = "";
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, StoreProcedureName);
+                objParams[0].Value = NumMaster;
+                SqlCommand command = new SqlCommand(StoreProcedureName, conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+
+                    NumConsolidadaNetship = dreader["Consolidada"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return NumConsolidadaNetship;
+        }
+
+
         public static void GuardaLogProceso(IntegracionNetShip _int)
         {
             try

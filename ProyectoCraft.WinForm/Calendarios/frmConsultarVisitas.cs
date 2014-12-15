@@ -358,6 +358,11 @@ namespace ProyectoCraft.WinForm.Calendarios
                 
 
             }
-        }                            
+        }
+
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }                           
     }
 }

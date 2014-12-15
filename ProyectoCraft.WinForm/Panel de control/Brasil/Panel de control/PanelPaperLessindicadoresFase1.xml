@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <panel name="" description="">
-  <panel title="Vencimientos Paperless" x="210" y="30" width="950" heigth="300">
+  <panel title="Vencimientos Paperless" x="210" y="30" width="1060" heigth="300">
     <!--<control x="-50" y="30" width="300" heigth="300">control1</control>
     <control x="100" y="30" width="300" heigth="300">control1_0</control>-->
     <control x="-50" y="10" width="200" heigth="280">Semaforo5dias.xml</control>
@@ -8,7 +8,8 @@
     <control x="250" y="10" width="200" heigth="280">Semaforo1dias.xml</control>
     <control x="400" y="10" width="200" heigth="280">SemaforosVencidos.xml</control>
     <control x="550" y="10" width="200" heigth="280">AsignacionesSinFechaDePresentacionApertura.xml</control>
-    <control x="700" y="10" width="200" heigth="280">Semaforo5diasCourier.xml</control>	
+    <control x="700" y="10" width="200" heigth="280">Semaforo5diasCourier.xml</control>
+    <control x="850" y="10" width="200" heigth="280">SemaforoPreAlertasAbiertos.xml</control>
     <col></col>
   </panel>
   <panel title="PaperLess Indicadores Manifiesto – Cadastro" x="210" y="340" width="800" heigth="355">

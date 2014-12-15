@@ -200,7 +200,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(10, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1153, 11);
+            this.panel1.Size = new System.Drawing.Size(1153, 86);
             this.panel1.TabIndex = 3;
             // 
             // gridView4
@@ -249,15 +249,16 @@
             // 
             this.grdPasos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.grdPasos.Location = new System.Drawing.Point(10, 89);
+            this.grdPasos.Location = new System.Drawing.Point(10, 161);
             this.grdPasos.MainView = this.gridView2;
             this.grdPasos.Name = "grdPasos";
             this.grdPasos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.RepositoryCheckPasos});
-            this.grdPasos.Size = new System.Drawing.Size(455, 386);
+            this.grdPasos.Size = new System.Drawing.Size(455, 502);
             this.grdPasos.TabIndex = 5;
             this.grdPasos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.grdPasos.Click += new System.EventHandler(this.grdPasos_Click);
             // 
             // gridView2
             // 
@@ -319,16 +320,16 @@
             this.pnlExcepciones.Controls.Add(this.grdExcepciones);
             this.pnlExcepciones.Controls.Add(this.btnP1GuardarExcepciones);
             this.pnlExcepciones.Controls.Add(this.labelControl1);
-            this.pnlExcepciones.Location = new System.Drawing.Point(472, 75);
+            this.pnlExcepciones.Location = new System.Drawing.Point(470, 142);
             this.pnlExcepciones.Name = "pnlExcepciones";
-            this.pnlExcepciones.Size = new System.Drawing.Size(699, 395);
+            this.pnlExcepciones.Size = new System.Drawing.Size(699, 511);
             this.pnlExcepciones.TabIndex = 6;
             this.pnlExcepciones.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 374);
+            this.label1.Location = new System.Drawing.Point(5, 443);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 13);
             this.label1.TabIndex = 62;
@@ -388,7 +389,7 @@
             this.repositoryItemCheckEdit16,
             this.repositoryItemComboBox7,
             this.repositoryItemComboBox8});
-            this.grdExcepciones.Size = new System.Drawing.Size(688, 314);
+            this.grdExcepciones.Size = new System.Drawing.Size(688, 388);
             this.grdExcepciones.TabIndex = 1;
             this.grdExcepciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -422,6 +423,7 @@
             this.gridColumn1.FieldName = "HouseBL.HouseBL";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 41;
@@ -432,6 +434,7 @@
             this.gridColumn8.FieldName = "HouseBL.Cliente.NombreCompañia";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 1;
             this.gridColumn8.Width = 87;
@@ -442,6 +445,7 @@
             this.gridColumn9.FieldName = "HouseBL.TipoCliente.Nombre";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 2;
             // 
@@ -451,6 +455,7 @@
             this.gridColumn29.ColumnEdit = this.repositoryItemCheckEdit16;
             this.gridColumn29.FieldName = "TieneExcepcion";
             this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn29.Visible = true;
             this.gridColumn29.VisibleIndex = 3;
             this.gridColumn29.Width = 58;
@@ -466,6 +471,7 @@
             this.gridColumn10.ColumnEdit = this.repositoryItemCheckEdit3;
             this.gridColumn10.FieldName = "SobreValorPendienteResuelto";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn10.Width = 77;
             // 
             // repositoryItemCheckEdit3
@@ -479,6 +485,7 @@
             this.gridColumn15.ColumnEdit = this.repositoryItemCheckEdit6;
             this.gridColumn15.FieldName = "SobreValorPendiente";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn15.Width = 90;
             // 
             // repositoryItemCheckEdit6
@@ -492,6 +499,7 @@
             this.gridColumn16.ColumnEdit = this.repositoryItemCheckEdit7;
             this.gridColumn16.FieldName = "AvisoNoEnviado";
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn16.Width = 103;
             // 
             // repositoryItemCheckEdit7
@@ -505,6 +513,7 @@
             this.gridColumn13.FieldName = "AvisoNoEnviadoResuelto";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             // 
             // gridColumn22
             // 
@@ -512,6 +521,7 @@
             this.gridColumn22.ColumnEdit = this.repositoryItemComboBox2;
             this.gridColumn22.FieldName = "TipoExcepcion";
             this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn22.Visible = true;
             this.gridColumn22.VisibleIndex = 4;
             this.gridColumn22.Width = 62;
@@ -529,6 +539,7 @@
             this.gridColumn23.ColumnEdit = this.repositoryItemMemoExEdit1;
             this.gridColumn23.FieldName = "Comentario";
             this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 5;
             this.gridColumn23.Width = 71;
@@ -547,6 +558,7 @@
             this.gridColumn31.ColumnEdit = this.repositoryItemComboBox8;
             this.gridColumn31.FieldName = "Causador";
             this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 6;
             this.gridColumn31.Width = 58;
@@ -564,6 +576,7 @@
             this.Responsabilidad.ColumnEdit = this.repositoryItemComboBox3;
             this.Responsabilidad.FieldName = "Responsabilidad";
             this.Responsabilidad.Name = "Responsabilidad";
+            this.Responsabilidad.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.Responsabilidad.Visible = true;
             this.Responsabilidad.VisibleIndex = 7;
             this.Responsabilidad.Width = 85;
@@ -581,6 +594,7 @@
             this.gridColumn24.ColumnEdit = this.repositoryItemCheckEdit9;
             this.gridColumn24.FieldName = "Resuelto";
             this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 8;
             this.gridColumn24.Width = 65;
@@ -651,9 +665,9 @@
             this.pnlExcepMaster.Controls.Add(this.GrdExcepMaster);
             this.pnlExcepMaster.Controls.Add(this.btnGuardarExcepMaster);
             this.pnlExcepMaster.Controls.Add(this.lblExcepmaster);
-            this.pnlExcepMaster.Location = new System.Drawing.Point(471, 70);
+            this.pnlExcepMaster.Location = new System.Drawing.Point(471, 142);
             this.pnlExcepMaster.Name = "pnlExcepMaster";
-            this.pnlExcepMaster.Size = new System.Drawing.Size(699, 394);
+            this.pnlExcepMaster.Size = new System.Drawing.Size(844, 510);
             this.pnlExcepMaster.TabIndex = 9;
             this.pnlExcepMaster.Visible = false;
             this.pnlExcepMaster.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
@@ -661,7 +675,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 377);
+            this.label2.Location = new System.Drawing.Point(6, 443);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(185, 13);
             this.label2.TabIndex = 10;
@@ -693,7 +707,7 @@
             this.GrdExcepMaster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrdExcepMaster.Location = new System.Drawing.Point(6, 52);
+            this.GrdExcepMaster.Location = new System.Drawing.Point(9, 49);
             this.GrdExcepMaster.MainView = this.gridView6;
             this.GrdExcepMaster.Name = "GrdExcepMaster";
             this.GrdExcepMaster.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -710,7 +724,7 @@
             this.repositoryItemComboBox5,
             this.repositoryItemCheckEdit13,
             this.repositoryItemComboBox6});
-            this.GrdExcepMaster.Size = new System.Drawing.Size(688, 322);
+            this.GrdExcepMaster.Size = new System.Drawing.Size(678, 391);
             this.GrdExcepMaster.TabIndex = 1;
             this.GrdExcepMaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView6});
@@ -737,6 +751,7 @@
             this.gridColumn25.FieldName = "Index";
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 0;
             this.gridColumn25.Width = 55;
@@ -746,6 +761,7 @@
             this.gridColumn26.Caption = "¿Tiene Excepción?";
             this.gridColumn26.FieldName = "TieneExcepcion";
             this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 1;
             this.gridColumn26.Width = 97;
@@ -756,6 +772,7 @@
             this.gridColumn27.ColumnEdit = this.repositoryItemComboBox6;
             this.gridColumn27.FieldName = "TipoExcepcion";
             this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 2;
             this.gridColumn27.Width = 107;
@@ -773,6 +790,7 @@
             this.gridColumn33.ColumnEdit = this.repositoryItemMemoExEdit2;
             this.gridColumn33.FieldName = "Comentario";
             this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 4;
             this.gridColumn33.Width = 100;
@@ -791,6 +809,7 @@
             this.gridColumn32.ColumnEdit = this.repositoryItemComboBox4;
             this.gridColumn32.FieldName = "AgenteCausador";
             this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 3;
             this.gridColumn32.Width = 88;
@@ -808,6 +827,7 @@
             this.gridColumn34.ColumnEdit = this.repositoryItemComboBox5;
             this.gridColumn34.FieldName = "Tiporesponsabilidad";
             this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn34.Visible = true;
             this.gridColumn34.VisibleIndex = 5;
             this.gridColumn34.Width = 123;
@@ -825,6 +845,7 @@
             this.gridColumn28.ColumnEdit = this.repositoryItemCheckEdit10;
             this.gridColumn28.FieldName = "Resuelto";
             this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 6;
             this.gridColumn28.Width = 90;
@@ -900,9 +921,9 @@
             this.pnlContactarembarcador.Controls.Add(this.btnP2ContactarEmbarcador);
             this.pnlContactarembarcador.Controls.Add(this.labelControl2);
             this.pnlContactarembarcador.Controls.Add(this.grdContactarembarcador);
-            this.pnlContactarembarcador.Location = new System.Drawing.Point(471, 72);
+            this.pnlContactarembarcador.Location = new System.Drawing.Point(471, 144);
             this.pnlContactarembarcador.Name = "pnlContactarembarcador";
-            this.pnlContactarembarcador.Size = new System.Drawing.Size(699, 398);
+            this.pnlContactarembarcador.Size = new System.Drawing.Size(844, 514);
             this.pnlContactarembarcador.TabIndex = 7;
             this.pnlContactarembarcador.Visible = false;
             // 
@@ -931,12 +952,12 @@
             this.grdContactarembarcador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdContactarembarcador.Location = new System.Drawing.Point(15, 49);
+            this.grdContactarembarcador.Location = new System.Drawing.Point(9, 49);
             this.grdContactarembarcador.MainView = this.gridView3;
             this.grdContactarembarcador.Name = "grdContactarembarcador";
             this.grdContactarembarcador.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.grdContactarembarcador.Size = new System.Drawing.Size(679, 338);
+            this.grdContactarembarcador.Size = new System.Drawing.Size(683, 454);
             this.grdContactarembarcador.TabIndex = 0;
             this.grdContactarembarcador.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -956,6 +977,7 @@
             this.gridColumn11.Caption = "Embarcador";
             this.gridColumn11.FieldName = "Cliente.NombreCompañia";
             this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
             // 
@@ -965,6 +987,7 @@
             this.gridColumn12.ColumnEdit = this.repositoryItemCheckEdit8;
             this.gridColumn12.FieldName = "EmbarcadorContactado";
             this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
             this.gridColumn12.Width = 94;
@@ -981,9 +1004,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlRecibirAperturaEmb.Controls.Add(this.grdRecibirAperturaEmb);
             this.pnlRecibirAperturaEmb.Controls.Add(this.btnP3GuardarAperturaEmbarcadores);
-            this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(472, 74);
+            this.pnlRecibirAperturaEmb.Location = new System.Drawing.Point(472, 146);
             this.pnlRecibirAperturaEmb.Name = "pnlRecibirAperturaEmb";
-            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(699, 388);
+            this.pnlRecibirAperturaEmb.Size = new System.Drawing.Size(844, 504);
             this.pnlRecibirAperturaEmb.TabIndex = 7;
             this.pnlRecibirAperturaEmb.Visible = false;
             // 
@@ -992,7 +1015,7 @@
             this.grdRecibirAperturaEmb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdRecibirAperturaEmb.Location = new System.Drawing.Point(5, 38);
+            this.grdRecibirAperturaEmb.Location = new System.Drawing.Point(6, 38);
             this.grdRecibirAperturaEmb.MainView = this.gridView5;
             this.grdRecibirAperturaEmb.Name = "grdRecibirAperturaEmb";
             this.grdRecibirAperturaEmb.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -1001,7 +1024,7 @@
             this.repositoryViaReciboApertura,
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2});
-            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(689, 345);
+            this.grdRecibirAperturaEmb.Size = new System.Drawing.Size(679, 461);
             this.grdRecibirAperturaEmb.TabIndex = 3;
             this.grdRecibirAperturaEmb.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1027,6 +1050,9 @@
             this.gridColumn14.FieldName = "Cliente.NombreCompañia";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowSize = false;
+            this.gridColumn14.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn14.OptionsFilter.AllowFilter = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 0;
             // 
@@ -1036,7 +1062,9 @@
             this.gridColumn21.ColumnEdit = this.repositoryItemTextEdit2;
             this.gridColumn21.FieldName = "HouseBL";
             this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn21.OptionsColumn.ReadOnly = true;
+            this.gridColumn21.OptionsFilter.AllowFilter = false;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 1;
             // 
@@ -1051,6 +1079,8 @@
             this.gridColumn17.ColumnEdit = this.repositoryItemCheckEdit2;
             this.gridColumn17.FieldName = "ReciboAperturaEmbarcador";
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn17.OptionsFilter.AllowFilter = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 2;
             // 
@@ -1065,6 +1095,7 @@
             this.gridColumn18.ColumnEdit = this.repositoryViaReciboApertura;
             this.gridColumn18.FieldName = "TipoReciboAperturaEmbarcador";
             this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 3;
             // 
@@ -1081,6 +1112,7 @@
             this.gridColumn19.FieldName = "FechaReciboAperturaEmbarcador";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
+            this.gridColumn19.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 4;
             // 
@@ -1090,6 +1122,7 @@
             this.gridColumn20.ColumnEdit = this.repositoryItemTextEdit1;
             this.gridColumn20.FieldName = "Observacion";
             this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 5;
             // 
@@ -1120,7 +1153,7 @@
             this.pnlReenviarCorreo.Controls.Add(this.btnReenviarCorreoTermino);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl5);
             this.pnlReenviarCorreo.Controls.Add(this.labelControl3);
-            this.pnlReenviarCorreo.Location = new System.Drawing.Point(473, 70);
+            this.pnlReenviarCorreo.Location = new System.Drawing.Point(473, 142);
             this.pnlReenviarCorreo.Name = "pnlReenviarCorreo";
             this.pnlReenviarCorreo.Size = new System.Drawing.Size(698, 384);
             this.pnlReenviarCorreo.TabIndex = 10;
@@ -1144,7 +1177,7 @@
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Location = new System.Drawing.Point(16, 13);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(204, 13);
+            this.labelControl5.Size = new System.Drawing.Size(207, 13);
             this.labelControl5.TabIndex = 2;
             this.labelControl5.Text = "Reenviar correo término de proceso.";
             // 
@@ -1164,9 +1197,10 @@
             this.Menu_Salir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1182, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1169, 38);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // Menu_Salir
             // 
@@ -1182,7 +1216,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(10, 70);
+            this.labelControl4.Location = new System.Drawing.Point(10, 142);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(93, 13);
             this.labelControl4.TabIndex = 1;
@@ -1192,16 +1226,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 487);
+            this.ClientSize = new System.Drawing.Size(1169, 603);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlExcepciones);
+            this.Controls.Add(this.pnlExcepMaster);
             this.Controls.Add(this.pnlReenviarCorreo);
             this.Controls.Add(this.pnlRecibirAperturaEmb);
             this.Controls.Add(this.pnlContactarembarcador);
-            this.Controls.Add(this.pnlExcepciones);
-            this.Controls.Add(this.pnlExcepMaster);
             this.Name = "frmPaperlessUser2v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso Paperless Usuario 2";

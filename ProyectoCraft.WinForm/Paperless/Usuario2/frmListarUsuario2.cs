@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using ProyectoCraft.Entidades.Enums;
+using ProyectoCraft.Entidades.Paperless;
 using SCCMultimodal.Paperless.Usuario2;
 
 namespace ProyectoCraft.WinForm.Paperless.Usuario2
@@ -76,12 +77,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 //coll.Add(list);            
                 if (filtrousuario2.Contains(list.Nombre))
-                //if (list.Nombre.Equals("Enviado Usuario 2da Etapa") || list.Nombre.Equals("En Proceso Usuario 2da Etapa"))
+                    //if (list.Nombre.Equals("Enviado Usuario 2da Etapa") || list.Nombre.Equals("En Proceso Usuario 2da Etapa"))
                     checkedComboBoxEstados.Properties.Items.Add(list, CheckState.Checked, true);
                 else
                     checkedComboBoxEstados.Properties.Items.Add(list, CheckState.Unchecked, true);
             }
-            
+
             //ComboBoxItemCollection coll = ddlEstado.Properties.Items;
             //coll.Add(ProyectoCraft.WinForm.Utils.Utils.ObtenerPrimerItem());
             //foreach (var list in estados)
@@ -130,7 +131,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 if (checkedComboBoxEstados.Properties.Items[i].CheckState.Equals(CheckState.Checked))
                 {
                     tieneEstadoChecked = true;
-                    estados += (i+1).ToString() + ",";
+                    estados += (i + 1).ToString() + ",";
                 }
             }
             if (tieneEstadoChecked)
@@ -145,7 +146,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 numconsolidado = "-1";
             else
                 numconsolidado = txtNumConsolidado.Text.Trim();
-            
+
             if (!string.IsNullOrEmpty(txtNave.Text))
                 nave = txtNave.Text;
 
@@ -165,11 +166,11 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             gridAsignaciones.DataSource = null;
 
             IList<ProyectoCraft.Entidades.Paperless.PaperlessFlujo> asignaciones =
-                ProyectoCraft.LogicaNegocios.Paperless.Paperless.ObtenerAsignaciones(desde, hasta, usuario1, usuario2, estados, numconsolidado,nave
+                ProyectoCraft.LogicaNegocios.Paperless.Paperless.ObtenerAsignaciones(desde, hasta, usuario1, usuario2, estados, numconsolidado, nave
                 , desdeEmbarcadores, hastaEmbarcadores, desdeNavieras, hastaNavieras, nummaster);
             gridAsignaciones.DataSource = asignaciones;
             //asignaciones[0].Asignacion.Usuario1.NombreCompleto
-            
+
             gridAsignaciones.RefreshDataSource();
             gridAsignaciones.Refresh();
         }
@@ -194,7 +195,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             }
             else
-                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);       
+                MessageBox.Show("Debe seleccionar una asignacion", "Paperless - Asignacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private Entidades.Paperless.PaperlessFlujo ObtenerAsignacion()
@@ -222,19 +223,31 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             MenuComenzar.Text = "Comenzar";
             MenuVer.Enabled = false;
             MenuComenzar.Enabled = false;
-            
+
             if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2)
-            {                
+            {
                 MenuVer.Enabled = true;
+                MenuAceptar.Enabled = true;
+                MenuRechazar.Enabled = true;
+                //MenuComenzar.Enabled = true;
+                //MenuComenzar.Text = "En Proceso";
+            }
+            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.AceptadoUsuario2)
+            {
+                MenuVer.Enabled = true;
+                MenuAceptar.Enabled = false;
+                MenuRechazar.Enabled = false;
                 MenuComenzar.Enabled = true;
-                MenuComenzar.Text = "En Proceso";
+                MenuComenzar.Text = "Comenzar";
             }
 
-            if(asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2)
+            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2)
             {
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;
                 MenuComenzar.Text = "En Proceso";
+                MenuAceptar.Enabled = false;
+                MenuRechazar.Enabled = false;
             }
 
             if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado)
@@ -242,12 +255,17 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;
                 MenuComenzar.Text = "Ver Proceso";
+                MenuAceptar.Enabled = false;
+                MenuRechazar.Enabled = false;
             }
 
-            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoMercante) {
+            if (asignacion != null && asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoMercante)
+            {
                 MenuVer.Enabled = true;
                 MenuComenzar.Enabled = true;
                 MenuComenzar.Text = "En Proceso";
+                MenuAceptar.Enabled = false;
+                MenuRechazar.Enabled = false;
             }
         }
 
@@ -260,10 +278,12 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             if (asignacion.Asignacion.VersionUsuario1 == 2)
                 form = frmPaperlessUser2v2.Instancia;
 
-            if(asignacion != null)
+            if (asignacion != null)
             {
                 form.PaperlessAsignacionActual = asignacion.Asignacion;
-                if(asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2)
+                //if(asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2)
+                //se crea nuevo estado de aceptar proceso para usuario 2
+                if (asignacion.EstadoFlujo == Enums.EstadoPaperless.AceptadoUsuario2)
                 {
                     Entidades.GlobalObject.ResultadoTransaccion resultado = form.PrepararPasos();
                     if (resultado.Estado == Enums.EstadoTransaccion.Rechazada)
@@ -282,7 +302,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
 
             this.ObtenerAsignaciones();
             form.MyShowDialog();
-            
+
         }
 
         private void chkPlazoEmbarcador_CheckedChanged(object sender, EventArgs e)
@@ -324,6 +344,54 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2
             {
                 txtDesde.Enabled = false;
                 txtHasta.Enabled = false;
+            }
+        }
+
+        private void MenuRechazar_Click(object sender, EventArgs e)
+        {
+            Usuario2.frmRechazarAsignacionU2 form = frmRechazarAsignacionU2.Instancia;
+            Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
+            form.Asignacion = asignacion.Asignacion;
+            form.ShowDialog();
+
+        }
+
+        private void MenuAceptar_Click(object sender, EventArgs e)
+        { 
+            Entidades.Paperless.PaperlessFlujo asignacion = ObtenerAsignacion();
+
+            if (MessageBox.Show("¿Esta seguro de aceptar esta asignación?", "Paperless", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                asignacion.Asignacion.Estado = Enums.EstadoPaperless.AceptadoUsuario2;
+                
+
+                if (asignacion.Asignacion.IdResultado.Equals(1))
+                    MessageBox.Show(asignacion.Asignacion.GlosaResultado, "Paperless", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                /* Nuevo PUA, se crea nuevo metodo que cambiará el estado y marcará el comienzo del usuario2. Si una transaccion falla se hará RollBack 
+                ya que el usuario de Brasil controla todos estos tiempos v/s los estados de los procesos*/
+
+
+                //Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.CambiaEstadoAsignacion(asignacion.Asignacion);
+                 PaperlessProcesoRegistroTiempo inicioUsuario2 = new PaperlessProcesoRegistroTiempo()
+                  {
+                        IdAsignacion = asignacion.Asignacion.Id,
+                        ComienzoUsuario2 = DateTime.Now
+                  };
+                 Entidades.GlobalObject.ResultadoTransaccion resultado = LogicaNegocios.Paperless.Paperless.Usuario2CambiaEstado_RegistraComienzo(inicioUsuario2, asignacion.Asignacion);
+                              
+                 if (resultado.Estado == Enums.EstadoTransaccion.Aceptada)
+                 {                                                  
+                    MessageBox.Show("Asignación fue aceptada exitosamente.", "Paperless", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    ObtenerAsignaciones();
+                    MenuVer.Enabled = false;
+                    MenuAceptar.Enabled = false;
+                    MenuRechazar.Enabled = false;
+                    MenuComenzar.Enabled = false;
+                  }
+                 else
+                     MessageBox.Show("Problemas al aceptar la asignación.", "Paperless", MessageBoxButtons.OK,MessageBoxIcon.Error);
+
             }
         }
 

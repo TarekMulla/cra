@@ -21,6 +21,7 @@ using SCCMultimodal.Mantenedores;
 using SCCMultimodal.Panel_de_control;
 using ProyectoCraft.WinForm.Paperless.GestionAsignacion;
 using SCCMultimodal.Paperless.Gestion;
+using ProyectoCraft.WinForm.Paperless.PreAlerta;
 
 
 namespace ProyectoCraft.WinForm {
@@ -246,6 +247,11 @@ namespace ProyectoCraft.WinForm {
             MenuGestionCotizaciones.Visible = false;
 
             NavPaperlessInformes.Visible= NavPaperlessInformes2.Visible = false;
+
+            //TSC PREALERTA
+            MenuPaperlessPreAlerta.Visible = false;
+            //FIN TSC PREALERTA
+
         }
 
         private void HabilitarFuncionalidades() {
@@ -306,6 +312,17 @@ namespace ProyectoCraft.WinForm {
                     || clsPerfil.Id32 == (Int32)Enums.UsuariosCargo.Gerente_Administración_y_Finanzas) {
                     MenuGestionCotizaciones.Visible = true;
                 }
+
+                //TSC PREALERTA
+                if (clsPerfil.Id == (int)Enums.UsuariosCargo.Supervisor_Documental)
+                {
+                    MenuPaperlessPreAlerta.Visible = true;
+                }
+                if (clsPerfil.Id == (int)Enums.UsuariosCargo.Encargado_Documental_1ra_Etapa)
+                {
+                    MenuPaperlessPreAlerta.Visible = true;
+                }
+                //FIN TSC PREALERTA
             }
         }
 
@@ -454,10 +471,6 @@ namespace ProyectoCraft.WinForm {
         private void timer1_Tick(object sender, EventArgs e) {
             timer1.Enabled = false;
             statusMensaje.Visible = false;
-        }
-
-        private void navBarControl1_Click(object sender, EventArgs e) {
-
         }
 
         private void MenuDefinirLineaCredito_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e) {
@@ -696,6 +709,17 @@ namespace ProyectoCraft.WinForm {
 
         private void NavPaperlessInformes2_LinkClicked(object sender, NavBarLinkEventArgs e) {
             NavPaperlessInformes_LinkClicked(sender, e);
+        }
+
+
+        private void MenuPaperlessPreAlerta_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var timer = System.Diagnostics.Stopwatch.StartNew();
+            var form = frmListarPreAlerta.Instancia;
+            form.MdiParent = this;
+            form.Show();
+            ClsLogPerformance.Save(new LogPerformance(Base.Usuario.UsuarioConectado.Usuario, timer.Elapsed.TotalSeconds));
+
         }
     }
 }

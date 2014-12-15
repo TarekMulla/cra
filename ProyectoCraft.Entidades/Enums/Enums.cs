@@ -255,10 +255,6 @@ namespace ProyectoCraft.Entidades.Enums {
             Perdida = 9,
         }
 
-        //public enum EstadoPaperlessAsignacion
-        //{
-
-        //}
 
         public enum EstadoPaperless {
             Nuevo = 1,
@@ -273,7 +269,15 @@ namespace ProyectoCraft.Entidades.Enums {
             EnProcesoUsuario2 = 7,
             ProcesoTerminado = 8,
             EnviadoMercante=10,
-            RechazadaUsuario1 = 9
+            RechazadaUsuario1 = 9,
+            AceptadoUsuario2 = 11,
+            RechazadaUsuario2 =12,
+        }
+
+        public enum TipoUsuario
+        {
+            Usuario1 = 1,
+            Usuario2 = 2,
         }
 
         public enum PaperlessTipoReciboAperturaEmbarcador {

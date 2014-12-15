@@ -50,6 +50,8 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.MenuAceptar = new System.Windows.Forms.ToolStripButton();
+            this.MenuRechazar = new System.Windows.Forms.ToolStripButton();
             this.MenuVer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuComenzar = new System.Windows.Forms.ToolStripButton();
@@ -324,6 +326,8 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuAceptar,
+            this.MenuRechazar,
             this.MenuVer,
             this.toolStripSeparator1,
             this.MenuComenzar,
@@ -334,6 +338,28 @@
             this.toolStrip1.Size = new System.Drawing.Size(1214, 54);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // MenuAceptar
+            // 
+            this.MenuAceptar.Enabled = false;
+            this.MenuAceptar.Image = ((System.Drawing.Image)(resources.GetObject("MenuAceptar.Image")));
+            this.MenuAceptar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuAceptar.Name = "MenuAceptar";
+            this.MenuAceptar.Size = new System.Drawing.Size(52, 51);
+            this.MenuAceptar.Text = "Aceptar";
+            this.MenuAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuAceptar.Click += new System.EventHandler(this.MenuAceptar_Click);
+            // 
+            // MenuRechazar
+            // 
+            this.MenuRechazar.Enabled = false;
+            this.MenuRechazar.Image = ((System.Drawing.Image)(resources.GetObject("MenuRechazar.Image")));
+            this.MenuRechazar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MenuRechazar.Name = "MenuRechazar";
+            this.MenuRechazar.Size = new System.Drawing.Size(58, 51);
+            this.MenuRechazar.Text = "Rechazar";
+            this.MenuRechazar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.MenuRechazar.Click += new System.EventHandler(this.MenuRechazar_Click);
             // 
             // MenuVer
             // 
@@ -599,5 +625,7 @@
         private DevExpress.XtraEditors.DateEdit txtDesde;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEstados;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private System.Windows.Forms.ToolStripButton MenuRechazar;
+        private System.Windows.Forms.ToolStripButton MenuAceptar;
     }
 }

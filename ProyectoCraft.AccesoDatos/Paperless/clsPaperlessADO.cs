@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using Microsoft.ApplicationBlocks.Data;
 using ProyectoCraft.Base.BaseDatos;
 using ProyectoCraft.Base.Log;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Paperless;
-using System.Data;
 using ProyectoCraft.Entidades.Parametros;
 using ProyectoCraft.Entidades.Usuarios;
 
@@ -20,6 +20,653 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
         private static SqlDataReader dreader = null;
         private static ResultadoTransaccion resTransaccion = null;
 
+
+        //TSC
+        public static IList<PaperlessPreAlerta> ObtenerPreAlertas(String numconsolidada, String estado, String agente,
+                                                              DateTime FechaSalidaDesde, DateTime FechaSalidaHasta,
+                                                              DateTime FechaLlegadaDesde, DateTime FechaLlegadaHasta,
+                                                              DateTime FechaRecibimientoDesde, DateTime FechaRecibimientoHasta)
+        {
+            PaperlessPreAlerta prealerta = null;
+            IList<PaperlessPreAlerta> listprealertas = new List<PaperlessPreAlerta>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_PREALERTA_FILTRO");
+                objParams[0].Value = numconsolidada;
+                objParams[1].Value = estado;
+                objParams[2].Value = agente;
+                objParams[3].Value = FechaSalidaDesde;
+                objParams[4].Value = FechaSalidaHasta;
+                objParams[5].Value = FechaLlegadaDesde;
+                objParams[6].Value = FechaLlegadaHasta;
+                objParams[7].Value = FechaRecibimientoDesde;
+                objParams[8].Value = FechaRecibimientoHasta;
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_PREALERTA_FILTRO", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    prealerta = new PaperlessPreAlerta();
+
+                    prealerta.Id = Convert.ToInt64(dreader["Id"]);
+                    prealerta.NumConsolidada = dreader["NumConsolidada"].ToString();
+
+                    prealerta.Agente = new PaperlessAgente()
+                    {
+                        Id = Convert.ToInt64(dreader["IdAgente"]),
+                        Nombre = dreader["Agente"].ToString()
+                    };
+
+                    prealerta.Naviera = new PaperlessNaviera()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNaviera"]),
+                        Nombre = dreader["Naviera"].ToString()
+                    };
+
+                    prealerta.Nave = new PaperlessNave()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNave"]),
+                        Nombre = dreader["Nave"].ToString()
+                    };
+
+                    if (dreader["FechaSalida"] is DBNull)
+                        prealerta.FechaSalida = null;
+                    else
+                        prealerta.FechaSalida = Convert.ToDateTime(dreader["FechaSalida"]);
+
+
+                    if (dreader["FechaLlegada"] is DBNull)
+                        prealerta.FechaLlegada = null;
+                    else
+                        prealerta.FechaLlegada = Convert.ToDateTime(dreader["FechaLlegada"]);
+
+                    if (dreader["FechaRecibimiento"] is DBNull)
+                        prealerta.FechaRecibimiento = null;
+                    else
+                        prealerta.FechaRecibimiento = Convert.ToDateTime(dreader["FechaRecibimiento"]);
+
+                    prealerta.NumMaster = dreader["NumMaster"].ToString();
+
+                    prealerta.Estado = new PaperlessEstadoPreAlerta()
+                    {
+                        Id = Convert.ToInt64(dreader["IdEstado"]),
+                        Nombre = dreader["Estado"].ToString()
+                    };
+
+                    if (dreader["FechaCreacion"] is DBNull)
+                        prealerta.FechaCreacion = null;
+                    else
+                        prealerta.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
+
+                    prealerta.Usuario = new clsUsuario()
+                    {
+                        //Id = Convert.ToInt64(dreader["Id"]),
+                        Nombre = dreader["NombreUsuario"].ToString()
+                    };
+
+                    //prealerta.IdUsuarioCreacion = Convert.ToInt64(dreader["IdUsuarioCreacion"]);
+
+                    prealerta.PuertoOrigen = new PaperlessPuerto()
+                    {
+                        Codigo = dreader["IdPuertoOrigen"].ToString(),
+                        Nombre = dreader["NombrePuertoOrigen"].ToString()
+                     };
+
+
+                    prealerta.PuertoDestino = new PaperlessPuerto()
+                    {
+                        Codigo = dreader["IdPuertoDestino"].ToString(),
+                        Nombre = dreader["NombrePuertoDestino"].ToString()
+                    };
+
+                   
+                    prealerta.UsuarioModificacion = new clsUsuario()
+                    {
+                        //Id = Convert.ToInt64(dreader["Id"]),
+                        Nombre = dreader["NombreUsuarioModificacion"].ToString()
+                    };
+
+                    listprealertas.Add(prealerta);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return listprealertas;
+
+        }
+
+
+        public static PaperlessPreAlerta ObtenerPreAlertaPorNumConsolidada(string numconsolidada)
+        {
+            PaperlessPreAlerta PreAlerta = null;
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_PREALERTA_FILTRO_POR_NUMCONSOLIDADA");
+                objParams[0].Value = numconsolidada;
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_PREALERTA_FILTRO_POR_NUMCONSOLIDADA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    PreAlerta = new PaperlessPreAlerta();
+
+                    PreAlerta.Id = Convert.ToInt64(dreader["Id"]);
+                    PreAlerta.NumConsolidada = dreader["NumConsolidada"].ToString();
+
+                    PreAlerta.Agente = new PaperlessAgente()
+                    {
+                        Id = Convert.ToInt64(dreader["IdAgente"]),
+                        Nombre = dreader["Agente"].ToString()
+                    };
+
+                    PreAlerta.Naviera = new PaperlessNaviera()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNaviera"]),
+                        Nombre = dreader["Naviera"].ToString()
+                    };
+
+                    PreAlerta.Nave = new PaperlessNave()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNave"]),
+                        Nombre = dreader["Nave"].ToString()
+                    };
+
+                    if (dreader["FechaSalida"] is DBNull)
+                        PreAlerta.FechaSalida = null;
+                    else
+                        PreAlerta.FechaSalida = Convert.ToDateTime(dreader["FechaSalida"]);
+
+
+                    if (dreader["FechaLlegada"] is DBNull)
+                        PreAlerta.FechaLlegada = null;
+                    else
+                        PreAlerta.FechaLlegada = Convert.ToDateTime(dreader["FechaLlegada"]);
+
+                    if (dreader["FechaRecibimiento"] is DBNull)
+                        PreAlerta.FechaRecibimiento = null;
+                    else
+                        PreAlerta.FechaRecibimiento = Convert.ToDateTime(dreader["FechaRecibimiento"]);
+
+                    PreAlerta.NumMaster = dreader["NumMaster"].ToString();
+
+                    PreAlerta.Estado = new PaperlessEstadoPreAlerta()
+                    {
+                        Id = Convert.ToInt64(dreader["IdEstado"]),
+                        Nombre = dreader["Estado"].ToString()
+                    };
+
+                    PreAlerta.Usuario = new clsUsuario()
+                    {
+                        Id = Convert.ToInt64(dreader["IdUsuarioCreacion"]),
+                        Nombre = dreader["Estado"].ToString()
+                    };
+
+                    PreAlerta.PuertoDestino = new PaperlessPuerto()
+                    {
+                        Id = Convert.ToInt64(dreader["IdPD"]),
+                        Codigo = dreader["IdPuertoDestino"].ToString(),
+                        Nombre = dreader["NombrePuertoDestino"].ToString()
+                    };
+
+
+                    //{
+                    //    Codigo = dreader["IdPuertoDestino"].ToString(),
+                    //    Nombre = dreader["NombrePuertoDestino"].ToString()
+                    //};
+
+                    PreAlerta.PuertoOrigen = new PaperlessPuerto()
+                    {
+                        Id = Convert.ToInt64(dreader["IdPO"]),
+                        Codigo = dreader["IdPuertoOrigen"].ToString(),
+                        Nombre = dreader["NombrePuertoOrigen"].ToString()
+                    };
+
+                    
+                    if (dreader["FechaCreacion"] is DBNull)
+                        PreAlerta.FechaCreacion = null;
+                    else
+                        PreAlerta.FechaCreacion = Convert.ToDateTime(dreader["FechaCreacion"]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return PreAlerta;
+        }
+
+
+        public static IList<PaperlessEstadoPreAlerta> ObtenerEstadosPreAlertaPaperless(Enums.Estado activo)
+        {
+            PaperlessEstadoPreAlerta estado = null;
+            IList<PaperlessEstadoPreAlerta> listestados = new List<PaperlessEstadoPreAlerta>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_ESTADO_PREALERTA");
+                objParams[0].Value = activo;
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_ESTADO_PREALERTA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    estado = new PaperlessEstadoPreAlerta();
+                    estado.Id = Convert.ToInt64(dreader["Id"]);
+                    estado.Nombre = dreader["Descripcion"].ToString();
+
+                    listestados.Add(estado);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return listestados;
+        }
+
+        public static ResultadoTransaccion ActualizarPreAlerta(PaperlessPreAlerta info)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_A_PAPERLESS_PREALERTA");
+
+                objParams[0].Value = info.Id;
+                objParams[1].Value = info.NumConsolidada;
+                objParams[2].Value = info.Agente.Id;
+                objParams[3].Value = info.Naviera.Id;
+                objParams[4].Value = info.Nave.Id;
+                objParams[5].Value = info.FechaSalida;
+                objParams[6].Value = info.FechaLlegada;
+                objParams[7].Value = info.PuertoOrigen.Codigo;
+                objParams[8].Value = info.PuertoDestino.Codigo;
+                objParams[9].Value = info.FechaRecibimiento;
+                objParams[10].Value = info.FechaModificacion;
+                objParams[11].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
+                objParams[12].Value = info.Estado.id;
+                objParams[13].Value = info.NumMaster;
+
+                SqlCommand command = new SqlCommand("SP_A_PAPERLESS_PREALERTA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+
+        public static ResultadoTransaccion ActualizarPreAlertaNumMaster(string NumConsolidada, PaperlessAsignacion PaperlessAsignacionActual)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_A_PAPERLESS_PREALERTA_NUMMASTER");
+
+                objParams[0].Value = NumConsolidada;
+                objParams[1].Value = PaperlessAsignacionActual.NumMaster;
+                objParams[2].Value = PaperlessAsignacionActual.Naviera.Id;
+
+                SqlCommand command = new SqlCommand("SP_A_PAPERLESS_PREALERTA_NUMMASTER", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+        public static ResultadoTransaccion GuardarPreAlerta(PaperlessPreAlerta info)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_N_PAPERLESS_PREALERTA");
+
+                objParams[0].Value = info.NumConsolidada;
+                objParams[1].Value = info.Agente.Id;
+                objParams[2].Value = info.Naviera.Id;
+                objParams[3].Value = info.Nave.Id;
+                objParams[4].Value = info.FechaSalida;
+                objParams[5].Value = info.FechaLlegada;
+                objParams[6].Value = info.PuertoOrigen.Codigo;
+                objParams[7].Value = info.PuertoDestino.Codigo;
+                objParams[8].Value = info.FechaCreacion;
+                objParams[9].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
+                objParams[10].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
+                objParams[11].Value = info.NumMaster;
+                objParams[12].Value = info.FechaRecibimiento;
+                objParams[13].Value = info.Estado.id;
+
+                SqlCommand command = new SqlCommand("SP_N_PAPERLESS_PREALERTA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+
+        public static ResultadoTransaccion CambiaEstadoCancelacionPreAlerta(PaperlessPreAlerta info)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_A_PAPERLESS_PREALERTA_ESTADO_CANCELACION");
+
+                objParams[0].Value = info.NumConsolidada;
+                objParams[1].Value = DateTime.Now;
+                objParams[2].Value = Base.Usuario.UsuarioConectado.Usuario.Id;
+                objParams[3].Value = info.Estado.id;
+
+                SqlCommand command = new SqlCommand("SP_A_PAPERLESS_PREALERTA_ESTADO_CANCELACION", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+        public static IList<PaperlessPreAlerta> ObtenerNumConsolidadas()
+        {
+            PaperlessPreAlerta prealerta = null;
+            IList<PaperlessPreAlerta> listprealertas = new List<PaperlessPreAlerta>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_PREALERTA_CERRADOS");
+                //objParams[0].Value = estado;
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_PREALERTA_CERRADOS", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    prealerta = new PaperlessPreAlerta();
+                    prealerta.NumConsolidada = dreader["numconsolidada"].ToString();
+
+                    listprealertas.Add(prealerta);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return listprealertas;
+        }
+
+
+        public static PaperlessPreAlerta ObtieneNumConsolidadaPreAlerta(string numconsolidada)
+        {
+            PaperlessPreAlerta PreAlerta = null;
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_PAPERLESS_PREALERTA_ASIGNACION_FILTRO_POR_NUMCONSOLIDADA");
+                objParams[0].Value = numconsolidada;
+
+                SqlCommand command = new SqlCommand("SP_L_PAPERLESS_PREALERTA_ASIGNACION_FILTRO_POR_NUMCONSOLIDADA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    PreAlerta = new PaperlessPreAlerta();
+
+                    PreAlerta.Id = Convert.ToInt64(dreader["Id"]);
+                    PreAlerta.NumConsolidada = dreader["NumConsolidada"].ToString();
+
+                    PreAlerta.Agente = new PaperlessAgente()
+                    {
+                        Id = Convert.ToInt64(dreader["IdAgente"]),
+                        Nombre = dreader["Agente"].ToString()
+                    };
+
+                    PreAlerta.Naviera = new PaperlessNaviera()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNaviera"]),
+                        Nombre = dreader["Naviera"].ToString()
+                    };
+
+                    PreAlerta.Nave = new PaperlessNave()
+                    {
+                        Id = Convert.ToInt64(dreader["IdNave"]),
+                        Nombre = dreader["Nave"].ToString()
+                    };
+
+                    PreAlerta.NumMaster = dreader["NumMaster"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return PreAlerta;
+        }
+
+
+        public static clsUsuario RecuperaEmailUsuario(string nombreusuario)
+        {
+            clsUsuario usuario = null;
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_PREALERTA_EMAIL_USUARIO");
+                objParams[0].Value = nombreusuario;
+
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_PREALERTA_EMAIL_USUARIO", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    usuario = new clsUsuario();
+                    usuario.Email = Convert.ToString(dreader["email"]);
+                    /*
+                    PreAlerta.Usuario = new clsUsuario()
+                    {
+                        Id = Convert.ToInt64(dreader["IdUsuarioCreacion"]),
+                        Nombre = dreader["Estado"].ToString()
+                    };
+                    */ 
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return usuario;
+        }
+
+        public static bool ValidaNumConsolidadoPreAlerta(string numConsolidada)
+        {
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_NUMCONSOLIDADO");
+                objParams[0].Value = numConsolidada;
+
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_NUMCONSOLIDADO", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    string num = dreader["NumConsolidado"].ToString();
+
+                    if (!string.IsNullOrEmpty(num))
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
+        }
+
+        public static bool ValidaNumConsolidadoPreAlerta2(string numConsolidada)
+        {
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_C_PAPERLESS_NUMCONSOLIDADO_PREALERTA");
+                objParams[0].Value = numConsolidada;
+
+                SqlCommand command = new SqlCommand("SP_C_PAPERLESS_NUMCONSOLIDADO_PREALERTA", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+
+                while (dreader.Read())
+                {
+                    string num = dreader["NumConsolidada"].ToString();
+
+                    if (!string.IsNullOrEmpty(num))
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
+        }
+
+        public static ResultadoTransaccion CambiaEstadoVinculadoPreAlerta(string numconsolidada)
+        {
+            conn = Base.BaseDatos.BaseDatos.NuevaConexion();
+            SqlTransaction transaction = conn.BeginTransaction();
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_A_PAPERLESS_PREALERTA_ESTADO_VINCULADO");
+
+                objParams[0].Value = numconsolidada;
+
+                SqlCommand command = new SqlCommand("SP_A_PAPERLESS_PREALERTA_ESTADO_VINCULADO", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
+        //FIN TSC
 
 
         public static IList<PaperlessNaviera> ObtenerNavieras(Enums.Estado estado) {
@@ -113,6 +760,43 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return listnaves;
         }
 
+        public static IList<PaperlessPuerto> ObtenerPuertosPaperless()
+        {
+            PaperlessPuerto puerto = null;
+            IList<PaperlessPuerto> listpuertos = new List<PaperlessPuerto>();
+            try
+            {
+                //Abrir Conexion
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_L_Puertos_Paperless");
+                SqlCommand command = new SqlCommand("SP_L_Puertos_Paperless", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                dreader = command.ExecuteReader();
+               
+                
+                while (dreader.Read())
+                {
+                    puerto = new PaperlessPuerto();
+                    puerto.Id = Convert.ToInt64(dreader["id"]);
+                    puerto.Codigo  = dreader["puerto"].ToString();
+                    puerto.Nombre = dreader["nombre"].ToString();
+                    puerto.Pais = dreader["pais"].ToString();
+                    listpuertos.Add(puerto);
+                }
+            }
+            catch (Exception ex)
+            {
+                Base.Log.Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return listpuertos;
+        }
+
         public static IList<PaperlessFlujo> ObtenerAsignaciones(DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string estado,
             string numconsolidado, string nave, DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras,
             string nummaster) {
@@ -146,7 +830,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                     flujopaperless.Asignacion.NumMaster = dreader["NumMaster"].ToString();
                     flujopaperless.Asignacion.NumHousesBL = Convert.ToInt16(dreader["NumHousesBL"]);
                     flujopaperless.Asignacion.FechaMaster = Convert.ToDateTime(dreader["FechaMaster"]);
-
+                    var i = 0;
+                    i=i + 1;
                     flujopaperless.Asignacion.UsuarioCreacion = new clsUsuario() {
                         ApellidoPaterno = dreader["UCAP"].ToString(),
                         ApellidoMaterno = dreader["UCAM"].ToString(),
@@ -239,8 +924,9 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             } finally {
                 conn.Close();
             }
-
+            
             return listasignaciones;
+          
         }
 
         public static PaperlessAsignacion ObtenerAsignacionPorId(Int64 IdAsignacion) {
@@ -456,8 +1142,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 } else {
                     paso1.Id = Convert.ToInt64(resultado.ObjetoTransaccion);
                 }
-
-
+                
+                
                 transaction.Commit();
                 resultado.Estado = Enums.EstadoTransaccion.Aceptada;
 
@@ -827,6 +1513,34 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             return resTransaccion;
         }
 
+        public static ResultadoTransaccion GuardaPaso3_Usuario2(PaperlessAsignacion paso3)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                objParams = SqlHelperParameterCache.GetSpParameterSet(conn, "SP_U_PAPERLESS_ASIGNACION_PASO3");
+                objParams[1].Value = paso3.Usuario2.Id;
+                objParams[2].Value = paso3.ObservacionUsuario2;
+                objParams[3].Value = paso3.Estado;
+                objParams[4].Value = paso3.Id;
+
+                SqlCommand command = new SqlCommand("SP_U_PAPERLESS_ASIGNACION_PASO3", conn);
+                command.Parameters.AddRange(objParams);
+                command.CommandType = CommandType.StoredProcedure;
+                command.ExecuteNonQuery();
+
+                resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            return resTransaccion;
+        }
+
         public static IList<PaperlessEstado> ObtenerEstadosPaperless(Enums.Estado activo) {
             PaperlessEstado estado = null;
             IList<PaperlessEstado> listestados = new List<PaperlessEstado>();
@@ -897,6 +1611,45 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             }
             return resTransaccion;
         }
+
+        public static ResultadoTransaccion Usuario2CambiaEstado_RegistraComienzo(PaperlessProcesoRegistroTiempo inicioUsuario2,PaperlessAsignacion Asignacion)
+        {
+            resTransaccion = new ResultadoTransaccion();
+            SqlTransaction transaction = null;
+            
+            try
+            {
+                conn = BaseDatos.NuevaConexion();
+                transaction = conn.BeginTransaction();
+                resTransaccion = CambiaEstadoAsignacion(Asignacion, conn, transaction);
+                if (resTransaccion.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resTransaccion.Descripcion);
+
+                resTransaccion = Usuario2RegistraComienzo(inicioUsuario2, conn, transaction);
+                if (resTransaccion.Estado == Enums.EstadoTransaccion.Rechazada)
+                    throw new Exception(resTransaccion.Descripcion);
+
+                transaction.Commit();
+                //resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
+
+                
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                resTransaccion.Estado = Enums.EstadoTransaccion.Rechazada;
+                resTransaccion.Descripcion = ex.Message;
+                Log.EscribirLog(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+                        
+            return resTransaccion;
+        }
+
 
         public static ResultadoTransaccion CambiaEstadoAsignacion(PaperlessAsignacion asignacion, SqlConnection connparam, SqlTransaction tranparam) {
             resTransaccion = new ResultadoTransaccion();
@@ -1651,13 +2404,13 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 if (resTransaccion.Estado == Enums.EstadoTransaccion.Rechazada)
                     throw new Exception(resTransaccion.Descripcion);
 
-
-                resTransaccion = Usuario2RegistraComienzo(iniciousuario2, conn, transaction);
+                //El comienzo del usuario2 se marca cuando el U2 acepta la asignación PUA
+                /*resTransaccion = Usuario2RegistraComienzo(iniciousuario2, conn, transaction);
                 if (resTransaccion.Estado == Enums.EstadoTransaccion.Rechazada)
                     throw new Exception(resTransaccion.Descripcion);
 
                 resTransaccion.Estado = Enums.EstadoTransaccion.Aceptada;
-
+                */
 
                 transaction.Commit();
 
@@ -2672,6 +3425,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                 objParams[0].Value = rechazo.IdAsignacion;
                 objParams[1].Value = rechazo.Usuario.Id;
                 objParams[2].Value = rechazo.Motivo;
+                objParams[3].Value = rechazo.tipoUsuario;
 
                 SqlCommand command = new SqlCommand("SP_N_PAPERLESS_ASIGNACION_RECHAZO", conn);
                 command.Parameters.AddRange(objParams);
@@ -2714,6 +3468,7 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
                         Nombre = dreader["Nombres"].ToString()
                     };
                     rechazo.Motivo = dreader["Motivo"].ToString();
+                    
                 }
             } catch (Exception ex) {
                 Log.EscribirLog(ex.Message);
@@ -4240,6 +4995,8 @@ namespace ProyectoCraft.AccesoDatos.Paperless {
             }
             return empresas;
         }
+
+
     }
 }
 

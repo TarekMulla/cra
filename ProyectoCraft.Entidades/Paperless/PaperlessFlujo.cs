@@ -14,10 +14,7 @@ namespace ProyectoCraft.Entidades.Paperless
 
         public PaperlessAsignacion Asignacion { get; set; }
 
-
         public Enums.Enums.EstadoPaperless EstadoFlujo { get; set; }
         public string EstadoFlujoDescripcion { get; set; }
-
-
     }
 }

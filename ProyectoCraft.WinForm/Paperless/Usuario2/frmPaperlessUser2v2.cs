@@ -11,6 +11,7 @@ using ProyectoCraft.Entidades.Paperless;
 using SCCMultimodal.Paperless.Usuario2;
 using SCCMultimodal.Utils;
 using log4net;
+using ProyectoCraft.WinForm.Controles;
 
 namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
 
@@ -66,7 +67,35 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                 frmPaperlessUser2_LoadChile(sender, e);
                 IsBrasil = false;
             }
+            
+            //TSC
+            EstadoPaperless control = new EstadoPaperless();
+            panel1.Controls.Add(control);
+            //loadGeneralInfo();
+            //CargarPasos();
+            //CargarClientesExistentesHousesBl();
+
+            //gridView4.CustomRowCellEditForEditing += new CustomRowCellEditEventHandler(MarcarPaso);
+
+            //CargarPaso1HousesBL();        //TSC
+            //ValidarAccion();
+
+            //if (Accion == Enums.TipoAccionFormulario.Consultar)
+            //    RepositoryCheckPasos.CheckStateChanged += RecargarPasos;
+            //else
+            //    RepositoryCheckPasos.CheckStateChanged += MarcarCambioEstadoPaso;
+
+            //Control Tiempo
+            control.AsignacionActual = PaperlessAsignacionActual;
+            
+            control.ConfigurarIniciarTiempo(false);
+            control.ObtenerTiemposProcesoUsuario2();
+
+            //control.ObtenerTiempoEstimadoProcesoUsuario2();
+            //FIN TSC
+            
         }
+
         private void frmPaperlessUser2_LoadBrasil(object sender, EventArgs e) {
             gridView2.CustomRowCellEditForEditing += new CustomRowCellEditEventHandler(MarcarPaso);
 
@@ -1169,6 +1198,16 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario2 {
                 Log.Error(ex);
                 throw;
             }
+        }
+
+        private void grdPasos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

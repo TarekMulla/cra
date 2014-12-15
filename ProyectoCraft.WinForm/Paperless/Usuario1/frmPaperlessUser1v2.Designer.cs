@@ -398,7 +398,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(6, 36);
+            this.panel1.Location = new System.Drawing.Point(6, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1153, 86);
             this.panel1.TabIndex = 2;
@@ -422,7 +422,7 @@
             this.pnlPaso1.Controls.Add(this.grdP1DigitarHousesBL);
             this.pnlPaso1.Location = new System.Drawing.Point(345, 157);
             this.pnlPaso1.Name = "pnlPaso1";
-            this.pnlPaso1.Size = new System.Drawing.Size(839, 432);
+            this.pnlPaso1.Size = new System.Drawing.Size(1015, 432);
             this.pnlPaso1.TabIndex = 4;
             this.pnlPaso1.Visible = false;
             // 
@@ -534,7 +534,7 @@
             this.grdP1DigitarHousesBL.Location = new System.Drawing.Point(13, 55);
             this.grdP1DigitarHousesBL.MainView = this.gridView5;
             this.grdP1DigitarHousesBL.Name = "grdP1DigitarHousesBL";
-            this.grdP1DigitarHousesBL.Size = new System.Drawing.Size(814, 370);
+            this.grdP1DigitarHousesBL.Size = new System.Drawing.Size(826, 370);
             this.grdP1DigitarHousesBL.TabIndex = 0;
             this.grdP1DigitarHousesBL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5,
@@ -565,6 +565,7 @@
             this.gridColumn7.FieldName = "Index";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
@@ -576,6 +577,7 @@
             this.gridColumn8.ColumnEdit = this.repositoryItemTextEdit1;
             this.gridColumn8.FieldName = "HouseBL";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 1;
             this.gridColumn8.Width = 116;
@@ -586,6 +588,7 @@
             this.gridColumn9.ColumnEdit = this.repositoryItemCheckEdit2;
             this.gridColumn9.FieldName = "Freehand";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn9.Width = 86;
             // 
             // gridColumn17
@@ -594,6 +597,7 @@
             this.gridColumn17.ColumnEdit = this.P1repositoryItemCliente;
             this.gridColumn17.FieldName = "Cliente.NombreFantasia";
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 2;
             this.gridColumn17.Width = 241;
@@ -604,6 +608,7 @@
             this.P1colTipoCliente.ColumnEdit = this.P1repositoryTipoCiente;
             this.P1colTipoCliente.FieldName = "TipoCliente.Nombre";
             this.P1colTipoCliente.Name = "P1colTipoCliente";
+            this.P1colTipoCliente.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.P1colTipoCliente.Visible = true;
             this.P1colTipoCliente.VisibleIndex = 3;
             this.P1colTipoCliente.Width = 85;
@@ -613,6 +618,7 @@
             this.gridColumn43.Caption = "Shipping Instruction";
             this.gridColumn43.FieldName = "ShippingInstruction";
             this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn43.Visible = true;
             this.gridColumn43.VisibleIndex = 4;
             this.gridColumn43.Width = 137;
@@ -622,6 +628,7 @@
             this.gridColumn44.Caption = "Puerto";
             this.gridColumn44.FieldName = "Puerto";
             this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 5;
             this.gridColumn44.Width = 108;
@@ -632,6 +639,7 @@
             this.gridColumn22.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn22.FieldName = "ExcepcionRecargoCollect.RecargoCollect";
             this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn22.Width = 106;
             // 
             // gridColumn18
@@ -640,6 +648,7 @@
             this.gridColumn18.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn18.FieldName = "Ruteado";
             this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 6;
             this.gridColumn18.Width = 77;
@@ -660,7 +669,7 @@
             this.grdP3HousesRuteados.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
             this.repositoryItemComboBox1});
-            this.grdP3HousesRuteados.Size = new System.Drawing.Size(804, 361);
+            this.grdP3HousesRuteados.Size = new System.Drawing.Size(980, 361);
             this.grdP3HousesRuteados.TabIndex = 5;
             this.grdP3HousesRuteados.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3,
@@ -690,6 +699,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.OptionsColumn.AllowFocus = false;
+            this.gridColumn10.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 0;
@@ -702,6 +712,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.OptionsColumn.AllowFocus = false;
+            this.gridColumn11.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 1;
             this.gridColumn11.Width = 141;
@@ -713,6 +724,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.OptionsColumn.AllowFocus = false;
+            this.gridColumn12.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn12.OptionsColumn.ReadOnly = true;
             this.gridColumn12.Width = 86;
             // 
@@ -723,6 +735,7 @@
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.OptionsColumn.AllowFocus = false;
+            this.gridColumn20.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn20.OptionsColumn.ReadOnly = true;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 2;
@@ -735,6 +748,7 @@
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.OptionsColumn.AllowFocus = false;
+            this.gridColumn21.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn21.OptionsColumn.ReadOnly = true;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 3;
@@ -747,6 +761,7 @@
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.OptionsColumn.AllowFocus = false;
+            this.gridColumn23.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn23.OptionsColumn.ReadOnly = true;
             this.gridColumn23.Width = 106;
             // 
@@ -757,6 +772,7 @@
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.OptionsColumn.AllowFocus = false;
+            this.gridColumn24.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn24.OptionsColumn.ReadOnly = true;
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 4;
@@ -769,6 +785,7 @@
             this.gridColumn25.FieldName = "TransbordoTransito";
             this.gridColumn25.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
             this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 5;
             this.gridColumn25.Width = 139;
@@ -803,7 +820,7 @@
             this.pnlPaso3.Controls.Add(this.grdP3HousesRuteados);
             this.pnlPaso3.Location = new System.Drawing.Point(345, 156);
             this.pnlPaso3.Name = "pnlPaso3";
-            this.pnlPaso3.Size = new System.Drawing.Size(839, 434);
+            this.pnlPaso3.Size = new System.Drawing.Size(1015, 434);
             this.pnlPaso3.TabIndex = 4;
             // 
             // btnP2GuardarHousesRuteados
@@ -909,6 +926,7 @@
             this.gridColumn26.Caption = "N°";
             this.gridColumn26.FieldName = "HouseBL.Index";
             this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 0;
             this.gridColumn26.Width = 41;
@@ -918,6 +936,7 @@
             this.gridColumn1.Caption = "House BL";
             this.gridColumn1.FieldName = "HouseBL.HouseBL";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 113;
@@ -927,6 +946,7 @@
             this.gridColumn2.Caption = "Cliente";
             this.gridColumn2.FieldName = "HouseBL.Cliente.NombreCompañia";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn2.Width = 120;
             // 
             // gridColumn3
@@ -934,6 +954,7 @@
             this.gridColumn3.Caption = "Tipo ";
             this.gridColumn3.FieldName = "HouseBL.TipoCliente.Nombre";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn3.Width = 80;
             // 
             // gridColumn13
@@ -942,6 +963,7 @@
             this.gridColumn13.ColumnEdit = this.repositoryItemCheckEdit4;
             this.gridColumn13.FieldName = "HouseBL.Freehand";
             this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn13.Width = 60;
             // 
             // gridColumn14
@@ -950,6 +972,7 @@
             this.gridColumn14.ColumnEdit = this.repositoryItemCheckEdit5;
             this.gridColumn14.FieldName = "RecargoCollect";
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             // 
             // Resuelto
             // 
@@ -957,6 +980,7 @@
             this.Resuelto.ColumnEdit = this.repositoryItemCheckEdit8;
             this.Resuelto.FieldName = "Resuelto";
             this.Resuelto.Name = "Resuelto";
+            this.Resuelto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.Resuelto.Visible = true;
             this.Resuelto.VisibleIndex = 7;
             this.Resuelto.Width = 69;
@@ -972,6 +996,7 @@
             this.gridColumn15.ColumnEdit = this.repositoryItemCheckEdit6;
             this.gridColumn15.FieldName = "SobreValorPendiente";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn15.Width = 90;
             // 
             // gridColumn16
@@ -980,6 +1005,7 @@
             this.gridColumn16.ColumnEdit = this.repositoryItemCheckEdit7;
             this.gridColumn16.FieldName = "AvisoNoEnviado";
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn16.Width = 83;
             // 
             // ColTieneExcepcion
@@ -988,6 +1014,7 @@
             this.ColTieneExcepcion.ColumnEdit = this.repositoryItemCheckEdit9;
             this.ColTieneExcepcion.FieldName = "TieneExcepcion";
             this.ColTieneExcepcion.Name = "ColTieneExcepcion";
+            this.ColTieneExcepcion.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.ColTieneExcepcion.Visible = true;
             this.ColTieneExcepcion.VisibleIndex = 2;
             this.ColTieneExcepcion.Width = 81;
@@ -998,6 +1025,7 @@
             this.ColExcepcion.ColumnEdit = this.repositoryItemComboBox2;
             this.ColExcepcion.FieldName = "TipoExcepcion";
             this.ColExcepcion.Name = "ColExcepcion";
+            this.ColExcepcion.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.ColExcepcion.Visible = true;
             this.ColExcepcion.VisibleIndex = 3;
             this.ColExcepcion.Width = 151;
@@ -1008,6 +1036,7 @@
             this.ColResponsabilidad.ColumnEdit = this.repositoryItemComboBox3;
             this.ColResponsabilidad.FieldName = "Responsabilidad";
             this.ColResponsabilidad.Name = "ColResponsabilidad";
+            this.ColResponsabilidad.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.ColResponsabilidad.Visible = true;
             this.ColResponsabilidad.VisibleIndex = 6;
             this.ColResponsabilidad.Width = 91;
@@ -1018,6 +1047,7 @@
             this.gridColumn42.ColumnEdit = this.repositoryItemMemoExEdit2;
             this.gridColumn42.FieldName = "Comentario";
             this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 4;
             this.gridColumn42.Width = 127;
@@ -1028,6 +1058,7 @@
             this.ColCausador.ColumnEdit = this.repositoryItemComboBox8;
             this.ColCausador.FieldName = "Causador";
             this.ColCausador.Name = "ColCausador";
+            this.ColCausador.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.ColCausador.Visible = true;
             this.ColCausador.VisibleIndex = 5;
             this.ColCausador.Width = 108;
@@ -1341,6 +1372,7 @@
             this.gridColumn19.Caption = "N°";
             this.gridColumn19.FieldName = "Index";
             this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 0;
             this.gridColumn19.Width = 41;
@@ -1351,6 +1383,7 @@
             this.gridColumn65.ColumnEdit = this.repositoryItemCheckEdit9;
             this.gridColumn65.FieldName = "TieneExcepcion";
             this.gridColumn65.Name = "gridColumn65";
+            this.gridColumn65.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 1;
             this.gridColumn65.Width = 81;
@@ -1361,6 +1394,7 @@
             this.gridColumn66.ColumnEdit = this.repositoryItemComboBox10;
             this.gridColumn66.FieldName = "TipoExcepcion";
             this.gridColumn66.Name = "gridColumn66";
+            this.gridColumn66.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn66.Visible = true;
             this.gridColumn66.VisibleIndex = 2;
             this.gridColumn66.Width = 151;
@@ -1378,6 +1412,7 @@
             this.gridColumn68.ColumnEdit = this.repositoryItemMemoExEdit3;
             this.gridColumn68.FieldName = "Comentario";
             this.gridColumn68.Name = "gridColumn68";
+            this.gridColumn68.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn68.Visible = true;
             this.gridColumn68.VisibleIndex = 3;
             this.gridColumn68.Width = 127;
@@ -1396,6 +1431,7 @@
             this.gridColumn69.ColumnEdit = this.repositoryItemComboBox9;
             this.gridColumn69.FieldName = "AgenteCausador";
             this.gridColumn69.Name = "gridColumn69";
+            this.gridColumn69.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn69.Visible = true;
             this.gridColumn69.VisibleIndex = 4;
             this.gridColumn69.Width = 108;
@@ -1406,6 +1442,7 @@
             this.gridColumn67.ColumnEdit = this.repositoryItemComboBox11;
             this.gridColumn67.FieldName = "Tiporesponsabilidad";
             this.gridColumn67.Name = "gridColumn67";
+            this.gridColumn67.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn67.Visible = true;
             this.gridColumn67.VisibleIndex = 5;
             this.gridColumn67.Width = 91;
@@ -1423,6 +1460,7 @@
             this.gridColumn50.ColumnEdit = this.repositoryItemCheckEdit12;
             this.gridColumn50.FieldName = "Resuelto";
             this.gridColumn50.Name = "gridColumn50";
+            this.gridColumn50.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn50.Visible = true;
             this.gridColumn50.VisibleIndex = 6;
             this.gridColumn50.Width = 69;
@@ -1653,6 +1691,7 @@
             this.gridColumn41.ColumnEdit = this.repositoryItemTextEdit3;
             this.gridColumn41.FieldName = "Numero";
             this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 0;
             this.gridColumn41.Width = 76;
@@ -1668,6 +1707,7 @@
             this.gridColumn40.ColumnEdit = this.repositoryItemComboBox7;
             this.gridColumn40.FieldName = "TipoDisputa";
             this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 1;
             this.gridColumn40.Width = 122;
@@ -1685,6 +1725,7 @@
             this.gridColumn39.ColumnEdit = this.repositoryItemMemoExEdit1;
             this.gridColumn39.FieldName = "Descripcion";
             this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 2;
             this.gridColumn39.Width = 495;
@@ -2005,7 +2046,7 @@
             this.pnlEnviarAviso.Controls.Add(this.btnP13EnviarAviso);
             this.pnlEnviarAviso.Location = new System.Drawing.Point(345, 154);
             this.pnlEnviarAviso.Name = "pnlEnviarAviso";
-            this.pnlEnviarAviso.Size = new System.Drawing.Size(839, 433);
+            this.pnlEnviarAviso.Size = new System.Drawing.Size(1015, 433);
             this.pnlEnviarAviso.TabIndex = 6;
             this.pnlEnviarAviso.Visible = false;
             // 
@@ -2057,9 +2098,10 @@
             this.MenuSalir});
             this.toobar.Location = new System.Drawing.Point(0, 0);
             this.toobar.Name = "toobar";
-            this.toobar.Size = new System.Drawing.Size(1196, 38);
+            this.toobar.Size = new System.Drawing.Size(1208, 38);
             this.toobar.TabIndex = 7;
             this.toobar.Text = "toolStrip1";
+            this.toobar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toobar_ItemClicked);
             // 
             // MenuSalir
             // 
@@ -2089,17 +2131,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 599);
+            this.ClientSize = new System.Drawing.Size(1208, 599);
             this.Controls.Add(this.toobar);
             this.Controls.Add(this.grdPasos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.pnlPaso1);
             this.Controls.Add(this.pnlEnviarAviso);
             this.Controls.Add(this.pnlPaso3);
             this.Controls.Add(this.panelDisputas);
             this.Controls.Add(this.PanelExcepMaster);
             this.Controls.Add(this.pnlExcepciones);
-            this.Controls.Add(this.pnlPaso1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPaperlessUser1v2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

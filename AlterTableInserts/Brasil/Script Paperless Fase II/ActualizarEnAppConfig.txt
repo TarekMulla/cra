@@ -1,0 +1,7 @@
+Incorporar estos cambios en App.Config 
+
+
+<add key="EmailPaperlessRechazoAsignacionU2" value="Estimado [USUARIO] [SALTO][SALTO] El Usuario de la 2da Etapa [USUARIO2] ha rechazado la asignacion correspondiente a: [SALTO][SALTO] N° Master: [NUMMASTER] [SALTO][SALTO]  el cual le fue asignado el dia [FECHAASIGNACION] [SALTO][SALTO] Atte."/>
+<add key="FiltroUsuario2" value="Enviado Usuario 2da Etapa,En Proceso Usuario 2da Etapa,Enviado a Mercante,Aceptado Por Usuario 2da Etapa"/>
+<add key="EmailPaperlessCierrePreAlerta" value="Estimado(a) [USUARIO] [SALTO] Se le ha enviado confirmación de Cierre de una Pre Alerta. [SALTO] Los datos de la Pre Alerta son: [SALTO] N° Consolidada: [NUMCONSOLIDADA] [SALTO] Fecha PreAlerta: [FECHAPREALERTA] [SALTO] Agente: [AGENTE] [SALTO] Naviera: [NAVIERA] [SALTO] Nave: [NAVE] [SALTO] Fecha Salida: [FECHASALIDA] [SALTO] Fecha Llegada: [FECHALLEGADA] [SALTO] Puerto Origen: [PUERTOORIGEN] [SALTO] Puerto Destino: [PUERTODESTINO] [SALTO] Fecha Recibimiento PreAlerta: [FECHARECIBIMIENTO] [SALTO] N° Master: [NUMMASTER] [SALTO] [SALTO] [SALTO] Atte. "/>
+<add key="FiltroEstadosPreAlerta" value="Abierto,Cerrado,Vinculado"/>

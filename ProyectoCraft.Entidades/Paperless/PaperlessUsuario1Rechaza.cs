@@ -14,5 +14,6 @@ namespace ProyectoCraft.Entidades.Paperless
         public Entidades.Usuarios.clsUsuario Usuario { get; set; }
         public string Motivo { get; set; }
         public DateTime FechaRechazo { get; set; }
+        public int tipoUsuario { get; set; }
     }
 }

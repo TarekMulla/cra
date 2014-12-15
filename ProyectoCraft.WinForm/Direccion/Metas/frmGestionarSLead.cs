@@ -10,7 +10,6 @@ using ProyectoCraft.LogicaNegocios.Direccion.Metas;
 using ProyectoCraft.Entidades.Enums;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Base;
 using ProyectoCraft.WinForm.Utils;
 using SCCMultimodal.Utils;
 

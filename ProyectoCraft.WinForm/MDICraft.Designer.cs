@@ -66,12 +66,14 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.menuAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
-            this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
-            this.MantAgentes = new DevExpress.XtraNavBar.NavBarItem();
-            this.MantPuertos = new DevExpress.XtraNavBar.NavBarItem();
-            this.manCotDirectas = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MenuPaperlessAsignacion = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessUsuario1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessUsuario2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
+            this.NavPaperlessInformes = new DevExpress.XtraNavBar.NavBarItem();
+            this.MenuPaperlessPreAlerta = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.MenuTarget = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -99,13 +101,12 @@
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.NavPaperlessInformes2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup7 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.MenuPaperlessAsignacion = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessUsuario1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessUsuario2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessAsignar = new DevExpress.XtraNavBar.NavBarItem();
-            this.MenuPaperlessGestion = new DevExpress.XtraNavBar.NavBarItem();
-            this.NavPaperlessInformes = new DevExpress.XtraNavBar.NavBarItem();
+            this.menuAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
+            this.MantNavieras = new DevExpress.XtraNavBar.NavBarItem();
+            this.MantComunas = new DevExpress.XtraNavBar.NavBarItem();
+            this.MantAgentes = new DevExpress.XtraNavBar.NavBarItem();
+            this.MantPuertos = new DevExpress.XtraNavBar.NavBarItem();
+            this.manCotDirectas = new DevExpress.XtraNavBar.NavBarItem();
             this.MenuAgentes = new DevExpress.XtraNavBar.NavBarItem();
             this.MantenedorNavieras = new DevExpress.XtraNavBar.NavBarItem();
             this.MatenedorComunas = new DevExpress.XtraNavBar.NavBarItem();
@@ -137,7 +138,8 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(929, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1239, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -157,7 +159,7 @@
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(60, 20);
+            this.fileMenu.Size = new System.Drawing.Size(73, 24);
             this.fileMenu.Text = "&Sistema";
             // 
             // newToolStripMenuItem
@@ -166,7 +168,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
@@ -176,14 +178,14 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(164, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -191,20 +193,20 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.saveToolStripMenuItem.Text = "&Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
             // 
             // printToolStripMenuItem
             // 
@@ -212,7 +214,7 @@
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.printToolStripMenuItem.Text = "&Print";
             // 
             // printPreviewToolStripMenuItem
@@ -220,24 +222,24 @@
             this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
             this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
             // 
             // printSetupToolStripMenuItem
             // 
             this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
-            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.printSetupToolStripMenuItem.Text = "Print Setup";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(164, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -251,48 +253,48 @@
             this.closeAllToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(67, 20);
+            this.windowsMenu.Size = new System.Drawing.Size(81, 24);
             this.windowsMenu.Text = "&Ventanas";
             // 
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.newWindowToolStripMenuItem.Text = "&New Window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.cascadeToolStripMenuItem.Text = "&Cascade";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.tileVerticalToolStripMenuItem.Text = "Tile &Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.tileHorizontalToolStripMenuItem.Text = "Tile &Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.closeAllToolStripMenuItem.Text = "C&lose All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.arrangeIconsToolStripMenuItem.Text = "&Arrange Icons";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
@@ -305,14 +307,14 @@
             this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(53, 20);
+            this.helpMenu.Size = new System.Drawing.Size(63, 24);
             this.helpMenu.Text = "&Ayuda";
             // 
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
             this.contentsToolStripMenuItem.Text = "&Contents";
             // 
             // indexToolStripMenuItem
@@ -320,7 +322,7 @@
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
             this.indexToolStripMenuItem.Text = "&Index";
             // 
             // searchToolStripMenuItem
@@ -328,18 +330,18 @@
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
             this.searchToolStripMenuItem.Text = "&Search";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(190, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
             this.aboutToolStripMenuItem.Text = "&About ... ...";
             // 
             // statusStrip
@@ -352,9 +354,10 @@
             this.toolStripSplitButton2,
             this.toolStripDropDownButton1});
             this.statusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.statusStrip.Location = new System.Drawing.Point(0, 661);
+            this.statusStrip.Location = new System.Drawing.Point(0, 819);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(929, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(1239, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -363,14 +366,14 @@
             this.statusMensaje.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.statusMensaje.Image = ((System.Drawing.Image)(resources.GetObject("statusMensaje.Image")));
             this.statusMensaje.Name = "statusMensaje";
-            this.statusMensaje.Size = new System.Drawing.Size(60, 17);
+            this.statusMensaje.Size = new System.Drawing.Size(69, 20);
             this.statusMensaje.Text = "Status";
             this.statusMensaje.Visible = false;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Visible = false;
@@ -413,7 +416,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup6;
+            this.navBarControl1.ActiveGroup = this.menuAdministracion;
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -461,64 +464,80 @@
             this.MantAgentes,
             this.MenuGestionCotizaciones,
             this.NavPaperlessInformes,
-            this.NavPaperlessInformes2});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 24);
+            this.NavPaperlessInformes2,
+            this.MenuPaperlessPreAlerta});
+            this.navBarControl1.Location = new System.Drawing.Point(0, 28);
+            this.navBarControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
-            this.navBarControl1.Size = new System.Drawing.Size(200, 637);
+            this.navBarControl1.Size = new System.Drawing.Size(267, 791);
             this.navBarControl1.TabIndex = 6;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
-            this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
             // 
-            // menuAdministracion
+            // navBarGroup8
             // 
-            this.menuAdministracion.Caption = "Administración de Datos";
-            this.menuAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantAgentes),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MantPuertos),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.manCotDirectas)});
-            this.menuAdministracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("menuAdministracion.LargeImage")));
-            this.menuAdministracion.Name = "menuAdministracion";
-            this.menuAdministracion.TopVisibleLinkIndex = 2;
+            this.navBarGroup8.Caption = "Paperless";
+            this.navBarGroup8.Expanded = true;
+            this.navBarGroup8.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignacion),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessPreAlerta)});
+            this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
+            this.navBarGroup8.Name = "navBarGroup8";
             // 
-            // MantNavieras
+            // MenuPaperlessAsignacion
             // 
-            this.MantNavieras.Caption = "Mantenedor Navieras";
-            this.MantNavieras.Name = "MantNavieras";
-            this.MantNavieras.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantNavieras.SmallImage")));
-            this.MantNavieras.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorNavieras_LinkClicked);
+            this.MenuPaperlessAsignacion.Caption = "Paperless Asignacion";
+            this.MenuPaperlessAsignacion.Name = "MenuPaperlessAsignacion";
+            this.MenuPaperlessAsignacion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignacion.SmallImage")));
+            this.MenuPaperlessAsignacion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarAsignaciones_LinkClicked);
             // 
-            // MantComunas
+            // MenuPaperlessUsuario1
             // 
-            this.MantComunas.Caption = "Mantenedor Comunas";
-            this.MantComunas.Name = "MantComunas";
-            this.MantComunas.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantComunas.SmallImage")));
-            this.MantComunas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorComunas_LinkClicked);
+            this.MenuPaperlessUsuario1.Caption = "Usuario 1";
+            this.MenuPaperlessUsuario1.Name = "MenuPaperlessUsuario1";
+            this.MenuPaperlessUsuario1.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario1.SmallImage")));
+            this.MenuPaperlessUsuario1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario1_LinkClicked);
             // 
-            // MantAgentes
+            // MenuPaperlessUsuario2
             // 
-            this.MantAgentes.Caption = "Mantenedor Agentes";
-            this.MantAgentes.Name = "MantAgentes";
-            this.MantAgentes.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantAgentes.SmallImage")));
-            this.MantAgentes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantAgen_Link);
+            this.MenuPaperlessUsuario2.Caption = "Usuario 2";
+            this.MenuPaperlessUsuario2.Name = "MenuPaperlessUsuario2";
+            this.MenuPaperlessUsuario2.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario2.SmallImage")));
+            this.MenuPaperlessUsuario2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario2_LinkClicked);
             // 
-            // MantPuertos
+            // MenuPaperlessAsignar
             // 
-            this.MantPuertos.Appearance.Options.UseImage = true;
-            this.MantPuertos.Caption = "Mantenedor Puertos";
-            this.MantPuertos.Name = "MantPuertos";
-            this.MantPuertos.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantPuertos.SmallImage")));
-            this.MantPuertos.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantPuertos_LinkClicked);
+            this.MenuPaperlessAsignar.Caption = "Nueva Asignación";
+            this.MenuPaperlessAsignar.Name = "MenuPaperlessAsignar";
+            this.MenuPaperlessAsignar.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignar.SmallImage")));
+            this.MenuPaperlessAsignar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessAsignar_LinkClicked);
             // 
-            // manCotDirectas
+            // MenuPaperlessGestion
             // 
-            this.manCotDirectas.Caption = "Parametros Cot Directas";
-            this.manCotDirectas.Name = "manCotDirectas";
-            this.manCotDirectas.SmallImage = ((System.Drawing.Image)(resources.GetObject("manCotDirectas.SmallImage")));
-            this.manCotDirectas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.manCotDirectas_LinkClicked);
+            this.MenuPaperlessGestion.Caption = "Gestión Paperless";
+            this.MenuPaperlessGestion.Name = "MenuPaperlessGestion";
+            this.MenuPaperlessGestion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessGestion.SmallImage")));
+            this.MenuPaperlessGestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessGestion_LinkClicked);
+            // 
+            // NavPaperlessInformes
+            // 
+            this.NavPaperlessInformes.Caption = "Informes Calidad y Productividad";
+            this.NavPaperlessInformes.Name = "NavPaperlessInformes";
+            this.NavPaperlessInformes.SmallImage = ((System.Drawing.Image)(resources.GetObject("NavPaperlessInformes.SmallImage")));
+            this.NavPaperlessInformes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.NavPaperlessInformes_LinkClicked);
+            // 
+            // MenuPaperlessPreAlerta
+            // 
+            this.MenuPaperlessPreAlerta.Caption = "Gestión Pre Alerta";
+            this.MenuPaperlessPreAlerta.Name = "MenuPaperlessPreAlerta";
+            this.MenuPaperlessPreAlerta.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessPreAlerta.SmallImage")));
+            this.MenuPaperlessPreAlerta.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessPreAlerta_LinkClicked);
             // 
             // navBarGroup1
             // 
@@ -571,7 +590,6 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuCotizaciones)});
             this.navBarGroup2.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup2.LargeImage")));
             this.navBarGroup2.Name = "navBarGroup2";
-            this.navBarGroup2.TopVisibleLinkIndex = 1;
             // 
             // MenuTargets
             // 
@@ -651,7 +669,6 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.MenuGestionCotizaciones)});
             this.navBarGroup5.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup5.LargeImage")));
             this.navBarGroup5.Name = "navBarGroup5";
-            this.navBarGroup5.TopVisibleLinkIndex = 3;
             // 
             // MenuDefinirLineaCredito
             // 
@@ -710,7 +727,6 @@
             // navBarGroup6
             // 
             this.navBarGroup6.Caption = "Reportes";
-            this.navBarGroup6.Expanded = true;
             this.navBarGroup6.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes2)});
             this.navBarGroup6.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup6.LargeImage")));
@@ -729,61 +745,54 @@
             this.navBarGroup7.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup7.LargeImage")));
             this.navBarGroup7.Name = "navBarGroup7";
             // 
-            // navBarGroup8
+            // menuAdministracion
             // 
-            this.navBarGroup8.Caption = "Paperless";
-            this.navBarGroup8.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignacion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessUsuario2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessAsignar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.MenuPaperlessGestion),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.NavPaperlessInformes)});
-            this.navBarGroup8.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.LargeImage")));
-            this.navBarGroup8.Name = "navBarGroup8";
-            this.navBarGroup8.TopVisibleLinkIndex = 1;
+            this.menuAdministracion.Caption = "Administración de Datos";
+            this.menuAdministracion.Expanded = true;
+            this.menuAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantNavieras),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantComunas),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantAgentes),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.MantPuertos),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.manCotDirectas)});
+            this.menuAdministracion.LargeImage = ((System.Drawing.Image)(resources.GetObject("menuAdministracion.LargeImage")));
+            this.menuAdministracion.Name = "menuAdministracion";
             // 
-            // MenuPaperlessAsignacion
+            // MantNavieras
             // 
-            this.MenuPaperlessAsignacion.Caption = "Paperless Asignacion";
-            this.MenuPaperlessAsignacion.Name = "MenuPaperlessAsignacion";
-            this.MenuPaperlessAsignacion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignacion.SmallImage")));
-            this.MenuPaperlessAsignacion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarAsignaciones_LinkClicked);
+            this.MantNavieras.Caption = "Mantenedor Navieras";
+            this.MantNavieras.Name = "MantNavieras";
+            this.MantNavieras.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantNavieras.SmallImage")));
+            this.MantNavieras.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorNavieras_LinkClicked);
             // 
-            // MenuPaperlessUsuario1
+            // MantComunas
             // 
-            this.MenuPaperlessUsuario1.Caption = "Usuario 1";
-            this.MenuPaperlessUsuario1.Name = "MenuPaperlessUsuario1";
-            this.MenuPaperlessUsuario1.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario1.SmallImage")));
-            this.MenuPaperlessUsuario1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario1_LinkClicked);
+            this.MantComunas.Caption = "Mantenedor Comunas";
+            this.MantComunas.Name = "MantComunas";
+            this.MantComunas.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantComunas.SmallImage")));
+            this.MantComunas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantenedorComunas_LinkClicked);
             // 
-            // MenuPaperlessUsuario2
+            // MantAgentes
             // 
-            this.MenuPaperlessUsuario2.Caption = "Usuario 2";
-            this.MenuPaperlessUsuario2.Name = "MenuPaperlessUsuario2";
-            this.MenuPaperlessUsuario2.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessUsuario2.SmallImage")));
-            this.MenuPaperlessUsuario2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuListarUsuario2_LinkClicked);
+            this.MantAgentes.Caption = "Mantenedor Agentes";
+            this.MantAgentes.Name = "MantAgentes";
+            this.MantAgentes.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantAgentes.SmallImage")));
+            this.MantAgentes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantAgen_Link);
             // 
-            // MenuPaperlessAsignar
+            // MantPuertos
             // 
-            this.MenuPaperlessAsignar.Caption = "Nueva Asignación";
-            this.MenuPaperlessAsignar.Name = "MenuPaperlessAsignar";
-            this.MenuPaperlessAsignar.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessAsignar.SmallImage")));
-            this.MenuPaperlessAsignar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessAsignar_LinkClicked);
+            this.MantPuertos.Appearance.Options.UseImage = true;
+            this.MantPuertos.Caption = "Mantenedor Puertos";
+            this.MantPuertos.Name = "MantPuertos";
+            this.MantPuertos.SmallImage = ((System.Drawing.Image)(resources.GetObject("MantPuertos.SmallImage")));
+            this.MantPuertos.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MantPuertos_LinkClicked);
             // 
-            // MenuPaperlessGestion
+            // manCotDirectas
             // 
-            this.MenuPaperlessGestion.Caption = "Gestión Paperless";
-            this.MenuPaperlessGestion.Name = "MenuPaperlessGestion";
-            this.MenuPaperlessGestion.SmallImage = ((System.Drawing.Image)(resources.GetObject("MenuPaperlessGestion.SmallImage")));
-            this.MenuPaperlessGestion.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.MenuPaperlessGestion_LinkClicked);
-            // 
-            // NavPaperlessInformes
-            // 
-            this.NavPaperlessInformes.Caption = "Informes Calidad y Productividad";
-            this.NavPaperlessInformes.Name = "NavPaperlessInformes";
-            this.NavPaperlessInformes.SmallImage = ((System.Drawing.Image)(resources.GetObject("NavPaperlessInformes.SmallImage")));
-            this.NavPaperlessInformes.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.NavPaperlessInformes_LinkClicked);
+            this.manCotDirectas.Caption = "Parametros Cot Directas";
+            this.manCotDirectas.Name = "manCotDirectas";
+            this.manCotDirectas.SmallImage = ((System.Drawing.Image)(resources.GetObject("manCotDirectas.SmallImage")));
+            this.manCotDirectas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.manCotDirectas_LinkClicked);
             // 
             // MenuAgentes
             // 
@@ -829,10 +838,10 @@
             // 
             // MDICraft
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(929, 683);
+            this.ClientSize = new System.Drawing.Size(1239, 841);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -840,6 +849,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MDICraft";
             this.Text = "Sistema Comercial Craft 1.0.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -943,6 +953,7 @@
         private DevExpress.XtraNavBar.NavBarItem MenuGestionCotizaciones;
         private DevExpress.XtraNavBar.NavBarItem NavPaperlessInformes;
         private DevExpress.XtraNavBar.NavBarItem NavPaperlessInformes2;
+        private DevExpress.XtraNavBar.NavBarItem MenuPaperlessPreAlerta;
     }
 }
 

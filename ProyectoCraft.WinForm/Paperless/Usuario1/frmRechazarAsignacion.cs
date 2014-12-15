@@ -93,6 +93,7 @@ namespace ProyectoCraft.WinForm.Paperless.Usuario1
             rechazo.IdAsignacion = Asignacion.Id;
             rechazo.Usuario = Base.Usuario.UsuarioConectado.Usuario;
             rechazo.Motivo = txtMotivo.Text;
+            rechazo.tipoUsuario = Convert.ToInt16(Enums.TipoUsuario.Usuario1); 
 
             Entidades.GlobalObject.ResultadoTransaccion resultado =
                 LogicaNegocios.Paperless.Paperless.Usuario1RechazaAsignacion(rechazo);

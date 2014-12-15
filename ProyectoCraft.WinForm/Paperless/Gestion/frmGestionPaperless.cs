@@ -195,14 +195,21 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
                                        asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.EnProcesoUsuario2 ||
                                        asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.EnviadoUsuario2 ||
                                        asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.ProcesoTerminado ||
-                                       asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.RechazadaUsuario1)) {
+                                       asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.RechazadaUsuario1 ||
+                                       asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.AceptadoUsuario2 ||
+                                       asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.EnviadoMercante ||
+                                       asignacion.EstadoFlujo == Entidades.Enums.Enums.EstadoPaperless.RechazadaUsuario2)) {
                 MenuAsignacion.Enabled = true;
             }
 
             if (asignacion != null && (asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario1 ||
                                       asignacion.EstadoFlujo == Enums.EstadoPaperless.EnProcesoUsuario2 ||
                                       asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoUsuario2 ||
-                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado)) {
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.ProcesoTerminado ||
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.AceptadoUsuario2 ||
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.EnviadoMercante ||
+                                      asignacion.EstadoFlujo == Enums.EstadoPaperless.RechazadaUsuario2))
+            {
                 Menu1raEtapa.Enabled = true;
             }
 
@@ -343,6 +350,11 @@ namespace ProyectoCraft.WinForm.Paperless.Gestion {
         }
 
         private void groupControl3_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
         }
 

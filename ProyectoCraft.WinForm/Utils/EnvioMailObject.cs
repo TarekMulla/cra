@@ -738,10 +738,42 @@ namespace SCCMultimodal.Utils
             return resultado;
         }
 
+        public ResultadoTransaccion EnviarMailPaperlessRechazoAsignacionU2(
+            ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion)
+        {
+
+            ResultadoTransaccion resultado = new ResultadoTransaccion();
+            string EmailAviso =
+                System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessRechazoAsignacionU2");
+            string EmailBody = "";
+            try
+            {
+                StringBuilder sb = new StringBuilder(EmailAviso);
+                sb.Replace("[USUARIO]", asignacion.UsuarioCreacion.NombreCompleto);
+                sb.Replace("[USUARIO2]", asignacion.Usuario2.NombreCompleto);
+                sb.Replace("[NUMMASTER]", asignacion.NumMaster);
+                sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
+                sb.Replace("[SALTO]", "\n");
+
+                EmailBody = sb.ToString();
+                EnviarEmail(asignacion.UsuarioCreacion.Email, "Asignacion Rechazada N° Master " + asignacion.NumMaster,
+                            EmailBody);
+
+                resultado.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                resultado.Estado = Enums.EstadoTransaccion.Rechazada;
+            }
+
+            return resultado;
+        }
+
+
         public ResultadoTransaccion EnviarMailPaperlessUsuario2TerminaProcesoBrasil(ProyectoCraft.Entidades.Paperless.PaperlessAsignacion asignacion,
                                                                                     ProyectoCraft.Entidades.Paperless.PaperlessUsuario1HouseBLInfo info)
         {
-            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessConfirmacionTerminoProceso");
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessConfirmacionTerminoProcesoBrasil");
             string EmailGestoresLCL = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailGestoresLCL");
             string EmailGestoresFCL = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailGestoresFCL");
             string EmailGestoresFAK = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailGestoresFAK");
@@ -1208,57 +1240,60 @@ namespace SCCMultimodal.Utils
                 System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessAsignacionUsuario2");
             string EmailBody = "";
             ResultadoTransaccion res = new ResultadoTransaccion();
+            string asunto = "";
 
             try
             {
                 StringBuilder sb = new StringBuilder(EmailAvisousuario1);
-                sb.Replace("[USUARIO1]", asignacion.Usuario1.NombreCompleto);
-                sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
-                sb.Replace("[NUMMASTER]", asignacion.NumMaster);
-                //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());
-                sb.Replace("[FECHAMASTER]",
-                           asignacion.FechaMaster.ToString(
-                               System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
-                sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
-                sb.Replace("[NAVIERA]", asignacion.Naviera.Nombre);
-                if (asignacion.Nave != null)
+                if (asignacion.Estado != Enums.EstadoPaperless.EnviadoUsuario2)
                 {
-                    sb.Replace("[NAVE]", asignacion.Nave.Nombre);
+                    sb.Replace("[USUARIO1]", asignacion.Usuario1.NombreCompleto);
+                    sb.Replace("[FECHAASIGNACION]", asignacion.FechaCreacion.ToShortDateString());
+                    sb.Replace("[NUMMASTER]", asignacion.NumMaster);
+                    //sb.Replace("[FECHAMASTER]", asignacion.FechaMaster.ToShortDateString());
+                    sb.Replace("[FECHAMASTER]",
+                               asignacion.FechaMaster.ToString(
+                                   System.Configuration.ConfigurationSettings.AppSettings.Get("FechaMasterPaperlessFormato")));
+                    sb.Replace("[AGENTE]", asignacion.Agente.Nombre);
+                    sb.Replace("[NAVIERA]", asignacion.Naviera.Nombre);
+                    if (asignacion.Nave != null)
+                    {
+                        sb.Replace("[NAVE]", asignacion.Nave.Nombre);
+                    }
+                    else
+                    {
+                        sb.Replace("[NAVE]", "");
+                    }
+                    sb.Replace("[VIAJE]", asignacion.Viaje);
+                    sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
+                    sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
+                    if (asignacion.FechaETA != null)
+                        sb.Replace("[FECHAETA]",
+                                   asignacion.FechaETA.Value.ToString(
+                                       System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));
+
+                    if (asignacion.AperturaNavieras.HasValue)
+                        sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
+                    else
+                        sb.Replace("[APERTUANAVIERAS]", "");
+
+                    if (asignacion.PlazoEmbarcadores != null)
+                        sb.Replace("[PLAZOEMBARCADORES]", asignacion.PlazoEmbarcadores.Value.ToShortDateString());
+                    else
+                        sb.Replace("[PLAZOEMBARCADORES]", "");
+
+                    sb.Replace("[IMPORTANCIA]", asignacion.ImportanciaUsuario1.Nombre);
+                    sb.Replace("[USUARIOCONTRAPARTE]", asignacion.Usuario2.NombreCompleto);
+                    sb.Replace("[OBSERVACION]", asignacion.ObservacionUsuario1);
+                    sb.Replace("[SALTO]", "\n");
+                    EmailBody = sb.ToString();
+                    asunto = "Nueva asignacion de Proceso Documental";
+
+                    //Enviar a Usuario 1
+
+                    EnviarEmail(asignacion.Usuario1.Email, asunto, EmailBody);
                 }
-                else
-                {
-                    sb.Replace("[NAVE]", "");
-                }
-                sb.Replace("[VIAJE]", asignacion.Viaje);
-                sb.Replace("[NHOUSESBL]", asignacion.NumHousesBL.ToString());
-                sb.Replace("[TIPOCARGA]", asignacion.TipoCarga.Nombre);
-                if (asignacion.FechaETA != null)
-                    sb.Replace("[FECHAETA]",
-                               asignacion.FechaETA.Value.ToString(
-                                   System.Configuration.ConfigurationSettings.AppSettings.Get("FechaFormatoEtaPaperless")));
-
-                if (asignacion.AperturaNavieras.HasValue)
-                    sb.Replace("[APERTUANAVIERAS]", asignacion.AperturaNavieras.Value.ToShortDateString());
-                else
-                    sb.Replace("[APERTUANAVIERAS]", "");
-
-                if (asignacion.PlazoEmbarcadores != null)
-                    sb.Replace("[PLAZOEMBARCADORES]", asignacion.PlazoEmbarcadores.Value.ToShortDateString());
-                else
-                    sb.Replace("[PLAZOEMBARCADORES]", "");
-
-                sb.Replace("[IMPORTANCIA]", asignacion.ImportanciaUsuario1.Nombre);
-                sb.Replace("[USUARIOCONTRAPARTE]", asignacion.Usuario2.NombreCompleto);
-                sb.Replace("[OBSERVACION]", asignacion.ObservacionUsuario1);
-                sb.Replace("[SALTO]", "\n");
-                EmailBody = sb.ToString();
-                string asunto = "Nueva asignacion de Proceso Documental";
-
-                //Enviar a Usuario 1
-
-                EnviarEmail(asignacion.Usuario1.Email, asunto, EmailBody);
-
-
+                
 
                 //Enviar a USuario 2)
                 sb = new StringBuilder(EmailAvisousuario2);
@@ -1302,6 +1337,7 @@ namespace SCCMultimodal.Utils
                 sb.Replace("[OBSERVACION]", asignacion.ObservacionUsuario1);
                 sb.Replace("[SALTO]", "\n");
                 EmailBody = sb.ToString();
+                asunto = "Nueva asignacion de Proceso Documental";
 
                 EnviarEmail(asignacion.Usuario2.Email, asunto, EmailBody);
                 res.Estado = Enums.EstadoTransaccion.Aceptada;
@@ -2464,6 +2500,74 @@ namespace SCCMultimodal.Utils
             }
 
             return pathPDf;
+        }
+
+
+        public ResultadoTransaccion EnviarMailPaperlessPreAlerta(ProyectoCraft.Entidades.Paperless.PaperlessPreAlerta prealerta)
+        {
+            string user = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.NombreCompleto;
+            string emailto = ProyectoCraft.Base.Usuario.UsuarioConectado.Usuario.Email;
+            string EmailAviso = System.Configuration.ConfigurationSettings.AppSettings.Get("EmailPaperlessCierrePreAlerta");
+            string EmailBody = "";
+            ResultadoTransaccion res = new ResultadoTransaccion();
+
+            try
+            {
+                StringBuilder sb = new StringBuilder(EmailAviso);
+                sb.Replace("[USUARIO]", user);
+                sb.Replace("[NUMCONSOLIDADA]", prealerta.NumConsolidada);
+                sb.Replace("[FECHAPREALERTA]", prealerta.FechaCreacion.Value.ToShortDateString());
+                sb.Replace("[AGENTE]", prealerta.Agente.Nombre);
+                sb.Replace("[NAVIERA]", prealerta.Naviera.Nombre);
+                sb.Replace("[NAVE]", prealerta.Nave.Nombre);
+
+                if (prealerta.FechaSalida != null && prealerta.FechaSalida.Value.ToShortDateString() != "01-01-9999")
+                    sb.Replace("[FECHASALIDA]", prealerta.FechaSalida.Value.ToShortDateString());
+                else
+                    sb.Replace("[FECHASALIDA]", "");
+
+                if (prealerta.FechaLlegada != null && prealerta.FechaLlegada.Value.ToShortDateString() != "01-01-9999")
+                    sb.Replace("[FECHALLEGADA]", prealerta.FechaLlegada.Value.ToShortDateString());
+                else
+                    sb.Replace("[FECHALLEGADA]", "");
+
+                if (prealerta.PuertoOrigen != null)
+                    sb.Replace("[PUERTOORIGEN]", prealerta.PuertoOrigen.Nombre);
+                else
+                    sb.Replace("[PUERTOORIGEN]", "");
+
+                if (prealerta.PuertoDestino != null)
+                    sb.Replace("[PUERTODESTINO]", prealerta.PuertoDestino.Nombre);
+                else
+                    sb.Replace("[PUERTODESTINO]", "");
+
+
+                if (prealerta.NumMaster != null)
+                    sb.Replace("[NUMMASTER]", prealerta.NumMaster);
+                else
+                    sb.Replace("[NUMMASTER]", "");
+
+
+                if (prealerta.FechaRecibimiento != null && prealerta.FechaRecibimiento.Value.ToShortDateString() != "01-01-9999")
+                    sb.Replace("[FECHARECIBIMIENTO]", prealerta.FechaRecibimiento.Value.ToShortDateString());
+                else
+                    sb.Replace("[FECHARECIBIMIENTO]", "");
+
+                sb.Replace("[SALTO]", "\n");
+
+                EmailBody = sb.ToString();
+                string asunto = "Datos PreAlerta";
+
+                EnviarEmail(emailto, asunto, EmailBody);
+
+                res.Estado = Enums.EstadoTransaccion.Aceptada;
+            }
+            catch (Exception ex)
+            {
+                res.Estado = Enums.EstadoTransaccion.Rechazada;
+                Log.EscribirLog(ex.Message);
+            }
+            return res;
         }
 
 

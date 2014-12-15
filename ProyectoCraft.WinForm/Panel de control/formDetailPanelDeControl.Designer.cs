@@ -27,6 +27,7 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.MenuPreAlerta = new System.Windows.Forms.ToolStripButton();
             this.MenuAsignacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Menu1raEtapa = new System.Windows.Forms.ToolStripButton();
@@ -50,6 +51,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -64,6 +66,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuPreAlerta,
             this.MenuAsignacion,
             this.toolStripSeparator1,
             this.Menu1raEtapa,
@@ -74,6 +77,12 @@
             this.MenuSalir});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
+            // 
+            // MenuPreAlerta
+            // 
+            resources.ApplyResources(this.MenuPreAlerta, "MenuPreAlerta");
+            this.MenuPreAlerta.Name = "MenuPreAlerta";
+            this.MenuPreAlerta.Click += new System.EventHandler(this.MenuPreAlerta_Click);
             // 
             // MenuAsignacion
             // 
@@ -161,6 +170,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton MenuSalir;
         private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.ToolStripButton MenuPreAlerta;
 
     }
 }

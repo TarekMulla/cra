@@ -17,7 +17,6 @@ using ProyectoCraft.Entidades.Clientes.Cuenta;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.Paperless;
 using ProyectoCraft.WinForm.Controles;
-using System.Data;
 using ProyectoCraft.WinForm.Paperless.Usuario2;
 using SCCMultimodal.Paperless.Usuario1;
 using SCCMultimodal.Utils;

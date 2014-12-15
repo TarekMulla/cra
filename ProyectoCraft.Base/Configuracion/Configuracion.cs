@@ -26,6 +26,7 @@ namespace ProyectoCraft.Base.Configuracion {
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                     Configs.Add(reader["key"], Convert.ToBoolean(reader["value"]));
+                    //Configs.Add(reader["key"], reader["value"].ToString().Equals("1")); //PUA
 
 
             } catch (Exception ex) {

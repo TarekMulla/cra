@@ -7,11 +7,89 @@ using System.Text;
 using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.Entidades.GlobalObject;
 using ProyectoCraft.Entidades.Paperless;
+using ProyectoCraft.Entidades.Usuarios;
 
 namespace ProyectoCraft.LogicaNegocios.Paperless
 {
     public class Paperless
     {
+        //TSC PREALERTA
+        public static IList<PaperlessPreAlerta> ObtenerPreAlertas(String numconsolidada, String estado, String agente,
+                                                              DateTime FechaSalidaDesde, DateTime FechaSalidaHasta,
+                                                              DateTime FechaLlegadaDesde, DateTime FechaLlegadaHasta,
+                                                              DateTime FechaRecibimientoDesde, DateTime FechaRecibimientoHasta)
+        {
+            IList<PaperlessPreAlerta> prealertas = AccesoDatos.Paperless.clsPaperlessADO.ObtenerPreAlertas(numconsolidada, estado, agente,
+                                                                    FechaSalidaDesde, FechaSalidaHasta,
+                                                                    FechaLlegadaDesde, FechaLlegadaHasta,
+                                                                    FechaRecibimientoDesde, FechaRecibimientoHasta);
+            return prealertas;
+
+        }
+
+        public static IList<PaperlessEstadoPreAlerta> ObtenerEstadosPreAlertaPaperless(Enums.Estado activo)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerEstadosPreAlertaPaperless(activo);
+        }
+
+        public static PaperlessPreAlerta ObtenerPreAlertaPorNumConsolidada(string numconsolidada)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerPreAlertaPorNumConsolidada(numconsolidada);
+        }
+
+        public static ResultadoTransaccion ActualizarPreAlerta(PaperlessPreAlerta info)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ActualizarPreAlerta(info);
+        }
+
+        public static ResultadoTransaccion ActualizarPreAlertaNumMaster(string NumConsolidada, PaperlessAsignacion PaperlessAsignacionActual)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ActualizarPreAlertaNumMaster(NumConsolidada, PaperlessAsignacionActual);
+        }
+
+        
+        public static ResultadoTransaccion GuardarPreAlerta(PaperlessPreAlerta info)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.GuardarPreAlerta(info);
+        }
+
+        public static ResultadoTransaccion CambiaEstadoCancelacionPreAlerta(PaperlessPreAlerta info)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.CambiaEstadoCancelacionPreAlerta(info);
+        }
+
+        public static IList<PaperlessPreAlerta> ObtenerNumConsolidadas()
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerNumConsolidadas();
+        }
+
+        public static PaperlessPreAlerta ObtieneNumConsolidadaPreAlerta(string numconsolidada)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtieneNumConsolidadaPreAlerta(numconsolidada);
+        }
+
+        public static clsUsuario RecuperaEmailUsuario(string nombreusuario)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.RecuperaEmailUsuario(nombreusuario);
+        }
+
+        public static bool ValidaNumConsolidadoPreAlerta(string numConsolidado)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidadoPreAlerta(numConsolidado);
+        }
+
+        public static bool ValidaNumConsolidadoPreAlerta2(string numConsolidado)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ValidaNumConsolidadoPreAlerta2(numConsolidado);
+        }
+
+        public static ResultadoTransaccion CambiaEstadoVinculadoPreAlerta(string numconsolidada)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.CambiaEstadoVinculadoPreAlerta(numconsolidada);
+        }
+        //FIN TSC PREALERTA
+
+
         public static IList<PaperlessNaviera> ObtenerNavieras(Entidades.Enums.Enums.Estado estado)
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerNavieras(estado);
@@ -41,6 +119,13 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         {
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerNaves(estado);
         }
+
+        public static IList<PaperlessPuerto> ObtenerPuertosPaperless()
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.ObtenerPuertosPaperless();
+        }
+
+
         public static IList<PaperlessFlujo> ObtenerAsignaciones(DateTime desde, DateTime hasta, Int64 usuario1, Int64 usuario2, string estado, string numconsolidado, string nave
             , DateTime desdeEmbarcadores, DateTime hastaEmbarcadores, DateTime desdeNavieras, DateTime hastaNavieras, string nummaster)
         {
@@ -249,6 +334,11 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
             return AccesoDatos.Paperless.clsPaperlessADO.ObtenerDuracionProcesoPaperless(tipocarga);
         }
 
+        public static ResultadoTransaccion Usuario2CambiaEstado_RegistraComienzo(PaperlessProcesoRegistroTiempo inicioUsuario2,PaperlessAsignacion Asignacion)
+        {
+            return AccesoDatos.Paperless.clsPaperlessADO.Usuario2CambiaEstado_RegistraComienzo(inicioUsuario2,Asignacion);
+        }
+
 
         //private static ResultadoTransaccion Usuario1RegistraComienzo(PaperlessProcesoRegistroTiempo inicio)
         //{
@@ -415,5 +505,6 @@ namespace ProyectoCraft.LogicaNegocios.Paperless
         public static ResultadoTransaccion Usuario2CambiarEstadoPaso(PaperlessPasosEstado paso){
             return AccesoDatos.Paperless.clsPaperlessADO.Usuario2CambiarEstadoPaso(paso);
         }
+
     }
 }

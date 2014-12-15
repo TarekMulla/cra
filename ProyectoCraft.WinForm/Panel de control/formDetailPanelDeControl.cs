@@ -9,7 +9,9 @@ using ProyectoCraft.Entidades.Enums;
 using ProyectoCraft.LogicaNegocios.PanelDeControl;
 using SCCMultimodal.Paperless.Usuario1;
 using SCCMultimodal.Paperless.Usuario2;
-
+using ProyectoCraft.Entidades.Paperless;            //TSC
+using ProyectoCraft.WinForm.Paperless.PreAlerta;    //TSC
+using ProyectoCraft.LogicaNegocios.Paperless;       //TSC
 
 namespace SCCMultimodal.Panel_de_control {
     public partial class formDetailPanelDeControl : Form {
@@ -34,6 +36,8 @@ namespace SCCMultimodal.Panel_de_control {
 
         public Boolean IsPaperless { set; get; }
 
+        public Boolean IsPreAlerta { set; get; }
+
         private void formDetailPanelDeControl_Load(object sender, EventArgs e) {
             var resultado = ClsPanelDeControl.ExecuteGenericqueryDataset(query);
 
@@ -44,6 +48,7 @@ namespace SCCMultimodal.Panel_de_control {
 
             IsPaperless = query.ToUpper().Contains("PAPERLESS");
 
+            IsPreAlerta = query.ToUpper().Contains("PREALERTA");
 
             var i = 0;
             foreach (DataColumn column in dt.Tables[0].Columns) {
@@ -204,36 +209,112 @@ namespace SCCMultimodal.Panel_de_control {
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
             if (IsPaperless) {
-                var asignacion = ObtenerAsignacion();
-                MenuAsignacion.Enabled = false;
-                Menu1raEtapa.Enabled = false;
-                Menu2daEtapa.Enabled = false;
-
-                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.AceptadoUsuario1 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.AsignadoUsuario1 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
-                                           asignacion.Estado == Enums.EstadoPaperless.RechazadaUsuario1)) {
-                    MenuAsignacion.Enabled = true;
+                //TSC - Se agrega if para determinar si el semaforo utilizado es el de PreAlerta
+                if (IsPreAlerta)
+                {
+                    MenuPreAlerta.Enabled = true;
+                    MenuPreAlerta.Visible = true;
+                    toolStripSeparator1.Visible = false;
+                    MenuAsignacion.Enabled = false;
+                    Menu1raEtapa.Enabled = false;
+                    Menu2daEtapa.Enabled = false;
+                    MenuAsignacion.Visible = false;
+                    Menu1raEtapa.Visible = false;
+                    Menu2daEtapa.Visible = false;
                 }
+                else
+                {
+                    var asignacion = ObtenerAsignacion();
+                    toolStripSeparator1.Visible = true; //TSC
+                    MenuPreAlerta.Enabled = false;      //TSC
+                    MenuPreAlerta.Visible = false;      //TSC
+                    MenuAsignacion.Enabled = false;
+                    Menu1raEtapa.Enabled = false;
+                    Menu2daEtapa.Enabled = false;
 
-                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado)) {
-                    Menu1raEtapa.Enabled = true;
-                }
+                    if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.AceptadoUsuario1 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.AsignadoUsuario1 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
+                                               asignacion.Estado == Enums.EstadoPaperless.RechazadaUsuario1))
+                    {
+                        MenuAsignacion.Enabled = true;
+                    }
 
-                if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
-                                           asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
-                                           asignacion.Estado == Enums.EstadoPaperless.EnviadoMercante
-                                          )) {
-                    Menu2daEtapa.Enabled = true;
+                    if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario1 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnviadoUsuario2 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado))
+                    {
+                        Menu1raEtapa.Enabled = true;
+                    }
+
+                    if (asignacion != null && (asignacion.Estado == Enums.EstadoPaperless.EnProcesoUsuario2 ||
+                                               asignacion.Estado == Enums.EstadoPaperless.ProcesoTerminado ||
+                                               asignacion.Estado == Enums.EstadoPaperless.EnviadoMercante
+                                              ))
+                    {
+                        Menu2daEtapa.Enabled = true;
+                    }
                 }
 
             }
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private ProyectoCraft.Entidades.Paperless.PaperlessPreAlerta ObtenerPreAlerta()
+        {
+            var filaSelected = gridControl1.DefaultView.GetRow(gridView1.FocusedRowHandle);
+            if (filaSelected == null)
+            {
+                return null;
+            }
+
+            string numconsolidada = Convert.ToString(((DataRowView)gridView1.GetRow(gridView1.FocusedRowHandle)).Row["numconsolidada"]);
+            var prealerta = ProyectoCraft.LogicaNegocios.Paperless.Paperless.ObtenerPreAlertaPorNumConsolidada(numconsolidada);
+            return prealerta;
+        }
+
+
+        private void MenuPreAlerta_Click(object sender, EventArgs e)
+        {
+            /*
+            ProyectoCraft.Entidades.Paperless.PaperlessPreAlerta prealerta = ObtenerPreAlerta();
+            ProyectoCraft.WinForm.Paperless.PreAlerta.frmPaperlessPreAlerta form = ProyectoCraft.WinForm.Paperless.PreAlerta.frmPaperlessPreAlerta.Instancia;
+
+            if (prealerta != null)
+            {
+                form.PaperlessPreAlertaActual = prealerta;
+                form.FormLoad();
+                form.CargarFormulario();
+                form.Accion = Enums.TipoAccionFormulario.Consultar;
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una PreAlerta", "Paperless - PreAlerta", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+            */
+            ProyectoCraft.Entidades.Paperless.PaperlessPreAlerta prealerta = ObtenerPreAlerta();
+
+            if (prealerta != null)
+            {
+                frmPaperlessPreAlerta form = ProyectoCraft.WinForm.Paperless.PreAlerta.frmPaperlessPreAlerta.Instancia;
+                form.PaperlessPreAlertaActual = prealerta;
+                form.Accion = Enums.TipoAccionFormulario.Consultar;
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show("Debe seleccionar una PreAlerta", "Paperless - PreAlerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
     }
 }

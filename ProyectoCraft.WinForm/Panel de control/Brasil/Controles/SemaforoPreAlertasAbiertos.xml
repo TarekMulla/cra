@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<control type="semaforo" refresh="90" title="Pre-Alertas Abiertos"  baseControl="semaforo.xml">
+  <description>
+    Control para graficar las diferencias entre x e y
+  </description>
+  <datasource>
+    <![CDATA[
+            SELECT CASE
+                WHEN COUNT(a.id) =0 THEN ''
+                WHEN COUNT(a.id) >0 THEN 'red'
+            END as 'color',
+            COUNT(a.id) as 'cantidad'
+            FROM PAPERLESS_PREALERTA A 
+            WHERE A.IdEstado = 1
+            AND FechaSalida < GETDATE()
+    ]]>
+  </datasource>
+  <detail>
+    <datasourse>
+      <![CDATA[
+              SELECT PA.NumConsolidada, PAG.Descripcion agente, PN.Descripcion naviera, 
+	                 PNAVE.Descripcion nave, PA.FechaSalida, PA.FechaLlegada, PA.FechaRecibimiento,
+	                 PA.NumMaster, PA.FechaCreacion, U1.NombreUsuario, pep.Descripcion estado
+              FROM PAPERLESS_PREALERTA PA
+              LEFT OUTER JOIN USUARIOS U1
+              ON PA.IdUsuarioCreacion = U1.Id
+              LEFT OUTER JOIN PAPERLESS_AGENTE PAG
+              ON PA.IdAgente = PAG.Id
+              LEFT OUTER JOIN PAPERLESS_NAVIERA PN
+              ON PA.IdNaviera = PN.Id
+              LEFT OUTER JOIN PAPERLESS_NAVE PNAVE
+              ON PA.IdNave = PNAVE.Id
+              INNER JOIN USUARIOS UC
+              ON PA.IdUsuarioCreacion = UC.Id
+              LEFT OUTER JOIN PAPERLESS_ESTADO_PREALERTA pep
+              ON pep.ID = PA.IdEstado
+              WHERE PA.IdEstado = 1
+              AND FechaSalida < GETDATE()
+	 ]]>
+    </datasourse>
+  </detail>
+</control>

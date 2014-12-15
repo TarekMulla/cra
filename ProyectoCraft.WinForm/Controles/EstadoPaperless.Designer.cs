@@ -91,7 +91,7 @@
             this.lblTiempoEstimado.Size = new System.Drawing.Size(193, 13);
             this.lblTiempoEstimado.TabIndex = 1;
             this.lblTiempoEstimado.Text = "Tiempo estimado Total: 00:10:00";
-            // 
+            //
             // pnlEstimado
             // 
             this.pnlEstimado.BackColor = System.Drawing.Color.YellowGreen;

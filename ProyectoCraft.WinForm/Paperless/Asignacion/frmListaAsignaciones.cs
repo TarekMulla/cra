@@ -318,7 +318,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
 
             MenuVerRechazo.Enabled = false;
 
-            if(asignacion.EstadoFlujo == Enums.EstadoPaperless.RechazadaUsuario1)
+            if (asignacion.EstadoFlujo == Enums.EstadoPaperless.RechazadaUsuario1 || asignacion.EstadoFlujo == Enums.EstadoPaperless.RechazadaUsuario2)
             {
                 MenuVerRechazo.Enabled = true;
             }
@@ -414,7 +414,7 @@ namespace ProyectoCraft.WinForm.Paperless.Asignacion
                 grdHbls.RefreshDataSource();
             } 
         }
-      
-      
+
+
     }
 }

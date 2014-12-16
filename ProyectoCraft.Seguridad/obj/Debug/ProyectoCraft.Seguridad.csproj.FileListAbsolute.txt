@@ -1,0 +1,20 @@
+C:\Fuentes\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Seguridad\obj\Debug\ResolveAssemblyReference.cache
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ResolveAssemblyReference.cache
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Seguridad\obj\Debug\ProyectoCraft.Seguridad.pdb

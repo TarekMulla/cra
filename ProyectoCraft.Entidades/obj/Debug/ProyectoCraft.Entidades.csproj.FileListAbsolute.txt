@@ -1,0 +1,30 @@
+C:\Fuentes\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Entidades\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.Entidades\obj\Debug\ProyectoCraft.Entidades.pdb

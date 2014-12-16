@@ -1,0 +1,90 @@
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\log4net.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\log4net.xml
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+D:\Proyecto Leo y Paula\trunkBrasil Fase II\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\log4net.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\log4net.xml
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+D:\Proyecto Leo y Paula\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\log4net.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\log4net.xml
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+C:\Paula\FUENTES\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.LogicaNegocios.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Base.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Seguridad.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.Entidades.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\bin\debug\ProyectoCraft.AccesoDatos.pdb
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.dll
+C:\Fuentes\BRASIL\trunkBrasil\ProyectoCraft.LogicaNegocios\obj\Debug\ProyectoCraft.LogicaNegocios.pdb

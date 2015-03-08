@@ -4,42 +4,7 @@
     Control para graficar las diferencias entre x e y
   </description>
   <datasource>
-    <![CDATA[
-      DECLARE @f_desde datetime
-      DECLARE @f_hoy	 datetime
-
-
-      SELECT @f_hoy = GETDATE()
-      EXEC  sp_f_proximo_dia_habil 5,@f_hoy,@f_desde OUT
-
-      CREATE TABLE #tabla_paso (color varchar(20), cantidad int)
-
-      INSERT INTO #tabla_paso
-      SELECT CASE
-                      WHEN COUNT(a.id) =0 THEN '' 
-                      WHEN COUNT(a.id) >0 THEN 'green'
-                  END as color,
-                  COUNT(a.id) as 'cantidad'
-          FROM PAPERLESS_ASIGNACION A LEFT OUTER JOIN PAPERLESS_USUARIO2_PASOS_ESTADO B
-               ON A.id=B.idAsignacion
-          WHERE   convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
-          AND     (B.NumPaso=4 AND     B.fechamarca IS NULL)
-          AND A.IdEstado not in (8,9)                  
-          UNION
-          SELECT CASE
-                      WHEN COUNT(a.id) =0 THEN '' 
-                      WHEN COUNT(a.id) >0 THEN 'green'
-                  END as color,
-                  COUNT(a.id) as 'cantidad'
-          FROM PAPERLESS_ASIGNACION A 
-          WHERE  A.id NOT in (SELECT idAsignacion from PAPERLESS_USUARIO2_PASOS_ESTADO)
-          AND convert(varchar(20),A.PlazoEmbarcadores,112) >= convert(varchar(20),@f_desde,112)
-          AND A.IdEstado not in (8,9)                  
-       
-      SELECT max(color) as 'color',sum(cantidad) as 'cantidad'
-      FROM #tabla_paso
-      DROP TABLE #tabla_paso
-    ]]>
+    select 'ORANGE  ' as color, 3 as cantidad
   </datasource>
   <detail>
     <datasourse>

@@ -457,6 +457,7 @@
     <Compile Include="Mantenedores\frmPuertos.Designer.cs">
       <DependentUpon>frmPuertos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panel de control\DigitalGauge.cs" />
     <Compile Include="Panel de control\formDetailPanelDeControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,7 +476,18 @@
     <Compile Include="MDICraft.Designer.cs">
       <DependentUpon>MDICraft.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panel de control\GraficoBarra3D.cs" />
+    <Compile Include="Panel de control\LinearGauge.cs" />
+    <Compile Include="Panel de control\MyControl.cs" />
     <Compile Include="Panel de control\PanelDecontrol.cs" />
+    <Compile Include="Panel de control\Semaforo.cs" />
+    <Compile Include="Panel de control\SemaforoV2.cs" />
+    <Compile Include="Panel de control\SemaforoV2Dessigner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel de control\SemaforoV2Dessigner.Designer.cs">
+      <DependentUpon>SemaforoV2Dessigner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paperless\Asignacion\frmListaAsignaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -752,6 +764,9 @@
     <EmbeddedResource Include="MDICraft.resx">
       <DependentUpon>MDICraft.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel de control\SemaforoV2Dessigner.resx">
+      <DependentUpon>SemaforoV2Dessigner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paperless\Asignacion\frmListaAsignaciones.resx">
       <DependentUpon>frmListaAsignaciones.cs</DependentUpon>
@@ -1106,7 +1121,9 @@
     <Content Include="Panel de control\Brasil\Controles\Semaforo5diasCourier.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Panel de control\Brasil\Controles\SemaforoPreAlertasAbiertos.xml" />
+    <Content Include="Panel de control\Brasil\Controles\SemaforoPreAlertasAbiertos.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Panel de control\Brasil\Controles\SemaforosAceptados.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

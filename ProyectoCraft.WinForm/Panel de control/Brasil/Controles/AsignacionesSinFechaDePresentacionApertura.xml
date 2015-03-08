@@ -4,18 +4,7 @@
     Control para graficar las diferencias entre x e y
   </description>
   <datasource>
-    <![CDATA[
-           SELECT CASE
-                WHEN COUNT(a.id) =0 THEN ''
-                WHEN COUNT(a.id) >0 THEN 'red'
-            END as 'color',
-            COUNT(a.id) as 'cantidad'
-            FROM PAPERLESS_ASIGNACION A 
-            WHERE (DATEDIFF(DAY,GETDATE(),FechaETA)<=15 OR 
-                DATEDIFF(DAY,GETDATE(),FechaETA) IS NULL)
-            AND IdEstado NOT IN (8,9)
-            AND (AperturaNavieras ='' or AperturaNavieras is null)
-    ]]>
+ select 'green' as color, 1 as cantidad
   </datasource>
   <detail>
     <datasourse>
